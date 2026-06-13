@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Tries the user's PNG first, then the built-in SVG emblem, then a wordmark.
-const SOURCES = ["/logo.png", "/logo.svg"];
+// Tries the brand PNG first, then older PNG / built-in SVG emblem, then a wordmark.
+const SOURCES = ["/summersharplogo.png", "/logo.png", "/logo.svg"];
 
 /** SummerSharp wordmark — orange "Summer" + blue "Sharp". */
 function Wordmark({ className = "" }: { className?: string }) {
