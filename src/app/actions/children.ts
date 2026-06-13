@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { childEmail } from "@/lib/auth";
+import { childEmail, childPassword } from "@/lib/auth";
 import { AVATARS, GRADES, type Grade } from "@/lib/types";
 
 export type ChildFormState = {
@@ -65,7 +65,7 @@ export async function createChild(
 
   const { data, error } = await admin.auth.admin.createUser({
     email: childEmail(username),
-    password: pin,
+    password: childPassword(pin),
     email_confirm: true,
     user_metadata: {
       role: "student",

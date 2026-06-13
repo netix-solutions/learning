@@ -1,0 +1,2 @@
+# Never upload local dev env (localhost Supabase) — Vercel project env vars are authoritative.
+.env*.local

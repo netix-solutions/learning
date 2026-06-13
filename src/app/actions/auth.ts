@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { childEmail } from "@/lib/auth";
+import { childEmail, childPassword } from "@/lib/auth";
 
 export type FormState = { error: string | null };
 
@@ -63,7 +63,7 @@ export async function signInChild(
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: childEmail(username),
-    password: pin,
+    password: childPassword(pin),
   });
 
   if (error)

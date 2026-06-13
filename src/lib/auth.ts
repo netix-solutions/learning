@@ -25,3 +25,13 @@ export function childEmail(username: string) {
     process.env.NEXT_PUBLIC_CHILD_EMAIL_DOMAIN ?? "students.summersharp.local";
   return `${username.trim().toLowerCase()}@${domain}`;
 }
+
+/**
+ * Supabase requires a password of at least 6 characters, but kids only ever
+ * type their 4-digit PIN. We derive a stable >=6-char password from the PIN so
+ * the short, kid-friendly PIN keeps working on hosted Supabase. Used identically
+ * when creating a child and when the child signs in.
+ */
+export function childPassword(pin: string) {
+  return `ss-${pin.trim()}`;
+}
