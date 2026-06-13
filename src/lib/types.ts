@@ -32,6 +32,9 @@ export type PracticeQuestion = {
   choices: string[];
   standard: string | null;
   xp: number;
+  // Adaptive engine extras (present when served by get_adaptive_questions).
+  skill?: string | null;
+  focus?: "new" | "review" | "practice" | null;
 };
 
 export type AttemptResult = {

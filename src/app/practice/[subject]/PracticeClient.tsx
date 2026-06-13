@@ -55,7 +55,7 @@ export function PracticeClient({
       const subjectIds = ["math", "reading"];
       const results = await Promise.all(
         subjectIds.map((s) =>
-          supabase.rpc("get_practice_questions", {
+          supabase.rpc("get_adaptive_questions", {
             p_subject: s,
             p_grade: grade,
             p_count: 3,
@@ -69,7 +69,7 @@ export function PracticeClient({
         [qs[i], qs[j]] = [qs[j], qs[i]];
       }
     } else {
-      const { data } = await supabase.rpc("get_practice_questions", {
+      const { data } = await supabase.rpc("get_adaptive_questions", {
         p_subject: subject.id,
         p_grade: grade,
         p_count: 6,
@@ -237,9 +237,21 @@ export function PracticeClient({
         </div>
 
         <div className="card-fun p-6 sm:p-8">
-          <p className="mb-1 text-sm font-bold uppercase tracking-wide text-slate-400">
-            Question {index + 1} of {questions.length}
-          </p>
+          <div className="mb-1 flex items-center gap-2">
+            <p className="text-sm font-bold uppercase tracking-wide text-slate-400">
+              Question {index + 1} of {questions.length}
+            </p>
+            {current.focus === "new" && (
+              <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-700">
+                ✨ New skill
+              </span>
+            )}
+            {current.focus === "review" && (
+              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-xs font-bold text-violet-700">
+                🔁 Review
+              </span>
+            )}
+          </div>
           <h1 className="font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
             {current.prompt}
           </h1>
