@@ -1,0 +1,51 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SummerSharp">
+  <defs>
+    <linearGradient id="sun" x1="34" y1="20" x2="94" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD83D"/>
+      <stop offset="1" stop-color="#FFB01F"/>
+    </linearGradient>
+    <linearGradient id="cover" x1="20" y1="84" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2AA7E6"/>
+      <stop offset="1" stop-color="#1D70C2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sun rays -->
+  <g stroke="#FFC223" stroke-width="5" stroke-linecap="round">
+    <line x1="64" y1="6"  x2="64" y2="16"/>
+    <line x1="40" y1="12" x2="44" y2="21"/>
+    <line x1="88" y1="12" x2="84" y2="21"/>
+    <line x1="22" y1="28" x2="30" y2="34"/>
+    <line x1="106" y1="28" x2="98" y2="34"/>
+    <line x1="15" y1="50" x2="25" y2="51"/>
+    <line x1="113" y1="50" x2="103" y2="51"/>
+  </g>
+
+  <!-- sun body -->
+  <circle cx="64" cy="50" r="30" fill="url(#sun)"/>
+
+  <!-- smile -->
+  <path d="M52 60 Q64 70 76 60" stroke="#7A4A12" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- sunglasses -->
+  <g fill="#1D70C2">
+    <rect x="40" y="40" width="20" height="14" rx="6"/>
+    <rect x="68" y="40" width="20" height="14" rx="6"/>
+    <rect x="58" y="44" width="12" height="4" rx="2"/>
+  </g>
+  <g fill="#BFE3FF" opacity="0.65">
+    <rect x="43" y="43" width="14" height="8" rx="4"/>
+    <rect x="71" y="43" width="14" height="8" rx="4"/>
+  </g>
+
+  <!-- open book -->
+  <path d="M64 86 C52 78 34 78 22 82 L22 104 C34 100 52 100 64 108 Z" fill="#FFFDF7" stroke="url(#cover)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M64 86 C76 78 94 78 106 82 L106 104 C94 100 76 100 64 108 Z" fill="#FFFDF7" stroke="url(#cover)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M64 90 L64 108" stroke="#1D70C2" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#9FC8EA" stroke-width="3" stroke-linecap="round">
+    <line x1="30" y1="88" x2="54" y2="90"/>
+    <line x1="30" y1="95" x2="54" y2="97"/>
+    <line x1="74" y1="90" x2="98" y2="88"/>
+    <line x1="74" y1="97" x2="98" y2="95"/>
+  </g>
+</svg>

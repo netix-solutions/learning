@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
+// Tries the user's PNG first, then the built-in SVG emblem, then a wordmark.
+const SOURCES = ["/logo.png", "/logo.svg"];
+
 /** SummerSharp wordmark — orange "Summer" + blue "Sharp". */
 function Wordmark({ className = "" }: { className?: string }) {
   return (
@@ -13,9 +16,24 @@ function Wordmark({ className = "" }: { className?: string }) {
   );
 }
 
+function LogoMark({ className }: { className: string }) {
+  const [idx, setIdx] = useState(0);
+  const src = idx < SOURCES.length ? SOURCES[idx] : null;
+  if (!src) return <span className={className}>☀️</span>;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt="SummerSharp"
+      className={`${className} object-contain`}
+      onError={() => setIdx((i) => i + 1)}
+    />
+  );
+}
+
 /**
- * Brand logo. Uses /logo.png if present, otherwise falls back to a styled
- * wordmark so the app always renders.
+ * Brand logo. Renders the logo image (PNG → SVG fallback) beside the wordmark,
+ * so the header is always branded.
  */
 export function BrandLogo({
   variant = "compact",
@@ -24,24 +42,10 @@ export function BrandLogo({
   variant?: "compact" | "full";
   href?: string | null;
 }) {
-  const [imgOk, setImgOk] = useState(true);
-
   if (variant === "full") {
     return (
       <div className="flex flex-col items-center gap-3">
-        {imgOk ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src="/logo.png"
-            alt="SummerSharp"
-            width={240}
-            height={240}
-            className="h-44 w-44 object-contain drop-shadow-xl animate-float sm:h-52 sm:w-52"
-            onError={() => setImgOk(false)}
-          />
-        ) : (
-          <div className="animate-float text-7xl">☀️📖</div>
-        )}
+        <LogoMark className="h-44 w-44 animate-float drop-shadow-xl sm:h-52 sm:w-52" />
         <Wordmark className="text-4xl sm:text-5xl" />
       </div>
     );
@@ -49,19 +53,7 @@ export function BrandLogo({
 
   const inner = (
     <span className="flex items-center gap-2">
-      {imgOk ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src="/logo.png"
-          alt=""
-          width={40}
-          height={40}
-          className="h-10 w-10 object-contain"
-          onError={() => setImgOk(false)}
-        />
-      ) : (
-        <span className="text-2xl">☀️</span>
-      )}
+      <LogoMark className="h-10 w-10" />
       <Wordmark className="text-2xl" />
     </span>
   );
