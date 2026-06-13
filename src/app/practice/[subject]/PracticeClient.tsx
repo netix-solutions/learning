@@ -1,0 +1,320 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/client";
+import { Confetti } from "@/components/Confetti";
+import {
+  subjectTheme,
+  type AttemptResult,
+  type Grade,
+  type PracticeQuestion,
+  type Subject,
+} from "@/lib/types";
+
+const CHEERS = ["Nice! 🎉", "Boom! 💥", "You got it! 🌟", "Sharp! 🧠", "Yes! 🙌"];
+
+type NewBadge = AttemptResult["new_badges"][number];
+
+export function PracticeClient({
+  subject,
+  grade,
+}: {
+  subject: Subject;
+  grade: Grade;
+}) {
+  const theme = subjectTheme(subject.color);
+  const [phase, setPhase] = useState<"loading" | "playing" | "done" | "empty">(
+    "loading",
+  );
+  const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
+  const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [result, setResult] = useState<AttemptResult | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [xpEarned, setXpEarned] = useState(0);
+  const [badges, setBadges] = useState<NewBadge[]>([]);
+  const [confettiKey, setConfettiKey] = useState(0);
+  const [cheer, setCheer] = useState(CHEERS[0]);
+
+  const loadQuestions = useCallback(async () => {
+    setPhase("loading");
+    setQuestions([]);
+    setIndex(0);
+    setSelected(null);
+    setResult(null);
+    setCorrectCount(0);
+    setXpEarned(0);
+    setBadges([]);
+
+    const supabase = createClient();
+    let qs: PracticeQuestion[] = [];
+
+    if (subject.id === "daily") {
+      const subjectIds = ["math", "reading"];
+      const results = await Promise.all(
+        subjectIds.map((s) =>
+          supabase.rpc("get_practice_questions", {
+            p_subject: s,
+            p_grade: grade,
+            p_count: 3,
+          }),
+        ),
+      );
+      qs = results.flatMap((r) => (r.data as PracticeQuestion[]) ?? []);
+      // shuffle the mix
+      for (let i = qs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [qs[i], qs[j]] = [qs[j], qs[i]];
+      }
+    } else {
+      const { data } = await supabase.rpc("get_practice_questions", {
+        p_subject: subject.id,
+        p_grade: grade,
+        p_count: 6,
+      });
+      qs = (data as PracticeQuestion[]) ?? [];
+    }
+
+    setQuestions(qs);
+    setPhase(qs.length ? "playing" : "empty");
+  }, [subject.id, grade]);
+
+  useEffect(() => {
+    loadQuestions();
+  }, [loadQuestions]);
+
+  const current = questions[index];
+
+  async function choose(choiceIndex: number) {
+    if (result || submitting || !current) return;
+    setSelected(choiceIndex);
+    setSubmitting(true);
+
+    const supabase = createClient();
+    const { data, error } = await supabase.rpc("record_attempt", {
+      p_question_id: current.id,
+      p_selected_index: choiceIndex,
+    });
+    setSubmitting(false);
+
+    if (error || !data) {
+      // Surface a gentle retry: clear selection so they can tap again.
+      setSelected(null);
+      return;
+    }
+
+    const res = data as AttemptResult;
+    setResult(res);
+    if (res.is_correct) {
+      setCorrectCount((c) => c + 1);
+      setXpEarned((x) => x + res.xp_earned);
+      setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
+      setConfettiKey((k) => k + 1);
+    }
+    if (res.new_badges.length) setBadges((b) => [...b, ...res.new_badges]);
+  }
+
+  function next() {
+    if (index + 1 >= questions.length) {
+      setPhase("done");
+      setConfettiKey((k) => k + 1);
+      return;
+    }
+    setIndex((i) => i + 1);
+    setSelected(null);
+    setResult(null);
+  }
+
+  // ---- Render states ------------------------------------------------------
+
+  if (phase === "loading") {
+    return (
+      <Centered>
+        <div className="animate-float text-6xl">{subject.emoji}</div>
+        <p className="mt-4 font-display text-xl text-slate-500">Getting questions ready…</p>
+      </Centered>
+    );
+  }
+
+  if (phase === "empty") {
+    return (
+      <Centered>
+        <div className="text-6xl">🦗</div>
+        <p className="mt-4 font-display text-xl text-slate-600">
+          No questions here yet for Grade {grade}.
+        </p>
+        <Link href="/home" className="btn-pop mt-6 bg-white px-6 py-3 ring-2 ring-slate-200">
+          ← Back home
+        </Link>
+      </Centered>
+    );
+  }
+
+  if (phase === "done") {
+    const total = questions.length;
+    const perfect = correctCount === total;
+    return (
+      <>
+        <Confetti fire={confettiKey} />
+        <Centered>
+          <div className="card-fun w-full max-w-md p-8 text-center animate-pop">
+            <div className="text-7xl">{perfect ? "🏆" : "🌟"}</div>
+            <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">
+              {perfect ? "Perfect round!" : "Great job!"}
+            </h1>
+            <p className="mt-1 text-lg text-slate-600">
+              You got <b>{correctCount}</b> out of <b>{total}</b> right.
+            </p>
+            <div
+              className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-xl font-bold text-white"
+              style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
+            >
+              ⚡ +{xpEarned} XP
+            </div>
+
+            {badges.length > 0 && (
+              <div className="mt-6">
+                <p className="font-display text-lg font-bold text-slate-700">
+                  New badges unlocked!
+                </p>
+                <div className="mt-2 flex flex-wrap justify-center gap-3">
+                  {badges.map((b) => (
+                    <div key={b.id} className="flex flex-col items-center animate-cheer">
+                      <span className="text-4xl">{b.emoji}</span>
+                      <span className="text-xs font-bold text-slate-600">{b.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-7 flex flex-col gap-3">
+              <button
+                onClick={loadQuestions}
+                className="btn-pop px-6 py-3 text-lg text-white"
+                style={{ background: "var(--brand-blue)" }}
+              >
+                Play again 🔁
+              </button>
+              <Link
+                href="/home"
+                className="btn-pop bg-white px-6 py-3 text-lg text-slate-600 ring-2 ring-slate-200"
+              >
+                Back home 🏠
+              </Link>
+            </div>
+          </div>
+        </Centered>
+      </>
+    );
+  }
+
+  // phase === "playing"
+  return (
+    <>
+      <Confetti fire={confettiKey} count={60} />
+      <main className="mx-auto max-w-2xl px-4 py-6">
+        <header className="mb-4 flex items-center justify-between">
+          <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">
+            ← Quit
+          </Link>
+          <span className={`rounded-full px-3 py-1 text-sm font-bold ${theme.soft} ${theme.text}`}>
+            {subject.emoji} {subject.name}
+          </span>
+          <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-bold text-amber-700">
+            ⚡ {xpEarned} XP
+          </span>
+        </header>
+
+        {/* progress */}
+        <div className="mb-6 h-3 w-full overflow-hidden rounded-full bg-white/70 ring-2 ring-white">
+          <div
+            className={`h-full rounded-full bg-gradient-to-r ${theme.gradient} transition-[width] duration-300`}
+            style={{ width: `${(index / questions.length) * 100}%` }}
+          />
+        </div>
+
+        <div className="card-fun p-6 sm:p-8">
+          <p className="mb-1 text-sm font-bold uppercase tracking-wide text-slate-400">
+            Question {index + 1} of {questions.length}
+          </p>
+          <h1 className="font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
+            {current.prompt}
+          </h1>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {current.choices.map((choice, i) => {
+              let cls =
+                "border-slate-200 bg-white hover:border-[var(--brand-blue)] hover:bg-blue-50";
+              if (result) {
+                if (i === result.correct_index)
+                  cls = "border-emerald-400 bg-emerald-50 text-emerald-800";
+                else if (i === selected)
+                  cls = "border-red-400 bg-red-50 text-red-700";
+                else cls = "border-slate-200 bg-white opacity-60";
+              }
+              return (
+                <button
+                  key={i}
+                  disabled={!!result || submitting}
+                  onClick={() => choose(i)}
+                  className={`flex items-center gap-3 rounded-2xl border-2 px-4 py-4 text-left text-lg font-bold transition ${cls}`}
+                >
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-sm text-slate-500">
+                    {String.fromCharCode(65 + i)}
+                  </span>
+                  <span>{choice}</span>
+                  {result && i === result.correct_index && <span className="ml-auto">✅</span>}
+                  {result && i === selected && !result.is_correct && (
+                    <span className="ml-auto">❌</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* feedback */}
+          {result && (
+            <div
+              className={`mt-6 rounded-2xl p-4 animate-pop ${
+                result.is_correct ? "bg-emerald-50" : "bg-orange-50"
+              }`}
+            >
+              <p className="font-display text-xl font-bold">
+                {result.is_correct ? cheer : "Good try! 💪"}
+              </p>
+              {result.explanation && (
+                <p className="mt-1 text-slate-600">{result.explanation}</p>
+              )}
+              {result.new_badges.map((b) => (
+                <p key={b.id} className="mt-2 font-bold text-amber-700">
+                  🏅 New badge: {b.emoji} {b.name}!
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {result && (
+          <button
+            onClick={next}
+            className="btn-pop mt-5 w-full px-6 py-4 text-xl text-white"
+            style={{ background: "var(--brand-orange)" }}
+          >
+            {index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
+          </button>
+        )}
+      </main>
+    </>
+  );
+}
+
+function Centered({ children }: { children: React.ReactNode }) {
+  return (
+    <main className="mx-auto flex min-h-dvh max-w-2xl flex-col items-center justify-center px-4 py-10 text-center">
+      {children}
+    </main>
+  );
+}

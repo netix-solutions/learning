@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-rounded, system-ui, sans-serif;
+}
+
+:root {
+  --background: #fef6ff;
+  --foreground: #143a5e;
+  /* SummerSharp brand palette (from the logo) */
+  --brand-orange: #f57c1f;
+  --brand-blue: #1d70c2;
+  --brand-sun: #ffc223;
+  --brand-wave: #2aa7e6;
+  --brand-palm: #3fb24b;
+}
+
+body {
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  /* Sunny, playful page backdrop */
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #ffe5a3 0%, transparent 55%),
+    radial-gradient(1000px 500px at 110% 10%, #ffd1ec 0%, transparent 50%),
+    radial-gradient(900px 600px at 50% 120%, #bdeaff 0%, transparent 55%),
+    linear-gradient(180deg, #fef6ff 0%, #eef6ff 100%);
+  background-attachment: fixed;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-rounded, system-ui, sans-serif;
+}
+
+/* ---- Playful motion ---------------------------------------------------- */
+@keyframes pop-in {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes cheer {
+  0% { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+  50% { transform: scale(1.25) rotate(6deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes shake-x {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-12vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+}
+
+.animate-pop { animation: pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }
+.animate-float { animation: float-y 3.5s ease-in-out infinite; }
+.animate-wiggle { animation: wiggle 0.5s ease-in-out infinite; }
+.animate-cheer { animation: cheer 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }
+.animate-shake { animation: shake-x 0.4s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop, .animate-float, .animate-wiggle, .animate-cheer, .animate-shake {
+    animation: none;
+  }
+}
+
+/* ---- Reusable building blocks ----------------------------------------- */
+.card-fun {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid #fff;
+  border-radius: 1.75rem;
+  box-shadow:
+    0 10px 0 rgba(124, 58, 237, 0.08),
+    0 18px 40px -12px rgba(80, 30, 140, 0.25);
+}
+
+.btn-pop {
+  border-radius: 9999px;
+  font-weight: 800;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.14);
+}
+.btn-pop:hover { filter: brightness(1.04); }
+.btn-pop:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.14); }
+.btn-pop:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  animation: confetti-fall 2.4s linear forwards;
+  z-index: 50;
+}
