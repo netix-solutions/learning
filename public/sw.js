@@ -3,7 +3,7 @@
  * cross-origin and pass straight through), so auth and answer-grading always
  * hit the network. It caches the static app shell so the app launches offline
  * and shows a friendly offline page when a navigation can't reach the network. */
-const CACHE = "summersharp-v1";
+const CACHE = "summersharp-v2";
 const APP_SHELL = [
   "/offline.html",
   "/manifest.webmanifest",
@@ -35,18 +35,12 @@ self.addEventListener("fetch", (event) => {
   // Only handle same-origin GETs. Supabase (cross-origin) passes straight through.
   if (url.origin !== self.location.origin) return;
 
-  // Page navigations: network-first so content is always fresh; fall back to
-  // cache, then to the offline page if both fail.
+  // Page navigations: network-only, falling back to the static offline page.
+  // We deliberately DO NOT cache navigation responses — pages like /home and
+  // /parent/child/[id] are authenticated, per-child SSR HTML, and caching them
+  // could serve one child's rendered page to another on a shared device.
   if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request)
-        .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
-          return res;
-        })
-        .catch(() => caches.match(request).then((r) => r || caches.match("/offline.html"))),
-    );
+    event.respondWith(fetch(request).catch(() => caches.match("/offline.html")));
     return;
   }
 
