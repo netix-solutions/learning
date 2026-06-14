@@ -138,3 +138,79 @@ export async function adminOpenParentPortal(
   }
   redirect(url);
 }
+
+// --- Coupons ---------------------------------------------------------------
+
+export type CouponFormState = { error: string | null; ok?: boolean };
+
+/** Create a coupon code (operator only). */
+export async function adminCreateCoupon(
+  _prev: CouponFormState,
+  formData: FormData,
+): Promise<CouponFormState> {
+  if (!(await isAdminAuthed())) return { error: "Not authorized." };
+
+  const code = String(formData.get("code") ?? "").trim().toLowerCase();
+  const kind = String(formData.get("kind") ?? "");
+  const description = String(formData.get("description") ?? "").trim() || null;
+  const maxRedRaw = String(formData.get("max_redemptions") ?? "").trim();
+  const expiresRaw = String(formData.get("expires_at") ?? "").trim();
+
+  if (!code) return { error: "Enter a code." };
+  if (!/^[a-z0-9-]+$/.test(code))
+    return { error: "Code can use letters, numbers, and dashes only." };
+  if (kind !== "free" && kind !== "trial_days")
+    return { error: "Pick a coupon type." };
+
+  let max_kids: number | null = null;
+  let trial_days: number | null = null;
+  if (kind === "free") {
+    const mk = String(formData.get("max_kids") ?? "").trim();
+    if (mk) {
+      max_kids = Number(mk);
+      if (!Number.isInteger(max_kids) || max_kids < 1)
+        return { error: "Max kids must be a whole number ≥ 1 (or blank for unlimited)." };
+    }
+  } else {
+    trial_days = Number(String(formData.get("trial_days") ?? "").trim());
+    if (!Number.isInteger(trial_days) || trial_days < 1)
+      return { error: "Trial days must be a whole number ≥ 1." };
+  }
+
+  let max_redemptions: number | null = null;
+  if (maxRedRaw) {
+    max_redemptions = Number(maxRedRaw);
+    if (!Number.isInteger(max_redemptions) || max_redemptions < 1)
+      return { error: "Max redemptions must be a whole number ≥ 1 (or blank for unlimited)." };
+  }
+  const expires_at = expiresRaw ? new Date(expiresRaw).toISOString() : null;
+
+  const db = createAdminClient();
+  const { error } = await db
+    .from("coupons")
+    .insert({ code, kind, description, max_kids, trial_days, max_redemptions, expires_at });
+  if (error) {
+    if (error.code === "23505") return { error: "That code already exists." };
+    console.error("[admin] create coupon failed", error);
+    return { error: "Could not create the coupon." };
+  }
+
+  revalidatePath("/admin/coupons");
+  return { error: null, ok: true };
+}
+
+/** Activate or deactivate a coupon (operator only). */
+export async function adminSetCouponActive(
+  code: string,
+  active: boolean,
+): Promise<{ error: string | null }> {
+  if (!(await isAdminAuthed())) return { error: "Not authorized." };
+  if (!code) return { error: "Missing code." };
+
+  const db = createAdminClient();
+  const { error } = await db.from("coupons").update({ active }).eq("code", code);
+  if (error) return { error: "Could not update the coupon." };
+
+  revalidatePath("/admin/coupons");
+  return { error: null };
+}

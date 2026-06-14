@@ -6,6 +6,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { BillingButtons } from "@/components/billing/BillingButtons";
 import { SubscriptionActions } from "@/components/billing/SubscriptionActions";
+import { RedeemCoupon } from "@/components/billing/RedeemCoupon";
 import { InvoiceList } from "@/components/billing/InvoiceList";
 import { listInvoices } from "@/lib/billing-info";
 import { getParentEntitlement } from "@/lib/entitlement";
@@ -105,6 +106,14 @@ export default async function BillingPage() {
                 Thanks for being here early — your account stays free.
               </p>
             </div>
+          ) : ent.reason === "coupon" ? (
+            <div className="rounded-2xl bg-amber-50 p-4 text-amber-800">
+              <p className="font-display text-lg font-bold">Free with your code 💛</p>
+              <p className="mt-1 text-sm">
+                A coupon is covering your plan
+                {ent.kids ? ` for your ${ent.kids} ${ent.kids === 1 ? "kid" : "kids"}` : ""} — no charge.
+              </p>
+            </div>
           ) : subscribed ? (
             <>
               <div className="mb-4 rounded-2xl bg-emerald-50 p-4 text-emerald-800">
@@ -134,6 +143,13 @@ export default async function BillingPage() {
           )}
         </div>
       </section>
+
+      {/* Redeem a coupon — hidden once a comp is already in effect. */}
+      {ent.billingEnabled && ent.reason !== "grandfathered" && ent.reason !== "coupon" && (
+        <section className="mt-6">
+          <RedeemCoupon />
+        </section>
+      )}
 
       {/* Invoice history — shown once there's a billing customer to have any. */}
       {sub?.stripe_customer_id && (

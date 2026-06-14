@@ -6,7 +6,7 @@ export function AdminShell({
   active,
   children,
 }: {
-  active: "dashboard" | "users" | "billing";
+  active: "dashboard" | "users" | "billing" | "coupons";
   children: React.ReactNode;
 }) {
   return (
@@ -24,6 +24,7 @@ export function AdminShell({
             <NavLink href="/admin" label="Dashboard" on={active === "dashboard"} />
             <NavLink href="/admin/users" label="Users" on={active === "users"} />
             <NavLink href="/admin/billing" label="Billing" on={active === "billing"} />
+            <NavLink href="/admin/coupons" label="Coupons" on={active === "coupons"} />
           </nav>
 
           <form action={adminSignOut} className="ml-auto">

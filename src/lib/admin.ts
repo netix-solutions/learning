@@ -399,3 +399,44 @@ export async function getParentBilling(parentId: string): Promise<ParentBilling 
 
   return { parentId, name: profile.display_name, email, sub, invoices };
 }
+
+// ---------------------------------------------------------------------------
+// Coupons
+// ---------------------------------------------------------------------------
+
+export type AdminCoupon = {
+  code: string;
+  kind: "free" | "trial_days";
+  description: string | null;
+  maxKids: number | null;
+  trialDays: number | null;
+  active: boolean;
+  maxRedemptions: number | null;
+  redeemedCount: number;
+  expiresAt: string | null;
+  createdAt: string;
+};
+
+/** Every coupon, newest first, for the admin coupons page. */
+export async function getAdminCoupons(): Promise<AdminCoupon[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("coupons")
+    .select(
+      "code, kind, description, max_kids, trial_days, active, max_redemptions, redeemed_count, expires_at, created_at",
+    )
+    .order("created_at", { ascending: false });
+
+  return (data ?? []).map((r) => ({
+    code: r.code,
+    kind: r.kind,
+    description: r.description,
+    maxKids: r.max_kids,
+    trialDays: r.trial_days,
+    active: r.active,
+    maxRedemptions: r.max_redemptions,
+    redeemedCount: r.redeemed_count,
+    expiresAt: r.expires_at,
+    createdAt: r.created_at,
+  }));
+}

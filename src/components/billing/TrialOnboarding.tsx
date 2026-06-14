@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { startCheckout } from "@/app/actions/billing";
+import { RedeemCoupon } from "@/components/billing/RedeemCoupon";
 import {
   priceForKids,
   formatCents,
@@ -101,6 +102,15 @@ export function TrialOnboarding() {
       <p className="mt-2 text-xs text-slate-400">
         Card required · no charge today · cancel anytime
       </p>
+
+      {/* Coupon: a free code skips checkout entirely; an extended-trial code
+          lengthens the trial you start above. */}
+      <div className="mt-6 border-t border-slate-100 pt-5 text-left">
+        <p className="mb-2 text-center text-sm font-semibold text-slate-500">
+          Have a code?
+        </p>
+        <RedeemCoupon compact />
+      </div>
     </section>
   );
 }

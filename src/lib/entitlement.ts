@@ -25,6 +25,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 export type EntitlementReason =
   | "billing_off"
   | "grandfathered"
+  | "coupon" // an active "free" coupon comps this account (up to its kid cap)
   | "subscribed"
   | "trialing"
   | "needs_subscription" // billing on, never subscribed yet — must start a trial
@@ -59,6 +60,33 @@ function isGrandfathered(createdAt: string | null | undefined): boolean {
   return new Date(createdAt).getTime() < new Date(launch).getTime();
 }
 
+/**
+ * The kid cap of the best ACTIVE "free" coupon this parent has redeemed, or null
+ * if none. `Infinity` means an uncapped comp. A comp only entitles while the
+ * account's kid count is within the cap (see getParentEntitlement).
+ */
+async function freeCompCap(parentId: string): Promise<number | null> {
+  const admin = createAdminClient();
+  const { data } = await admin
+    .from("coupon_redemptions")
+    .select("coupons!inner(kind, max_kids, active)")
+    .eq("parent_id", parentId)
+    .eq("coupons.kind", "free")
+    .eq("coupons.active", true);
+
+  if (!data || data.length === 0) return null;
+
+  let cap = 0;
+  for (const row of data) {
+    // The embedded to-one relation may type as object or array; handle both.
+    const c = Array.isArray(row.coupons) ? row.coupons[0] : row.coupons;
+    const maxKids = (c as { max_kids: number | null } | null)?.max_kids;
+    if (maxKids == null) return Number.POSITIVE_INFINITY;
+    cap = Math.max(cap, maxKids);
+  }
+  return cap;
+}
+
 /** Entitlement for a PARENT account. */
 export async function getParentEntitlement(parentId: string): Promise<Entitlement> {
   const kids = await kidCount(parentId);
@@ -77,6 +105,14 @@ export async function getParentEntitlement(parentId: string): Promise<Entitlemen
     .single();
   if (isGrandfathered(prof?.created_at)) {
     return { entitled: true, billingEnabled: true, reason: "grandfathered", status: "grandfathered", seats: kids, kids, trialEndsAt: null };
+  }
+
+  // A "free" coupon comps the account — checked BEFORE Stripe so it beats a
+  // lapsed subscription. It only entitles while kids are within the coupon's
+  // cap; beyond that we fall through to normal billing.
+  const cap = await freeCompCap(parentId);
+  if (cap != null && kids <= cap) {
+    return { entitled: true, billingEnabled: true, reason: "coupon", status: "coupon", seats: kids, kids, trialEndsAt: null };
   }
 
   const { data: sub } = await admin

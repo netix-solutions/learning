@@ -12,6 +12,34 @@ function appUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 }
 
+const COUPON_ERRORS: Record<string, string> = {
+  not_found: "That code isn't valid.",
+  inactive: "That code is no longer active.",
+  expired: "That code has expired.",
+  exhausted: "That code has reached its limit.",
+  already_redeemed: "You've already used that code.",
+};
+
+/** The trial length (days) to grant at checkout: base, or longer if a redeemed
+ *  `trial_days` coupon extends it. */
+async function trialDaysFor(parentId: string): Promise<number> {
+  const admin = createAdminClient();
+  const { data } = await admin
+    .from("coupon_redemptions")
+    .select("coupons!inner(kind, trial_days, active)")
+    .eq("parent_id", parentId)
+    .eq("coupons.kind", "trial_days")
+    .eq("coupons.active", true);
+
+  let best = TRIAL_DAYS;
+  for (const row of data ?? []) {
+    const c = Array.isArray(row.coupons) ? row.coupons[0] : row.coupons;
+    const td = (c as { trial_days: number | null } | null)?.trial_days;
+    if (td && td > best) best = td;
+  }
+  return best;
+}
+
 async function requireParent(): Promise<
   | { parentId: string; email: string; name: string; createdAt: string | null }
   | { error: string }
@@ -115,7 +143,7 @@ export async function startCheckout(
     line_items: [{ price: priceId, quantity }],
     subscription_data: {
       metadata: { parent_id: auth.parentId },
-      trial_period_days: TRIAL_DAYS,
+      trial_period_days: await trialDaysFor(auth.parentId),
     },
     metadata: { parent_id: auth.parentId },
     allow_promotion_codes: true,
@@ -178,4 +206,52 @@ export async function resumeSubscription(): Promise<{ error: string } | undefine
   if (res?.error) return res;
   revalidatePath("/parent/billing");
   return undefined;
+}
+
+export type RedeemResult =
+  | { ok: true; kind: "free" | "trial_days"; maxKids: number | null; trialDays: number | null }
+  | { error: string };
+
+/**
+ * Parent redeems a coupon code. The DB function enforces validity, the global
+ * cap, and one-use-per-parent atomically. A "free" coupon takes effect
+ * immediately via entitlement; a "trial_days" coupon applies at the next
+ * checkout (the caller surfaces that distinction).
+ */
+export async function redeemCoupon(code: string): Promise<RedeemResult> {
+  const auth = await requireParent();
+  if ("error" in auth) return { error: auth.error };
+
+  const trimmed = code.trim();
+  if (!trimmed) return { error: "Enter a code." };
+
+  const admin = createAdminClient();
+  const { data, error } = await admin.rpc("redeem_coupon", {
+    p_code: trimmed,
+    p_parent: auth.parentId,
+  });
+  if (error) {
+    console.error("[coupon] redeem rpc error", error);
+    return { error: "Could not redeem that code. Please try again." };
+  }
+
+  const res = (data ?? {}) as {
+    ok?: boolean;
+    error?: string;
+    kind?: "free" | "trial_days";
+    max_kids?: number | null;
+    trial_days?: number | null;
+  };
+  if (!res.ok) {
+    return { error: COUPON_ERRORS[res.error ?? ""] ?? "That code can't be used." };
+  }
+
+  revalidatePath("/parent");
+  revalidatePath("/parent/billing");
+  return {
+    ok: true,
+    kind: res.kind ?? "free",
+    maxKids: res.max_kids ?? null,
+    trialDays: res.trial_days ?? null,
+  };
 }

@@ -48,11 +48,13 @@ export default async function ParentDashboard() {
     ? "Free during launch ✨"
     : ent.reason === "grandfathered"
       ? "Founding family · free 💛"
-      : ent.reason === "trialing"
-        ? "Free trial active 🎈"
-        : ent.reason === "subscribed"
-          ? `${formatCents(priceForKids(Math.max(1, ent.kids)))}/mo`
-          : "Subscribe to unlock 🔒";
+      : ent.reason === "coupon"
+        ? "Free with code 💛"
+        : ent.reason === "trialing"
+          ? "Free trial active 🎈"
+          : ent.reason === "subscribed"
+            ? `${formatCents(priceForKids(Math.max(1, ent.kids)))}/mo`
+            : "Subscribe to unlock 🔒";
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
