@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
 import { teachFor } from "@/lib/teaching";
+import { TeachMe } from "@/components/TeachMe";
 import {
   subjectTheme,
   type AttemptResult,
@@ -39,6 +40,7 @@ export function PracticeClient({
   const [confettiKey, setConfettiKey] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
+  const [showTeach, setShowTeach] = useState(false);
 
   const loadQuestions = useCallback(async () => {
     setPhase("loading");
@@ -119,6 +121,7 @@ export function PracticeClient({
   }
 
   function next() {
+    setShowTeach(false);
     if (index + 1 >= questions.length) {
       setPhase("done");
       setConfettiKey((k) => k + 1);
@@ -148,6 +151,7 @@ export function PracticeClient({
       next();
       return;
     }
+    setShowTeach(false);
     setQuestions((qs) => {
       const copy = qs.slice();
       copy.splice(index + 1, 0, extra[0]);
@@ -364,11 +368,18 @@ export function PracticeClient({
             </button>
           ) : (
             <div className="mt-5 flex flex-col gap-3">
+              <button
+                onClick={() => setShowTeach(true)}
+                className="btn-pop w-full px-6 py-4 text-xl text-white"
+                style={{ background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }}
+              >
+                🧑‍🏫 Teach me how ✨
+              </button>
               {current.skill && (
                 <button
                   onClick={tryOneMore}
                   disabled={tryingMore}
-                  className="btn-pop w-full px-6 py-4 text-xl text-white"
+                  className="btn-pop w-full px-6 py-3 text-lg text-white"
                   style={{ background: "var(--brand-blue)" }}
                 >
                   {tryingMore ? "Getting one…" : "Try one like it 🔁"}
@@ -376,13 +387,17 @@ export function PracticeClient({
               )}
               <button
                 onClick={next}
-                className="btn-pop w-full bg-white px-6 py-3 text-lg text-slate-500 ring-2 ring-slate-200"
+                className="btn-pop w-full bg-white px-6 py-3 text-base text-slate-500 ring-2 ring-slate-200"
               >
                 {index + 1 >= questions.length ? "Finish 🎉" : "Skip for now →"}
               </button>
             </div>
           ))}
       </main>
+
+      {showTeach && current && (
+        <TeachMe question={current} selectedIndex={selected} onClose={() => setShowTeach(false)} />
+      )}
     </>
   );
 }
