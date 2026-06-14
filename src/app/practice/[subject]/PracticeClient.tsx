@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
+import { teachFor } from "@/lib/teaching";
 import {
   subjectTheme,
   type AttemptResult,
@@ -37,6 +38,7 @@ export function PracticeClient({
   const [badges, setBadges] = useState<NewBadge[]>([]);
   const [confettiKey, setConfettiKey] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
+  const [tryingMore, setTryingMore] = useState(false);
 
   const loadQuestions = useCallback(async () => {
     setPhase("loading");
@@ -125,6 +127,35 @@ export function PracticeClient({
     setIndex((i) => i + 1);
     setSelected(null);
     setResult(null);
+  }
+
+  // After a miss, pull a fresh question of the SAME skill and slot it in next,
+  // so the kid re-practices what they just got wrong (the answer key stays
+  // server-side). If none is available, just move on.
+  async function tryOneMore() {
+    if (!current?.skill || tryingMore) return;
+    setTryingMore(true);
+    const supabase = createClient();
+    const { data } = await supabase.rpc("get_skill_questions", {
+      p_subject: current.subject_id,
+      p_grade: grade,
+      p_skill: current.skill,
+      p_count: 1,
+    });
+    setTryingMore(false);
+    const extra = (data as PracticeQuestion[]) ?? [];
+    if (!extra.length) {
+      next();
+      return;
+    }
+    setQuestions((qs) => {
+      const copy = qs.slice();
+      copy.splice(index + 1, 0, extra[0]);
+      return copy;
+    });
+    setSelected(null);
+    setResult(null);
+    setIndex((i) => i + 1);
   }
 
   // ---- Render states ------------------------------------------------------
@@ -287,7 +318,7 @@ export function PracticeClient({
             })}
           </div>
 
-          {/* feedback */}
+          {/* feedback — a quick cheer when right, a real re-teach when wrong */}
           {result && (
             <div
               className={`mt-6 rounded-2xl p-4 animate-pop ${
@@ -295,11 +326,24 @@ export function PracticeClient({
               }`}
             >
               <p className="font-display text-xl font-bold">
-                {result.is_correct ? cheer : "Good try! 💪"}
+                {result.is_correct ? cheer : "Let's learn it 💡"}
               </p>
               {result.explanation && (
-                <p className="mt-1 text-slate-600">{result.explanation}</p>
+                <p className="mt-1 text-slate-700">{result.explanation}</p>
               )}
+              {/* On a miss, re-teach the general method for this skill. */}
+              {!result.is_correct &&
+                (() => {
+                  const teach = teachFor(current.skill);
+                  return teach ? (
+                    <div className="mt-3 rounded-xl bg-white/70 p-3">
+                      <p className="text-sm font-bold text-slate-700">
+                        💡 How {teach.title.toLowerCase()} works
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-600">{teach.tip}</p>
+                    </div>
+                  ) : null;
+                })()}
               {result.new_badges.map((b) => (
                 <p key={b.id} className="mt-2 font-bold text-amber-700">
                   🏅 New badge: {b.emoji} {b.name}!
@@ -309,15 +353,35 @@ export function PracticeClient({
           )}
         </div>
 
-        {result && (
-          <button
-            onClick={next}
-            className="btn-pop mt-5 w-full px-6 py-4 text-xl text-white"
-            style={{ background: "var(--brand-orange)" }}
-          >
-            {index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
-          </button>
-        )}
+        {result &&
+          (result.is_correct ? (
+            <button
+              onClick={next}
+              className="btn-pop mt-5 w-full px-6 py-4 text-xl text-white"
+              style={{ background: "var(--brand-orange)" }}
+            >
+              {index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
+            </button>
+          ) : (
+            <div className="mt-5 flex flex-col gap-3">
+              {current.skill && (
+                <button
+                  onClick={tryOneMore}
+                  disabled={tryingMore}
+                  className="btn-pop w-full px-6 py-4 text-xl text-white"
+                  style={{ background: "var(--brand-blue)" }}
+                >
+                  {tryingMore ? "Getting one…" : "Try one like it 🔁"}
+                </button>
+              )}
+              <button
+                onClick={next}
+                className="btn-pop w-full bg-white px-6 py-3 text-lg text-slate-500 ring-2 ring-slate-200"
+              >
+                {index + 1 >= questions.length ? "Finish 🎉" : "Skip for now →"}
+              </button>
+            </div>
+          ))}
       </main>
     </>
   );
