@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPage title="Privacy Policy" effectiveDate="June 13, 2026">
+    <LegalPage title="Privacy Policy" effectiveDate="June 14, 2026">
       <p>
         This Privacy Policy explains how <strong>Netix Solutions, LLC</strong> (
         &ldquo;Netix,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
@@ -73,6 +73,19 @@ export default function PrivacyPolicy() {
           display name or first name, and grade level.
         </li>
       </ul>
+      <h3>Billing information (parents only)</h3>
+      <ul>
+        <li>
+          If you subscribe, your payment is handled by our payment processor,{" "}
+          <strong>Stripe</strong>. You provide your payment-card details directly to
+          Stripe; we do <strong>not</strong> collect or store full card numbers. From
+          Stripe we receive the limited billing information needed to manage your
+          subscription &mdash; such as your subscription status, plan and seat (child)
+          count, billing email, the brand and last four digits of your card, and
+          payment history. Billing is always tied to the <strong>parent</strong>{" "}
+          account; we never collect payment information from children.
+        </li>
+      </ul>
       <h3>Children&rsquo;s learning information</h3>
       <ul>
         <li>
@@ -105,6 +118,11 @@ export default function PrivacyPolicy() {
         </li>
         <li>To let parents view and manage their children&rsquo;s progress.</li>
         <li>To maintain, troubleshoot, secure, and improve the Service.</li>
+        <li>
+          To process subscription payments, manage your subscription and the number of
+          seats, and send billing-related messages such as receipts and renewal or
+          payment notices.
+        </li>
         <li>To comply with law and enforce our Terms of Use.</li>
       </ul>
       <p>
@@ -132,9 +150,10 @@ export default function PrivacyPolicy() {
           <strong>Service providers.</strong> We use trusted vendors to host and run
           the Service, including cloud hosting and database/authentication providers
           (for example, Vercel for hosting and Supabase for our database and
-          authentication) and AI providers for the optional help feature. These
-          providers process information on our behalf under agreements that limit
-          their use of it.
+          authentication), our payment processor (Stripe) for subscriptions and
+          billing, and AI providers for the optional help feature. These providers
+          process information on our behalf under agreements that limit their use of
+          it.
         </li>
         <li>
           <strong>Legal and safety.</strong> When we believe in good faith that
