@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Avatar } from "@/components/Avatar";
 import { xpLevel } from "@/components/XpBar";
 import { subjectTheme, gradeLabel, type Grade } from "@/lib/types";
 
@@ -107,8 +108,8 @@ export function KidHomeView({ data }: { data: KidHomeData }) {
     <div className="space-y-5">
       {/* Identity bar */}
       <div className="flex items-center gap-3">
-        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-amber-100 text-3xl ring-4 ring-white">
-          {data.avatar}
+        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-4 ring-white">
+          <Avatar id={data.avatar} className="h-full w-full" />
         </div>
         <div className="min-w-0">
           <h1 className="truncate font-display text-2xl font-extrabold text-slate-800">

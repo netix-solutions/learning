@@ -7,6 +7,7 @@ import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
 import { PointsPopup } from "@/components/PointsPopup";
 import { CountUp } from "@/components/CountUp";
+import { ActivityTracker } from "@/components/ActivityTracker";
 import { xpLevel } from "@/components/XpBar";
 import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart, playTally } from "@/lib/sound";
@@ -301,6 +302,7 @@ export function PracticeClient({
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
       <PointsPopup fire={pointsKey} amount={lastPoints} />
+      <ActivityTracker />
       <main className="mx-auto max-w-2xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
           <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">

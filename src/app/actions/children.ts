@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { childEmail, childPassword } from "@/lib/auth";
 import { syncSubscriptionSeats } from "@/lib/billing-sync";
-import { AVATARS, GRADES, type Grade } from "@/lib/types";
+import { AVATARS, DEFAULT_AVATAR, GRADES, type Grade } from "@/lib/types";
 
 export type ChildFormState = {
   error: string | null;
@@ -48,7 +48,7 @@ export async function createChild(
     .toLowerCase();
   const grade = String(formData.get("grade") ?? "") as Grade;
   const pin = String(formData.get("pin") ?? "").trim();
-  const avatar = String(formData.get("avatar") ?? "🦊");
+  const avatar = String(formData.get("avatar") ?? DEFAULT_AVATAR);
 
   if (!displayName) return { error: "Add your child's first name.", success: null };
   if (!/^[a-z0-9]{3,20}$/.test(username))
@@ -61,7 +61,7 @@ export async function createChild(
   if (!/^\d{4}$/.test(pin))
     return { error: "PIN must be exactly 4 digits.", success: null };
 
-  const safeAvatar = AVATARS.includes(avatar) ? avatar : "🦊";
+  const safeAvatar = AVATARS.includes(avatar) ? avatar : DEFAULT_AVATAR;
   const admin = createAdminClient();
 
   const { data, error } = await admin.auth.admin.createUser({

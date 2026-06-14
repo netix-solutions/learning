@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
+import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
 import { RemoveChildButton } from "@/components/RemoveChildButton";
 import { OpenChildButton } from "@/components/OpenChildButton";
@@ -75,8 +76,8 @@ export default async function ParentDashboard() {
             return (
               <div key={c.id} className="card-fun p-5">
                 <div className="flex items-center gap-4">
-                  <div className="grid h-16 w-16 shrink-0 place-items-center rounded-3xl bg-amber-100 text-4xl ring-4 ring-white">
-                    {c.avatar}
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white">
+                    <Avatar id={c.avatar} className="h-full w-full" />
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-display text-2xl font-bold text-slate-800">

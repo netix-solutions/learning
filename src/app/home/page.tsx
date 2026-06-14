@@ -2,10 +2,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
+import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
 import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { XpBar } from "@/components/XpBar";
+import { GoalProgressCard } from "@/components/GoalProgressCard";
 import { subjectTheme, gradeLabel, type StudentSummary, type Subject } from "@/lib/types";
+import type { GoalProgress } from "@/lib/goals";
 
 type Badge = {
   id: string;
@@ -19,12 +22,14 @@ export default async function StudentHome() {
   if (!user) redirect("/kids");
   if (profile?.role !== "student") redirect("/parent");
 
-  const [{ data: summaryData }, { data: subjects }, { data: badges }] =
+  const [{ data: summaryData }, { data: subjects }, { data: badges }, { data: goalData }] =
     await Promise.all([
       supabase.rpc("get_student_summary", { p_student_id: user.id }),
       supabase.from("subjects").select("*").order("sort"),
       supabase.from("badges").select("*").order("sort"),
+      supabase.rpc("get_my_goal_progress"),
     ]);
+  const goal = goalData as GoalProgress | null;
 
   const summary = summaryData as StudentSummary;
   const correctBySubject = new Map(
@@ -46,8 +51,8 @@ export default async function StudentHome() {
       {/* Hero */}
       <section className="card-fun relative overflow-hidden p-6">
         <div className="flex items-center gap-4">
-          <div className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-amber-100 text-5xl ring-4 ring-white">
-            {profile.avatar}
+          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white">
+            <Avatar id={profile.avatar} className="h-full w-full" />
           </div>
           <div className="min-w-0">
             <h1 className="truncate font-display text-3xl font-bold text-slate-800">
@@ -67,6 +72,9 @@ export default async function StudentHome() {
           <XpBar xp={profile.xp} />
         </div>
       </section>
+
+      {/* Time goal set by a grown-up */}
+      {goal && <GoalProgressCard p={goal} />}
 
       {/* Daily challenge */}
       <Link

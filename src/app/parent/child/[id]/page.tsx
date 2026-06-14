@@ -2,10 +2,14 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
+import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
 import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
+import { GoalForm } from "@/components/GoalForm";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { DEFAULT_DAYS_PER_WEEK, DEFAULT_MINUTES_PER_DAY } from "@/lib/goals";
 import { skillStanding } from "@/lib/teaching";
 import {
   subjectTheme,
@@ -78,6 +82,13 @@ export default async function ChildDetail({
     };
   });
 
+  // Current time goal (if any) for the goal-setting form.
+  const { data: goalRow } = await createAdminClient()
+    .from("child_goals")
+    .select("days_per_week, minutes_per_day")
+    .eq("child_id", id)
+    .maybeSingle();
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
       <header className="mb-6 flex items-center justify-between">
@@ -92,8 +103,8 @@ export default async function ChildDetail({
       {/* Hero */}
       <section className="card-fun mt-3 p-6">
         <div className="flex items-center gap-4">
-          <div className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-amber-100 text-5xl ring-4 ring-white">
-            {s.profile.avatar}
+          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white">
+            <Avatar id={s.profile.avatar} className="h-full w-full" />
           </div>
           <div>
             <h1 className="font-display text-3xl font-bold text-slate-800">
@@ -113,6 +124,16 @@ export default async function ChildDetail({
           <Stat label="Accuracy" value={`${s.totals.accuracy}%`} />
         </div>
       </section>
+
+      {/* Time goal */}
+      <div className="mt-6">
+        <GoalForm
+          childId={id}
+          childName={s.profile.display_name}
+          initialDays={goalRow?.days_per_week ?? DEFAULT_DAYS_PER_WEEK}
+          initialMinutes={goalRow?.minutes_per_day ?? DEFAULT_MINUTES_PER_DAY}
+        />
+      </div>
 
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">By subject</h2>

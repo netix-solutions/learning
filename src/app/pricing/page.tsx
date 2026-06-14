@@ -17,6 +17,7 @@ const INCLUDED = [
   { emoji: "🔊", title: "Read-aloud voice", desc: "A friendly voice reads questions to early readers." },
   { emoji: "⭐", title: "Points, streaks & badges", desc: "Game-like rewards that keep kids coming back." },
   { emoji: "👪", title: "Parent dashboard", desc: "See progress per subject, skill, and grade-level standard." },
+  { emoji: "⏱️", title: "Time goals & alerts", desc: "Set days/week + minutes/day; we email you when goals are met or about to slip." },
   { emoji: "📱", title: "Installable app", desc: "Works on any phone or tablet, even offline." },
 ];
 

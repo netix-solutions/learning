@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const MOCK: KidHomeData = {
   name: "Sunny",
-  avatar: "🦊",
+  avatar: "fox",
   grade: "3",
   xp: 340,
   streak: 5,

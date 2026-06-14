@@ -18,6 +18,7 @@ const FEATURES = [
   { emoji: "⭐", title: "Points, streaks & badges", desc: "Game-like rewards that make kids want to come back tomorrow." },
   { emoji: "🔊", title: "Reads aloud", desc: "A friendly voice reads questions for early readers." },
   { emoji: "👪", title: "Parent dashboard", desc: "See progress by subject, skill, and grade-level standard." },
+  { emoji: "⏱️", title: "Healthy time goals", desc: "Set days/week + minutes/day; we email you when goals are met or slipping." },
   { emoji: "🛡️", title: "Safe & ad-free", desc: "Kids use a username + PIN. No email, no ads, no tracking." },
 ];
 

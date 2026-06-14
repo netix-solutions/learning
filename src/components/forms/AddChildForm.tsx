@@ -2,7 +2,8 @@
 
 import { useActionState, useState } from "react";
 import { createChild, type ChildFormState } from "@/app/actions/children";
-import { AVATARS, GRADES } from "@/lib/types";
+import { GRADES } from "@/lib/types";
+import { AVATAR_DEFS, DEFAULT_AVATAR, Avatar } from "@/components/Avatar";
 
 const initial: ChildFormState = { error: null, success: null };
 const inputClass =
@@ -10,7 +11,7 @@ const inputClass =
 
 export function AddChildForm() {
   const [state, action, pending] = useActionState(createChild, initial);
-  const [avatar, setAvatar] = useState("🦊");
+  const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [grade, setGrade] = useState("");
 
   return (
@@ -70,19 +71,22 @@ export function AddChildForm() {
 
       <div>
         <label className="mb-1 block font-bold text-slate-600">Pick an avatar</label>
-        <div className="flex flex-wrap gap-2">
-          {AVATARS.map((a) => (
+        <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
+          {AVATAR_DEFS.map((a) => (
             <button
               type="button"
-              key={a}
-              onClick={() => setAvatar(a)}
-              className={`grid h-11 w-11 place-items-center rounded-2xl border-2 text-2xl transition ${
-                avatar === a
+              key={a.id}
+              onClick={() => setAvatar(a.id)}
+              title={a.name}
+              aria-label={a.name}
+              aria-pressed={avatar === a.id}
+              className={`aspect-square rounded-2xl border-2 p-0.5 transition ${
+                avatar === a.id
                   ? "border-[var(--brand-orange)] bg-orange-50 scale-110"
                   : "border-transparent hover:bg-slate-100"
               }`}
             >
-              {a}
+              <Avatar id={a.id} className="h-full w-full" />
             </button>
           ))}
         </div>

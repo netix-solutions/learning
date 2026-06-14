@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getAdminUsers, isAdminAuthed, type AdminUser } from "@/lib/admin";
 import { AdminShell } from "@/components/AdminShell";
+import { Avatar } from "@/components/Avatar";
 import { DeleteUserButton } from "@/components/DeleteUserButton";
 
 export const metadata = { title: "Users · SummerSharp Admin" };
@@ -67,8 +68,8 @@ function Section({
 function ParentRow({ u }: { u: AdminUser }) {
   return (
     <div className="flex items-center gap-4 border-b border-slate-100 p-4 last:border-b-0">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-slate-100 text-2xl">
-        {u.avatar}
+      <div className="h-11 w-11 shrink-0 overflow-hidden rounded-2xl bg-slate-100">
+        <Avatar id={u.avatar} className="h-full w-full" />
       </div>
       <div className="min-w-0">
         <div className="truncate font-bold text-slate-800">{u.display_name}</div>
@@ -88,8 +89,8 @@ function ParentRow({ u }: { u: AdminUser }) {
 function StudentRow({ u }: { u: AdminUser }) {
   return (
     <div className="flex items-center gap-4 border-b border-slate-100 p-4 last:border-b-0">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-100 text-2xl">
-        {u.avatar}
+      <div className="h-11 w-11 shrink-0 overflow-hidden rounded-2xl bg-amber-100">
+        <Avatar id={u.avatar} className="h-full w-full" />
       </div>
       <div className="min-w-0">
         <div className="truncate font-bold text-slate-800">

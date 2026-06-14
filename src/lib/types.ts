@@ -119,11 +119,12 @@ export type ChildOverview = {
   badge_count: number;
 };
 
-/** Fun avatar choices for kids. */
-export const AVATARS = [
-  "🦊", "🐼", "🐵", "🦁", "🐯", "🐸", "🐙", "🦄",
-  "🐶", "🐱", "🐢", "🐧", "🦉", "🐝", "🦖", "🐳",
-];
+/**
+ * Fun avatar choices for kids. These are SVG avatar ids — see the
+ * `<Avatar>` component / `AVATAR_DEFS` in `src/components/Avatar.tsx` for the
+ * illustrations. Re-exported from there so there's a single source of truth.
+ */
+export { AVATAR_IDS as AVATARS, DEFAULT_AVATAR } from "@/components/Avatar";
 
 /** Map a subject color key to a tailwind gradient + accent classes. */
 export const SUBJECT_THEME: Record<
