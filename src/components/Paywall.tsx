@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SwitchToParentButton } from "@/components/SwitchToParentButton";
+import { SignOutButton } from "@/components/SignOutButton";
 
 /**
  * A blocking overlay shown when the family's subscription isn't active (trial
@@ -55,9 +57,15 @@ export function Paywall({ role }: { role: "parent" | "student" }) {
               Time to ask a grown-up!
             </h2>
             <p className="mt-2 text-slate-500">
-              Your learning is paused. A parent can unlock it again from their
+              Your learning is paused. A grown-up can unlock it from their
               account. Don&apos;t worry — all your points are saved! 🎉
             </p>
+            <div className="mt-6 flex flex-col items-center gap-2">
+              {/* Escape routes so the kid isn't stuck: a grown-up can take over
+                  this device (parent password), or sign out to log in fresh. */}
+              <SwitchToParentButton />
+              <SignOutButton />
+            </div>
           </>
         )}
       </div>
