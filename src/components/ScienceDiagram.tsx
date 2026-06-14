@@ -31,13 +31,13 @@ function pick(k: string) {
   if (k.includes("senses")) return <Senses />;
   if (k.includes("livingnonliving")) return <LivingNonliving />;
   if (k.includes("animalneeds")) return <AnimalNeeds />;
+  if (k.includes("animalbabies")) return <AnimalBabies />;
   if (k.includes("weather")) return <Weather />;
   if (k.includes("force") || k.includes("pushpull")) return <Forces />;
   if (k.includes("energy")) return <EnergyRays />;
   if (k.includes("body")) return <Body />;
-  if (k.includes("season")) return <Emojis label="The four seasons" items={["🌸", "☀️", "🍂", "❄️"]} />;
-  if (k.includes("animalbabies")) return <Emojis label="Animal babies" items={["🥚", "🐣", "🐤", "🐔"]} />;
-  if (k.includes("habitat")) return <Emojis label="Habitats" items={["🌊", "🏜️", "🌳", "❄️"]} />;
+  if (k.includes("season")) return <Seasons />;
+  if (k.includes("habitat")) return <Habitats />;
   return <LabMascot />;
 }
 
@@ -468,23 +468,98 @@ function AnimalNeeds() {
   );
 }
 
-function Emojis({ label, items }: { label: string; items: string[] }) {
-  const step = 200 / items.length;
+function SeasonCell({ x, label, children }: { x: number; label: string; children: React.ReactNode }) {
   return (
-    <Frame label={label}>
-      {items.map((s, i) => (
-        <text
-          key={i}
-          x={20 + i * step}
-          y="66"
-          textAnchor="middle"
-          fontSize="30"
-          className="sci-pulse"
-          style={{ animationDelay: `${i * 0.18}s` }}
-        >
-          {s}
-        </text>
-      ))}
+    <g>
+      <rect x={x} y="20" width="44" height="54" rx="8" fill="#f6faff" stroke="#dce8f2" />
+      {children}
+      <text x={x + 22} y="92" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">{label}</text>
+    </g>
+  );
+}
+
+function Seasons() {
+  return (
+    <Frame label="The four seasons">
+      <SeasonCell x={8} label="spring">
+        <line x1="30" y1="62" x2="30" y2="46" stroke="#3fb24b" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="30" cy="42" r="6" fill="#ff8fb1" />
+        <circle cx="30" cy="42" r="2" fill="#ffd23f" />
+      </SeasonCell>
+      <SeasonCell x={60} label="summer">
+        <SunRays cx={82} cy={46} r={9} />
+        <circle cx="82" cy="46" r="9" fill="#ffc223" />
+      </SeasonCell>
+      <SeasonCell x={112} label="fall">
+        <path d="M134 38 q11 9 0 20 q-11 -11 0 -20 z" fill="#e08a2f" />
+        <line x1="134" y1="48" x2="134" y2="60" stroke="#9c5a1e" strokeWidth="1.5" />
+      </SeasonCell>
+      <SeasonCell x={164} label="winter">
+        <g stroke="#7fb8e0" strokeWidth="2.4" strokeLinecap="round">
+          <line x1="186" y1="36" x2="186" y2="58" />
+          <line x1="176" y1="47" x2="196" y2="47" />
+          <line x1="179" y1="40" x2="193" y2="54" />
+          <line x1="179" y1="54" x2="193" y2="40" />
+        </g>
+      </SeasonCell>
+    </Frame>
+  );
+}
+
+function AnimalBabies() {
+  return (
+    <Frame label="Animals and their babies">
+      {/* nest */}
+      <ellipse cx="100" cy="78" rx="48" ry="12" fill="#caa069" />
+      <path d="M52 78 q48 20 96 0 q-8 16 -48 16 q-40 0 -48 -16 z" fill="#b9854e" stroke="#8a5a36" strokeWidth="2" />
+      {/* egg */}
+      <ellipse cx="78" cy="66" rx="9" ry="12" fill="#fff7e8" stroke="#e7d6b0" strokeWidth="1.5" />
+      {/* chick */}
+      <g className="animate-bob">
+        <circle cx="120" cy="62" r="13" fill="#ffd23f" />
+        <circle cx="120" cy="46" r="9" fill="#ffd23f" />
+        <circle cx="117" cy="45" r="1.6" fill="#2d2a32" />
+        <circle cx="123" cy="45" r="1.6" fill="#2d2a32" />
+        <path d="M125 47 l6 2 -6 2 z" fill="#f5a623" />
+      </g>
+      <text x="110" y="106" textAnchor="middle" fontSize="10" fontWeight="700" fill="#51688a">animals have babies</text>
+    </Frame>
+  );
+}
+
+function HabitatCell({ x, label, children }: { x: number; label: string; children: React.ReactNode }) {
+  return (
+    <g>
+      <rect x={x} y="20" width="44" height="54" rx="8" fill="#f6faff" stroke="#dce8f2" />
+      {children}
+      <text x={x + 22} y="92" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#51688a">{label}</text>
+    </g>
+  );
+}
+
+function Habitats() {
+  return (
+    <Frame label="Animal habitats">
+      <HabitatCell x={8} label="ocean">
+        <rect x="14" y="46" width="32" height="24" rx="3" fill="#2aa7e6" />
+        <path d="M14 50 q8 -5 16 0 t16 0" fill="none" stroke="#bfe3f5" strokeWidth="2" />
+      </HabitatCell>
+      <HabitatCell x={60} label="desert">
+        <SunRays cx={94} cy={34} r={5} />
+        <circle cx="94" cy="34" r="5" fill="#ffc223" />
+        <rect x="78" y="48" width="6" height="22" rx="3" fill="#3fb24b" />
+        <rect x="73" y="54" width="5" height="3" rx="1.5" fill="#3fb24b" />
+        <rect x="84" y="51" width="5" height="3" rx="1.5" fill="#3fb24b" />
+      </HabitatCell>
+      <HabitatCell x={112} label="forest">
+        <polygon points="134,38 122,62 146,62" fill="#3f8e45" />
+        <rect x="131" y="62" width="6" height="8" fill="#8a5a36" />
+      </HabitatCell>
+      <HabitatCell x={164} label="arctic">
+        <rect x="170" y="58" width="32" height="12" rx="3" fill="#dff0ff" />
+        <path d="M174 58 l8 -10 8 10 z" fill="#ffffff" />
+        <path d="M188 58 l8 -8 8 8 z" fill="#eaf6ff" />
+      </HabitatCell>
     </Frame>
   );
 }

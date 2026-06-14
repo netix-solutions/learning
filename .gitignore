@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI question-bank workflow provenance (re-creatable via build-generated.mjs)
+scripts/generated/
