@@ -51,6 +51,53 @@ export const SCIENCE_QUESTIONS = [
   { grade: "K", skill: "K.animalneeds", prompt: "Like people, animals need to ___ when they are tired.", choices: ["sleep", "fly", "read", "drive"], answer: "sleep", explanation: "Animals rest and sleep to get their energy back." },
   { grade: "K", skill: "K.animalneeds", prompt: "A dog needs water to ___.", choices: ["drink", "paint", "drive", "read"], answer: "drink", explanation: "Animals drink water to stay alive." },
 
+  // ----- K, more (expanded bank) -----
+  // K.senses
+  { grade: "K", skill: "K.senses", prompt: "Which sense do you use to read a picture book?", choices: ["Sight", "Hearing", "Taste", "Smell"], answer: "Sight", explanation: "You use your eyes (sight) to look at the pictures and words." },
+  { grade: "K", skill: "K.senses", prompt: "You use your tongue to ___.", choices: ["taste", "see", "hear", "smell"], answer: "taste", explanation: "Your tongue tastes sweet, sour, salty, and more." },
+  { grade: "K", skill: "K.senses", prompt: "Which sense warns you that milk has gone bad?", choices: ["Smell", "Sight", "Hearing", "Touch"], answer: "Smell", explanation: "A bad smell warns you not to drink it." },
+  { grade: "K", skill: "K.senses", prompt: "If you close your eyes, which sense can you NOT use?", choices: ["Sight", "Hearing", "Smell", "Touch"], answer: "Sight", explanation: "Your eyes are closed, so you cannot see — but you can still hear, smell, and touch." },
+  { grade: "K", skill: "K.senses", prompt: "Which sense helps you enjoy a song?", choices: ["Hearing", "Taste", "Sight", "Touch"], answer: "Hearing", explanation: "You hear music with your ears." },
+  { grade: "K", skill: "K.senses", prompt: "Touching an ice cube tells you it is ___.", choices: ["cold", "loud", "bright", "sweet"], answer: "cold", explanation: "Touch tells you if something is hot or cold." },
+  { grade: "K", skill: "K.senses", prompt: "Your skin helps you feel if something is ___.", choices: ["rough or smooth", "loud or quiet", "bright or dark", "sweet or sour"], answer: "rough or smooth", explanation: "Touch tells you about texture, like rough or smooth." },
+  // K.livingnonliving
+  { grade: "K", skill: "K.livingnonliving", prompt: "Which of these can grow and have babies?", choices: ["A rabbit", "A rock", "A cup", "A book"], answer: "A rabbit", explanation: "A rabbit is a living thing — it grows and can have babies." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "A toy robot is non-living because it ___.", choices: ["cannot grow or eat on its own", "breathes air", "drinks water", "has babies"], answer: "cannot grow or eat on its own", explanation: "Non-living things do not grow, eat, or have babies." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Which one is a living thing?", choices: ["A tree", "A pencil", "A door", "A spoon"], answer: "A tree", explanation: "A tree grows and needs water and light — it is living." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Living things can ___.", choices: ["grow, eat, and move", "stay the same forever", "only be made of metal", "never need water"], answer: "grow, eat, and move", explanation: "Living things grow, take in food, and many can move." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Which one is non-living?", choices: ["A bicycle", "A butterfly", "A puppy", "A flower"], answer: "A bicycle", explanation: "A bicycle does not grow or eat — it is non-living." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "A seed can grow into a plant, so a seed is ___.", choices: ["living", "non-living", "a kind of rock", "a toy"], answer: "living", explanation: "Seeds are living and can grow into new plants." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Which do BOTH a dog and a tree need?", choices: ["Water", "Wheels", "Batteries", "Shoes"], answer: "Water", explanation: "All living things, like dogs and trees, need water." },
+  // K.weather
+  { grade: "K", skill: "K.weather", prompt: "Which tool tells us how hot or cold it is?", choices: ["A thermometer", "A ruler", "A clock", "A spoon"], answer: "A thermometer", explanation: "A thermometer measures temperature." },
+  { grade: "K", skill: "K.weather", prompt: "On a windy day, you might see leaves ___.", choices: ["blow around", "melt", "sleep", "sing"], answer: "blow around", explanation: "Wind is moving air that can push leaves around." },
+  { grade: "K", skill: "K.weather", prompt: "What helps keep you dry on a rainy day?", choices: ["An umbrella", "Sunglasses", "A fan", "A pillow"], answer: "An umbrella", explanation: "An umbrella blocks the rain so you stay dry." },
+  { grade: "K", skill: "K.weather", prompt: "Thunder and lightning happen during a ___.", choices: ["storm", "sunny day", "rainbow", "calm night"], answer: "storm", explanation: "Thunderstorms bring lightning and thunder." },
+  { grade: "K", skill: "K.weather", prompt: "Which season is usually the coldest?", choices: ["Winter", "Summer", "Spring", "Fall"], answer: "Winter", explanation: "Winter is the coldest season of the year." },
+  { grade: "K", skill: "K.weather", prompt: "Fog makes the air look ___.", choices: ["cloudy and hard to see through", "bright and clear", "very hot", "full of stars"], answer: "cloudy and hard to see through", explanation: "Fog is a low cloud that makes it hard to see far." },
+  { grade: "K", skill: "K.weather", prompt: "When the sun comes out after rain, you might see a ___.", choices: ["rainbow", "snowflake", "shadow", "star"], answer: "rainbow", explanation: "Sunlight shining through raindrops can make a rainbow." },
+  // K.daynight
+  { grade: "K", skill: "K.daynight", prompt: "The sky gets dark when the sun ___.", choices: ["goes down", "gets bigger", "turns green", "starts to rain"], answer: "goes down", explanation: "At sunset the sun goes down and the sky gets dark." },
+  { grade: "K", skill: "K.daynight", prompt: "Which gives us light in the sky at night?", choices: ["The moon and stars", "The sun", "A rainbow", "A cloud"], answer: "The moon and stars", explanation: "At night we see light from the moon and stars." },
+  { grade: "K", skill: "K.daynight", prompt: "A shadow is made when something blocks the ___.", choices: ["light", "wind", "water", "sound"], answer: "light", explanation: "When an object blocks light, it makes a shadow." },
+  { grade: "K", skill: "K.daynight", prompt: "Most people sleep during the ___.", choices: ["night", "morning", "noon", "sunrise"], answer: "night", explanation: "Night is dark and is when most people sleep." },
+  { grade: "K", skill: "K.daynight", prompt: "When it is daytime where you live, the sun is ___.", choices: ["up in the sky", "under the ground", "gone forever", "made of ice"], answer: "up in the sky", explanation: "In the daytime the sun is up and lights the sky." },
+  { grade: "K", skill: "K.daynight", prompt: "The sun is really a giant ___.", choices: ["star", "cloud", "rock", "moon"], answer: "star", explanation: "The sun is the closest star to Earth." },
+  // K.pushpull
+  { grade: "K", skill: "K.pushpull", prompt: "When you push a shopping cart, it moves ___ you.", choices: ["away from", "toward", "above", "around"], answer: "away from", explanation: "A push sends something away from you." },
+  { grade: "K", skill: "K.pushpull", prompt: "Which action is a pull?", choices: ["Walking a dog toward you on a leash", "Kicking a ball", "Pushing a swing", "Sliding a box away"], answer: "Walking a dog toward you on a leash", explanation: "A pull brings something toward you." },
+  { grade: "K", skill: "K.pushpull", prompt: "To move a very heavy box, you need a ___ push.", choices: ["stronger", "softer", "quieter", "colder"], answer: "stronger", explanation: "Heavier things need a stronger push to move." },
+  { grade: "K", skill: "K.pushpull", prompt: "Throwing a ball is a kind of ___.", choices: ["push", "pull", "smell", "taste"], answer: "push", explanation: "Your hand pushes the ball away when you throw it." },
+  { grade: "K", skill: "K.pushpull", prompt: "If you stop pushing a toy car on the floor, it will slowly ___.", choices: ["stop", "speed up", "fly", "grow"], answer: "stop", explanation: "Without a push, the car slows down and stops." },
+  { grade: "K", skill: "K.pushpull", prompt: "A push or a pull can change how fast something ___.", choices: ["moves", "tastes", "smells", "sounds"], answer: "moves", explanation: "Forces like pushes and pulls change how things move." },
+  // K.animalneeds
+  { grade: "K", skill: "K.animalneeds", prompt: "Which do animals need to breathe?", choices: ["Air", "Sand", "Glass", "Paper"], answer: "Air", explanation: "Animals breathe air to stay alive." },
+  { grade: "K", skill: "K.animalneeds", prompt: "Where might a bear rest to stay safe and warm?", choices: ["In a den", "In a car", "In a pool", "On a cloud"], answer: "In a den", explanation: "Many animals use a shelter, like a bear's den." },
+  { grade: "K", skill: "K.animalneeds", prompt: "Animals get the energy to move and grow from ___.", choices: ["eating food", "watching TV", "sleeping only", "the color blue"], answer: "eating food", explanation: "Food gives animals energy." },
+  { grade: "K", skill: "K.animalneeds", prompt: "A pet cat needs its owner to give it ___.", choices: ["food and water", "homework", "money", "a phone"], answer: "food and water", explanation: "Pets depend on people for food and water." },
+  { grade: "K", skill: "K.animalneeds", prompt: "A safe place where an animal lives is called its ___.", choices: ["home", "toy", "song", "color"], answer: "home", explanation: "Animals need a safe home, or shelter, to live in." },
+  { grade: "K", skill: "K.animalneeds", prompt: "A fish uses its ___ to take in air from the water.", choices: ["gills", "wings", "ears", "hands"], answer: "gills", explanation: "Fish breathe underwater using gills." },
+
   // ===== GRADE 1 =====
   // 1.plants
   { grade: "1", skill: "1.plants", prompt: "Which part of a plant takes in water from the soil?", choices: ["Roots", "Leaves", "Flower", "Petals"], answer: "Roots", explanation: "Roots soak up water and hold the plant in the ground." },

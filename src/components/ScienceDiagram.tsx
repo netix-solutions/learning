@@ -28,7 +28,9 @@ function pick(k: string) {
   if (k.includes("foodweb")) return <FoodChain />;
   if (k.includes("circuit")) return <Circuit />;
   if (k.includes("magnet")) return <Magnets />;
-  if (k.includes("senses")) return <Emojis label="The five senses" items={["👁️", "👂", "👃", "👅", "✋"]} />;
+  if (k.includes("senses")) return <Senses />;
+  if (k.includes("livingnonliving")) return <LivingNonliving />;
+  if (k.includes("animalneeds")) return <AnimalNeeds />;
   if (k.includes("weather")) return <Weather />;
   if (k.includes("force") || k.includes("pushpull")) return <Forces />;
   if (k.includes("energy")) return <EnergyRays />;
@@ -386,6 +388,82 @@ function LifeCycle() {
         <line key={i} x1={42 + i * 56} y1="52" x2={68 + i * 56} y2="52" stroke="#9b6dd6" strokeWidth="3" strokeLinecap="round" />
       ))}
       <text x="110" y="86" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">egg → caterpillar → chrysalis → butterfly</text>
+    </Frame>
+  );
+}
+
+function Senses() {
+  return (
+    <Frame label="The five senses">
+      {/* head */}
+      <circle cx="92" cy="54" r="34" fill="#ffe0b8" stroke="#e8a86a" strokeWidth="2" />
+      {/* ears (hearing) */}
+      <circle cx="58" cy="54" r="7" fill="#ffd2a0" stroke="#e8a86a" strokeWidth="2" />
+      <circle cx="126" cy="54" r="7" fill="#ffd2a0" stroke="#e8a86a" strokeWidth="2" />
+      {/* eyes (sight) */}
+      <circle cx="80" cy="46" r="5" fill="#fff" stroke="#5b4636" strokeWidth="1.5" />
+      <circle cx="104" cy="46" r="5" fill="#fff" stroke="#5b4636" strokeWidth="1.5" />
+      <circle cx="80" cy="46" r="2.2" fill="#2d2a32" />
+      <circle cx="104" cy="46" r="2.2" fill="#2d2a32" />
+      {/* nose (smell) */}
+      <path d="M92 50 v9 l-4 2" fill="none" stroke="#c98a57" strokeWidth="2" strokeLinecap="round" />
+      {/* mouth (taste) */}
+      <path d="M82 68 q10 7 20 0" fill="none" stroke="#b5503c" strokeWidth="2.4" strokeLinecap="round" />
+      {/* hand (touch) */}
+      <g transform="translate(150 36)">
+        <rect x="2" y="16" width="20" height="20" rx="6" fill="#ffd2a0" stroke="#e8a86a" strokeWidth="2" />
+        {[0, 1, 2, 3].map((i) => (
+          <rect key={i} x={3 + i * 4.6} y="4" width="3.2" height="16" rx="1.6" fill="#ffd2a0" stroke="#e8a86a" strokeWidth="1.5" />
+        ))}
+      </g>
+      <text x="110" y="108" textAnchor="middle" fontSize="10" fontWeight="700" fill="#51688a">see · hear · smell · taste · touch</text>
+    </Frame>
+  );
+}
+
+function LivingNonliving() {
+  return (
+    <Frame label="Living and non-living things">
+      <rect x="0" y="92" width="220" height="28" fill="#e2f1d8" />
+      {/* living: a plant that grows */}
+      <g className="sci-grow">
+        <line x1="70" y1="92" x2="70" y2="54" stroke="#3fb24b" strokeWidth="4" strokeLinecap="round" />
+        <path d="M70 72 q-18 -3 -24 -16 q17 -1 24 12 z" fill="#5bc85f" />
+        <path d="M70 64 q18 -3 24 -16 q-17 -1 -24 12 z" fill="#5bc85f" />
+        <circle cx="70" cy="48" r="9" fill="#ff8fb1" />
+        <circle cx="70" cy="48" r="3.2" fill="#ffd23f" />
+      </g>
+      {/* non-living: a rock */}
+      <path d="M132 92 q4 -28 30 -28 q28 0 28 28 z" fill="#9aa3ad" stroke="#7c858f" strokeWidth="2" />
+      <path d="M150 78 l7 -7 7 7" fill="none" stroke="#7c858f" strokeWidth="1.5" strokeLinecap="round" />
+      <text x="70" y="110" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#3f8e45">living — it grows</text>
+      <text x="162" y="110" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#6b7480">non-living</text>
+    </Frame>
+  );
+}
+
+function AnimalNeeds() {
+  return (
+    <Frame label="What animals need to live">
+      {/* food bowl */}
+      <path d="M20 52 h32 a16 16 0 0 1 -32 0 z" fill="#e0a96d" stroke="#b07c45" strokeWidth="2" />
+      <circle cx="30" cy="48" r="2.6" fill="#b07c45" />
+      <circle cx="38" cy="49" r="2.6" fill="#b07c45" />
+      <circle cx="46" cy="48" r="2.6" fill="#b07c45" />
+      <text x="36" y="82" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">food</text>
+      {/* water drop */}
+      <path d="M92 36 q13 17 0 26 q-13 -9 0 -26 z" fill="#4fb3e6" stroke="#2a8bc0" strokeWidth="2" />
+      <text x="92" y="82" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">water</text>
+      {/* air (breeze) */}
+      <g fill="none" stroke="#9fc6dd" strokeWidth="3" strokeLinecap="round">
+        <path d="M130 46 h22 a5 5 0 1 0 -5 -5" />
+        <path d="M130 56 h30 a5 5 0 1 1 -5 5" />
+      </g>
+      <text x="150" y="82" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">air</text>
+      {/* shelter (home) */}
+      <path d="M182 50 l14 -12 14 12 z" fill="#e2725b" stroke="#b4533f" strokeWidth="2" />
+      <rect x="186" y="50" width="20" height="16" fill="#f3d2a0" stroke="#b4533f" strokeWidth="2" />
+      <text x="196" y="82" textAnchor="middle" fontSize="9" fontWeight="700" fill="#51688a">shelter</text>
     </Frame>
   );
 }

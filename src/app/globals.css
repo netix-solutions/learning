@@ -136,8 +136,29 @@ a, button, [role="button"], label, summary, input[type="submit"] {
 .scene-sun { animation: sun-bob 6s ease-in-out infinite; }
 .scene-rays { animation: sun-rays 90s linear infinite; transform-origin: center; transform-box: fill-box; }
 .scene-sway { animation: sway-soft 4s ease-in-out infinite; transform-origin: bottom center; transform-box: fill-box; }
+
+/* A little green biplane that crosses just below the clouds every ~40s,
+   spinning its propeller and leaving a fading trail of tiny cloud puffs. */
+@keyframes plane-cross {
+  0% { transform: translateX(-32vw); }
+  36% { transform: translateX(128vw); }
+  100% { transform: translateX(128vw); }
+}
+@keyframes propeller-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes plane-puff {
+  0% { opacity: 0; transform: translateX(0) scale(0.5); }
+  25% { opacity: 0.85; }
+  100% { opacity: 0; transform: translateX(-34px) scale(1.7); }
+}
+.scene-plane { animation: plane-cross 44s linear infinite; will-change: transform; }
+.scene-prop { animation: propeller-spin 0.12s linear infinite; transform-origin: center; transform-box: fill-box; }
+.scene-puff { animation: plane-puff 2.4s ease-out infinite; transform-box: fill-box; }
+
 @media (prefers-reduced-motion: reduce) {
-  .scene-cloud, .scene-sun, .scene-rays, .scene-sway { animation: none; }
+  .scene-cloud, .scene-sun, .scene-rays, .scene-sway, .scene-prop, .scene-puff { animation: none; }
+  .scene-plane { display: none; }
 }
 
 .animate-pop { animation: pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }

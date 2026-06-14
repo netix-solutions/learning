@@ -27,6 +27,81 @@ function Cloud({ o }: { o: number }) {
   );
 }
 
+// A tiny puff of cloud left behind in the plane's wake. Sits to the left of the
+// tail and (via .scene-puff) drifts back, swells, and fades — staggered so the
+// trail shimmers continuously while the plane is on screen.
+function Puff({ cx, cy, s, delay }: { cx: number; cy: number; s: number; delay: number }) {
+  return (
+    <g className="scene-puff" style={{ animationDelay: `${delay}s` }} fill="#ffffff" opacity={0.9}>
+      <ellipse cx={cx} cy={cy} rx={6 * s} ry={5 * s} />
+      <ellipse cx={cx + 7 * s} cy={cy - 2 * s} rx={5 * s} ry={4.5 * s} />
+      <ellipse cx={cx - 6 * s} cy={cy + 1 * s} rx={4.5 * s} ry={4 * s} />
+    </g>
+  );
+}
+
+// A green biplane, nose pointing right (its travel direction). A long tapered
+// fuselage, two stacked wings with struts, a canopy, fixed landing gear, and a
+// spinning propeller — plus a trail of Puffs behind the tail. Decorative SVG.
+function Biplane() {
+  return (
+    <svg width="300" height="128" viewBox="-10 0 300 128" fill="none" aria-hidden>
+      <defs>
+        <linearGradient id="planeBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#74d863" />
+          <stop offset="52%" stopColor="#4fb84a" />
+          <stop offset="100%" stopColor="#359a3e" />
+        </linearGradient>
+      </defs>
+
+      {/* Wake of tiny clouds, trailing behind the tail */}
+      <Puff cx={52} cy={64} s={0.8} delay={0} />
+      <Puff cx={32} cy={58} s={1.0} delay={0.6} />
+      <Puff cx={12} cy={66} s={1.2} delay={1.2} />
+
+      {/* Lower wing (behind the body) */}
+      <rect x="128" y="72" width="100" height="12" rx="6" fill="#3fae46" />
+      <rect x="128" y="72" width="100" height="4" rx="2" fill="#57c24a" />
+
+      {/* Tail: vertical fin + horizontal stabiliser */}
+      <path d="M86,58 L70,26 L106,52 Z" fill="#359a3e" />
+      <path d="M84,62 L58,60 L86,54 Z" fill="#2f9e3f" />
+
+      {/* Long tapered fuselage, nose at the right */}
+      <path
+        d="M68,60 C96,51 134,48 174,48 C212,48 238,52 250,60 C238,68 212,72 174,72 C134,72 96,69 68,60 Z"
+        fill="url(#planeBody)"
+      />
+
+      {/* Cockpit canopy (top dome) */}
+      <path d="M182,49 a17,12 0 0 1 34,0 Z" fill="#bfe8ff" />
+      <path d="M182,49 a17,12 0 0 1 34,0" fill="none" stroke="#2f8f38" strokeWidth="2.5" strokeLinecap="round" />
+
+      {/* Cabane / interplane struts */}
+      <rect x="150" y="34" width="3" height="16" rx="1.5" fill="#2f9e3f" />
+      <rect x="200" y="34" width="3" height="16" rx="1.5" fill="#2f9e3f" />
+
+      {/* Upper wing */}
+      <rect x="138" y="28" width="106" height="12" rx="6" fill="#5bc24f" />
+      <rect x="138" y="28" width="106" height="4" rx="2" fill="#7ed957" />
+
+      {/* Fixed landing gear */}
+      <path d="M168,72 L162,98 M188,72 L184,98" stroke="#2f9e3f" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="173" cy="100" r="9" fill="#3a4a3f" />
+      <circle cx="173" cy="100" r="3.5" fill="#9fb3a4" />
+
+      {/* Engine cowl + spinning propeller at the nose */}
+      <ellipse cx="250" cy="60" rx="9" ry="12" fill="#359a3e" />
+      <circle cx="256" cy="60" r="19" fill="#ffffff" opacity="0.13" />
+      <g className="scene-prop">
+        <ellipse cx="256" cy="60" rx="3.4" ry="19" fill="#2f8f38" />
+        <ellipse cx="256" cy="60" rx="19" ry="3.4" fill="#2f8f38" opacity="0.45" />
+      </g>
+      <circle cx="256" cy="60" r="5" fill="#235b2b" />
+    </svg>
+  );
+}
+
 export function MeadowScene() {
   return (
     <>
@@ -89,6 +164,13 @@ export function MeadowScene() {
             </div>
           </div>
         ))}
+
+        {/* Biplane crossing just below the clouds */}
+        <div className="scene-plane absolute left-0" style={{ top: "29%" }}>
+          <div style={{ transform: "scale(0.78)", transformOrigin: "left center" }}>
+            <Biplane />
+          </div>
+        </div>
 
         {/* Rolling grassy hills, anchored to the bottom */}
         <svg
