@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const fredoka = Fredoka({
   variable: "--font-display",
@@ -50,8 +51,9 @@ export default function RootLayout({
       lang="en"
       className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="flex min-h-screen flex-col">
         {children}
+        <SiteFooter />
         <ServiceWorkerRegister />
       </body>
     </html>
