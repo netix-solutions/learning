@@ -57,7 +57,7 @@ export default function TermsOfUse() {
         <li>
           <strong>Pricing.</strong> The subscription is billed monthly based on the
           number of child profiles (&ldquo;seats&rdquo;) on your account:{" "}
-          <strong>$5.00 per month for your first child</strong>, plus{" "}
+          <strong>$4.00 per month for your first child</strong>, plus{" "}
           <strong>$2.00 per month for each additional child</strong>. The price that
           applies to your account is shown before you subscribe. Amounts are in U.S.
           dollars and may exclude applicable taxes.
