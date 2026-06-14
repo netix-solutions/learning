@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { childEmail, childPassword } from "@/lib/auth";
+import { syncSubscriptionSeats } from "@/lib/billing-sync";
 import { AVATARS, GRADES, type Grade } from "@/lib/types";
 
 export type ChildFormState = {
@@ -93,6 +94,9 @@ export async function createChild(
     return { error: "Could not link that child. Please try again.", success: null };
   }
 
+  // Keep the subscription seat count in step (no-op unless billing is live).
+  await syncSubscriptionSeats(auth.parentId).catch(() => {});
+
   revalidatePath("/parent");
   return {
     error: null,
@@ -118,6 +122,9 @@ export async function removeChild(childId: string): Promise<{ error: string | nu
   // Deleting the auth user cascades to profile, attempts, badges, and link.
   const { error } = await admin.auth.admin.deleteUser(childId);
   if (error) return { error: "Could not remove that child." };
+
+  // Drop the freed-up seat from the subscription (no-op unless billing is live).
+  await syncSubscriptionSeats(auth.parentId).catch(() => {});
 
   revalidatePath("/parent");
   return { error: null };

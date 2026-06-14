@@ -124,71 +124,83 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
+/** Page through a PostgREST select so results aren't capped at the 1000-row default. */
+async function fetchAllRows<T>(
+  page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: unknown }>,
+): Promise<T[]> {
+  const out: T[] = [];
+  const size = 1000;
+  for (let from = 0; ; from += size) {
+    const { data, error } = await page(from, from + size - 1);
+    if (error || !data || data.length === 0) break;
+    out.push(...data);
+    if (data.length < size) break;
+  }
+  return out;
+}
+
 /** Headline counts + per-subject breakdown for the dashboard. */
 export async function getAdminStats(): Promise<AdminStats> {
   const db = createAdminClient();
-
-  const [
-    profilesRes,
-    attemptsRes,
-    subjectsRes,
-    questionsRes,
-  ] = await Promise.all([
-    db.from("profiles").select("role, created_at, last_active_date"),
-    db.from("attempts").select("subject_id, is_correct"),
-    db.from("subjects").select("id, name, emoji, color, sort").order("sort"),
-    db.from("questions").select("subject_id"),
-  ]);
-
-  const profiles = profilesRes.data ?? [];
-  const attempts = attemptsRes.data ?? [];
-  const subjects = subjectsRes.data ?? [];
-  const questions = questionsRes.data ?? [];
-
   const today = todayISO();
   const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
 
-  const parents = profiles.filter((p) => p.role === "parent").length;
-  const students = profiles.filter((p) => p.role === "student").length;
-  const newUsers7d = profiles.filter((p) => p.created_at >= weekAgo).length;
-  const activeToday = profiles.filter(
-    (p) => p.last_active_date === today,
-  ).length;
+  // Count with head queries so nothing is capped at PostgREST's 1000-row default
+  // (the bank has 10k+ questions — fetching rows to count them undercounted badly).
+  const countOf = (q: PromiseLike<{ count: number | null }>) =>
+    Promise.resolve(q).then((r) => r.count ?? 0);
+  const head = () => ({ count: "exact" as const, head: true });
 
-  const correct = attempts.filter((a) => a.is_correct).length;
-  const accuracy =
-    attempts.length > 0 ? Math.round((correct / attempts.length) * 100) : 0;
+  const { data: subjectRows } = await db
+    .from("subjects")
+    .select("id, name, emoji, color, sort")
+    .order("sort");
+  const subjects = subjectRows ?? [];
 
-  const qBySubject = new Map<string, number>();
-  for (const q of questions)
-    qBySubject.set(q.subject_id, (qBySubject.get(q.subject_id) ?? 0) + 1);
-
-  const aBySubject = new Map<string, { attempts: number; correct: number }>();
-  for (const a of attempts) {
-    const cur = aBySubject.get(a.subject_id) ?? { attempts: 0, correct: 0 };
-    cur.attempts += 1;
-    if (a.is_correct) cur.correct += 1;
-    aBySubject.set(a.subject_id, cur);
-  }
+  const [
+    parents,
+    students,
+    newUsers7d,
+    activeToday,
+    attempts,
+    correct,
+    questions,
+    perSubject,
+  ] = await Promise.all([
+    countOf(db.from("profiles").select("*", head()).eq("role", "parent")),
+    countOf(db.from("profiles").select("*", head()).eq("role", "student")),
+    countOf(db.from("profiles").select("*", head()).gte("created_at", weekAgo)),
+    countOf(db.from("profiles").select("*", head()).eq("last_active_date", today)),
+    countOf(db.from("attempts").select("*", head())),
+    countOf(db.from("attempts").select("*", head()).eq("is_correct", true)),
+    countOf(db.from("questions").select("*", head())),
+    Promise.all(
+      subjects.map(async (s) => {
+        const [q, a, c] = await Promise.all([
+          countOf(db.from("questions").select("*", head()).eq("subject_id", s.id)),
+          countOf(db.from("attempts").select("*", head()).eq("subject_id", s.id)),
+          countOf(
+            db.from("attempts").select("*", head()).eq("subject_id", s.id).eq("is_correct", true),
+          ),
+        ]);
+        return {
+          id: s.id, name: s.name, emoji: s.emoji, color: s.color,
+          questions: q, attempts: a, correct: c,
+        };
+      }),
+    ),
+  ]);
 
   return {
     parents,
     students,
     newUsers7d,
-    attempts: attempts.length,
-    correct,
-    accuracy,
-    questions: questions.length,
     activeToday,
-    subjects: subjects.map((s) => ({
-      id: s.id,
-      name: s.name,
-      emoji: s.emoji,
-      color: s.color,
-      questions: qBySubject.get(s.id) ?? 0,
-      attempts: aBySubject.get(s.id)?.attempts ?? 0,
-      correct: aBySubject.get(s.id)?.correct ?? 0,
-    })),
+    attempts,
+    correct,
+    accuracy: attempts > 0 ? Math.round((correct / attempts) * 100) : 0,
+    questions,
+    subjects: perSubject,
   };
 }
 
@@ -196,26 +208,34 @@ export async function getAdminStats(): Promise<AdminStats> {
 export async function getAdminUsers(): Promise<AdminUser[]> {
   const db = createAdminClient();
 
-  const [profilesRes, attemptsRes, linksRes, authRes] = await Promise.all([
-    db
-      .from("profiles")
-      .select(
-        "id, role, display_name, username, grade, avatar, xp, streak_count, last_active_date, created_at",
-      )
-      .order("created_at", { ascending: false }),
-    db.from("attempts").select("student_id, is_correct"),
-    db.from("parent_child").select("parent_id, child_id"),
-    // Emails live in auth.users, not profiles. perPage caps at 1000 — see note
-    // in the dashboard; fine at current scale.
-    db.auth.admin.listUsers({ perPage: 1000 }),
+  const [profiles, attempts, links] = await Promise.all([
+    fetchAllRows((from, to) =>
+      db
+        .from("profiles")
+        .select(
+          "id, role, display_name, username, grade, avatar, xp, streak_count, last_active_date, created_at",
+        )
+        .order("created_at", { ascending: false })
+        .range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      db.from("attempts").select("student_id, is_correct").range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      db.from("parent_child").select("parent_id, child_id").range(from, to),
+    ),
   ]);
 
-  const profiles = profilesRes.data ?? [];
-  const attempts = attemptsRes.data ?? [];
-  const links = linksRes.data ?? [];
-
+  // Emails live in auth.users, not profiles. listUsers caps at perPage 1000, so
+  // page through until a short page comes back.
   const emailById = new Map<string, string | null>();
-  for (const u of authRes.data?.users ?? []) emailById.set(u.id, u.email ?? null);
+  for (let pageNum = 1; ; pageNum++) {
+    const { data, error } = await db.auth.admin.listUsers({ page: pageNum, perPage: 1000 });
+    const users = data?.users ?? [];
+    if (error || users.length === 0) break;
+    for (const u of users) emailById.set(u.id, u.email ?? null);
+    if (users.length < 1000) break;
+  }
 
   const statsById = new Map<string, { attempts: number; correct: number }>();
   for (const a of attempts) {

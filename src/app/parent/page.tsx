@@ -7,6 +7,8 @@ import { RemoveChildButton } from "@/components/RemoveChildButton";
 import { OpenChildButton } from "@/components/OpenChildButton";
 import { AddChildForm } from "@/components/forms/AddChildForm";
 import { xpLevel } from "@/components/XpBar";
+import { getParentEntitlement } from "@/lib/entitlement";
+import { priceForKids, formatCents } from "@/lib/billing";
 import { gradeLabel, type ChildOverview } from "@/lib/types";
 
 export default async function ParentDashboard() {
@@ -17,17 +19,41 @@ export default async function ParentDashboard() {
   const { data } = await supabase.rpc("get_my_children");
   const children = (data as ChildOverview[]) ?? [];
 
+  const ent = await getParentEntitlement(user.id);
+  const planLabel = !ent.billingEnabled
+    ? "Free during launch ✨"
+    : ent.reason === "grandfathered"
+      ? "Founding family · free 💛"
+      : ent.reason === "trialing"
+        ? "Free trial active 🎈"
+        : ent.reason === "subscribed"
+          ? `${formatCents(priceForKids(Math.max(1, ent.kids)))}/mo`
+          : "Subscribe to unlock 🔒";
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
-      <header className="mb-6 flex items-center justify-between">
+      <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
-        <SignOutButton />
+        <div className="flex items-center gap-2">
+          <Link
+            href="/parent/billing"
+            className="btn-pop bg-white px-4 py-2 text-sm font-semibold text-slate-600 ring-2 ring-slate-200 hover:text-slate-900"
+          >
+            💳 Plan
+          </Link>
+          <SignOutButton />
+        </div>
       </header>
 
       <h1 className="font-display text-3xl font-bold text-slate-800">
         Hi, {profile.display_name}! 👋
       </h1>
-      <p className="mt-1 text-slate-500">Here&apos;s how your learners are doing.</p>
+      <div className="mt-1 flex flex-wrap items-center gap-x-2 text-slate-500">
+        <span>Here&apos;s how your learners are doing.</span>
+        <Link href="/parent/billing" className="font-semibold text-[var(--brand-blue)] hover:underline">
+          {planLabel}
+        </Link>
+      </div>
 
       {children.length === 0 ? (
         <div className="card-fun mt-6 p-8 text-center">

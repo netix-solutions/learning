@@ -154,6 +154,24 @@ export const SUBJECT_THEME: Record<
     text: "text-orange-700",
     soft: "bg-orange-50",
   },
+  teal: {
+    gradient: "from-teal-400 to-cyan-500",
+    ring: "ring-teal-300",
+    text: "text-teal-700",
+    soft: "bg-teal-50",
+  },
+  red: {
+    gradient: "from-rose-400 to-red-500",
+    ring: "ring-red-300",
+    text: "text-red-700",
+    soft: "bg-red-50",
+  },
+  indigo: {
+    gradient: "from-indigo-400 to-violet-500",
+    ring: "ring-indigo-300",
+    text: "text-indigo-700",
+    soft: "bg-indigo-50",
+  },
 };
 
 export function subjectTheme(color: string) {

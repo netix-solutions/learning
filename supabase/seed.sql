@@ -3,9 +3,13 @@
 
 -- Subjects -------------------------------------------------------------------
 insert into public.subjects (id, name, emoji, color, sort) values
-  ('math',    'Math',    '➕', 'blue',   1),
-  ('reading', 'Reading', '📚', 'purple', 2),
-  ('science', 'Science', '🔬', 'green',  3);
+  ('math',      'Math',      '➕', 'blue',   1),
+  ('reading',   'Reading',   '📚', 'purple', 2),
+  ('science',   'Science',   '🔬', 'green',  3),
+  ('geography', 'Geography', '🗺️', 'teal',   4),
+  ('history',   'History',   '📜', 'orange', 5),
+  ('civics',    'Civics',    '🏛️', 'red',    6),
+  ('economics', 'Economics', '💰', 'indigo', 7);
 
 -- Badges ---------------------------------------------------------------------
 insert into public.badges (id, name, description, emoji, kind, threshold, subject_id, sort) values
@@ -20,6 +24,10 @@ insert into public.badges (id, name, description, emoji, kind, threshold, subjec
   ('reading_20',    'Bookworm',         'Get 20 reading questions correct.',      '🐛', 'subject_correct', 20,  'reading', 9),
   ('science_20',    'Science Explorer', 'Get 20 science questions correct.',      '🔬', 'subject_correct', 20,  'science', 10),
   ('science_50',    'Lab Star',         'Get 50 science questions correct!',      '🧪', 'subject_correct', 50,  'science', 11),
+  ('geography_20',  'Map Explorer',     'Get 20 geography questions correct.',    '🗺️', 'subject_correct', 20,  'geography', 14),
+  ('history_20',    'Time Traveler',    'Get 20 history questions correct.',      '📜', 'subject_correct', 20,  'history',   15),
+  ('civics_20',     'Good Citizen',     'Get 20 civics questions correct.',       '🏛️', 'subject_correct', 20,  'civics',    16),
+  ('economics_20',  'Smart Saver',      'Get 20 economics questions correct.',    '💰', 'subject_correct', 20,  'economics', 17),
   ('xp_250',        'XP Hunter',        'Earn 250 XP.',                           '⚡', 'xp',              250, null, 12),
   ('xp_1000',       'XP Legend',        'Earn 1000 XP!',                          '💎', 'xp',              1000, null, 13);
 

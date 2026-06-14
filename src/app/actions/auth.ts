@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { childEmail, childPassword } from "@/lib/auth";
+import { sendEmail } from "@/lib/email";
+import { welcomeEmail } from "@/lib/email-templates";
 
 export type FormState = { error: string | null };
 
@@ -41,6 +43,10 @@ export async function signUpParent(
   });
 
   if (error) return { error: error.message };
+
+  // Branded welcome email — best effort; never blocks or fails signup.
+  await sendEmail({ to: email, ...welcomeEmail({ name }) }).catch(() => {});
+
   redirect("/parent");
 }
 
