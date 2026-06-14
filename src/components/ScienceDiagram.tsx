@@ -506,23 +506,60 @@ function Seasons() {
   );
 }
 
+// A friendly, DELIBERATELY GENERIC four-legged critter — not any nameable
+// species. The "animal babies" questions name many different animals (and list
+// others as wrong choices), so the shared diagram must never depict a specific
+// one: showing a chick next to "A baby goat is called a ___" both contradicts
+// the prompt and illustrates a wrong answer.
+function Critter({
+  cx,
+  cy,
+  s,
+  className = "",
+}: {
+  cx: number;
+  cy: number;
+  s: number;
+  className?: string;
+}) {
+  return (
+    <g className={className} transform={`translate(${cx} ${cy}) scale(${s})`}>
+      {/* legs */}
+      <rect x="-17" y="6" width="5" height="13" rx="2.5" fill="#c98a57" />
+      <rect x="-6" y="8" width="5" height="13" rx="2.5" fill="#c98a57" />
+      <rect x="5" y="8" width="5" height="13" rx="2.5" fill="#c98a57" />
+      <rect x="15" y="6" width="5" height="13" rx="2.5" fill="#c98a57" />
+      {/* tail */}
+      <path d="M-25 -2 q-11 -1 -11 -13" fill="none" stroke="#c98a57" strokeWidth="3" strokeLinecap="round" />
+      {/* body */}
+      <ellipse cx="0" cy="2" rx="25" ry="15" fill="#e0a96d" stroke="#c98a57" strokeWidth="2" />
+      {/* head */}
+      <circle cx="23" cy="-11" r="12" fill="#e8b878" stroke="#c98a57" strokeWidth="2" />
+      {/* ears */}
+      <path d="M15 -20 l-3 -10 8 5 z" fill="#e8b878" stroke="#c98a57" strokeWidth="1.5" />
+      <path d="M29 -20 l3 -10 -8 5 z" fill="#e8b878" stroke="#c98a57" strokeWidth="1.5" />
+      {/* eye + smile */}
+      <circle cx="26" cy="-12" r="2" fill="#2d2a32" />
+      <path d="M19 -5 q5 4 10 0" fill="none" stroke="#a06a3a" strokeWidth="1.6" strokeLinecap="round" />
+    </g>
+  );
+}
+
 function AnimalBabies() {
   return (
     <Frame label="Animals and their babies">
-      {/* nest */}
-      <ellipse cx="100" cy="78" rx="48" ry="12" fill="#caa069" />
-      <path d="M52 78 q48 20 96 0 q-8 16 -48 16 q-40 0 -48 -16 z" fill="#b9854e" stroke="#8a5a36" strokeWidth="2" />
-      {/* egg */}
-      <ellipse cx="78" cy="66" rx="9" ry="12" fill="#fff7e8" stroke="#e7d6b0" strokeWidth="1.5" />
-      {/* chick */}
-      <g className="animate-bob">
-        <circle cx="120" cy="62" r="13" fill="#ffd23f" />
-        <circle cx="120" cy="46" r="9" fill="#ffd23f" />
-        <circle cx="117" cy="45" r="1.6" fill="#2d2a32" />
-        <circle cx="123" cy="45" r="1.6" fill="#2d2a32" />
-        <path d="M125 47 l6 2 -6 2 z" fill="#f5a623" />
+      {/* A parent and its baby of the SAME generic kind — the concept "every
+          animal has a baby," with no specific (answerable) species shown. */}
+      <Critter cx={64} cy={64} s={1} />
+      <Critter cx={150} cy={80} s={0.56} className="animate-bob" />
+      {/* heart between them */}
+      <g className="sci-pulse">
+        <path
+          d="M130 52 C123 44 114 44 114 36 C114 30 121 29 125 33 C127 35 130 38 130 38 C130 38 133 35 135 33 C139 29 146 30 146 36 C146 44 137 44 130 52 Z"
+          fill="#ff8fb1"
+        />
       </g>
-      <text x="110" y="106" textAnchor="middle" fontSize="10" fontWeight="700" fill="#51688a">animals have babies</text>
+      <text x="110" y="108" textAnchor="middle" fontSize="10" fontWeight="700" fill="#51688a">every animal has a baby</text>
     </Frame>
   );
 }
