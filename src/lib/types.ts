@@ -89,6 +89,22 @@ export type StudentSummary = {
   }[];
 };
 
+/**
+ * One row from the get_skill_mastery() RPC — a single fine-grained skill for a
+ * student. NOTE: `accuracy` is a 0–1 fraction (and PostgREST may serialize the
+ * numeric as a string), so derive any percentage/threshold from the integer
+ * `correct` / `attempts` fields instead of trusting this column.
+ */
+export type SkillMastery = {
+  skill: string;
+  attempts: number;
+  correct: number;
+  accuracy: number | string | null;
+  last_correct: boolean;
+  last_practiced: string | null;
+  state: "not_started" | "learning" | "mastered";
+};
+
 export type ChildOverview = {
   id: string;
   display_name: string;

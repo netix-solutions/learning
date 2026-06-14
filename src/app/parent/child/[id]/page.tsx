@@ -4,7 +4,13 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
-import { subjectTheme, gradeLabel, type StudentSummary } from "@/lib/types";
+import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
+import {
+  subjectTheme,
+  gradeLabel,
+  type SkillMastery,
+  type StudentSummary,
+} from "@/lib/types";
 
 export default async function ChildDetail({
   params,
@@ -23,6 +29,28 @@ export default async function ChildDetail({
   if (error || !data) redirect("/parent");
   const s = data as StudentSummary;
   const emojiFor = new Map(s.subjects.map((x) => [x.subject_id, x.emoji]));
+
+  // Per-skill mastery, one (already-authorized) RPC per subject, in parallel.
+  // Skills the child hasn't touched are dropped so the breakdown stays focused.
+  const grade = s.profile.grade;
+  const skillsBySubject: SubjectSkills[] = grade
+    ? await Promise.all(
+        s.subjects.map(async (sub) => {
+          const { data: rows } = await supabase.rpc("get_skill_mastery", {
+            p_student_id: id,
+            p_subject: sub.subject_id,
+            p_grade: grade,
+          });
+          return {
+            id: sub.subject_id,
+            name: sub.name,
+            emoji: sub.emoji,
+            color: sub.color,
+            skills: ((rows as SkillMastery[]) ?? []).filter((k) => k.attempts > 0),
+          };
+        }),
+      )
+    : [];
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
@@ -86,6 +114,9 @@ export default async function ChildDetail({
           );
         })}
       </div>
+
+      {/* Skill breakdown — which subtopics they're strong/weak in + how to help */}
+      <SkillBreakdown childName={s.profile.display_name} subjects={skillsBySubject} />
 
       {/* Badges */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">

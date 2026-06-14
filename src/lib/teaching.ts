@@ -91,3 +91,32 @@ export const SKILL_TEACH: Record<string, SkillTeach> = {
 export function teachFor(skill?: string | null): SkillTeach | null {
   return skill ? SKILL_TEACH[skill] ?? null : null;
 }
+
+/** Parent-facing standing for a skill the child has actually attempted. */
+export type SkillStanding = "strong" | "building" | "focus";
+
+/**
+ * Classify an attempted skill for the parent view. Derived from the integer
+ * counts (NOT the RPC's numeric `accuracy`, which is a 0–1 fraction that can
+ * arrive as a string). `mastered` is "doing great"; a low hit-rate or a recent
+ * miss flags it as something to focus on.
+ */
+export function skillStanding(m: {
+  state: string;
+  attempts: number;
+  correct: number;
+  last_correct: boolean;
+}): SkillStanding {
+  if (m.state === "mastered") return "strong";
+  const rate = m.attempts > 0 ? m.correct / m.attempts : 0;
+  if (!m.last_correct || rate < 0.6) return "focus";
+  return "building";
+}
+
+/** Friendly title for a skill, falling back to a cleaned-up version of the code. */
+export function skillTitle(skill: string): string {
+  const authored = SKILL_TEACH[skill]?.title;
+  if (authored) return authored;
+  // e.g. "3.muldiv" -> "muldiv"; keep it readable rather than showing the code raw.
+  return skill.replace(/^[A-Za-z0-9]+\./, "").replace(/[_-]+/g, " ");
+}
