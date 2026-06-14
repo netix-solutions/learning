@@ -3,43 +3,77 @@
 -- Loaded on `supabase db reset` after seed.sql (see supabase/config.toml sql_paths).
 
 insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋🦋🦋🦋', '["8","9","11","10"]', 1, 'Count them one by one. There are 9.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐', '["10","11","12","9"]', 0, 'Count them one by one. There are 10.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸', '["11","9","12","10"]', 3, 'Count them one by one. There are 10.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟', '["11","10","12","9"]', 1, 'Count them one by one. There are 10.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗', '["5","7","6","4"]', 0, 'Count them one by one. There are 5.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶🐶🐶', '["7","6","9","8"]', 0, 'Count them one by one. There are 7.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻🌻🌻🌻🌻🌻', '["9","8","10","7"]', 1, 'Count them one by one. There are 8.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗🚗', '["7","8","5","6"]', 3, 'Count them one by one. There are 6.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈🎈🎈', '["9","7","10","8"]', 3, 'Count them one by one. There are 8.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽⚽⚽⚽', '["11","10","9","8"]', 2, 'Count them one by one. There are 9.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌', '["4","3","2","5"]', 1, 'Count them one by one. There are 3.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶', '["4","6","5","7"]', 2, 'Count them one by one. There are 5.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋', '["6","3","4","5"]', 2, 'Count them one by one. There are 4.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌', '["5","7","4","6"]', 0, 'Count them one by one. There are 5.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻', '["2","4","1","3"]', 0, 'Count them one by one. There are 2.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸🌸', '["8","10","9","7"]', 0, 'Count them one by one. There are 8.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸', '["8","6","7","5"]', 1, 'Count them one by one. There are 6.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎🍎🍎🍎', '["7","8","9","10"]', 1, 'Count them one by one. There are 8.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶', '["3","4","5","6"]', 1, 'Count them one by one. There are 4.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸', '["4","2","5","3"]', 3, 'Count them one by one. There are 3.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽', '["6","5","4","3"]', 2, 'Count them one by one. There are 4.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟', '["4","3","5","2"]', 1, 'Count them one by one. There are 3.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈🎈', '["7","9","8","6"]', 0, 'Count them one by one. There are 7.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗', '["4","2","3","5"]', 2, 'Count them one by one. There are 3.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🧸 ?  🧸🧸🧸🧸🧸🧸', '["8","5","6","7"]', 2, 'Count them one by one. There are 6.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈', '["1","2","4","3"]', 1, 'Count them one by one. There are 2.', 10),
-  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈', '["7","8","5","6"]', 3, 'Count them one by one. There are 6.', 10),
+  ('math', 'PK', 1, 'PK.count', NULL, 'How many apples? 🍎🍎🍎', '["3","2","4","5"]', 0, 'Count them: 1, 2, 3. There are 3 apples!', 10),
+  ('math', 'PK', 1, 'PK.count', NULL, 'How many stars? ⭐⭐', '["1","4","2","3"]', 2, '1, 2 — there are 2 stars!', 10),
+  ('math', 'PK', 1, 'PK.count', NULL, 'How many balloons? 🎈🎈🎈🎈', '["5","4","3","2"]', 1, '1, 2, 3, 4 — there are 4 balloons!', 10),
+  ('math', 'PK', 1, 'PK.count', NULL, 'How many puppies? 🐶', '["2","1","3","4"]', 1, 'There is just 1 puppy!', 10),
+  ('math', 'PK', 1, 'PK.count', NULL, 'How many fish? 🐟🐟🐟🐟🐟', '["4","5","6","3"]', 1, '1, 2, 3, 4, 5 — there are 5 fish!', 10),
+  ('math', 'PK', 1, 'PK.shapes', NULL, 'Which one is a circle?', '["⚪","⬛","🔺","⭐"]', 0, 'A circle is perfectly round, like ⚪.', 10),
+  ('math', 'PK', 1, 'PK.shapes', NULL, 'Which one is a star?', '["⚪","🔺","⭐","❤️"]', 2, 'That''s the star! ⭐', 10),
+  ('math', 'PK', 1, 'PK.shapes', NULL, 'Which one is a triangle?', '["🔺","⬛","⭐","⚪"]', 0, 'A triangle has 3 sides, like 🔺.', 10),
+  ('math', 'PK', 1, 'PK.shapes', NULL, 'Which one is a square?', '["❤️","⬛","⚪","🔺"]', 1, 'A square has 4 equal sides, like ⬛.', 10),
+  ('math', 'PK', 1, 'PK.shapes', NULL, 'Which one is a heart?', '["❤️","⭐","⬛","⚪"]', 0, 'That''s the heart! ❤️', 10),
+  ('math', 'PK', 1, 'PK.size', NULL, 'Which animal is the BIGGEST?', '["🐘","🐭","🐝","🐜"]', 0, 'The elephant is the biggest! 🐘', 10),
+  ('math', 'PK', 1, 'PK.size', NULL, 'Which one is the SMALLEST?', '["🐜","🦁","🐘","🐴"]', 0, 'The ant is the smallest! 🐜', 10),
+  ('math', 'PK', 1, 'PK.size', NULL, 'Which animal is the TALLEST?', '["🐱","🐸","🦒","🐭"]', 2, 'The giraffe is the tallest! 🦒', 10),
+  ('math', 'PK', 1, 'PK.size', NULL, 'Which one is the LONGEST?', '["🐞","🐍","🦗","🐛"]', 1, 'The snake is the longest! 🐍', 10),
+  ('math', 'PK', 1, 'PK.size', NULL, 'Which one is the HEAVIEST?', '["🍃","🎈","🪶","🐘"]', 3, 'The elephant is the heaviest! A feather is very light.', 10),
+  ('math', 'PK', 1, 'PK.patterns', NULL, 'What comes next?  🔴 🔵 🔴 🔵 ❓', '["🟢","🔴","🔵","🟡"]', 1, 'Red, blue, red, blue… so red 🔴 comes next!', 10),
+  ('math', 'PK', 1, 'PK.patterns', NULL, 'What comes next?  ⭐ 🌙 ⭐ 🌙 ❓', '["⚡","☀️","🌙","⭐"]', 3, 'Star, moon, star, moon… so star ⭐ comes next!', 10),
+  ('math', 'PK', 1, 'PK.patterns', NULL, 'What comes next?  🍎 🍌 🍎 🍌 ❓', '["🍇","🍎","🍌","🍊"]', 1, 'Apple, banana, apple, banana… so apple 🍎 comes next!', 10),
+  ('math', 'PK', 1, 'PK.patterns', NULL, 'What comes next?  🔺 ⚪ 🔺 ⚪ ❓', '["⬛","⚪","🔺","⭐"]', 2, 'Triangle, circle, triangle, circle… so triangle 🔺 comes next!', 10),
+  ('math', 'PK', 1, 'PK.patterns', NULL, 'What comes next?  🐶 🐱 🐶 🐱 ❓', '["🐱","🐶","🐭","🐰"]', 1, 'Dog, cat, dog, cat… so dog 🐶 comes next!', 10),
+  ('math', 'PK', 1, 'PK.numbers', NULL, 'Which one is the number 2?', '["7","9","2","5"]', 2, 'That''s the number 2!', 10),
+  ('math', 'PK', 1, 'PK.numbers', NULL, 'Which one is the number 3?', '["6","8","1","3"]', 3, 'That''s the number 3!', 10),
+  ('math', 'PK', 1, 'PK.numbers', NULL, 'Find the number 5.', '["2","9","5","4"]', 2, 'That''s the number 5!', 10),
+  ('math', 'PK', 1, 'PK.numbers', NULL, 'Find the number 1.', '["8","7","1","4"]', 2, 'That''s the number 1!', 10),
+  ('math', 'PK', 1, 'PK.numbers', NULL, 'Which one is the number 4?', '["3","0","4","6"]', 2, 'That''s the number 4!', 10),
+  ('reading', 'PK', 1, 'PK.letters', NULL, 'Which one is the letter B?', '["P","B","R","D"]', 1, 'That''s the letter B!', 10),
+  ('reading', 'PK', 1, 'PK.letters', NULL, 'Find the letter A.', '["H","A","K","X"]', 1, 'That''s the letter A!', 10),
+  ('reading', 'PK', 1, 'PK.letters', NULL, 'Which one is the letter S?', '["S","E","Z","C"]', 0, 'That''s the letter S!', 10),
+  ('reading', 'PK', 1, 'PK.letters', NULL, 'Find the letter M.', '["N","M","W","V"]', 1, 'That''s the letter M!', 10),
+  ('reading', 'PK', 1, 'PK.letters', NULL, 'Which one is the letter O?', '["O","G","Q","C"]', 0, 'That''s the letter O!', 10),
+  ('reading', 'PK', 1, 'PK.listen', NULL, 'Tap the dog.', '["🐦","🐱","🐶","🐟"]', 2, 'That''s the dog! 🐶', 10),
+  ('reading', 'PK', 1, 'PK.listen', NULL, 'Tap the apple.', '["🍌","🍊","🍎","🍇"]', 2, 'That''s the apple! 🍎', 10),
+  ('reading', 'PK', 1, 'PK.listen', NULL, 'Tap the sun.', '["⭐","☀️","☁️","🌙"]', 1, 'That''s the sun! ☀️', 10),
+  ('reading', 'PK', 1, 'PK.listen', NULL, 'Tap the car.', '["✈️","⛵","🚲","🚗"]', 3, 'That''s the car! 🚗', 10),
+  ('reading', 'PK', 1, 'PK.listen', NULL, 'Tap the flower.', '["🍄","🌸","🌳","🌵"]', 1, 'That''s the flower! 🌸', 10),
+  ('reading', 'PK', 1, 'PK.colors', NULL, 'Tap the RED one.', '["🟢","🟡","🔴","🔵"]', 2, 'That one is red! 🔴', 10),
+  ('reading', 'PK', 1, 'PK.colors', NULL, 'Tap the BLUE one.', '["🔴","🟡","🔵","🟢"]', 2, 'That one is blue! 🔵', 10),
+  ('reading', 'PK', 1, 'PK.colors', NULL, 'Tap the GREEN one.', '["🟡","🔵","🟢","🔴"]', 2, 'That one is green! 🟢', 10),
+  ('reading', 'PK', 1, 'PK.colors', NULL, 'Tap the YELLOW one.', '["🔴","🟢","🔵","🟡"]', 3, 'That one is yellow! 🟡', 10),
+  ('reading', 'PK', 1, 'PK.colors', NULL, 'Tap the PURPLE one.', '["🟢","🔵","🔴","🟣"]', 3, 'That one is purple! 🟣', 10),
+  ('science', 'PK', 1, 'PK.animals', NULL, 'Which animal says “moo”?', '["🐄","🐔","🐱","🐶"]', 0, 'The cow says moo! 🐄', 10),
+  ('science', 'PK', 1, 'PK.animals', NULL, 'Which animal says “woof”?', '["🐮","🐸","🐱","🐶"]', 3, 'The dog says woof! 🐶', 10),
+  ('science', 'PK', 1, 'PK.animals', NULL, 'Which animal can fly?', '["🐦","🐶","🐢","🐟"]', 0, 'The bird can fly! 🐦', 10),
+  ('science', 'PK', 1, 'PK.animals', NULL, 'Which animal lives in the water?', '["🐰","🐟","🐱","🐶"]', 1, 'The fish lives in the water! 🐟', 10),
+  ('science', 'PK', 1, 'PK.animals', NULL, 'Which one is a cat?', '["🐶","🐰","🐭","🐱"]', 3, 'That''s the cat! 🐱', 10),
+  ('science', 'PK', 1, 'PK.weather', NULL, 'Which one is the sun?', '["☀️","🌈","🌧️","❄️"]', 0, 'That''s the bright sun! ☀️', 10),
+  ('science', 'PK', 1, 'PK.weather', NULL, 'What do we see when it rains?', '["🌈","🌧️","⭐","☀️"]', 1, 'Rain falls from the clouds! 🌧️', 10),
+  ('science', 'PK', 1, 'PK.weather', NULL, 'Which one is snow?', '["🌈","❄️","🌧️","☀️"]', 1, 'Snow is cold and white! ❄️', 10),
+  ('science', 'PK', 1, 'PK.weather', NULL, 'Which one is a rainbow?', '["❄️","🌧️","🌈","☀️"]', 2, 'A rainbow has lots of colors! 🌈', 10),
+  ('science', 'PK', 1, 'PK.weather', NULL, 'What do we see in the sky at night?', '["🌙","🌧️","☀️","🌈"]', 0, 'We see the moon at night! 🌙', 10),
+  ('science', 'PK', 1, 'PK.body', NULL, 'Which one do you SEE with?', '["👋","👁️","👃","👂"]', 1, 'You see with your eyes! 👁️', 10),
+  ('science', 'PK', 1, 'PK.body', NULL, 'Which one do you HEAR with?', '["👃","👅","👁️","👂"]', 3, 'You hear with your ears! 👂', 10),
+  ('science', 'PK', 1, 'PK.body', NULL, 'Which one do you SMELL with?', '["👂","👃","👋","👁️"]', 1, 'You smell with your nose! 👃', 10),
+  ('science', 'PK', 1, 'PK.body', NULL, 'Which one do you WAVE with?', '["👂","👃","👁️","👋"]', 3, 'You wave with your hand! 👋', 10),
+  ('science', 'PK', 1, 'PK.body', NULL, 'Which one do you WALK with?', '["👁️","👃","👂","🦶"]', 3, 'You walk with your feet! 🦶', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽⚽⚽', '["8","10","7","9"]', 0, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈', '["7","5","6","4"]', 1, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸', '["7","4","5","6"]', 2, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎🍎🍎🍎🍎', '["8","9","10","11"]', 1, 'Count them one by one. There are 9.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽', '["4","5","6","7"]', 1, 'Count them one by one. There are 5.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈', '["8","7","5","6"]', 3, 'Count them one by one. There are 6.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌🍌🍌🍌🍌', '["9","11","8","10"]', 0, 'Count them one by one. There are 9.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈', '["4","1","3","2"]', 3, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋', '["5","6","8","7"]', 1, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌', '["7","6","4","5"]', 3, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟', '["6","3","4","5"]', 2, 'Count them one by one. There are 4.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶', '["4","3","5","6"]', 0, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌🍌', '["7","8","5","6"]', 3, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽', '["4","6","5","3"]', 0, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌', '["11","9","12","10"]', 3, 'Count them one by one. There are 10.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸', '["3","5","4","2"]', 0, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶', '["2","5","4","3"]', 3, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈', '["6","5","4","3"]', 2, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸', '["6","5","4","3"]', 2, 'Count them one by one. There are 4.', 10),
@@ -48,9 +82,13 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐⭐', '["9","8","7","6"]', 2, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐', '["1","3","2","4"]', 2, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈', '["9","11","10","12"]', 2, 'Count them one by one. There are 10.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌', '["3","5","4","2"]', 0, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟', '["2","1","4","3"]', 0, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻🌻🌻🌻🌻🌻🌻', '["9","11","10","8"]', 0, 'Count them one by one. There are 9.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐', '["12","9","11","10"]', 3, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌', '["1","3","2","4"]', 2, 'Count them one by one. There are 2.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽⚽⚽⚽', '["8","9","11","10"]', 1, 'Count them one by one. There are 9.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎🍎🍎🍎', '["8","9","10","7"]', 0, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋🦋', '["9","7","6","8"]', 1, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋🦋🦋', '["8","9","7","10"]', 0, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎🍎🍎', '["9","7","8","6"]', 1, 'Count them one by one. There are 7.', 10),
@@ -66,8 +104,10 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🧸 ?  🧸🧸🧸🧸🧸🧸🧸🧸', '["8","10","9","7"]', 0, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🧸 ?  🧸🧸🧸🧸🧸🧸🧸', '["7","9","8","6"]', 0, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎🍎', '["8","7","6","5"]', 2, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶🐶🐶', '["7","9","8","6"]', 0, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸🌸🌸', '["11","10","9","8"]', 2, 'Count them one by one. There are 9.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻', '["5","3","4","2"]', 1, 'Count them one by one. There are 3.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗', '["3","5","4","2"]', 0, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗🚗🚗🚗', '["10","9","7","8"]', 3, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗', '["4","3","5","6"]', 0, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋', '["11","12","10","9"]', 2, 'Count them one by one. There are 10.', 10),
@@ -79,18 +119,25 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻🌻🌻🌻', '["8","7","5","6"]', 3, 'Count them one by one. There are 6.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽', '["12","11","9","10"]', 3, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸', '["6","9","8","7"]', 3, 'Count them one by one. There are 7.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗', '["7","5","6","4"]', 1, 'Count them one by one. There are 5.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻', '["2","3","4","1"]', 0, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎', '["3","4","5","6"]', 1, 'Count them one by one. There are 4.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸🌸', '["10","8","7","9"]', 1, 'Count them one by one. There are 8.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋', '["3","6","4","5"]', 2, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎', '["1","4","2","3"]', 2, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐⭐⭐', '["10","8","9","7"]', 1, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐', '["5","6","3","4"]', 3, 'Count them one by one. There are 4.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌🍌🍌', '["8","9","7","6"]', 2, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸', '["3","2","1","4"]', 1, 'Count them one by one. There are 2.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋🦋🦋🦋🦋', '["8","11","9","10"]', 2, 'Count them one by one. There are 9.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗', '["12","11","10","9"]', 2, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐', '["8","7","5","6"]', 3, 'Count them one by one. There are 6.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟🐟🐟', '["7","8","6","5"]', 2, 'Count them one by one. There are 6.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽', '["5","8","7","6"]', 3, 'Count them one by one. There are 6.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟🐟', '["4","6","7","5"]', 3, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶🐶🐶🐶', '["9","7","8","10"]', 2, 'Count them one by one. There are 8.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🧸 ?  🧸🧸🧸🧸🧸🧸', '["7","5","8","6"]', 3, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶', '["4","6","5","7"]', 2, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍌 ?  🍌🍌🍌🍌🍌🍌🍌🍌', '["8","9","10","7"]', 0, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🧸 ?  🧸🧸🧸🧸🧸', '["4","6","5","7"]', 2, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐⭐⭐⭐⭐', '["9","8","11","10"]', 0, 'Count them one by one. There are 9.', 10),
@@ -98,15 +145,23 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽⚽⚽⚽⚽', '["8","6","7","9"]', 2, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎🍎🍎', '["4","7","5","6"]', 2, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟🐟🐟🐟', '["8","7","6","9"]', 1, 'Count them one by one. There are 7.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈🎈🎈', '["7","10","9","8"]', 3, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋', '["2","3","1","4"]', 0, 'Count them one by one. There are 2.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻🌻🌻🌻🌻🌻', '["7","10","8","9"]', 2, 'Count them one by one. There are 8.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌻 ?  🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻', '["11","12","9","10"]', 3, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋🦋🦋', '["6","7","4","5"]', 3, 'Count them one by one. There are 5.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟', '["12","11","9","10"]', 3, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🦋 ?  🦋🦋🦋', '["2","4","3","5"]', 2, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽', '["1","3","4","2"]', 3, 'Count them one by one. There are 2.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶🐶🐶🐶🐶', '["8","10","9","11"]', 2, 'Count them one by one. There are 9.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🎈 ?  🎈🎈🎈🎈🎈🎈🎈', '["8","7","9","6"]', 1, 'Count them one by one. There are 7.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗🚗🚗🚗🚗', '["9","10","11","8"]', 0, 'Count them one by one. There are 9.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐⭐⭐', '["4","5","6","7"]', 1, 'Count them one by one. There are 5.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⚽ ?  ⚽⚽⚽', '["3","2","4","5"]', 0, 'Count them one by one. There are 3.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸', '["11","12","10","9"]', 2, 'Count them one by one. There are 10.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🚗 ?  🚗🚗🚗🚗🚗🚗', '["6","7","8","5"]', 0, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🌸 ?  🌸🌸🌸🌸🌸🌸', '["5","7","6","8"]', 2, 'Count them one by one. There are 6.', 10),
+  ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐟 ?  🐟🐟🐟', '["4","5","2","3"]', 3, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🐶 ?  🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶', '["9","12","10","11"]', 2, 'Count them one by one. There are 10.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many ⭐ ?  ⭐⭐⭐', '["2","4","3","5"]', 2, 'Count them one by one. There are 3.', 10),
   ('math', 'K', 1, 'K.count', 'MA.K.NSO.1', 'How many 🍎 ?  🍎🍎🍎', '["3","4","5","2"]', 0, 'Count them one by one. There are 3.', 10),
@@ -447,7 +502,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '1 - 1 = ?', '["0","1","4","2"]', 0, 'Take 1 away from 1 to get 0.', 10),
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '4 - 4 = ?', '["2","1","8","0"]', 3, 'Take 4 away from 4 to get 0.', 10),
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '2 - 1 = ?', '["2","3","0","1"]', 3, 'Take 1 away from 2 to get 1.', 10),
-  ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '3 - 2 = ?', '["0","1","2","5"]', 1, 'Take 2 away from 3 to get 1.', 10),
+  ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '3 - 2 = ?', '["0","1","2","5"]', 1, 'Take 2 away from 3 to get 1.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '4 - 0 = ?', '["5","6","3","4"]', 3, 'Take 0 away from 4 to get 4.', 10),
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '5 - 5 = ?', '["10","1","2","0"]', 3, 'Take 5 away from 5 to get 0.', 10),
   ('math', 'K', 1, 'K.addsub', 'MA.K.AR.1', '5 - 3 = ?', '["1","2","3","8"]', 1, 'Take 3 away from 5 to get 2.', 10),
@@ -502,9 +559,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "pat"?', '["tug","big","hat","fig"]', 2, '"pat" and "hat" rhyme — they end with the same sound.', 10),
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "cop"?', '["mop","sat","rake","pat"]', 0, '"cop" and "mop" rhyme — they end with the same sound.', 10),
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "ring"?', '["thing","man","dig","fed"]', 0, '"ring" and "thing" rhyme — they end with the same sound.', 10),
-  ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "man"?', '["fed","thing","van","jig"]', 2, '"man" and "van" rhyme — they end with the same sound.', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "man"?', '["fed","thing","van","jig"]', 2, '"man" and "van" rhyme — they end with the same sound.', 10),
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "tug"?', '["snake","van","cop","hug"]', 3, '"tug" and "hug" rhyme — they end with the same sound.', 10),
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "fig"?', '["fat","bake","hat","dig"]', 3, '"fig" and "dig" rhyme — they end with the same sound.', 10),
   ('reading', 'K', 1, 'K.sound', 'ELA.K.F.2', 'Which word rhymes with "pop"?', '["ran","rat","bat","stop"]', 3, '"pop" and "stop" rhyme — they end with the same sound.', 10),
@@ -949,7 +1004,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '4 + 10 = ?', '["14","13","15","24"]', 0, '4 + 10 = 14.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '6 + 4 = ?', '["20","9","10","11"]', 2, '6 + 4 = 10.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '4 + 2 = ?', '["5","7","16","6"]', 3, '4 + 2 = 6.', 10),
-  ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '7 + 8 = ?', '["16","15","25","14"]', 1, '7 + 8 = 15.', 10),
+  ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '7 + 8 = ?', '["16","15","25","14"]', 1, '7 + 8 = 15.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '10 + 8 = ?', '["18","19","28","17"]', 0, '10 + 8 = 18.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '3 + 1 = ?', '["4","14","5","3"]', 0, '3 + 1 = 4.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '4 + 13 = ?', '["16","27","17","18"]', 2, '4 + 13 = 17.', 10),
@@ -1004,9 +1061,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '16 - 2 = ?', '["13","24","14","15"]', 2, '16 - 2 = 14.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '5 - 3 = ?', '["2","12","3","1"]', 0, '5 - 3 = 2.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '11 - 3 = ?', '["9","8","7","18"]', 1, '11 - 3 = 8.', 10),
-  ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '10 - 10 = ?', '["10","1","0","2"]', 2, '10 - 10 = 0.', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '10 - 10 = ?', '["10","1","0","2"]', 2, '10 - 10 = 0.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '6 - 2 = ?', '["4","14","3","5"]', 0, '6 - 2 = 4.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '12 - 8 = ?', '["4","14","5","3"]', 0, '12 - 8 = 4.', 10),
   ('math', '1', 1, '1.addsub', 'MA.1.NSO.2', '19 - 16 = ?', '["3","13","4","2"]', 0, '19 - 16 = 3.', 10),
@@ -1451,7 +1506,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   16 ___ 9', '["=",">","+","<"]', 1, '16 is greater than 9, so use >.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   2 ___ 5', '["<","=",">","+"]', 0, '2 is less than 5, so use <.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   5 ___ 15', '["=","<","+",">"]', 1, '5 is less than 15, so use <.', 10),
-  ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   5 ___ 2', '["=","<",">","+"]', 2, '5 is greater than 2, so use >.', 10),
+  ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   5 ___ 2', '["=","<",">","+"]', 2, '5 is greater than 2, so use >.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   3 ___ 11', '[">","+","=","<"]', 3, '3 is less than 11, so use <.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   2 ___ 12', '["+","<",">","="]', 1, '2 is less than 12, so use <.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   1 ___ 15', '["+","=","<",">"]', 2, '1 is less than 15, so use <.', 10),
@@ -1506,9 +1563,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   18 ___ 16', '["<","+","=",">"]', 3, '18 is greater than 16, so use >.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   5 ___ 19', '["+","=","<",">"]', 2, '5 is less than 19, so use <.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   19 ___ 13', '["=","+","<",">"]', 3, '19 is greater than 13, so use >.', 10),
-  ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   12 ___ 5', '["=",">","<","+"]', 1, '12 is greater than 5, so use >.', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   12 ___ 5', '["=",">","<","+"]', 1, '12 is greater than 5, so use >.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   14 ___ 6', '[">","+","<","="]', 0, '14 is greater than 6, so use >.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   11 ___ 15', '["<","+",">","="]', 0, '11 is less than 15, so use <.', 10),
   ('math', '1', 1, '1.compare', 'MA.1.AR.1', 'Which sign makes it true?   20 ___ 5', '[">","=","<","+"]', 0, '20 is greater than 5, so use >.', 10),
@@ -1953,7 +2008,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('science', '1', 2, '1.animalbabies', NULL, 'A baby dog is called a ___.', '["calf","chick","kitten","puppy"]', 3, 'A baby dog is a puppy.', 10),
   ('science', '1', 2, '1.animalbabies', NULL, 'A baby cat is called a ___.', '["puppy","cub","foal","kitten"]', 3, 'A baby cat is a kitten.', 10),
   ('science', '1', 2, '1.animalbabies', NULL, 'A baby cow is called a ___.', '["lamb","chick","calf","foal"]', 2, 'A baby cow is a calf.', 10),
-  ('science', '1', 2, '1.animalbabies', NULL, 'A baby frog is called a ___.', '["kit","puppy","tadpole","chick"]', 2, 'A baby frog is a tadpole that lives in water.', 10),
+  ('science', '1', 2, '1.animalbabies', NULL, 'A baby frog is called a ___.', '["kit","puppy","tadpole","chick"]', 2, 'A baby frog is a tadpole that lives in water.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('science', '1', 2, '1.animalbabies', NULL, 'Most baby animals look ___ their parents.', '["older than","like","nothing like","the same age as"]', 1, 'Baby animals usually look like their parents.', 10),
   ('science', '1', 2, '1.animalbabies', NULL, 'A baby chicken is called a ___.', '["kid","calf","chick","duckling"]', 2, 'A baby chicken is a chick.', 10),
   ('science', '1', 2, '1.seasons', NULL, 'In which season do leaves fall off many trees?', '["Spring","Summer","Winter","Fall"]', 3, 'Leaves drop in fall (autumn).', 10),
@@ -2008,9 +2065,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '70 + 23 = ?', '["93","92","94","103"]', 0, 'Add the tens and ones: 70 + 23 = 93.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '19 + 23 = ?', '["52","42","43","41"]', 1, 'Add the tens and ones: 19 + 23 = 42.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '14 + 49 = ?', '["64","63","62","73"]', 1, 'Add the tens and ones: 14 + 49 = 63.', 10),
-  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '76 + 20 = ?', '["95","106","97","96"]', 3, 'Add the tens and ones: 76 + 20 = 96.', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '76 + 20 = ?', '["95","106","97","96"]', 3, 'Add the tens and ones: 76 + 20 = 96.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '50 + 11 = ?', '["62","60","71","61"]', 3, 'Add the tens and ones: 50 + 11 = 61.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '48 + 33 = ?', '["82","81","91","80"]', 1, 'Add the tens and ones: 48 + 33 = 81.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '63 + 18 = ?', '["91","82","81","80"]', 2, 'Add the tens and ones: 63 + 18 = 81.', 10),
@@ -2455,7 +2510,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '41 - 17 = ?', '["25","34","23","24"]', 3, '41 - 17 = 24.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '68 - 15 = ?', '["63","53","52","54"]', 1, '68 - 15 = 53.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '94 - 86 = ?', '["8","7","18","9"]', 0, '94 - 86 = 8.', 10),
-  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '45 - 15 = ?', '["30","40","29","31"]', 0, '45 - 15 = 30.', 10),
+  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '45 - 15 = ?', '["30","40","29","31"]', 0, '45 - 15 = 30.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '87 - 66 = ?', '["22","20","21","31"]', 2, '87 - 66 = 21.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '40 - 23 = ?', '["18","17","27","16"]', 1, '40 - 23 = 17.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '92 - 14 = ?', '["79","78","88","77"]', 1, '92 - 14 = 78.', 10),
@@ -2510,9 +2567,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '85 - 35 = ?', '["49","60","50","51"]', 2, '85 - 35 = 50.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '62 - 40 = ?', '["21","23","32","22"]', 3, '62 - 40 = 22.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '42 - 18 = ?', '["34","23","24","25"]', 2, '42 - 18 = 24.', 10),
-  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '82 - 53 = ?', '["28","30","39","29"]', 3, '82 - 53 = 29.', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '82 - 53 = ?', '["28","30","39","29"]', 3, '82 - 53 = 29.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '66 - 53 = ?', '["12","23","14","13"]', 3, '66 - 53 = 13.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '44 - 39 = ?', '["15","6","5","4"]', 2, '44 - 39 = 5.', 10),
   ('math', '2', 1, '2.addsub', 'MA.2.NSO.2', '47 - 14 = ?', '["34","43","33","32"]', 2, '47 - 14 = 33.', 10),
@@ -2957,7 +3012,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["70","73","72","71"]', 0, '70 is even.', 10),
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is odd?', '["63","62","65","64"]', 0, '63 is odd.', 10),
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["65","64","67","66"]', 1, '64 is even.', 10),
-  ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["79","78","81","80"]', 1, '78 is even.', 10),
+  ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["79","78","81","80"]', 1, '78 is even.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["92","93","94","95"]', 0, '92 is even.', 10),
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is even?', '["27","28","29","26"]', 3, '26 is even.', 10),
   ('math', '2', 1, '2.place', 'MA.2.NSO.1', 'Which number is odd?', '["7","4","6","5"]', 3, '5 is odd.', 10),
@@ -3012,9 +3069,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "afraid"?', '["nice","sleepy","scared","clever"]', 2, '"scared" is a synonym for "afraid".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "funny"?', '["begin","silly","glad","huge"]', 1, '"silly" is a synonym for "funny".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "glad"?', '["start","tiny","cheerful","pick"]', 2, '"cheerful" is a synonym for "glad".', 10),
-  ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "fearless"?', '["frightened","choose","bold","holler"]', 2, '"bold" is a synonym for "fearless".', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "fearless"?', '["frightened","choose","bold","holler"]', 2, '"bold" is a synonym for "fearless".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "nice"?', '["friendly","rapid","tired","gloomy"]', 0, '"friendly" is a synonym for "nice".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "small"?', '["choose","start","tiny","brave"]', 2, '"tiny" is a synonym for "small".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which word means almost the same as "smart"?', '["clever","nice","happy","stop"]', 0, '"clever" is a synonym for "smart".', 10),
@@ -3459,7 +3514,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 3 syllables?', '["cat","dog","tree","banana"]', 3, '"banana" has 3 syllables (3 beats).', 10),
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["book","monkey","cat","blue"]', 1, '"monkey" has 2 syllables (2 beats).', 10),
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["dog","cat","sun","pencil"]', 3, '"pencil" has 2 syllables (2 beats).', 10),
-  ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["cat","sun","dog","yellow"]', 3, '"yellow" has 2 syllables (2 beats).', 10),
+  ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["cat","sun","dog","yellow"]', 3, '"yellow" has 2 syllables (2 beats).', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 3 syllables?', '["sun","fish","elephant","blue"]', 2, '"elephant" has 3 syllables (3 beats).', 10),
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["tree","blue","cat","garden"]', 3, '"garden" has 2 syllables (2 beats).', 10),
   ('reading', '2', 1, '2.foundation', 'ELA.2.F.1', 'Which word has 2 syllables?', '["house","tree","fish","summer"]', 3, '"summer" has 2 syllables (2 beats).', 10),
@@ -3514,9 +3571,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "is not"?', '["you''re","isn''t","they''re","didn''t"]', 1, '"is not" becomes "isn''t".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "you are"?', '["it''s","you''re","don''t","didn''t"]', 1, '"you are" becomes "you''re".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "you are"?', '["don''t","can''t","you''re","isn''t"]', 2, '"you are" becomes "you''re".', 10),
-  ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "she is"?', '["she''s","isn''t","we''ll","I''m"]', 0, '"she is" becomes "she''s".', 10);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "she is"?', '["she''s","isn''t","we''ll","I''m"]', 0, '"she is" becomes "she''s".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "do not"?', '["didn''t","I''m","she''s","don''t"]', 3, '"do not" becomes "don''t".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "it is"?', '["it''s","they''re","you''re","she''s"]', 0, '"it is" becomes "it''s".', 10),
   ('reading', '2', 1, '2.vocab', 'ELA.2.V.1', 'Which contraction means "they are"?', '["I''m","they''re","don''t","it''s"]', 1, '"they are" becomes "they''re".', 10),
@@ -3961,7 +4016,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 744 to the nearest ten.', '["750","730","740","741"]', 2, '744 rounds to 740.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 281 to the nearest ten.', '["290","281","280","270"]', 2, '281 rounds to 280.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 606 to the nearest hundred.', '["500","601","700","600"]', 3, '606 rounds to 600.', 15),
-  ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 630 to the nearest ten.', '["630","640","631","620"]', 0, '630 rounds to 630.', 15),
+  ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 630 to the nearest ten.', '["630","640","631","620"]', 0, '630 rounds to 630.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 161 to the nearest ten.', '["150","170","160","161"]', 2, '161 rounds to 160.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 738 to the nearest ten.', '["750","740","730","741"]', 1, '738 rounds to 740.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 840 to the nearest hundred.', '["800","700","801","900"]', 0, '840 rounds to 800.', 15),
@@ -4016,9 +4073,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 102 to the nearest hundred.', '["0","200","101","100"]', 3, '102 rounds to 100.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 184 to the nearest hundred.', '["200","300","201","100"]', 0, '184 rounds to 200.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 670 to the nearest hundred.', '["800","600","701","700"]', 3, '670 rounds to 700.', 15),
-  ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 577 to the nearest ten.', '["580","581","570","590"]', 0, '577 rounds to 580.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 577 to the nearest ten.', '["580","581","570","590"]', 0, '577 rounds to 580.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 948 to the nearest hundred.', '["901","900","1000","800"]', 1, '948 rounds to 900.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 736 to the nearest hundred.', '["701","700","600","800"]', 1, '736 rounds to 700.', 15),
   ('math', '3', 2, '3.round', 'MA.3.NSO.1', 'Round 931 to the nearest ten.', '["931","940","930","920"]', 2, '931 rounds to 930.', 15),
@@ -4463,7 +4518,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 2 cm by 7 cm. What is its area?', '["7 sq cm","21 sq cm","14 sq cm","9 sq cm"]', 2, 'Area = length × width = 2 × 7 = 14 square cm.', 15),
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 3 cm by 8 cm. What is its area?', '["24 sq cm","11 sq cm","32 sq cm","27 sq cm"]', 0, 'Area = length × width = 3 × 8 = 24 square cm.', 15),
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 11 cm by 6 cm. What is its area?', '["17 sq cm","60 sq cm","72 sq cm","66 sq cm"]', 3, 'Area = length × width = 11 × 6 = 66 square cm.', 15),
-  ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 7 cm by 6 cm. What is its area?', '["49 sq cm","42 sq cm","36 sq cm","48 sq cm"]', 1, 'Area = length × width = 7 × 6 = 42 square cm.', 15),
+  ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 7 cm by 6 cm. What is its area?', '["49 sq cm","42 sq cm","36 sq cm","48 sq cm"]', 1, 'Area = length × width = 7 × 6 = 42 square cm.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 11 cm by 3 cm. What is its area?', '["36 sq cm","14 sq cm","44 sq cm","33 sq cm"]', 3, 'Area = length × width = 11 × 3 = 33 square cm.', 15),
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 7 cm by 3 cm. What is its area?', '["20 sq cm","21 sq cm","24 sq cm","10 sq cm"]', 1, 'Area = length × width = 7 × 3 = 21 square cm.', 15),
   ('math', '3', 2, '3.area', 'MA.3.GR.2', 'A rectangle is 10 cm by 11 cm. What is its area?', '["21 sq cm","42 sq cm","120 sq cm","110 sq cm"]', 3, 'Area = length × width = 10 × 11 = 110 square cm.', 15),
@@ -4518,9 +4575,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"She ran like the wind." is an example of a:', '["personification","metaphor","rhyme","simile"]', 3, 'It compares two things using "like" or "as" — a simile.', 15),
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"The snow was a soft white blanket." is an example of a:', '["personification","simile","question","metaphor"]', 3, 'It says one thing IS another — a metaphor.', 15),
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"The flowers danced in the breeze." is an example of a:', '["simile","metaphor","question","personification"]', 3, 'It gives human traits to something non-human — personification.', 15),
-  ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"Her smile was as bright as the sun." is an example of a:', '["rhyme","simile","question","metaphor"]', 1, 'It compares two things using "like" or "as" — a simile.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"Her smile was as bright as the sun." is an example of a:', '["rhyme","simile","question","metaphor"]', 1, 'It compares two things using "like" or "as" — a simile.', 15),
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"The snow was a soft white blanket." is an example of a:', '["rhyme","personification","simile","metaphor"]', 3, 'It says one thing IS another — a metaphor.', 15),
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"The sun smiled down on us." is an example of a:', '["metaphor","simile","rhyme","personification"]', 3, 'It gives human traits to something non-human — personification.', 15),
   ('reading', '3', 2, '3.fig', 'ELA.3.R.3', '"The wind whispered through the trees." is an example of a:', '["question","personification","metaphor","rhyme"]', 1, 'It gives human traits to something non-human — personification.', 15),
@@ -4965,7 +5020,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '67 × 3 = ?', '["198","204","201","211"]', 2, '67 × 3 = 201.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '39 × 5 = ?', '["195","200","190","205"]', 0, '39 × 5 = 195.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '66 × 7 = ?', '["462","455","472","469"]', 0, '66 × 7 = 462.', 15),
-  ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '99 × 2 = ?', '["198","196","208","200"]', 0, '99 × 2 = 198.', 15),
+  ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '99 × 2 = ?', '["198","196","208","200"]', 0, '99 × 2 = 198.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '31 × 8 = ?', '["240","258","256","248"]', 3, '31 × 8 = 248.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '52 × 9 = ?', '["459","477","478","468"]', 3, '52 × 9 = 468.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '47 × 3 = ?', '["144","151","138","141"]', 3, '47 × 3 = 141.', 15),
@@ -5020,9 +5077,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '86 × 5 = ?', '["440","435","430","425"]', 2, '86 × 5 = 430.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '22 × 5 = ?', '["115","110","120","105"]', 1, '22 × 5 = 110.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '60 × 3 = ?', '["190","177","183","180"]', 3, '60 × 3 = 180.', 15),
-  ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '64 × 3 = ?', '["192","189","202","195"]', 0, '64 × 3 = 192.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '64 × 3 = ?', '["192","189","202","195"]', 0, '64 × 3 = 192.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '14 × 3 = ?', '["39","45","52","42"]', 3, '14 × 3 = 42.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '74 × 2 = ?', '["158","148","146","150"]', 1, '74 × 2 = 148.', 15),
   ('math', '4', 2, '4.mul', 'MA.4.NSO.2', '75 × 2 = ?', '["148","152","150","160"]', 2, '75 × 2 = 150.', 15),
@@ -5467,7 +5522,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 2 in 5,127?', '["20","200","2000","2"]', 0, 'The 2 is in the tens place, so it means 20.', 15),
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 3 in 3,363?', '["30000","3","3000","30"]', 1, 'The 3 is in the ones place, so it means 3.', 15),
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 4 in 2,204?', '["4000","400","40","4"]', 3, 'The 4 is in the ones place, so it means 4.', 15),
-  ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 8 in 7,738?', '["800","8","80","8000"]', 1, 'The 8 is in the ones place, so it means 8.', 15),
+  ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 8 in 7,738?', '["800","8","80","8000"]', 1, 'The 8 is in the ones place, so it means 8.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 4 in 4,388?', '["4","4000","400","40000"]', 1, 'The 4 is in the thousands place, so it means 4,000.', 15),
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 4 in 4,017?', '["4","400","40","4000"]', 3, 'The 4 is in the thousands place, so it means 4,000.', 15),
   ('math', '4', 2, '4.place', 'MA.4.NSO.1', 'What is the value of the 3 in 1,332?', '["30000","30","300","3000"]', 2, 'The 3 is in the hundreds place, so it means 300.', 15),
@@ -5522,9 +5579,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.9 written as a fraction is:', '["1/9","9","9/100","9/10"]', 3, '0.9 means 9 tenths, which is 9/10.', 15),
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.1 written as a fraction is:', '["1/10","1/100","10/1","1/1000"]', 0, '0.1 means 1 tenths, which is 1/10.', 15),
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.3 written as a fraction is:', '["1/3","3","3/10","3/100"]', 2, '0.3 means 3 tenths, which is 3/10.', 15),
-  ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.4 written as a fraction is:', '["1/4","4/10","10/4","4"]', 1, '0.4 means 4 tenths, which is 4/10.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.4 written as a fraction is:', '["1/4","4/10","10/4","4"]', 1, '0.4 means 4 tenths, which is 4/10.', 15),
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.6 written as a fraction is:', '["6","6/100","10/6","6/10"]', 3, '0.6 means 6 tenths, which is 6/10.', 15),
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.2 written as a fraction is:', '["2/10","2/1000","2/100","1/2"]', 0, '0.2 means 2 tenths, which is 2/10.', 15),
   ('math', '4', 2, '4.dec', 'MA.4.FR.3', '0.4 written as a fraction is:', '["4/1000","4/100","4","4/10"]', 3, '0.4 means 4 tenths, which is 4/10.', 15),
@@ -5969,7 +6024,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('science', '4', 2, '4.weatherclimate', NULL, 'Scientists who study the weather are called ___.', '["meteorologists","geologists","zookeepers","astronauts"]', 0, 'Meteorologists study and predict the weather.', 10),
   ('science', '4', 2, '4.weatherclimate', NULL, 'A tool that measures how much rain falls is a ___.', '["rain gauge","ruler for length","compass","thermometer"]', 0, 'A rain gauge collects and measures rainfall.', 10),
   ('science', '4', 2, '4.weatherclimate', NULL, 'Which sentence describes climate, not today''s weather?', '["It is usually hot and dry here.","It is cloudy this afternoon.","The wind is strong today.","It is raining right now."]', 0, 'Climate is the usual pattern; the others describe today.', 10),
-  ('science', '4', 2, '4.moon', NULL, 'The moon seems to change shape because of how ___ lights it.', '["the stars","a streetlamp","the sun","the Earth"]', 2, 'We see the part of the moon lit by the sun, which changes.', 10),
+  ('science', '4', 2, '4.moon', NULL, 'The moon seems to change shape because of how ___ lights it.', '["the stars","a streetlamp","the sun","the Earth"]', 2, 'We see the part of the moon lit by the sun, which changes.', 10);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('science', '4', 2, '4.moon', NULL, 'About how long does it take the moon to go through all its phases?', '["One hour","One day","One year","About a month"]', 3, 'The moon''s phases repeat about every 29–30 days.', 10),
   ('science', '4', 2, '4.moon', NULL, 'When we cannot see the lit moon at all, it is called a ___ moon.', '["blue","new","half","full"]', 1, 'At a new moon, the lit side faces away from us.', 10),
   ('science', '4', 2, '4.moon', NULL, 'When the whole lit side faces us, it is a ___ moon.', '["thin crescent","new","full","broken"]', 2, 'A full moon is when we see the entire lit side.', 10),
@@ -6024,9 +6081,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.10 + 0.83 = ?', '["1.02","0.73","0.93","0.94"]', 2, 'Line up the decimals: 0.10 + 0.83 = 0.93.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.27 + 0.02 = ?', '["0.19","0.29","0.38","0.30"]', 1, 'Line up the decimals: 0.27 + 0.02 = 0.29.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.53 + 0.40 = ?', '["0.83","0.94","0.93","1.02"]', 2, 'Line up the decimals: 0.53 + 0.40 = 0.93.', 15),
-  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.06 + 0.15 = ?', '["0.11","0.21","0.09","0.22"]', 1, 'Line up the decimals: 0.06 + 0.15 = 0.21.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.06 + 0.15 = ?', '["0.11","0.21","0.09","0.22"]', 1, 'Line up the decimals: 0.06 + 0.15 = 0.21.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.36 + 0.43 = ?', '["0.80","0.79","0.89","0.69"]', 1, 'Line up the decimals: 0.36 + 0.43 = 0.79.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.55 + 0.45 = ?', '["1.01","1.10","1.00","0.10"]', 2, 'Line up the decimals: 0.55 + 0.45 = 1.00.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '0.16 + 0.82 = ?', '["1.08","1.07","0.98","0.99"]', 2, 'Line up the decimals: 0.16 + 0.82 = 0.98.', 15),
@@ -6471,7 +6526,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  8 + 2 × 4 ?', '["40","14","8","16"]', 3, 'Multiply first: 2 × 4 = 8, then 8 + 8 = 16.', 15),
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  5 + 4 × 2 ?', '["13","11","8","18"]', 0, 'Multiply first: 4 × 2 = 8, then 5 + 8 = 13.', 15),
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  7 + 3 × 4 ?', '["40","19","12","14"]', 1, 'Multiply first: 3 × 4 = 12, then 7 + 12 = 19.', 15),
-  ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  9 + 2 × 2 ?', '["4","14","13","22"]', 2, 'Multiply first: 2 × 2 = 4, then 9 + 4 = 13.', 15),
+  ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  9 + 2 × 2 ?', '["4","14","13","22"]', 2, 'Multiply first: 2 × 2 = 4, then 9 + 4 = 13.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  8 + 5 × 2 ?', '["15","26","10","18"]', 3, 'Multiply first: 5 × 2 = 10, then 8 + 10 = 18.', 15),
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  6 + 4 × 5 ?', '["26","20","15","50"]', 0, 'Multiply first: 4 × 5 = 20, then 6 + 20 = 26.', 15),
   ('math', '5', 2, '5.order', 'MA.5.AR.2', 'What is  4 + 6 × 2 ?', '["17","16","20","12"]', 1, 'Multiply first: 6 × 2 = 12, then 4 + 12 = 16.', 15),
@@ -6526,9 +6583,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 7 × 8 × 5. What is its volume?', '["61","280","262","20"]', 1, 'Volume = length × width × height = 7 × 8 × 5 = 280.', 15),
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 3 × 3 × 5. What is its volume?', '["78","45","14","11"]', 1, 'Volume = length × width × height = 3 × 3 × 5 = 45.', 15),
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 8 × 6 × 3. What is its volume?', '["144","51","17","180"]', 0, 'Volume = length × width × height = 8 × 6 × 3 = 144.', 15),
-  ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 4 × 3 × 2. What is its volume?', '["14","24","52","9"]', 1, 'Volume = length × width × height = 4 × 3 × 2 = 24.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 4 × 3 × 2. What is its volume?', '["14","24","52","9"]', 1, 'Volume = length × width × height = 4 × 3 × 2 = 24.', 15),
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 4 × 2 × 3. What is its volume?', '["52","24","11","9"]', 1, 'Volume = length × width × height = 4 × 2 × 3 = 24.', 15),
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 5 × 3 × 7. What is its volume?', '["22","15","142","105"]', 3, 'Volume = length × width × height = 5 × 3 × 7 = 105.', 15),
   ('math', '5', 3, '5.volume', 'MA.5.GR.4', 'A box is 6 × 5 × 6. What is its volume?', '["192","180","17","36"]', 1, 'Volume = length × width × height = 6 × 5 × 6 = 180.', 15),
@@ -6973,7 +7028,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '5.3 × 100 = ?', '["531","105.30","53","530"]', 3, 'Multiplying by 100 moves the decimal two places right: 530.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '15.4 × 100 = ?', '["154","1541","115.40","1540"]', 3, 'Multiplying by 100 moves the decimal two places right: 1540.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '81.4 × 100 = ?', '["8140","814","8141","81400.00"]', 0, 'Multiplying by 100 moves the decimal two places right: 8140.', 15),
-  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '32.4 × 10 = ?', '["324","3240","42.4","32.4"]', 0, 'Multiplying by 10 moves the decimal one place right: 324.', 15),
+  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '32.4 × 10 = ?', '["324","3240","42.4","32.4"]', 0, 'Multiplying by 10 moves the decimal one place right: 324.', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '2.9 × 10 = ?', '["30","12.9","29","290"]', 2, 'Multiplying by 10 moves the decimal one place right: 29.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '65.5 × 10 = ?', '["65.5","6550","75.5","655"]', 3, 'Multiplying by 10 moves the decimal one place right: 655.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '98.2 × 10 = ?', '["982","9820","983","98.2"]', 0, 'Multiplying by 10 moves the decimal one place right: 982.', 15),
@@ -7028,9 +7085,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '22.8 × 10 = ?', '["32.8","229","22.8","228"]', 3, 'Multiplying by 10 moves the decimal one place right: 228.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '65.1 × 10 = ?', '["652","75.1","651","6510"]', 2, 'Multiplying by 10 moves the decimal one place right: 651.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '6.7 × 10 = ?', '["67","670","68","16.7"]', 0, 'Multiplying by 10 moves the decimal one place right: 67.', 15),
-  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '16.5 × 10 = ?', '["165","1650","166","16.5"]', 0, 'Multiplying by 10 moves the decimal one place right: 165.', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '16.5 × 10 = ?', '["165","1650","166","16.5"]', 0, 'Multiplying by 10 moves the decimal one place right: 165.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '5 × 100 = ?', '["500","105","501","50"]', 0, 'Multiplying by 100 moves the decimal two places right: 500.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '75.1 × 100 = ?', '["751","175.10","7510","75100.00"]', 2, 'Multiplying by 100 moves the decimal two places right: 7510.', 15),
   ('math', '5', 2, '5.dec', 'MA.5.NSO.2', '27.5 × 10 = ?', '["2750","27.5","275","37.5"]', 2, 'Multiplying by 10 moves the decimal one place right: 275.', 15),
@@ -7475,7 +7530,9 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "wise"?', '["giant","friendly","yell","bright"]', 3, '"bright" is a synonym for "wise".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "amusing"?', '["weird","funny","angry","little"]', 1, '"funny" is a synonym for "amusing".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "tiny"?', '["nice","little","clever","bold"]', 1, '"little" is a synonym for "tiny".', 15),
-  ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "nice"?', '["choose","kind","rapid","speedy"]', 1, '"kind" is a synonym for "nice".', 15),
+  ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "nice"?', '["choose","kind","rapid","speedy"]', 1, '"kind" is a synonym for "nice".', 15);
+
+insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "big"?', '["frightened","tiny","clever","giant"]', 3, '"giant" is a synonym for "big".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "gloomy"?', '["unhappy","wise","tired","smart"]', 0, '"unhappy" is a synonym for "gloomy".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "weird"?', '["strange","quick","gloomy","end"]', 0, '"strange" is a synonym for "weird".', 15),
@@ -7530,9 +7587,7 @@ insert into public.questions (subject_id, grade, difficulty, skill, standard, pr
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "weary"?', '["weird","tired","angry","end"]', 1, '"tired" is a synonym for "weary".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "chilly"?', '["cold","start","happy","small"]', 0, '"cold" is a synonym for "chilly".', 15),
   ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "nice"?', '["kind","tired","end","beautiful"]', 0, '"kind" is a synonym for "nice".', 15),
-  ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "unhappy"?', '["angry","tiny","freezing","gloomy"]', 3, '"gloomy" is a synonym for "unhappy".', 15);
-
-insert into public.questions (subject_id, grade, difficulty, skill, standard, prompt, choices, answer_index, explanation, xp) values
+  ('reading', '5', 1, '5.vocab', 'ELA.5.V.1', 'Which word is closest in meaning to "unhappy"?', '["angry","tiny","freezing","gloomy"]', 3, '"gloomy" is a synonym for "unhappy".', 15),
   ('reading', '5', 3, '5.infer', 'ELA.5.R.2', 'Read: "Devon checked the sky, grabbed his coat, and tucked an umbrella under his arm before leaving." What can you INFER?', '["He forgot his shoes","He is going to bed","It might rain","It is summer"]', 2, 'The coat and umbrella are clues that Devon expects rain — that is an inference.', 15),
   ('reading', '5', 3, '5.infer', 'ELA.5.R.2', 'Read: "The library was silent except for the soft turn of pages and a distant cough." The mood of this scene is:', '["loud and wild","funny","scary","calm and quiet"]', 3, 'Details like silence and softly turning pages create a calm, quiet mood.', 15),
   ('reading', '5', 3, '5.infer', 'ELA.5.R.2', 'Read: "Scientists studied the coral for years and warned that warmer water harms it." The author wrote this mainly to:', '["inform","entertain","sell something","tell a story"]', 0, 'The passage shares facts and findings, so its purpose is to inform.', 15),

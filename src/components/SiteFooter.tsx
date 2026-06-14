@@ -15,33 +15,16 @@ export function SiteFooter() {
           href="https://netixsolutions.com"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Built by Netix Solutions — visit netixsolutions.com"
+          aria-label="Built by NetixSolutions — visit netixsolutions.com"
           className="group inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-slate-500 transition-colors hover:text-slate-800"
         >
           <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-slate-400 transition-colors group-hover:text-slate-500">
             Built by
           </span>
 
-          {/* Monogram mark */}
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            className="h-4 w-4 text-slate-500 transition-colors group-hover:text-slate-900"
-          >
-            <path
-              d="M5 18V6l14 12V6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.25"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-
           <span className="font-display text-sm font-semibold tracking-tight">
             Netix
             <span className="font-normal text-slate-400 transition-colors group-hover:text-slate-600">
-              {" "}
               Solutions
             </span>
           </span>

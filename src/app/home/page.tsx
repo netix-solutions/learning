@@ -4,7 +4,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
-import { subjectTheme, type StudentSummary, type Subject } from "@/lib/types";
+import { subjectTheme, gradeLabel, type StudentSummary, type Subject } from "@/lib/types";
 
 type Badge = {
   id: string;
@@ -50,7 +50,7 @@ export default async function StudentHome() {
               Hi, {profile.display_name}!
             </h1>
             <p className="font-semibold text-slate-500">
-              Grade {profile.grade} · Let&apos;s stay sharp today ☀️
+              {gradeLabel(profile.grade)} · Let&apos;s stay sharp today ☀️
             </p>
           </div>
           <div className="ml-auto hidden text-center sm:block">

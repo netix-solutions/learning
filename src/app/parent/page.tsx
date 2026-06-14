@@ -6,7 +6,7 @@ import { SignOutButton } from "@/components/SignOutButton";
 import { RemoveChildButton } from "@/components/RemoveChildButton";
 import { AddChildForm } from "@/components/forms/AddChildForm";
 import { xpLevel } from "@/components/XpBar";
-import type { ChildOverview } from "@/lib/types";
+import { gradeLabel, type ChildOverview } from "@/lib/types";
 
 export default async function ParentDashboard() {
   const { user, profile, supabase } = await getSessionProfile();
@@ -56,7 +56,7 @@ export default async function ParentDashboard() {
                       {c.display_name}
                     </h3>
                     <p className="text-sm font-semibold text-slate-500">
-                      Grade {c.grade} · username:{" "}
+                      {gradeLabel(c.grade)} · username:{" "}
                       <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono">
                         {c.username}
                       </span>

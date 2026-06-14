@@ -1,5 +1,12 @@
-export type Grade = "K" | "1" | "2" | "3" | "4" | "5";
-export const GRADES: Grade[] = ["K", "1", "2", "3", "4", "5"];
+export type Grade = "PK" | "K" | "1" | "2" | "3" | "4" | "5";
+export const GRADES: Grade[] = ["PK", "K", "1", "2", "3", "4", "5"];
+
+/** Friendly label for a grade: "Pre-K", "Grade K", "Grade 3", … */
+export function gradeLabel(g: string | null | undefined): string {
+  if (!g) return "";
+  if (g === "PK") return "Pre-K";
+  return `Grade ${g}`;
+}
 
 export type Role = "parent" | "student";
 

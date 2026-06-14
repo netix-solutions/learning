@@ -4,7 +4,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
-import { subjectTheme, type StudentSummary } from "@/lib/types";
+import { subjectTheme, gradeLabel, type StudentSummary } from "@/lib/types";
 
 export default async function ChildDetail({
   params,
@@ -46,7 +46,7 @@ export default async function ChildDetail({
               {s.profile.display_name}
             </h1>
             <p className="font-semibold text-slate-500">
-              Grade {s.profile.grade} · 🔥 {s.profile.streak_count} day streak
+              {gradeLabel(s.profile.grade)} · 🔥 {s.profile.streak_count} day streak
             </p>
           </div>
         </div>

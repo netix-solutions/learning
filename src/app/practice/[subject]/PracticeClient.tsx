@@ -4,13 +4,16 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
+import { CorrectCelebration } from "@/components/CorrectCelebration";
 import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram } from "@/components/ScienceDiagram";
+import { speak } from "@/lib/speech";
 import {
   subjectTheme,
+  gradeLabel,
   type AttemptResult,
   type Grade,
   type PracticeQuestion,
@@ -41,6 +44,7 @@ export function PracticeClient({
   const [xpEarned, setXpEarned] = useState(0);
   const [badges, setBadges] = useState<NewBadge[]>([]);
   const [confettiKey, setConfettiKey] = useState(0);
+  const [correctKey, setCorrectKey] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
@@ -79,7 +83,7 @@ export function PracticeClient({
       const { data } = await supabase.rpc("get_adaptive_questions", {
         p_subject: subject.id,
         p_grade: grade,
-        p_count: 6,
+        p_count: grade === "PK" ? 4 : 6, // shorter rounds for little ones
       });
       qs = (data as PracticeQuestion[]) ?? [];
     }
@@ -94,6 +98,15 @@ export function PracticeClient({
   }, [loadQuestions]);
 
   const current = questions[index];
+  const isPreK = grade === "PK";
+
+  // Pre-K kids can't read, so read each new question's prompt aloud (best-effort;
+  // browsers may need a tap first, which the kid provides by answering).
+  useEffect(() => {
+    if (isPreK && phase === "playing" && current) {
+      speak(`pk-${current.id}`, current.prompt);
+    }
+  }, [isPreK, phase, current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function choose(choiceIndex: number) {
     if (result || submitting || !current) return;
@@ -121,6 +134,7 @@ export function PracticeClient({
       setXpEarned((x) => x + res.xp_earned);
       setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
       setConfettiKey((k) => k + 1);
+      setCorrectKey((k) => k + 1);
     } else {
       playWrong();
     }
@@ -185,7 +199,7 @@ export function PracticeClient({
       <Centered>
         <div className="text-6xl">🦗</div>
         <p className="mt-4 font-display text-xl text-slate-600">
-          No questions here yet for Grade {grade}.
+          No questions here yet for {gradeLabel(grade)}.
         </p>
         <Link href="/home" className="btn-pop mt-6 bg-white px-6 py-3 ring-2 ring-slate-200">
           ← Back home
@@ -257,6 +271,7 @@ export function PracticeClient({
   return (
     <>
       <Confetti fire={confettiKey} count={60} />
+      <CorrectCelebration fire={correctKey} cheer={cheer} />
       <main className="mx-auto max-w-2xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
           <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">
@@ -306,14 +321,18 @@ export function PracticeClient({
             <SpeakButton
               id={`q-${current.id}`}
               label="Read the question"
-              text={`${current.prompt}. ${current.choices
-                .map((c, i) => `${String.fromCharCode(65 + i)}, ${c}`)
-                .join(". ")}`}
+              text={
+                isPreK
+                  ? current.prompt
+                  : `${current.prompt}. ${current.choices
+                      .map((c, i) => `${String.fromCharCode(65 + i)}, ${c}`)
+                      .join(". ")}`
+              }
               className="mt-1"
             />
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className={`mt-6 grid gap-3 ${isPreK ? "grid-cols-2" : "sm:grid-cols-2"}`}>
             {current.choices.map((choice, i) => {
               let cls =
                 "border-slate-200 bg-white hover:border-[var(--brand-blue)] hover:bg-blue-50";
@@ -323,6 +342,29 @@ export function PracticeClient({
                 else if (i === selected)
                   cls = "border-red-400 bg-red-50 text-red-700";
                 else cls = "border-slate-200 bg-white opacity-60";
+              }
+              // Make the right answer pop + glow when the kid nails it.
+              if (result?.is_correct && i === result.correct_index) {
+                cls += " answer-correct";
+              }
+              // Pre-K: big, picture-first buttons with no A/B/C/D labels.
+              if (isPreK) {
+                return (
+                  <button
+                    key={i}
+                    disabled={!!result || submitting}
+                    onClick={() => choose(i)}
+                    className={`relative grid min-h-28 place-items-center rounded-3xl border-4 px-3 py-6 text-center text-6xl font-bold transition ${cls}`}
+                  >
+                    <span>{choice}</span>
+                    {result && i === result.correct_index && (
+                      <span className="absolute right-3 top-3 text-3xl">✅</span>
+                    )}
+                    {result && i === selected && !result.is_correct && (
+                      <span className="absolute right-3 top-3 text-3xl">❌</span>
+                    )}
+                  </button>
+                );
               }
               return (
                 <button
