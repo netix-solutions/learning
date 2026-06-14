@@ -5,6 +5,10 @@ import type { CSSProperties } from "react";
 // light frosted-glass scrim sits on top so page content stays readable.
 // Pure SVG + CSS, decorative (aria-hidden), behind all content.
 
+// The flying biplane is built and ready (Biplane / Puff below + .scene-plane
+// styles in globals.css) but currently disabled — set to true to re-enable it.
+const SHOW_PLANE = false;
+
 const CLOUDS: { top: string; scale: number; dur: number; delay: number; o: number }[] = [
   { top: "8%", scale: 1.0, dur: 90, delay: -10, o: 0.95 },
   { top: "16%", scale: 0.7, dur: 70, delay: -45, o: 0.85 },
@@ -165,12 +169,15 @@ export function MeadowScene() {
           </div>
         ))}
 
-        {/* Biplane crossing just below the clouds */}
-        <div className="scene-plane absolute left-0" style={{ top: "29%" }}>
-          <div style={{ transform: "scale(0.78)", transformOrigin: "left center" }}>
-            <Biplane />
+        {/* Biplane crossing just below the clouds — disabled for now (too
+            distracting); flip SHOW_PLANE to true to bring it back. */}
+        {SHOW_PLANE && (
+          <div className="scene-plane absolute left-0" style={{ top: "29%" }}>
+            <div style={{ transform: "scale(0.78)", transformOrigin: "left center" }}>
+              <Biplane />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Rolling grassy hills, anchored to the bottom */}
         <svg

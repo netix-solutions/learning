@@ -5,6 +5,9 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { BillingButtons } from "@/components/billing/BillingButtons";
+import { SubscriptionActions } from "@/components/billing/SubscriptionActions";
+import { InvoiceList } from "@/components/billing/InvoiceList";
+import { listInvoices } from "@/lib/billing-info";
 import { getParentEntitlement } from "@/lib/entitlement";
 import {
   priceForKids,
@@ -26,9 +29,11 @@ export default async function BillingPage() {
   const admin = createAdminClient();
   const { data: sub } = await admin
     .from("subscriptions")
-    .select("status, current_period_end, cancel_at_period_end, seats")
+    .select("status, current_period_end, cancel_at_period_end, seats, stripe_customer_id")
     .eq("parent_id", user.id)
     .maybeSingle();
+
+  const invoices = await listInvoices(sub?.stripe_customer_id);
 
   const periodEnd = sub?.current_period_end
     ? new Date(sub.current_period_end).toLocaleDateString(undefined, {
@@ -114,7 +119,10 @@ export default async function BillingPage() {
                       : ""}
                 </p>
               </div>
-              <BillingButtons mode="manage" />
+              <SubscriptionActions
+                cancelScheduled={!!sub?.cancel_at_period_end}
+                periodEndLabel={periodEnd}
+              />
             </>
           ) : (
             <>
@@ -126,6 +134,16 @@ export default async function BillingPage() {
           )}
         </div>
       </section>
+
+      {/* Invoice history — shown once there's a billing customer to have any. */}
+      {sub?.stripe_customer_id && (
+        <section className="mt-8">
+          <h2 className="mb-3 font-display text-xl font-bold text-slate-700">
+            Billing history
+          </h2>
+          <InvoiceList invoices={invoices} />
+        </section>
+      )}
 
       <p className="mt-4 text-center text-xs text-slate-400">
         Billing is managed securely by Stripe. Payment lives on your parent

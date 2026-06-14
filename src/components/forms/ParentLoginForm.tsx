@@ -34,6 +34,14 @@ export function ParentLoginForm() {
           className={inputClass}
           required
         />
+        <div className="mt-1.5 text-right">
+          <Link
+            href="/forgot-password"
+            className="text-sm font-semibold text-slate-500 hover:text-[var(--brand-blue)]"
+          >
+            Forgot password?
+          </Link>
+        </div>
       </div>
 
       {state.error && (

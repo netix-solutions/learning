@@ -3,6 +3,7 @@ import "server-only";
 import { createHmac, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { listInvoices, type InvoiceLine } from "@/lib/billing-info";
 import type { Grade, Role } from "@/lib/types";
 
 /**
@@ -285,4 +286,116 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
       child_count: childCountByParent.get(p.id) ?? 0,
     };
   });
+}
+
+// ---------------------------------------------------------------------------
+// Billing (service-role; bypasses RLS so the operator can see every family)
+// ---------------------------------------------------------------------------
+
+export type AdminSubscription = {
+  parentId: string;
+  name: string;
+  email: string | null;
+  status: string;
+  seats: number;
+  currentPeriodEnd: string | null;
+  trialEnd: string | null;
+  cancelAtPeriodEnd: boolean;
+  stripeCustomerId: string | null;
+  stripeSubscriptionId: string | null;
+  updatedAt: string | null;
+};
+
+const SUB_COLUMNS =
+  "parent_id, status, seats, current_period_end, trial_end, cancel_at_period_end, stripe_customer_id, stripe_subscription_id, updated_at";
+
+type SubRow = {
+  parent_id: string;
+  status: string;
+  seats: number | null;
+  current_period_end: string | null;
+  trial_end: string | null;
+  cancel_at_period_end: boolean | null;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+  updated_at: string | null;
+};
+
+function toAdminSub(row: SubRow, name: string, email: string | null): AdminSubscription {
+  return {
+    parentId: row.parent_id,
+    name,
+    email,
+    status: row.status,
+    seats: row.seats ?? 0,
+    currentPeriodEnd: row.current_period_end,
+    trialEnd: row.trial_end,
+    cancelAtPeriodEnd: row.cancel_at_period_end ?? false,
+    stripeCustomerId: row.stripe_customer_id,
+    stripeSubscriptionId: row.stripe_subscription_id,
+    updatedAt: row.updated_at,
+  };
+}
+
+/** Every subscription row, with the parent's name + email, newest activity first. */
+export async function getAdminSubscriptions(): Promise<AdminSubscription[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("subscriptions")
+    .select(SUB_COLUMNS)
+    .order("updated_at", { ascending: false });
+  const rows = (data ?? []) as SubRow[];
+  if (rows.length === 0) return [];
+
+  const ids = rows.map((r) => r.parent_id);
+  const { data: profs } = await db
+    .from("profiles")
+    .select("id, display_name")
+    .in("id", ids);
+  const nameById = new Map((profs ?? []).map((p) => [p.id, p.display_name]));
+
+  const emailEntries = await Promise.all(
+    ids.map(async (id) => {
+      const { data: u } = await db.auth.admin.getUserById(id);
+      return [id, u?.user?.email ?? null] as const;
+    }),
+  );
+  const emailById = new Map(emailEntries);
+
+  return rows.map((r) =>
+    toAdminSub(r, nameById.get(r.parent_id) ?? "(unknown)", emailById.get(r.parent_id) ?? null),
+  );
+}
+
+export type ParentBilling = {
+  parentId: string;
+  name: string;
+  email: string | null;
+  sub: AdminSubscription | null;
+  invoices: InvoiceLine[];
+};
+
+/** Full billing detail for one parent: subscription state + Stripe invoices. */
+export async function getParentBilling(parentId: string): Promise<ParentBilling | null> {
+  const db = createAdminClient();
+  const { data: profile } = await db
+    .from("profiles")
+    .select("id, display_name, role")
+    .eq("id", parentId)
+    .maybeSingle();
+  if (!profile || profile.role !== "parent") return null;
+
+  const { data: u } = await db.auth.admin.getUserById(parentId);
+  const email = u?.user?.email ?? null;
+
+  const { data: row } = await db
+    .from("subscriptions")
+    .select(SUB_COLUMNS)
+    .eq("parent_id", parentId)
+    .maybeSingle();
+
+  const sub = row ? toAdminSub(row as SubRow, profile.display_name, email) : null;
+  const invoices = await listInvoices(sub?.stripeCustomerId);
+
+  return { parentId, name: profile.display_name, email, sub, invoices };
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAdminUsers, isAdminAuthed, type AdminUser } from "@/lib/admin";
 import { AdminShell } from "@/components/AdminShell";
@@ -80,6 +81,12 @@ function ParentRow({ u }: { u: AdminUser }) {
       <div className="ml-auto flex items-center gap-6 text-center">
         <Cell label="Children" value={u.child_count} />
         <Cell label="Joined" value={fmtDate(u.created_at)} />
+        <Link
+          href={`/admin/billing/${u.id}`}
+          className="text-xs font-bold text-[var(--brand-blue)] hover:underline"
+        >
+          Billing
+        </Link>
         <DeleteUserButton userId={u.id} name={u.display_name} />
       </div>
     </div>

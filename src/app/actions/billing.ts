@@ -1,9 +1,11 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripe } from "@/lib/stripe";
+import { setSubscriptionCancel } from "@/lib/billing-info";
 import { TRIAL_DAYS, MAX_KIDS } from "@/lib/billing";
 
 function appUrl() {
@@ -141,9 +143,39 @@ export async function openBillingPortal(): Promise<{ error: string } | undefined
     .maybeSingle();
   if (!sub?.stripe_customer_id) return { error: "No subscription to manage yet." };
 
-  const session = await stripe.billingPortal.sessions.create({
-    customer: sub.stripe_customer_id,
-    return_url: `${appUrl()}/parent/billing`,
-  });
-  redirect(session.url);
+  let url: string;
+  try {
+    const session = await stripe.billingPortal.sessions.create({
+      customer: sub.stripe_customer_id,
+      return_url: `${appUrl()}/parent/billing`,
+    });
+    url = session.url;
+  } catch (err) {
+    // Most often: the Stripe Billing Portal hasn't been configured yet.
+    console.error("[billing] could not open portal", err);
+    return { error: "Billing portal isn't available right now." };
+  }
+  redirect(url);
+}
+
+/** Parent cancels their own plan — stays active until the period ends. */
+export async function cancelSubscription(): Promise<{ error: string } | undefined> {
+  const auth = await requireParent();
+  if ("error" in auth) return { error: auth.error };
+
+  const res = await setSubscriptionCancel(auth.parentId, true);
+  if (res?.error) return res;
+  revalidatePath("/parent/billing");
+  return undefined;
+}
+
+/** Parent undoes a pending cancellation — the plan keeps renewing. */
+export async function resumeSubscription(): Promise<{ error: string } | undefined> {
+  const auth = await requireParent();
+  if ("error" in auth) return { error: auth.error };
+
+  const res = await setSubscriptionCancel(auth.parentId, false);
+  if (res?.error) return res;
+  revalidatePath("/parent/billing");
+  return undefined;
 }

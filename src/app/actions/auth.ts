@@ -8,6 +8,11 @@ import { sendEmail } from "@/lib/email";
 import { welcomeEmail } from "@/lib/email-templates";
 
 export type FormState = { error: string | null };
+export type ResetRequestState = { error: string | null; sent: boolean };
+
+function appUrl() {
+  return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+}
 
 // Coarse in-memory throttle for the kid→parent password check, so a child can't
 // hammer parent-password guesses. Per serverless instance; Supabase also
@@ -94,6 +99,61 @@ export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/");
+}
+
+/**
+ * Parent forgot their password: email them a recovery link. The link lands on
+ * /auth/confirm, which establishes a short-lived session and forwards to
+ * /reset-password. We always report success (never reveal whether an email is
+ * registered) — Supabase only sends if the account exists.
+ */
+export async function requestPasswordReset(
+  _prev: ResetRequestState,
+  formData: FormData,
+): Promise<ResetRequestState> {
+  const email = String(formData.get("email") ?? "").trim();
+  if (!email) return { error: "Please enter your email.", sent: false };
+
+  const supabase = await createClient();
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${appUrl()}/auth/confirm?next=/reset-password`,
+  });
+  // Surface only genuine config/transport failures; otherwise stay vague.
+  if (error && error.status && error.status >= 500)
+    return { error: "Something went wrong. Please try again.", sent: false };
+
+  return { error: null, sent: true };
+}
+
+/**
+ * Set a new password. Runs on /reset-password, where the recovery link has
+ * already established a session (so updateUser is authorized). Also works as a
+ * plain authed password change for a signed-in parent.
+ */
+export async function confirmPasswordReset(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const password = String(formData.get("password") ?? "");
+  const confirm = String(formData.get("confirm") ?? "");
+
+  if (password.length < 8)
+    return { error: "Password must be at least 8 characters." };
+  if (password !== confirm) return { error: "Those passwords don't match." };
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user)
+    return {
+      error: "Your reset link expired. Please request a new one.",
+    };
+
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) return { error: error.message };
+
+  redirect("/parent");
 }
 
 /**
