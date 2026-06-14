@@ -11,7 +11,8 @@ function appUrl() {
 }
 
 async function requireParent(): Promise<
-  { parentId: string; email: string; name: string } | { error: string }
+  | { parentId: string; email: string; name: string; createdAt: string | null }
+  | { error: string }
 > {
   const supabase = await createClient();
   const {
@@ -20,12 +21,17 @@ async function requireParent(): Promise<
   if (!user) return { error: "Please sign in again." };
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role, display_name")
+    .select("role, display_name, created_at")
     .eq("id", user.id)
     .single();
   if (profile?.role !== "parent")
     return { error: "Only a parent account can manage billing." };
-  return { parentId: user.id, email: user.email ?? "", name: profile.display_name };
+  return {
+    parentId: user.id,
+    email: user.email ?? "",
+    name: profile.display_name,
+    createdAt: profile.created_at ?? null,
+  };
 }
 
 /**
@@ -85,14 +91,26 @@ export async function startCheckout(): Promise<{ error: string } | undefined> {
   const customerId = await ensureCustomer(auth.parentId, auth.email, auth.name);
   if (!customerId) return { error: "Billing isn't set up yet." };
 
+  // Align Stripe's trial end with the account's signup trial, so the parent is
+  // charged exactly when their free window runs out — never a second 7 days,
+  // never an early charge. Stripe requires trial_end to be at least ~48h out;
+  // if less time remains (or the signup trial already lapsed), we omit it and
+  // let the subscription bill immediately.
+  const trialEndMs = signupTrialEndMs(auth.createdAt);
+  const MIN_TRIAL_MS = 48 * 60 * 60 * 1000;
+  const subscriptionData: {
+    metadata: { parent_id: string };
+    trial_end?: number;
+  } = { metadata: { parent_id: auth.parentId } };
+  if (trialEndMs - Date.now() > MIN_TRIAL_MS) {
+    subscriptionData.trial_end = Math.floor(trialEndMs / 1000); // Unix seconds
+  }
+
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer: customerId,
     line_items: [{ price: priceId, quantity: kids }],
-    subscription_data: {
-      trial_period_days: TRIAL_DAYS,
-      metadata: { parent_id: auth.parentId },
-    },
+    subscription_data: subscriptionData,
     metadata: { parent_id: auth.parentId },
     allow_promotion_codes: true,
     success_url: `${appUrl()}/parent/billing?status=success`,
