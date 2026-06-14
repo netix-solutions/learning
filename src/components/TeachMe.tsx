@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SkillVisual } from "@/components/SkillVisual";
+import { SpeakButton } from "@/components/SpeakButton";
 import type { PracticeQuestion } from "@/lib/types";
 
 /**
@@ -81,6 +82,7 @@ export function TeachMe({
             <p className="font-display text-lg font-bold text-slate-800">Your tutor</p>
             <p className="text-xs font-semibold text-slate-400">Let&apos;s understand it together</p>
           </div>
+          {text && <SpeakButton id={`teach-${question.id}`} text={text} label="Read the lesson" />}
           <button
             onClick={onClose}
             aria-label="Close"

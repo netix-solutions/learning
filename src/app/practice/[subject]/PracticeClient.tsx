@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
 import { teachFor } from "@/lib/teaching";
 import { TeachMe } from "@/components/TeachMe";
+import { SpeakButton } from "@/components/SpeakButton";
 import {
   subjectTheme,
   type AttemptResult,
@@ -287,9 +288,19 @@ export function PracticeClient({
               </span>
             )}
           </div>
-          <h1 className="font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
-            {current.prompt}
-          </h1>
+          <div className="flex items-start gap-3">
+            <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
+              {current.prompt}
+            </h1>
+            <SpeakButton
+              id={`q-${current.id}`}
+              label="Read the question"
+              text={`${current.prompt}. ${current.choices
+                .map((c, i) => `${String.fromCharCode(65 + i)}, ${c}`)
+                .join(". ")}`}
+              className="mt-1"
+            />
+          </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {current.choices.map((choice, i) => {
@@ -333,7 +344,14 @@ export function PracticeClient({
                 {result.is_correct ? cheer : "Let's learn it 💡"}
               </p>
               {result.explanation && (
-                <p className="mt-1 text-slate-700">{result.explanation}</p>
+                <div className="mt-1 flex items-start gap-2">
+                  <p className="flex-1 text-slate-700">{result.explanation}</p>
+                  <SpeakButton
+                    id={`e-${current.id}`}
+                    label="Read the explanation"
+                    text={result.explanation}
+                  />
+                </div>
               )}
               {/* On a miss, re-teach the general method for this skill. */}
               {!result.is_correct &&
