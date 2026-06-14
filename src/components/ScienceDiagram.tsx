@@ -524,23 +524,27 @@ function Critter({
 }) {
   return (
     <g className={className} transform={`translate(${cx} ${cy}) scale(${s})`}>
-      {/* legs */}
-      <rect x="-17" y="6" width="5" height="13" rx="2.5" fill="#c98a57" />
-      <rect x="-6" y="8" width="5" height="13" rx="2.5" fill="#c98a57" />
-      <rect x="5" y="8" width="5" height="13" rx="2.5" fill="#c98a57" />
-      <rect x="15" y="6" width="5" height="13" rx="2.5" fill="#c98a57" />
-      {/* tail */}
-      <path d="M-25 -2 q-11 -1 -11 -13" fill="none" stroke="#c98a57" strokeWidth="3" strokeLinecap="round" />
+      {/* feet */}
+      <ellipse cx="-9" cy="21" rx="6" ry="4" fill="#c98a57" />
+      <ellipse cx="9" cy="21" rx="6" ry="4" fill="#c98a57" />
       {/* body */}
-      <ellipse cx="0" cy="2" rx="25" ry="15" fill="#e0a96d" stroke="#c98a57" strokeWidth="2" />
-      {/* head */}
-      <circle cx="23" cy="-11" r="12" fill="#e8b878" stroke="#c98a57" strokeWidth="2" />
+      <ellipse cx="0" cy="8" rx="19" ry="16" fill="#e0a96d" stroke="#c98a57" strokeWidth="2" />
       {/* ears */}
-      <path d="M15 -20 l-3 -10 8 5 z" fill="#e8b878" stroke="#c98a57" strokeWidth="1.5" />
-      <path d="M29 -20 l3 -10 -8 5 z" fill="#e8b878" stroke="#c98a57" strokeWidth="1.5" />
-      {/* eye + smile */}
-      <circle cx="26" cy="-12" r="2" fill="#2d2a32" />
-      <path d="M19 -5 q5 4 10 0" fill="none" stroke="#a06a3a" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="-13" cy="-15" r="7" fill="#e8b878" stroke="#c98a57" strokeWidth="2" />
+      <circle cx="13" cy="-15" r="7" fill="#e8b878" stroke="#c98a57" strokeWidth="2" />
+      {/* head */}
+      <circle cx="0" cy="-5" r="16" fill="#e8b878" stroke="#c98a57" strokeWidth="2" />
+      {/* two eyes, each with a highlight */}
+      <circle cx="-6" cy="-7" r="2.6" fill="#2d2a32" />
+      <circle cx="6" cy="-7" r="2.6" fill="#2d2a32" />
+      <circle cx="-5.1" cy="-7.9" r="0.9" fill="#fff" />
+      <circle cx="6.9" cy="-7.9" r="0.9" fill="#fff" />
+      {/* nose + smile */}
+      <ellipse cx="0" cy="-1" rx="2.2" ry="1.6" fill="#a06a3a" />
+      <path d="M-5 2 q5 4 10 0" fill="none" stroke="#a06a3a" strokeWidth="1.6" strokeLinecap="round" />
+      {/* blush */}
+      <circle cx="-11" cy="0" r="2.6" fill="#ffb3b3" opacity="0.6" />
+      <circle cx="11" cy="0" r="2.6" fill="#ffb3b3" opacity="0.6" />
     </g>
   );
 }
@@ -551,7 +555,11 @@ function AnimalBabies() {
       {/* A parent and its baby of the SAME generic kind — the concept "every
           animal has a baby," with no specific (answerable) species shown. */}
       <Critter cx={64} cy={64} s={1} />
-      <Critter cx={150} cy={80} s={0.56} className="animate-bob" />
+      {/* Wrap the baby's bob on an OUTER group: animate-bob is a CSS transform
+          and would otherwise clobber the SVG positioning transform attribute. */}
+      <g className="animate-bob">
+        <Critter cx={150} cy={80} s={0.56} />
+      </g>
       {/* heart between them */}
       <g className="sci-pulse">
         <path
