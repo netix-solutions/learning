@@ -14,7 +14,7 @@ const KID_FACES = ["🦊", "🐼", "🐨", "🦁", "🐯", "🐸"];
 
 /**
  * Interactive price sheet: pick how many kids and watch the monthly price build
- * up — $5 for the first, +$2 each after. The number animates on every change.
+ * up — $4 for the first, +$2 each after. The number animates on every change.
  */
 export function PriceCalculator({ max = 6 }: { max?: number }) {
   const [kids, setKids] = useState(1);

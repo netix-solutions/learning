@@ -8,7 +8,7 @@ import { TRIAL_DAYS } from "@/lib/billing";
 export const metadata: Metadata = {
   title: "Pricing — SummerSharp",
   description:
-    "One simple plan: $5/mo for your first kid, $2/mo for each additional kid. Everything included. Start with a 7-day free trial.",
+    "One simple plan: $4/mo for your first kid, $2/mo for each additional kid. Everything included. Start with a 7-day free trial.",
 };
 
 const INCLUDED = [
@@ -22,7 +22,7 @@ const INCLUDED = [
 ];
 
 const FAQ = [
-  { q: "How does the price work?", a: "$5/month covers your first child. Each additional child is just $2/month more — so 2 kids is $7, 3 kids is $9, and so on. One bill, the whole family." },
+  { q: "How does the price work?", a: "$4/month covers your first child. Each additional child is just $2/month more — so 2 kids is $6, 3 kids is $8, and so on. One bill, the whole family." },
   { q: "Is there really a free trial?", a: `Yes — every new family gets ${TRIAL_DAYS} days free. We don't charge until the trial ends, and you can cancel anytime with one click.` },
   { q: "Can I add or remove kids later?", a: "Anytime. Add a child whenever you like; the small extra seat is reflected on your next bill. Remove one and it comes right off." },
   { q: "Is it safe for my child?", a: "Yes. Kids log in with just a username and PIN — no email, no personal info, no ads, ever. Parents own and manage the account (COPPA-aware by design)." },
@@ -45,7 +45,7 @@ export default function PricingPage() {
             Simple, <span className="shimmer-orange">sunny</span> pricing
           </h1>
           <p className="animate-rise delay-2 mx-auto mt-3 max-w-xl text-lg text-slate-600">
-            <span className="font-bold text-slate-700">$5/mo</span> for your first
+            <span className="font-bold text-slate-700">$4/mo</span> for your first
             kid, <span className="font-bold text-slate-700">$2/mo</span> for each
             extra. No tiers, no add-ons, no surprises.
           </p>
