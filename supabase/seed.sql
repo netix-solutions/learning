@@ -4,7 +4,8 @@
 -- Subjects -------------------------------------------------------------------
 insert into public.subjects (id, name, emoji, color, sort) values
   ('math',    'Math',    '➕', 'blue',   1),
-  ('reading', 'Reading', '📚', 'purple', 2);
+  ('reading', 'Reading', '📚', 'purple', 2),
+  ('science', 'Science', '🔬', 'green',  3);
 
 -- Badges ---------------------------------------------------------------------
 insert into public.badges (id, name, description, emoji, kind, threshold, subject_id, sort) values
@@ -17,8 +18,10 @@ insert into public.badges (id, name, description, emoji, kind, threshold, subjec
   ('streak_7',      'Week Warrior',     'Practice 7 days in a row.',              '📅', 'streak',          7,   null, 7),
   ('math_20',       'Math Whiz',        'Get 20 math questions correct.',         '🔢', 'subject_correct', 20,  'math',    8),
   ('reading_20',    'Bookworm',         'Get 20 reading questions correct.',      '🐛', 'subject_correct', 20,  'reading', 9),
-  ('xp_250',        'XP Hunter',        'Earn 250 XP.',                           '⚡', 'xp',              250, null, 10),
-  ('xp_1000',       'XP Legend',        'Earn 1000 XP!',                          '💎', 'xp',              1000, null, 11);
+  ('science_20',    'Science Explorer', 'Get 20 science questions correct.',      '🔬', 'subject_correct', 20,  'science', 10),
+  ('science_50',    'Lab Star',         'Get 50 science questions correct!',      '🧪', 'subject_correct', 50,  'science', 11),
+  ('xp_250',        'XP Hunter',        'Earn 250 XP.',                           '⚡', 'xp',              250, null, 12),
+  ('xp_1000',       'XP Legend',        'Earn 1000 XP!',                          '💎', 'xp',              1000, null, 13);
 
 -- Questions ------------------------------------------------------------------
 insert into public.questions (subject_id, grade, difficulty, standard, prompt, choices, answer_index, explanation, xp) values

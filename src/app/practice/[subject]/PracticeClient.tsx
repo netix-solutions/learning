@@ -7,6 +7,7 @@ import { Confetti } from "@/components/Confetti";
 import { teachFor } from "@/lib/teaching";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
+import { ScienceDiagram } from "@/components/ScienceDiagram";
 import {
   subjectTheme,
   type AttemptResult,
@@ -57,13 +58,13 @@ export function PracticeClient({
     let qs: PracticeQuestion[] = [];
 
     if (subject.id === "daily") {
-      const subjectIds = ["math", "reading"];
+      const subjectIds = ["math", "reading", "science"];
       const results = await Promise.all(
         subjectIds.map((s) =>
           supabase.rpc("get_adaptive_questions", {
             p_subject: s,
             p_grade: grade,
-            p_count: 3,
+            p_count: 2,
           }),
         ),
       );
@@ -288,6 +289,11 @@ export function PracticeClient({
               </span>
             )}
           </div>
+          {current.subject_id === "science" && (
+            <div className="mb-4 rounded-2xl bg-slate-50/80 p-3">
+              <ScienceDiagram skill={current.skill} />
+            </div>
+          )}
           <div className="flex items-start gap-3">
             <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
               {current.prompt}

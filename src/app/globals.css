@@ -153,10 +153,29 @@ a, button, [role="button"], label, summary, input[type="submit"] {
 .shimmer-orange { background-image: linear-gradient(90deg, #f57c1f, #ffc223, #f57c1f); }
 .shimmer-blue { background-image: linear-gradient(90deg, #1d70c2, #2aa7e6, #1d70c2); }
 
+/* ---- Science diagram motion (used by ScienceDiagram SVGs) ---- */
+@keyframes sci-orbit { to { transform: rotate(360deg); } }
+@keyframes sci-rain { 0% { transform: translateY(-4px); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(22px); opacity: 0; } }
+@keyframes sci-grow { 0% { transform: scaleY(0); } 100% { transform: scaleY(1); } }
+@keyframes sci-jiggle { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(0.8px, -0.8px); } 50% { transform: translate(-0.8px, 0.8px); } 75% { transform: translate(0.8px, 0.8px); } }
+@keyframes sci-flow { to { stroke-dashoffset: -12; } }
+@keyframes sci-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.14); } }
+@keyframes sci-rise { 0% { transform: translateY(2px); opacity: 0.85; } 100% { transform: translateY(-14px); opacity: 0; } }
+
+.sci-orbit { animation: sci-orbit 12s linear infinite; }
+.sci-spin { animation: sci-orbit 16s linear infinite; transform-box: fill-box; transform-origin: center; }
+.sci-rain { animation: sci-rain 1.5s ease-in infinite; }
+.sci-grow { animation: sci-grow 1.3s ease-out both; transform-box: fill-box; transform-origin: bottom; }
+.sci-jiggle { animation: sci-jiggle 0.55s ease-in-out infinite; transform-box: fill-box; }
+.sci-flow { stroke-dasharray: 4 4; animation: sci-flow 0.55s linear infinite; }
+.sci-pulse { animation: sci-pulse 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.sci-rise { animation: sci-rise 2.2s ease-in infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-pop, .animate-float, .animate-wiggle, .animate-cheer, .animate-shake,
   .animate-drift, .animate-bob, .animate-sway, .animate-twinkle, .animate-spin-slow,
-  .animate-rise, .shimmer-orange, .shimmer-blue {
+  .animate-rise, .shimmer-orange, .shimmer-blue,
+  .sci-orbit, .sci-spin, .sci-rain, .sci-grow, .sci-jiggle, .sci-flow, .sci-pulse, .sci-rise {
     animation: none;
   }
   /* Keep the shimmer words legible without the gradient animation. */

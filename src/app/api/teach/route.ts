@@ -58,7 +58,7 @@ export async function POST(req: Request) {
   const correct = choices[q.answer_index];
   const sel = body.selectedIndex;
   const chosen = Number.isInteger(sel) && sel! >= 0 && sel! < choices.length ? choices[sel!] : null;
-  const subject = q.subject_id === "reading" ? "reading" : "math";
+  const subject = ["reading", "science"].includes(q.subject_id) ? q.subject_id : "math";
   const teach = teachFor(q.skill);
 
   // 3. Grounded, tightly-scoped, kid-safe tutor prompt. The model only elaborates

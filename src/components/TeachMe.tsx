@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SkillVisual } from "@/components/SkillVisual";
+import { ScienceDiagram } from "@/components/ScienceDiagram";
 import { SpeakButton } from "@/components/SpeakButton";
 import type { PracticeQuestion } from "@/lib/types";
 
@@ -64,7 +65,7 @@ export function TeachMe({
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
   }, [text]);
 
-  const subject = question.subject_id === "reading" ? "reading" : "math";
+  const subject = ["reading", "science"].includes(question.subject_id) ? question.subject_id : "math";
   const busy = status === "loading" || status === "streaming";
 
   return (
@@ -94,7 +95,11 @@ export function TeachMe({
 
         <div ref={scrollRef} className="overflow-y-auto p-5">
           <div className="rounded-2xl bg-slate-50 p-4">
-            <SkillVisual prompt={question.prompt} skill={question.skill} subject={subject} />
+            {subject === "science" ? (
+              <ScienceDiagram skill={question.skill} />
+            ) : (
+              <SkillVisual prompt={question.prompt} skill={question.skill} subject={subject} />
+            )}
           </div>
           <div className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-slate-700">
             {text}
