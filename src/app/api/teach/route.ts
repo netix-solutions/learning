@@ -49,16 +49,52 @@ export async function POST(req: Request) {
   const admin = createAdminClient();
   const { data: q } = await admin
     .from("questions")
-    .select("subject_id, grade, prompt, choices, answer_index, explanation, skill")
+    .select("subject_id, grade, prompt, choices, answer_index, explanation, skill, kind, payload, answer")
     .eq("id", questionId)
     .single();
   if (!q) return new Response("Question not found.", { status: 404 });
 
   const choices = (q.choices as string[]) ?? [];
-  const correct = choices[q.answer_index];
   const sel = body.selectedIndex;
   const chosen = Number.isInteger(sel) && sel! >= 0 && sel! < choices.length ? choices[sel!] : null;
   const subject = ["reading", "science"].includes(q.subject_id) ? q.subject_id : "math";
+
+  // Describe the correct answer + the options in plain language, per question kind,
+  // so the tutor prompt is grounded the same way it is for plain multiple-choice.
+  const kind = (q.kind as string) ?? "mcq";
+  const payload = (q.payload ?? {}) as {
+    tokens?: string[];
+    items?: string[];
+    buckets?: string[];
+    left?: string[];
+    right?: string[];
+  };
+  const ans = q.answer as number[] | { index?: number } | null;
+  let correct = choices[q.answer_index] ?? "";
+  let optionsLine = `Answer choices: ${choices.join("  |  ")}`;
+  if (kind === "tapword") {
+    const toks = payload.tokens ?? [];
+    const idx = (ans as { index?: number })?.index ?? -1;
+    correct = toks[idx] ?? "";
+    optionsLine = `Sentence: ${toks.join(" ")}`;
+  } else if (kind === "order") {
+    const items = payload.items ?? [];
+    const order = (ans as number[]) ?? [];
+    correct = order.map((i) => items[i]).join(" → ");
+    optionsLine = `Items to arrange: ${items.join(", ")}`;
+  } else if (kind === "categorize") {
+    const items = payload.items ?? [];
+    const buckets = payload.buckets ?? [];
+    const a = (ans as number[]) ?? [];
+    correct = items.map((it, i) => `${it} = ${buckets[a[i]]}`).join("; ");
+    optionsLine = `Buckets: ${buckets.join(", ")}`;
+  } else if (kind === "match") {
+    const left = payload.left ?? [];
+    const right = payload.right ?? [];
+    const a = (ans as number[]) ?? [];
+    correct = left.map((l, i) => `${l} ↔ ${right[a[i]]}`).join("; ");
+    optionsLine = `Items: ${[...left, ...right].join(", ")}`;
+  }
   const teach = teachFor(q.skill);
 
   // 3. Grounded, tightly-scoped, kid-safe tutor prompt. The model only elaborates
@@ -75,7 +111,7 @@ export async function POST(req: Request) {
   const userPrompt = [
     `Skill: ${teach?.title ?? q.skill ?? subject}.`,
     `Question: ${q.prompt}`,
-    `Answer choices: ${choices.join("  |  ")}`,
+    optionsLine,
     `The correct answer is: ${correct}.`,
     q.explanation ? `Why it is correct: ${q.explanation}` : "",
     chosen != null ? `The child just answered "${chosen}", which is not correct.` : "",

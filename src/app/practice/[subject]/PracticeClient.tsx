@@ -14,6 +14,13 @@ import { playCorrect, playWrong, playQuizStart, playTally } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram } from "@/components/ScienceDiagram";
+import {
+  TrueFalseQuestion,
+  TapWordQuestion,
+  OrderQuestion,
+  CategorizeQuestion,
+  MatchQuestion,
+} from "@/components/QuestionTypes";
 import { speak } from "@/lib/speech";
 import {
   subjectTheme,
@@ -21,6 +28,7 @@ import {
   type AttemptResult,
   type Grade,
   type PracticeQuestion,
+  type SubmittedAnswer,
   type Subject,
 } from "@/lib/types";
 
@@ -122,15 +130,15 @@ export function PracticeClient({
     if (phase === "done" && xpEarned > 0) playTally();
   }, [phase, xpEarned]);
 
-  async function choose(choiceIndex: number) {
+  async function submit(answer: SubmittedAnswer) {
     if (result || submitting || !current) return;
-    setSelected(choiceIndex);
+    if (typeof answer === "number") setSelected(answer);
     setSubmitting(true);
 
     const supabase = createClient();
     const { data, error } = await supabase.rpc("record_attempt", {
       p_question_id: current.id,
-      p_selected_index: choiceIndex,
+      p_answer: answer,
     });
     setSubmitting(false);
 
@@ -360,7 +368,7 @@ export function PracticeClient({
               id={`q-${current.id}`}
               label="Read the question"
               text={
-                isPreK
+                isPreK || (current.kind && current.kind !== "mcq")
                   ? current.prompt
                   : `${current.prompt}. ${current.choices
                       .map((c, i) => `${String.fromCharCode(65 + i)}, ${c}`)
@@ -370,6 +378,24 @@ export function PracticeClient({
             />
           </div>
 
+          {/* Non-multiple-choice kinds bring their own interaction + feedback. */}
+          {current.kind === "truefalse" && (
+            <TrueFalseQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
+          )}
+          {current.kind === "tapword" && (
+            <TapWordQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
+          )}
+          {current.kind === "order" && (
+            <OrderQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
+          )}
+          {current.kind === "categorize" && (
+            <CategorizeQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
+          )}
+          {current.kind === "match" && (
+            <MatchQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
+          )}
+
+          {(!current.kind || current.kind === "mcq") && (
           <div className={`mt-6 grid gap-3 ${isPreK ? "grid-cols-2" : "sm:grid-cols-2"}`}>
             {current.choices.map((choice, i) => {
               let cls =
@@ -391,7 +417,7 @@ export function PracticeClient({
                   <button
                     key={i}
                     disabled={!!result || submitting}
-                    onClick={() => choose(i)}
+                    onClick={() => submit(i)}
                     className={`relative grid min-h-28 place-items-center rounded-3xl border-4 px-3 py-6 text-center text-6xl font-bold transition ${cls}`}
                   >
                     <span>{choice}</span>
@@ -408,7 +434,7 @@ export function PracticeClient({
                 <button
                   key={i}
                   disabled={!!result || submitting}
-                  onClick={() => choose(i)}
+                  onClick={() => submit(i)}
                   className={`flex items-center gap-3 rounded-2xl border-2 px-4 py-4 text-left text-lg font-bold transition ${cls}`}
                 >
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-sm text-slate-500">
@@ -423,6 +449,7 @@ export function PracticeClient({
               );
             })}
           </div>
+          )}
 
           {/* feedback — a quick cheer when right, a real re-teach when wrong */}
           {result && (

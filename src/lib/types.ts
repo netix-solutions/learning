@@ -39,14 +39,51 @@ export type PracticeQuestion = {
   choices: string[];
   standard: string | null;
   xp: number;
+  // Defaults to "mcq" for the thousands of existing rows.
+  kind?: QuestionKind | null;
+  payload?: QuestionPayload | null;
   // Adaptive engine extras (present when served by get_adaptive_questions).
   skill?: string | null;
   focus?: "new" | "review" | "practice" | null;
 };
 
+/** How a question is answered. "mcq" is the classic pick-one-button. */
+export type QuestionKind =
+  | "mcq"
+  | "truefalse"
+  | "match"
+  | "order"
+  | "categorize"
+  | "tapword";
+
+/**
+ * Public, answer-free display data for the non-mcq kinds (pre-shuffled so items
+ * never appear in answer order). `null`/absent for mcq + truefalse, which use
+ * `choices`. The correct answer is withheld server-side — see record_attempt.
+ */
+export type QuestionPayload = {
+  tokens?: string[]; // tapword
+  items?: string[]; // order
+  label?: string; // order
+  buckets?: string[]; // categorize
+  left?: string[]; // match
+  right?: string[]; // match / categorize
+};
+
+/**
+ * What the kid submits, normalized per kind:
+ *   mcq / truefalse / tapword — the chosen index (number)
+ *   order      — item indices in the arranged order
+ *   categorize — a bucket index for each item (item order fixed)
+ *   match      — the right-index paired to each left item
+ */
+export type SubmittedAnswer = number | number[];
+
 export type AttemptResult = {
   is_correct: boolean;
   correct_index: number;
+  /** Generic correct answer for the new kinds (number for index-kinds, array otherwise). */
+  correct: SubmittedAnswer | null;
   explanation: string | null;
   xp_earned: number;
   new_xp: number;
