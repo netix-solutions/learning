@@ -23,6 +23,15 @@ const lines = sql.split("\n").filter((l) => l.startsWith("  ('"));
 const num = (s) => parseFloat(String(s).replace(/,/g, "")); // tolerate "6,000"
 const close = (a, b) => Math.abs(a - b) < 1e-6;
 
+// Evaluate "a o1 b o2 c" with × binding tighter than + / - (order of operations).
+function evalPrec(a, o1, b, o2, c) {
+  if (o1 === "×" && o2 !== "×") { const ab = a * b; return o2 === "+" ? ab + c : ab - c; }
+  if (o2 === "×" && o1 !== "×") { const bc = b * c; return o1 === "+" ? a + bc : a - bc; }
+  if (o1 === "×" && o2 === "×") return a * b * c;
+  const ab = o1 === "+" ? a + b : a - b; return o2 === "+" ? ab + c : ab - c;
+}
+const SHAPE_SIDES = { triangle: 3, square: 4, rectangle: 4, pentagon: 5, hexagon: 6, octagon: 8 };
+
 let rows = 0, structuralBad = 0, mathChecked = 0, mathBad = 0;
 const idxDist = { 0: 0, 1: 0, 2: 0, 3: 0 };
 const byKind = {};
@@ -31,19 +40,54 @@ const fail = (msg) => { console.log("  ✗", msg); };
 function recompute(prompt, choices, ai) {
   const keyed = choices[ai];
   let m;
-  // a OP b = ?  (integers or decimals; × is multiply)
-  if ((m = prompt.match(/^([\d.]+)\s*([+\-×])\s*([\d.]+)\s*=\s*\?$/))) {
+  // a OP b = ?  (integers or decimals; × multiply, ÷ divide)
+  if ((m = prompt.match(/^([\d.]+)\s*([+\-×÷])\s*([\d.]+)\s*=\s*\?$/))) {
     const x = num(m[1]), y = num(m[3]);
-    const exp = m[2] === "+" ? x + y : m[2] === "-" ? x - y : x * y;
+    const exp = m[2] === "+" ? x + y : m[2] === "-" ? x - y : m[2] === "×" ? x * y : x / y;
     return ["arith", close(num(keyed), exp), exp];
   }
-  // a + b × c = ?  (order of operations)
-  if ((m = prompt.match(/^What is\s+(\d+)\s*\+\s*(\d+)\s*×\s*(\d+)\s*\?$/))) {
-    return ["order-of-ops", close(num(keyed), num(m[1]) + num(m[2]) * num(m[3])), num(m[1]) + num(m[2]) * num(m[3])];
+  // pure +/- chain of 3+ terms: "a + b + c = ?" / "a + b - c = ?"
+  if (/^[\d.]+(\s*[+\-]\s*[\d.]+){2,}\s*=\s*\?$/.test(prompt)) {
+    const toks = prompt.replace(/\s*=\s*\?$/, "").match(/[+\-]|\d+(?:\.\d+)?/g);
+    let acc = num(toks[0]);
+    for (let i = 1; i < toks.length; i += 2) acc = toks[i] === "+" ? acc + num(toks[i + 1]) : acc - num(toks[i + 1]);
+    return ["chain", close(num(keyed), acc), acc];
   }
-  // rectangle area
-  if ((m = prompt.match(/rectangle is (\d+) cm by (\d+) cm/))) {
+  // order of operations: "What is a OP b OP c?" (× before + / -)
+  if ((m = prompt.match(/^What is\s+(\d+)\s*([+\-×])\s*(\d+)\s*([+\-×])\s*(\d+)\s*\?$/))) {
+    const exp = evalPrec(num(m[1]), m[2], num(m[3]), m[4], num(m[5]));
+    return ["order-of-ops", close(num(keyed), exp), exp];
+  }
+  // N more / N less than M  (covers 1 / 10 / 100 more or less)
+  if ((m = prompt.match(/^What is (\d+) (more|less) than (\d+)\?$/))) {
+    const exp = m[2] === "more" ? num(m[3]) + num(m[1]) : num(m[3]) - num(m[1]);
+    return ["more-less", close(num(keyed), exp), exp];
+  }
+  // "What number comes right before N?"
+  if ((m = prompt.match(/comes right before (\d+)\?/))) {
+    return ["before-number", close(num(keyed), num(m[1]) - 1), num(m[1]) - 1];
+  }
+  // arrays: "How many in A rows of B?"
+  if ((m = prompt.match(/How many in (\d+) rows of (\d+)\?/))) {
+    return ["array", close(num(keyed), num(m[1]) * num(m[2])), num(m[1]) * num(m[2])];
+  }
+  // "Which number is a multiple of N?" -> keyed divisible by N
+  if ((m = prompt.match(/Which number is a multiple of (\d+)\?/))) {
+    return ["multiple", num(keyed) % num(m[1]) === 0, `divisible by ${m[1]}`];
+  }
+  // "How many sides does a SHAPE have?"
+  if ((m = prompt.match(/How many sides does a (\w+) have\?/))) {
+    const sides = SHAPE_SIDES[m[1]];
+    if (sides) return ["shape-sides", close(num(keyed), sides), sides];
+  }
+  // rectangle area (must say "area" — perimeter shares the same lead-in)
+  if ((m = prompt.match(/rectangle is (\d+) cm by (\d+) cm\. What is its area\?/))) {
     return ["area", close(num(keyed), num(m[1]) * num(m[2])), `${num(m[1]) * num(m[2])} sq cm`];
+  }
+  // rectangle perimeter = 2(l + w)
+  if ((m = prompt.match(/rectangle is (\d+) cm by (\d+) cm\. What is its perimeter\?/))) {
+    const p = 2 * (num(m[1]) + num(m[2]));
+    return ["perimeter", close(num(keyed), p), `${p} cm`];
   }
   // box volume
   if ((m = prompt.match(/box is (\d+) × (\d+) × (\d+)/))) {

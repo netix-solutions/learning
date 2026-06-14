@@ -247,12 +247,28 @@ a, button, [role="button"], label, summary, input[type="submit"] {
   animation: answer-correct 0.55s ease both, glow-ring 1s ease both;
 }
 
+/* Floating "+N points" reward that pops, lifts, and fades. */
+@keyframes points-fly {
+  0% { transform: translate(-50%, 6px) scale(0.4); opacity: 0; }
+  22% { transform: translate(-50%, -6px) scale(1.25); opacity: 1; }
+  42% { transform: translate(-50%, -14px) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -96px) scale(0.92); opacity: 0; }
+}
+.points-pop { animation: points-fly 1.35s cubic-bezier(0.2, 0.8, 0.3, 1) forwards; }
+
+/* The points/level bar fill pulses when it grows. */
+@keyframes bar-pulse {
+  0%, 100% { filter: saturate(1) brightness(1); }
+  40% { filter: saturate(1.4) brightness(1.12); }
+}
+.bar-pulse { animation: bar-pulse 0.7s ease both; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-pop, .animate-float, .animate-wiggle, .animate-cheer, .animate-shake,
   .animate-drift, .animate-bob, .animate-sway, .animate-twinkle, .animate-spin-slow,
   .animate-rise, .shimmer-orange, .shimmer-blue,
   .sci-orbit, .sci-spin, .sci-rain, .sci-grow, .sci-jiggle, .sci-flow, .sci-pulse, .sci-rise,
-  .answer-correct, .cheer-badge {
+  .answer-correct, .cheer-badge, .points-pop, .bar-pulse {
     animation: none;
   }
   /* Hide motion-only celebration layers entirely when motion is reduced. */

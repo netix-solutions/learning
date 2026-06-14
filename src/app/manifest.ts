@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "SummerSharp — Summer Learning",
     short_name: "SummerSharp",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math and reading, earn XP, build daily streaks, and unlock badges.",
+      "A fun summer learning app for Florida K–5 students. Practice math and reading, earn points, build daily streaks, and unlock badges.",
     id: "/",
     start_url: "/",
     scope: "/",

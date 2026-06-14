@@ -5,6 +5,9 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
+import { PointsPopup } from "@/components/PointsPopup";
+import { CountUp } from "@/components/CountUp";
+import { xpLevel } from "@/components/XpBar";
 import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
@@ -45,6 +48,9 @@ export function PracticeClient({
   const [badges, setBadges] = useState<NewBadge[]>([]);
   const [confettiKey, setConfettiKey] = useState(0);
   const [correctKey, setCorrectKey] = useState(0);
+  const [pointsKey, setPointsKey] = useState(0);
+  const [lastPoints, setLastPoints] = useState(0);
+  const [combo, setCombo] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
@@ -58,6 +64,8 @@ export function PracticeClient({
     setCorrectCount(0);
     setXpEarned(0);
     setBadges([]);
+    setCombo(0);
+    setLastPoints(0);
 
     const supabase = createClient();
     let qs: PracticeQuestion[] = [];
@@ -132,11 +140,26 @@ export function PracticeClient({
       playCorrect();
       setCorrectCount((c) => c + 1);
       setXpEarned((x) => x + res.xp_earned);
-      setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
+      setLastPoints(res.xp_earned);
+      setPointsKey((k) => k + 1);
       setConfettiKey((k) => k + 1);
       setCorrectKey((k) => k + 1);
+      const newCombo = combo + 1;
+      setCombo(newCombo);
+
+      // Did this answer push them up a level? If so, make it a big moment.
+      const leveledUp =
+        xpLevel(res.new_xp).level > xpLevel(res.new_xp - res.xp_earned).level;
+      if (leveledUp) {
+        setCheer(`LEVEL ${xpLevel(res.new_xp).level}! 🚀`);
+      } else if (newCombo >= 3) {
+        setCheer(`${newCombo} in a row! 🔥`);
+      } else {
+        setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
+      }
     } else {
       playWrong();
+      setCombo(0);
     }
     if (res.new_badges.length) setBadges((b) => [...b, ...res.new_badges]);
   }
@@ -224,10 +247,10 @@ export function PracticeClient({
               You got <b>{correctCount}</b> out of <b>{total}</b> right.
             </p>
             <div
-              className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-xl font-bold text-white"
+              className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-xl font-bold text-white animate-pop"
               style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
             >
-              ⚡ +{xpEarned} XP
+              ⭐ +<CountUp value={xpEarned} /> points
             </div>
 
             {badges.length > 0 && (
@@ -272,16 +295,24 @@ export function PracticeClient({
     <>
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
+      <PointsPopup fire={pointsKey} amount={lastPoints} />
       <main className="mx-auto max-w-2xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
           <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">
             ← Quit
           </Link>
-          <span className={`rounded-full px-3 py-1 text-sm font-bold ${theme.soft} ${theme.text}`}>
-            {subject.emoji} {subject.name}
-          </span>
+          {combo >= 2 ? (
+            <span className="animate-pop rounded-full bg-orange-100 px-3 py-1 text-sm font-bold text-orange-700">
+              🔥 {combo} in a row!
+            </span>
+          ) : (
+            <span className={`rounded-full px-3 py-1 text-sm font-bold ${theme.soft} ${theme.text}`}>
+              {subject.emoji} {subject.name}
+            </span>
+          )}
           <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-bold text-amber-700">
-            ⚡ {xpEarned} XP
+            {/* keyed so the count visibly pops each time points are scored */}
+            ⭐ <span key={xpEarned} className="inline-block animate-pop">{xpEarned}</span> pts
           </span>
         </header>
 

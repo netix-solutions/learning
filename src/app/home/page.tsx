@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
+import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { XpBar } from "@/components/XpBar";
 import { subjectTheme, gradeLabel, type StudentSummary, type Subject } from "@/lib/types";
 
@@ -34,9 +35,12 @@ export default async function StudentHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
-      <header className="mb-6 flex items-center justify-between">
+      <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
-        <SignOutButton />
+        <div className="flex items-center gap-2">
+          <SwitchToParentButton />
+          <SignOutButton />
+        </div>
       </header>
 
       {/* Hero */}

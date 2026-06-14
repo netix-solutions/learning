@@ -5,6 +5,8 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
 import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
+import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
+import { skillStanding } from "@/lib/teaching";
 import {
   subjectTheme,
   gradeLabel,
@@ -51,6 +53,30 @@ export default async function ChildDetail({
         }),
       )
     : [];
+
+  // Pair each subject's progress with skill standings for the grade-goals view.
+  const subjectStandings: SubjectStanding[] = s.subjects.map((sub) => {
+    const sk = skillsBySubject.find((x) => x.id === sub.subject_id);
+    const counts = (sk?.skills ?? []).reduce(
+      (acc, m) => {
+        const st = skillStanding(m);
+        if (st === "strong") acc.strong += 1;
+        else if (st === "focus") acc.focus += 1;
+        return acc;
+      },
+      { strong: 0, focus: 0 },
+    );
+    return {
+      id: sub.subject_id,
+      name: sub.name,
+      emoji: sub.emoji,
+      color: sub.color,
+      attempts: sub.attempts,
+      correct: sub.correct,
+      strong: counts.strong,
+      focus: counts.focus,
+    };
+  });
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6">
@@ -115,6 +141,13 @@ export default async function ChildDetail({
         })}
       </div>
 
+      {/* Grade-level standards explainer + how the child is doing in each */}
+      <GradeStandards
+        grade={s.profile.grade}
+        childName={s.profile.display_name}
+        subjects={subjectStandings}
+      />
+
       {/* Skill breakdown — which subtopics they're strong/weak in + how to help */}
       <SkillBreakdown childName={s.profile.display_name} subjects={skillsBySubject} />
 
@@ -148,7 +181,7 @@ export default async function ChildDetail({
                 {r.is_correct ? "Correct" : "Tried"}
               </span>
               <span className="ml-auto text-sm font-bold text-slate-400">
-                {r.is_correct ? `+${r.xp_earned} XP` : "—"} {r.is_correct ? "✅" : "❌"}
+                {r.is_correct ? `+${r.xp_earned} pts` : "—"} {r.is_correct ? "✅" : "❌"}
               </span>
             </div>
           ))}

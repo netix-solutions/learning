@@ -4,6 +4,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SignOutButton } from "@/components/SignOutButton";
 import { RemoveChildButton } from "@/components/RemoveChildButton";
+import { OpenChildButton } from "@/components/OpenChildButton";
 import { AddChildForm } from "@/components/forms/AddChildForm";
 import { xpLevel } from "@/components/XpBar";
 import { gradeLabel, type ChildOverview } from "@/lib/types";
@@ -76,14 +77,17 @@ export default async function ParentDashboard() {
                   <Stat label="Accuracy" value={`${accuracy}%`} />
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <OpenChildButton childId={c.id} name={c.display_name} />
                   <Link
                     href={`/parent/child/${c.id}`}
                     className="btn-pop bg-white px-4 py-2 text-sm font-bold text-[var(--brand-blue)] ring-2 ring-blue-100"
                   >
                     View progress →
                   </Link>
-                  <RemoveChildButton childId={c.id} name={c.display_name} />
+                  <span className="ml-auto">
+                    <RemoveChildButton childId={c.id} name={c.display_name} />
+                  </span>
                 </div>
               </div>
             );
