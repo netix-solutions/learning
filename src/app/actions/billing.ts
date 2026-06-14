@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripe } from "@/lib/stripe";
-import { TRIAL_DAYS } from "@/lib/billing";
+import { TRIAL_DAYS, MAX_KIDS } from "@/lib/billing";
 
 function appUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -72,8 +72,17 @@ async function ensureCustomer(
   return customer.id;
 }
 
-/** Start a Stripe Checkout session for the subscription (quantity = kids). */
-export async function startCheckout(): Promise<{ error: string } | undefined> {
+/**
+ * Start a Stripe Checkout session for the subscription.
+ *
+ * `seats` is how many kids the parent chose during onboarding — they pick the
+ * count BEFORE creating any kid logins, so quantity comes from this arg, not the
+ * (still-empty) parent_child table. When omitted (e.g. re-subscribing from the
+ * billing page), we fall back to the kids already on the account, min 1.
+ */
+export async function startCheckout(
+  seats?: number,
+): Promise<{ error: string } | undefined> {
   const auth = await requireParent();
   if ("error" in auth) return { error: auth.error };
 
@@ -86,30 +95,30 @@ export async function startCheckout(): Promise<{ error: string } | undefined> {
     .from("parent_child")
     .select("*", { count: "exact", head: true })
     .eq("parent_id", auth.parentId);
-  const kids = count ?? 0;
-  // Seats are chosen before checkout, so we charge for exactly the kids on the
-  // account. No kids yet means there's nothing to subscribe — add one first.
-  if (kids < 1)
-    return { error: "Add at least one child first, then start your free trial." };
+  const kidsOnAccount = count ?? 0;
+
+  const requested = seats ?? Math.max(1, kidsOnAccount);
+  const quantity = Math.min(MAX_KIDS, Math.max(1, Math.floor(requested)));
 
   const customerId = await ensureCustomer(auth.parentId, auth.email, auth.name);
   if (!customerId) return { error: "Billing isn't set up yet." };
 
   // A fresh TRIAL_DAYS Stripe trial starting now. Checkout collects a card up
   // front (the default for subscription mode), so the plan converts to paid
-  // automatically when the trial ends unless the parent cancels.
+  // automatically when the trial ends unless the parent cancels. After success
+  // we send them to /parent to create their kids' logins.
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer: customerId,
-    line_items: [{ price: priceId, quantity: kids }],
+    line_items: [{ price: priceId, quantity }],
     subscription_data: {
       metadata: { parent_id: auth.parentId },
       trial_period_days: TRIAL_DAYS,
     },
     metadata: { parent_id: auth.parentId },
     allow_promotion_codes: true,
-    success_url: `${appUrl()}/parent/billing?status=success`,
-    cancel_url: `${appUrl()}/parent/billing?status=cancel`,
+    success_url: `${appUrl()}/parent?status=success`,
+    cancel_url: `${appUrl()}/parent?status=cancel`,
   });
 
   if (!session.url) return { error: "Could not start checkout." };

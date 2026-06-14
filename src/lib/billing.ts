@@ -12,6 +12,7 @@
 export const BASE_PRICE_CENTS = 400; // first kid
 export const EXTRA_PRICE_CENTS = 200; // each additional kid
 export const TRIAL_DAYS = 7;
+export const MAX_KIDS = 10; // upper bound on seats a parent can buy at once
 
 /** Monthly price (in cents) for a given number of kids. */
 export function priceForKids(kids: number): number {
