@@ -9,7 +9,7 @@ import { PointsPopup } from "@/components/PointsPopup";
 import { CountUp } from "@/components/CountUp";
 import { xpLevel } from "@/components/XpBar";
 import { teachFor } from "@/lib/teaching";
-import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
+import { playCorrect, playWrong, playQuizStart, playTally } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram } from "@/components/ScienceDiagram";
@@ -115,6 +115,11 @@ export function PracticeClient({
       speak(`pk-${current.id}`, current.prompt);
     }
   }, [isPreK, phase, current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // On the results screen, play the "recharge" whir while the points tally up.
+  useEffect(() => {
+    if (phase === "done" && xpEarned > 0) playTally();
+  }, [phase, xpEarned]);
 
   async function choose(choiceIndex: number) {
     if (result || submitting || !current) return;
@@ -250,7 +255,7 @@ export function PracticeClient({
               className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-xl font-bold text-white animate-pop"
               style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
             >
-              ⭐ +<CountUp value={xpEarned} /> points
+              ⭐ +<CountUp value={xpEarned} durationMs={1500} /> points
             </div>
 
             {badges.length > 0 && (

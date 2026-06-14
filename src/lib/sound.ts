@@ -10,6 +10,7 @@ const SOURCES = {
   correct: "/sounds/correct.wav",
   wrong: "/sounds/wrong.wav",
   quizStart: "/sounds/quiz-start.wav",
+  tally: "/sounds/tally.wav",
 } as const;
 
 export type SoundName = keyof typeof SOURCES;
@@ -21,6 +22,7 @@ const VOLUMES: Record<SoundName, number> = {
   correct: 0.55,
   wrong: 0.4,
   quizStart: 0.5,
+  tally: 0.5,
 };
 
 let ctx: AudioContext | null = null;
@@ -123,4 +125,9 @@ export function playWrong() {
 /** Convenience: the musical reveal that opens a new quiz. */
 export function playQuizStart() {
   playSound("quizStart");
+}
+
+/** Convenience: the "recharge" whir while the results-screen points tally up. */
+export function playTally() {
+  playSound("tally");
 }
