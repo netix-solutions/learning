@@ -7,9 +7,16 @@ import { SignOutButton } from "@/components/SignOutButton";
 import { RemoveChildButton } from "@/components/RemoveChildButton";
 import { OpenChildButton } from "@/components/OpenChildButton";
 import { AddChildForm } from "@/components/forms/AddChildForm";
+import { BillingButtons } from "@/components/billing/BillingButtons";
 import { xpLevel } from "@/components/XpBar";
 import { getParentEntitlement } from "@/lib/entitlement";
-import { priceForKids, formatCents } from "@/lib/billing";
+import {
+  priceForKids,
+  formatCents,
+  BASE_PRICE_CENTS,
+  EXTRA_PRICE_CENTS,
+  TRIAL_DAYS,
+} from "@/lib/billing";
 import { gradeLabel, type ChildOverview } from "@/lib/types";
 
 export default async function ParentDashboard() {
@@ -55,6 +62,50 @@ export default async function ParentDashboard() {
           {planLabel}
         </Link>
       </div>
+
+      {/* Mandatory trial gate — new accounts must start a Stripe trial. Shown
+          until checkout completes; lets them add kids first, then converts. */}
+      {ent.billingEnabled && ent.reason === "needs_subscription" && (
+        <section className="card-fun mt-6 p-6 text-center ring-2 ring-[var(--brand-orange)]">
+          <div className="text-5xl">🎈</div>
+          <h2 className="mt-2 font-display text-2xl font-bold text-slate-800">
+            Start your {TRIAL_DAYS}-day free trial
+          </h2>
+          {children.length === 0 ? (
+            <p className="mx-auto mt-1 max-w-md text-slate-600">
+              First, add your kids below 👇 then start your free trial — no charge
+              today.
+            </p>
+          ) : (
+            <>
+              <p className="mx-auto mt-1 max-w-md text-slate-600">
+                You&apos;re all set with {children.length}{" "}
+                {children.length === 1 ? "kid" : "kids"}. Start your free trial to
+                unlock practice for everyone.
+              </p>
+              <div className="mx-auto mt-4 max-w-xs rounded-2xl bg-slate-50 p-4">
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="font-display text-3xl font-extrabold text-slate-800">
+                    {formatCents(priceForKids(children.length))}
+                  </span>
+                  <span className="text-slate-500">/mo after trial</span>
+                </div>
+                <p className="mt-1 text-sm font-semibold text-slate-500">
+                  for {children.length} {children.length === 1 ? "kid" : "kids"} ·{" "}
+                  {formatCents(BASE_PRICE_CENTS)} first +{" "}
+                  {formatCents(EXTRA_PRICE_CENTS)} each extra
+                </p>
+              </div>
+              <div className="mt-5">
+                <BillingButtons mode="subscribe" label={`Start ${TRIAL_DAYS}-day free trial →`} />
+              </div>
+              <p className="mt-2 text-xs text-slate-400">
+                Card required · no charge today · cancel anytime
+              </p>
+            </>
+          )}
+        </section>
+      )}
 
       {children.length === 0 ? (
         <div className="card-fun mt-6 p-8 text-center">

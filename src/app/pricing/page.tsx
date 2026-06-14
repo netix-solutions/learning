@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
 import { PriceCalculator } from "@/components/marketing/PriceCalculator";
-import { TRIAL_DAYS } from "@/lib/billing";
+import { TRIAL_DAYS, BASE_PRICE_CENTS, formatCents } from "@/lib/billing";
 
 export const metadata: Metadata = {
   title: "Pricing — SummerSharp",
@@ -119,7 +119,8 @@ export default function PricingPage() {
               Keep their brain sharp all summer ☀️
             </h2>
             <p className="mt-2 text-white/90">
-              {TRIAL_DAYS} days free. Then ${"5"}/mo for one kid. Cancel anytime.
+              {TRIAL_DAYS} days free. Then {formatCents(BASE_PRICE_CENTS)}/mo for one
+              kid. Cancel anytime.
             </p>
             <Link
               href="/signup"

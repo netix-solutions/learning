@@ -25,7 +25,9 @@ export default async function StudentHome() {
   const [{ data: summaryData }, { data: subjects }, { data: badges }, { data: goalData }] =
     await Promise.all([
       supabase.rpc("get_student_summary", { p_student_id: user.id }),
-      supabase.from("subjects").select("*").order("sort"),
+      // Only show subjects that have questions for this child's grade — e.g.
+      // Pre-K shouldn't see civics, economics, geography, or history.
+      supabase.rpc("get_grade_subjects", { p_grade: profile.grade }),
       supabase.from("badges").select("*").order("sort"),
       supabase.rpc("get_my_goal_progress"),
     ]);

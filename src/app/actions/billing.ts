@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripe } from "@/lib/stripe";
-import { signupTrialEndMs } from "@/lib/entitlement";
+import { TRIAL_DAYS } from "@/lib/billing";
 
 function appUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -86,31 +86,26 @@ export async function startCheckout(): Promise<{ error: string } | undefined> {
     .from("parent_child")
     .select("*", { count: "exact", head: true })
     .eq("parent_id", auth.parentId);
-  const kids = Math.max(1, count ?? 0);
+  const kids = count ?? 0;
+  // Seats are chosen before checkout, so we charge for exactly the kids on the
+  // account. No kids yet means there's nothing to subscribe — add one first.
+  if (kids < 1)
+    return { error: "Add at least one child first, then start your free trial." };
 
   const customerId = await ensureCustomer(auth.parentId, auth.email, auth.name);
   if (!customerId) return { error: "Billing isn't set up yet." };
 
-  // Align Stripe's trial end with the account's signup trial, so the parent is
-  // charged exactly when their free window runs out — never a second 7 days,
-  // never an early charge. Stripe requires trial_end to be at least ~48h out;
-  // if less time remains (or the signup trial already lapsed), we omit it and
-  // let the subscription bill immediately.
-  const trialEndMs = signupTrialEndMs(auth.createdAt);
-  const MIN_TRIAL_MS = 48 * 60 * 60 * 1000;
-  const subscriptionData: {
-    metadata: { parent_id: string };
-    trial_end?: number;
-  } = { metadata: { parent_id: auth.parentId } };
-  if (trialEndMs - Date.now() > MIN_TRIAL_MS) {
-    subscriptionData.trial_end = Math.floor(trialEndMs / 1000); // Unix seconds
-  }
-
+  // A fresh TRIAL_DAYS Stripe trial starting now. Checkout collects a card up
+  // front (the default for subscription mode), so the plan converts to paid
+  // automatically when the trial ends unless the parent cancels.
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer: customerId,
     line_items: [{ price: priceId, quantity: kids }],
-    subscription_data: subscriptionData,
+    subscription_data: {
+      metadata: { parent_id: auth.parentId },
+      trial_period_days: TRIAL_DAYS,
+    },
     metadata: { parent_id: auth.parentId },
     allow_promotion_codes: true,
     success_url: `${appUrl()}/parent/billing?status=success`,

@@ -1,6 +1,5 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { TRIAL_DAYS } from "@/lib/billing";
 
 // Single source of truth for "is this account allowed to use the paid app?".
 // Everything funnels through here so the gating POLICY is a one-place change.
@@ -9,22 +8,27 @@ import { TRIAL_DAYS } from "@/lib/billing";
 //   • BILLING_ENABLED=false  → everyone is entitled (app is free). Default.
 //   • Grandfathering         → parent accounts created before BILLING_LAUNCH_AT
 //                              are free forever.
-//   • Free trial             → every NEW account is entitled for TRIAL_DAYS,
-//                              measured from the parent profile's created_at, so
-//                              the trial starts the moment the account exists —
-//                              no card and no Stripe object required.
+//   • Free trial             → the trial is a STRIPE trial, created via Checkout
+//                              at signup (card on file). There is NO card-free
+//                              auto-trial: a new account is NOT entitled until it
+//                              completes Stripe Checkout. This makes starting the
+//                              trial mandatory for every new signup.
 //   • Otherwise              → entitled while the Stripe subscription is active
 //                              or trialing.
 //   • What's gated           → kids' practice (enforced server-side at the
-//                              practice route) plus a blocking paywall overlay
-//                              on /home and /parent (the billing page stays open).
+//                              practice route) plus a blocking paywall overlay on
+//                              /home, and on /parent ONLY once a trial has lapsed.
+//                              New accounts mid-onboarding ("needs_subscription")
+//                              keep /parent usable so they can add their kids
+//                              before being funnelled into Checkout.
 
 export type EntitlementReason =
   | "billing_off"
   | "grandfathered"
   | "subscribed"
   | "trialing"
-  | "locked";
+  | "needs_subscription" // billing on, never subscribed yet — must start a trial
+  | "locked"; // had a subscription/trial that has since lapsed
 
 export type Entitlement = {
   entitled: boolean;
@@ -35,8 +39,6 @@ export type Entitlement = {
   kids: number; // kids currently on the account
   trialEndsAt: string | null; // ISO end of the active trial/period, if any
 };
-
-const DAY_MS = 86_400_000;
 
 export function billingEnabled(): boolean {
   return process.env.BILLING_ENABLED === "true";
@@ -55,12 +57,6 @@ function isGrandfathered(createdAt: string | null | undefined): boolean {
   const launch = process.env.BILLING_LAUNCH_AT;
   if (!launch || !createdAt) return false;
   return new Date(createdAt).getTime() < new Date(launch).getTime();
-}
-
-/** End of the signup-anchored free trial, in epoch ms (0 if unknown). */
-export function signupTrialEndMs(createdAt: string | null | undefined): number {
-  if (!createdAt) return 0;
-  return new Date(createdAt).getTime() + TRIAL_DAYS * DAY_MS;
 }
 
 /** Entitlement for a PARENT account. */
@@ -83,13 +79,9 @@ export async function getParentEntitlement(parentId: string): Promise<Entitlemen
     return { entitled: true, billingEnabled: true, reason: "grandfathered", status: "grandfathered", seats: kids, kids, trialEndsAt: null };
   }
 
-  // Auto-trial: entitled for TRIAL_DAYS from the moment the account was created.
-  const trialEndMs = signupTrialEndMs(prof?.created_at);
-  const inSignupTrial = trialEndMs > Date.now();
-
   const { data: sub } = await admin
     .from("subscriptions")
-    .select("status, seats, current_period_end")
+    .select("status, seats, current_period_end, stripe_subscription_id")
     .eq("parent_id", parentId)
     .maybeSingle();
 
@@ -99,24 +91,24 @@ export async function getParentEntitlement(parentId: string): Promise<Entitlemen
     !sub?.current_period_end || new Date(sub.current_period_end).getTime() > Date.now();
   const subEntitled = activeStatus && notExpired;
 
-  const entitled = subEntitled || inSignupTrial;
+  // The only path to a trial is Stripe Checkout — there is no card-free
+  // auto-trial. A brand-new account that has never created a Stripe subscription
+  // is mid-onboarding ("needs_subscription"); an account whose subscription has
+  // since lapsed is "locked" (gets the blocking paywall).
+  const hasRealSub = !!sub?.stripe_subscription_id;
+  const entitled = subEntitled;
   const reason: EntitlementReason = subEntitled
     ? status === "trialing"
       ? "trialing"
       : "subscribed"
-    : inSignupTrial
-      ? "trialing"
-      : "locked";
+    : hasRealSub
+      ? "locked"
+      : "needs_subscription";
 
-  // Surface when the current free window ends, so the UI can nudge ("2 days
-  // left"). Prefer Stripe's period end when subscribed; else the signup trial.
+  // Surface when the current paid/trial window ends, so the UI can nudge.
   const trialEndsAt =
-    reason === "trialing"
-      ? subEntitled && sub?.current_period_end
-        ? new Date(sub.current_period_end).toISOString()
-        : trialEndMs
-          ? new Date(trialEndMs).toISOString()
-          : null
+    subEntitled && sub?.current_period_end
+      ? new Date(sub.current_period_end).toISOString()
       : null;
 
   return {

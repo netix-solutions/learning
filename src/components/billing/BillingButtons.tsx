@@ -4,7 +4,13 @@ import { useState, useTransition } from "react";
 import { startCheckout, openBillingPortal } from "@/app/actions/billing";
 
 /** Subscribe / Manage buttons that drive the Stripe Checkout & Portal flows. */
-export function BillingButtons({ mode }: { mode: "subscribe" | "manage" }) {
+export function BillingButtons({
+  mode,
+  label,
+}: {
+  mode: "subscribe" | "manage";
+  label?: string;
+}) {
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const run = mode === "subscribe" ? startCheckout : openBillingPortal;
@@ -30,9 +36,11 @@ export function BillingButtons({ mode }: { mode: "subscribe" | "manage" }) {
       >
         {pending
           ? "One sec…"
-          : mode === "subscribe"
-            ? "Start subscription →"
-            : "Manage plan"}
+          : label
+            ? label
+            : mode === "subscribe"
+              ? "Start subscription →"
+              : "Manage plan"}
       </button>
       {error && <p className="text-sm font-semibold text-red-500">{error}</p>}
     </div>
