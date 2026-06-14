@@ -9,7 +9,7 @@ export const maxDuration = 30;
 const ELEVEN_API = "https://api.elevenlabs.io/v1/text-to-speech";
 // Low-latency, low-cost model — ideal for short, frequently-repeated kid prompts.
 const MODEL_ID = "eleven_flash_v2_5";
-const DEFAULT_VOICE = "EXAVITQu4vr4xnSDxMaL"; // "Sarah" — warm, clear
+const DEFAULT_VOICE = "cgSgspJ2msm6clMCkdW9"; // "Jessica" — happy, energetic, motivating
 const MAX_CHARS = 600;
 
 // Coarse per-student burst guard (in-memory, per serverless instance), matching
@@ -97,13 +97,14 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         text,
         model_id: MODEL_ID,
-        // Tuned for young listeners: stable, clear, a touch slower.
+        // Tuned to sound happy and motivating for kids: lower stability +
+        // some style for lively expression, with a bright, upbeat pace.
         voice_settings: {
-          stability: 0.55,
+          stability: 0.4,
           similarity_boost: 0.75,
-          style: 0.0,
+          style: 0.35,
           use_speaker_boost: true,
-          speed: 0.92,
+          speed: 0.96,
         },
       }),
     });
