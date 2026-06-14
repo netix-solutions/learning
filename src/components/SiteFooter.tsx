@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 /**
  * App-wide footer crediting Netix Solutions, LLC.
@@ -22,14 +21,6 @@ export function SiteFooter() {
           <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-slate-400 transition-colors group-hover:text-slate-500">
             Built by
           </span>
-
-          <Image
-            src="/netix-logo.png"
-            alt="Netix Solutions logo"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
 
           <span className="font-display text-sm font-semibold tracking-tight">
             Netix
