@@ -438,6 +438,327 @@ export const AVATAR_DEFS: AvatarDef[] = [
       </>
     ),
   },
+
+  // ── Superheroes ──────────────────────────────────────────────
+  {
+    id: "superhero",
+    name: "Superhero",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#D7E4FF" />
+        <path d="M26 70Q50 84 74 70L80 96H20Z" fill="#E23B4E" />
+        <path d="M30 96Q50 66 70 96Z" fill="#2F6BD8" />
+        <path d="M50 77l5 6-5 8-5-8z" fill="#FFD23F" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#EBB089" />
+        <circle cx="50" cy="46" r="22" fill="#F1C29B" />
+        <path d="M28 46Q28 22 50 22 72 22 72 46Q66 36 50 36 34 36 28 46Z" fill="#3A2A20" />
+        <path d="M30 44Q50 38 70 44Q70 54 58 54Q54 49 50 49 46 49 42 54Q30 54 30 44Z" fill="#1E48A8" />
+        <circle cx="40" cy="47" r="4" fill="#fff" />
+        <circle cx="60" cy="47" r="4" fill="#fff" />
+        <circle cx="40" cy="47" r="2" fill="#2D2A32" />
+        <circle cx="60" cy="47" r="2" fill="#2D2A32" />
+        <path d="M44 58q6 5 12 0" fill="none" stroke="#B5734C" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={55} />
+      </>
+    ),
+  },
+  {
+    id: "starhero",
+    name: "Star Hero",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#FCE0EE" />
+        <path d="M26 70Q50 84 74 70L80 96H20Z" fill="#7C3AED" />
+        <path d="M24 50Q24 90 36 92Q40 70 40 60Z" fill="#5B3A29" />
+        <path d="M76 50Q76 90 64 92Q60 70 60 60Z" fill="#5B3A29" />
+        <path d="M30 96Q50 66 70 96Z" fill="#EC4899" />
+        <path d="M50 76l4 5-4 7-4-7z" fill="#FFD23F" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#E8A77E" />
+        <circle cx="50" cy="46" r="22" fill="#F0BE94" />
+        <path d="M28 46Q28 22 50 22 72 22 72 46Q70 34 50 34 30 34 28 46Z" fill="#5B3A29" />
+        <path d="M30 44Q50 38 70 44Q70 54 58 54Q54 49 50 49 46 49 42 54Q30 54 30 44Z" fill="#DB2777" />
+        <circle cx="40" cy="47" r="4" fill="#fff" />
+        <circle cx="60" cy="47" r="4" fill="#fff" />
+        <circle cx="40" cy="47" r="2" fill="#2D2A32" />
+        <circle cx="60" cy="47" r="2" fill="#2D2A32" />
+        <path d="M44 58q6 5 12 0" fill="none" stroke="#B5734C" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={55} color="#F7AFC5" />
+      </>
+    ),
+  },
+
+  // ── Careers ──────────────────────────────────────────────────
+  {
+    id: "astronaut",
+    name: "Astronaut",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#1B2A4A" />
+        <circle cx="20" cy="24" r="1.6" fill="#fff" />
+        <circle cx="80" cy="30" r="1.4" fill="#fff" />
+        <circle cx="74" cy="16" r="1.2" fill="#fff" />
+        <circle cx="26" cy="74" r="1.4" fill="#fff" />
+        <path d="M26 96Q50 70 74 96Z" fill="#E8EDF2" />
+        <circle cx="50" cy="48" r="26" fill="#F2F5F8" />
+        <circle cx="50" cy="48" r="20" fill="#3A4A66" />
+        <path d="M36 40Q42 34 52 36L48 50Q40 50 36 44Z" fill="#6E8CC0" opacity="0.6" />
+        <circle cx="44" cy="50" r="2.6" fill="#fff" />
+        <circle cx="56" cy="50" r="2.6" fill="#fff" />
+        <path d="M45 56q5 4 10 0" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="68" cy="30" r="3" fill="#E23B4E" />
+      </>
+    ),
+  },
+  {
+    id: "doctor",
+    name: "Doctor",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#E3F2F4" />
+        <path d="M28 96Q50 66 72 96Z" fill="#fff" />
+        <path d="M50 68l-8 10 4 10 4-8 4 8 4-10z" fill="#E2E8EC" />
+        <path d="M44 70Q40 86 50 88 60 86 56 70" fill="none" stroke="#3B82C4" strokeWidth="2.4" />
+        <circle cx="50" cy="90" r="3.4" fill="#3B82C4" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#B57A4D" />
+        <circle cx="50" cy="46" r="22" fill="#C98A57" />
+        <path d="M28 48Q28 22 50 22 72 22 72 48Q66 38 50 38 34 38 28 48Z" fill="#2A2018" />
+        <circle cx="50" cy="30" r="5" fill="#D7DEE3" stroke="#9AA7B0" strokeWidth="1.5" />
+        <circle cx="50" cy="30" r="2" fill="#fff" />
+        <Eyes y={48} />
+        <path d="M44 57q6 5 12 0" fill="none" stroke="#7A4B2A" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={54} color="#E59A88" />
+      </>
+    ),
+  },
+  {
+    id: "chef",
+    name: "Chef",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#FBEEE0" />
+        <path d="M28 96Q50 70 72 96Z" fill="#fff" />
+        <path d="M42 70l8 10 8-10-2 6-6 10-6-10z" fill="#E23B4E" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#E8A77E" />
+        <circle cx="50" cy="48" r="21" fill="#F0BE94" />
+        <rect x="34" y="30" width="32" height="12" rx="3" fill="#fff" />
+        <circle cx="40" cy="26" r="9" fill="#fff" />
+        <circle cx="50" cy="22" r="10" fill="#fff" />
+        <circle cx="60" cy="26" r="9" fill="#fff" />
+        <Eyes y={50} />
+        <path d="M44 59q6 5 12 0" fill="none" stroke="#B5734C" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={56} />
+      </>
+    ),
+  },
+  {
+    id: "firefighter",
+    name: "Firefighter",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#FBE3DC" />
+        <path d="M28 96Q50 70 72 96Z" fill="#F2C14E" />
+        <path d="M46 70h8v26h-8z" fill="#3A3A3A" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#C98A57" />
+        <circle cx="50" cy="50" r="21" fill="#C98A57" />
+        <path d="M24 44Q50 16 76 44Q76 50 70 50L30 50Q24 50 24 44Z" fill="#D32F2F" />
+        <path d="M40 26H60L64 44H36Z" fill="#B71C1C" />
+        <rect x="42" y="30" width="16" height="9" rx="2" fill="#FFD23F" />
+        <Eyes y={52} />
+        <path d="M44 61q6 5 12 0" fill="none" stroke="#7A4B2A" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={58} color="#E59A88" />
+      </>
+    ),
+  },
+  {
+    id: "police",
+    name: "Police Officer",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#DCE6F5" />
+        <path d="M28 96Q50 70 72 96Z" fill="#27408B" />
+        <circle cx="50" cy="78" r="3.4" fill="#FFD23F" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#E8A77E" />
+        <circle cx="50" cy="50" r="21" fill="#F0BE94" />
+        <path d="M26 52Q50 58 74 52L74 56Q50 62 26 56Z" fill="#16224A" />
+        <path d="M28 42Q50 24 72 42L72 46H28Z" fill="#27408B" />
+        <rect x="26" y="44" width="48" height="6" rx="2" fill="#1B2E63" />
+        <rect x="42" y="33" width="16" height="9" rx="2" fill="#1B2E63" />
+        <path d="M50 34l1.6 3.4h-3.2z" fill="#FFD23F" />
+        <Eyes y={50} />
+        <path d="M44 59q6 5 12 0" fill="none" stroke="#B5734C" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={56} />
+      </>
+    ),
+  },
+  {
+    id: "scientist",
+    name: "Scientist",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#E6F0E8" />
+        <path d="M28 96Q50 70 72 96Z" fill="#fff" />
+        <rect x="58" y="74" width="5" height="14" rx="2.5" fill="#7CC44C" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#C98A57" />
+        <circle cx="30" cy="42" r="9" fill="#AEB4BA" />
+        <circle cx="70" cy="42" r="9" fill="#AEB4BA" />
+        <circle cx="36" cy="32" r="6" fill="#AEB4BA" />
+        <circle cx="64" cy="32" r="6" fill="#AEB4BA" />
+        <circle cx="50" cy="48" r="21" fill="#C98A57" />
+        <rect x="30" y="42" width="40" height="12" rx="6" fill="none" stroke="#5A6470" strokeWidth="2" />
+        <circle cx="40" cy="48" r="6" fill="#BFE3F5" opacity="0.85" stroke="#5A6470" strokeWidth="2" />
+        <circle cx="60" cy="48" r="6" fill="#BFE3F5" opacity="0.85" stroke="#5A6470" strokeWidth="2" />
+        <circle cx="40" cy="48" r="2" fill="#2D2A32" />
+        <circle cx="60" cy="48" r="2" fill="#2D2A32" />
+        <path d="M44 60q6 5 12 0" fill="none" stroke="#7A4B2A" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={57} color="#E59A88" />
+      </>
+    ),
+  },
+  {
+    id: "artist",
+    name: "Artist",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#FBEAF2" />
+        <path d="M28 96Q50 70 72 96Z" fill="#fff" />
+        <g stroke="#2F6BD8" strokeWidth="3">
+          <path d="M34 88h32M32 80h36M36 94h28" />
+        </g>
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#E8A77E" />
+        <circle cx="50" cy="48" r="21" fill="#F0BE94" />
+        <path d="M29 48Q29 26 50 26 71 26 71 48Q66 38 50 38 34 38 29 48Z" fill="#6B4A2E" />
+        <ellipse cx="50" cy="30" rx="20" ry="8" fill="#E23B4E" />
+        <circle cx="50" cy="23" r="3" fill="#E23B4E" />
+        <Eyes y={50} />
+        <path d="M44 59q6 5 12 0" fill="none" stroke="#B5734C" strokeWidth="2.4" strokeLinecap="round" />
+        <ellipse cx="74" cy="76" rx="10" ry="7" fill="#D9A86E" />
+        <circle cx="70" cy="74" r="1.8" fill="#E23B4E" />
+        <circle cx="76" cy="73" r="1.8" fill="#2F6BD8" />
+        <circle cx="78" cy="78" r="1.8" fill="#FFD23F" />
+        <Blush y={56} />
+      </>
+    ),
+  },
+
+  // ── Fun characters ───────────────────────────────────────────
+  {
+    id: "robot",
+    name: "Robot",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#E0F7FA" />
+        <line x1="50" y1="22" x2="50" y2="14" stroke="#7A8A99" strokeWidth="2.4" />
+        <circle cx="50" cy="12" r="3.4" fill="#E23B4E" />
+        <rect x="24" y="38" width="5" height="10" rx="2" fill="#90A4AE" />
+        <rect x="71" y="38" width="5" height="10" rx="2" fill="#90A4AE" />
+        <rect x="28" y="24" width="44" height="38" rx="10" fill="#B0BEC5" />
+        <rect x="33" y="30" width="34" height="26" rx="7" fill="#37474F" />
+        <circle cx="42" cy="42" r="5" fill="#4DD0E1" />
+        <circle cx="58" cy="42" r="5" fill="#4DD0E1" />
+        <circle cx="42" cy="42" r="2" fill="#fff" />
+        <circle cx="58" cy="42" r="2" fill="#fff" />
+        <rect x="40" y="50" width="20" height="3.4" rx="1.7" fill="#4DD0E1" />
+        <rect x="36" y="66" width="28" height="26" rx="6" fill="#90A4AE" />
+        <circle cx="50" cy="78" r="4" fill="#4DD0E1" />
+      </>
+    ),
+  },
+  {
+    id: "ninja",
+    name: "Ninja",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#FDE2E4" />
+        <path d="M26 96Q50 70 74 96Z" fill="#2D2A32" />
+        <circle cx="50" cy="48" r="24" fill="#2D2A32" />
+        <path d="M28 44Q50 40 72 44Q72 54 50 54 28 54 28 44Z" fill="#E8A77E" />
+        <Eyes y={48} r={4.5} />
+        <path d="M72 40q14 2 18 10q-10-2-16-4z" fill="#E23B4E" />
+        <rect x="26" y="34" width="48" height="6" rx="3" fill="#E23B4E" />
+        <Blush y={50} color="#E59A88" />
+      </>
+    ),
+  },
+  {
+    id: "wizard",
+    name: "Wizard",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#EDE7FB" />
+        <path d="M28 96Q50 68 72 96Z" fill="#5B3FA8" />
+        <circle cx="50" cy="48" r="20" fill="#F0BE94" />
+        <path d="M34 50Q34 84 50 86 66 84 66 50Q58 64 50 64 42 64 34 50Z" fill="#E8EAED" />
+        <Eyes y={48} />
+        <path d="M26 40L50 6 74 40Z" fill="#3F2D85" />
+        <path d="M22 40H78V46Q50 52 22 46Z" fill="#5B3FA8" />
+        <circle cx="44" cy="26" r="2" fill="#FFD23F" />
+        <path d="M56 16l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z" fill="#FFD23F" />
+        <Blush y={54} />
+      </>
+    ),
+  },
+  {
+    id: "pirate",
+    name: "Pirate",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#DCEFF5" />
+        <path d="M28 96Q50 70 72 96Z" fill="#6B4A2E" />
+        <rect x="44" y="60" width="12" height="12" rx="4" fill="#C98A57" />
+        <circle cx="50" cy="48" r="21" fill="#C98A57" />
+        <path d="M26 42q-10 2-12 12q8-2 14-6z" fill="#B71C1C" />
+        <path d="M27 40Q50 28 73 40L73 36Q50 22 27 36Z" fill="#D32F2F" />
+        <rect x="26" y="38" width="48" height="7" rx="2" fill="#D32F2F" />
+        <circle cx="48" cy="34" r="1.6" fill="#fff" />
+        <circle cx="58" cy="36" r="1.6" fill="#fff" />
+        <circle cx="40" cy="50" r="4.5" fill="#2D2A32" />
+        <circle cx="41.5" cy="48.5" r="1.4" fill="#fff" />
+        <path d="M55 44l16-5" stroke="#2D2A32" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="60" cy="50" r="5.5" fill="#2D2A32" />
+        <path d="M44 60q6 5 12 0" fill="none" stroke="#7A4B2A" strokeWidth="2.4" strokeLinecap="round" />
+        <Blush y={57} color="#E59A88" />
+      </>
+    ),
+  },
+  {
+    id: "alien",
+    name: "Alien",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#E8FAE0" />
+        <line x1="40" y1="26" x2="34" y2="14" stroke="#5FA53C" strokeWidth="2.4" />
+        <line x1="60" y1="26" x2="66" y2="14" stroke="#5FA53C" strokeWidth="2.4" />
+        <circle cx="33" cy="12" r="3" fill="#B7E84C" />
+        <circle cx="67" cy="12" r="3" fill="#B7E84C" />
+        <path d="M30 96Q50 72 70 96Z" fill="#7CC44C" />
+        <ellipse cx="50" cy="48" rx="24" ry="26" fill="#8FD15A" />
+        <ellipse cx="40" cy="48" rx="7" ry="10" fill="#2D2A32" transform="rotate(-12 40 48)" />
+        <ellipse cx="60" cy="48" rx="7" ry="10" fill="#2D2A32" transform="rotate(12 60 48)" />
+        <circle cx="42" cy="44" r="2.4" fill="#fff" />
+        <circle cx="62" cy="44" r="2.4" fill="#fff" />
+        <path d="M44 64q6 4 12 0" fill="none" stroke="#3F7A26" strokeWidth="2.4" strokeLinecap="round" />
+      </>
+    ),
+  },
+  {
+    id: "knight",
+    name: "Knight",
+    art: (
+      <>
+        <circle cx="50" cy="50" r="50" fill="#ECEFF1" />
+        <path d="M26 96Q50 72 74 96Z" fill="#90A4AE" />
+        <circle cx="30" cy="84" r="7" fill="#B0BEC5" />
+        <circle cx="70" cy="84" r="7" fill="#B0BEC5" />
+        <path d="M50 22Q42 10 50 4Q58 10 50 22Z" fill="#E23B4E" />
+        <path d="M30 38Q50 18 70 38L70 60Q50 70 30 60Z" fill="#CFD8DC" />
+        <rect x="48" y="38" width="4" height="24" rx="2" fill="#B0BEC5" />
+        <rect x="30" y="46" width="40" height="6" rx="2" fill="#37474F" />
+        <rect x="30" y="56" width="40" height="4" rx="2" fill="#607D8B" />
+        <circle cx="42" cy="49" r="2" fill="#4DD0E1" />
+        <circle cx="58" cy="49" r="2" fill="#4DD0E1" />
+      </>
+    ),
+  },
 ];
 
 const DEF_BY_ID: Record<string, AvatarDef> = Object.fromEntries(

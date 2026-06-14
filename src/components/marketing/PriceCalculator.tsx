@@ -9,8 +9,9 @@ import {
   EXTRA_PRICE_CENTS,
   TRIAL_DAYS,
 } from "@/lib/billing";
+import { Avatar } from "@/components/Avatar";
 
-const KID_FACES = ["🦊", "🐼", "🐨", "🦁", "🐯", "🐸"];
+const KID_FACES = ["fox", "panda", "koala", "lion", "tiger", "frog"];
 
 /**
  * Interactive price sheet: pick how many kids and watch the monthly price build
@@ -37,18 +38,13 @@ export function PriceCalculator({ max = 6 }: { max?: number }) {
               onClick={() => setKids(n)}
               aria-label={`${n} ${n === 1 ? "kid" : "kids"}`}
               aria-pressed={n === kids}
-              className={`grid h-12 w-12 place-items-center rounded-2xl text-2xl transition-all duration-200 ${
+              className={`h-12 w-12 overflow-hidden rounded-2xl p-0.5 transition-all duration-200 ${
                 active
-                  ? "scale-105 shadow-md ring-2 ring-white"
+                  ? "scale-110 shadow-md ring-2 ring-[var(--brand-orange)]"
                   : "opacity-40 grayscale hover:opacity-70"
               }`}
-              style={
-                active
-                  ? { background: "linear-gradient(135deg, var(--brand-sun), var(--brand-orange))" }
-                  : { background: "#f1f5f9" }
-              }
             >
-              {KID_FACES[i % KID_FACES.length]}
+              <Avatar id={KID_FACES[i % KID_FACES.length]} className="h-full w-full" />
             </button>
           );
         })}
@@ -80,7 +76,7 @@ export function PriceCalculator({ max = 6 }: { max?: number }) {
       <div className="mx-auto mt-5 max-w-xs space-y-1.5">
         {Array.from({ length: kids }).map((_, i) => (
           <div key={i} className="flex items-center gap-2 text-sm">
-            <span className="w-6 text-center">{KID_FACES[i % KID_FACES.length]}</span>
+            <Avatar id={KID_FACES[i % KID_FACES.length]} className="h-6 w-6 shrink-0" />
             <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-100">
               <div
                 className="h-full rounded-full transition-all duration-300"

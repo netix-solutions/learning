@@ -34,19 +34,14 @@ body {
   padding-left: env(safe-area-inset-left);
 }
 
-/* Sunny, playful backdrop as a fixed, full-viewport layer. We use a fixed
-   pseudo-element rather than `background-attachment: fixed`, which is broken
-   and janky on iOS Safari. */
+/* Base sky — a fallback layer behind the animated <MeadowScene> SVG (which sits
+   at z-index -1). Fixed so it never scrolls. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(1200px 600px at 10% -10%, #ffe5a3 0%, transparent 55%),
-    radial-gradient(1000px 500px at 110% 10%, #ffd1ec 0%, transparent 50%),
-    radial-gradient(900px 600px at 50% 120%, #bdeaff 0%, transparent 55%),
-    linear-gradient(180deg, #fef6ff 0%, #eef6ff 100%);
+  z-index: -10;
+  background: linear-gradient(180deg, #bfe8ff 0%, #d8f1ff 45%, #eafbf1 100%);
 }
 
 /* Snappy taps: remove the 300ms delay and double-tap zoom on controls. */
@@ -119,6 +114,30 @@ a, button, [role="button"], label, summary, input[type="submit"] {
 }
 @keyframes gradient-pan {
   to { background-position: 200% center; }
+}
+
+/* ---- Meadow / playground scene background ---- */
+@keyframes cloud-cross {
+  from { transform: translateX(-35vw); }
+  to { transform: translateX(135vw); }
+}
+@keyframes sun-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+@keyframes sun-rays {
+  to { transform: rotate(360deg); }
+}
+@keyframes sway-soft {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+.scene-cloud { animation: cloud-cross linear infinite; will-change: transform; }
+.scene-sun { animation: sun-bob 6s ease-in-out infinite; }
+.scene-rays { animation: sun-rays 90s linear infinite; transform-origin: center; transform-box: fill-box; }
+.scene-sway { animation: sway-soft 4s ease-in-out infinite; transform-origin: bottom center; transform-box: fill-box; }
+@media (prefers-reduced-motion: reduce) {
+  .scene-cloud, .scene-sun, .scene-rays, .scene-sway { animation: none; }
 }
 
 .animate-pop { animation: pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }

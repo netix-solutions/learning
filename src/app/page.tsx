@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
-import { BeachScene } from "@/components/BeachScene";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
 import {
   formatCents,
@@ -36,7 +35,6 @@ export default async function Home() {
   return (
     <>
       <MarketingNav />
-      <BeachScene />
 
       <main className="relative z-10 mx-auto w-full min-w-0 max-w-5xl px-5">
         {/* Hero */}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
-import { BeachScene } from "@/components/BeachScene";
 
 export const metadata: Metadata = {
   title: "About — SummerSharp",
@@ -26,7 +25,6 @@ export default function AboutPage() {
   return (
     <>
       <MarketingNav />
-      <BeachScene />
 
       <main className="relative z-10 mx-auto w-full min-w-0 max-w-4xl px-4 py-12 sm:py-16">
         {/* Hero */}
