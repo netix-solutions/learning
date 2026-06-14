@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>You're offline · SummerSharp</title>
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      html, body { height: 100%; margin: 0; }
+      body {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 0.5rem; padding: 2rem; text-align: center;
+        font-family: ui-rounded, system-ui, -apple-system, sans-serif; color: #143a5e;
+        background: linear-gradient(180deg, #fef6ff 0%, #eef6ff 100%);
+        padding-top: max(2rem, env(safe-area-inset-top));
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+      }
+      img { width: 96px; height: 96px; }
+      h1 { font-size: 1.6rem; margin: 0.75rem 0 0.25rem; }
+      p { margin: 0; color: #51688a; max-width: 22rem; }
+      button {
+        margin-top: 1.5rem; border: none; border-radius: 9999px; cursor: pointer;
+        background: #f57c1f; color: #fff; font-weight: 800; font-size: 1.1rem;
+        padding: 0.8rem 1.6rem; box-shadow: 0 6px 0 rgba(0,0,0,.14);
+      }
+      button:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,.14); }
+    </style>
+  </head>
+  <body>
+    <img src="/icon-192.png" alt="SummerSharp" />
+    <h1>You're offline 🌴</h1>
+    <p>SummerSharp needs the internet to load new questions. Reconnect and try again!</p>
+    <button onclick="location.reload()">Try again</button>
+  </body>
+</html>

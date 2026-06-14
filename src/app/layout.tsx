@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const fredoka = Fredoka({
   variable: "--font-display",
@@ -15,9 +16,28 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://summersharp.app"),
   title: "SummerSharp — Stay sharp all summer!",
   description:
     "A fun summer learning app for Florida K–5 students. Practice math and reading, earn XP, keep your streak, and unlock badges!",
+  applicationName: "SummerSharp",
+  appleWebApp: {
+    capable: true,
+    title: "SummerSharp",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // Let content flow under the notch/home indicator; we add safe-area padding in CSS.
+  viewportFit: "cover",
+  themeColor: "#fef6ff",
 };
 
 export default function RootLayout({
@@ -30,7 +50,10 @@ export default function RootLayout({
       lang="en"
       className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {children}
+        <ServiceWorkerRegister />
+      </body>
     </html>
   );
 }

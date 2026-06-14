@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
+import { InstallHint } from "@/components/InstallHint";
 
 export default async function Home() {
   const { profile } = await getSessionProfile();
@@ -54,6 +55,8 @@ export default async function Home() {
           Create a free family account
         </Link>
       </p>
+
+      <InstallHint />
 
       <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-semibold text-slate-500">
         <span>🌴 Made for Florida B.E.S.T. K–5</span>
