@@ -5,6 +5,7 @@ import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { SiteFooter } from "@/components/SiteFooter";
 import { MeadowScene } from "@/components/MeadowScene";
 import { ClickSound } from "@/components/ClickSound";
+import { BackgroundMusic } from "@/components/BackgroundMusic";
 
 const fredoka = Fredoka({
   variable: "--font-display",
@@ -58,6 +59,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <ClickSound />
+        <BackgroundMusic />
         <ServiceWorkerRegister />
       </body>
     </html>
