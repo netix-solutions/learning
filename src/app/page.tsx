@@ -32,7 +32,7 @@ export default async function Home() {
           <span className="inline-block animate-wiggle">☀️</span>
         </h1>
         <p className="animate-rise delay-2 mt-3 max-w-xl text-center text-lg text-slate-600">
-          Fun daily math &amp; reading for Florida kids in grades K–5. Earn points,
+          Fun daily math, reading &amp; science for Florida kids in grades K–5. Earn points,
           build a streak, and unlock badges.
         </p>
 

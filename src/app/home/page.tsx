@@ -79,7 +79,7 @@ export default async function StudentHome() {
         <span className="text-4xl">⭐</span>
         <span className="text-left">
           <span className="block font-display text-2xl font-bold">Daily Challenge</span>
-          <span className="block text-white/90">A fresh mix of math &amp; reading!</span>
+          <span className="block text-white/90">A fresh mix of math, reading &amp; science!</span>
         </span>
         <span className="ml-auto text-3xl">→</span>
       </Link>

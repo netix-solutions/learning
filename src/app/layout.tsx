@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://summersharp.app"),
   title: "SummerSharp — Stay sharp all summer!",
   description:
-    "A fun summer learning app for Florida K–5 students. Practice math and reading, earn points, keep your streak, and unlock badges!",
+    "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
   applicationName: "SummerSharp",
   appleWebApp: {
     capable: true,

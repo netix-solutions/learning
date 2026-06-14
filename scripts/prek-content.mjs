@@ -77,4 +77,56 @@ export const PREK_QUESTIONS = [
   { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which one do you SMELL with?", choices: ["👃", "👁️", "👂", "👋"], answer: "👃", explanation: "You smell with your nose! 👃" },
   { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which one do you WAVE with?", choices: ["👋", "👁️", "👂", "👃"], answer: "👋", explanation: "You wave with your hand! 👋" },
   { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which one do you WALK with?", choices: ["🦶", "👁️", "👂", "👃"], answer: "🦶", explanation: "You walk with your feet! 🦶" },
+
+  // ========================================================================
+  // ADDITIONAL PRE-K BANK — picture-based, read aloud. answer ∈ choices.
+  // ========================================================================
+
+  // PK.count (1–5)
+  { subject: "math", grade: "PK", skill: "PK.count", prompt: "How many cats? 🐱🐱", choices: ["1", "2", "3", "4"], answer: "2", explanation: "1, 2 — there are 2 cats!" },
+  { subject: "math", grade: "PK", skill: "PK.count", prompt: "How many flowers? 🌸🌸🌸🌸🌸", choices: ["3", "4", "5", "6"], answer: "5", explanation: "1, 2, 3, 4, 5 — there are 5 flowers!" },
+  { subject: "math", grade: "PK", skill: "PK.count", prompt: "How many cars? 🚗🚗🚗", choices: ["1", "2", "3", "4"], answer: "3", explanation: "1, 2, 3 — there are 3 cars!" },
+  { subject: "math", grade: "PK", skill: "PK.count", prompt: "How many bees? 🐝🐝🐝🐝", choices: ["2", "3", "4", "5"], answer: "4", explanation: "1, 2, 3, 4 — there are 4 bees!" },
+  // PK.shapes
+  { subject: "math", grade: "PK", skill: "PK.shapes", prompt: "Which shape is round like a ball?", choices: ["⚪", "⬛", "🔺", "⭐"], answer: "⚪", explanation: "A circle is round, like a ball. ⚪" },
+  { subject: "math", grade: "PK", skill: "PK.shapes", prompt: "Which shape has 3 points?", choices: ["🔺", "⚪", "⬛", "❤️"], answer: "🔺", explanation: "A triangle has 3 points and 3 sides. 🔺" },
+  { subject: "math", grade: "PK", skill: "PK.shapes", prompt: "Which one is a square box?", choices: ["⬛", "⚪", "🔺", "⭐"], answer: "⬛", explanation: "A square has 4 equal sides. ⬛" },
+  // PK.size
+  { subject: "math", grade: "PK", skill: "PK.size", prompt: "Which one is the BIGGEST?", choices: ["🐳", "🐟", "🦐", "🐚"], answer: "🐳", explanation: "The whale is the biggest! 🐳" },
+  { subject: "math", grade: "PK", skill: "PK.size", prompt: "Which one is the SMALLEST?", choices: ["🐝", "🦅", "🦉", "🦆"], answer: "🐝", explanation: "The bee is the smallest! 🐝" },
+  { subject: "math", grade: "PK", skill: "PK.size", prompt: "Which one is the TALLEST?", choices: ["🌳", "🌷", "🍄", "🌱"], answer: "🌳", explanation: "The tree is the tallest! 🌳" },
+  // PK.patterns
+  { subject: "math", grade: "PK", skill: "PK.patterns", prompt: "What comes next?  🟡 🟢 🟡 🟢 ❓", choices: ["🟡", "🟢", "🔴", "🔵"], answer: "🟡", explanation: "Yellow, green, yellow, green… so yellow 🟡 is next!" },
+  { subject: "math", grade: "PK", skill: "PK.patterns", prompt: "What comes next?  ☀️ ☁️ ☀️ ☁️ ❓", choices: ["☀️", "☁️", "🌙", "🌈"], answer: "☀️", explanation: "Sun, cloud, sun, cloud… so the sun ☀️ is next!" },
+  { subject: "math", grade: "PK", skill: "PK.patterns", prompt: "What comes next?  🚗 🚙 🚗 🚙 ❓", choices: ["🚗", "🚙", "✈️", "🚲"], answer: "🚗", explanation: "Car, jeep, car, jeep… so the car 🚗 is next!" },
+  // PK.numbers
+  { subject: "math", grade: "PK", skill: "PK.numbers", prompt: "Which one is the number 6?", choices: ["6", "9", "2", "4"], answer: "6", explanation: "That's the number 6!" },
+  { subject: "math", grade: "PK", skill: "PK.numbers", prompt: "Find the number 7.", choices: ["7", "1", "4", "9"], answer: "7", explanation: "That's the number 7!" },
+  { subject: "math", grade: "PK", skill: "PK.numbers", prompt: "Which one is the number 0?", choices: ["0", "8", "6", "3"], answer: "0", explanation: "That's the number 0 — none at all!" },
+
+  // PK.letters
+  { subject: "reading", grade: "PK", skill: "PK.letters", prompt: "Which one is the letter C?", choices: ["C", "G", "O", "Q"], answer: "C", explanation: "That's the letter C!" },
+  { subject: "reading", grade: "PK", skill: "PK.letters", prompt: "Find the letter T.", choices: ["T", "I", "L", "F"], answer: "T", explanation: "That's the letter T!" },
+  { subject: "reading", grade: "PK", skill: "PK.letters", prompt: "Which one is the letter E?", choices: ["E", "F", "B", "H"], answer: "E", explanation: "That's the letter E!" },
+  // PK.listen
+  { subject: "reading", grade: "PK", skill: "PK.listen", prompt: "Tap the cat.", choices: ["🐱", "🐶", "🐠", "🐤"], answer: "🐱", explanation: "That's the cat! 🐱" },
+  { subject: "reading", grade: "PK", skill: "PK.listen", prompt: "Tap the tree.", choices: ["🌳", "🌸", "🍄", "🌵"], answer: "🌳", explanation: "That's the tree! 🌳" },
+  { subject: "reading", grade: "PK", skill: "PK.listen", prompt: "Tap the ball.", choices: ["⚽", "🚗", "📚", "🧸"], answer: "⚽", explanation: "That's the ball! ⚽" },
+  // PK.colors
+  { subject: "reading", grade: "PK", skill: "PK.colors", prompt: "Tap the ORANGE one.", choices: ["🟠", "🔴", "🔵", "🟢"], answer: "🟠", explanation: "That one is orange! 🟠" },
+  { subject: "reading", grade: "PK", skill: "PK.colors", prompt: "Which fruit is red?", choices: ["🍎", "🍌", "🍇", "🫐"], answer: "🍎", explanation: "The apple is red! 🍎" },
+  { subject: "reading", grade: "PK", skill: "PK.colors", prompt: "Which fruit is yellow?", choices: ["🍌", "🍎", "🍇", "🍊"], answer: "🍌", explanation: "The banana is yellow! 🍌" },
+
+  // PK.animals
+  { subject: "science", grade: "PK", skill: "PK.animals", prompt: "Which animal says “meow”?", choices: ["🐱", "🐶", "🐄", "🐷"], answer: "🐱", explanation: "The cat says meow! 🐱" },
+  { subject: "science", grade: "PK", skill: "PK.animals", prompt: "Which animal hops?", choices: ["🐰", "🐟", "🐍", "🐌"], answer: "🐰", explanation: "The rabbit hops! 🐰" },
+  { subject: "science", grade: "PK", skill: "PK.animals", prompt: "Which animal lives in a barn and says “oink”?", choices: ["🐷", "🐦", "🐠", "🦋"], answer: "🐷", explanation: "The pig says oink! 🐷" },
+  // PK.weather
+  { subject: "science", grade: "PK", skill: "PK.weather", prompt: "What do you wear when it is cold and snowy?", choices: ["🧥", "🩳", "👕", "🕶️"], answer: "🧥", explanation: "You wear a warm coat in the snow! 🧥" },
+  { subject: "science", grade: "PK", skill: "PK.weather", prompt: "Which one is a cloud?", choices: ["☁️", "☀️", "⭐", "🌈"], answer: "☁️", explanation: "That's a fluffy cloud! ☁️" },
+  { subject: "science", grade: "PK", skill: "PK.weather", prompt: "What helps on a bright sunny day?", choices: ["🕶️", "🧤", "🧣", "☂️"], answer: "🕶️", explanation: "Sunglasses help on a bright sunny day! 🕶️" },
+  // PK.body
+  { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which one do you TASTE with?", choices: ["👅", "👁️", "👂", "🦶"], answer: "👅", explanation: "You taste with your tongue! 👅" },
+  { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which one do you CLAP with?", choices: ["👏", "🦶", "👂", "👃"], answer: "👏", explanation: "You clap with your hands! 👏" },
+  { subject: "science", grade: "PK", skill: "PK.body", prompt: "Which part do you use to KICK a ball?", choices: ["🦶", "👁️", "👂", "👃"], answer: "🦶", explanation: "You kick with your foot! 🦶" },
 ];

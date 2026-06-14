@@ -249,4 +249,67 @@ export const SCIENCE_QUESTIONS = [
   { grade: "5", skill: "5.watercycle", prompt: "Water that soaks down into the ground becomes ___.", choices: ["groundwater", "a cloud", "a rock", "vapor right away"], answer: "groundwater", explanation: "Water that sinks into the ground is called groundwater." },
   { grade: "5", skill: "5.watercycle", prompt: "The water cycle recycles Earth's water over and over, powered by the ___.", choices: ["Sun", "wind only", "moon", "ground"], answer: "Sun", explanation: "The Sun's energy keeps the water cycle going." },
   { grade: "5", skill: "5.watercycle", prompt: "Rain, snow, sleet, and hail are all forms of ___.", choices: ["precipitation", "evaporation", "condensation", "groundwater"], answer: "precipitation", explanation: "All water falling from the sky is precipitation." },
+
+  // ========================================================================
+  // ADDITIONAL BANK — authored & fact-checked. Same format: `answer` must be
+  // one of `choices` exactly (the generator computes the index).
+  // ========================================================================
+
+  // ----- KINDERGARTEN -----
+  { grade: "K", skill: "K.senses", prompt: "Which sense do you use to enjoy music?", choices: ["Hearing", "Taste", "Smell", "Touch"], answer: "Hearing", explanation: "You hear music with your ears." },
+  { grade: "K", skill: "K.senses", prompt: "Which two senses help you enjoy your food the most?", choices: ["Taste and smell", "Sight and hearing", "Touch and hearing", "Smell and hearing"], answer: "Taste and smell", explanation: "Taste and smell work together when you eat." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Which of these is a living thing?", choices: ["A tree", "A rock", "A spoon", "A book"], answer: "A tree", explanation: "Trees grow and need water and sunlight — they are living." },
+  { grade: "K", skill: "K.livingnonliving", prompt: "Living things can ___.", choices: ["grow and change", "stay the same forever", "be made of metal", "never need water"], answer: "grow and change", explanation: "Living things grow and change over time." },
+  { grade: "K", skill: "K.weather", prompt: "Which tool do we use to stay dry in the rain?", choices: ["An umbrella", "A fan", "A pillow", "A spoon"], answer: "An umbrella", explanation: "An umbrella keeps the rain off you." },
+  { grade: "K", skill: "K.weather", prompt: "Wind is moving ___.", choices: ["air", "water", "rock", "fire"], answer: "air", explanation: "Wind is air that is moving." },
+  { grade: "K", skill: "K.daynight", prompt: "Which gives us light at night?", choices: ["The moon", "The sun", "A flower", "A rock"], answer: "The moon", explanation: "The moon lights up the night sky by reflecting sunlight." },
+  { grade: "K", skill: "K.pushpull", prompt: "Closing a door by pushing it away is a ___.", choices: ["push", "pull", "taste", "smell"], answer: "push", explanation: "Pushing moves something away from you." },
+  { grade: "K", skill: "K.animalneeds", prompt: "Which do animals need to breathe?", choices: ["Air", "Sand", "Plastic", "Glass"], answer: "Air", explanation: "Animals need air to breathe and live." },
+  { grade: "K", skill: "K.animalneeds", prompt: "A rabbit hides in a burrow for ___.", choices: ["shelter", "homework", "music", "money"], answer: "shelter", explanation: "Animals need shelter to stay safe." },
+
+  // ----- GRADE 1 -----
+  { grade: "1", skill: "1.plants", prompt: "Which part of a plant is usually green and makes food from sunlight?", choices: ["The leaves", "The roots", "The seed", "The soil"], answer: "The leaves", explanation: "Leaves use sunlight to make food for the plant." },
+  { grade: "1", skill: "1.plants", prompt: "Besides sunlight, plants also need ___ to grow.", choices: ["water", "candy", "toys", "rocks"], answer: "water", explanation: "Plants need water and sunlight to grow." },
+  { grade: "1", skill: "1.animalbabies", prompt: "A baby cow is called a ___.", choices: ["calf", "puppy", "kitten", "chick"], answer: "calf", explanation: "A baby cow is a calf." },
+  { grade: "1", skill: "1.animalbabies", prompt: "A baby frog is called a ___.", choices: ["tadpole", "cub", "foal", "joey"], answer: "tadpole", explanation: "A baby frog hatches as a tadpole and grows legs later." },
+  { grade: "1", skill: "1.seasons", prompt: "In which season do many leaves fall from the trees?", choices: ["Fall", "Spring", "Summer", "Winter"], answer: "Fall", explanation: "Leaves drop in the fall (autumn)." },
+  { grade: "1", skill: "1.seasons", prompt: "Which season is usually the coldest?", choices: ["Winter", "Summer", "Spring", "Fall"], answer: "Winter", explanation: "Winter is the coldest season." },
+  { grade: "1", skill: "1.shadow", prompt: "A shadow forms when something blocks the ___.", choices: ["light", "wind", "water", "sound"], answer: "light", explanation: "A shadow appears where an object blocks light." },
+  { grade: "1", skill: "1.materials", prompt: "Which material is clear so you can see through it?", choices: ["Glass", "Wood", "Metal", "Cloth"], answer: "Glass", explanation: "Glass is clear, so light passes through it." },
+  { grade: "1", skill: "1.sky", prompt: "The sun is really a ___.", choices: ["star", "planet", "moon", "cloud"], answer: "star", explanation: "The sun is the closest star to Earth." },
+  { grade: "1", skill: "1.sky", prompt: "The moon looks bright because it reflects light from the ___.", choices: ["sun", "stars", "streetlights", "clouds"], answer: "sun", explanation: "The moon has no light of its own; it reflects the sun's light." },
+
+  // ----- GRADE 2 -----
+  { grade: "2", skill: "2.matter", prompt: "Which is a liquid?", choices: ["Milk", "A rock", "A brick", "A chair"], answer: "Milk", explanation: "Milk pours and takes the shape of its container — it is a liquid." },
+  { grade: "2", skill: "2.matter", prompt: "When water freezes, it becomes a ___.", choices: ["solid", "gas", "liquid", "cloud"], answer: "solid", explanation: "Frozen water is ice, which is a solid." },
+  { grade: "2", skill: "2.lifecycle", prompt: "A butterfly hatches from an egg as a ___.", choices: ["caterpillar", "butterfly", "frog", "bird"], answer: "caterpillar", explanation: "The egg hatches into a caterpillar before it becomes a butterfly." },
+  { grade: "2", skill: "2.magnets", prompt: "Which material will a magnet pull on?", choices: ["A steel paperclip", "A plastic cup", "A paper sheet", "A wooden block"], answer: "A steel paperclip", explanation: "Magnets attract iron and steel, not plastic, paper, or wood." },
+  { grade: "2", skill: "2.magnets", prompt: "When you bring two magnets together, they can attract or ___.", choices: ["repel", "melt", "grow", "disappear"], answer: "repel", explanation: "Magnets can pull together (attract) or push apart (repel)." },
+  { grade: "2", skill: "2.weather", prompt: "Which tool measures how hot or cold it is?", choices: ["A thermometer", "A ruler", "A clock", "A scale"], answer: "A thermometer", explanation: "A thermometer measures temperature." },
+  { grade: "2", skill: "2.habitats", prompt: "A camel is well suited to live in the ___.", choices: ["desert", "ocean", "ice cap", "deep cave"], answer: "desert", explanation: "Camels are adapted to hot, dry deserts." },
+  { grade: "2", skill: "2.habitats", prompt: "A fish's habitat is the ___.", choices: ["water", "desert", "treetop", "sky"], answer: "water", explanation: "Fish live in water, their habitat." },
+
+  // ----- GRADE 3 -----
+  { grade: "3", skill: "3.watercycle", prompt: "The sun's heat turns water into vapor in a step called ___.", choices: ["evaporation", "condensation", "precipitation", "collection"], answer: "evaporation", explanation: "Evaporation is liquid water becoming vapor." },
+  { grade: "3", skill: "3.energy", prompt: "A glowing light bulb gives off light and ___ energy.", choices: ["heat", "sound", "wind", "magnetic"], answer: "heat", explanation: "Bulbs give off both light and heat energy." },
+  { grade: "3", skill: "3.forces", prompt: "Which force pulls objects down toward the ground?", choices: ["Gravity", "Magnetism", "Sound", "Light"], answer: "Gravity", explanation: "Gravity pulls things toward Earth." },
+  { grade: "3", skill: "3.forces", prompt: "A force that slows a sliding object by rubbing is ___.", choices: ["friction", "gravity", "sunlight", "sound"], answer: "friction", explanation: "Friction is a rubbing force that slows motion." },
+  { grade: "3", skill: "3.matterchange", prompt: "Heating ice causes it to ___.", choices: ["melt", "freeze", "disappear forever", "turn to rock"], answer: "melt", explanation: "Heat melts ice back into liquid water." },
+  { grade: "3", skill: "3.soilrocks", prompt: "Wind and water slowly breaking rocks into smaller pieces is called ___.", choices: ["weathering", "melting", "growing", "freezing"], answer: "weathering", explanation: "Weathering breaks rock apart over a long time." },
+
+  // ----- GRADE 4 -----
+  { grade: "4", skill: "4.circuits", prompt: "For a bulb to light up, the electric circuit must be ___.", choices: ["complete", "broken", "wet", "upside down"], answer: "complete", explanation: "Electricity needs a complete, unbroken path." },
+  { grade: "4", skill: "4.circuits", prompt: "Which material lets electricity flow through it easily?", choices: ["Metal wire", "Rubber", "Plastic", "Dry wood"], answer: "Metal wire", explanation: "Metals are good conductors of electricity." },
+  { grade: "4", skill: "4.energytransfer", prompt: "Heat always moves from a ___ object to a cooler one.", choices: ["warmer", "cooler", "heavier", "lighter"], answer: "warmer", explanation: "Heat flows from hot to cold." },
+  { grade: "4", skill: "4.weatherclimate", prompt: "The usual weather pattern of a place over many years is its ___.", choices: ["climate", "forecast", "season", "temperature today"], answer: "climate", explanation: "Climate is the long-term pattern; weather is day to day." },
+  { grade: "4", skill: "4.moon", prompt: "About how long does the moon take to go through all its phases?", choices: ["About one month", "About one day", "About one year", "About one week"], answer: "About one month", explanation: "The moon cycles through its phases roughly every month." },
+  { grade: "4", skill: "4.adaptations", prompt: "A polar bear's thick fur is an adaptation that helps it survive the ___.", choices: ["cold", "heat", "rain only", "dark only"], answer: "cold", explanation: "Thick fur keeps the polar bear warm in the cold." },
+
+  // ----- GRADE 5 -----
+  { grade: "5", skill: "5.solar", prompt: "Which planet do we live on?", choices: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Earth", explanation: "Earth is our home planet." },
+  { grade: "5", skill: "5.solar", prompt: "What is at the center of our solar system?", choices: ["The Sun", "The Earth", "The Moon", "Jupiter"], answer: "The Sun", explanation: "The planets orbit the Sun at the center." },
+  { grade: "5", skill: "5.matter", prompt: "Melting and freezing are examples of a ___ change.", choices: ["physical", "chemical", "magnetic", "electric"], answer: "physical", explanation: "Physical changes keep the same substance; only the state changes." },
+  { grade: "5", skill: "5.forcemotion", prompt: "To start a still object moving, you must apply a ___.", choices: ["force", "color", "sound", "smell"], answer: "force", explanation: "A push or pull (a force) changes an object's motion." },
+  { grade: "5", skill: "5.foodweb", prompt: "In a food web, plants are called ___ because they make their own food.", choices: ["producers", "consumers", "decomposers", "predators"], answer: "producers", explanation: "Plants produce their own food using sunlight." },
+  { grade: "5", skill: "5.body", prompt: "Which body system protects your organs and helps you move?", choices: ["The skeletal system", "The digestive system", "The nervous system", "The breathing system"], answer: "The skeletal system", explanation: "Bones (the skeletal system) support, protect, and move the body." },
 ];
