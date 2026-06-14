@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Confetti } from "@/components/Confetti";
 import { teachFor } from "@/lib/teaching";
+import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram } from "@/components/ScienceDiagram";
@@ -85,6 +86,7 @@ export function PracticeClient({
 
     setQuestions(qs);
     setPhase(qs.length ? "playing" : "empty");
+    if (qs.length) playQuizStart();
   }, [subject.id, grade]);
 
   useEffect(() => {
@@ -114,10 +116,13 @@ export function PracticeClient({
     const res = data as AttemptResult;
     setResult(res);
     if (res.is_correct) {
+      playCorrect();
       setCorrectCount((c) => c + 1);
       setXpEarned((x) => x + res.xp_earned);
       setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
       setConfettiKey((k) => k + 1);
+    } else {
+      playWrong();
     }
     if (res.new_badges.length) setBadges((b) => [...b, ...res.new_badges]);
   }

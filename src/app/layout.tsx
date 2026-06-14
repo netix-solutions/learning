@@ -3,6 +3,7 @@ import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ClickSound } from "@/components/ClickSound";
 
 const fredoka = Fredoka({
   variable: "--font-display",
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         {children}
         <SiteFooter />
+        <ClickSound />
         <ServiceWorkerRegister />
       </body>
     </html>
