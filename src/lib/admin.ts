@@ -113,10 +113,13 @@ export type AdminUser = {
   xp: number;
   streak_count: number;
   last_active_date: string | null;
+  last_sign_in_at: string | null;
   created_at: string;
   attempts: number;
   correct: number;
   accuracy: number;
+  total_minutes: number;
+  active_days: number;
   parent_name: string | null;
   child_count: number;
 };
@@ -209,7 +212,7 @@ export async function getAdminStats(): Promise<AdminStats> {
 export async function getAdminUsers(): Promise<AdminUser[]> {
   const db = createAdminClient();
 
-  const [profiles, attempts, links] = await Promise.all([
+  const [profiles, attempts, links, usage] = await Promise.all([
     fetchAllRows((from, to) =>
       db
         .from("profiles")
@@ -225,16 +228,23 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
     fetchAllRows((from, to) =>
       db.from("parent_child").select("parent_id, child_id").range(from, to),
     ),
+    fetchAllRows((from, to) =>
+      db.from("daily_usage").select("child_id, seconds, day").range(from, to),
+    ),
   ]);
 
-  // Emails live in auth.users, not profiles. listUsers caps at perPage 1000, so
-  // page through until a short page comes back.
+  // Emails and last-login live in auth.users, not profiles. listUsers caps at
+  // perPage 1000, so page through until a short page comes back.
   const emailById = new Map<string, string | null>();
+  const lastSignInById = new Map<string, string | null>();
   for (let pageNum = 1; ; pageNum++) {
     const { data, error } = await db.auth.admin.listUsers({ page: pageNum, perPage: 1000 });
     const users = data?.users ?? [];
     if (error || users.length === 0) break;
-    for (const u of users) emailById.set(u.id, u.email ?? null);
+    for (const u of users) {
+      emailById.set(u.id, u.email ?? null);
+      lastSignInById.set(u.id, u.last_sign_in_at ?? null);
+    }
     if (users.length < 1000) break;
   }
 
@@ -244,6 +254,16 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
     cur.attempts += 1;
     if (a.is_correct) cur.correct += 1;
     statsById.set(a.student_id, cur);
+  }
+
+  // Active time on the app: sum daily_usage seconds per child, and count the
+  // distinct days they showed up (a quick engagement signal).
+  const usageById = new Map<string, { seconds: number; days: number }>();
+  for (const r of usage) {
+    const cur = usageById.get(r.child_id) ?? { seconds: 0, days: 0 };
+    cur.seconds += r.seconds ?? 0;
+    cur.days += 1;
+    usageById.set(r.child_id, cur);
   }
 
   const nameById = new Map<string, string>();
@@ -263,6 +283,7 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
 
   return profiles.map((p) => {
     const s = statsById.get(p.id) ?? { attempts: 0, correct: 0 };
+    const usage = usageById.get(p.id) ?? { seconds: 0, days: 0 };
     // Students' synthetic usernames double as login; parents have real emails.
     const email =
       p.role === "parent" ? emailById.get(p.id) ?? null : null;
@@ -277,11 +298,14 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
       xp: p.xp,
       streak_count: p.streak_count,
       last_active_date: p.last_active_date,
+      last_sign_in_at: lastSignInById.get(p.id) ?? null,
       created_at: p.created_at,
       attempts: s.attempts,
       correct: s.correct,
       accuracy:
         s.attempts > 0 ? Math.round((s.correct / s.attempts) * 100) : 0,
+      total_minutes: Math.round(usage.seconds / 60),
+      active_days: usage.days,
       parent_name: parentNameByChild.get(p.id) ?? null,
       child_count: childCountByParent.get(p.id) ?? 0,
     };

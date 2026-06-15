@@ -78,8 +78,9 @@ function ParentRow({ u }: { u: AdminUser }) {
           {u.email ?? "—"}
         </div>
       </div>
-      <div className="ml-auto flex items-center gap-6 text-center">
+      <div className="ml-auto flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-center">
         <Cell label="Children" value={u.child_count} />
+        <Cell label="Last login" value={u.last_sign_in_at ? fmtDate(u.last_sign_in_at) : "never"} />
         <Cell label="Joined" value={fmtDate(u.created_at)} />
         <Link
           href={`/admin/billing/${u.id}`}
@@ -111,12 +112,15 @@ function StudentRow({ u }: { u: AdminUser }) {
           {u.parent_name ? ` · parent: ${u.parent_name}` : ""}
         </div>
       </div>
-      <div className="ml-auto flex items-center gap-6 text-center">
+      <div className="ml-auto flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-center">
+        <Cell label="Time" value={fmtMinutes(u.total_minutes)} />
+        <Cell label="Days on" value={u.active_days} />
         <Cell label="XP" value={u.xp} />
         <Cell label="Streak" value={`🔥${u.streak_count}`} />
         <Cell label="Answered" value={u.attempts} />
         <Cell label="Accuracy" value={`${u.accuracy}%`} />
         <Cell label="Active" value={u.last_active_date ? fmtDate(u.last_active_date) : "never"} />
+        <Cell label="Last login" value={u.last_sign_in_at ? fmtDate(u.last_sign_in_at) : "never"} />
         <DeleteUserButton userId={u.id} name={u.display_name} />
       </div>
     </div>
@@ -137,4 +141,12 @@ function Cell({ label, value }: { label: string; value: string | number }) {
 function fmtDate(iso: string) {
   const d = new Date(iso);
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+/** Total active minutes → compact "2h 5m" / "45m" / "—". */
+function fmtMinutes(mins: number) {
+  if (!mins) return "—";
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
