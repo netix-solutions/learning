@@ -62,13 +62,20 @@ export function PriceCalculator({ max = 6 }: { max?: number }) {
           <span className="text-xl font-bold text-slate-400">/mo</span>
         </div>
         <p className="mt-2 text-slate-500">
-          for {kids} {kids === 1 ? "kid" : "kids"} ·{" "}
-          <span className="font-semibold text-slate-600">
-            {formatCents(BASE_PRICE_CENTS)} first
-            {kids > 1
-              ? ` + ${formatCents(EXTRA_PRICE_CENTS)} × ${kids - 1} more`
-              : ""}
-          </span>
+          {kids === 1 ? (
+            <>
+              for 1 kid ·{" "}
+              <span className="font-semibold text-slate-600">everything included</span>
+            </>
+          ) : (
+            <>
+              for {kids} kids ·{" "}
+              <span className="font-semibold text-slate-600">
+                {formatCents(BASE_PRICE_CENTS)} for the first +{" "}
+                {formatCents(EXTRA_PRICE_CENTS)} each for {kids - 1} more
+              </span>
+            </>
+          )}
         </p>
       </div>
 
