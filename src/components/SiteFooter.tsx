@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
 
 /** A small, muted US flag — desaturated so it reads as a subtle mark, not decoration. */
@@ -35,65 +36,94 @@ function UsFlag() {
   );
 }
 
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="text-sm font-medium text-slate-500 transition-colors hover:text-slate-900"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function ColHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-slate-400">
+      {children}
+    </p>
+  );
+}
+
 /**
  * App-wide footer.
  *
- * Two tiers, deliberately quiet so it sits below the playful SummerSharp UI:
- *  1. A support panel that leads with a 24/7 phone number, plus the legal links.
- *  2. A thin bottom bar that merges the Netix credit, copyright, and origin —
- *     each fact stated once, no repetition.
+ * A frosted card that reads as a deliberate panel over the meadow scene:
+ * a branded column (logo + tagline) anchors the left, with Support and
+ * Company link columns balancing the right, then a slim credit bar.
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto w-full px-4 pb-6 pt-8">
-      {/* Frosted-glass panel so the text stays legible over the meadow scene. */}
-      <div className="mx-auto max-w-5xl rounded-3xl border border-white/70 bg-white/65 px-6 shadow-[0_8px_30px_rgba(15,23,42,0.10)] backdrop-blur-md sm:px-8">
-        {/* Tier 1 — support leads, legal follows */}
-        <div className="flex flex-col items-center gap-6 py-7 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
-          <div className="flex flex-col items-center gap-2 sm:items-start">
-            <p className="inline-flex items-center gap-1.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-slate-400">
-              <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              </span>
-              24/7 Support
+    <footer className="mt-auto w-full px-4 pb-6 pt-10">
+      <div className="mx-auto max-w-5xl rounded-[1.75rem] border border-white/80 bg-white/85 px-7 py-9 shadow-[0_12px_44px_rgba(15,23,42,0.12)] backdrop-blur-xl sm:px-10">
+        <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
+          {/* Brand */}
+          <div className="max-w-xs">
+            <BrandLogo href="/" />
+            <p className="mt-4 text-sm leading-relaxed text-slate-500">
+              Stay sharp all summer — playful K–5 practice in math, reading
+              &amp; science.
             </p>
-            <a
-              href={`tel:${SUPPORT_PHONE_TEL}`}
-              className="font-display text-xl font-extrabold tracking-tight text-[var(--brand-blue)] transition-opacity hover:opacity-80"
-            >
-              {SUPPORT_PHONE}
-            </a>
-            <a
-              href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-[0.78rem] font-medium text-slate-500 transition-colors hover:text-slate-800"
-            >
-              {SUPPORT_EMAIL}
-            </a>
           </div>
 
-          <nav className="flex flex-col items-center gap-2 sm:items-end">
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-slate-400">
-              Legal
-            </p>
-            <Link href="/privacy" className="text-[0.82rem] font-medium text-slate-500 transition-colors hover:text-slate-800">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-[0.82rem] font-medium text-slate-500 transition-colors hover:text-slate-800">
-              Terms of Use
-            </Link>
-          </nav>
+          {/* Link columns */}
+          <div className="flex gap-12 sm:gap-20">
+            <div>
+              <ColHeading>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  </span>
+                  Support
+                </span>
+              </ColHeading>
+              <a
+                href={`tel:${SUPPORT_PHONE_TEL}`}
+                className="block font-display text-lg font-extrabold tracking-tight text-[var(--brand-blue)] transition-opacity hover:opacity-80"
+              >
+                {SUPPORT_PHONE}
+              </a>
+              <p className="mt-0.5 text-xs font-bold text-emerald-600">
+                Available 24/7
+              </p>
+              <a
+                href={`mailto:${SUPPORT_EMAIL}`}
+                className="mt-2 block text-sm font-medium text-slate-500 transition-colors hover:text-slate-900"
+              >
+                {SUPPORT_EMAIL}
+              </a>
+            </div>
+
+            <div className="flex flex-col items-start gap-2.5">
+              <ColHeading>Company</ColHeading>
+              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/pricing">Pricing</FooterLink>
+              <FooterLink href="/privacy">Privacy Policy</FooterLink>
+              <FooterLink href="/terms">Terms of Use</FooterLink>
+            </div>
+          </div>
         </div>
 
-        {/* Tier 2 — one quiet line: credit · copyright · origin */}
-        <div className="flex flex-col items-center justify-between gap-2 border-t border-slate-200/70 py-4 text-[0.7rem] text-slate-400 sm:flex-row">
+        {/* Credit bar */}
+        <div className="mt-9 flex flex-col items-center justify-between gap-3 border-t border-slate-200/70 pt-5 text-[0.72rem] text-slate-400 sm:flex-row">
           <p>
             © {new Date().getFullYear()}{" "}
             <a
               href="https://netixsolutions.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-slate-500 transition-colors hover:text-slate-800"
+              className="font-semibold text-slate-500 transition-colors hover:text-slate-900"
             >
               Netix Solutions, LLC
             </a>
