@@ -17,6 +17,7 @@ import {
   EXTRA_PRICE_CENTS,
   TRIAL_DAYS,
 } from "@/lib/billing";
+import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
 
 export default async function BillingPage() {
   const { user, profile } = await getSessionProfile();
@@ -164,6 +165,18 @@ export default async function BillingPage() {
       <p className="mt-4 text-center text-xs text-slate-400">
         Billing is managed securely by Stripe. Payment lives on your parent
         account only.
+      </p>
+
+      <p className="mt-2 text-center text-xs text-slate-400">
+        Questions about your plan? Call{" "}
+        <a href={`tel:${SUPPORT_PHONE_TEL}`} className="font-semibold text-slate-500 hover:text-slate-700">
+          {SUPPORT_PHONE}
+        </a>{" "}
+        or email{" "}
+        <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-slate-500 hover:text-slate-700">
+          {SUPPORT_EMAIL}
+        </a>
+        .
       </p>
     </main>
   );
