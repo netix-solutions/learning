@@ -30,8 +30,13 @@ export const metadata: Metadata = {
     title: "SummerSharp",
     statusBarStyle: "default",
   },
+  // favicon.ico is auto-linked from src/app/favicon.ico (covers legacy + every
+  // browser tab). These add crisp hi-res icons for modern browsers and iOS.
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   // og:image / twitter:image are injected automatically from
