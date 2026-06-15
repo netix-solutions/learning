@@ -122,6 +122,8 @@ export type AdminUser = {
   active_days: number;
   parent_name: string | null;
   child_count: number;
+  family_minutes: number;
+  family_xp: number;
 };
 
 function todayISO() {
@@ -267,17 +269,33 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
   }
 
   const nameById = new Map<string, string>();
-  for (const p of profiles) nameById.set(p.id, p.display_name);
+  const xpById = new Map<string, number>();
+  for (const p of profiles) {
+    nameById.set(p.id, p.display_name);
+    xpById.set(p.id, p.xp ?? 0);
+  }
 
-  // child -> parent name, and parent -> number of children
+  // child -> parent name, and per-parent rollups across their children:
+  // number of kids plus the family's combined active time and XP.
   const parentNameByChild = new Map<string, string>();
   const childCountByParent = new Map<string, number>();
+  const familySecondsByParent = new Map<string, number>();
+  const familyXpByParent = new Map<string, number>();
   for (const l of links) {
     const pname = nameById.get(l.parent_id);
     if (pname) parentNameByChild.set(l.child_id, pname);
     childCountByParent.set(
       l.parent_id,
       (childCountByParent.get(l.parent_id) ?? 0) + 1,
+    );
+    familySecondsByParent.set(
+      l.parent_id,
+      (familySecondsByParent.get(l.parent_id) ?? 0) +
+        (usageById.get(l.child_id)?.seconds ?? 0),
+    );
+    familyXpByParent.set(
+      l.parent_id,
+      (familyXpByParent.get(l.parent_id) ?? 0) + (xpById.get(l.child_id) ?? 0),
     );
   }
 
@@ -308,6 +326,8 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
       active_days: usage.days,
       parent_name: parentNameByChild.get(p.id) ?? null,
       child_count: childCountByParent.get(p.id) ?? 0,
+      family_minutes: Math.round((familySecondsByParent.get(p.id) ?? 0) / 60),
+      family_xp: familyXpByParent.get(p.id) ?? 0,
     };
   });
 }
