@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
-import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
+import {
+  SUPPORT_PHONE,
+  SUPPORT_PHONE_TEL,
+  SUPPORT_EMAIL,
+  SUPPORT_URL,
+} from "@/lib/contact";
 
 /** A small, muted US flag — desaturated so it reads as a subtle mark, not decoration. */
 function UsFlag() {
@@ -102,6 +107,14 @@ export function SiteFooter() {
                 className="mt-2 block text-sm font-medium text-slate-500 transition-colors hover:text-slate-900"
               >
                 {SUPPORT_EMAIL}
+              </a>
+              <a
+                href={SUPPORT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 block text-sm font-medium text-slate-500 transition-colors hover:text-slate-900"
+              >
+                Help center
               </a>
             </div>
 

@@ -1,4 +1,9 @@
-import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
+import {
+  SUPPORT_PHONE,
+  SUPPORT_PHONE_TEL,
+  SUPPORT_EMAIL,
+  SUPPORT_URL,
+} from "@/lib/contact";
 
 /**
  * Friendly "call us anytime" callout where the phone number is the hero.
@@ -82,6 +87,14 @@ export function SupportCallout({
           or email {SUPPORT_EMAIL}
         </a>
       )}
+      <a
+        href={SUPPORT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs font-semibold text-[var(--brand-blue)] transition-opacity hover:opacity-80"
+      >
+        Visit our help center →
+      </a>
     </div>
   );
 }
