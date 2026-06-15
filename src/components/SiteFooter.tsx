@@ -36,68 +36,73 @@ function UsFlag() {
 }
 
 /**
- * App-wide footer crediting Netix Solutions, LLC.
+ * App-wide footer.
  *
- * A restrained, professional wordmark that links to netixsolutions.com —
- * deliberately understated so it sits below the playful SummerSharp UI
- * without competing with it. Also surfaces the legal pages.
+ * Two tiers, deliberately quiet so it sits below the playful SummerSharp UI:
+ *  1. A support panel that leads with a 24/7 phone number, plus the legal links.
+ *  2. A thin bottom bar that merges the Netix credit, copyright, and origin —
+ *     each fact stated once, no repetition.
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto w-full px-4 py-6">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-2.5 text-center">
-        <a
-          href="https://netixsolutions.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Built by NetixSolutions — visit netixsolutions.com"
-          className="group inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-slate-500 transition-colors hover:text-slate-800"
-        >
-          <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-slate-400 transition-colors group-hover:text-slate-500">
-            Built by
-          </span>
+    <footer className="mt-auto w-full px-4 pb-7 pt-8">
+      <div className="mx-auto max-w-5xl border-t border-slate-200/70">
+        {/* Tier 1 — support leads, legal follows */}
+        <div className="flex flex-col items-center gap-6 py-7 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <p className="inline-flex items-center gap-1.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-slate-400">
+              <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              </span>
+              24/7 Support
+            </p>
+            <a
+              href={`tel:${SUPPORT_PHONE_TEL}`}
+              className="font-display text-xl font-extrabold tracking-tight text-[var(--brand-blue)] transition-opacity hover:opacity-80"
+            >
+              {SUPPORT_PHONE}
+            </a>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="text-[0.78rem] font-medium text-slate-500 transition-colors hover:text-slate-800"
+            >
+              {SUPPORT_EMAIL}
+            </a>
+          </div>
 
-          <span className="font-display text-sm font-semibold tracking-tight">
-            Netix
-            <span className="font-normal text-slate-400 transition-colors group-hover:text-slate-600">
-              Solutions
-            </span>
-          </span>
-        </a>
+          <nav className="flex flex-col items-center gap-2 sm:items-end">
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-slate-400">
+              Legal
+            </p>
+            <Link href="/privacy" className="text-[0.82rem] font-medium text-slate-500 transition-colors hover:text-slate-800">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-[0.82rem] font-medium text-slate-500 transition-colors hover:text-slate-800">
+              Terms of Use
+            </Link>
+          </nav>
+        </div>
 
-        <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.72rem] font-medium text-slate-500">
-          <span className="text-slate-400">Need help?</span>
-          <a href={`tel:${SUPPORT_PHONE_TEL}`} className="transition-colors hover:text-slate-800">
-            {SUPPORT_PHONE}
-          </a>
-          <span aria-hidden="true" className="text-slate-300">
-            •
-          </span>
-          <a href={`mailto:${SUPPORT_EMAIL}`} className="transition-colors hover:text-slate-800">
-            {SUPPORT_EMAIL}
-          </a>
-        </p>
-
-        <nav className="flex items-center gap-3 text-[0.72rem] font-medium text-slate-500">
-          <Link href="/privacy" className="transition-colors hover:text-slate-800">
-            Privacy Policy
-          </Link>
-          <span aria-hidden="true" className="text-slate-300">
-            •
-          </span>
-          <Link href="/terms" className="transition-colors hover:text-slate-800">
-            Terms of Use
-          </Link>
-        </nav>
-
-        <p className="flex items-center gap-1.5 text-[0.66rem] font-medium uppercase tracking-[0.16em] text-slate-400">
-          <UsFlag />
-          Made in America
-        </p>
-
-        <p className="text-[0.7rem] text-slate-400">
-          © {new Date().getFullYear()} Netix Solutions, LLC. All rights reserved.
-        </p>
+        {/* Tier 2 — one quiet line: credit · copyright · origin */}
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-slate-200/70 py-4 text-[0.7rem] text-slate-400 sm:flex-row">
+          <p>
+            © {new Date().getFullYear()}{" "}
+            <a
+              href="https://netixsolutions.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-500 transition-colors hover:text-slate-800"
+            >
+              Netix Solutions, LLC
+            </a>
+            . All rights reserved.
+          </p>
+          <p className="flex items-center gap-1.5 font-medium uppercase tracking-[0.14em]">
+            <UsFlag />
+            Made in America
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { SignOutButton } from "@/components/SignOutButton";
-import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
+import { SupportCallout } from "@/components/SupportCallout";
 
 /**
  * A blocking overlay shown when the family's subscription isn't active (trial
@@ -50,17 +50,10 @@ export function Paywall({ role }: { role: "parent" | "student" }) {
             >
               See plans &amp; subscribe →
             </Link>
-            <p className="mt-4 text-xs text-slate-400">
-              Need a hand? Call{" "}
-              <a href={`tel:${SUPPORT_PHONE_TEL}`} className="font-semibold text-slate-500 hover:text-slate-700">
-                {SUPPORT_PHONE}
-              </a>{" "}
-              or email{" "}
-              <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-slate-500 hover:text-slate-700">
-                {SUPPORT_EMAIL}
-              </a>
-              .
+            <p className="mt-5 text-xs font-semibold text-slate-400">
+              Need a hand? We&apos;re here around the clock.
             </p>
+            <SupportCallout variant="loud" className="mt-2" />
           </>
         ) : (
           <>

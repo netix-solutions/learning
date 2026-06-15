@@ -34,6 +34,22 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  // og:image / twitter:image are injected automatically from
+  // src/app/opengraph-image.tsx and twitter-image.tsx.
+  openGraph: {
+    type: "website",
+    siteName: "SummerSharp",
+    url: "https://summersharp.app",
+    title: "SummerSharp — Stay sharp all summer!",
+    description:
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SummerSharp — Stay sharp all summer!",
+    description:
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
+  },
 };
 
 export const viewport: Viewport = {

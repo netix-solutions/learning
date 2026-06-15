@@ -17,7 +17,7 @@ import {
   EXTRA_PRICE_CENTS,
   TRIAL_DAYS,
 } from "@/lib/billing";
-import { SUPPORT_PHONE, SUPPORT_PHONE_TEL, SUPPORT_EMAIL } from "@/lib/contact";
+import { SupportCallout } from "@/components/SupportCallout";
 
 export default async function BillingPage() {
   const { user, profile } = await getSessionProfile();
@@ -167,17 +167,12 @@ export default async function BillingPage() {
         account only.
       </p>
 
-      <p className="mt-2 text-center text-xs text-slate-400">
-        Questions about your plan? Call{" "}
-        <a href={`tel:${SUPPORT_PHONE_TEL}`} className="font-semibold text-slate-500 hover:text-slate-700">
-          {SUPPORT_PHONE}
-        </a>{" "}
-        or email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-slate-500 hover:text-slate-700">
-          {SUPPORT_EMAIL}
-        </a>
-        .
-      </p>
+      <div className="mt-6 flex flex-col items-center gap-2">
+        <p className="text-sm font-semibold text-slate-500">
+          Questions about your plan? We&apos;re always here.
+        </p>
+        <SupportCallout variant="loud" showEmail />
+      </div>
     </main>
   );
 }
