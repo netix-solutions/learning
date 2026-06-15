@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { getSessionProfile } from "@/lib/auth";
 import { getParentEntitlement } from "@/lib/entitlement";
 import { Paywall } from "@/components/Paywall";
 import { CollectPhoneDialog } from "@/components/CollectPhoneDialog";
+import { ConversionEvents } from "@/components/analytics/ConversionEvents";
 
 /**
  * Wraps every /parent route. When a trial/subscription has LAPSED, a blocking
@@ -31,6 +33,9 @@ export default async function ParentLayout({
   return (
     <>
       {children}
+      <Suspense fallback={null}>
+        <ConversionEvents />
+      </Suspense>
       {locked && <Paywall role="parent" />}
       {/* Ask pre-existing parents for a cell number, but don't stack it on the paywall. */}
       {!locked && needsPhone && <CollectPhoneDialog />}

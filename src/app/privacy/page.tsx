@@ -104,8 +104,16 @@ export default function PrivacyPolicy() {
           Basic technical and log data needed to operate and secure the Service, such
           as device/browser type, approximate region derived from IP address, and
           authentication session cookies. We use cookies that are strictly necessary
-          for sign-in and security; we do not use third-party advertising or tracking
-          cookies.
+          for sign-in and security. We do not use third-party advertising cookies.
+        </li>
+        <li>
+          <strong>Analytics (adult pages only).</strong> On our marketing and parent
+          pages we use Google Analytics to understand how the Service is used and to
+          improve it. This may set first-party analytics cookies and share usage
+          data (such as pages visited and account signups) with Google. We
+          deliberately do <strong>not</strong> run analytics on children&rsquo;s
+          pages — no information about a child&rsquo;s activity is collected by or
+          sent to Google.
         </li>
       </ul>
 

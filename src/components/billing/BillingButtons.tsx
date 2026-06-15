@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { startCheckout, openBillingPortal } from "@/app/actions/billing";
+import { gaEvent } from "@/lib/gtag";
 
 /** Subscribe / Manage buttons that drive the Stripe Checkout & Portal flows. */
 export function BillingButtons({
@@ -21,6 +22,7 @@ export function BillingButtons({
         disabled={pending}
         onClick={() => {
           setError(null);
+          if (mode === "subscribe") gaEvent("begin_checkout");
           start(async () => {
             const res = await run();
             if (res?.error) setError(res.error);

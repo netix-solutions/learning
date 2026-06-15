@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { redeemCoupon } from "@/app/actions/billing";
+import { gaEvent } from "@/lib/gtag";
 
 /**
  * A small "have a code?" redeemer. A `free` code comps the account immediately
@@ -27,6 +28,7 @@ export function RedeemCoupon({ compact = false }: { compact?: boolean }) {
         setError(res.error);
         return;
       }
+      gaEvent("redeem_coupon", { kind: res.kind });
       if (res.kind === "free") {
         const cap = res.maxKids
           ? ` Your plan is free for up to ${res.maxKids} ${res.maxKids === 1 ? "kid" : "kids"}.`

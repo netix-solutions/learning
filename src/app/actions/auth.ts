@@ -57,7 +57,8 @@ export async function signUpParent(
   // Branded welcome email — best effort; never blocks or fails signup.
   await sendEmail({ to: email, ...welcomeEmail({ name }) }).catch(() => {});
 
-  redirect("/parent");
+  // ?welcome=1 lets the client fire the GA sign_up conversion on landing.
+  redirect("/parent?welcome=1");
 }
 
 /**

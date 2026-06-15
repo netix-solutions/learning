@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { createChild, type ChildFormState } from "@/app/actions/children";
 import { GRADES } from "@/lib/types";
 import { AVATAR_DEFS, DEFAULT_AVATAR, Avatar } from "@/components/Avatar";
+import { gaEvent } from "@/lib/gtag";
 
 const initial: ChildFormState = { error: null, success: null };
 const inputClass =
@@ -13,6 +14,10 @@ export function AddChildForm() {
   const [state, action, pending] = useActionState(createChild, initial);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [grade, setGrade] = useState("");
+
+  useEffect(() => {
+    if (state.success) gaEvent("add_child");
+  }, [state.success]);
 
   return (
     <form action={action} className="space-y-4">

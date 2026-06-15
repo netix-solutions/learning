@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
@@ -6,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { MeadowScene } from "@/components/MeadowScene";
 import { ClickSound } from "@/components/ClickSound";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const fredoka = Fredoka({
   variable: "--font-display",
@@ -82,6 +84,9 @@ export default function RootLayout({
         <ClickSound />
         <BackgroundMusic />
         <ServiceWorkerRegister />
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
       </body>
     </html>
   );
