@@ -45,8 +45,9 @@ function UsFlag() {
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto w-full px-4 pb-7 pt-8">
-      <div className="mx-auto max-w-5xl border-t border-slate-200/70">
+    <footer className="mt-auto w-full px-4 pb-6 pt-8">
+      {/* Frosted-glass panel so the text stays legible over the meadow scene. */}
+      <div className="mx-auto max-w-5xl rounded-3xl border border-white/70 bg-white/65 px-6 shadow-[0_8px_30px_rgba(15,23,42,0.10)] backdrop-blur-md sm:px-8">
         {/* Tier 1 — support leads, legal follows */}
         <div className="flex flex-col items-center gap-6 py-7 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
           <div className="flex flex-col items-center gap-2 sm:items-start">
