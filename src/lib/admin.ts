@@ -108,6 +108,7 @@ export type AdminUser = {
   display_name: string;
   username: string | null;
   email: string | null;
+  phone: string | null;
   grade: Grade | null;
   avatar: string;
   xp: number;
@@ -238,6 +239,7 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
   // Emails and last-login live in auth.users, not profiles. listUsers caps at
   // perPage 1000, so page through until a short page comes back.
   const emailById = new Map<string, string | null>();
+  const phoneById = new Map<string, string | null>();
   const lastSignInById = new Map<string, string | null>();
   for (let pageNum = 1; ; pageNum++) {
     const { data, error } = await db.auth.admin.listUsers({ page: pageNum, perPage: 1000 });
@@ -245,6 +247,9 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
     if (error || users.length === 0) break;
     for (const u of users) {
       emailById.set(u.id, u.email ?? null);
+      // Cell phone collected at signup (or via the sign-in prompt) for support.
+      const meta = (u.user_metadata ?? {}) as { phone?: string };
+      phoneById.set(u.id, meta.phone?.trim() || null);
       lastSignInById.set(u.id, u.last_sign_in_at ?? null);
     }
     if (users.length < 1000) break;
@@ -305,12 +310,15 @@ export async function getAdminUsers(): Promise<AdminUser[]> {
     // Students' synthetic usernames double as login; parents have real emails.
     const email =
       p.role === "parent" ? emailById.get(p.id) ?? null : null;
+    const phone =
+      p.role === "parent" ? phoneById.get(p.id) ?? null : null;
     return {
       id: p.id,
       role: p.role as Role,
       display_name: p.display_name,
       username: p.username,
       email,
+      phone,
       grade: p.grade as Grade | null,
       avatar: p.avatar,
       xp: p.xp,

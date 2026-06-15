@@ -36,6 +36,21 @@ export function ParentSignupForm() {
         />
       </div>
       <div>
+        <label className="mb-1 block font-bold text-slate-600">Cell phone</label>
+        <input
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder="(813) 555-1234"
+          className={inputClass}
+          required
+        />
+        <p className="mt-1 text-sm text-slate-400">
+          So we can reach you about your account and help fast if you call support.
+        </p>
+      </div>
+      <div>
         <label className="mb-1 block font-bold text-slate-600">Password</label>
         <input
           name="password"

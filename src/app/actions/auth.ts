@@ -9,6 +9,7 @@ import { welcomeEmail } from "@/lib/email-templates";
 
 export type FormState = { error: string | null };
 export type ResetRequestState = { error: string | null; sent: boolean };
+export type PhoneState = { error: string | null; saved: boolean };
 
 function appUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -33,10 +34,14 @@ export async function signUpParent(
 ): Promise<FormState> {
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
+  const phone = String(formData.get("phone") ?? "").trim();
   const password = String(formData.get("password") ?? "");
 
   if (!name) return { error: "Please enter your name." };
   if (!email) return { error: "Please enter your email." };
+  // Collected so support can find a family by the number they call in from.
+  if (phone.replace(/\D/g, "").length < 10)
+    return { error: "Please enter a valid cell phone number." };
   if (password.length < 8)
     return { error: "Password must be at least 8 characters." };
 
@@ -44,7 +49,7 @@ export async function signUpParent(
   const { error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { role: "parent", display_name: name } },
+    options: { data: { role: "parent", display_name: name, phone } },
   });
 
   if (error) return { error: error.message };
@@ -53,6 +58,30 @@ export async function signUpParent(
   await sendEmail({ to: email, ...welcomeEmail({ name }) }).catch(() => {});
 
   redirect("/parent");
+}
+
+/**
+ * Save (or update) the signed-in parent's cell phone into their auth metadata.
+ * Used by the sign-in prompt for parents who created accounts before we asked
+ * for a number. updateUser merges into user_metadata, preserving role/name.
+ */
+export async function saveParentPhone(
+  _prev: PhoneState,
+  formData: FormData,
+): Promise<PhoneState> {
+  const phone = String(formData.get("phone") ?? "").trim();
+  if (phone.replace(/\D/g, "").length < 10)
+    return { error: "Please enter a valid cell phone number.", saved: false };
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "Please sign in again.", saved: false };
+
+  const { error } = await supabase.auth.updateUser({ data: { phone } });
+  if (error) return { error: error.message, saved: false };
+  return { error: null, saved: true };
 }
 
 /** Parent signs in. */

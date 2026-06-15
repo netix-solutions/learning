@@ -1,6 +1,7 @@
 import { getSessionProfile } from "@/lib/auth";
 import { getParentEntitlement } from "@/lib/entitlement";
 import { Paywall } from "@/components/Paywall";
+import { CollectPhoneDialog } from "@/components/CollectPhoneDialog";
 
 /**
  * Wraps every /parent route. When a trial/subscription has LAPSED, a blocking
@@ -19,15 +20,20 @@ export default async function ParentLayout({
 }) {
   const { user, profile } = await getSessionProfile();
   let locked = false;
+  let needsPhone = false;
   if (user && profile?.role === "parent") {
     const ent = await getParentEntitlement(user.id);
     locked = ent.reason === "locked";
+    const phone = (user.user_metadata as { phone?: string } | null)?.phone;
+    needsPhone = !phone?.trim();
   }
 
   return (
     <>
       {children}
       {locked && <Paywall role="parent" />}
+      {/* Ask pre-existing parents for a cell number, but don't stack it on the paywall. */}
+      {!locked && needsPhone && <CollectPhoneDialog />}
     </>
   );
 }

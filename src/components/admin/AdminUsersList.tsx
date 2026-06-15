@@ -105,6 +105,16 @@ function SortControl({
   );
 }
 
+/** Match a user against a search query by name, email, phone, or username. */
+function matches(u: AdminUser, q: string, qDigits: string) {
+  if (!q) return true;
+  const hay = `${u.display_name} ${u.email ?? ""} ${u.username ?? ""}`.toLowerCase();
+  if (hay.includes(q)) return true;
+  // Phone match ignores formatting so a dialed number finds the family.
+  if (qDigits && u.phone) return u.phone.replace(/\D/g, "").includes(qDigits);
+  return false;
+}
+
 export function AdminUsersList({
   parents,
   students,
@@ -112,15 +122,38 @@ export function AdminUsersList({
   parents: AdminUser[];
   students: AdminUser[];
 }) {
-  const p = useSorted(parents, PARENT_SORTS);
-  const s = useSorted(students, STUDENT_SORTS);
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  const qDigits = query.replace(/\D/g, "");
+
+  const filteredParents = useMemo(
+    () => parents.filter((u) => matches(u, q, qDigits)),
+    [parents, q, qDigits],
+  );
+  const filteredStudents = useMemo(
+    () => students.filter((u) => matches(u, q, qDigits)),
+    [students, q, qDigits],
+  );
+
+  const p = useSorted(filteredParents, PARENT_SORTS);
+  const s = useSorted(filteredStudents, STUDENT_SORTS);
 
   return (
     <>
+      <div className="mt-5">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by name, email, phone, or username…"
+          className="w-full rounded-2xl border-2 border-slate-200 bg-white px-4 py-2.5 text-slate-700 outline-none focus:border-[var(--brand-blue)]"
+        />
+      </div>
+
       <Section
         title="👨‍👩‍👧 Parents"
-        empty="No parent accounts yet."
-        count={parents.length}
+        empty={q ? "No parents match your search." : "No parent accounts yet."}
+        count={p.sorted.length}
         control={
           <SortControl
             options={PARENT_SORTS}
@@ -138,8 +171,8 @@ export function AdminUsersList({
 
       <Section
         title="🎒 Students"
-        empty="No student accounts yet."
-        count={students.length}
+        empty={q ? "No students match your search." : "No student accounts yet."}
+        count={s.sorted.length}
         control={
           <SortControl
             options={STUDENT_SORTS}
@@ -199,6 +232,18 @@ function ParentRow({ u }: { u: AdminUser }) {
       <div className="min-w-0">
         <div className="truncate font-bold text-slate-800">{u.display_name}</div>
         <div className="truncate text-sm text-slate-500">{u.email ?? "—"}</div>
+        <div className="truncate text-sm">
+          {u.phone ? (
+            <a
+              href={`tel:${u.phone.replace(/[^\d+]/g, "")}`}
+              className="font-semibold text-[var(--brand-blue)] hover:underline"
+            >
+              {u.phone}
+            </a>
+          ) : (
+            <span className="text-slate-400">no phone on file</span>
+          )}
+        </div>
       </div>
       <div className="ml-auto flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-center">
         <Cell label="Children" value={u.child_count} />
