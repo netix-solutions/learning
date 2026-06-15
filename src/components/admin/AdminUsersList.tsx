@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { AdminUser } from "@/lib/admin";
+import { adminSetParentPhone } from "@/app/actions/admin";
 import { Avatar } from "@/components/Avatar";
 import { DeleteUserButton } from "@/components/DeleteUserButton";
 
@@ -232,18 +234,7 @@ function ParentRow({ u }: { u: AdminUser }) {
       <div className="min-w-0">
         <div className="truncate font-bold text-slate-800">{u.display_name}</div>
         <div className="truncate text-sm text-slate-500">{u.email ?? "—"}</div>
-        <div className="truncate text-sm">
-          {u.phone ? (
-            <a
-              href={`tel:${u.phone.replace(/[^\d+]/g, "")}`}
-              className="font-semibold text-[var(--brand-blue)] hover:underline"
-            >
-              {u.phone}
-            </a>
-          ) : (
-            <span className="text-slate-400">no phone on file</span>
-          )}
-        </div>
+        <PhoneEditor parentId={u.id} phone={u.phone} />
       </div>
       <div className="ml-auto flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-center">
         <Cell label="Children" value={u.child_count} />
@@ -292,6 +283,83 @@ function StudentRow({ u }: { u: AdminUser }) {
         <Cell label="Last login" value={u.last_sign_in_at ? fmtDate(u.last_sign_in_at) : "never"} />
         <DeleteUserButton userId={u.id} name={u.display_name} />
       </div>
+    </div>
+  );
+}
+
+/** Inline phone display + operator editor for a parent row. */
+function PhoneEditor({ parentId, phone }: { parentId: string; phone: string | null }) {
+  const router = useRouter();
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState(phone ?? "");
+  const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  async function save() {
+    setSaving(true);
+    setErr(null);
+    const res = await adminSetParentPhone(parentId, value);
+    setSaving(false);
+    if (res.error) {
+      setErr(res.error);
+      return;
+    }
+    setEditing(false);
+    router.refresh();
+  }
+
+  if (editing) {
+    return (
+      <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-sm">
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          type="tel"
+          inputMode="tel"
+          placeholder="(813) 555-1234"
+          autoFocus
+          className="w-40 rounded-lg border border-slate-300 px-2 py-1 outline-none focus:border-[var(--brand-blue)]"
+        />
+        <button
+          onClick={save}
+          disabled={saving}
+          className="rounded-lg bg-[var(--brand-blue)] px-2 py-1 text-xs font-bold text-white disabled:opacity-50"
+        >
+          {saving ? "…" : "Save"}
+        </button>
+        <button
+          onClick={() => {
+            setEditing(false);
+            setValue(phone ?? "");
+            setErr(null);
+          }}
+          className="text-xs font-semibold text-slate-400 hover:text-slate-600"
+        >
+          Cancel
+        </button>
+        {err && <span className="w-full text-xs font-semibold text-red-600">{err}</span>}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2 text-sm">
+      {phone ? (
+        <a
+          href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+          className="font-semibold text-[var(--brand-blue)] hover:underline"
+        >
+          {phone}
+        </a>
+      ) : (
+        <span className="text-slate-400">no phone on file</span>
+      )}
+      <button
+        onClick={() => setEditing(true)}
+        className="text-xs font-semibold text-slate-400 underline transition-colors hover:text-slate-700"
+      >
+        edit
+      </button>
     </div>
   );
 }

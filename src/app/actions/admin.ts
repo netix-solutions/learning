@@ -67,6 +67,36 @@ export async function adminDeleteUser(
   return { error: null };
 }
 
+/**
+ * Set or clear a parent's cell phone (operator support action). Stored in the
+ * parent's auth user_metadata; we merge so role/display_name survive. Pass an
+ * empty string to clear. parentId comes from the client, so re-check admin.
+ */
+export async function adminSetParentPhone(
+  parentId: string,
+  phone: string,
+): Promise<{ error: string | null }> {
+  if (!(await isAdminAuthed())) return { error: "Not authorized." };
+  if (!parentId) return { error: "Missing parent." };
+
+  const trimmed = phone.trim();
+  if (trimmed && trimmed.replace(/\D/g, "").length < 10)
+    return { error: "Enter a valid phone number (or clear it)." };
+
+  const db = createAdminClient();
+  const { data: existing, error: getErr } = await db.auth.admin.getUserById(parentId);
+  if (getErr || !existing?.user) return { error: "Could not find that parent." };
+
+  const meta = { ...(existing.user.user_metadata ?? {}), phone: trimmed };
+  const { error } = await db.auth.admin.updateUserById(parentId, {
+    user_metadata: meta,
+  });
+  if (error) return { error: "Could not update the phone number." };
+
+  revalidatePath("/admin/users");
+  return { error: null };
+}
+
 // --- Billing, on a parent's behalf -----------------------------------------
 // Every action re-checks the admin session before touching Stripe, mirroring
 // adminDeleteUser — the parentId comes from the client, so authorization can't
