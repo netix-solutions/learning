@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import QRCode from "qrcode";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { childEmail, childPassword } from "@/lib/auth";
@@ -83,6 +84,76 @@ export async function saveParentPhone(
   const { error } = await supabase.auth.updateUser({ data: { phone } });
   if (error) return { error: error.message, saved: false };
   return { error: null, saved: true };
+}
+
+export type KidQrResult = { error: string } | { dataUrl: string; name: string };
+
+/**
+ * Parent → kid, CROSS-DEVICE: mint a one-time login link for one of the
+ * parent's own children and return it rendered as a QR code. The parent scans
+ * it with the kid's phone to open the child's account there — no username/PIN.
+ *
+ * Security: only a parent may call this and only for a child they own. We just
+ * GENERATE the magic-link token here (single-use, ~1h, child-scoped) and hand
+ * back a QR — we deliberately DON'T verify it, so the parent's own session on
+ * this computer is untouched. The phone consumes the token at /auth/confirm
+ * (the same cross-device verifyOtp path used by password recovery).
+ */
+export async function createKidLoginToken(childId: string): Promise<KidQrResult> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "Please sign in again." };
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+  if (profile?.role !== "parent")
+    return { error: "Only a grown-up account can do that." };
+
+  const admin = createAdminClient();
+
+  // The parent may only open a child they actually own.
+  const { data: link } = await admin
+    .from("parent_child")
+    .select("child_id")
+    .eq("parent_id", user.id)
+    .eq("child_id", childId)
+    .maybeSingle();
+  if (!link) return { error: "That child isn't on your account." };
+
+  const { data: childProfile } = await admin
+    .from("profiles")
+    .select("display_name")
+    .eq("id", childId)
+    .maybeSingle();
+  const name = childProfile?.display_name ?? "your child";
+
+  const { data: childUser, error: childErr } =
+    await admin.auth.admin.getUserById(childId);
+  const childAuthEmail = childUser?.user?.email;
+  if (childErr || !childAuthEmail) return { error: "Could not open that account." };
+
+  const { data: linkData, error: genErr } = await admin.auth.admin.generateLink({
+    type: "magiclink",
+    email: childAuthEmail,
+  });
+  const tokenHash = linkData?.properties?.hashed_token;
+  if (genErr || !tokenHash) return { error: "Could not make a code. Please try again." };
+
+  const loginUrl = `${appUrl()}/auth/confirm?token_hash=${encodeURIComponent(
+    tokenHash,
+  )}&type=magiclink&next=/home`;
+  const dataUrl = await QRCode.toDataURL(loginUrl, {
+    width: 320,
+    margin: 2,
+    errorCorrectionLevel: "M",
+  });
+
+  return { dataUrl, name };
 }
 
 /** Parent signs in. */

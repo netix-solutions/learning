@@ -6,6 +6,7 @@ import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
 import { RemoveChildButton } from "@/components/RemoveChildButton";
 import { OpenChildButton } from "@/components/OpenChildButton";
+import { KidPhoneHandoff } from "@/components/KidPhoneHandoff";
 import { AddChildForm } from "@/components/forms/AddChildForm";
 import { TrialOnboarding } from "@/components/billing/TrialOnboarding";
 import { xpLevel } from "@/components/XpBar";
@@ -61,6 +62,13 @@ export default async function ParentDashboard() {
       <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
         <div className="flex items-center gap-2">
+          <KidPhoneHandoff
+            kids={children.map((c) => ({
+              id: c.id,
+              display_name: c.display_name,
+              avatar: c.avatar,
+            }))}
+          />
           <Link
             href="/parent/billing"
             className="btn-pop bg-white px-4 py-2 text-sm font-semibold text-slate-600 ring-2 ring-slate-200 hover:text-slate-900"
