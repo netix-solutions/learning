@@ -3,6 +3,13 @@
 // external CSS, web-safe font stacks, and a plain-text alternative. Brand colors
 // mirror globals.css (orange #f57c1f, blue #1d70c2, sun #ffc223).
 
+import {
+  SUPPORT_PHONE,
+  SUPPORT_PHONE_TEL,
+  SUPPORT_EMAIL,
+  SUPPORT_URL,
+} from "@/lib/contact";
+
 const BRAND = {
   orange: "#f57c1f",
   blue: "#1d70c2",
@@ -114,6 +121,80 @@ export function welcomeEmail(opts: { name?: string }): EmailContent {
       `- They practice Math, Reading, Science and more, earning XP and badges\n` +
       `- You watch their progress and see which skills to help with\n\n` +
       `Add your first child: ${SITE}/parent\n\n` +
+      `© 2026 Netix Solutions, LLC`,
+  };
+}
+
+/**
+ * The big welcome-guide email — sent ~5 minutes after signup (via the welcome
+ * cron). Welcomes the parent, explains how the app works, and shows them how to
+ * get it onto their kid's device: a generic QR to open the site, plus
+ * step-by-step PWA "install like an app" instructions.
+ */
+export function welcomeGuideEmail(opts: { name?: string }): EmailContent {
+  const name = (opts.name || "there").trim();
+  const h2 = `margin:26px 0 8px;font-family:${FONT};font-size:16px;font-weight:800;color:${BRAND.ink};`;
+  const li = "margin-bottom:8px;";
+
+  const bodyHtml = `
+    <p style="margin:0 0 14px;">Hi ${escapeHtml(name)}, welcome aboard — your free trial is on! 🎉</p>
+    <p style="margin:0 0 6px;">SummerSharp keeps kids sharp over the break with quick, fun daily practice. Here's everything you need to get going.</p>
+
+    <h2 style="${h2}">☀️ How it works</h2>
+    <ul style="margin:0;padding-left:20px;">
+      <li style="${li}">Give each child a fun <strong>username &amp; PIN</strong> — no email needed for them.</li>
+      <li style="${li}">They practice <strong>Math, Reading &amp; Science</strong>, earning XP, badges and daily streaks.</li>
+      <li style="${li}">You set a <strong>daily time goal</strong> and watch progress from your parent dashboard.</li>
+    </ul>
+
+    <h2 style="${h2}">📱 Put it on your kid's device</h2>
+    <p style="margin:0 0 14px;">Scan this with your child's iPad, tablet, or phone camera to open SummerSharp right on their device:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto 10px;">
+      <tr><td align="center" style="background:#ffffff;border:1px solid #eef2f7;border-radius:16px;padding:14px;">
+        <img src="${SITE}/install-qr.png" width="180" height="180" alt="Scan to open SummerSharp" style="display:block;width:180px;height:180px;border-radius:8px;">
+      </td></tr>
+    </table>
+    <p style="margin:0 0 4px;font-size:14px;color:${BRAND.faint};text-align:center;">Or just open <a href="${SITE}" style="color:${BRAND.blue};text-decoration:underline;">summersharp.app</a> in the device's browser.</p>
+
+    <h2 style="${h2}">⬇️ Install it like an app (no app store)</h2>
+    <p style="margin:0 0 12px;">Make SummerSharp open full-screen like a real app, with its own home-screen icon:</p>
+    <ul style="margin:0;padding-left:20px;">
+      <li style="${li}"><strong>iPhone / iPad (Safari):</strong> tap the <strong>Share</strong> icon, then <strong>Add to Home Screen</strong>.</li>
+      <li style="${li}"><strong>Android (Chrome):</strong> tap the <strong>⋮</strong> menu, then <strong>Install app</strong> (or "Add to Home screen").</li>
+    </ul>
+    <p style="margin:8px 0 0;">That's it — tap the new icon and it opens like an app, no browser bars.</p>
+
+    <h2 style="${h2}">💻 On your computer? Instant handoff</h2>
+    <p style="margin:0;">From your dashboard, tap <strong>📱 Play on a phone</strong> to show a QR that logs your kid straight into their account on a phone — no typing a username or PIN.</p>
+
+    <h2 style="${h2}">We're here to help</h2>
+    <p style="margin:0;">Questions any time, 24/7: <a href="tel:${SUPPORT_PHONE_TEL}" style="color:${BRAND.blue};text-decoration:underline;">${SUPPORT_PHONE}</a> &middot; <a href="mailto:${SUPPORT_EMAIL}" style="color:${BRAND.blue};text-decoration:underline;">${SUPPORT_EMAIL}</a> &middot; <a href="${SUPPORT_URL}" style="color:${BRAND.blue};text-decoration:underline;">help center</a>.</p>`;
+
+  return {
+    subject: "Welcome to SummerSharp — get it on your kid's device 📱",
+    html: layout({
+      preheader:
+        "How SummerSharp works, plus how to add it to your child's iPad, tablet or phone.",
+      heading: "Welcome — let's get your learners going!",
+      bodyHtml,
+      cta: { label: "Open my dashboard", url: `${SITE}/parent` },
+    }),
+    text:
+      `Hi ${name}, welcome to SummerSharp — your free trial is on!\n\n` +
+      `HOW IT WORKS\n` +
+      `- Give each child a username & PIN (no email needed for them)\n` +
+      `- They practice Math, Reading & Science, earning XP, badges and streaks\n` +
+      `- You set a daily time goal and watch progress from your dashboard\n\n` +
+      `PUT IT ON YOUR KID'S DEVICE\n` +
+      `Open ${SITE} in your child's iPad/tablet/phone browser (or scan the QR code in this email).\n\n` +
+      `INSTALL IT LIKE AN APP (no app store)\n` +
+      `- iPhone/iPad (Safari): Share icon -> Add to Home Screen\n` +
+      `- Android (Chrome): menu (three dots) -> Install app\n` +
+      `Then tap the new home-screen icon and it opens full-screen like a real app.\n\n` +
+      `ON YOUR COMPUTER\n` +
+      `Tap "Play on a phone" on your dashboard to show a QR that logs your kid in on a phone instantly.\n\n` +
+      `NEED HELP? We're here 24/7: ${SUPPORT_PHONE} · ${SUPPORT_EMAIL} · ${SUPPORT_URL}\n\n` +
+      `Open your dashboard: ${SITE}/parent\n\n` +
       `© 2026 Netix Solutions, LLC`,
   };
 }
