@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
-import { SiteFooter } from "@/components/SiteFooter";
+import { AppFooter } from "@/components/AppFooter";
 import { MeadowScene } from "@/components/MeadowScene";
 import { ClickSound } from "@/components/ClickSound";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
@@ -80,7 +80,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <MeadowScene />
         {children}
-        <SiteFooter />
+        <AppFooter />
         <ClickSound />
         <BackgroundMusic />
         <ServiceWorkerRegister />

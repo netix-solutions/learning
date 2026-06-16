@@ -86,6 +86,22 @@ export async function saveParentPhone(
   return { error: null, saved: true };
 }
 
+/** The signed-in student's current points (XP). Null for non-students. */
+export async function getMyPoints(): Promise<number | null> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return null;
+  const { data } = await supabase
+    .from("profiles")
+    .select("xp, role")
+    .eq("id", user.id)
+    .single();
+  if (data?.role !== "student") return null;
+  return (data.xp as number) ?? 0;
+}
+
 export type KidQrResult = { error: string } | { dataUrl: string; name: string };
 
 /**
