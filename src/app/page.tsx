@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
+import { isBillingOn } from "@/lib/settings";
 import { BrandLogo } from "@/components/BrandLogo";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
 import {
@@ -32,6 +33,8 @@ export default async function Home() {
   const { profile } = await getSessionProfile();
   if (profile) redirect(profile.role === "parent" ? "/parent" : "/home");
 
+  const billingOn = await isBillingOn();
+
   return (
     <>
       <MarketingNav />
@@ -52,19 +55,25 @@ export default async function Home() {
             K–5. A few playful minutes a day beats the summer slide.
           </p>
 
-          <div className="animate-rise delay-3 mt-8 flex flex-col items-center gap-3 sm:flex-row">
+          {!billingOn && (
+            <div className="animate-rise delay-2 mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-extrabold text-emerald-700">
+              🎉 Free for a limited time — no card needed
+            </div>
+          )}
+
+          <div className="animate-rise delay-3 mt-6 flex flex-col items-center gap-3 sm:flex-row">
             <Link
               href="/signup"
               className="btn-pop px-8 py-4 text-lg font-extrabold text-white"
               style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
             >
-              Start {TRIAL_DAYS}-day free trial →
+              {billingOn ? `Start ${TRIAL_DAYS}-day free trial →` : "Get started free →"}
             </Link>
             <Link
               href="/pricing"
               className="btn-pop bg-white px-8 py-4 text-lg font-bold text-slate-700 ring-2 ring-slate-200"
             >
-              See pricing
+              {billingOn ? "See pricing" : "What's included"}
             </Link>
           </div>
 
@@ -101,42 +110,66 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Pricing teaser */}
+        {/* Pricing teaser (or "it's free" while billing is off) */}
         <section className="py-12">
-          <div
-            className="card-fun mx-auto flex max-w-3xl flex-col items-center gap-6 p-8 text-center sm:flex-row sm:text-left"
-            style={{ background: "linear-gradient(120deg, #eef6ff, #fff7ed)" }}
-          >
-            <div className="flex-1">
-              <h2 className="font-display text-3xl font-extrabold text-slate-800">
-                One simple price
+          {billingOn ? (
+            <div
+              className="card-fun mx-auto flex max-w-3xl flex-col items-center gap-6 p-8 text-center sm:flex-row sm:text-left"
+              style={{ background: "linear-gradient(120deg, #eef6ff, #fff7ed)" }}
+            >
+              <div className="flex-1">
+                <h2 className="font-display text-3xl font-extrabold text-slate-800">
+                  One simple price
+                </h2>
+                <p className="mt-2 text-slate-600">
+                  {formatCents(BASE_PRICE_CENTS)}/mo for your first kid, just{" "}
+                  {formatCents(EXTRA_PRICE_CENTS)}/mo for each additional kid.
+                  Everything included.
+                </p>
+                <Link
+                  href="/pricing"
+                  className="btn-pop mt-4 inline-flex px-6 py-3 font-bold text-white"
+                  style={{ background: "var(--brand-blue)" }}
+                >
+                  See full pricing →
+                </Link>
+              </div>
+              <div className="grid shrink-0 grid-cols-3 gap-2 text-center">
+                {[1, 2, 3].map((k) => (
+                  <div key={k} className="rounded-2xl bg-white/80 px-3 py-3 ring-2 ring-white">
+                    <div className="font-display text-xl font-extrabold text-slate-800">
+                      {formatCents(priceForKids(k))}
+                    </div>
+                    <div className="text-[0.7rem] font-bold uppercase tracking-wide text-slate-400">
+                      {k} {k === 1 ? "kid" : "kids"}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div
+              className="card-fun mx-auto max-w-3xl p-8 text-center"
+              style={{ background: "linear-gradient(120deg, #ecfdf5, #fff7ed)" }}
+            >
+              <div className="text-5xl">🎉</div>
+              <h2 className="mt-2 font-display text-3xl font-extrabold text-slate-800">
+                Free for a limited time
               </h2>
-              <p className="mt-2 text-slate-600">
-                {formatCents(BASE_PRICE_CENTS)}/mo for your first kid, just{" "}
-                {formatCents(EXTRA_PRICE_CENTS)}/mo for each additional kid.
-                Everything included.
+              <p className="mx-auto mt-2 max-w-xl text-slate-600">
+                Every family gets <strong>everything</strong> — all subjects, all
+                kids, the parent dashboard — completely free right now. No credit
+                card, no trial countdown. Jump in while it lasts!
               </p>
               <Link
-                href="/pricing"
-                className="btn-pop mt-4 inline-flex px-6 py-3 font-bold text-white"
-                style={{ background: "var(--brand-blue)" }}
+                href="/signup"
+                className="btn-pop mt-5 inline-flex px-7 py-3 text-lg font-extrabold text-white"
+                style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
               >
-                See full pricing →
+                Get started free →
               </Link>
             </div>
-            <div className="grid shrink-0 grid-cols-3 gap-2 text-center">
-              {[1, 2, 3].map((k) => (
-                <div key={k} className="rounded-2xl bg-white/80 px-3 py-3 ring-2 ring-white">
-                  <div className="font-display text-xl font-extrabold text-slate-800">
-                    {formatCents(priceForKids(k))}
-                  </div>
-                  <div className="text-[0.7rem] font-bold uppercase tracking-wide text-slate-400">
-                    {k} {k === 1 ? "kid" : "kids"}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          )}
         </section>
 
         {/* Returning users */}

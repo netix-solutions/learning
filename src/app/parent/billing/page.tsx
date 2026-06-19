@@ -90,12 +90,12 @@ export default async function BillingPage() {
           {!ent.billingEnabled ? (
             <div className="rounded-2xl bg-emerald-50 p-4 text-emerald-800">
               <p className="font-display text-lg font-bold">
-                SummerSharp is free right now! 🎉
+                Free for a limited time! 🎉
               </p>
               <p className="mt-1 text-sm">
-                Enjoy everything at no cost. When paid plans launch, the price
-                above is what it&apos;ll be — and families already using
-                SummerSharp keep it free.
+                Enjoy everything at no cost — all subjects, all your kids, no card
+                needed. When paid plans return, the price above is what it&apos;ll
+                be, and we&apos;ll give you plenty of notice first.
               </p>
             </div>
           ) : ent.reason === "grandfathered" ? (

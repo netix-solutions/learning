@@ -1,5 +1,6 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isBillingOn } from "@/lib/settings";
 
 // Single source of truth for "is this account allowed to use the paid app?".
 // Everything funnels through here so the gating POLICY is a one-place change.
@@ -40,10 +41,6 @@ export type Entitlement = {
   kids: number; // kids currently on the account
   trialEndsAt: string | null; // ISO end of the active trial/period, if any
 };
-
-export function billingEnabled(): boolean {
-  return process.env.BILLING_ENABLED === "true";
-}
 
 async function kidCount(parentId: string): Promise<number> {
   const admin = createAdminClient();
@@ -91,7 +88,7 @@ async function freeCompCap(parentId: string): Promise<number | null> {
 export async function getParentEntitlement(parentId: string): Promise<Entitlement> {
   const kids = await kidCount(parentId);
 
-  if (!billingEnabled()) {
+  if (!(await isBillingOn())) {
     return { entitled: true, billingEnabled: false, reason: "billing_off", status: "free", seats: kids, kids, trialEndsAt: null };
   }
 
@@ -160,7 +157,7 @@ export async function getParentEntitlement(parentId: string): Promise<Entitlemen
 
 /** Entitlement for a STUDENT — entitled if ANY linked parent is entitled. */
 export async function getStudentEntitlement(studentId: string): Promise<Entitlement> {
-  if (!billingEnabled()) {
+  if (!(await isBillingOn())) {
     return { entitled: true, billingEnabled: false, reason: "billing_off", status: "free", seats: 0, kids: 0, trialEndsAt: null };
   }
   const admin = createAdminClient();

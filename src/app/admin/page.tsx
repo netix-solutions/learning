@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAdminStats, isAdminAuthed } from "@/lib/admin";
+import { isBillingOn } from "@/lib/settings";
 import { AdminShell } from "@/components/AdminShell";
+import { BillingToggle } from "@/components/admin/BillingToggle";
 import { subjectTheme } from "@/lib/types";
 
 export const metadata = { title: "Dashboard · SummerSharp Admin" };
@@ -12,6 +14,7 @@ export default async function AdminDashboard() {
 
   const stats = await getAdminStats();
   const totalUsers = stats.parents + stats.students;
+  const billingOn = await isBillingOn();
 
   return (
     <AdminShell active="dashboard">
@@ -21,6 +24,8 @@ export default async function AdminDashboard() {
       <p className="mt-1 text-slate-500">
         Live overview of accounts, learning activity, and content.
       </p>
+
+      <BillingToggle enabled={billingOn} />
 
       {/* Headline metrics */}
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">

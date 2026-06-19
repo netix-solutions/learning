@@ -46,7 +46,7 @@ export default async function ParentDashboard() {
   }
 
   const planLabel = !ent.billingEnabled
-    ? "Free during launch ✨"
+    ? "Free for a limited time 🎉"
     : ent.reason === "grandfathered"
       ? "Founding family · free 💛"
       : ent.reason === "coupon"

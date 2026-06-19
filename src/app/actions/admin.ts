@@ -12,6 +12,7 @@ import {
   isAdminAuthed,
   verifyAdminCredentials,
 } from "@/lib/admin";
+import { setBillingOn } from "@/lib/settings";
 
 function appUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -43,6 +44,22 @@ export async function adminSignIn(
   });
 
   redirect("/admin");
+}
+
+/**
+ * Master billing switch. OFF → the whole app is free for everyone and the UI
+ * reads "free for a limited time"; ON → normal sales pricing + paywall. Flips
+ * instantly (stored in app_settings; the entitlement layer reads it live).
+ */
+export async function adminSetBilling(
+  enabled: boolean,
+): Promise<{ error: string | null }> {
+  if (!(await isAdminAuthed())) return { error: "Not authorized." };
+  const res = await setBillingOn(enabled);
+  if (res.error) return res;
+  // Re-render every surface so the free/sales copy + gating update immediately.
+  revalidatePath("/", "layout");
+  return { error: null };
 }
 
 export async function adminSignOut() {
