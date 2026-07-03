@@ -13,7 +13,7 @@ import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart, playTally } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
-import { ScienceDiagram } from "@/components/ScienceDiagram";
+import { ScienceDiagram, hasScienceDiagram } from "@/components/ScienceDiagram";
 import {
   TrueFalseQuestion,
   TapWordQuestion,
@@ -63,6 +63,21 @@ export function PracticeClient({
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
+  // Approved AI scene art per "subject/skill" (RLS only exposes approved rows).
+  const [artMap, setArtMap] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("skill_art")
+      .select("subject_id, skill, image_url")
+      .then(({ data }) => {
+        if (!data) return;
+        const map: Record<string, string> = {};
+        for (const r of data) map[`${r.subject_id}/${r.skill}`] = r.image_url;
+        setArtMap(map);
+      });
+  }, []);
 
   const loadQuestions = useCallback(async () => {
     setPhase("loading");
@@ -379,11 +394,36 @@ export function PracticeClient({
               </span>
             )}
           </div>
-          {current.subject_id === "science" && (
-            <div className="mb-4 rounded-2xl bg-slate-50/80 p-3">
-              <ScienceDiagram skill={current.skill} />
-            </div>
-          )}
+          {(() => {
+            // Hand-made science diagrams stay authoritative; AI scene art fills
+            // in everywhere else it exists (never math — its SVG manipulatives
+            // are answer-exact and live in TeachMe).
+            const art =
+              current.subject_id !== "math" && current.skill
+                ? artMap[`${current.subject_id}/${current.skill}`]
+                : undefined;
+            if (current.subject_id === "science" && (hasScienceDiagram(current.skill) || !art)) {
+              return (
+                <div className="mb-4 rounded-2xl bg-slate-50/80 p-3">
+                  <ScienceDiagram skill={current.skill} />
+                </div>
+              );
+            }
+            if (art) {
+              return (
+                <div className="mb-4 overflow-hidden rounded-2xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={art}
+                    alt=""
+                    aria-hidden
+                    className="max-h-44 w-full object-cover"
+                  />
+                </div>
+              );
+            }
+            return null;
+          })()}
           <div className="flex items-start gap-3">
             <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
               {current.prompt}

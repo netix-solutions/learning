@@ -17,7 +17,17 @@ export function ScienceDiagram({
   return <div className={`grid place-items-center ${className}`}>{pick(skill ?? "")}</div>;
 }
 
+/** True when a hand-made diagram exists for this skill. Skills without one
+ *  can show AI-generated skill art instead (see PracticeClient). */
+export function hasScienceDiagram(skill?: string | null) {
+  return pickOrNull(skill ?? "") !== null;
+}
+
 function pick(k: string) {
+  return pickOrNull(k) ?? <LabMascot />;
+}
+
+function pickOrNull(k: string) {
   if (k.includes("watercycle")) return <WaterCycle />;
   if (k.includes("solar")) return <SolarSystem />;
   if (k.includes("lifecycle")) return <LifeCycle />;
@@ -38,7 +48,7 @@ function pick(k: string) {
   if (k.includes("body")) return <Body />;
   if (k.includes("season")) return <Seasons />;
   if (k.includes("habitat")) return <Habitats />;
-  return <LabMascot />;
+  return null;
 }
 
 function Frame({ children, label }: { children: React.ReactNode; label: string }) {

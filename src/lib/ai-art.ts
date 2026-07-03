@@ -13,15 +13,32 @@ const AVATAR_STYLE = [
 
 const MODEL = "google/gemini-3.1-flash-image-preview";
 
+// Kept in sync with scripts/generate-skill-art.mjs.
+const SCENE_STYLE = [
+  "Cute flat vector-style illustration for a children's learning app, wide landscape composition.",
+  "Soft rounded shapes, bold clean outlines, bright cheerful pastel colors, sunny friendly mood.",
+  "Absolutely no words, letters, numbers, or signs anywhere in the image.",
+  "No photorealism, no watermark.",
+].join(" ");
+
 /**
  * Generate one piece of avatar-shop artwork through the Vercel AI Gateway
  * (auth: OIDC on Vercel, AI_GATEWAY_API_KEY elsewhere). Returns raw PNG bytes.
  */
 export async function generateAvatarArt(subject: string): Promise<Uint8Array> {
+  return paint(`${AVATAR_STYLE}\n\nThe character: ${subject}.`, "avatar-shop");
+}
+
+/** Wide scene banner for question skill-art (see /admin/art). */
+export async function generateSceneArt(scene: string): Promise<Uint8Array> {
+  return paint(`${SCENE_STYLE}\n\nThe scene: ${scene}`, "skill-art");
+}
+
+async function paint(prompt: string, tag: string): Promise<Uint8Array> {
   const result = await generateText({
     model: MODEL,
-    prompt: `${AVATAR_STYLE}\n\nThe character: ${subject}.`,
-    providerOptions: { gateway: { tags: ["feature:avatar-shop"] } },
+    prompt,
+    providerOptions: { gateway: { tags: [`feature:${tag}`] } },
   });
   const image = result.files.find((f) => f.mediaType?.startsWith("image/"));
   if (!image) {
