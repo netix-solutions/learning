@@ -3,6 +3,14 @@ import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ParentSignupForm } from "@/components/forms/ParentSignupForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sign up — SummerSharp",
+  description:
+    "Create your free family account and keep your K–5 kids sharp all summer with fun math, reading, and science practice.",
+  alternates: { canonical: "/signup" },
+};
 
 export default async function SignupPage() {
   const { profile } = await getSessionProfile();

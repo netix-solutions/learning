@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Pricing — SummerSharp",
   description:
     "Full access for every K–5 family. Simple, sunny pricing — and free for a limited time.",
+  alternates: { canonical: "/pricing" },
 };
 
 const INCLUDED = [
@@ -41,8 +42,23 @@ export default async function PricingPage() {
   const billingOn = await isBillingOn();
   const faq = billingOn ? FAQ_PAID : FAQ_FREE;
 
+  // FAQ rich-result markup, generated from whichever FAQ set is live.
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <MarketingNav />
 
       <main className="relative z-10 mx-auto w-full min-w-0 max-w-4xl px-4 py-12 sm:py-16">

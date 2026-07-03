@@ -3,6 +3,14 @@ import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { KidLoginForm } from "@/components/forms/KidLoginForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kid login — SummerSharp",
+  description:
+    "Kids: log in with your username and PIN to keep your streak going!",
+  alternates: { canonical: "/kids" },
+};
 
 export default async function KidsLoginPage() {
   const { profile } = await getSessionProfile();

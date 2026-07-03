@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Terms of Use — SummerSharp",
   description:
     "The terms governing your use of SummerSharp, operated by Netix Solutions, LLC.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsOfUse() {

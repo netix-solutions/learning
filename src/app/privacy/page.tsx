@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy — SummerSharp",
   description:
     "How SummerSharp and Netix Solutions, LLC collect, use, and protect information, including children's data under COPPA.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPolicy() {

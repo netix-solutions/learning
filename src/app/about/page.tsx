@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About — SummerSharp",
   description:
     "SummerSharp keeps Florida K–5 kids sharp over the summer with fun, adaptive practice in math, reading, and science — built by Netix Solutions.",
+  alternates: { canonical: "/about" },
 };
 
 const STEPS = [

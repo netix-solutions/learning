@@ -3,6 +3,13 @@ import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ParentLoginForm } from "@/components/forms/ParentLoginForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Parent login — SummerSharp",
+  description: "Log in to your SummerSharp parent dashboard.",
+  alternates: { canonical: "/login" },
+};
 
 export default async function LoginPage() {
   const { profile } = await getSessionProfile();

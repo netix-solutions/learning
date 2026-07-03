@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
@@ -11,6 +12,37 @@ import {
   EXTRA_PRICE_CENTS,
   TRIAL_DAYS,
 } from "@/lib/billing";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+// Structured data so search engines show SummerSharp as an app with ratings-
+// ready rich results. Kept in sync with the marketing copy by hand.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "SummerSharp",
+  url: "https://summersharp.app",
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Web",
+  description:
+    "A fun summer learning app for Florida K–5 students. Adaptive math, reading, and science practice with points, streaks, and badges — plus a parent dashboard.",
+  audience: {
+    "@type": "EducationalAudience",
+    educationalRole: "student",
+  },
+  offers: {
+    "@type": "Offer",
+    price: (BASE_PRICE_CENTS / 100).toFixed(2),
+    priceCurrency: "USD",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Netix Solutions, LLC",
+    url: "https://netixsolutions.com",
+  },
+};
 
 const FEATURES = [
   { emoji: "➕", title: "Math, Reading & Science", desc: "Thousands of K–5 questions, tagged to Florida B.E.S.T. standards." },
@@ -37,6 +69,10 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <MarketingNav />
 
       <main className="relative z-10 mx-auto w-full min-w-0 max-w-5xl px-5">
