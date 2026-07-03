@@ -7,6 +7,7 @@ import { SignOutButton } from "@/components/SignOutButton";
 import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { XpBar } from "@/components/XpBar";
 import { GoalProgressCard } from "@/components/GoalProgressCard";
+import { DailyChest } from "@/components/DailyChest";
 import { subjectTheme, gradeLabel, type StudentSummary, type Subject } from "@/lib/types";
 import type { GoalProgress } from "@/lib/goals";
 
@@ -22,16 +23,32 @@ export default async function StudentHome() {
   if (!user) redirect("/kids");
   if (profile?.role !== "student") redirect("/parent");
 
-  const [{ data: summaryData }, { data: subjects }, { data: badges }, { data: goalData }] =
-    await Promise.all([
-      supabase.rpc("get_student_summary", { p_student_id: user.id }),
-      // Only show subjects that have questions for this child's grade — e.g.
-      // Pre-K shouldn't see civics, economics, geography, or history.
-      supabase.rpc("get_grade_subjects", { p_grade: profile.grade }),
-      supabase.from("badges").select("*").order("sort"),
-      supabase.rpc("get_my_goal_progress"),
-    ]);
+  // The chest RPC and record_attempt use UTC current_date, so match it here.
+  const todayUtc = new Date().toISOString().slice(0, 10);
+
+  const [
+    { data: summaryData },
+    { data: subjects },
+    { data: badges },
+    { data: goalData },
+    { data: chestClaim },
+    { data: practicedToday },
+  ] = await Promise.all([
+    supabase.rpc("get_student_summary", { p_student_id: user.id }),
+    // Only show subjects that have questions for this child's grade — e.g.
+    // Pre-K shouldn't see civics, economics, geography, or history.
+    supabase.rpc("get_grade_subjects", { p_grade: profile.grade }),
+    supabase.from("badges").select("*").order("sort"),
+    supabase.rpc("get_my_goal_progress"),
+    supabase.from("chest_claims").select("reward").eq("day", todayUtc).maybeSingle(),
+    supabase.from("attempts").select("id").gte("created_at", todayUtc).limit(1),
+  ]);
   const goal = goalData as GoalProgress | null;
+  const chestState = chestClaim
+    ? ("opened" as const)
+    : practicedToday?.length
+      ? ("ready" as const)
+      : ("locked" as const);
 
   const summary = summaryData as StudentSummary;
   const correctBySubject = new Map(
@@ -74,6 +91,9 @@ export default async function StudentHome() {
           <XpBar xp={profile.xp} />
         </div>
       </section>
+
+      {/* Daily treasure chest — practicing unlocks it */}
+      <DailyChest initialState={chestState} reward={chestClaim?.reward} />
 
       {/* Time goal set by a grown-up */}
       {goal && <GoalProgressCard p={goal} />}

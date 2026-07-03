@@ -151,6 +151,20 @@ export function PracticeClient({
     if (phase === "done" && xpEarned > 0) playTally();
   }, [phase, xpEarned]);
 
+  // Results screen: if today's treasure chest hasn't been opened yet, the kid
+  // just unlocked it by playing this round — point them at it.
+  const [chestReady, setChestReady] = useState(false);
+  useEffect(() => {
+    if (phase !== "done") return;
+    const todayUtc = new Date().toISOString().slice(0, 10);
+    createClient()
+      .from("chest_claims")
+      .select("day")
+      .eq("day", todayUtc)
+      .maybeSingle()
+      .then(({ data }) => setChestReady(!data));
+  }, [phase]);
+
   async function submit(answer: SubmittedAnswer) {
     if (result || submitting || !current) return;
     if (typeof answer === "number") setSelected(answer);
@@ -187,6 +201,8 @@ export function PracticeClient({
         xpLevel(res.new_xp).level > xpLevel(res.new_xp - res.xp_earned).level;
       if (leveledUp) {
         setCheer(`LEVEL ${xpLevel(res.new_xp).level}! 🚀`);
+      } else if (newCombo >= 2 && (res.combo_bonus ?? 0) > 0) {
+        setCheer(`${newCombo} in a row! 🔥 +${res.combo_bonus} bonus`);
       } else if (newCombo >= 3) {
         setCheer(`${newCombo} in a row! 🔥`);
       } else {
@@ -321,6 +337,15 @@ export function PracticeClient({
             )}
 
             <div className="mt-7 flex flex-col gap-3">
+              {chestReady && (
+                <Link
+                  href="/home"
+                  className="btn-pop flex items-center justify-center gap-2 px-6 py-3 text-lg font-extrabold text-white animate-pop"
+                  style={{ background: "linear-gradient(90deg, #f59e0b, #f97316)" }}
+                >
+                  <span className="animate-wiggle">🎁</span> Your daily chest is ready!
+                </Link>
+              )}
               <button
                 onClick={loadQuestions}
                 className="btn-pop px-6 py-3 text-lg text-white"

@@ -86,6 +86,10 @@ export type AttemptResult = {
   correct: SubmittedAnswer | null;
   explanation: string | null;
   xp_earned: number;
+  /** This answer's place in the current run of correct answers (1 = first). */
+  combo?: number;
+  /** Bonus points included in xp_earned for keeping the run going. */
+  combo_bonus?: number;
   new_xp: number;
   new_streak: number;
   new_badges: { id: string; name: string; emoji: string; description: string }[];
