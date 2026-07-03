@@ -385,3 +385,31 @@ a, button, [role="button"], label, summary, input[type="submit"] {
   animation: confetti-fall 2.4s linear forwards;
   z-index: 50;
 }
+
+/* ---- Marketing landing extras ------------------------------------------ */
+
+/* Seamless avatar marquee: track holds two copies of the strip. */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 36s linear infinite;
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+/* Gentle bob for the hero device frame — calmer than animate-float. */
+@keyframes device-bob {
+  0%, 100% { transform: translateY(0) rotate(1.5deg); }
+  50%      { transform: translateY(-8px) rotate(1.5deg); }
+}
+.device-bob { animation: device-bob 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .device-bob { animation: none; }
+}
