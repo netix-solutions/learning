@@ -151,7 +151,7 @@ export function PracticeClient({
     const res = data as AttemptResult;
     setResult(res);
     if (res.is_correct) {
-      playCorrect();
+      playCorrect(combo);
       setCorrectCount((c) => c + 1);
       setXpEarned((x) => x + res.xp_earned);
       setLastPoints(res.xp_earned);
@@ -248,12 +248,28 @@ export function PracticeClient({
   if (phase === "done") {
     const total = questions.length;
     const perfect = correctCount === total;
+    // 1–3 stars: finishing always earns one, ≥60% two, ≥90% three.
+    const pct = total > 0 ? correctCount / total : 0;
+    const stars = pct >= 0.9 ? 3 : pct >= 0.6 ? 2 : 1;
     return (
       <>
         <Confetti fire={confettiKey} />
         <Centered>
           <div className="card-fun w-full max-w-md p-8 text-center animate-pop">
             <div className="text-7xl">{perfect ? "🏆" : "🌟"}</div>
+            <div className="mt-2 flex items-center justify-center gap-1 text-4xl">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className={i < stars ? "animate-pop" : "opacity-25 grayscale"}
+                  // Stars pop in one after another (animate-pop fills backwards,
+                  // so each stays hidden until its turn).
+                  style={i < stars ? { animationDelay: `${0.3 + i * 0.35}s` } : undefined}
+                >
+                  ⭐
+                </span>
+              ))}
+            </div>
             <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">
               {perfect ? "Perfect round!" : "Great job!"}
             </h1>
@@ -297,6 +313,14 @@ export function PracticeClient({
               >
                 Back home 🏠
               </Link>
+              {xpEarned > 0 && (
+                <Link
+                  href="/shop"
+                  className="mt-1 text-sm font-bold text-slate-400 hover:text-slate-600"
+                >
+                  Spend your points in the Avatar Shop 🛍️
+                </Link>
+              )}
             </div>
           </div>
         </Centered>

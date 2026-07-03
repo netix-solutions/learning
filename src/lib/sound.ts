@@ -85,7 +85,7 @@ export function isMuted() {
 }
 
 /** Play a sound. Call from inside a user gesture (e.g. a click handler). */
-export function playSound(name: SoundName) {
+export function playSound(name: SoundName, rate = 1) {
   if (muted) return;
   const audioCtx = getCtx();
   if (!audioCtx) return;
@@ -101,6 +101,7 @@ export function playSound(name: SoundName) {
 
   const source = audioCtx.createBufferSource();
   source.buffer = buffer;
+  source.playbackRate.value = rate;
   const gain = audioCtx.createGain();
   gain.gain.value = VOLUMES[name];
   source.connect(gain).connect(audioCtx.destination);
@@ -112,9 +113,14 @@ export function playClick() {
   playSound("click");
 }
 
-/** Convenience: the celebratory "correct answer" sound. */
-export function playCorrect() {
-  playSound("correct");
+/**
+ * Convenience: the celebratory "correct answer" sound. Pass the current combo
+ * (answers right in a row) and the pitch steps up with each one — a classic
+ * game cue that makes a streak *feel* like a streak. Capped so it never gets
+ * chipmunk-silly.
+ */
+export function playCorrect(combo = 0) {
+  playSound("correct", Math.min(1 + combo * 0.06, 1.3));
 }
 
 /** Convenience: the gentle "wrong answer" sound. */

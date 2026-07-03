@@ -94,6 +94,25 @@ export default async function StudentHome() {
         <span className="ml-auto text-3xl">→</span>
       </Link>
 
+      {/* Avatar shop */}
+      <Link
+        href="/shop"
+        className="btn-pop card-fun mt-4 flex items-center gap-4 p-4"
+      >
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-3xl shadow-inner">
+          🛍️
+        </span>
+        <span className="min-w-0">
+          <span className="block font-display text-xl font-bold text-slate-800">
+            Avatar Shop
+          </span>
+          <span className="text-sm font-semibold text-slate-500">
+            Spend your ⭐ points on super avatars!
+          </span>
+        </span>
+        <span className="ml-auto text-2xl text-slate-300">→</span>
+      </Link>
+
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">
         Pick a subject

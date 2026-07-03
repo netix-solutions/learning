@@ -770,10 +770,16 @@ export const AVATAR_IDS = AVATAR_DEFS.map((d) => d.id);
 
 export const DEFAULT_AVATAR = "fox";
 
+/** Avatars bought in the shop are stored as an image path/URL, not an id. */
+export function isImageAvatar(id: string) {
+  return id.startsWith("/") || id.startsWith("http");
+}
+
 /**
- * Render a kid's avatar. `id` is an avatar id (e.g. "fox"); unknown values —
- * including legacy emoji stored on older profiles — fall back to rendering the
- * raw string centred in the same square so nothing looks broken.
+ * Render a kid's avatar. `id` is an avatar id (e.g. "fox") or, for avatars
+ * bought in the shop, an image URL; other unknown values — including legacy
+ * emoji stored on older profiles — fall back to rendering the raw string
+ * centred in the same square so nothing looks broken.
  */
 export function Avatar({
   id,
@@ -782,6 +788,12 @@ export function Avatar({
   id: string;
   className?: string;
 }) {
+  if (isImageAvatar(id)) {
+    // Plain <img>: sources include Supabase Storage URLs, which next/image
+    // would reject without remotePatterns config. These are small squares.
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={id} alt="Avatar" className={`${className} object-cover`} />;
+  }
   const def = DEF_BY_ID[id];
   return (
     <svg
