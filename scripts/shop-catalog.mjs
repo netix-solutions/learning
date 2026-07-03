@@ -16,6 +16,21 @@ export const CATALOG = [
   { slug: "dragon-ember", name: "Ember", price: 300, subject: "a small friendly red dragon with tiny wings puffing a heart-shaped smoke puff" },
   { slug: "space-pup", name: "Space Pup", price: 300, subject: "a corgi puppy floating in a bubble space helmet with a planet in the background" },
   { slug: "queen-bee", name: "Queen Bee", price: 300, subject: "a cheerful bee wearing a tiny golden crown, with sparkly wings" },
+  // Wave 2 — snake, turtle, and the Florida wildlife crew.
+  { slug: "slither-sam", name: "Slither Sam", price: 150, subject: "a friendly green snake with big happy eyes, coiled in a cute spiral with its head up and a little tongue out" },
+  { slug: "shelly-turtle", name: "Shelly", price: 150, subject: "a smiling turtle with a colorful patterned shell and rosy cheeks" },
+  { slug: "pete-pelican", name: "Pete Pelican", price: 150, subject: "a goofy happy pelican with a big orange beak and a tiny sailor hat" },
+  { slug: "gecko-splash", name: "Splash", price: 150, subject: "a bright green gecko with big curious eyes hanging on playfully" },
+  { slug: "bella-butterfly", name: "Bella", price: 150, subject: "a beautiful butterfly with big rainbow wings and a sweet smiling face" },
+  { slug: "flo-flamingo", name: "Flo Flamingo", price: 200, subject: "a pink flamingo wearing heart-shaped sunglasses, striking a sassy pose" },
+  { slug: "ollie-octopus", name: "Ollie", price: 200, subject: "a purple octopus juggling seashells with a big happy grin" },
+  { slug: "luna-sloth", name: "Luna Sloth", price: 200, subject: "a sleepy smiling sloth hugging a branch with a tiny flower tucked behind its ear" },
+  { slug: "rascal-raccoon", name: "Rascal", price: 200, subject: "a mischievous cute raccoon with a masked face and a playful grin" },
+  { slug: "gator-gus", name: "Gator Gus", price: 250, subject: "a friendly green alligator with a huge toothy smile wearing a backwards baseball cap" },
+  { slug: "dottie-dolphin", name: "Dottie", price: 250, subject: "a joyful dolphin leaping with a splash of sparkly water droplets" },
+  { slug: "sunny-seaturtle", name: "Sunny", price: 300, subject: "a sea turtle wearing a snorkel mask, gliding with flippers spread wide and bubbles around" },
+  { slug: "manny-manatee", name: "Manny Manatee", price: 300, subject: "a gentle round manatee with kind eyes, hugging a small seagrass bouquet" },
+  { slug: "florida-panther", name: "Florida Panther", price: 400, subject: "a majestic tan panther with bright golden eyes and a confident heroic smile, epic and rare-looking" },
 ];
 
 // Shared style so the whole catalog looks like one matched set — and matches

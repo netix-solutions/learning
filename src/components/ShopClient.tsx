@@ -20,8 +20,22 @@ type ShopItem = {
 type ShopData = {
   xp: number;
   balance: number;
+  deal: { item_id: string; deal_price: number } | null;
+  mystery_price: number;
   items: ShopItem[];
 };
+
+/** Rarity is derived from base price — no schema needed, and the tiers give
+ *  cheap items dignity and expensive ones drama. */
+function rarity(price: number) {
+  if (price > 300)
+    return { label: "Legendary", chip: "bg-amber-100 text-amber-700", ring: "ring-amber-300" };
+  if (price > 250)
+    return { label: "Epic", chip: "bg-violet-100 text-violet-700", ring: "ring-violet-300" };
+  if (price > 150)
+    return { label: "Rare", chip: "bg-sky-100 text-sky-700", ring: "ring-sky-300" };
+  return { label: "Common", chip: "bg-emerald-100 text-emerald-700", ring: "ring-emerald-200" };
+}
 
 /**
  * The kid-facing Avatar Shop: spend earned points on AI-generated avatars,
@@ -35,6 +49,9 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
   const [busy, setBusy] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
   const [cheer, setCheer] = useState<string | null>(null);
+  const [reveal, setReveal] = useState<{ name: string; image_url: string; price: number } | null>(
+    null,
+  );
 
   const load = useCallback(async () => {
     const supabase = createClient();
@@ -76,6 +93,35 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
     } else {
       playWrong();
       await load(); // refresh balance in case it changed elsewhere
+    }
+    setBusy(false);
+  }
+
+  async function buyMysteryBox() {
+    if (busy || !data) return;
+    if (confirming !== "mystery") {
+      playClick();
+      setConfirming("mystery");
+      return;
+    }
+    setConfirming(null);
+    setBusy(true);
+    const supabase = createClient();
+    const { data: res } = await supabase.rpc("buy_mystery_box");
+    const r = res as {
+      ok?: boolean;
+      item?: { id: string; name: string; image_url: string; price: number };
+    } | null;
+    if (r?.ok && r.item) {
+      await supabase.rpc("equip_shop_item", { p_item: r.item.id });
+      setAvatar(r.item.image_url);
+      playCorrect(4); // top-of-the-scale chime — this is the jackpot moment
+      setConfettiKey((k) => k + 1);
+      setReveal({ name: r.item.name, image_url: r.item.image_url, price: r.item.price });
+      await load();
+    } else {
+      playWrong();
+      await load();
     }
     setBusy(false);
   }
@@ -163,6 +209,86 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
         </Link>
       </div>
 
+      {/* Daily Deal + Mystery Box */}
+      {data != null && (
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {(() => {
+            const dealItem = data.deal
+              ? data.items.find((i) => i.id === data.deal!.item_id)
+              : undefined;
+            if (!dealItem || dealItem.owned) return null;
+            const affordable = (balance ?? 0) >= data.deal!.deal_price;
+            return (
+              <div
+                className="card-fun flex items-center gap-4 p-4 ring-4 ring-rose-200"
+                style={{ background: "linear-gradient(120deg, #fff1f2, #fff7ed)" }}
+              >
+                <div className="h-20 w-20 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={dealItem.image_url} alt={dealItem.name} className="h-full w-full object-cover" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-extrabold uppercase tracking-wide text-rose-500">
+                    ⏰ Deal of the day
+                  </p>
+                  <p className="font-display text-xl font-bold text-slate-800">{dealItem.name}</p>
+                  <p className="text-sm font-bold text-slate-500">
+                    <s className="opacity-60">⭐ {dealItem.price}</s>{" "}
+                    <span className="text-rose-600">⭐ {data.deal!.deal_price}</span> — today only!
+                  </p>
+                </div>
+                <button
+                  onClick={() => buy({ ...dealItem, price: data.deal!.deal_price })}
+                  disabled={busy || !affordable}
+                  className={`btn-pop shrink-0 px-4 py-2 text-sm font-extrabold ${
+                    affordable ? "text-white" : "cursor-not-allowed bg-slate-100 text-slate-400"
+                  } ${confirming === dealItem.id ? "animate-cheer" : ""}`}
+                  style={affordable ? { background: "linear-gradient(90deg, #f43f5e, #fb923c)" } : undefined}
+                >
+                  {confirming === dealItem.id ? "Tap again!" : "Grab it!"}
+                </button>
+              </div>
+            );
+          })()}
+
+          {data.items.some((i) => !i.owned) && (
+            <div
+              className="card-fun flex items-center gap-4 p-4 ring-4 ring-violet-200"
+              style={{ background: "linear-gradient(120deg, #f5f3ff, #eef2ff)" }}
+            >
+              <div className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-gradient-to-br from-violet-400 to-fuchsia-400 text-5xl ring-4 ring-white">
+                <span className="animate-float">🎁</span>
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-extrabold uppercase tracking-wide text-violet-500">
+                  Mystery box
+                </p>
+                <p className="font-display text-xl font-bold text-slate-800">Win ANY avatar!</p>
+                <p className="text-sm font-bold text-slate-500">
+                  ⭐ {data.mystery_price} — even a Legendary one 👀
+                </p>
+              </div>
+              <button
+                onClick={buyMysteryBox}
+                disabled={busy || (balance ?? 0) < data.mystery_price}
+                className={`btn-pop shrink-0 px-4 py-2 text-sm font-extrabold ${
+                  (balance ?? 0) >= data.mystery_price
+                    ? "text-white"
+                    : "cursor-not-allowed bg-slate-100 text-slate-400"
+                } ${confirming === "mystery" ? "animate-cheer" : ""}`}
+                style={
+                  (balance ?? 0) >= data.mystery_price
+                    ? { background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }
+                    : undefined
+                }
+              >
+                {confirming === "mystery" ? "Tap again!" : "Open it!"}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* AI avatar shelf */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">
         Super avatars ✨
@@ -175,7 +301,10 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {data.items.map((item) => {
             const wearing = avatar === item.image_url;
-            const affordable = (balance ?? 0) >= item.price;
+            const isDeal = data.deal?.item_id === item.id && !item.owned;
+            const price = isDeal ? data.deal!.deal_price : item.price;
+            const affordable = (balance ?? 0) >= price;
+            const tier = rarity(item.price);
             return (
               <div
                 key={item.id}
@@ -184,7 +313,7 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
                 }`}
               >
                 <div
-                  className={`h-24 w-24 overflow-hidden rounded-3xl ${
+                  className={`h-24 w-24 overflow-hidden rounded-3xl ring-4 ${tier.ring} ${
                     item.owned || affordable ? "" : "opacity-60 grayscale-[35%]"
                   }`}
                 >
@@ -198,6 +327,9 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
                 <p className="mt-2 font-display text-lg font-bold leading-tight text-slate-800">
                   {item.name}
                 </p>
+                <span className={`mt-1 rounded-full px-2 py-0.5 text-[0.65rem] font-extrabold uppercase tracking-wide ${tier.chip}`}>
+                  {isDeal ? "⏰ Deal!" : tier.label}
+                </span>
 
                 {wearing ? (
                   <span className="mt-2 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-extrabold text-amber-700">
@@ -230,9 +362,15 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
                         : undefined
                     }
                   >
-                    {confirming === item.id
-                      ? "Tap again to buy!"
-                      : `⭐ ${item.price}`}
+                    {confirming === item.id ? (
+                      "Tap again to buy!"
+                    ) : isDeal ? (
+                      <>
+                        <s className="opacity-70">⭐ {item.price}</s> ⭐ {price}
+                      </>
+                    ) : (
+                      `⭐ ${price}`
+                    )}
                   </button>
                 )}
               </div>
@@ -284,6 +422,46 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
         })}
       </div>
 
+      {/* Mystery box reveal */}
+      {reveal && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-6"
+          onClick={() => setReveal(null)}
+        >
+          <div
+            className="card-fun w-full max-w-sm p-8 text-center animate-pop"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-xs font-extrabold uppercase tracking-wide text-violet-500">
+              The box opens…
+            </p>
+            <div
+              className={`mx-auto mt-4 h-36 w-36 overflow-hidden rounded-3xl ring-8 ${rarity(reveal.price).ring} animate-cheer`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={reveal.image_url} alt={reveal.name} className="h-full w-full object-cover" />
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-extrabold text-slate-800">
+              {reveal.name}!
+            </h2>
+            <span
+              className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${rarity(reveal.price).chip}`}
+            >
+              {rarity(reveal.price).label} · worth ⭐ {reveal.price}
+            </span>
+            <p className="mt-2 font-semibold text-slate-500">
+              It&apos;s yours — and you&apos;re already wearing it! 😎
+            </p>
+            <button
+              onClick={() => setReveal(null)}
+              className="btn-pop mt-5 px-6 py-3 font-extrabold text-white"
+              style={{ background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }}
+            >
+              Awesome!
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

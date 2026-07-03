@@ -64,17 +64,23 @@ export function PracticeClient({
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
   // Approved AI scene art per "subject/skill" (RLS only exposes approved rows).
-  const [artMap, setArtMap] = useState<Record<string, string>>({});
+  // Skills can have several variants; each question hashes to one so a given
+  // question always shows the same art but a round feels varied.
+  const [artMap, setArtMap] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
     const supabase = createClient();
     supabase
       .from("skill_art")
       .select("subject_id, skill, image_url")
+      .order("id")
       .then(({ data }) => {
         if (!data) return;
-        const map: Record<string, string> = {};
-        for (const r of data) map[`${r.subject_id}/${r.skill}`] = r.image_url;
+        const map: Record<string, string[]> = {};
+        for (const r of data) {
+          const k = `${r.subject_id}/${r.skill}`;
+          (map[k] ??= []).push(r.image_url);
+        }
         setArtMap(map);
       });
   }, []);
@@ -398,10 +404,17 @@ export function PracticeClient({
             // Hand-made science diagrams stay authoritative; AI scene art fills
             // in everywhere else it exists (never math — its SVG manipulatives
             // are answer-exact and live in TeachMe).
-            const art =
+            const variants =
               current.subject_id !== "math" && current.skill
                 ? artMap[`${current.subject_id}/${current.skill}`]
                 : undefined;
+            // Stable per-question pick: hash the question id into the variants.
+            let art: string | undefined;
+            if (variants?.length) {
+              let h = 0;
+              for (const c of current.id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+              art = variants[h % variants.length];
+            }
             if (current.subject_id === "science" && (hasScienceDiagram(current.skill) || !art)) {
               return (
                 <div className="mb-4 rounded-2xl bg-slate-50/80 p-3">

@@ -48,6 +48,14 @@ const SCIENCE_SVG_COVERED =
 const GEO_MAPPY =
   /map|globe|direction|latlong|hemisphere|continent|ocean|usregions|usa|world|regions/;
 
+// Reading skills where surrounding art could contaminate the answer (a colorful
+// scene above "which one is red?" misleads a pre-K kid).
+const READING_EXCLUDED = new Set(["PK.colors"]);
+
+// How many distinct scenes each skill gets; the client shows a stable variant
+// per question so rounds feel fresh without a question ever changing look.
+const DEFAULT_VARIANTS = 3;
+
 const STYLE = [
   "Cute flat vector-style illustration for a children's learning app, wide landscape composition.",
   "Soft rounded shapes, bold clean outlines, bright cheerful pastel colors, sunny friendly mood.",
@@ -80,7 +88,7 @@ async function restAll(path) {
 /** All (subject, skill) pairs the pilot should cover. */
 async function targetSkills() {
   const rows = await restAll(
-    "questions?subject_id=in.(civics,economics,history,geography,science)&select=subject_id,skill&order=id",
+    "questions?subject_id=in.(civics,economics,history,geography,science,reading)&select=subject_id,skill&order=id",
   );
   const counts = new Map();
   for (const r of rows) {
@@ -94,6 +102,7 @@ async function targetSkills() {
     if (n < 3) continue; // stray/legacy skills
     if (subject === "science" && SCIENCE_SVG_COVERED.test(skill)) continue;
     if (subject === "geography" && GEO_MAPPY.test(skill)) continue;
+    if (subject === "reading" && READING_EXCLUDED.has(skill)) continue;
     targets.push({ subject, skill });
   }
   return targets.sort((a, b) => a.subject.localeCompare(b.subject) || a.skill.localeCompare(b.skill));
@@ -191,19 +200,78 @@ async function upload(subject, skill, image) {
   return `${URL}/storage/v1/object/public/art/${key}`;
 }
 
-async function upsertRow(row) {
-  const res = await fetch(`${URL}/rest/v1/skill_art?on_conflict=subject_id,skill`, {
+async function insertRow(row) {
+  const res = await fetch(`${URL}/rest/v1/skill_art`, {
     method: "POST",
-    headers: { ...H, Prefer: "resolution=merge-duplicates" },
+    headers: H,
     body: JSON.stringify([row]),
   });
-  if (!res.ok) throw new Error(`upsert: ${res.status} ${await res.text()}`);
+  if (!res.ok) throw new Error(`insert: ${res.status} ${await res.text()}`);
 }
 
-async function processSkill({ subject, skill }, existing, force) {
+/** Ask the art director for `n` DISTINCT scenes at once (cheaper than n calls,
+ *  and explicit distinctness beats hoping the model varies on its own). */
+async function artDirectMany(subject, skill, samples, n, avoid) {
+  if (n === 1 && avoid.length === 0) return [await artDirect(subject, skill, samples)];
+  const { text } = await generateText({
+    model: TEXT_MODEL,
+    system: [
+      "You are the art director for a cheerful K-5 learning app.",
+      `Given a quiz skill and sample questions, write ${n} clearly DIFFERENT one-sentence scene descriptions illustrating the topic (different settings, characters, activities).`,
+      "Hard rules for every scene: it must not reveal or hint at the answer to any question;",
+      "no readable text, letters, numbers, signs, or labels; no maps, globes, or geographic outlines;",
+      "no likenesses of specific real people (show generic friendly characters or objects instead);",
+      "kid-appropriate, warm, concrete, and visually simple. Florida/summer touches welcome when natural.",
+      avoid.length
+        ? `These scenes already exist — make yours different from them: ${avoid.map((a) => `"${a}"`).join("; ")}.`
+        : "",
+      `Reply with ONLY a JSON array of ${n} strings.`,
+    ]
+      .filter(Boolean)
+      .join(" "),
+    prompt: `Subject: ${subject}\nSkill id: ${skill}\nSample questions:\n${samples
+      .map((s) => `- ${s}`)
+      .join("\n")}`,
+    maxOutputTokens: 400,
+    providerOptions: { gateway: { tags: ["feature:skill-art"] } },
+  });
+  const m = text.match(/\[.*\]/s);
+  const scenes = m ? JSON.parse(m[0]) : null;
+  if (!Array.isArray(scenes) || !scenes.length) {
+    throw new Error(`art director returned no scenes (${text.slice(0, 80)})`);
+  }
+  return scenes.slice(0, n).map(String);
+}
+
+async function generateVariant({ subject, skill }, scene, approveClean) {
   const tag = `${subject}/${skill}`;
-  if (!force && existing.has(tag)) {
-    console.log(`↷ ${tag} (already has art)`);
+  let image = await paint(scene);
+  let verdict = await verify(image, scene);
+  if (!verdict.ok) {
+    console.log(`  ⟳ ${tag}: repainting (${verdict.reason})`);
+    image = await paint(scene);
+    verdict = await verify(image, scene);
+  }
+  const imageUrl = await upload(subject, skill, image);
+  await insertRow({
+    subject_id: subject,
+    skill,
+    image_url: imageUrl,
+    art_prompt: scene,
+    review_note: verdict.ok ? "auto-check passed" : `NEEDS A LOOK: ${verdict.reason}`,
+    // With --approve-clean, art that passes the vision check goes live
+    // immediately; anything flagged still waits for a human in /admin/art.
+    status: verdict.ok && approveClean ? "approved" : "pending",
+  });
+  console.log(`${verdict.ok ? "✓" : "⚠"} ${tag} — ${scene.slice(0, 80)}…`);
+}
+
+async function processSkill({ subject, skill }, existingBySkill, variants, approveClean) {
+  const tag = `${subject}/${skill}`;
+  const have = existingBySkill.get(tag) ?? [];
+  const need = variants - have.length;
+  if (need <= 0) {
+    console.log(`↷ ${tag} (already has ${have.length} variants)`);
     return;
   }
   const samples = (
@@ -212,50 +280,43 @@ async function processSkill({ subject, skill }, existing, force) {
     )
   ).map((q) => q.prompt);
 
-  const scene = await artDirect(subject, skill, samples);
-
-  let image = await paint(scene);
-  let verdict = await verify(image, scene);
-  if (!verdict.ok) {
-    console.log(`  ⟳ ${tag}: repainting (${verdict.reason})`);
-    image = await paint(scene);
-    verdict = await verify(image, scene);
+  const scenes = await artDirectMany(subject, skill, samples, need, have);
+  for (const scene of scenes) {
+    await generateVariant({ subject, skill }, scene, approveClean);
   }
-
-  const imageUrl = await upload(subject, skill, image);
-  await upsertRow({
-    subject_id: subject,
-    skill,
-    image_url: imageUrl,
-    art_prompt: scene,
-    review_note: verdict.ok ? "auto-check passed" : `NEEDS A LOOK: ${verdict.reason}`,
-    status: "pending",
-  });
-  console.log(`${verdict.ok ? "✓" : "⚠"} ${tag} — ${scene.slice(0, 80)}…`);
 }
 
 // ---- main -------------------------------------------------------------------
 
 const arg = (name) =>
   process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null;
-const force = process.argv.includes("--force");
 const concurrency = Number(arg("--concurrency") ?? 4);
+const variants = Number(arg("--variants") ?? DEFAULT_VARIANTS);
+const approveClean = process.argv.includes("--approve-clean");
 
 let targets = await targetSkills();
 if (arg("--subject")) targets = targets.filter((t) => t.subject === arg("--subject"));
 if (arg("--skill")) targets = targets.filter((t) => t.skill === arg("--skill"));
 
-const existingRows = await rest("skill_art?select=subject_id,skill");
-const existing = new Set(existingRows.map((r) => `${r.subject_id}/${r.skill}`));
+const existingRows = await restAll("skill_art?select=subject_id,skill,art_prompt&order=id");
+const existingBySkill = new Map();
+for (const r of existingRows) {
+  const k = `${r.subject_id}/${r.skill}`;
+  existingBySkill.set(k, [...(existingBySkill.get(k) ?? []), r.art_prompt ?? ""]);
+}
 
-console.log(`Generating art for ${targets.length} skills (concurrency ${concurrency})…`);
+console.log(
+  `Filling ${targets.length} skills to ${variants} variants each (concurrency ${concurrency}${
+    approveClean ? ", auto-approving clean art" : ""
+  })…`,
+);
 let failed = 0;
 const queue = [...targets];
 await Promise.all(
   Array.from({ length: concurrency }, async () => {
     for (let t = queue.shift(); t; t = queue.shift()) {
       try {
-        await processSkill(t, existing, force);
+        await processSkill(t, existingBySkill, variants, approveClean);
       } catch (err) {
         failed++;
         console.error(`✗ ${t.subject}/${t.skill}: ${err.message}`);
