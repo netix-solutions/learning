@@ -5,7 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Avatar, AVATAR_DEFS } from "@/components/Avatar";
 import { Confetti } from "@/components/Confetti";
-import { playCorrect, playClick, playWrong } from "@/lib/sound";
+import { playCorrect, playClick, playWrong, playTally } from "@/lib/sound";
 
 type ShopItem = {
   id: string;
@@ -52,6 +52,21 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
   const [reveal, setReveal] = useState<{ name: string; image_url: string; price: number } | null>(
     null,
   );
+  const [revealed, setRevealed] = useState(false);
+
+  // Every purchase is an unboxing: the gift rumbles to a drumroll for a beat,
+  // THEN bursts into the new avatar with confetti and the jackpot chime.
+  useEffect(() => {
+    if (!reveal) return;
+    setRevealed(false);
+    playTally();
+    const t = setTimeout(() => {
+      setRevealed(true);
+      playCorrect(3);
+      setConfettiKey((k) => k + 1);
+    }, 1300);
+    return () => clearTimeout(t);
+  }, [reveal]);
 
   const load = useCallback(async () => {
     const supabase = createClient();
@@ -86,9 +101,8 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
       // Wear it right away — buying a new look and not wearing it is no fun.
       await supabase.rpc("equip_shop_item", { p_item: item.id });
       setAvatar(item.image_url);
-      playCorrect(2);
-      setConfettiKey((k) => k + 1);
       setCheer(`${item.name} is yours! 🎉`);
+      setReveal({ name: item.name, image_url: item.image_url, price: item.price });
       await load();
     } else {
       playWrong();
@@ -115,8 +129,7 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
     if (r?.ok && r.item) {
       await supabase.rpc("equip_shop_item", { p_item: r.item.id });
       setAvatar(r.item.image_url);
-      playCorrect(4); // top-of-the-scale chime — this is the jackpot moment
-      setConfettiKey((k) => k + 1);
+      setCheer(`${r.item.name} is yours! 🎉`);
       setReveal({ name: r.item.name, image_url: r.item.image_url, price: r.item.price });
       await load();
     } else {
@@ -422,44 +435,53 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
         })}
       </div>
 
-      {/* Mystery box reveal */}
+      {/* Unboxing overlay: rumbling gift → burst reveal (used for every buy) */}
       {reveal && (
         <div
           className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-6"
-          onClick={() => setReveal(null)}
+          onClick={() => revealed && setReveal(null)}
         >
-          <div
-            className="card-fun w-full max-w-sm p-8 text-center animate-pop"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <p className="text-xs font-extrabold uppercase tracking-wide text-violet-500">
-              The box opens…
-            </p>
-            <div
-              className={`mx-auto mt-4 h-36 w-36 overflow-hidden rounded-3xl ring-8 ${rarity(reveal.price).ring} animate-cheer`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={reveal.image_url} alt={reveal.name} className="h-full w-full object-cover" />
+          {!revealed ? (
+            <div className="text-center">
+              <div className="gift-rumble text-[7rem] leading-none drop-shadow-xl">🎁</div>
+              <p className="mt-4 font-display text-xl font-extrabold text-white/90">
+                Opening…
+              </p>
             </div>
-            <h2 className="mt-4 font-display text-3xl font-extrabold text-slate-800">
-              {reveal.name}!
-            </h2>
-            <span
-              className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${rarity(reveal.price).chip}`}
+          ) : (
+            <div
+              className="card-fun w-full max-w-sm p-8 text-center animate-pop"
+              onClick={(e) => e.stopPropagation()}
             >
-              {rarity(reveal.price).label} · worth ⭐ {reveal.price}
-            </span>
-            <p className="mt-2 font-semibold text-slate-500">
-              It&apos;s yours — and you&apos;re already wearing it! 😎
-            </p>
-            <button
-              onClick={() => setReveal(null)}
-              className="btn-pop mt-5 px-6 py-3 font-extrabold text-white"
-              style={{ background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }}
-            >
-              Awesome!
-            </button>
-          </div>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-violet-500">
+                It burst open!
+              </p>
+              <div
+                className={`mx-auto mt-4 h-36 w-36 overflow-hidden rounded-3xl ring-8 ${rarity(reveal.price).ring} animate-cheer`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={reveal.image_url} alt={reveal.name} className="h-full w-full object-cover" />
+              </div>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-slate-800">
+                {reveal.name}!
+              </h2>
+              <span
+                className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${rarity(reveal.price).chip}`}
+              >
+                {rarity(reveal.price).label} · worth ⭐ {reveal.price}
+              </span>
+              <p className="mt-2 font-semibold text-slate-500">
+                It&apos;s yours — and you&apos;re already wearing it! 😎
+              </p>
+              <button
+                onClick={() => setReveal(null)}
+                className="btn-pop mt-5 px-6 py-3 font-extrabold text-white"
+                style={{ background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }}
+              >
+                Awesome!
+              </button>
+            </div>
+          )}
         </div>
       )}
     </>
