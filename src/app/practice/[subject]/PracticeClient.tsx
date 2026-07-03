@@ -563,6 +563,11 @@ export function PracticeClient({
               <p className="font-display text-xl font-bold">
                 {result.is_correct ? cheer : "Let's learn it 💡"}
               </p>
+              {result.shield_used && (
+                <p className="mt-1 inline-flex items-center gap-1 rounded-full bg-sky-100 px-3 py-1 text-sm font-extrabold text-sky-700 animate-pop">
+                  🛡️ Your Streak Shield saved your {result.new_streak}-day streak!
+                </p>
+              )}
               {result.explanation && (
                 <div className="mt-1 flex items-start gap-2">
                   <p className="flex-1 text-slate-700">{result.explanation}</p>

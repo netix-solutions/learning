@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         "/home",
         "/home-preview",
         "/practice",
+        "/collection",
         "/shop",
         "/api/",
         "/auth/",

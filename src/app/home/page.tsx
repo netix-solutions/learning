@@ -8,6 +8,7 @@ import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { XpBar } from "@/components/XpBar";
 import { GoalProgressCard } from "@/components/GoalProgressCard";
 import { DailyChest } from "@/components/DailyChest";
+import { QuestCard, type QuestStatus } from "@/components/QuestCard";
 import { subjectTheme, gradeLabel, type StudentSummary, type Subject } from "@/lib/types";
 import type { GoalProgress } from "@/lib/goals";
 
@@ -33,6 +34,7 @@ export default async function StudentHome() {
     { data: goalData },
     { data: chestClaim },
     { data: practicedToday },
+    { data: questData },
   ] = await Promise.all([
     supabase.rpc("get_student_summary", { p_student_id: user.id }),
     // Only show subjects that have questions for this child's grade — e.g.
@@ -42,7 +44,10 @@ export default async function StudentHome() {
     supabase.rpc("get_my_goal_progress"),
     supabase.from("chest_claims").select("reward").eq("day", todayUtc).maybeSingle(),
     supabase.from("attempts").select("id").gte("created_at", todayUtc).limit(1),
+    supabase.rpc("weekly_quest_status"),
   ]);
+  const quest = questData as QuestStatus | null;
+  const shields = (profile as { streak_shields?: number }).streak_shields ?? 0;
   const goal = goalData as GoalProgress | null;
   const chestState = chestClaim
     ? ("opened" as const)
@@ -85,6 +90,11 @@ export default async function StudentHome() {
             <div className={`text-4xl ${streak > 0 ? "animate-float" : "opacity-40"}`}>🔥</div>
             <div className="font-display text-2xl font-bold text-slate-800">{streak}</div>
             <div className="text-xs font-bold uppercase text-slate-400">day streak</div>
+            {shields > 0 && (
+              <div className="mt-1 rounded-full bg-sky-50 px-2 py-0.5 text-xs font-extrabold text-sky-700">
+                🛡️ ×{shields}
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-5">
@@ -94,6 +104,9 @@ export default async function StudentHome() {
 
       {/* Daily treasure chest — practicing unlocks it */}
       <DailyChest initialState={chestState} reward={chestClaim?.reward} />
+
+      {/* Weekly quest */}
+      {quest && !("error" in quest) && <QuestCard initial={quest} />}
 
       {/* Time goal set by a grown-up */}
       {goal && <GoalProgressCard p={goal} />}
@@ -114,24 +127,37 @@ export default async function StudentHome() {
         <span className="ml-auto text-3xl">→</span>
       </Link>
 
-      {/* Avatar shop */}
-      <Link
-        href="/shop"
-        className="btn-pop card-fun mt-4 flex items-center gap-4 p-4"
-      >
-        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-3xl shadow-inner">
-          🛍️
-        </span>
-        <span className="min-w-0">
-          <span className="block font-display text-xl font-bold text-slate-800">
-            Avatar Shop
+      {/* Avatar shop + collection album */}
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <Link href="/shop" className="btn-pop card-fun flex items-center gap-3 p-4">
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-3xl shadow-inner">
+            🛍️
           </span>
-          <span className="text-sm font-semibold text-slate-500">
-            Spend your ⭐ points on super avatars!
+          <span className="min-w-0">
+            <span className="block font-display text-xl font-bold text-slate-800">
+              Avatar Shop
+            </span>
+            <span className="text-sm font-semibold text-slate-500">
+              Spend your ⭐ points!
+            </span>
           </span>
-        </span>
-        <span className="ml-auto text-2xl text-slate-300">→</span>
-      </Link>
+          <span className="ml-auto text-2xl text-slate-300">→</span>
+        </Link>
+        <Link href="/collection" className="btn-pop card-fun flex items-center gap-3 p-4">
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-100 to-violet-100 text-3xl shadow-inner">
+            📖
+          </span>
+          <span className="min-w-0">
+            <span className="block font-display text-xl font-bold text-slate-800">
+              My Collection
+            </span>
+            <span className="text-sm font-semibold text-slate-500">
+              Collect every avatar!
+            </span>
+          </span>
+          <span className="ml-auto text-2xl text-slate-300">→</span>
+        </Link>
+      </div>
 
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">

@@ -90,6 +90,8 @@ export type AttemptResult = {
   combo?: number;
   /** Bonus points included in xp_earned for keeping the run going. */
   combo_bonus?: number;
+  /** True when a streak shield was consumed to bridge a missed day. */
+  shield_used?: boolean;
   new_xp: number;
   new_streak: number;
   new_badges: { id: string; name: string; emoji: string; description: string }[];

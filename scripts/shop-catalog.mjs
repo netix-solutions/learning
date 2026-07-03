@@ -31,6 +31,10 @@ export const CATALOG = [
   { slug: "sunny-seaturtle", name: "Sunny", price: 300, subject: "a sea turtle wearing a snorkel mask, gliding with flippers spread wide and bubbles around" },
   { slug: "manny-manatee", name: "Manny Manatee", price: 300, subject: "a gentle round manatee with kind eyes, hugging a small seagrass bouquet" },
   { slug: "florida-panther", name: "Florida Panther", price: 400, subject: "a majestic tan panther with bright golden eyes and a confident heroic smile, epic and rare-looking" },
+  // Summer Splash — limited-time seasonal drop (gone after July).
+  { slug: "popsicle-yeti", name: "Popsicle Yeti", price: 250, until: "2026-07-31T23:59:59Z", subject: "a fluffy white yeti happily licking a giant rainbow popsicle, tiny snowflakes sparkling around it" },
+  { slug: "sandy-crab", name: "Sandy Crab", price: 200, until: "2026-07-31T23:59:59Z", subject: "a happy orange crab wearing an upside-down sandcastle bucket as a hat, holding a tiny shovel" },
+  { slug: "snorkel-puppy", name: "Snorkel Puppy", price: 300, until: "2026-07-31T23:59:59Z", subject: "a golden retriever puppy wearing a snorkel mask underwater with sparkling bubbles around it" },
 ];
 
 // Shared style so the whole catalog looks like one matched set — and matches

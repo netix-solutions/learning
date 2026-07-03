@@ -21,6 +21,8 @@ const rows = CATALOG.map((item, i) => ({
   price: item.price,
   sort: (i + 1) * 10,
   active: true,
+  // Seasonal items carry an expiry; permanent ones stay null.
+  available_until: item.until ?? null,
 }));
 
 const res = await fetch(`${URL}/rest/v1/shop_items?on_conflict=slug`, {

@@ -15,6 +15,7 @@ type ShopItem = {
   image_url: string;
   price: number;
   owned: boolean;
+  available_until: string | null;
 };
 
 type ShopData = {
@@ -22,8 +23,16 @@ type ShopData = {
   balance: number;
   deal: { item_id: string; deal_price: number } | null;
   mystery_price: number;
+  shields: number;
+  shield_price: number;
   items: ShopItem[];
 };
+
+/** Whole days until a limited-time item disappears (null = permanent). */
+function daysLeft(until: string | null): number | null {
+  if (!until) return null;
+  return Math.max(0, Math.ceil((new Date(until).getTime() - Date.now()) / 86400e3));
+}
 
 /** Rarity is derived from base price — no schema needed, and the tiers give
  *  cheap items dignity and expensive ones drama. */
@@ -131,6 +140,28 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
       setAvatar(r.item.image_url);
       setCheer(`${r.item.name} is yours! 🎉`);
       setReveal({ name: r.item.name, image_url: r.item.image_url, price: r.item.price });
+      await load();
+    } else {
+      playWrong();
+      await load();
+    }
+    setBusy(false);
+  }
+
+  async function buyShield() {
+    if (busy || !data) return;
+    if (confirming !== "shield") {
+      playClick();
+      setConfirming("shield");
+      return;
+    }
+    setConfirming(null);
+    setBusy(true);
+    const supabase = createClient();
+    const { data: res } = await supabase.rpc("buy_streak_shield");
+    if ((res as { ok?: boolean } | null)?.ok) {
+      playCorrect(1);
+      setCheer("Streak Shield ready! 🛡️");
       await load();
     } else {
       playWrong();
@@ -264,6 +295,41 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
             );
           })()}
 
+          {/* Streak Shield power-up */}
+          <div
+            className="card-fun flex items-center gap-4 p-4 ring-4 ring-sky-200"
+            style={{ background: "linear-gradient(120deg, #f0f9ff, #eff6ff)" }}
+          >
+            <div className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-gradient-to-br from-sky-400 to-blue-500 text-5xl ring-4 ring-white">
+              🛡️
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-extrabold uppercase tracking-wide text-sky-600">
+                Power-up · you have {data.shields}/2
+              </p>
+              <p className="font-display text-xl font-bold text-slate-800">Streak Shield</p>
+              <p className="text-sm font-bold text-slate-500">
+                ⭐ {data.shield_price} — saves your 🔥 streak if you miss a day!
+              </p>
+            </div>
+            <button
+              onClick={buyShield}
+              disabled={busy || data.shields >= 2 || (balance ?? 0) < data.shield_price}
+              className={`btn-pop shrink-0 px-4 py-2 text-sm font-extrabold ${
+                data.shields < 2 && (balance ?? 0) >= data.shield_price
+                  ? "text-white"
+                  : "cursor-not-allowed bg-slate-100 text-slate-400"
+              } ${confirming === "shield" ? "animate-cheer" : ""}`}
+              style={
+                data.shields < 2 && (balance ?? 0) >= data.shield_price
+                  ? { background: "linear-gradient(90deg, #0ea5e9, #3b82f6)" }
+                  : undefined
+              }
+            >
+              {data.shields >= 2 ? "Maxed!" : confirming === "shield" ? "Tap again!" : "Get one"}
+            </button>
+          </div>
+
           {data.items.some((i) => !i.owned) && (
             <div
               className="card-fun flex items-center gap-4 p-4 ring-4 ring-violet-200"
@@ -318,6 +384,7 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
             const price = isDeal ? data.deal!.deal_price : item.price;
             const affordable = (balance ?? 0) >= price;
             const tier = rarity(item.price);
+            const left = daysLeft(item.available_until);
             return (
               <div
                 key={item.id}
@@ -343,6 +410,11 @@ export function ShopClient({ currentAvatar }: { currentAvatar: string }) {
                 <span className={`mt-1 rounded-full px-2 py-0.5 text-[0.65rem] font-extrabold uppercase tracking-wide ${tier.chip}`}>
                   {isDeal ? "⏰ Deal!" : tier.label}
                 </span>
+                {left != null && !item.owned && (
+                  <span className="mt-1 animate-pop rounded-full bg-rose-100 px-2 py-0.5 text-[0.65rem] font-extrabold uppercase tracking-wide text-rose-600">
+                    ⏳ {left === 0 ? "Last day!" : `${left} ${left === 1 ? "day" : "days"} left!`}
+                  </span>
+                )}
 
                 {wearing ? (
                   <span className="mt-2 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-extrabold text-amber-700">
