@@ -22,6 +22,8 @@ import {
   MatchQuestion,
 } from "@/components/QuestionTypes";
 import { speak } from "@/lib/speech";
+import { parseArithmetic } from "@/lib/math-parse";
+import { StackedProblem } from "@/components/StackedProblem";
 import {
   subjectTheme,
   gradeLabel,
@@ -463,9 +465,26 @@ export function PracticeClient({
             return null;
           })()}
           <div className="flex items-start gap-3">
-            <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
-              {current.prompt}
-            </h1>
+            {(() => {
+              // Math questions that are pure arithmetic get the school-style
+              // stacked layout kids know from worksheets (51 over −13, rule
+              // line, ?). Everything else stays as text.
+              const parsed =
+                current.subject_id === "math" ? parseArithmetic(current.prompt) : null;
+              if (parsed) {
+                return (
+                  <div className="min-w-0 flex-1">
+                    <h1 className="sr-only">{current.prompt}</h1>
+                    <StackedProblem parsed={parsed} />
+                  </div>
+                );
+              }
+              return (
+                <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
+                  {current.prompt}
+                </h1>
+              );
+            })()}
             <SpeakButton
               id={`q-${current.id}`}
               label="Read the question"

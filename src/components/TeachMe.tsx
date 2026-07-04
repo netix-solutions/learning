@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { SkillVisual } from "@/components/SkillVisual";
 import { ScienceDiagram } from "@/components/ScienceDiagram";
+import { AnimatedMath, canAnimate } from "@/components/AnimatedMath";
 import { SpeakButton } from "@/components/SpeakButton";
+import { parseArithmetic } from "@/lib/math-parse";
 import type { PracticeQuestion } from "@/lib/types";
 
 /**
@@ -95,11 +97,16 @@ export function TeachMe({
 
         <div ref={scrollRef} className="overflow-y-auto p-5">
           <div className="rounded-2xl bg-slate-50 p-4">
-            {subject === "science" ? (
-              <ScienceDiagram skill={question.skill} />
-            ) : (
-              <SkillVisual prompt={question.prompt} skill={question.skill} subject={subject} />
-            )}
+            {(() => {
+              // Arithmetic gets the animated walkthrough (carrying, borrowing,
+              // counting) — the visual analog of what the tutor text explains.
+              const parsed = subject === "math" ? parseArithmetic(question.prompt) : null;
+              if (parsed && canAnimate(parsed)) return <AnimatedMath parsed={parsed} />;
+              if (subject === "science") return <ScienceDiagram skill={question.skill} />;
+              return (
+                <SkillVisual prompt={question.prompt} skill={question.skill} subject={subject} />
+              );
+            })()}
           </div>
           <div className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-slate-700">
             {text}
