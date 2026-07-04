@@ -99,7 +99,7 @@ export function TeachMe({
           </button>
         </header>
 
-        <div ref={scrollRef} className="overflow-y-auto p-5">
+        <div ref={scrollRef} className="overscroll-contain overflow-y-auto p-5">
           <div className="rounded-2xl bg-slate-50 p-4">
             {(() => {
               // Arithmetic gets the animated walkthrough (carrying, borrowing,
@@ -123,7 +123,8 @@ export function TeachMe({
           )}
         </div>
 
-        <footer className="flex flex-col gap-2 border-t border-slate-100 p-4">
+        {/* Bottom sheet on phones: keep the buttons above the iOS home indicator. */}
+        <footer className="flex flex-col gap-2 border-t border-slate-100 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:pb-4">
           {status === "done" && onTryOne ? (
             <>
               <button

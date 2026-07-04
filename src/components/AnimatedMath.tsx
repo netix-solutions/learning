@@ -80,12 +80,13 @@ function Player({
             />
           ))}
         </div>
+        {/* Generous padding: little thumbs on iPhones need ~44px targets. */}
         <button
           onClick={() => {
             setManual(true);
             setStep(0);
           }}
-          className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-500 ring-1 ring-slate-200 hover:text-slate-700"
+          className="rounded-full bg-white px-4 py-2.5 text-sm font-bold text-slate-500 ring-1 ring-slate-200 hover:text-slate-700"
         >
           ↻ Replay
         </button>
@@ -95,7 +96,7 @@ function Player({
               setManual(true);
               setStep((s) => Math.min(s + 1, steps.length - 1));
             }}
-            className="rounded-full bg-violet-500 px-3 py-1 text-xs font-extrabold text-white hover:bg-violet-600"
+            className="rounded-full bg-violet-500 px-5 py-2.5 text-sm font-extrabold text-white hover:bg-violet-600"
           >
             Next ▶
           </button>

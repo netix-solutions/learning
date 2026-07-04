@@ -185,7 +185,7 @@ export default async function Home() {
                 <div className="h-[480px] overflow-hidden">
                   <div
                     aria-hidden
-                    className="pointer-events-none w-[600px] origin-top-left scale-[0.565] select-none p-5"
+                    className="pointer-events-none w-[600px] origin-top-left scale-[0.52] select-none p-5 sm:scale-[0.565]"
                   >
                     <KidHomeView data={DEMO_KID} />
                   </div>
