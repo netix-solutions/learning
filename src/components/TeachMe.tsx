@@ -17,10 +17,14 @@ export function TeachMe({
   question,
   selectedIndex,
   onClose,
+  onTryOne,
 }: {
   question: PracticeQuestion;
   selectedIndex: number | null;
   onClose: () => void;
+  /** Jump straight into a fresh question of the same skill — the lesson only
+   *  sticks when the kid immediately applies it. */
+  onTryOne?: () => void;
 }) {
   const [text, setText] = useState("");
   const [status, setStatus] = useState<"loading" | "streaming" | "done" | "error">("loading");
@@ -119,14 +123,32 @@ export function TeachMe({
           )}
         </div>
 
-        <footer className="border-t border-slate-100 p-4">
-          <button
-            onClick={onClose}
-            className="btn-pop w-full px-6 py-3 text-lg text-white"
-            style={{ background: "var(--brand-blue)" }}
-          >
-            {status === "done" || status === "error" ? "Got it! 👍" : "Keep reading…"}
-          </button>
+        <footer className="flex flex-col gap-2 border-t border-slate-100 p-4">
+          {status === "done" && onTryOne ? (
+            <>
+              <button
+                onClick={onTryOne}
+                className="btn-pop animate-pop w-full px-6 py-3 text-lg font-extrabold text-white"
+                style={{ background: "linear-gradient(90deg, #10b981, #22c55e)" }}
+              >
+                Now you try one! 💪
+              </button>
+              <button
+                onClick={onClose}
+                className="btn-pop w-full bg-white px-6 py-2.5 text-base text-slate-500 ring-2 ring-slate-200"
+              >
+                Got it 👍
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={onClose}
+              className="btn-pop w-full px-6 py-3 text-lg text-white"
+              style={{ background: "var(--brand-blue)" }}
+            >
+              {status === "done" || status === "error" ? "Got it! 👍" : "Keep reading…"}
+            </button>
+          )}
         </footer>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { streamText } from "ai";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { teachFor } from "@/lib/teaching";
+import { parseArithmetic } from "@/lib/math-parse";
 
 // Node runtime (not edge): the service-role admin client and gateway OIDC are happiest here.
 export const runtime = "nodejs";
@@ -97,16 +98,29 @@ export async function POST(req: Request) {
   }
   const teach = teachFor(q.skill);
 
+  // The TeachMe panel shows an animated walkthrough above the tutor text for
+  // bare arithmetic (counting dots / column method / arrays / sharing) — tell
+  // the model so the words and the picture teach the SAME method.
+  const hasAnimation = subject === "math" && parseArithmetic(q.prompt) != null;
+
+  const gradeLabel =
+    q.grade === "PK" ? "Pre-K (age 4–5)" : q.grade === "K" ? "Kindergarten" : `Grade ${q.grade}`;
+
   // 3. Grounded, tightly-scoped, kid-safe tutor prompt. The model only elaborates
   //    the KNOWN-CORRECT answer + explanation — it must not assert new facts.
   const system = [
-    `You are a warm, patient tutor for a Grade ${q.grade} child.`,
-    `Use very simple words and short sentences a Grade ${q.grade} student understands. Be encouraging and add a little emoji.`,
+    `You are a warm, patient tutor for a ${gradeLabel} child.`,
+    `Use very simple words and short sentences a ${gradeLabel} student understands. Be encouraging and add a little emoji.`,
     `Teach ONLY this one ${subject} problem. If the topic is anything else, gently say you can only help with this question right now.`,
     `Ground everything ONLY in the correct answer and the reason provided below. Do NOT introduce new facts, numbers, rules, or claims beyond them, and never say the correct answer is anything other than what is given.`,
+    hasAnimation
+      ? `An animated picture above your words shows this exact problem worked out step by step (counting dots, or the column method with carrying/borrowing). Refer to it naturally — like "watch the picture above" — and explain the SAME method it shows.`
+      : "",
     `Never ask for or mention any personal information.`,
-    `Explain in at most 4 short steps, then end with one short cheer. Plain text only — no markdown headings or bullet symbols.`,
-  ].join(" ");
+    `Explain in at most 4 short steps. End with ONE short sentence inviting them to press the "Now you try one!" button to use the method themselves. Plain text only — no markdown headings or bullet symbols.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const userPrompt = [
     `Skill: ${teach?.title ?? q.skill ?? subject}.`,

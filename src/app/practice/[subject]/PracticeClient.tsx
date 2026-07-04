@@ -658,7 +658,19 @@ export function PracticeClient({
       </main>
 
       {showTeach && current && (
-        <TeachMe question={current} selectedIndex={selected} onClose={() => setShowTeach(false)} />
+        <TeachMe
+          question={current}
+          selectedIndex={selected}
+          onClose={() => setShowTeach(false)}
+          onTryOne={
+            current.skill
+              ? () => {
+                  setShowTeach(false);
+                  tryOneMore();
+                }
+              : undefined
+          }
+        />
       )}
     </>
   );

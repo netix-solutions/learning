@@ -53,11 +53,17 @@ function Player({
   children: (step: number) => React.ReactNode;
 }) {
   const [step, setStep] = useState(0);
+  // Auto-play walks through once, but the moment the kid takes the controls
+  // (Next / Replay) the pacing is theirs — slow readers shouldn't be rushed.
+  const [manual, setManual] = useState(false);
+
   useEffect(() => {
-    if (step >= steps.length - 1) return;
+    if (manual || step >= steps.length - 1) return;
     const t = setTimeout(() => setStep((s) => s + 1), stepMs);
     return () => clearTimeout(t);
-  }, [step, steps.length, stepMs]);
+  }, [step, steps.length, stepMs, manual]);
+
+  const atEnd = step >= steps.length - 1;
 
   return (
     <div>
@@ -75,11 +81,25 @@ function Player({
           ))}
         </div>
         <button
-          onClick={() => setStep(0)}
+          onClick={() => {
+            setManual(true);
+            setStep(0);
+          }}
           className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-500 ring-1 ring-slate-200 hover:text-slate-700"
         >
           ↻ Replay
         </button>
+        {!atEnd && (
+          <button
+            onClick={() => {
+              setManual(true);
+              setStep((s) => Math.min(s + 1, steps.length - 1));
+            }}
+            className="rounded-full bg-violet-500 px-3 py-1 text-xs font-extrabold text-white hover:bg-violet-600"
+          >
+            Next ▶
+          </button>
+        )}
       </div>
     </div>
   );
