@@ -6,10 +6,10 @@ import { useState } from "react";
 // Tries the brand PNG first, then older PNG / built-in SVG emblem, then a wordmark.
 const SOURCES = ["/summersharplogo.png", "/logo.png", "/logo.svg"];
 
-/** SummerSharp wordmark — orange "Summer" + blue "Sharp". */
+/** SummerSharp wordmark — orange "Summer" + blue "Sharp". Never wraps. */
 function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`font-display font-bold tracking-tight ${className}`}>
+    <span className={`whitespace-nowrap font-display font-bold tracking-tight ${className}`}>
       <span style={{ color: "var(--brand-orange)" }}>Summer</span>
       <span style={{ color: "var(--brand-blue)" }}>Sharp</span>
     </span>
@@ -52,9 +52,10 @@ export function BrandLogo({
   }
 
   const inner = (
-    <span className="flex items-center gap-2">
-      <LogoMark className="h-10 w-10" />
-      <Wordmark className="text-2xl" />
+    // Slightly smaller on phones so the header never crowds action buttons.
+    <span className="flex items-center gap-1.5 sm:gap-2">
+      <LogoMark className="h-9 w-9 sm:h-10 sm:w-10" />
+      <Wordmark className="text-xl sm:text-2xl" />
     </span>
   );
 

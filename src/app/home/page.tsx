@@ -4,7 +4,6 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
-import { SwitchToParentButton } from "@/components/SwitchToParentButton";
 import { XpBar } from "@/components/XpBar";
 import { GoalProgressCard } from "@/components/GoalProgressCard";
 import { DailyChest } from "@/components/DailyChest";
@@ -66,30 +65,32 @@ export default async function StudentHome() {
     <main className="mx-auto max-w-3xl px-4 py-6">
       <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
-        <div className="flex items-center gap-2">
-          <SwitchToParentButton />
+        {/* "Grown-up" (switch to parent) lives in the kid footer, so the top
+            bar just needs Sign out — keeps the logo from crowding on phones. */}
+        <div className="flex shrink-0 items-center gap-2">
           <SignOutButton />
         </div>
       </header>
 
       {/* Hero */}
-      <section className="card-fun relative overflow-hidden p-6">
-        <div className="flex items-center gap-4">
-          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white">
+      <section className="card-fun relative overflow-hidden p-5 sm:p-6">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="h-16 w-16 shrink-0 overflow-hidden rounded-3xl ring-4 ring-white sm:h-20 sm:w-20">
             <Avatar id={profile.avatar} className="h-full w-full" />
           </div>
-          <div className="min-w-0">
-            <h1 className="truncate font-display text-3xl font-bold text-slate-800">
+          <div className="min-w-0 flex-1">
+            <h1 className="truncate font-display text-2xl font-bold text-slate-800 sm:text-3xl">
               Hi, {profile.display_name}!
             </h1>
-            <p className="font-semibold text-slate-500">
-              {gradeLabel(profile.grade)} · Let&apos;s stay sharp today ☀️
+            <p className="truncate text-sm font-semibold text-slate-500 sm:text-base">
+              {gradeLabel(profile.grade)} · Stay sharp today ☀️
             </p>
           </div>
-          <div className="ml-auto hidden text-center sm:block">
-            <div className={`text-4xl ${streak > 0 ? "animate-float" : "opacity-40"}`}>🔥</div>
-            <div className="font-display text-2xl font-bold text-slate-800">{streak}</div>
-            <div className="text-xs font-bold uppercase text-slate-400">day streak</div>
+          {/* Streak + shields: always visible (kids are mostly on phones). */}
+          <div className="flex shrink-0 flex-col items-center">
+            <div className={`text-3xl sm:text-4xl ${streak > 0 ? "animate-float" : "opacity-40"}`}>🔥</div>
+            <div className="font-display text-xl font-bold text-slate-800 sm:text-2xl">{streak}</div>
+            <div className="text-[0.6rem] font-bold uppercase text-slate-400 sm:text-xs">day streak</div>
             {shields > 0 && (
               <div className="mt-1 rounded-full bg-sky-50 px-2 py-0.5 text-xs font-extrabold text-sky-700">
                 🛡️ ×{shields}

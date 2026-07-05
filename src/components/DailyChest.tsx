@@ -59,7 +59,7 @@ export function DailyChest({
             Daily treasure chest
           </span>
           <span className="text-sm font-semibold text-slate-500">
-            Finish one practice round to unlock it! 🔒
+            Play a round to unlock it! 🔒
           </span>
         </span>
         <span className="text-2xl text-slate-300">→</span>

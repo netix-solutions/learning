@@ -52,30 +52,30 @@ export function QuestCard({ initial }: { initial: QuestStatus }) {
         className={`card-fun mt-5 p-4 ${done && !status.claimed ? "ring-4 ring-emerald-200" : ""}`}
       >
         <div className="flex items-center gap-3">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-100 to-violet-100 text-2xl">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-100 to-violet-100 text-2xl">
             {status.emoji}
           </span>
           <div className="min-w-0 flex-1">
             <p className="font-display font-extrabold text-slate-800">
-              Weekly Quest: {status.target} correct in {status.subject_name}
+              Weekly Quest
             </p>
-            <p className="text-sm font-semibold text-slate-500">
+            <p className="truncate text-sm font-semibold text-slate-500">
               {status.claimed
                 ? justClaimed
-                  ? `+${status.reward} ⭐ collected — legendary work! 🎉`
-                  : `Done and collected! New quest in ${status.days_left} ${status.days_left === 1 ? "day" : "days"} 🎉`
+                  ? `+${status.reward} ⭐ collected! 🎉`
+                  : `Done! New quest in ${status.days_left}d 🎉`
                 : done
-                  ? `Finished! Collect your ${status.reward} ⭐`
-                  : `${status.progress}/${status.target} · ${status.reward} ⭐ reward · ${status.days_left} ${status.days_left === 1 ? "day" : "days"} left`}
+                  ? `Finished — collect your reward!`
+                  : `${status.target} correct in ${status.subject_name}`}
             </p>
           </div>
           {status.claimed ? (
-            <span className="text-2xl">✅</span>
+            <span className="shrink-0 text-2xl">✅</span>
           ) : done ? (
             <button
               onClick={claim}
               disabled={claiming}
-              className="btn-pop animate-pop shrink-0 px-4 py-2 text-sm font-extrabold text-white"
+              className="btn-pop animate-pop shrink-0 px-4 py-2.5 text-sm font-extrabold text-white"
               style={{ background: "linear-gradient(90deg, #10b981, #22c55e)" }}
             >
               {claiming ? "…" : `Collect ${status.reward} ⭐`}
@@ -83,19 +83,28 @@ export function QuestCard({ initial }: { initial: QuestStatus }) {
           ) : (
             <Link
               href={`/practice/${status.subject}`}
-              className="btn-pop shrink-0 bg-white px-4 py-2 text-sm font-bold text-slate-600 ring-2 ring-slate-200"
+              className="btn-pop shrink-0 bg-white px-5 py-2.5 text-sm font-bold text-slate-600 ring-2 ring-slate-200"
             >
               Go! →
             </Link>
           )}
         </div>
         {!status.claimed && (
-          <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-sky-400 to-violet-400 transition-[width] duration-500"
-              style={{ width: `${pct}%` }}
-            />
-          </div>
+          <>
+            <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-sky-400 to-violet-400 transition-[width] duration-500"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+            <div className="mt-1.5 flex items-center justify-between text-xs font-bold text-slate-400">
+              <span>{status.progress}/{status.target} correct</span>
+              <span>
+                {status.reward} ⭐ · {status.days_left}
+                {status.days_left === 1 ? " day" : " days"} left
+              </span>
+            </div>
+          </>
         )}
       </div>
     </>
