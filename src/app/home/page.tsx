@@ -83,7 +83,7 @@ export default async function StudentHome() {
               Hi, {profile.display_name}!
             </h1>
             <p className="truncate text-sm font-semibold text-slate-500 sm:text-base">
-              {gradeLabel(profile.grade)} · Stay sharp today ☀️
+              {gradeLabel(profile.grade)} · Let&apos;s go! ☀️
             </p>
           </div>
           {/* Streak + shields: always visible (kids are mostly on phones). */}

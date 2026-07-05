@@ -53,10 +53,10 @@ export default async function CollectionPage() {
           <h1 className="font-display text-2xl font-extrabold text-slate-800">
             My Collection
           </h1>
-          <p className="font-semibold text-slate-500">
+          <p className="text-sm font-semibold text-slate-500 sm:text-base">
             {complete
-              ? "COMPLETE! You collected every single avatar! 🏆"
-              : `${owned} of ${items.length} avatars collected — can you get them all?`}
+              ? "COMPLETE! Every avatar is yours! 🏆"
+              : `${owned} / ${items.length} collected — get them all!`}
           </p>
           <div className="mt-2 h-3 w-full overflow-hidden rounded-full bg-slate-100">
             <div
