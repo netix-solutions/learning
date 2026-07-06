@@ -26,6 +26,36 @@ export function canAnimate(parsed: ParsedArithmetic | null): boolean {
   return parsed != null && pickMode(parsed) != null;
 }
 
+/**
+ * A kid-friendly spoken walkthrough of the solution, timed to play alongside
+ * the animation. Handed to speak() (which voices math symbols as words), so
+ * this can stay plain and natural. Deterministic — no LLM, works offline.
+ */
+export function buildNarration(p: ParsedArithmetic): string {
+  const mode = pickMode(p);
+  const [a, b] = p.operands;
+
+  if (mode === "dots") {
+    return p.op === "+"
+      ? `Let's solve ${a} plus ${b} together. Start with ${a} dots. Then add ${b} more dots. Now count them all up. You get ${p.answer}! Great job.`
+      : `Let's solve ${a} minus ${b} together. Start with ${a} dots. Then take away ${b} of them. Count how many are left. You get ${p.answer}! Great job.`;
+  }
+  if (mode === "groups") {
+    return `Let's solve ${a} times ${b}. Times means groups. So we make ${a} groups, with ${b} in each group. Count them all up. ${a} times ${b} equals ${p.answer}! Nice work.`;
+  }
+  if (mode === "share") {
+    return `Let's solve ${a} divided by ${b}. We share ${a} fairly into ${b} groups. Give one to each group, again and again. Each group ends up with ${p.answer}. So ${a} divided by ${b} equals ${p.answer}! Nice work.`;
+  }
+
+  // Column add / subtract: reuse the on-screen step captions, but turn the
+  // little "→" (which means "so then") into a spoken pause.
+  const caps = buildColumnSteps(p)
+    .steps.map((s) =>
+      s.caption.replace(/\s*→\s*$/, "").replace(/\s*→\s*/g, ". Now "),
+    );
+  return "Okay, let's work this out one column at a time. " + caps.join(". ");
+}
+
 function pickMode(p: ParsedArithmetic): "dots" | "column" | "groups" | "share" | null {
   if (p.op === "×") {
     return p.operands.every((n) => n >= 1 && n <= 12) ? "groups" : null;

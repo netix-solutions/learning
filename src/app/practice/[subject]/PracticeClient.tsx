@@ -22,8 +22,10 @@ import {
   MatchQuestion,
 } from "@/components/QuestionTypes";
 import { speak } from "@/lib/speech";
-import { parseArithmetic } from "@/lib/math-parse";
+import { parseArithmetic, type ParsedArithmetic } from "@/lib/math-parse";
 import { StackedProblem } from "@/components/StackedProblem";
+import { canAnimate, buildNarration } from "@/components/AnimatedMath";
+import { MathTeachMe } from "@/components/MathTeachMe";
 import {
   subjectTheme,
   gradeLabel,
@@ -65,6 +67,8 @@ export function PracticeClient({
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
+  // Pre-answer "Teach me how" for arithmetic (animated numbers + voiceover).
+  const [mathHelp, setMathHelp] = useState<ParsedArithmetic | null>(null);
   // Approved AI scene art per "subject/skill" (RLS only exposes approved rows).
   // Skills can have several variants; each question hashes to one so a given
   // question always shows the same art but a round feels varied.
@@ -499,6 +503,27 @@ export function PracticeClient({
             />
           </div>
 
+          {/* Pre-answer help for arithmetic: a kid who's stuck can watch the
+              numbers work out and hear it explained, instead of guessing. */}
+          {!result &&
+            (() => {
+              const p =
+                current.subject_id === "math" ? parseArithmetic(current.prompt) : null;
+              if (!p || !canAnimate(p)) return null;
+              return (
+                <button
+                  onClick={() => {
+                    // Start the voiceover inside the tap so iOS allows audio.
+                    speak("math-teach", buildNarration(p));
+                    setMathHelp(p);
+                  }}
+                  className="btn-pop mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3 text-base font-extrabold text-violet-700"
+                >
+                  🤔 Not sure? Teach me how 🔊
+                </button>
+              );
+            })()}
+
           {/* Non-multiple-choice kinds bring their own interaction + feedback. */}
           {current.kind === "truefalse" && (
             <TrueFalseQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
@@ -672,6 +697,8 @@ export function PracticeClient({
           }
         />
       )}
+
+      {mathHelp && <MathTeachMe parsed={mathHelp} onClose={() => setMathHelp(null)} />}
     </>
   );
 }
