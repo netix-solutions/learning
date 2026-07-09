@@ -135,14 +135,14 @@ export default async function StudentHome() {
         style={{ background: "linear-gradient(120deg, #faf5ff, #eff6ff)" }}
       >
         <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-violet-200 to-fuchsia-200 text-3xl shadow-inner">
-          📖
+          🃏
         </span>
         <span className="min-w-0 flex-1">
           <span className="block font-display text-xl font-bold text-slate-800">
-            Sticker Book
+            My Cards
           </span>
           <span className="text-sm font-semibold text-slate-500">
-            Open packs & collect every sticker! ✨
+            Open packs & collect every card! ✨
           </span>
         </span>
         <span className="ml-auto text-2xl text-slate-300">→</span>

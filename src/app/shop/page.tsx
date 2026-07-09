@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
-import { StickerBook } from "@/components/StickerBook";
+import { CardCollection } from "@/components/CardCollection";
 
 export const metadata = {
-  title: "Sticker Book — SummerSharp",
+  title: "My Cards — SummerSharp",
   robots: { index: false },
 };
 
@@ -18,7 +18,7 @@ export default async function ShopPage() {
       <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href="/home" />
       </header>
-      <StickerBook />
+      <CardCollection />
     </main>
   );
 }
