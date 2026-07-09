@@ -370,7 +370,7 @@ export function PracticeClient({
                   href="/shop"
                   className="mt-1 text-sm font-bold text-slate-400 hover:text-slate-600"
                 >
-                  Spend your points in the Avatar Shop 🛍️
+                  Open a sticker pack with your points! 📖✨
                 </Link>
               )}
             </div>

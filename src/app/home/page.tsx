@@ -128,37 +128,25 @@ export default async function StudentHome() {
         <span className="ml-auto text-3xl">→</span>
       </Link>
 
-      {/* Avatar shop + collection album */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <Link href="/shop" className="btn-pop card-fun flex items-center gap-3 p-4">
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-3xl shadow-inner">
-            🛍️
+      {/* Sticker Book — spend points on surprise sticker packs & collect them all */}
+      <Link
+        href="/shop"
+        className="btn-pop card-fun mt-4 flex items-center gap-4 p-4"
+        style={{ background: "linear-gradient(120deg, #faf5ff, #eff6ff)" }}
+      >
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-violet-200 to-fuchsia-200 text-3xl shadow-inner">
+          📖
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-display text-xl font-bold text-slate-800">
+            Sticker Book
           </span>
-          <span className="min-w-0">
-            <span className="block font-display text-xl font-bold text-slate-800">
-              Avatar Shop
-            </span>
-            <span className="text-sm font-semibold text-slate-500">
-              Spend your ⭐ points!
-            </span>
+          <span className="text-sm font-semibold text-slate-500">
+            Open packs & collect every sticker! ✨
           </span>
-          <span className="ml-auto text-2xl text-slate-300">→</span>
-        </Link>
-        <Link href="/collection" className="btn-pop card-fun flex items-center gap-3 p-4">
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-100 to-violet-100 text-3xl shadow-inner">
-            📖
-          </span>
-          <span className="min-w-0">
-            <span className="block font-display text-xl font-bold text-slate-800">
-              My Collection
-            </span>
-            <span className="text-sm font-semibold text-slate-500">
-              Collect every avatar!
-            </span>
-          </span>
-          <span className="ml-auto text-2xl text-slate-300">→</span>
-        </Link>
-      </div>
+        </span>
+        <span className="ml-auto text-2xl text-slate-300">→</span>
+      </Link>
 
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">
