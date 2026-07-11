@@ -22,7 +22,7 @@ export const SKILL_TEACH: Record<string, SkillTeach> = {
   "3.perim": { title: "Perimeter", tip: "Perimeter is the distance all the way around. Add up every side. For a rectangle: 2 × (length + width)." },
   "3.frac": { title: "Comparing fractions", tip: "With the same whole, a smaller bottom number means bigger pieces. 1/2 is bigger than 1/4." },
   "3.round": { title: "Rounding", tip: "Look at the digit just to the right. 5 or more rounds up; less than 5 rounds down. 268 to the nearest hundred is 300." },
-  "3.area": { title: "Area of a rectangle", tip: "Area = length × width. Count the squares inside, or multiply the two sides: 4 × 3 = 12 square cm." },
+  "3.area": { title: "Area of a rectangle", tip: "Area = length × width. Count the unit squares that fit inside, or just multiply the two side lengths together." },
   "4.mul": { title: "Multiplying bigger numbers", tip: "Break the number apart. 23 × 4 → (20 × 4) + (3 × 4) = 80 + 12 = 92." },
   "4.frac": { title: "Equivalent fractions", tip: "Multiply (or divide) the top and bottom by the same number. 1/2 = 3/6 because both were multiplied by 3." },
   "4.place": { title: "Place value to thousands", tip: "Each place is 10× the one to its right: ones, tens, hundreds, thousands. In 6,420 the 6 means 6,000." },

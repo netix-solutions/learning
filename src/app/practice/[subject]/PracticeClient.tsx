@@ -21,7 +21,7 @@ import {
   CategorizeQuestion,
   MatchQuestion,
 } from "@/components/QuestionTypes";
-import { speak } from "@/lib/speech";
+import { speak, stop } from "@/lib/speech";
 import { parseArithmetic, type ParsedArithmetic } from "@/lib/math-parse";
 import { StackedProblem } from "@/components/StackedProblem";
 import { canAnimate, buildNarration } from "@/components/AnimatedMath";
@@ -143,14 +143,49 @@ export function PracticeClient({
 
   const current = questions[index];
   const isPreK = grade === "PK";
+  // Young kids are still learning to read, so auto-read includes the answer
+  // choices for them; older kids just hear the question and can tap 🔊 for more.
+  const isYoung = grade === "PK" || grade === "K" || grade === "1" || grade === "2";
 
-  // Pre-K kids can't read, so read each new question's prompt aloud (best-effort;
-  // browsers may need a tap first, which the kid provides by answering).
+  // Auto-read is on by default (great for emerging readers) but a kid or grown-up
+  // can mute it from the header; the choice is remembered on this device.
+  const [autoRead, setAutoRead] = useState(true);
   useEffect(() => {
-    if (isPreK && phase === "playing" && current) {
-      speak(`pk-${current.id}`, current.prompt);
+    try {
+      const saved = window.localStorage.getItem("ss-autoread");
+      if (saved != null) setAutoRead(saved === "1");
+    } catch {}
+  }, []);
+  const toggleAutoRead = useCallback(() => {
+    setAutoRead((on) => {
+      const next = !on;
+      try {
+        window.localStorage.setItem("ss-autoread", next ? "1" : "0");
+      } catch {}
+      if (!next) stop(); // muting: silence anything mid-sentence
+      return next;
+    });
+  }, []);
+
+  // What to read for a given question: the prompt always, plus the lettered
+  // choices for young readers on multiple-choice questions.
+  const speechFor = useCallback(
+    (q: PracticeQuestion) =>
+      isYoung && (!q.kind || q.kind === "mcq")
+        ? `${q.prompt}. ${q.choices
+            .map((c, i) => `${String.fromCharCode(65 + i)}, ${c}`)
+            .join(". ")}`
+        : q.prompt,
+    [isYoung],
+  );
+
+  // Read each new question aloud when auto-read is on (best-effort; browsers may
+  // need a prior tap, which the kid provides by tapping into the round).
+  useEffect(() => {
+    if (autoRead && phase === "playing" && current) {
+      speak(`q-${current.id}`, speechFor(current));
     }
-  }, [isPreK, phase, current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [autoRead, phase, current?.id, speechFor]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // On the results screen, play the "recharge" whir while the points tally up.
   useEffect(() => {
@@ -401,10 +436,26 @@ export function PracticeClient({
               {subject.emoji} {subject.name}
             </span>
           )}
-          <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-bold text-amber-700">
-            {/* keyed so the count visibly pops each time points are scored */}
-            ⭐ <span key={xpEarned} className="inline-block animate-pop">{xpEarned}</span> pts
-          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleAutoRead}
+              aria-pressed={autoRead}
+              aria-label={autoRead ? "Turn off read-aloud" : "Turn on read-aloud"}
+              title={autoRead ? "Read-aloud is on" : "Read-aloud is off"}
+              className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-base transition ${
+                autoRead
+                  ? "bg-sky-100 text-sky-700 hover:bg-sky-200"
+                  : "bg-slate-100 text-slate-400 hover:bg-slate-200"
+              }`}
+            >
+              {autoRead ? "🔊" : "🔇"}
+            </button>
+            <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-bold text-amber-700">
+              {/* keyed so the count visibly pops each time points are scored */}
+              ⭐ <span key={xpEarned} className="inline-block animate-pop">{xpEarned}</span> pts
+            </span>
+          </div>
         </header>
 
         {/* progress */}
