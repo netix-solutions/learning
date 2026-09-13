@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Tries the brand PNG first, then older PNG / built-in SVG emblem, then a wordmark.
-const SOURCES = ["/summersharplogo.png", "/logo.png", "/logo.svg"];
+const SOURCES = ["/sunsharplogo.png", "/logo.png", "/logo.svg"];
 
-/** SummerSharp wordmark — orange "Summer" + blue "Sharp". Never wraps. */
+/** SunSharp wordmark — orange "Sun" + blue "Sharp". Never wraps. */
 function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`whitespace-nowrap font-display font-bold tracking-tight ${className}`}>
-      <span style={{ color: "var(--brand-orange)" }}>Summer</span>
+      <span style={{ color: "var(--brand-orange)" }}>Sun</span>
       <span style={{ color: "var(--brand-blue)" }}>Sharp</span>
     </span>
   );
@@ -24,7 +24,7 @@ function LogoMark({ className }: { className: string }) {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
-      alt="SummerSharp"
+      alt="SunSharp"
       className={`${className} object-contain`}
       onError={() => setIdx((i) => i + 1)}
     />

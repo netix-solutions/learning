@@ -3,7 +3,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ResetPasswordForm } from "@/components/forms/ResetPasswordForm";
 
-export const metadata = { title: "Choose a new password · SummerSharp" };
+export const metadata = { title: "Choose a new password · SunSharp" };
 export const dynamic = "force-dynamic";
 
 export default async function ResetPasswordPage() {

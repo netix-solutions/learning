@@ -5,7 +5,7 @@ import { PracticeLocked } from "@/components/PracticeLocked";
 import { lessonsForGrade } from "@/lib/lessons";
 import { LessonJourney } from "./LessonJourney";
 
-export const metadata = { title: "Learn step by step — SummerSharp", robots: { index: false } };
+export const metadata = { title: "Learn step by step — SunSharp", robots: { index: false } };
 
 export default async function LearnPage() {
   const { user, profile, supabase } = await getSessionProfile();

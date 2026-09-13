@@ -6,7 +6,7 @@ import { ParentSignupForm } from "@/components/forms/ParentSignupForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign up — SummerSharp",
+  title: "Sign up — SunSharp",
   description:
     "Create your free family account and keep your K–5 kids sharp all summer with fun math, reading, and science practice.",
   alternates: { canonical: "/signup" },

@@ -1,6 +1,7 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { MetadataRoute } from "next";
 
-const BASE = "https://summersharp.app";
+const BASE = SITE_URL;
 
 // Public marketing + entry pages only. Everything behind a login (parent
 // dashboard, kid home, practice, admin) is excluded here and disallowed in

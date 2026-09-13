@@ -1,4 +1,4 @@
-# ☀️ SummerSharp
+# ☀️ SunSharp
 
 A fun, web-based summer learning app that keeps **Florida elementary students (K–5)**
 sharp over the break. Kids practice **Math** and **Reading** (tagged to Florida
@@ -61,8 +61,8 @@ supabase status -o env
 ```
 
 ### Brand asset
-Drop the SummerSharp logo at **`public/logo.png`** and it appears in the header and
-landing hero automatically. Until then, a styled "SummerSharp" wordmark is shown.
+Drop the SunSharp logo at **`public/logo.png`** and it appears in the header and
+landing hero automatically. Until then, a styled "SunSharp" wordmark is shown.
 
 ---
 

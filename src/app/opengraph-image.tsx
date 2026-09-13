@@ -5,7 +5,7 @@ import { join } from "node:path";
 // Social share card used for SMS, iMessage, link unfurls, and social previews.
 // 1200×630 is the standard Open Graph / Twitter "summary_large_image" size.
 export const alt =
-  "SummerSharp — playful K–5 summer learning in math, reading & science";
+  "SunSharp — playful K–5 summer learning in math, reading & science";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,7 @@ export default async function Image() {
   const og = join(process.cwd(), "src/app/_og-assets");
   const [mascot, fredoka600, fredoka700, nunito700, nunito800] =
     await Promise.all([
-      readFile(join(process.cwd(), "public/summersharplogo.png")),
+      readFile(join(process.cwd(), "public/sunsharplogo.png")),
       readFile(join(og, "fredoka-600.ttf")),
       readFile(join(og, "fredoka-700.ttf")),
       readFile(join(og, "nunito-700.ttf")),
@@ -127,7 +127,7 @@ export default async function Image() {
                 letterSpacing: -2,
               }}
             >
-              <span style={{ color: ORANGE }}>Summer</span>
+              <span style={{ color: ORANGE }}>Sun</span>
               <span style={{ color: BLUE }}>Sharp</span>
             </div>
 
@@ -174,7 +174,7 @@ export default async function Image() {
                 fontSize: 28,
               }}
             >
-              <span style={{ color: BLUE }}>summersharp.app</span>
+              <span style={{ color: BLUE }}>SunSharp</span>
               <div
                 style={{
                   width: 8,

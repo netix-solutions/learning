@@ -6,7 +6,7 @@ export function PracticeLocked() {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-5 py-10 text-center">
       <div className="text-6xl">🔒</div>
       <h1 className="mt-4 font-display text-2xl font-bold text-slate-800">
-        Ask a grown-up to unlock SummerSharp
+        Ask a grown-up to unlock SunSharp
       </h1>
       <p className="mt-2 text-slate-500">
         A parent needs an active subscription so you can keep playing and

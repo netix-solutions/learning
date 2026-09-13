@@ -7,7 +7,7 @@ import {
   ApproveAllPending,
 } from "@/components/admin/SkillArtReview";
 
-export const metadata = { title: "Question Art · SummerSharp Admin" };
+export const metadata = { title: "Question Art · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 type ArtRow = {

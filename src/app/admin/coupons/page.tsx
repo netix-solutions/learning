@@ -4,7 +4,7 @@ import { AdminShell } from "@/components/AdminShell";
 import { AdminCouponForm } from "@/components/admin/AdminCouponForm";
 import { CouponActiveToggle } from "@/components/admin/CouponActiveToggle";
 
-export const metadata = { title: "Coupons · SummerSharp Admin" };
+export const metadata = { title: "Coupons · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 function fmtDate(iso: string | null) {

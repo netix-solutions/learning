@@ -6,7 +6,7 @@ import { AdminShell } from "@/components/AdminShell";
 import { BillingToggle } from "@/components/admin/BillingToggle";
 import { subjectTheme } from "@/lib/types";
 
-export const metadata = { title: "Dashboard · SummerSharp Admin" };
+export const metadata = { title: "Dashboard · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {

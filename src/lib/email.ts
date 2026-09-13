@@ -7,7 +7,7 @@ import type { EmailContent } from "@/lib/email-templates";
  *
  * Configured by env:
  *   RESEND_API_KEY — secret API key (never expose to the browser)
- *   EMAIL_FROM     — verified sender, e.g. "SummerSharp <noreply@summersharp.app>"
+ *   EMAIL_FROM     — verified sender, e.g. "SunSharp <noreply@summersharp.app>"
  *
  * Sending NEVER throws: if the key is missing or Resend errors, we log and return
  * { ok:false } so callers (e.g. signup) are never broken by email problems. The
@@ -15,7 +15,7 @@ import type { EmailContent } from "@/lib/email-templates";
  */
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_FROM = "SummerSharp <noreply@summersharp.app>";
+const DEFAULT_FROM = "SunSharp <noreply@summersharp.app>";
 
 export type SendResult = { ok: boolean; skipped?: boolean; error?: string };
 
@@ -27,7 +27,7 @@ export async function sendEmail(
     console.warn("[email] RESEND_API_KEY not set — skipping send to", args.to);
     return { ok: false, skipped: true };
   }
-  const from = process.env.EMAIL_FROM || DEFAULT_FROM;
+  const from = (process.env.EMAIL_FROM || DEFAULT_FROM).replace("SummerSharp", "SunSharp");
 
   try {
     const res = await fetch(RESEND_ENDPOINT, {

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { isAdminAuthed } from "@/lib/admin";
 import { AdminLoginForm } from "@/components/forms/AdminLoginForm";
 
-export const metadata = { title: "Admin · SummerSharp" };
+export const metadata = { title: "Admin · SunSharp" };
 
 export default async function AdminLoginPage() {
   if (await isAdminAuthed()) redirect("/admin");
@@ -11,7 +11,7 @@ export default async function AdminLoginPage() {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-5 py-10">
       <div className="flex items-center gap-2 text-slate-800">
         <span className="text-3xl">🛠️</span>
-        <span className="font-display text-2xl font-bold">SummerSharp Admin</span>
+        <span className="font-display text-2xl font-bold">SunSharp Admin</span>
       </div>
       <div className="card-fun mt-6 w-full p-6 sm:p-8">
         <h1 className="mb-1 text-center font-display text-2xl font-bold text-slate-800">

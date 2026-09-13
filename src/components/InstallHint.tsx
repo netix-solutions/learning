@@ -41,7 +41,7 @@ export function InstallHint() {
     <div className="card-fun mt-10 flex w-full max-w-xl items-center gap-3 p-4 text-left">
       <span className="text-3xl">📲</span>
       <div className="min-w-0 flex-1">
-        <p className="font-display font-bold text-slate-800">Add SummerSharp to your phone</p>
+        <p className="font-display font-bold text-slate-800">Add SunSharp to your phone</p>
         {deferred ? (
           <p className="text-sm text-slate-500">Install it for a full-screen, app-like experience.</p>
         ) : (

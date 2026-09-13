@@ -6,7 +6,7 @@ import { AdminBillingActions } from "@/components/admin/AdminBillingActions";
 import { InvoiceList } from "@/components/billing/InvoiceList";
 import { formatCents, priceForKids } from "@/lib/billing";
 
-export const metadata = { title: "Billing detail · SummerSharp Admin" };
+export const metadata = { title: "Billing detail · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 function fmtDate(iso: string | null) {

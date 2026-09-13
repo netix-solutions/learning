@@ -1,6 +1,6 @@
 // Google Analytics 4 (gtag) helpers.
 //
-// Privacy-by-design: SummerSharp is a children's app, so analytics is scoped to
+// Privacy-by-design: SunSharp is a children's app, so analytics is scoped to
 // ADULT surfaces only. We never load gtag.js or send any hit on kid pages
 // (/home, /practice, /kids) or the internal /admin area. Enhanced Measurement
 // is disabled in GA, and gtag's automatic page_view is off (send_page_view:

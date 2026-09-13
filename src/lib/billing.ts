@@ -1,4 +1,4 @@
-// Pricing model for SummerSharp subscriptions.
+// Pricing model for SunSharp subscriptions.
 //
 // $4/mo for the first kid, +$2/mo for each additional kid. This maps to a
 // single Stripe "graduated tiered" recurring price billed per seat (seat = kid):

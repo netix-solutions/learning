@@ -1,9 +1,9 @@
-/* SummerSharp service worker — enables install + offline resilience.
+/* SunSharp service worker — enables install + offline resilience.
  * Intentionally conservative: it never caches Supabase API calls (those are
  * cross-origin and pass straight through), so auth and answer-grading always
  * hit the network. It caches the static app shell so the app launches offline
  * and shows a friendly offline page when a navigation can't reach the network. */
-const CACHE = "summersharp-v2";
+const CACHE = "sunsharp-v3";
 const APP_SHELL = [
   "/offline.html",
   "/manifest.webmanifest",

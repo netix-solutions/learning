@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import { LESSONS } from "@/lib/lessons";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -18,13 +19,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// Structured data so search engines show SummerSharp as an app with ratings-
+// Structured data so search engines show SunSharp as an app with ratings-
 // ready rich results. Kept in sync with the marketing copy by hand.
 const JSON_LD = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "SummerSharp",
-  url: "https://summersharp.app",
+  name: "SunSharp",
+  url: SITE_URL,
   applicationCategory: "EducationalApplication",
   operatingSystem: "Web",
   description:

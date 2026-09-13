@@ -6,7 +6,7 @@ import { isBillingOn } from "@/lib/settings";
 import { TRIAL_DAYS, BASE_PRICE_CENTS, formatCents } from "@/lib/billing";
 
 export const metadata: Metadata = {
-  title: "Pricing — SummerSharp",
+  title: "Pricing — SunSharp",
   description:
     "Full access for every K–5 family. Simple, sunny pricing — and free for a limited time.",
   alternates: { canonical: "/pricing" },
@@ -31,7 +31,7 @@ const FAQ_PAID = [
 ];
 
 const FAQ_FREE = [
-  { q: "Is it really free?", a: "Yes — SummerSharp is completely free for a limited time. Every family gets full access to all subjects, all features, and the parent dashboard, with no credit card required." },
+  { q: "Is it really free?", a: "Yes — SunSharp is completely free for a limited time. Every family gets full access to all subjects, all features, and the parent dashboard, with no credit card required." },
   { q: "Do I need to enter a card?", a: "Nope. No card, no trial countdown, no commitment. Just sign up and start learning." },
   { q: "Can I add more than one kid?", a: "Absolutely — add as many children as you like, all included while it's free." },
   { q: "Is it safe for my child?", a: "Yes. Kids log in with just a username and PIN — no email, no personal info, no ads, ever. Parents own and manage the account (COPPA-aware by design)." },

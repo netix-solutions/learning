@@ -4,7 +4,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { CardCollection } from "@/components/CardCollection";
 
 export const metadata = {
-  title: "My Cards — SummerSharp",
+  title: "My Cards — SunSharp",
   robots: { index: false },
 };
 

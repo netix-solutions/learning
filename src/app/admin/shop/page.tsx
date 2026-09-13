@@ -7,7 +7,7 @@ import {
   ShopItemActiveToggle,
 } from "@/components/admin/AdminShopStudio";
 
-export const metadata = { title: "Shop · SummerSharp Admin" };
+export const metadata = { title: "Shop · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 type ShopItemRow = {

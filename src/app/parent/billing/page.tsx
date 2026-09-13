@@ -66,7 +66,7 @@ export default async function BillingPage() {
       <section className="card-fun mt-5 p-6 text-center">
         <div className="text-5xl">☀️</div>
         <h2 className="mt-2 font-display text-2xl font-bold text-slate-800">
-          SummerSharp Family
+          SunSharp Family
         </h2>
         <p className="mt-1 text-slate-500">
           {formatCents(BASE_PRICE_CENTS)}/mo for your first kid ·{" "}

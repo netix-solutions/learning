@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Fredoka, Nunito } from "next/font/google";
@@ -23,14 +24,14 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://summersharp.app"),
-  title: "SummerSharp — Stay sharp all summer!",
+  metadataBase: new URL(SITE_URL),
+  title: "SunSharp — Stay sharp all summer!",
   description:
     "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
-  applicationName: "SummerSharp",
+  applicationName: "SunSharp",
   appleWebApp: {
     capable: true,
-    title: "SummerSharp",
+    title: "SunSharp",
     statusBarStyle: "default",
   },
   // favicon.ico is auto-linked from src/app/favicon.ico (covers legacy + every
@@ -46,15 +47,15 @@ export const metadata: Metadata = {
   // src/app/opengraph-image.tsx and twitter-image.tsx.
   openGraph: {
     type: "website",
-    siteName: "SummerSharp",
-    url: "https://summersharp.app",
-    title: "SummerSharp — Stay sharp all summer!",
+    siteName: "SunSharp",
+    url: SITE_URL,
+    title: "SunSharp — Stay sharp all summer!",
     description:
       "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SummerSharp — Stay sharp all summer!",
+    title: "SunSharp — Stay sharp all summer!",
     description:
       "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
   },

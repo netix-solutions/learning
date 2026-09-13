@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — SummerSharp",
+  title: "Privacy Policy — SunSharp",
   description:
-    "How SummerSharp and Netix Solutions, LLC collect, use, and protect information, including children's data under COPPA.",
+    "How SunSharp and Netix Solutions, LLC collect, use, and protect information, including children's data under COPPA.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -14,10 +14,10 @@ export default function PrivacyPolicy() {
       <p>
         This Privacy Policy explains how <strong>Netix Solutions, LLC</strong> (
         &ldquo;Netix,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
-        the operator of the <strong>SummerSharp</strong> learning application and the
+        the operator of the <strong>SunSharp</strong> learning application and the
         website at summersharp.app (collectively, the &ldquo;Service&rdquo;),
         collects, uses, discloses, and safeguards information. We designed
-        SummerSharp for families of elementary-school children, and protecting
+        SunSharp for families of elementary-school children, and protecting
         children&rsquo;s privacy is central to how the Service is built.
       </p>
       <p>
@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
       <h2>1. Children&rsquo;s Privacy (COPPA)</h2>
       <p>
-        SummerSharp is intended to be set up and managed by a parent or legal
+        SunSharp is intended to be set up and managed by a parent or legal
         guardian. It is not directed to children for the purpose of independent
         sign-up, and we do not knowingly permit children under 13 to create their own
         accounts or to provide personal information directly to us.
@@ -142,7 +142,7 @@ export default function PrivacyPolicy() {
 
       <h2>4. Artificial Intelligence Features</h2>
       <p>
-        SummerSharp may offer optional AI-assisted explanations (for example, a
+        SunSharp may offer optional AI-assisted explanations (for example, a
         &ldquo;Teach Me&rdquo; helper). When used, the relevant question context and a
         user&rsquo;s request may be sent to a third-party AI provider solely to
         generate an educational explanation in real time. We instruct our providers
@@ -206,7 +206,7 @@ export default function PrivacyPolicy() {
 
       <h2>9. Schools and Educators</h2>
       <p>
-        SummerSharp is offered as a consumer, family-managed product. If a school or
+        SunSharp is offered as a consumer, family-managed product. If a school or
         educator chooses to use the Service, they are responsible for obtaining any
         consents required under FERPA, state student-privacy laws, or their own
         policies before directing students to use it.

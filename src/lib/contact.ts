@@ -1,5 +1,5 @@
 /**
- * Official SummerSharp support contact details.
+ * Official SunSharp support contact details.
  *
  * Single source of truth so the phone/email shown to families stays consistent
  * across the footer, billing, and paywall surfaces. Update here to update

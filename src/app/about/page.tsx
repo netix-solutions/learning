@@ -3,9 +3,9 @@ import Link from "next/link";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
 
 export const metadata: Metadata = {
-  title: "About — SummerSharp",
+  title: "About — SunSharp",
   description:
-    "SummerSharp keeps Florida K–5 kids sharp over the summer with fun, adaptive practice in math, reading, and science — built by Netix Solutions.",
+    "SunSharp keeps Florida K–5 kids sharp over the summer with fun, adaptive practice in math, reading, and science — built by Netix Solutions.",
   alternates: { canonical: "/about" },
 };
 
@@ -41,7 +41,7 @@ export default function AboutPage() {
           </h1>
           <p className="animate-rise delay-2 mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             Over a long summer, kids can lose months of learning — the
-            &ldquo;summer slide.&rdquo; SummerSharp turns a few minutes a day into
+            &ldquo;summer slide.&rdquo; SunSharp turns a few minutes a day into
             a sunny habit that keeps Florida K–5 students ready for the next
             grade, without it ever feeling like homework.
           </p>
@@ -115,7 +115,7 @@ export default function AboutPage() {
         {/* Maker + CTA */}
         <section className="mt-16 text-center">
           <p className="text-slate-500">
-            SummerSharp is designed and built by{" "}
+            SunSharp is designed and built by{" "}
             <a
               href="https://netixsolutions.com"
               target="_blank"

@@ -57,7 +57,7 @@ export function SupportCallout({
     <div className={`flex flex-col items-center gap-2 ${className}`}>
       <a
         href={`tel:${SUPPORT_PHONE_TEL}`}
-        aria-label={`Call SummerSharp support 24/7 at ${SUPPORT_PHONE}`}
+        aria-label={`Call SunSharp support 24/7 at ${SUPPORT_PHONE}`}
         className="btn-pop group inline-flex items-center gap-3 px-5 py-3 text-white"
         style={{
           background: "linear-gradient(90deg, var(--brand-blue), var(--brand-wave))",

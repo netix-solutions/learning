@@ -6,8 +6,8 @@ import { ParentLoginForm } from "@/components/forms/ParentLoginForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Parent login — SummerSharp",
-  description: "Log in to your SummerSharp parent dashboard.",
+  title: "Parent login — SunSharp",
+  description: "Log in to your SunSharp parent dashboard.",
   alternates: { canonical: "/login" },
 };
 

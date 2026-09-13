@@ -42,7 +42,7 @@ function CardBack({ mystery = false }: { mystery?: boolean }) {
     >
       <span className="text-3xl drop-shadow">{mystery ? "❓" : "☀️"}</span>
       <span className="mt-1 text-center font-display text-[0.6rem] font-extrabold uppercase leading-tight tracking-wider">
-        SummerSharp
+        SunSharp
         <br />
         Cards
       </span>
@@ -157,7 +157,7 @@ export function TradingCard({
             <div className="flex flex-1 flex-col items-center justify-center gap-1 p-2 text-center">
               <span className="text-2xl">💡</span>
               <p className="text-[0.62rem] font-semibold leading-snug text-slate-600">
-                {card.fact ?? "A one-of-a-kind SummerSharp card!"}
+                {card.fact ?? "A one-of-a-kind SunSharp card!"}
               </p>
             </div>
             <div className="px-2 pb-1 text-center text-[0.5rem] font-bold uppercase tracking-wide text-slate-400">

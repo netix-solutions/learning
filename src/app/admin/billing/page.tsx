@@ -4,7 +4,7 @@ import { getAdminSubscriptions, isAdminAuthed, type AdminSubscription } from "@/
 import { AdminShell } from "@/components/AdminShell";
 import { formatCents, priceForKids } from "@/lib/billing";
 
-export const metadata = { title: "Billing · SummerSharp Admin" };
+export const metadata = { title: "Billing · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 const STATUS_STYLE: Record<string, string> = {

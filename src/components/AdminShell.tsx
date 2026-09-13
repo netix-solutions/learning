@@ -16,7 +16,7 @@ export function AdminShell({
           <Link href="/admin" className="flex items-center gap-2 text-slate-800">
             <span className="text-2xl">🛠️</span>
             <span className="font-display text-lg font-bold">
-              SummerSharp Admin
+              SunSharp Admin
             </span>
           </Link>
 

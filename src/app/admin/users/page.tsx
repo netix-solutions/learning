@@ -3,7 +3,7 @@ import { getAdminUsers, isAdminAuthed } from "@/lib/admin";
 import { AdminShell } from "@/components/AdminShell";
 import { AdminUsersList } from "@/components/admin/AdminUsersList";
 
-export const metadata = { title: "Users · SummerSharp Admin" };
+export const metadata = { title: "Users · SunSharp Admin" };
 export const dynamic = "force-dynamic";
 
 export default async function AdminUsersPage() {

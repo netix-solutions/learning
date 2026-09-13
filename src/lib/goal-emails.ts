@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { EmailContent } from "@/lib/email-templates";
 
 // Branded emails sent to a parent about a child's learning-time goal. Kept
@@ -15,15 +16,15 @@ function shell(heading: string, bodyHtml: string, cta = true): string {
   return `<!doctype html><html><body style="margin:0;background:#eef6ff;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#143a5e">
   <div style="max-width:520px;margin:0 auto;padding:24px">
     <div style="text-align:center;padding:8px 0 16px">
-      <span style="font-size:22px;font-weight:800;color:#f57c1f">Summer</span><span style="font-size:22px;font-weight:800;color:#1d70c2">Sharp</span>
+      <span style="font-size:22px;font-weight:800;color:#f57c1f">Sun</span><span style="font-size:22px;font-weight:800;color:#1d70c2">Sharp</span>
     </div>
     <div style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 30px -12px rgba(80,30,140,.25)">
       <h1 style="margin:0 0 12px;font-size:22px;color:#0f172a">${heading}</h1>
       ${bodyHtml}
-      ${cta ? `<a href="https://summersharp.app/parent" style="display:inline-block;margin-top:18px;background:linear-gradient(90deg,#1d70c2,#2aa7e6);color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:9999px">Open your dashboard →</a>` : ""}
+      ${cta ? `<a href="${SITE_URL}/parent" style="display:inline-block;margin-top:18px;background:linear-gradient(90deg,#1d70c2,#2aa7e6);color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:9999px">Open your dashboard →</a>` : ""}
     </div>
     <p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:16px">
-      SummerSharp · You're receiving this because you set a learning goal.
+      SunSharp · You're receiving this because you set a learning goal.
     </p>
   </div></body></html>`;
 }
@@ -35,7 +36,7 @@ export function goalMetEmail(opts: {
   minutesPerDay: number;
 }): EmailContent {
   const name = esc(opts.childName);
-  const subject = `🎉 ${opts.childName} hit their weekly SummerSharp goal!`;
+  const subject = `🎉 ${opts.childName} hit their weekly SunSharp goal!`;
   const body = `
     <p style="margin:0 0 10px;font-size:15px;line-height:1.6">
       Way to go — <strong>${name}</strong> reached the goal of practicing

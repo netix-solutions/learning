@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — SummerSharp",
+  title: "Terms of Use — SunSharp",
   description:
-    "The terms governing your use of SummerSharp, operated by Netix Solutions, LLC.",
+    "The terms governing your use of SunSharp, operated by Netix Solutions, LLC.",
   alternates: { canonical: "/terms" },
 };
 
@@ -15,7 +15,7 @@ export default function TermsOfUse() {
         These Terms of Use (the &ldquo;Terms&rdquo;) are a binding agreement between
         you and <strong>Netix Solutions, LLC</strong> (&ldquo;Netix,&rdquo;
         &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) governing your access
-        to and use of the <strong>SummerSharp</strong> application and the website at
+        to and use of the <strong>SunSharp</strong> application and the website at
         summersharp.app (collectively, the &ldquo;Service&rdquo;). By creating an
         account or using the Service, you agree to these Terms and to our{" "}
         <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the
@@ -50,7 +50,7 @@ export default function TermsOfUse() {
 
       <h2>3. Subscriptions, Pricing, and Billing</h2>
       <p>
-        Access to children&rsquo;s learning practice on SummerSharp requires a paid
+        Access to children&rsquo;s learning practice on SunSharp requires a paid
         subscription, which is managed entirely on the <strong>parent</strong> account.
         We may also offer free, trial, or promotional access from time to time.
       </p>
@@ -143,14 +143,14 @@ export default function TermsOfUse() {
       <p>
         The Service, including its software, design, text, graphics, badges, logos,
         and question bank, is owned by Netix or its licensors and is protected by
-        intellectual-property laws. &ldquo;SummerSharp,&rdquo; &ldquo;Netix
+        intellectual-property laws. &ldquo;SunSharp,&rdquo; &ldquo;Netix
         Solutions,&rdquo; and associated logos are marks of Netix. Nothing in these
         Terms transfers ownership of any intellectual property to you.
       </p>
 
       <h2>6. Educational Content Disclaimer</h2>
       <p>
-        SummerSharp provides supplemental learning practice for general educational
+        SunSharp provides supplemental learning practice for general educational
         purposes only. It is <strong>not</strong> a substitute for school instruction,
         a certified curriculum, tutoring, or professional educational advice. While we
         strive for accuracy and align content to grade-level domains, we do not

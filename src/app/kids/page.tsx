@@ -6,7 +6,7 @@ import { KidLoginForm } from "@/components/forms/KidLoginForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kid login — SummerSharp",
+  title: "Kid login — SunSharp",
   description:
     "Kids: log in with your username and PIN to keep your streak going!",
   alternates: { canonical: "/kids" },

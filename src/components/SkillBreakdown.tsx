@@ -169,7 +169,7 @@ function SkillRow({
           </p>
         )}
         <p className="text-slate-500">
-          🔁 When {childName} practices {subjectName}, SummerSharp automatically adds
+          🔁 When {childName} practices {subjectName}, SunSharp automatically adds
           extra questions on this skill until it clicks.
         </p>
       </div>
