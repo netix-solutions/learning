@@ -1,61 +1,26 @@
-import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { HomeLearningChoices } from "@/components/HomeLearningChoices";
 import { BrandLogo } from "@/components/BrandLogo";
-import { KidHomeView, type KidHomeData } from "@/components/KidHomeView";
+import type { Grade, Subject } from "@/lib/types";
 
-// Throwaway, no-login preview of the redesigned kid home so the layout can be
-// reviewed without authenticating. Safe to delete once the design is approved
-// and folded into /home.
-export const metadata: Metadata = {
-  title: "Home preview",
-  robots: { index: false, follow: false },
-};
-
-const MOCK: KidHomeData = {
-  name: "Sunny",
-  avatar: "fox",
-  grade: "3",
-  xp: 340,
-  streak: 5,
-  totals: { attempts: 120, correct: 98, accuracy: 82 },
-  subjects: [
-    { id: "math", name: "Math", emoji: "➕", color: "blue", attempts: 48, correct: 36 },
-    { id: "reading", name: "Reading", emoji: "📚", color: "purple", attempts: 40, correct: 20 },
-    { id: "science", name: "Science", emoji: "🔬", color: "green", attempts: 25, correct: 5 },
-  ],
-  badges: [
-    { id: "1", name: "First Win", emoji: "🥇", description: "", earned: true },
-    { id: "2", name: "Streak 3", emoji: "🔥", description: "", earned: true },
-    { id: "3", name: "Math Star", emoji: "⭐", description: "", earned: true },
-    { id: "4", name: "Bookworm", emoji: "🐛", description: "", earned: false },
-    { id: "5", name: "Scientist", emoji: "🧪", description: "", earned: false },
-    { id: "6", name: "Level 5", emoji: "🚀", description: "", earned: false },
-    { id: "7", name: "Perfect", emoji: "💯", description: "", earned: false },
-  ],
-};
-
-export default function HomePreview() {
-  return (
-    <main className="mx-auto w-full min-w-0 max-w-3xl px-4 py-6">
-      <header className="mb-6 flex items-center justify-between gap-3">
-        <BrandLogo href={null} />
-        <div className="flex shrink-0 items-center gap-2">
-          <span
-            title="Grown-up"
-            className="btn-pop grid h-10 w-10 place-items-center bg-white text-lg ring-2 ring-slate-200"
-          >
-            👋
-          </span>
-          <span className="btn-pop bg-white px-3 py-2 text-sm text-slate-600 ring-2 ring-slate-200">
-            Sign out
-          </span>
-        </div>
-      </header>
-
-      <KidHomeView data={MOCK} />
-
-      <p className="mt-8 text-center text-xs text-slate-400">
-        Preview with sample data · not the live dashboard
-      </p>
-    </main>
-  );
+export const metadata = { title: "Home preview — SunSharp", robots: { index: false, follow: false } };
+const subjects: Subject[] = [
+  { id: "math", name: "Math", emoji: "➕", color: "blue", sort: 0 },
+  { id: "reading", name: "Reading", emoji: "📚", color: "purple", sort: 1 },
+  { id: "science", name: "Science", emoji: "🔬", color: "green", sort: 2 },
+  { id: "geography", name: "Geography", emoji: "🗺️", color: "blue", sort: 3 },
+  { id: "history", name: "History", emoji: "📜", color: "orange", sort: 4 },
+  { id: "civics", name: "Civics", emoji: "🏛️", color: "purple", sort: 5 },
+  { id: "economics", name: "Economics", emoji: "💰", color: "green", sort: 6 },
+];
+export default async function HomePreview({ searchParams }: { searchParams: Promise<{ grade?: string }> }) {
+  if (process.env.NODE_ENV === "production") notFound();
+  const params = await searchParams;
+  const grade = (["PK", "K", "1", "2", "3", "4", "5"].includes(params.grade ?? "") ? params.grade : "3") as Grade;
+  return <main className="mx-auto max-w-2xl px-4 py-5">
+    <BrandLogo href={null} />
+    <h1 className="mt-4 text-2xl font-bold text-slate-800">Hi, Sunny!</h1>
+    <HomeLearningChoices grade={grade} subjects={grade === "PK" ? subjects.slice(0, 3) : subjects} />
+    <p className="mt-6 text-sm text-slate-600">Grade {grade} preview · sample data</p>
+  </main>;
 }

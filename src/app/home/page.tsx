@@ -8,7 +8,8 @@ import { XpBar } from "@/components/XpBar";
 import { GoalProgressCard } from "@/components/GoalProgressCard";
 import { DailyChest } from "@/components/DailyChest";
 import { QuestCard, type QuestStatus } from "@/components/QuestCard";
-import { subjectTheme, type StudentSummary, type Subject } from "@/lib/types";
+import { HomeLearningChoices } from "@/components/HomeLearningChoices";
+import { type StudentSummary, type Subject } from "@/lib/types";
 import type { GoalProgress } from "@/lib/goals";
 
 type Badge = {
@@ -55,9 +56,6 @@ export default async function StudentHome() {
       : ("locked" as const);
 
   const summary = summaryData as StudentSummary;
-  const correctBySubject = new Map(
-    summary.subjects.map((s) => [s.subject_id, s.correct]),
-  );
   const earned = new Set(summary.badges.map((b) => b.id));
   const streak = profile.streak_count;
 
@@ -70,7 +68,7 @@ export default async function StudentHome() {
         {/* "Grown-up" (switch to parent) lives in the kid footer, so the top
             bar just needs Sign out — keeps the logo from crowding on phones. */}
         <div className="flex shrink-0 items-center gap-2">
-          <SignOutButton />
+          <SignOutButton className="min-h-12" />
         </div>
       </header>
 
@@ -105,36 +103,7 @@ export default async function StudentHome() {
         </div>
       </section>
 
-      {/* ★ THE main action. One giant, unmistakable button that drops the kid
-          straight into an adaptive mix — no choosing required. Everything else
-          on the page is deliberately quieter than this. */}
-      <Link
-        href="/practice/daily"
-        className="btn-pop group mt-5 flex items-center gap-4 px-6 py-6 text-white sm:py-7"
-        style={{ background: "linear-gradient(100deg, var(--brand-orange), #ffb020)" }}
-      >
-        <span className="text-5xl transition-transform group-active:scale-90 sm:text-6xl">🚀</span>
-        <span className="text-left">
-          <span className="block font-display text-3xl font-extrabold leading-tight sm:text-4xl">
-            Play!
-          </span>
-          <span className="block text-sm font-semibold text-white/90 sm:text-base">
-            A fun mix, just for you
-          </span>
-        </span>
-        <span className="ml-auto text-3xl opacity-80 transition-transform group-hover:translate-x-1">
-          →
-        </span>
-      </Link>
-
-      <Link href="/learn" className="btn-pop card-fun mt-4 flex items-center gap-4 border-2 border-sky-200 bg-sky-50 p-5">
-        <span aria-hidden="true" className="text-4xl">🧭</span>
-        <span className="flex-1">
-          <span className="block font-display text-xl font-bold text-sky-900">Learn something new</span>
-          <span className="mt-1 block text-sm font-semibold text-slate-600">See how it works. Try it. Explain it.</span>
-        </span>
-        <span aria-hidden="true" className="text-2xl text-sky-600">→</span>
-      </Link>
+      <HomeLearningChoices grade={profile.grade} subjects={(subjects ?? []) as Subject[]} />
 
       {/* Daily treasure chest — practicing unlocks it */}
       <DailyChest initialState={chestState} reward={chestClaim?.reward} />
@@ -144,38 +113,6 @@ export default async function StudentHome() {
 
       {/* Time goal set by a grown-up */}
       {goal && <GoalProgressCard p={goal} />}
-
-      {/* ---- Secondary tier: choose a subject, collect cards, see badges ---- */}
-      <h2 className="mb-3 mt-8 font-display text-lg font-bold text-slate-600">
-        Or pick a subject 👇
-      </h2>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {(subjects as Subject[]).map((s) => {
-          const theme = subjectTheme(s.color);
-          const correct = correctBySubject.get(s.id) ?? 0;
-          return (
-            <Link
-              key={s.id}
-              href={`/practice/${s.id}`}
-              className={`btn-pop card-fun flex flex-col items-center gap-2 p-4 text-center ring-4 ${theme.ring}`}
-            >
-              <span
-                className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${theme.gradient} text-3xl shadow-inner`}
-              >
-                {s.emoji}
-              </span>
-              <span className="font-display text-base font-bold leading-tight text-slate-800">
-                {s.name}
-              </span>
-              {/* Only show a count once there's something to celebrate — a brand
-                  new kid shouldn't face a wall of "0 correct". */}
-              {correct > 0 && (
-                <span className="text-xs font-bold text-emerald-600">{correct} correct ⭐</span>
-              )}
-            </Link>
-          );
-        })}
-      </div>
 
       {/* Sticker Book — spend points on surprise sticker packs & collect them all */}
       <Link
@@ -193,44 +130,18 @@ export default async function StudentHome() {
         <span className="ml-auto text-2xl text-slate-300">→</span>
       </Link>
 
-      {/* Badges */}
-      <h2 className="mb-3 mt-8 font-display text-lg font-bold text-slate-600">
-        {earned.size > 0 ? (
-          <>
-            Your badges{" "}
-            <span className="text-slate-400">
-              ({earned.size}/{(badges as Badge[]).length})
-            </span>
-          </>
-        ) : (
-          <>Badges to unlock 🏅</>
-        )}
-      </h2>
-      <section className="card-fun grid grid-cols-4 gap-3 p-4 sm:grid-cols-5">
-        {(badges as Badge[]).map((b) => {
-          const have = earned.has(b.id);
-          return (
-            <div
-              key={b.id}
-              title={b.description}
-              className={`flex flex-col items-center gap-1 rounded-2xl p-2.5 text-center ${
-                have ? "bg-amber-50" : "bg-slate-50"
-              }`}
-            >
-              <span className={`text-3xl ${have ? "" : "opacity-25 grayscale"}`}>
-                {have ? b.emoji : "🔒"}
-              </span>
-              <span
-                className={`text-[0.65rem] font-bold leading-tight ${
-                  have ? "text-slate-700" : "text-slate-400"
-                }`}
-              >
-                {b.name}
-              </span>
-            </div>
-          );
-        })}
-      </section>
+      <details className="card-fun mt-5 p-4">
+        <summary className="min-h-12 cursor-pointer rounded-xl p-3 text-lg font-bold text-slate-700 focus-visible:outline-2 focus-visible:outline-sky-700">
+          My badges · {earned.size} earned
+        </summary>
+        <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {(badges as Badge[]).map(b => <div key={b.id} className={`rounded-2xl p-3 ${earned.has(b.id) ? "bg-amber-50" : "bg-slate-50"}`}>
+            <span aria-hidden="true" className="text-3xl">{earned.has(b.id) ? b.emoji : "🔒"}</span>
+            <p className="mt-2 text-base font-bold text-slate-800">{b.name}</p>
+            <p className="mt-1 text-sm text-slate-600">{earned.has(b.id) ? "Earned!" : b.description}</p>
+          </div>)}
+        </div>
+      </details>
 
       {/* Lifetime stats — only once the kid has actually done something, so the
           first-ever visit never shows "0 questions · 0% correct". */}

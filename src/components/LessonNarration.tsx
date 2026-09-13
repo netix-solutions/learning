@@ -12,8 +12,8 @@ export function LessonNarration({ lesson, slot, onListen, className = "" }: { le
   return <RecordedNarration id={id} text={text} onListen={onListen} className={className} />;
 }
 
-export function RecordedNarration({ id, text, onListen, className = "" }: { id: string; text: string; onListen?: () => void; className?: string }) {
+export function RecordedNarration({ id, text, onListen, label = "Listen", className = "" }: { id: string; text: string; onListen?: () => void; label?: string; className?: string }) {
   const normalized = forSpeech(text);
   const clip = clips[id];
-  return <SpeakButton id={id} text={normalized} onListen={onListen} audioSrc={clip?.text === normalized ? clip.url : undefined} className={`!h-12 !w-12 ${className}`} />;
+  return <SpeakButton id={id} label={label} text={normalized} onListen={onListen} audioSrc={clip?.text === normalized ? clip.url : undefined} className={`!h-12 !w-12 ${className}`} />;
 }

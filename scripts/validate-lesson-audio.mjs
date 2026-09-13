@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
+import { HOME_NARRATION } from '../src/lib/home-narration.ts';
 import { LESSONS } from '../src/lib/lessons.ts';
 import { MATH_LABS } from '../src/lib/math-labs.ts';
 import { narrationFor, narrationId, NARRATION_SLOTS } from '../src/lib/lesson-narration.ts';
@@ -10,6 +11,7 @@ import { VOICE_MODEL, VOICE_SETTINGS, VOICE_OUTPUT_FORMAT } from '../src/lib/voi
 
 const manifest=JSON.parse(await readFile('src/lib/generated/lesson-audio.json','utf8'));
 const expected=[
+  ...Object.entries(HOME_NARRATION).map(([id,text])=>({id,text:forSpeech(text)})),
   ...LESSONS.flatMap(lesson=>NARRATION_SLOTS.map(slot=>({id:narrationId(lesson,slot),text:forSpeech(narrationFor(lesson,slot))}))),
   ...Object.entries(MATH_LABS).map(([id,lab])=>({id:`${id}:explore`,text:forSpeech(lab.instruction)})),
 ];

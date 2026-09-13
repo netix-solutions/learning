@@ -660,6 +660,158 @@
       "bytes": 139224,
       "sha256": "adb841221a8d210eac08d7738a6e584980a815ffeec53d2889a856acb0acb922"
     },
+    "1-short-vowels:goal": {
+      "id": "1-short-vowels:goal",
+      "text": "Read every sound. Read short words by looking through every letter, including the vowel. Before you start: This is a review for readers who know common consonant sounds and short vowel sounds. Ask a grown-up to help with any sound you do not know yet.",
+      "fingerprint": "99758653132c40aac51152fed6944948cfae6b976ae8696349dffc28d8b5ce81",
+      "url": "/audio/lessons/99758653132c40aac51152fed6944948cfae6b976ae8696349dffc28d8b5ce81.mp3",
+      "bytes": 285510,
+      "sha256": "433057d9b489b3a98ffd5d0e10a4041ba1b0e17c21b1135dec50963a81c2cd17"
+    },
+    "1-short-vowels:step-0": {
+      "id": "1-short-vowels:step-0",
+      "text": "A vowel in the middle can change the whole word. Read mat. The a has the short vowel sound in apple. Blend the sounds from left to right.",
+      "fingerprint": "71f54c506ff2750332e063e7ede87573fceed19bd0402e5b518fe9b3b9c4906f",
+      "url": "/audio/lessons/71f54c506ff2750332e063e7ede87573fceed19bd0402e5b518fe9b3b9c4906f.mp3",
+      "bytes": 149673,
+      "sha256": "1c6ec6c431e650ca6412dfb86022bd3b9e84982b1902ed975721093dd71d4220"
+    },
+    "1-short-vowels:step-1": {
+      "id": "1-short-vowels:step-1",
+      "text": "Now read sat. Change its a to i to make sit. The i has the short vowel sound in igloo. Blend from left to right to read sit.",
+      "fingerprint": "73d8cb1db86ceb29a68ab8ab057161608e4df421a786b361ac27748c825cecf6",
+      "url": "/audio/lessons/73d8cb1db86ceb29a68ab8ab057161608e4df421a786b361ac27748c825cecf6.mp3",
+      "bytes": 190633,
+      "sha256": "349efc5dccbe97ce0c1a0fab0bc0044b5a265d7e8d1989bd9e59ef0a511bb11c"
+    },
+    "1-short-vowels:step-2": {
+      "id": "1-short-vowels:step-2",
+      "text": "Read sat, sit, and sip. In sat and sit, the middle sound changes. In sit and sip, the last sound changes. Look all the way to the end before saying the word.",
+      "fingerprint": "3dfb50e3b9257f2fcfd8502962f96d8c5d30c196db7496b67ecadcdb5196e28c",
+      "url": "/audio/lessons/3dfb50e3b9257f2fcfd8502962f96d8c5d30c196db7496b67ecadcdb5196e28c.mp3",
+      "bytes": 209023,
+      "sha256": "482d627f51d5805350560628a83100edae20b295d1f2af2b7611298ef1352f93"
+    },
+    "1-short-vowels:guided": {
+      "id": "1-short-vowels:guided",
+      "text": "Read sat and sit aloud. Which letter changed?. Choice 1: The first letter. Choice 2: The middle letter. Choice 3: The last letter.",
+      "fingerprint": "2cae46b1b9e85aeadd4911521180b683d5cc0d13e6e66957aad624d7a6de893d",
+      "url": "/audio/lessons/2cae46b1b9e85aeadd4911521180b683d5cc0d13e6e66957aad624d7a6de893d.mp3",
+      "bytes": 232847,
+      "sha256": "0001f9e00ce2472c780c3a5adfe9029195fc3482143cd4ca17f8d917b9f3581b"
+    },
+    "1-short-vowels:transfer": {
+      "id": "1-short-vowels:transfer",
+      "text": "Read pin. Change its middle letter to a. Read the new word aloud, then choose it.. Choice 1: pit. Choice 2: nap. Choice 3: pan.",
+      "fingerprint": "3ee7ede0a52c145fad17243953d95f2b0b0c824b35b4ae9c865a1a11557d985f",
+      "url": "/audio/lessons/3ee7ede0a52c145fad17243953d95f2b0b0c824b35b4ae9c865a1a11557d985f.mp3",
+      "bytes": 236608,
+      "sha256": "096d61fb6f5d73e9a56af39fadc4f5145ce5f9d85764bae95d52543dc39a55e5"
+    },
+    "1-short-vowels:guided-feedback": {
+      "id": "1-short-vowels:guided-feedback",
+      "text": "The middle letter changes from a to i. The vowel sound changes too. Read both words again: sat, sit.",
+      "fingerprint": "8e09cc78a63f15ab6ba5e128e499d9db9d9f49f9607f30a1f0ed54460a76d14f",
+      "url": "/audio/lessons/8e09cc78a63f15ab6ba5e128e499d9db9d9f49f9607f30a1f0ed54460a76d14f.mp3",
+      "bytes": 168899,
+      "sha256": "de91566d3eb5b123c495aeaa624a1da6d6d9c53b04cd7cd3b24009d913d4c82b"
+    },
+    "1-short-vowels:transfer-feedback": {
+      "id": "1-short-vowels:transfer-feedback",
+      "text": "Keep p at the start and n at the end. Change i to a. The new word is pan.",
+      "fingerprint": "e3b994da10d58de507dafa21fddedb3bd180ddd8b82bc4470d45f70e395c90dd",
+      "url": "/audio/lessons/e3b994da10d58de507dafa21fddedb3bd180ddd8b82bc4470d45f70e395c90dd.mp3",
+      "bytes": 110385,
+      "sha256": "18f4dd773a543e88b3c2cc90cecb628155b36e81993a29116c89c25c3a22d68d"
+    },
+    "1-short-vowels:reflect": {
+      "id": "1-short-vowels:reflect",
+      "text": "Read aloud to a grown-up: Sam sat. Tim sat. Ask them to listen while you read each word. If a sound is tricky, practice it and reread the sentence.",
+      "fingerprint": "13a9860e8d1c6564f9b6ed3dab1ceeab50df301813af8ad8db0b95098398bcdb",
+      "url": "/audio/lessons/13a9860e8d1c6564f9b6ed3dab1ceeab50df301813af8ad8db0b95098398bcdb.mp3",
+      "bytes": 191469,
+      "sha256": "9254d6fd56f7bd9a6d608367c71c12b56b7a73acd588f182cc9549baad6a47aa"
+    },
+    "1-sh:goal": {
+      "id": "1-sh:goal",
+      "text": "Two letters, one sound. Read sh as one sound at the beginning or end of a word. Before you start: Review common consonant sounds and short vowels first. Today s and h will work together.",
+      "fingerprint": "d6f82d4753e9947f1c9a40d9646b92fe789f40e985ce3d83f3ef2d8cc0b744b6",
+      "url": "/audio/lessons/d6f82d4753e9947f1c9a40d9646b92fe789f40e985ce3d83f3ef2d8cc0b744b6.mp3",
+      "bytes": 261268,
+      "sha256": "4bd392d9d33e7dbf5a288ceaa6ab464a15e5ec1c4b29ec81a17aeb74d2bfdaab"
+    },
+    "1-sh:step-0": {
+      "id": "1-sh:step-0",
+      "text": "Say ship. Listen to its first sound. The letters s and h work together to spell that one sound. A pair of letters that spells one sound is called a digraph.",
+      "fingerprint": "90d4b7a445d013948f41235d9b17a87f4b605f75e3c2544228407b6465518744",
+      "url": "/audio/lessons/90d4b7a445d013948f41235d9b17a87f4b605f75e3c2544228407b6465518744.mp3",
+      "bytes": 207769,
+      "sha256": "8f35b17c3d1e44bfeac48936ae91af5c221fc03ca7e2db4f0232157b31fbf2c8"
+    },
+    "1-sh:step-1": {
+      "id": "1-sh:step-1",
+      "text": "Look at the three sound parts in ship: sh, i, p. Keep sh together as you blend. Ship has four letters but three sounds.",
+      "fingerprint": "cb91e4ec0a1c83e6d71f7e2ab0c3f422e03db42d8b74bf3311e78115b9c7eb22",
+      "url": "/audio/lessons/cb91e4ec0a1c83e6d71f7e2ab0c3f422e03db42d8b74bf3311e78115b9c7eb22.mp3",
+      "bytes": 180184,
+      "sha256": "5450bd5c92d11647651df1a32491fcca088aa8d16ee471b4b2935e03244fdc9b"
+    },
+    "1-sh:step-2": {
+      "id": "1-sh:step-2",
+      "text": "Read fish. The sh is at the end this time. Blend f, i, sh. Now read: A fish. A ship. Point under each sound part as you read.",
+      "fingerprint": "3ea4833708510061a36037cf2a9a229417a3da1f390052367202de76818d0b53",
+      "url": "/audio/lessons/3ea4833708510061a36037cf2a9a229417a3da1f390052367202de76818d0b53.mp3",
+      "bytes": 254999,
+      "sha256": "a6777dc434cabad2124fe051f94d4f4ccc3c371963f110b02cf12f97f39742a1"
+    },
+    "1-sh:guided": {
+      "id": "1-sh:guided",
+      "text": "Look at ship. Which letters work together to spell its first sound?. Choice 1: ip. Choice 2: hi. Choice 3: sh.",
+      "fingerprint": "d68ca4415836c4439ab4849b24ef11d31edcbab5b5eebefe2344ecd8c536d756",
+      "url": "/audio/lessons/d68ca4415836c4439ab4849b24ef11d31edcbab5b5eebefe2344ecd8c536d756.mp3",
+      "bytes": 226995,
+      "sha256": "f6fc6a0d7b002e253cbc27d06586dc735101e1a1f457264b4911c4921de9f2e0"
+    },
+    "1-sh:transfer": {
+      "id": "1-sh:transfer",
+      "text": "Read these words aloud. Which word ends with the sh sound?. Choice 1: fish. Choice 2: fit. Choice 3: sip.",
+      "fingerprint": "fb801aaa5ff674833ba1d4b3c97c058be623506d5b771c566348951aa226a8e8",
+      "url": "/audio/lessons/fb801aaa5ff674833ba1d4b3c97c058be623506d5b771c566348951aa226a8e8.mp3",
+      "bytes": 226159,
+      "sha256": "68bcdd5b1390aae2f936cd8f6885c37b661ec8d65d23df1558688e4da6251a84"
+    },
+    "1-sh:guided-feedback": {
+      "id": "1-sh:guided-feedback",
+      "text": "The s and h form sh. Keep them together as one sound when you read ship.",
+      "fingerprint": "0b545cc3aee145c5c6e2a379bf3fa9850ff6c8b310f38d64815671af3f44f87a",
+      "url": "/audio/lessons/0b545cc3aee145c5c6e2a379bf3fa9850ff6c8b310f38d64815671af3f44f87a.mp3",
+      "bytes": 93248,
+      "sha256": "9190ab1294b65293db88d28e23cf462c50ab83bfe571b8a81a4443fcb78b00cc"
+    },
+    "1-sh:transfer-feedback": {
+      "id": "1-sh:transfer-feedback",
+      "text": "Fish ends with sh. Fit ends with t, and sip ends with p. Look at each word's ending.",
+      "fingerprint": "f6cdab1dee772a55b66d16936c04beb6ad7e7b73a9de8a9b0fceb1d7c7e5f586",
+      "url": "/audio/lessons/f6cdab1dee772a55b66d16936c04beb6ad7e7b73a9de8a9b0fceb1d7c7e5f586.mp3",
+      "bytes": 133373,
+      "sha256": "4563bc0f3cae76ec1d912a0d716b321ef3d4bbe0f2df79b9f662139a927efe6d"
+    },
+    "1-sh:reflect": {
+      "id": "1-sh:reflect",
+      "text": "Read to a grown-up: A fish in a dish. Read it again, keeping each sh together. Ask your grown-up to check your reading, then tell them what the words mean.",
+      "fingerprint": "faa4d19f7f0fb94337280e7c30f8d53f455b7f4c12900e40fab71ba5b3ad8dc9",
+      "url": "/audio/lessons/faa4d19f7f0fb94337280e7c30f8d53f455b7f4c12900e40fab71ba5b3ad8dc9.mp3",
+      "bytes": 165137,
+      "sha256": "02e953c67fa232f4140debea30c4cd2cebb33cadc91166d2d39662b083cd7117"
+    },
+    "1-silent-e:goal": {
+      "id": "1-silent-e:goal",
+      "text": "Meet the quiet e. Read words with a vowel, consonant, and final e. Before you start: Read short-vowel words such as cap, tap, and pin before adding a final e.",
+      "fingerprint": "f4d0b64469629f98574953d25cd600e90c603d12a63c05fe97f3dea50e68edb6",
+      "url": "/audio/lessons/f4d0b64469629f98574953d25cd600e90c603d12a63c05fe97f3dea50e68edb6.mp3",
+      "bytes": 206933,
+      "sha256": "3cc97d52567a35927a41ae2ccc63bee95fe3b6dc7883ed02eba140e2228e262b"
+    },
     "1-silent-e:step-0": {
       "id": "1-silent-e:step-0",
       "text": "Read cap. Its a has a short vowel sound.",
@@ -723,6 +875,78 @@
       "url": "/audio/lessons/6ea4956f11b8153dd00c79fb83b13dae47d152e0932cfe343753fe5ac5dd38a8.mp3",
       "bytes": 115400,
       "sha256": "927bbb84e0a1d05a19bc1bc0282e4e0fe18bfba5e7de91d0283587613cf5201f"
+    },
+    "1-cape-story:goal": {
+      "id": "1-cape-story:goal",
+      "text": "Read a tiny story. Use your word-reading skills in a short story, then explain what happened. Before you start: First practice short-vowel words and the final-e pattern in cape and tape. In this story, has ends with the sound you hear at the start of zebra.",
+      "fingerprint": "7f8179d26e4b671c6645484c46288235a96c479e1ccc7f0149abbff536703ad1",
+      "url": "/audio/lessons/7f8179d26e4b671c6645484c46288235a96c479e1ccc7f0149abbff536703ad1.mp3",
+      "bytes": 293869,
+      "sha256": "bdbbef6d38f44397e2952be8cf23538c052b606ed6675101b2401786397e0386"
+    },
+    "1-cape-story:step-0": {
+      "id": "1-cape-story:step-0",
+      "text": "Read these words first: Sam, cape, rip, tape. In cape and tape, the final e is silent and a says its name. If a word is tricky, blend it and then read it again.",
+      "fingerprint": "837f9d2eb957e0a685783658d128dd284c930e6ff87772ffc405a08b95319d04",
+      "url": "/audio/lessons/837f9d2eb957e0a685783658d128dd284c930e6ff87772ffc405a08b95319d04.mp3",
+      "bytes": 269209,
+      "sha256": "7f7e5bf8b2e1e758ba71d1b5e7b095f0199be23dd419766d536d6cba82afa56b"
+    },
+    "1-cape-story:step-1": {
+      "id": "1-cape-story:step-1",
+      "text": "Read the story aloud: Sam has a cape. A rip! Sam has tape. Sam can fix a rip. Point to each word as you read. A rip is a tear in the cape.",
+      "fingerprint": "679da6854a816b8227fc1fa9c1af2cfebd2839224abee83a0d24ff2ac1bfbbae",
+      "url": "/audio/lessons/679da6854a816b8227fc1fa9c1af2cfebd2839224abee83a0d24ff2ac1bfbbae.mp3",
+      "bytes": 254581,
+      "sha256": "c55cc136ccbfbeee1423f6bbf71048aa44d852da3c2def8254e1dad246b3ca13"
+    },
+    "1-cape-story:step-2": {
+      "id": "1-cape-story:step-2",
+      "text": "Read the story again. Keep the words in each sentence together, and pause at the period. Tell a grown-up how Sam can solve the problem. Use the words in the story to explain.",
+      "fingerprint": "26497f1d21a27e39535571c9abd59adc4d3733ae75fe5e2e65947cf0fc5c2cd4",
+      "url": "/audio/lessons/26497f1d21a27e39535571c9abd59adc4d3733ae75fe5e2e65947cf0fc5c2cd4.mp3",
+      "bytes": 198156,
+      "sha256": "ef91194cbb9496e5bbbc175ed4ac886556a0e4ccf4e867b714d389cc921b6cfe"
+    },
+    "1-cape-story:guided": {
+      "id": "1-cape-story:guided",
+      "text": "In the story, what can Sam use to fix the rip?. Choice 1: A pin. Choice 2: Tape. Choice 3: A cup.",
+      "fingerprint": "14ab1a04e828a355376d42a1f9ff241c40b2f8c3ba40a28b8936c64f078788b7",
+      "url": "/audio/lessons/14ab1a04e828a355376d42a1f9ff241c40b2f8c3ba40a28b8936c64f078788b7.mp3",
+      "bytes": 217382,
+      "sha256": "5be77d2ede04a9dfe327fb5efcee90de3e2e8c2d2fe052f8175e009901591692"
+    },
+    "1-cape-story:transfer": {
+      "id": "1-cape-story:transfer",
+      "text": "Read a new tiny story: Tim has a kit. A cap has a rip. Tim can fix a cap. What has a rip?. Choice 1: A kit. Choice 2: A cape. Choice 3: A cap.",
+      "fingerprint": "1598f60f573a9aec98646260de56be491b0a89d478464b2e796c62fce74bdefd",
+      "url": "/audio/lessons/1598f60f573a9aec98646260de56be491b0a89d478464b2e796c62fce74bdefd.mp3",
+      "bytes": 298884,
+      "sha256": "40677e3070783e1cbd37f177535a50f6b2511a3d94f88998b331e32c120c3ad7"
+    },
+    "1-cape-story:guided-feedback": {
+      "id": "1-cape-story:guided-feedback",
+      "text": "The story says Sam has tape. Sam can use the tape to fix the rip.",
+      "fingerprint": "793ca7b5ed57e76ca6ef7bdb44f4fa7fa0fe209667c36d9ac17e9a450205cd09",
+      "url": "/audio/lessons/793ca7b5ed57e76ca6ef7bdb44f4fa7fa0fe209667c36d9ac17e9a450205cd09.mp3",
+      "bytes": 81128,
+      "sha256": "a66c698a24ffabe2af62713b14a97d4f7b1b7f220f26b9fb6acaf728557d2ab4"
+    },
+    "1-cape-story:transfer-feedback": {
+      "id": "1-cape-story:transfer-feedback",
+      "text": "The new story says a cap has a rip. Read cap carefully: it has no final e. Cap and cape are different words.",
+      "fingerprint": "051577d67dbb431aff4894ed4791c4eddb8e5a348fbb6ad12f5c3ceebfa654d0",
+      "url": "/audio/lessons/051577d67dbb431aff4894ed4791c4eddb8e5a348fbb6ad12f5c3ceebfa654d0.mp3",
+      "bytes": 145075,
+      "sha256": "a5f7f8459888df27255cb0d7c4567a5c6329883093452c82c829a9611d4c74ce"
+    },
+    "1-cape-story:reflect": {
+      "id": "1-cape-story:reflect",
+      "text": "Read the Sam story to a grown-up without pressing Listen. Ask them to check your words. Tell them which word you practiced and whether rereading helped.",
+      "fingerprint": "3513ed52ef579da609ad1775fd9ce6827bf5dc161b6e63e3365ededd8d1d3581",
+      "url": "/audio/lessons/3513ed52ef579da609ad1775fd9ce6827bf5dc161b6e63e3365ededd8d1d3581.mp3",
+      "bytes": 148001,
+      "sha256": "7a4e3e1f3541450244079dae5f4950159bdae98170318aa72258ed465415bfbc"
     },
     "2-prefix:goal": {
       "id": "2-prefix:goal",
@@ -1572,229 +1796,85 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "1-short-vowels:goal": {
-      "id": "1-short-vowels:goal",
-      "text": "Read every sound. Read short words by looking through every letter, including the vowel. Before you start: This is a review for readers who know common consonant sounds and short vowel sounds. Ask a grown-up to help with any sound you do not know yet.",
-      "fingerprint": "99758653132c40aac51152fed6944948cfae6b976ae8696349dffc28d8b5ce81",
-      "url": "/audio/lessons/99758653132c40aac51152fed6944948cfae6b976ae8696349dffc28d8b5ce81.mp3",
-      "bytes": 285510,
-      "sha256": "433057d9b489b3a98ffd5d0e10a4041ba1b0e17c21b1135dec50963a81c2cd17"
+    "home:guide": {
+      "id": "home:guide",
+      "text": "Welcome! Tap the compass to learn something new. Tap the rocket to practice. You can also choose math, reading, or science. Tap a speaker to hear what a button does.",
+      "fingerprint": "4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633",
+      "url": "/audio/lessons/4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633.mp3",
+      "bytes": 227831,
+      "sha256": "7bb585b94881685b3b033896065e5daa331a2bf797dd1f56383ce046ffcfc218"
     },
-    "1-short-vowels:step-0": {
-      "id": "1-short-vowels:step-0",
-      "text": "A vowel in the middle can change the whole word. Read mat. The a has the short vowel sound in apple. Blend the sounds from left to right.",
-      "fingerprint": "71f54c506ff2750332e063e7ede87573fceed19bd0402e5b518fe9b3b9c4906f",
-      "url": "/audio/lessons/71f54c506ff2750332e063e7ede87573fceed19bd0402e5b518fe9b3b9c4906f.mp3",
-      "bytes": 149673,
-      "sha256": "1c6ec6c431e650ca6412dfb86022bd3b9e84982b1902ed975721093dd71d4220"
+    "home:learn": {
+      "id": "home:learn",
+      "text": "Learn something new. We will show you how. Listen, try it, and explain your idea.",
+      "fingerprint": "8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080",
+      "url": "/audio/lessons/8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080.mp3",
+      "bytes": 108713,
+      "sha256": "d8cd67b178014153de7638bc7a115efad08bb203a8c337abdab73a97bfd14d60"
     },
-    "1-short-vowels:step-1": {
-      "id": "1-short-vowels:step-1",
-      "text": "Now read sat. Change its a to i to make sit. The i has the short vowel sound in igloo. Blend from left to right to read sit.",
-      "fingerprint": "73d8cb1db86ceb29a68ab8ab057161608e4df421a786b361ac27748c825cecf6",
-      "url": "/audio/lessons/73d8cb1db86ceb29a68ab8ab057161608e4df421a786b361ac27748c825cecf6.mp3",
-      "bytes": 190633,
-      "sha256": "349efc5dccbe97ce0c1a0fab0bc0044b5a265d7e8d1989bd9e59ef0a511bb11c"
+    "home:practice": {
+      "id": "home:practice",
+      "text": "Practice what you know with a mix of questions. You can ask for help as you go.",
+      "fingerprint": "55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970",
+      "url": "/audio/lessons/55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970.mp3",
+      "bytes": 72351,
+      "sha256": "254038255325dee11ba541f93856da8c9bf5582456f5450d0d0a7344688d9694"
     },
-    "1-short-vowels:step-2": {
-      "id": "1-short-vowels:step-2",
-      "text": "Read sat, sit, and sip. In sat and sit, the middle sound changes. In sit and sip, the last sound changes. Look all the way to the end before saying the word.",
-      "fingerprint": "3dfb50e3b9257f2fcfd8502962f96d8c5d30c196db7496b67ecadcdb5196e28c",
-      "url": "/audio/lessons/3dfb50e3b9257f2fcfd8502962f96d8c5d30c196db7496b67ecadcdb5196e28c.mp3",
-      "bytes": 209023,
-      "sha256": "482d627f51d5805350560628a83100edae20b295d1f2af2b7611298ef1352f93"
+    "home:math": {
+      "id": "home:math",
+      "text": "Math. Explore numbers, shapes, and solving problems.",
+      "fingerprint": "4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e",
+      "url": "/audio/lessons/4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e.mp3",
+      "bytes": 71097,
+      "sha256": "b4d3f7abad41aa821948ba93b986424fce0535f54fd3e67ad43a03c3ce978e60"
     },
-    "1-short-vowels:guided": {
-      "id": "1-short-vowels:guided",
-      "text": "Read sat and sit aloud. Which letter changed?. Choice 1: The first letter. Choice 2: The middle letter. Choice 3: The last letter.",
-      "fingerprint": "2cae46b1b9e85aeadd4911521180b683d5cc0d13e6e66957aad624d7a6de893d",
-      "url": "/audio/lessons/2cae46b1b9e85aeadd4911521180b683d5cc0d13e6e66957aad624d7a6de893d.mp3",
-      "bytes": 232847,
-      "sha256": "0001f9e00ce2472c780c3a5adfe9029195fc3482143cd4ca17f8d917b9f3581b"
+    "home:reading": {
+      "id": "home:reading",
+      "text": "Reading. Practice letters, words, and understanding stories.",
+      "fingerprint": "5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c",
+      "url": "/audio/lessons/5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c.mp3",
+      "bytes": 74440,
+      "sha256": "b32e5775dc9b6cf5f229a6280ff6262353a907cb16516563b3a0f169118599b2"
     },
-    "1-short-vowels:transfer": {
-      "id": "1-short-vowels:transfer",
-      "text": "Read pin. Change its middle letter to a. Read the new word aloud, then choose it.. Choice 1: pit. Choice 2: nap. Choice 3: pan.",
-      "fingerprint": "3ee7ede0a52c145fad17243953d95f2b0b0c824b35b4ae9c865a1a11557d985f",
-      "url": "/audio/lessons/3ee7ede0a52c145fad17243953d95f2b0b0c824b35b4ae9c865a1a11557d985f.mp3",
-      "bytes": 236608,
-      "sha256": "096d61fb6f5d73e9a56af39fadc4f5145ce5f9d85764bae95d52543dc39a55e5"
+    "home:science": {
+      "id": "home:science",
+      "text": "Science. Explore how the world works.",
+      "fingerprint": "8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482",
+      "url": "/audio/lessons/8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482.mp3",
+      "bytes": 52288,
+      "sha256": "94bc29807f9b5ecf2e73b65ee388333066d1238700228fdbe42f9e0ab3fc1a2b"
     },
-    "1-short-vowels:guided-feedback": {
-      "id": "1-short-vowels:guided-feedback",
-      "text": "The middle letter changes from a to i. The vowel sound changes too. Read both words again: sat, sit.",
-      "fingerprint": "8e09cc78a63f15ab6ba5e128e499d9db9d9f49f9607f30a1f0ed54460a76d14f",
-      "url": "/audio/lessons/8e09cc78a63f15ab6ba5e128e499d9db9d9f49f9607f30a1f0ed54460a76d14f.mp3",
-      "bytes": 168899,
-      "sha256": "de91566d3eb5b123c495aeaa624a1da6d6d9c53b04cd7cd3b24009d913d4c82b"
+    "home:geography": {
+      "id": "home:geography",
+      "text": "Geography. Learn about maps and places.",
+      "fingerprint": "4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a",
+      "url": "/audio/lessons/4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a.mp3",
+      "bytes": 53960,
+      "sha256": "377bd9a443c779bd91f61362823061fff38dee5d59454ad3627748145c7743c2"
     },
-    "1-short-vowels:transfer-feedback": {
-      "id": "1-short-vowels:transfer-feedback",
-      "text": "Keep p at the start and n at the end. Change i to a. The new word is pan.",
-      "fingerprint": "e3b994da10d58de507dafa21fddedb3bd180ddd8b82bc4470d45f70e395c90dd",
-      "url": "/audio/lessons/e3b994da10d58de507dafa21fddedb3bd180ddd8b82bc4470d45f70e395c90dd.mp3",
-      "bytes": 110385,
-      "sha256": "18f4dd773a543e88b3c2cc90cecb628155b36e81993a29116c89c25c3a22d68d"
+    "home:history": {
+      "id": "home:history",
+      "text": "History. Learn about people and events from the past.",
+      "fingerprint": "c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082",
+      "url": "/audio/lessons/c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082.mp3",
+      "bytes": 55214,
+      "sha256": "5b47fd918f55dc8c266beeb27a33306366fd7a817e0e96a6480e0a9f9535f7a3"
     },
-    "1-short-vowels:reflect": {
-      "id": "1-short-vowels:reflect",
-      "text": "Read aloud to a grown-up: Sam sat. Tim sat. Ask them to listen while you read each word. If a sound is tricky, practice it and reread the sentence.",
-      "fingerprint": "13a9860e8d1c6564f9b6ed3dab1ceeab50df301813af8ad8db0b95098398bcdb",
-      "url": "/audio/lessons/13a9860e8d1c6564f9b6ed3dab1ceeab50df301813af8ad8db0b95098398bcdb.mp3",
-      "bytes": 191469,
-      "sha256": "9254d6fd56f7bd9a6d608367c71c12b56b7a73acd588f182cc9549baad6a47aa"
+    "home:civics": {
+      "id": "home:civics",
+      "text": "Civics. Learn about people, rules, and helping your community.",
+      "fingerprint": "89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31",
+      "url": "/audio/lessons/89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31.mp3",
+      "bytes": 85725,
+      "sha256": "c187b817161b129131772ac4af8563bae8a0061ca96f2bed073bf2b112d06225"
     },
-    "1-sh:goal": {
-      "id": "1-sh:goal",
-      "text": "Two letters, one sound. Read sh as one sound at the beginning or end of a word. Before you start: Review common consonant sounds and short vowels first. Today s and h will work together.",
-      "fingerprint": "d6f82d4753e9947f1c9a40d9646b92fe789f40e985ce3d83f3ef2d8cc0b744b6",
-      "url": "/audio/lessons/d6f82d4753e9947f1c9a40d9646b92fe789f40e985ce3d83f3ef2d8cc0b744b6.mp3",
-      "bytes": 261268,
-      "sha256": "4bd392d9d33e7dbf5a288ceaa6ab464a15e5ec1c4b29ec81a17aeb74d2bfdaab"
-    },
-    "1-sh:step-0": {
-      "id": "1-sh:step-0",
-      "text": "Say ship. Listen to its first sound. The letters s and h work together to spell that one sound. A pair of letters that spells one sound is called a digraph.",
-      "fingerprint": "90d4b7a445d013948f41235d9b17a87f4b605f75e3c2544228407b6465518744",
-      "url": "/audio/lessons/90d4b7a445d013948f41235d9b17a87f4b605f75e3c2544228407b6465518744.mp3",
-      "bytes": 207769,
-      "sha256": "8f35b17c3d1e44bfeac48936ae91af5c221fc03ca7e2db4f0232157b31fbf2c8"
-    },
-    "1-sh:step-1": {
-      "id": "1-sh:step-1",
-      "text": "Look at the three sound parts in ship: sh, i, p. Keep sh together as you blend. Ship has four letters but three sounds.",
-      "fingerprint": "cb91e4ec0a1c83e6d71f7e2ab0c3f422e03db42d8b74bf3311e78115b9c7eb22",
-      "url": "/audio/lessons/cb91e4ec0a1c83e6d71f7e2ab0c3f422e03db42d8b74bf3311e78115b9c7eb22.mp3",
-      "bytes": 180184,
-      "sha256": "5450bd5c92d11647651df1a32491fcca088aa8d16ee471b4b2935e03244fdc9b"
-    },
-    "1-sh:step-2": {
-      "id": "1-sh:step-2",
-      "text": "Read fish. The sh is at the end this time. Blend f, i, sh. Now read: A fish. A ship. Point under each sound part as you read.",
-      "fingerprint": "3ea4833708510061a36037cf2a9a229417a3da1f390052367202de76818d0b53",
-      "url": "/audio/lessons/3ea4833708510061a36037cf2a9a229417a3da1f390052367202de76818d0b53.mp3",
-      "bytes": 254999,
-      "sha256": "a6777dc434cabad2124fe051f94d4f4ccc3c371963f110b02cf12f97f39742a1"
-    },
-    "1-sh:guided": {
-      "id": "1-sh:guided",
-      "text": "Look at ship. Which letters work together to spell its first sound?. Choice 1: ip. Choice 2: hi. Choice 3: sh.",
-      "fingerprint": "d68ca4415836c4439ab4849b24ef11d31edcbab5b5eebefe2344ecd8c536d756",
-      "url": "/audio/lessons/d68ca4415836c4439ab4849b24ef11d31edcbab5b5eebefe2344ecd8c536d756.mp3",
-      "bytes": 226995,
-      "sha256": "f6fc6a0d7b002e253cbc27d06586dc735101e1a1f457264b4911c4921de9f2e0"
-    },
-    "1-sh:transfer": {
-      "id": "1-sh:transfer",
-      "text": "Read these words aloud. Which word ends with the sh sound?. Choice 1: fish. Choice 2: fit. Choice 3: sip.",
-      "fingerprint": "fb801aaa5ff674833ba1d4b3c97c058be623506d5b771c566348951aa226a8e8",
-      "url": "/audio/lessons/fb801aaa5ff674833ba1d4b3c97c058be623506d5b771c566348951aa226a8e8.mp3",
-      "bytes": 226159,
-      "sha256": "68bcdd5b1390aae2f936cd8f6885c37b661ec8d65d23df1558688e4da6251a84"
-    },
-    "1-sh:guided-feedback": {
-      "id": "1-sh:guided-feedback",
-      "text": "The s and h form sh. Keep them together as one sound when you read ship.",
-      "fingerprint": "0b545cc3aee145c5c6e2a379bf3fa9850ff6c8b310f38d64815671af3f44f87a",
-      "url": "/audio/lessons/0b545cc3aee145c5c6e2a379bf3fa9850ff6c8b310f38d64815671af3f44f87a.mp3",
-      "bytes": 93248,
-      "sha256": "9190ab1294b65293db88d28e23cf462c50ab83bfe571b8a81a4443fcb78b00cc"
-    },
-    "1-sh:transfer-feedback": {
-      "id": "1-sh:transfer-feedback",
-      "text": "Fish ends with sh. Fit ends with t, and sip ends with p. Look at each word's ending.",
-      "fingerprint": "f6cdab1dee772a55b66d16936c04beb6ad7e7b73a9de8a9b0fceb1d7c7e5f586",
-      "url": "/audio/lessons/f6cdab1dee772a55b66d16936c04beb6ad7e7b73a9de8a9b0fceb1d7c7e5f586.mp3",
-      "bytes": 133373,
-      "sha256": "4563bc0f3cae76ec1d912a0d716b321ef3d4bbe0f2df79b9f662139a927efe6d"
-    },
-    "1-sh:reflect": {
-      "id": "1-sh:reflect",
-      "text": "Read to a grown-up: A fish in a dish. Read it again, keeping each sh together. Ask your grown-up to check your reading, then tell them what the words mean.",
-      "fingerprint": "faa4d19f7f0fb94337280e7c30f8d53f455b7f4c12900e40fab71ba5b3ad8dc9",
-      "url": "/audio/lessons/faa4d19f7f0fb94337280e7c30f8d53f455b7f4c12900e40fab71ba5b3ad8dc9.mp3",
-      "bytes": 165137,
-      "sha256": "02e953c67fa232f4140debea30c4cd2cebb33cadc91166d2d39662b083cd7117"
-    },
-    "1-silent-e:goal": {
-      "id": "1-silent-e:goal",
-      "text": "Meet the quiet e. Read words with a vowel, consonant, and final e. Before you start: Read short-vowel words such as cap, tap, and pin before adding a final e.",
-      "fingerprint": "f4d0b64469629f98574953d25cd600e90c603d12a63c05fe97f3dea50e68edb6",
-      "url": "/audio/lessons/f4d0b64469629f98574953d25cd600e90c603d12a63c05fe97f3dea50e68edb6.mp3",
-      "bytes": 206933,
-      "sha256": "3cc97d52567a35927a41ae2ccc63bee95fe3b6dc7883ed02eba140e2228e262b"
-    },
-    "1-cape-story:goal": {
-      "id": "1-cape-story:goal",
-      "text": "Read a tiny story. Use your word-reading skills in a short story, then explain what happened. Before you start: First practice short-vowel words and the final-e pattern in cape and tape. In this story, has ends with the sound you hear at the start of zebra.",
-      "fingerprint": "7f8179d26e4b671c6645484c46288235a96c479e1ccc7f0149abbff536703ad1",
-      "url": "/audio/lessons/7f8179d26e4b671c6645484c46288235a96c479e1ccc7f0149abbff536703ad1.mp3",
-      "bytes": 293869,
-      "sha256": "bdbbef6d38f44397e2952be8cf23538c052b606ed6675101b2401786397e0386"
-    },
-    "1-cape-story:step-0": {
-      "id": "1-cape-story:step-0",
-      "text": "Read these words first: Sam, cape, rip, tape. In cape and tape, the final e is silent and a says its name. If a word is tricky, blend it and then read it again.",
-      "fingerprint": "837f9d2eb957e0a685783658d128dd284c930e6ff87772ffc405a08b95319d04",
-      "url": "/audio/lessons/837f9d2eb957e0a685783658d128dd284c930e6ff87772ffc405a08b95319d04.mp3",
-      "bytes": 269209,
-      "sha256": "7f7e5bf8b2e1e758ba71d1b5e7b095f0199be23dd419766d536d6cba82afa56b"
-    },
-    "1-cape-story:step-1": {
-      "id": "1-cape-story:step-1",
-      "text": "Read the story aloud: Sam has a cape. A rip! Sam has tape. Sam can fix a rip. Point to each word as you read. A rip is a tear in the cape.",
-      "fingerprint": "679da6854a816b8227fc1fa9c1af2cfebd2839224abee83a0d24ff2ac1bfbbae",
-      "url": "/audio/lessons/679da6854a816b8227fc1fa9c1af2cfebd2839224abee83a0d24ff2ac1bfbbae.mp3",
-      "bytes": 254581,
-      "sha256": "c55cc136ccbfbeee1423f6bbf71048aa44d852da3c2def8254e1dad246b3ca13"
-    },
-    "1-cape-story:step-2": {
-      "id": "1-cape-story:step-2",
-      "text": "Read the story again. Keep the words in each sentence together, and pause at the period. Tell a grown-up how Sam can solve the problem. Use the words in the story to explain.",
-      "fingerprint": "26497f1d21a27e39535571c9abd59adc4d3733ae75fe5e2e65947cf0fc5c2cd4",
-      "url": "/audio/lessons/26497f1d21a27e39535571c9abd59adc4d3733ae75fe5e2e65947cf0fc5c2cd4.mp3",
-      "bytes": 198156,
-      "sha256": "ef91194cbb9496e5bbbc175ed4ac886556a0e4ccf4e867b714d389cc921b6cfe"
-    },
-    "1-cape-story:guided": {
-      "id": "1-cape-story:guided",
-      "text": "In the story, what can Sam use to fix the rip?. Choice 1: A pin. Choice 2: Tape. Choice 3: A cup.",
-      "fingerprint": "14ab1a04e828a355376d42a1f9ff241c40b2f8c3ba40a28b8936c64f078788b7",
-      "url": "/audio/lessons/14ab1a04e828a355376d42a1f9ff241c40b2f8c3ba40a28b8936c64f078788b7.mp3",
-      "bytes": 217382,
-      "sha256": "5be77d2ede04a9dfe327fb5efcee90de3e2e8c2d2fe052f8175e009901591692"
-    },
-    "1-cape-story:transfer": {
-      "id": "1-cape-story:transfer",
-      "text": "Read a new tiny story: Tim has a kit. A cap has a rip. Tim can fix a cap. What has a rip?. Choice 1: A kit. Choice 2: A cape. Choice 3: A cap.",
-      "fingerprint": "1598f60f573a9aec98646260de56be491b0a89d478464b2e796c62fce74bdefd",
-      "url": "/audio/lessons/1598f60f573a9aec98646260de56be491b0a89d478464b2e796c62fce74bdefd.mp3",
-      "bytes": 298884,
-      "sha256": "40677e3070783e1cbd37f177535a50f6b2511a3d94f88998b331e32c120c3ad7"
-    },
-    "1-cape-story:guided-feedback": {
-      "id": "1-cape-story:guided-feedback",
-      "text": "The story says Sam has tape. Sam can use the tape to fix the rip.",
-      "fingerprint": "793ca7b5ed57e76ca6ef7bdb44f4fa7fa0fe209667c36d9ac17e9a450205cd09",
-      "url": "/audio/lessons/793ca7b5ed57e76ca6ef7bdb44f4fa7fa0fe209667c36d9ac17e9a450205cd09.mp3",
-      "bytes": 81128,
-      "sha256": "a66c698a24ffabe2af62713b14a97d4f7b1b7f220f26b9fb6acaf728557d2ab4"
-    },
-    "1-cape-story:transfer-feedback": {
-      "id": "1-cape-story:transfer-feedback",
-      "text": "The new story says a cap has a rip. Read cap carefully: it has no final e. Cap and cape are different words.",
-      "fingerprint": "051577d67dbb431aff4894ed4791c4eddb8e5a348fbb6ad12f5c3ceebfa654d0",
-      "url": "/audio/lessons/051577d67dbb431aff4894ed4791c4eddb8e5a348fbb6ad12f5c3ceebfa654d0.mp3",
-      "bytes": 145075,
-      "sha256": "a5f7f8459888df27255cb0d7c4567a5c6329883093452c82c829a9611d4c74ce"
-    },
-    "1-cape-story:reflect": {
-      "id": "1-cape-story:reflect",
-      "text": "Read the Sam story to a grown-up without pressing Listen. Ask them to check your words. Tell them which word you practiced and whether rereading helped.",
-      "fingerprint": "3513ed52ef579da609ad1775fd9ce6827bf5dc161b6e63e3365ededd8d1d3581",
-      "url": "/audio/lessons/3513ed52ef579da609ad1775fd9ce6827bf5dc161b6e63e3365ededd8d1d3581.mp3",
-      "bytes": 148001,
-      "sha256": "7a4e3e1f3541450244079dae5f4950159bdae98170318aa72258ed465415bfbc"
+    "home:economics": {
+      "id": "home:economics",
+      "text": "Economics. Learn about money and making choices.",
+      "fingerprint": "def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd",
+      "url": "/audio/lessons/def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd.mp3",
+      "bytes": 58976,
+      "sha256": "492a8010455553f41ba71d4ba0f6fe063ae17b7dc0ad1c925d723c5aa321df2e"
     }
   }
 }
