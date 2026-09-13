@@ -5,7 +5,7 @@ const grades = ['PK', 'K', '1', '2', '3', '4', '5'];
 assert.equal(new Set(LESSONS.map(l => l.id)).size, LESSONS.length, 'Lesson IDs must be unique for saved progress');
 for (const grade of grades) {
   const lessons = lessonsForGrade(grade);
-  assert.deepEqual(lessons.map(l => l.subject), ['reading', 'math', 'science'], `${grade}: all introductory subjects must be reachable`);
+  assert.deepEqual([...new Set(lessons.map(l => l.subject))], ['reading', 'math', 'science'], `${grade}: all introductory subjects must be reachable`);
   for (const l of lessons) {
     for (const field of ['title', 'goal', 'reflect']) assert.ok(l[field]?.trim(), `${l.id}: missing ${field}`);
     assert.equal(l.steps.length, 3);
@@ -28,4 +28,4 @@ for (const [id, expected] of Object.entries(numericTransfers)) {
 const fraction = LESSONS.find(l => l.id === '4-equivalent').transfer;
 const [n, d] = fraction.choices[fraction.answer].split('/').map(Number);
 assert.equal(n * 4, d * 3, 'Equivalent fraction key must equal 3/4');
-console.log(`Validated ${LESSONS.length} introductory lessons, all grade/subject entry points, 42 question structures, and 7 math transfer keys. Reading/science require editorial review; these checks do not establish full curriculum coverage.`);
+console.log(`Validated ${LESSONS.length} introductory lessons, all grade/subject entry points, ${LESSONS.length * 2} question structures, and 7 math transfer keys. Reading/science require editorial review; these checks do not establish full curriculum coverage.`);

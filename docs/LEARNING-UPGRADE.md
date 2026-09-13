@@ -61,3 +61,12 @@ Authenticated lessons now save each checkpoint and first answer through server a
 
 ## Curriculum inventory follow-up
 See `CURRICULUM-AUDIT.md` and generated `curriculum-inventory.json` for the current repository inventory and seven verified math-strand corrections. The current bank has 12,978 generated rows, not the older 7,340 figure. Full item-level alignment remains open. Migration 20 is prepared for the next release; migration 19 is deployed.
+
+## First-grade reading sequence
+Three new lessons extend the existing final-e lesson into a four-lesson path: short-vowel review, sh, final e, and a controlled short story. Preparation text identifies assumed skills; prerequisite links recommend review without locking families out. Suggested next lessons respect prerequisites and completed lessons; completion is still not mastery. Lesson buttons show titles, so multiple reading lessons are distinguishable.
+
+Each reading-path entry records ELA.1.F.1.3, the official source, and its limited instructional scope. These entries introduce only portions of phonics; the new path is not a replacement for systematic sound instruction or validated oral-reading assessment. Oral rereading explicitly asks a grown-up to listen. The quizzes remain recognition/comprehension evidence only.
+
+The catalogue now has 24 lessons and 223 ElevenLabs clips. Generated 28 clips (27 new lesson segments and one revised goal/preparation recording), removed the obsolete recording, and verified all 223 as valid MP3s. The same configured voice profile is used; there is no system voice fallback. Sequence validation checks accessible prerequisites, absence of cycles, and reachability without repeating completed lessons. Content/audio/controller validators, changed-file lint, and production build passed. A fresh headless Chrome session at 390px exercised the new short-vowel lesson through completion, next recommendation, prerequisite return, and connected-text display without runtime errors or horizontal overflow. These changes remain local pending the next release.
+
+Phone and desktop screenshots were also inspected with reduced motion enabled. Reading models now use plain, medium-weight text instead of the decorative display font to make word shapes easier to distinguish.

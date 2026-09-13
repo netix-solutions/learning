@@ -22,7 +22,7 @@ const SPOKEN_OVERRIDES: Record<string, Partial<Record<NarrationSlot, string>>> =
 export function narrationFor(lesson: Lesson, slot: NarrationSlot): string {
   const override = SPOKEN_OVERRIDES[lesson.id]?.[slot];
   if (override) return override;
-  if (slot === "goal") return `${lesson.title}. ${lesson.goal}`;
+  if (slot === "goal") return `${lesson.title}. ${lesson.goal}${lesson.preparation ? ` Before you start: ${lesson.preparation}` : ""}`;
   if (slot.startsWith("step-")) return lesson.steps[Number(slot.slice(-1))];
   if (slot === "reflect") return lesson.reflect;
   const q = slot.startsWith("guided") ? lesson.check : lesson.transfer;

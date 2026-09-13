@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Lesson } from "@/lib/lessons";
+import { suggestedLessonIndex } from "@/lib/lesson-sequence";
 import { LessonNarration } from "@/components/LessonNarration";
 import { ActivityTracker } from "@/components/ActivityTracker";
 import { MathLab } from "@/components/lessons/MathLab";
@@ -26,7 +27,7 @@ function subscribeProgress(notify: () => void) {
 }
 
 export function LessonJourney({ lessons, studentId, trackActivity = true, initialCompleted = [] }: { lessons: Lesson[]; studentId: string; trackActivity?: boolean; initialCompleted?: string[] }) {
-  const [lessonIndex, setLessonIndex] = useState(0);
+  const [lessonIndex, setLessonIndex] = useState(() => suggestedLessonIndex(lessons, initialCompleted));
   const [stage, setStage] = useState<Stage>("teach");
   const [step, setStep] = useState(0);
   const [labReady, setLabReady] = useState(false);
@@ -124,6 +125,8 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
   const isCorrect = checked && (trackActivity ? savedCheck?.is_correct === true : choice === question.answer);
   const loading = trackActivity && run?.lesson_id !== lesson.id;
   const currentDone = trackActivity ? !!run?.completed_at : completed.includes(lesson.id);
+  const suggestedNext = suggestedLessonIndex(lessons, completed, lesson.subject);
+  const prerequisites = lessons.filter(l => lesson.prerequisiteIds?.includes(l.id));
   const allComplete = lessons.every(l => completed.includes(l.id));
   const subject = SUBJECTS[lesson.subject];
   const hasLab = !!mathLabFor(lesson.id);
@@ -142,12 +145,13 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
           <h1 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Small steps. Big discoveries.</h1>
           <p className="mt-2 text-slate-600">Start with a lesson, then put your new idea to work. Take your time.</p>
         </div>
-        <nav aria-label="Choose a lesson" className="mb-6 grid grid-cols-3 gap-2">
+        <nav aria-label="Choose a lesson" className="mb-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
           {lessons.map((item, i) => (
             <button key={item.id} disabled={busy} onClick={() => selectLesson(i)} aria-current={i === lessonIndex ? "step" : undefined}
               className={`min-h-20 rounded-2xl border-2 p-3 text-center font-bold transition-colors ${i === lessonIndex ? "border-sky-500 bg-sky-50 text-sky-900" : "border-slate-200 bg-white text-slate-600 hover:border-sky-300"}`}>
               <span aria-hidden="true" className="block text-2xl">{SUBJECTS[item.subject].icon}</span>
-              {SUBJECTS[item.subject].label}
+              <span className="block text-xs">{SUBJECTS[item.subject].label}</span>
+              <span className="block">{item.title}</span>
               {completed.includes(item.id) && <span className="block text-xs text-emerald-700">✓ Explored</span>}
             </button>
           ))}
@@ -165,6 +169,11 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
               <LessonNarration lesson={lesson} slot="goal" />
             </div>
             <p className="mt-3 text-slate-600">{lesson.goal}</p>
+            {lesson.preparation && <p className="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-950">{lesson.preparation}</p>}
+            {prerequisites.length > 0 && <div className="mt-3 text-sm text-slate-600">
+              <p className="font-bold">Practice first, or revisit for help:</p>
+              {prerequisites.map(item => <button key={item.id} disabled={busy} onClick={() => selectLesson(lessons.indexOf(item))} className="mr-2 mt-2 rounded-xl bg-sky-50 px-4 py-3 font-semibold text-sky-800 underline">{item.title}{completed.includes(item.id) ? " ✓" : ""}</button>)}
+            </div>}
             <ol aria-label="Lesson steps" className={`mt-5 grid gap-2 ${hasLab ? "grid-cols-5" : "grid-cols-4"}`}>
               {stages.map((item, i) => <li key={item} aria-current={item === stage ? "step" : undefined} className="text-center text-xs font-bold">
                 <div className={`mb-2 h-2 rounded-full ${i <= stages.indexOf(stage) ? "bg-sky-500" : "bg-slate-100"}`} />
@@ -179,7 +188,7 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
               <div className="rounded-2xl bg-gradient-to-br from-sky-50 to-violet-50 p-5 sm:p-8" aria-label="Worked example">
                 <p className="mb-4 text-xs font-extrabold uppercase tracking-wider text-slate-500">Watch the idea grow</p>
                 <div className="space-y-3">
-                  {lesson.model.slice(0, step + 1).map((line, i) => <div key={`${lesson.id}-${i}`} className="lesson-reveal rounded-xl bg-white p-4 text-center font-display text-xl font-bold text-sky-900 shadow-sm sm:text-2xl">{line}</div>)}
+                  {lesson.model.slice(0, step + 1).map((line, i) => <div key={`${lesson.id}-${i}`} className={`lesson-reveal rounded-xl bg-white p-4 text-center text-xl text-sky-900 shadow-sm sm:text-2xl ${lesson.subject === "reading" ? "font-sans font-medium leading-relaxed" : "font-display font-bold"}`}>{line}</div>)}
                 </div>
               </div>
               <div className="mt-5 flex items-start gap-3" aria-live="polite">
@@ -231,7 +240,7 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
               <p className="mt-4 text-slate-600">Say it aloud, draw it, or share it with a grown-up.</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {!currentDone ? <button onClick={finish} className="btn-pop rounded-xl bg-emerald-600 px-6 py-4 font-bold text-white disabled:opacity-40">I explained it ✓</button> : <p role="status" className="w-full font-bold text-emerald-700">✓ You explored this lesson.</p>}
-                {currentDone && lessonIndex < lessons.length - 1 && <button onClick={() => selectLesson(lessonIndex + 1)} className="btn-pop rounded-xl bg-sky-600 px-6 py-4 font-bold text-white">Next discovery →</button>}
+                {currentDone && !allComplete && suggestedNext !== lessonIndex && <button onClick={() => selectLesson(suggestedNext)} className="btn-pop rounded-xl bg-sky-600 px-6 py-4 font-bold text-white">Next discovery →</button>}
                 <Link href={`/practice/${lesson.subject}`} onClick={stop} className="rounded-xl bg-white px-5 py-4 font-bold text-sky-700 ring-2 ring-sky-200">Practice more {subject.label.toLowerCase()} →</Link>
               </div>
               {allComplete && <p className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">You explored all three introductory lessons! You can revisit any lesson or keep practicing.</p>}

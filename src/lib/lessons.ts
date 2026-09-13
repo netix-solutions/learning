@@ -5,6 +5,9 @@ export type Lesson = {
   grade: Grade;
   subject: "reading" | "math" | "science";
   title: string;
+  preparation?: string;
+  prerequisiteIds?: string[];
+  benchmark?: { code: string; source: string; scope: string };
   goal: string;
   steps: [string, string, string];
   model: string[];
@@ -90,12 +93,50 @@ export const LESSONS: Lesson[] = [
     reflect: "Read aloud: Sam sat. A mat. Sam sat. Ask a grown-up to listen to your blending."
   },
   {
+    id: "1-short-vowels", grade: "1", subject: "reading", title: "Read every sound",
+    preparation: "This is a review for readers who know common consonant sounds and short vowel sounds. Ask a grown-up to help with any sound you do not know yet.",
+    benchmark: { code: "ELA.1.F.1.3", source: "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf", scope: "Review of short-vowel decoding as preparation for grade-one phonics. Not coverage of the full benchmark or an oral-reading assessment." },
+    goal: "Read short words by looking through every letter, including the vowel.",
+    steps: ["A vowel in the middle can change the whole word. Read mat. The a has the short vowel sound in apple. Blend the sounds from left to right.", "Now read sat. Change its a to i to make sit. The i has the short vowel sound in igloo. Blend from left to right to read sit.", "Read sat, sit, and sip. In sat and sit, the middle sound changes. In sit and sip, the last sound changes. Look all the way to the end before saying the word."],
+    model: ["m a t → mat", "s a t → s i t", "sat · sit · sip"],
+    check: { prompt: "Read sat and sit aloud. Which letter changed?", choices: ["The first letter", "The middle letter", "The last letter"], answer: 1, explanation: "The middle letter changes from a to i. The vowel sound changes too. Read both words again: sat, sit." },
+    transfer: { prompt: "Read pin. Change its middle letter to a. Read the new word aloud, then choose it.", choices: ["pit", "nap", "pan"], answer: 2, explanation: "Keep p at the start and n at the end. Change i to a. The new word is pan." },
+    reflect: "Read aloud to a grown-up: Sam sat. Tim sat. Ask them to listen while you read each word. If a sound is tricky, practice it and reread the sentence."
+  },
+  {
+    id: "1-sh", grade: "1", subject: "reading", title: "Two letters, one sound",
+    prerequisiteIds: ["1-short-vowels"],
+    preparation: "Review common consonant sounds and short vowels first. Today s and h will work together.",
+    benchmark: { code: "ELA.1.F.1.3", source: "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf", scope: "Introductory decoding with the consonant digraph sh only. Other digraphs, blends, and benchmark components remain separate work." },
+    goal: "Read sh as one sound at the beginning or end of a word.",
+    steps: ["Say ship. Listen to its first sound. The letters s and h work together to spell that one sound. A pair of letters that spells one sound is called a digraph.", "Look at the three sound parts in ship: sh, i, p. Keep sh together as you blend. Ship has four letters but three sounds.", "Read fish. The sh is at the end this time. Blend f, i, sh. Now read: A fish. A ship. Point under each sound part as you read."],
+    model: ["sh", "sh · i · p → ship", "f · i · sh → fish"],
+    check: { prompt: "Look at ship. Which letters work together to spell its first sound?", choices: ["ip", "hi", "sh"], answer: 2, explanation: "The s and h form sh. Keep them together as one sound when you read ship." },
+    transfer: { prompt: "Read these words aloud. Which word ends with the sh sound?", choices: ["fish", "fit", "sip"], answer: 0, explanation: "Fish ends with sh. Fit ends with t, and sip ends with p. Look at each word's ending." },
+    reflect: "Read to a grown-up: A fish in a dish. Read it again, keeping each sh together. Ask your grown-up to check your reading, then tell them what the words mean."
+  },
+  {
     id: "1-silent-e", grade: "1", subject: "reading", title: "Meet the quiet e",
+    prerequisiteIds: ["1-short-vowels"],
+    preparation: "Read short-vowel words such as cap, tap, and pin before adding a final e.",
+    benchmark: { code: "ELA.1.F.1.3", source: "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf", scope: "Introduction to final-e decoding only; not the full phonics benchmark." },
     goal: "Read words with a vowel, consonant, and final e.",
     steps: ["Read cap. Its a has a short vowel sound.", "Add e to make cape. In this pattern, a says its name and the final e is silent.", "Compare tap and tape. Look through the whole word before you blend. Not every word ending in e follows this pattern."], model: ["cap → cape", "tap → tape", "A cape. A tape."],
     check: { prompt: "Which word has the long a sound? Try reading first.", choices: ["cape", "cap", "cat"], answer: 0, explanation: "In cape, the a says its name. The final e is silent." },
     transfer: { prompt: "Read these words. Which has a silent final e and long i?", choices: ["pin", "sit", "pine"], answer: 2, explanation: "Pine follows the vowel-consonant-e pattern. Its i says its name." },
     reflect: "Read aloud: Sam has a cape. Sam can hop. Compare hop and hope with a grown-up."
+  },
+  {
+    id: "1-cape-story", grade: "1", subject: "reading", title: "Read a tiny story",
+    prerequisiteIds: ["1-silent-e"],
+    preparation: "First practice short-vowel words and the final-e pattern in cape and tape. In this story, has ends with the sound you hear at the start of zebra.",
+    benchmark: { code: "ELA.1.F.1.3", source: "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf", scope: "Apply short-vowel and final-e decoding in controlled connected text. An adult must listen to assess oral reading; quiz answers do not measure fluency." },
+    goal: "Use your word-reading skills in a short story, then explain what happened.",
+    steps: ["Read these words first: Sam, cape, rip, tape. In cape and tape, the final e is silent and a says its name. If a word is tricky, blend it and then read it again.", "Read the story aloud: Sam has a cape. A rip! Sam has tape. Sam can fix a rip. Point to each word as you read. A rip is a tear in the cape.", "Read the story again. Keep the words in each sentence together, and pause at the period. Tell a grown-up how Sam can solve the problem. Use the words in the story to explain."],
+    model: ["Sam · cape · rip · tape", "Sam has a cape. A rip! Sam has tape. Sam can fix a rip.", "Read again. What can Sam use to fix the rip?"],
+    check: { prompt: "In the story, what can Sam use to fix the rip?", choices: ["A pin", "Tape", "A cup"], answer: 1, explanation: "The story says Sam has tape. Sam can use the tape to fix the rip." },
+    transfer: { prompt: "Read a new tiny story: Tim has a kit. A cap has a rip. Tim can fix a cap. What has a rip?", choices: ["A kit", "A cape", "A cap"], answer: 2, explanation: "The new story says a cap has a rip. Read cap carefully: it has no final e. Cap and cape are different words." },
+    reflect: "Read the Sam story to a grown-up without pressing Listen. Ask them to check your words. Tell them which word you practiced and whether rereading helped."
   },
   {
     id: "2-prefix", grade: "2", subject: "reading", title: "A small part changes meaning",

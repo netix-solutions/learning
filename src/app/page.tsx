@@ -1,3 +1,4 @@
+import { LESSONS } from "@/lib/lessons";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -87,7 +88,7 @@ const SHOP_AVATARS = [
 const STATS = [
   { value: "13,000+", label: "practice questions" },
   { value: "7", label: "subjects, K–5" },
-  { value: "21", label: "introductory lessons" },
+  { value: String(LESSONS.length), label: "introductory lessons" },
   { value: "0", label: "ads. Ever." },
 ];
 

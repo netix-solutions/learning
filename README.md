@@ -192,7 +192,7 @@ should spot-check reading grade-fit before launch (see the hardening checklist).
 
 ## Instruction-first learning work
 
-Children can open **Learn something new** from their home screen. The current foundation has 21 introductory lessons across Pre-K–5 and seven hands-on math activities. Full curriculum coverage and the nightly adaptive sequence are still in development; see `docs/LEARNING-UPGRADE.md`.
+Children can open **Learn something new** from their home screen. The current foundation has 24 introductory lessons, including a four-lesson first-grade reading path, across Pre-K–5 and seven hands-on math activities. Full curriculum coverage and the nightly adaptive sequence are still in development; see `docs/LEARNING-UPGRADE.md`.
 
 Lesson narration is pregenerated with **ElevenLabs** using the configured `ELEVENLABS_VOICE_ID`. The app does not fall back to the operating system voice. Dynamic practice narration uses the same server-side voice profile, with visible retry controls if playback fails.
 
