@@ -1,6 +1,10 @@
 {
-  "scope": "Repository question seeds, additive reading stories, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
+  "scope": "Repository question seeds, additive reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
   "sources": [
+    {
+      "file": "src/lib/content/science-observations.ts",
+      "rows": 12
+    },
     {
       "file": "supabase/seed.sql",
       "rows": 72
@@ -214,8 +218,8 @@
     {
       "grade": "K",
       "subject": "science",
-      "seedRows": 120,
-      "distinctPrompts": 116,
+      "seedRows": 122,
+      "distinctPrompts": 118,
       "skills": [
         {
           "skill": "K.animalneeds",
@@ -228,6 +232,10 @@
         {
           "skill": "K.livingnonliving",
           "rows": 20
+        },
+        {
+          "skill": "K.observation",
+          "rows": 2
         },
         {
           "skill": "K.pushpull",
@@ -243,7 +251,7 @@
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 120,
+      "missingStandard": 122,
       "standardTags": [],
       "lessonIds": [
         "K-push"
@@ -421,8 +429,8 @@
     {
       "grade": "1",
       "subject": "science",
-      "seedRows": 119,
-      "distinctPrompts": 116,
+      "seedRows": 121,
+      "distinctPrompts": 118,
       "skills": [
         {
           "skill": "1.animalbabies",
@@ -431,6 +439,10 @@
         {
           "skill": "1.materials",
           "rows": 20
+        },
+        {
+          "skill": "1.observation",
+          "rows": 2
         },
         {
           "skill": "1.plants",
@@ -450,7 +462,7 @@
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 119,
+      "missingStandard": 121,
       "standardTags": [],
       "lessonIds": [
         "1-plants"
@@ -633,8 +645,8 @@
     {
       "grade": "2",
       "subject": "science",
-      "seedRows": 120,
-      "distinctPrompts": 119,
+      "seedRows": 122,
+      "distinctPrompts": 121,
       "skills": [
         {
           "skill": "2.habitats",
@@ -653,12 +665,16 @@
           "rows": 23
         },
         {
+          "skill": "2.observation",
+          "rows": 2
+        },
+        {
           "skill": "2.weather",
           "rows": 22
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 120,
+      "missingStandard": 122,
       "standardTags": [],
       "lessonIds": [
         "2-matter"
@@ -851,8 +867,8 @@
     {
       "grade": "3",
       "subject": "science",
-      "seedRows": 120,
-      "distinctPrompts": 120,
+      "seedRows": 122,
+      "distinctPrompts": 122,
       "skills": [
         {
           "skill": "3.energy",
@@ -867,6 +883,10 @@
           "rows": 23
         },
         {
+          "skill": "3.observation",
+          "rows": 2
+        },
+        {
           "skill": "3.soilrocks",
           "rows": 22
         },
@@ -876,7 +896,7 @@
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 120,
+      "missingStandard": 122,
       "standardTags": [],
       "lessonIds": [
         "3-energy"
@@ -1077,8 +1097,8 @@
     {
       "grade": "4",
       "subject": "science",
-      "seedRows": 120,
-      "distinctPrompts": 120,
+      "seedRows": 122,
+      "distinctPrompts": 122,
       "skills": [
         {
           "skill": "4.adaptations",
@@ -1097,12 +1117,16 @@
           "rows": 22
         },
         {
+          "skill": "4.observation",
+          "rows": 2
+        },
+        {
           "skill": "4.weatherclimate",
           "rows": 22
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 120,
+      "missingStandard": 122,
       "standardTags": [],
       "lessonIds": [
         "4-transfer"
@@ -1299,8 +1323,8 @@
     {
       "grade": "5",
       "subject": "science",
-      "seedRows": 119,
-      "distinctPrompts": 118,
+      "seedRows": 121,
+      "distinctPrompts": 120,
       "skills": [
         {
           "skill": "5.body",
@@ -1319,6 +1343,10 @@
           "rows": 22
         },
         {
+          "skill": "5.observation",
+          "rows": 2
+        },
+        {
           "skill": "5.solar",
           "rows": 23
         },
@@ -1328,7 +1356,7 @@
         }
       ],
       "missingSkill": 0,
-      "missingStandard": 119,
+      "missingStandard": 121,
       "standardTags": [],
       "lessonIds": [
         "5-fair-test"

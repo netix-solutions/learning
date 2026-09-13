@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { HOME_NARRATION } from '../src/lib/home-narration.ts';
+import { SCIENCE_OBSERVATIONS } from '../src/lib/content/science-observations.ts';
+import { observationNarration } from '../src/lib/science-observation.ts';
 import { READING_STORIES } from '../src/lib/content/reading-stories.ts';
 import { LESSONS } from '../src/lib/lessons.ts';
 import { MATH_LABS } from '../src/lib/math-labs.ts';
@@ -12,6 +14,7 @@ import { VOICE_MODEL, VOICE_SETTINGS, VOICE_OUTPUT_FORMAT } from '../src/lib/voi
 
 const manifest=JSON.parse(await readFile('src/lib/generated/lesson-audio.json','utf8'));
 const expected=[
+  ...SCIENCE_OBSERVATIONS.map(a=>({id:`observation:${a.id}`,text:forSpeech(observationNarration(a.observation))})),
   ...READING_STORIES.flatMap(story => [{id:`reading:${story.id}:passage`,text:forSpeech(story.passage)}, ...story.questions.map((q,i)=>({id:`reading:${story.id}:q${i}`,text:forSpeech(q.prompt)}))]),
   ...Object.entries(HOME_NARRATION).map(([id,text])=>({id,text:forSpeech(text)})),
   ...LESSONS.flatMap(lesson=>NARRATION_SLOTS.map(slot=>({id:narrationId(lesson,slot),text:forSpeech(narrationFor(lesson,slot))}))),

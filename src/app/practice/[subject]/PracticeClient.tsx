@@ -14,6 +14,8 @@ import { TeachMe } from "@/components/TeachMe";
 import { ReadingPrompt } from "@/components/ReadingPrompt";
 import { splitReadingPrompt } from "@/lib/reading-prompt";
 import { SpeakButton } from "@/components/SpeakButton";
+import { ScienceObservation } from "@/components/ScienceObservation";
+import { isScienceObservation } from "@/lib/science-observation";
 import { ScienceDiagram, hasScienceDiagram } from "@/components/ScienceDiagram";
 import {
   TrueFalseQuestion,
@@ -139,6 +141,7 @@ export function PracticeClient({
   }, [loadQuestions]);
 
   const current = questions[index];
+  const observation = isScienceObservation(current?.payload?.observation) ? current.payload!.observation! : null;
   const readingParts = current?.subject_id === "reading" ? splitReadingPrompt(current.prompt) : null;
   const isPreK = grade === "PK";
   // Young kids are still learning to read, so auto-read includes the answer
@@ -287,8 +290,12 @@ export function PracticeClient({
     );
   }
 
+  if (phase === "playing" && current?.payload?.observation && !observation) {
+    return <Centered><p className="text-xl font-bold text-slate-800">These observation notes could not load.</p><p className="mt-2 text-slate-600">Let’s try another set of questions.</p><button onClick={loadQuestions} className="mt-5 min-h-12 rounded-xl bg-sky-700 px-5 py-3 font-bold text-white">Try another set</button><Link href="/home" className="mt-4 block p-3 font-bold text-slate-700">Back home</Link></Centered>;
+  }
+
   if (phase === "done") {
-    return <><Confetti fire={confettiKey} /><main data-grade={grade} className="grade-quiz mx-auto max-w-3xl px-4 py-6">
+    return <><Confetti fire={confettiKey} /><main data-grade={grade} className="grade-quiz mx-auto w-full min-w-0 max-w-3xl px-4 py-6">
       <div className="rounded-3xl bg-white p-6 text-center">
         <p aria-hidden="true" className="text-5xl">🌱</p>
         <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">You kept learning!</h1>
@@ -309,7 +316,7 @@ export function PracticeClient({
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
       <ActivityTracker />
-      <main data-grade={grade} className="grade-quiz mx-auto max-w-3xl px-4 py-6">
+      <main data-grade={grade} className="grade-quiz mx-auto w-full min-w-0 max-w-3xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
           <Link href="/home" className="inline-flex min-h-12 items-center rounded-xl px-3 font-bold text-slate-600 hover:text-slate-800">
             ← Home
@@ -359,7 +366,7 @@ export function PracticeClient({
             )}
           </div>
           {(() => {
-            if (readingParts) return null;
+            if (readingParts || current.subject_id === "science") return null;
             // Hand-made science diagrams stay authoritative; AI scene art fills
             // in everywhere else it exists (never math — its SVG manipulatives
             // are answer-exact and live in TeachMe).
@@ -373,13 +380,6 @@ export function PracticeClient({
               let h = 0;
               for (const c of current.id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
               art = variants[h % variants.length];
-            }
-            if (current.subject_id === "science" && (hasScienceDiagram(current.skill) || !art)) {
-              return (
-                <div className="mb-4 rounded-2xl bg-slate-50/80 p-3">
-                  <ScienceDiagram skill={current.skill} />
-                </div>
-              );
             }
             if (art) {
               return (
@@ -396,6 +396,7 @@ export function PracticeClient({
             }
             return null;
           })()}
+          {observation && <ScienceObservation key={current.id} observation={observation} id={current.id} />}
           {readingParts ? <ReadingPrompt parts={readingParts} grade={grade} questionId={current.id} /> : <div className="flex items-start gap-3">
             {(() => {
               // Math questions that are pure arithmetic get the school-style
@@ -545,6 +546,7 @@ export function PracticeClient({
                   />
                 </div>
               )}
+              {current.subject_id === "science" && !observation && hasScienceDiagram(current.skill) && <details className="mt-4 rounded-xl bg-white p-3"><summary className="min-h-12 cursor-pointer p-2 font-bold text-sky-800">Explore this science topic</summary><ScienceDiagram skill={current.skill} /></details>}
               {/* On a miss, re-teach the general method for this skill. */}
               {!result.is_correct &&
                 (() => {

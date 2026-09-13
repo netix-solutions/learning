@@ -1,3 +1,4 @@
+import type { ScienceObservation } from "./science-observation";
 export type Grade = "PK" | "K" | "1" | "2" | "3" | "4" | "5";
 export const GRADES: Grade[] = ["PK", "K", "1", "2", "3", "4", "5"];
 
@@ -62,6 +63,7 @@ export type QuestionKind =
  * `choices`. The correct answer is withheld server-side — see record_attempt.
  */
 export type QuestionPayload = {
+  observation?: ScienceObservation;
   tokens?: string[]; // tapword
   items?: string[]; // order
   label?: string; // order

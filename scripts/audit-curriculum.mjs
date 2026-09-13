@@ -1,6 +1,7 @@
 // Inventory the actual seed rows, not generator targets or marketing totals.
 // These counts describe content supply, never verified benchmark coverage.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { SCIENCE_OBSERVATIONS } from '../src/lib/content/science-observations.ts';
 import { READING_STORIES } from '../src/lib/content/reading-stories.ts';
 import { LESSONS } from '../src/lib/lessons.ts';
 
@@ -50,6 +51,7 @@ function readQuestions(path) {
 }
 const files = ['supabase/seed.sql', 'supabase/seeds/questions.sql'];
 const banks = [
+  {path: 'src/lib/content/science-observations.ts', rows: SCIENCE_OBSERVATIONS.flatMap(a=>a.questions.map(q=>({grade:a.grade,subject_id:'science',skill:`${a.grade}.observation`,standard:null,prompt:q.prompt})))},
   ...files.map(path => ({ path, rows: readQuestions(path) })),
   {path: 'src/lib/content/reading-stories.ts', rows: READING_STORIES.flatMap(story => story.questions.map(q=>({grade:story.grade,subject_id:'reading',skill:story.skill,standard:story.standard,prompt:`Read: "${story.passage}" ${q.prompt}`})))},
 ];
@@ -70,7 +72,7 @@ for (const grade of grades) for (const subject of subjects) {
   });
 }
 const report = {
-  scope: 'Repository question seeds, additive reading stories, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
+  scope: 'Repository question seeds, additive reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
   sources: banks.map(b => ({ file: b.path, rows: b.rows.length })), inventory,
 };
 writeFileSync('docs/curriculum-inventory.json', JSON.stringify(report, null, 2) + '\n');
