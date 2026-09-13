@@ -1,4 +1,4 @@
-// SummerSharp science question bank — authored, fact-checked, grade-appropriate.
+// SunSharp authored science question bank. Item-level review is ongoing.
 // Science is factual (like reading), so these are hand-authored, not procedurally
 // generated. Each item is skill-tagged so the adaptive engine targets weak spots.
 // `standard` is left null: Florida science is NGSSS (not B.E.S.T.) and we don't
@@ -30,8 +30,8 @@ export const SCIENCE_QUESTIONS = [
   { grade: "K", skill: "K.weather", prompt: "What should you wear when it is cold and snowy?", choices: ["A warm coat", "A swimsuit", "Sandals", "Sunglasses only"], answer: "A warm coat", explanation: "A warm coat keeps you warm in cold weather." },
   { grade: "K", skill: "K.weather", prompt: "Clouds are made of tiny drops of ___.", choices: ["water", "sand", "dirt", "glass"], answer: "water", explanation: "Clouds are made of tiny water drops." },
   // K.daynight
-  { grade: "K", skill: "K.daynight", prompt: "What do we see in the sky during the daytime?", choices: ["The sun", "The moon", "Many stars", "A lamp"], answer: "The sun", explanation: "The sun lights up the daytime sky." },
-  { grade: "K", skill: "K.daynight", prompt: "When do we usually see the moon and stars?", choices: ["At night", "At noon", "In the morning", "Never"], answer: "At night", explanation: "The moon and stars show up at night." },
+  { grade: "K", skill: "K.daynight", prompt: "What lights up the daytime sky?", choices: ["The sun", "The moon", "Many stars", "A lamp"], answer: "The sun", explanation: "The sun lights up the daytime sky. We can sometimes see the moon during the day, too." },
+  { grade: "K", skill: "K.daynight", prompt: "When is it usually easiest to see many stars in a clear sky?", choices: ["At night", "At noon", "In the morning", "Never"], answer: "At night", explanation: "Stars are easier to see in a dark night sky. The moon can be visible during the day or at night." },
   { grade: "K", skill: "K.daynight", prompt: "The sun gives us ___.", choices: ["light and warmth", "rain", "snow", "wind"], answer: "light and warmth", explanation: "The sun gives Earth light and heat." },
   { grade: "K", skill: "K.daynight", prompt: "It is dark outside during the ___.", choices: ["night", "day", "noon", "sunrise"], answer: "night", explanation: "Night is the dark part of the day." },
   { grade: "K", skill: "K.daynight", prompt: "We have day and night because the Earth ___.", choices: ["spins", "stops", "melts", "grows"], answer: "spins", explanation: "Earth spins, so different sides face the sun." },
