@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { MATH_LABS } from '../src/lib/math-labs.ts';
 import { HOME_NARRATION } from '../src/lib/home-narration.ts';
+import { READING_STORIES } from '../src/lib/content/reading-stories.ts';
 import { LESSONS } from '../src/lib/lessons.ts';
 import { narrationFor, narrationId, NARRATION_SLOTS } from '../src/lib/lesson-narration.ts';
 import { forSpeech } from '../src/lib/speech-text.ts';
@@ -26,6 +27,7 @@ function makeJob(id, narration) {
   return { id, text, fingerprint, url: `/audio/lessons/${fingerprint}.mp3` };
 }
 const jobs = [
+  ...READING_STORIES.flatMap(story => [makeJob(`reading:${story.id}:passage`, story.passage), ...story.questions.map((q,i)=>makeJob(`reading:${story.id}:q${i}`,q.prompt))]),
   ...Object.entries(HOME_NARRATION).map(([id, text]) => makeJob(id, text)),
   ...LESSONS.flatMap(lesson => NARRATION_SLOTS.map(slot => makeJob(narrationId(lesson, slot), narrationFor(lesson, slot)))),
   ...Object.entries(MATH_LABS).map(([id, lab]) => makeJob(`${id}:explore`, lab.instruction)),

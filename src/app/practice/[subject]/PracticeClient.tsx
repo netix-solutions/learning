@@ -11,6 +11,8 @@ import { ActivityTracker } from "@/components/ActivityTracker";
 import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
+import { ReadingPrompt } from "@/components/ReadingPrompt";
+import { splitReadingPrompt } from "@/lib/reading-prompt";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram, hasScienceDiagram } from "@/components/ScienceDiagram";
 import {
@@ -137,6 +139,7 @@ export function PracticeClient({
   }, [loadQuestions]);
 
   const current = questions[index];
+  const readingParts = current?.subject_id === "reading" ? splitReadingPrompt(current.prompt) : null;
   const isPreK = grade === "PK";
   // Young kids are still learning to read, so auto-read includes the answer
   // choices for them; older kids just hear the question and can tap 🔊 for more.
@@ -356,6 +359,7 @@ export function PracticeClient({
             )}
           </div>
           {(() => {
+            if (readingParts) return null;
             // Hand-made science diagrams stay authoritative; AI scene art fills
             // in everywhere else it exists (never math — its SVG manipulatives
             // are answer-exact and live in TeachMe).
@@ -392,7 +396,7 @@ export function PracticeClient({
             }
             return null;
           })()}
-          <div className="flex items-start gap-3">
+          {readingParts ? <ReadingPrompt parts={readingParts} grade={grade} questionId={current.id} /> : <div className="flex items-start gap-3">
             {(() => {
               // Math questions that are pure arithmetic get the school-style
               // stacked layout kids know from worksheets (51 over −13, rule
@@ -425,7 +429,7 @@ export function PracticeClient({
               }
               className="mt-1"
             />
-          </div>
+          </div>}
 
           {/* Pre-answer help for arithmetic: a kid who's stuck can watch the
               numbers work out and hear it explained, instead of guessing. */}

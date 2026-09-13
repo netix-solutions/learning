@@ -1,6 +1,6 @@
 # Curriculum audit — September 2026
 
-Run `npm run audit:curriculum` to rebuild `curriculum-inventory.json` from the repository's two question seeds and the actual lesson catalogue. The parser validates column counts and refuses unsupported question-row syntax. The inventory is not a production database export; other migrations can populate legacy skill fields. Counts do not establish educational quality or benchmark coverage.
+Run `npm run audit:curriculum` to rebuild `curriculum-inventory.json` from the repository's two question seeds, additive reading stories, and the actual lesson catalogue. The parser validates column counts and refuses unsupported question-row syntax. The inventory is not a production database export; other migrations can populate legacy skill fields. Counts do not establish educational quality or benchmark coverage.
 
 ## Evidence and corrections
 
@@ -24,7 +24,7 @@ Florida's [science standards](https://www.fldoe.org/academics/standards/subject-
 
 The generated bank has 12,978 rows; the curated seed adds 72. Earlier upgrade notes describing 7,340 generated rows are stale. The current independent validator checks all generated rows structurally and recomputes 6,981 math answers, with zero mismatches. This does not validate reading/science facts or prove instructional coverage.
 
-There are 21 introductory lessons, exactly one per core subject per grade. There are no authored geography, history, civics, or economics lessons. PK has no seeded questions in those four subjects. The inventory enumerates every grade/subject combination, including zeroes.
+There are 24 introductory lessons: one per core subject per grade, plus three additional first-grade reading lessons. There are no authored geography, history, civics, or economics lessons. PK has no seeded questions in those four subjects. The inventory enumerates every grade/subject combination, including zeroes.
 
 Prompt variety is much smaller than row counts in several reading banks: grade 1 has 302 rows / 68 prompts; grade 2 has 619 / 124; grade 4 has 277 / 34. A repeated prompt with different choices can offer practice, but is not a new reading passage or a new skill. Prompt counts also do not distinguish shared passages across different questions.
 
@@ -39,3 +39,10 @@ Prompt variety is much smaller than row counts in several reading banks: grade 1
 The full objective remains incomplete. This audit identifies concrete supply and mapping defects; it is not a standards-alignment certification or an outcome study.
 
 Validation: the correction migration updated 1,355 local question tags inside a rolled-back transaction. A full-row comparison excluding only `standard` confirmed no other question data changed; a second application updated zero rows. Changed-file lint and the production build passed. These follow-up changes have not yet been deployed.
+
+
+## Grade-specific reading update
+
+Twelve original stories add 24 questions (four per K–5 grade), stored in `src/lib/content/reading-stories.ts` and migration 21. Kindergarten and first grade address story events and characters; grades 2–3 compare character perspectives; grade 4 pairs theme with supporting actions; grade 5 examines how perspective develops. Benchmark references were checked against the [FDOE ELA standards](https://www.fldoe.org/file/7539/elabeststandardsfinal.pdf), literary-elements/perspective/theme progressions and grade-specific clarifications. These multiple-choice activities cover only parts of the referenced benchmarks; they do not establish fluency or full mastery.
+
+The quiz now separates explicitly marked passages from their questions. Ambiguous quoted prompts are left intact. Passages use normal reading text, independent narration controls, and generated ElevenLabs recordings for the new stories. This is a first expansion of variety, not a complete reading programme or a validated grade-level text-complexity study.

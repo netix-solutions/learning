@@ -1,5 +1,5 @@
 {
-  "scope": "Repository question seeds and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
+  "scope": "Repository question seeds, additive reading stories, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
   "sources": [
     {
       "file": "supabase/seed.sql",
@@ -8,6 +8,10 @@
     {
       "file": "supabase/seeds/questions.sql",
       "rows": 12978
+    },
+    {
+      "file": "src/lib/content/reading-stories.ts",
+      "rows": 24
     }
   ],
   "inventory": [
@@ -179,8 +183,8 @@
     {
       "grade": "K",
       "subject": "reading",
-      "seedRows": 295,
-      "distinctPrompts": 104,
+      "seedRows": 299,
+      "distinctPrompts": 108,
       "skills": [
         {
           "skill": "K.print",
@@ -189,6 +193,10 @@
         {
           "skill": "K.sound",
           "rows": 240
+        },
+        {
+          "skill": "K.story",
+          "rows": 4
         }
       ],
       "missingSkill": 6,
@@ -196,7 +204,8 @@
       "standardTags": [
         "ELA.K.F.1",
         "ELA.K.F.2",
-        "ELA.K.F.3"
+        "ELA.K.F.3",
+        "ELA.K.R.1.1"
       ],
       "lessonIds": [
         "K-blend"
@@ -373,8 +382,8 @@
     {
       "grade": "1",
       "subject": "reading",
-      "seedRows": 302,
-      "distinctPrompts": 68,
+      "seedRows": 306,
+      "distinctPrompts": 72,
       "skills": [
         {
           "skill": "1.cloze",
@@ -386,7 +395,7 @@
         },
         {
           "skill": "1.read",
-          "rows": 3
+          "rows": 7
         },
         {
           "skill": "1.vocab",
@@ -399,6 +408,7 @@
         "ELA.1.F.2",
         "ELA.1.F.3",
         "ELA.1.R.1",
+        "ELA.1.R.1.1",
         "ELA.1.V.1"
       ],
       "lessonIds": [
@@ -588,8 +598,8 @@
     {
       "grade": "2",
       "subject": "reading",
-      "seedRows": 619,
-      "distinctPrompts": 124,
+      "seedRows": 623,
+      "distinctPrompts": 128,
       "skills": [
         {
           "skill": "2.foundation",
@@ -600,6 +610,10 @@
           "rows": 3
         },
         {
+          "skill": "2.perspective",
+          "rows": 4
+        },
+        {
           "skill": "2.vocab",
           "rows": 480
         }
@@ -608,6 +622,7 @@
       "missingStandard": 0,
       "standardTags": [
         "ELA.2.F.1",
+        "ELA.2.R.1.3",
         "ELA.2.R.2",
         "ELA.2.V.1"
       ],
@@ -796,8 +811,8 @@
     {
       "grade": "3",
       "subject": "reading",
-      "seedRows": 313,
-      "distinctPrompts": 78,
+      "seedRows": 317,
+      "distinctPrompts": 82,
       "skills": [
         {
           "skill": "3.detail",
@@ -812,6 +827,10 @@
           "rows": 136
         },
         {
+          "skill": "3.perspective",
+          "rows": 4
+        },
+        {
           "skill": "3.vocab",
           "rows": 121
         }
@@ -820,6 +839,7 @@
       "missingStandard": 0,
       "standardTags": [
         "ELA.3.C.3",
+        "ELA.3.R.1.3",
         "ELA.3.R.2",
         "ELA.3.R.3",
         "ELA.3.V.1"
@@ -1021,8 +1041,8 @@
     {
       "grade": "4",
       "subject": "reading",
-      "seedRows": 277,
-      "distinctPrompts": 34,
+      "seedRows": 281,
+      "distinctPrompts": 38,
       "skills": [
         {
           "skill": "4.grammar",
@@ -1034,7 +1054,7 @@
         },
         {
           "skill": "4.theme",
-          "rows": 1
+          "rows": 5
         },
         {
           "skill": "4.vocab",
@@ -1046,6 +1066,7 @@
       "standardTags": [
         "ELA.4.C.3",
         "ELA.4.R.1",
+        "ELA.4.R.1.2",
         "ELA.4.R.2",
         "ELA.4.V.1"
       ],
@@ -1238,8 +1259,8 @@
     {
       "grade": "5",
       "subject": "reading",
-      "seedRows": 423,
-      "distinctPrompts": 122,
+      "seedRows": 427,
+      "distinctPrompts": 126,
       "skills": [
         {
           "skill": "5.fig",
@@ -1254,6 +1275,10 @@
           "rows": 3
         },
         {
+          "skill": "5.perspective",
+          "rows": 4
+        },
+        {
           "skill": "5.vocab",
           "rows": 240
         }
@@ -1262,6 +1287,7 @@
       "missingStandard": 0,
       "standardTags": [
         "ELA.5.C.3",
+        "ELA.5.R.1.3",
         "ELA.5.R.2",
         "ELA.5.R.3",
         "ELA.5.V.1"

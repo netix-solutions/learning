@@ -20,6 +20,14 @@
       "bytes": 207769,
       "sha256": "82999e094409fe71052e1898d29c4dcc6425dd90bf50a530923a83ab33765b0e"
     },
+    "home:guide": {
+      "id": "home:guide",
+      "text": "Welcome! Tap the rocket to start a practice quiz. Or choose math, reading, or science to practice a subject. Learning lessons are below if you want to explore a new idea. Tap a speaker to hear what a button does.",
+      "fingerprint": "7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3",
+      "url": "/audio/lessons/7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3.mp3",
+      "bytes": 244132,
+      "sha256": "642c9bbeda02a06bc08c2b885eb002feafd70b4445d8c74770c0ac923d96dbc8"
+    },
     "home:learn": {
       "id": "home:learn",
       "text": "Learn something new. We will show you how. Listen, try it, and explain your idea.",
@@ -27,6 +35,14 @@
       "url": "/audio/lessons/8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080.mp3",
       "bytes": 108713,
       "sha256": "d8cd67b178014153de7638bc7a115efad08bb203a8c337abdab73a97bfd14d60"
+    },
+    "home:practice": {
+      "id": "home:practice",
+      "text": "Practice quizzes. Try a mix of questions, just for you. You can ask for help as you go.",
+      "fingerprint": "8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f",
+      "url": "/audio/lessons/8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f.mp3",
+      "bytes": 95338,
+      "sha256": "a5f9a1983fc1b7ab3f3000f12f9b6fd4cdedab979e478b2e65d0662409334eeb"
     },
     "home:math": {
       "id": "home:math",
@@ -1868,21 +1884,293 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "home:guide": {
-      "id": "home:guide",
-      "text": "Welcome! Tap the rocket to start a practice quiz. Or choose math, reading, or science to practice a subject. Learning lessons are below if you want to explore a new idea. Tap a speaker to hear what a button does.",
-      "fingerprint": "7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3",
-      "url": "/audio/lessons/7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3.mp3",
-      "bytes": 244132,
-      "sha256": "642c9bbeda02a06bc08c2b885eb002feafd70b4445d8c74770c0ac923d96dbc8"
+    "reading:k-hat:passage": {
+      "id": "reading:k-hat:passage",
+      "text": "Sam has a red hat. The hat is on a log. Sam gets the hat and puts it on.",
+      "fingerprint": "2a1c6949756ccd28a9a4c082697dd32780fb49706568b38b8da926287145193e",
+      "url": "/audio/lessons/2a1c6949756ccd28a9a4c082697dd32780fb49706568b38b8da926287145193e.mp3",
+      "bytes": 104951,
+      "sha256": "8165220b24357d48008b4404a7b616df00d6ef7f8fc5060075e50b986f632ff6"
     },
-    "home:practice": {
-      "id": "home:practice",
-      "text": "Practice quizzes. Try a mix of questions, just for you. You can ask for help as you go.",
-      "fingerprint": "8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f",
-      "url": "/audio/lessons/8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f.mp3",
-      "bytes": 95338,
-      "sha256": "a5f9a1983fc1b7ab3f3000f12f9b6fd4cdedab979e478b2e65d0662409334eeb"
+    "reading:k-hat:q0": {
+      "id": "reading:k-hat:q0",
+      "text": "Where is the hat at first?",
+      "fingerprint": "d12beaf2a62097759846773f8d55e9225a92a5b83abf997442772b9ce9322d48",
+      "url": "/audio/lessons/d12beaf2a62097759846773f8d55e9225a92a5b83abf997442772b9ce9322d48.mp3",
+      "bytes": 25539,
+      "sha256": "75c7cbe7a178b3d57cfabc3c85fd6603944c4f57774de5d510e4176df6f959bf"
+    },
+    "reading:k-hat:q1": {
+      "id": "reading:k-hat:q1",
+      "text": "What does Sam do at the end?",
+      "fingerprint": "15e7f83ab0e43076836b8796fe71f6516e4b37cc2d20278f5b26ea760874f5cf",
+      "url": "/audio/lessons/15e7f83ab0e43076836b8796fe71f6516e4b37cc2d20278f5b26ea760874f5cf.mp3",
+      "bytes": 25539,
+      "sha256": "e1e8f363b10d7aa9be90cceb8c202c89b1b312c79e21f5fb7fc86caac85ea731"
+    },
+    "reading:k-cat:passage": {
+      "id": "reading:k-cat:passage",
+      "text": "A cat sits on a mat. Pam sits by the cat. Pam pats the cat. The cat naps.",
+      "fingerprint": "30cbc5fabe654cd4a21a97dfa507952221374f64dc252887f3c93f94b754c037",
+      "url": "/audio/lessons/30cbc5fabe654cd4a21a97dfa507952221374f64dc252887f3c93f94b754c037.mp3",
+      "bytes": 122088,
+      "sha256": "f31d078c355d0e17d03eaf25a70fb8e3bf0a890ebf6335a93265c41452efded6"
+    },
+    "reading:k-cat:q0": {
+      "id": "reading:k-cat:q0",
+      "text": "Who sits by the cat?",
+      "fingerprint": "415b1e132cbf4f806d66093542d10df410c8f9929ddb6f7d4f0f2c5c75dff580",
+      "url": "/audio/lessons/415b1e132cbf4f806d66093542d10df410c8f9929ddb6f7d4f0f2c5c75dff580.mp3",
+      "bytes": 24285,
+      "sha256": "2f3f1375c25a0125ae6a23c0f933752ea569028f9849d3763ff2c39f529e19ba"
+    },
+    "reading:k-cat:q1": {
+      "id": "reading:k-cat:q1",
+      "text": "What does the cat do last?",
+      "fingerprint": "89b3f0fbc73ae4400cc88292da6ef03a0adcc7591a9508477e9e442a1ec86b84",
+      "url": "/audio/lessons/89b3f0fbc73ae4400cc88292da6ef03a0adcc7591a9508477e9e442a1ec86b84.mp3",
+      "bytes": 27629,
+      "sha256": "808428cf21badf7717331fc37d1d76f6f45651c7e9336f510f84cfcdb663596c"
+    },
+    "reading:1-bridge:passage": {
+      "id": "reading:1-bridge:passage",
+      "text": "Nina made a bridge with blocks. Her toy bus was too wide to cross it. She moved the blocks apart and put a longer block on top. Now the bus could cross. Nina smiled and drove it over again.",
+      "fingerprint": "61a172a703dcd067cee32e102ef1715fb1ee2f0342f16178e22f50377996a111",
+      "url": "/audio/lessons/61a172a703dcd067cee32e102ef1715fb1ee2f0342f16178e22f50377996a111.mp3",
+      "bytes": 212785,
+      "sha256": "c26ab83441ae5595de67f472c83136bfb428cc20d5a2991da725227437f6e63c"
+    },
+    "reading:1-bridge:q0": {
+      "id": "reading:1-bridge:q0",
+      "text": "Why did Nina change her bridge?",
+      "fingerprint": "1d60d6210d82cbadbd87141a51f38300144d0cbed5e4c884e89fd96ff1d3c293",
+      "url": "/audio/lessons/1d60d6210d82cbadbd87141a51f38300144d0cbed5e4c884e89fd96ff1d3c293.mp3",
+      "bytes": 32226,
+      "sha256": "0eb821674405d97baa12bef421a2f12a5bf65f63f89befd7d93cb559a3ba315a"
+    },
+    "reading:1-bridge:q1": {
+      "id": "reading:1-bridge:q1",
+      "text": "What happened after Nina changed the bridge?",
+      "fingerprint": "67abec8f715eacf824b053739656242d9af2f0e736b2697e1416ff43c5a98006",
+      "url": "/audio/lessons/67abec8f715eacf824b053739656242d9af2f0e736b2697e1416ff43c5a98006.mp3",
+      "bytes": 36824,
+      "sha256": "1b1b0a7d596b340a4563261b00358039ddde6ecbb304000b792be9199596054c"
+    },
+    "reading:1-picnic:passage": {
+      "id": "reading:1-picnic:passage",
+      "text": "Leo and his dad packed a picnic. Rain began as they reached the door. Leo looked at the blanket in his bag. He spread it on the living room floor. They ate their lunch there and listened to the rain.",
+      "fingerprint": "b35ceed835c1544318538a64841a67e057440eee55b535729452c1b69290bba1",
+      "url": "/audio/lessons/b35ceed835c1544318538a64841a67e057440eee55b535729452c1b69290bba1.mp3",
+      "bytes": 197320,
+      "sha256": "216e55567bb5e2521a8e1efa7c9b2d0df0627ebc4ca591ff389a36f9418ae689"
+    },
+    "reading:1-picnic:q0": {
+      "id": "reading:1-picnic:q0",
+      "text": "Where do Leo and his dad eat their picnic?",
+      "fingerprint": "f7daba45bbd46f710d52245a3282ae7300ceae70d0f96d883eb4e1c020055b65",
+      "url": "/audio/lessons/f7daba45bbd46f710d52245a3282ae7300ceae70d0f96d883eb4e1c020055b65.mp3",
+      "bytes": 37660,
+      "sha256": "2c1adb242ccf263d71afa470f72a51d331bdbb32dd8f1cfa430e1fcfb6add5dd"
+    },
+    "reading:1-picnic:q1": {
+      "id": "reading:1-picnic:q1",
+      "text": "Why do they have their picnic inside?",
+      "fingerprint": "39bfad7be5e2114a31b0975315ddf7062a6cde0bf36ca61a3453271f140727cc",
+      "url": "/audio/lessons/39bfad7be5e2114a31b0975315ddf7062a6cde0bf36ca61a3453271f140727cc.mp3",
+      "bytes": 33062,
+      "sha256": "a319fc9e3c6333105dd63646860eabfd22ffbeb9b2da2b12b3dbbe5854aee324"
+    },
+    "reading:2-play:passage": {
+      "id": "reading:2-play:passage",
+      "text": "Mara wanted the biggest speaking part in the class play. Her friend Eli wanted to paint the scenery. Mara thought painting sounded dull until she watched Eli turn a plain sheet into a forest. Eli thought acting looked easy until he heard Mara practice her lines again and again. On show day, Mara thanked Eli for the forest, and Eli cheered when Mara spoke.",
+      "fingerprint": "7aae52330176b55bc8a7f918868851a7aea83e2be9a3d52769bfad9be735f8ae",
+      "url": "/audio/lessons/7aae52330176b55bc8a7f918868851a7aea83e2be9a3d52769bfad9be735f8ae.mp3",
+      "bytes": 368684,
+      "sha256": "d500ae80ca68ed7e17432ce40481996e78bca294bfeeeb2accabc58e4428a82b"
+    },
+    "reading:2-play:q0": {
+      "id": "reading:2-play:q0",
+      "text": "How does Mara feel about painting scenery at first?",
+      "fingerprint": "65c57c0a46186fbc5b033ef7e03bc978069f91ef3966eaf71bb291557d444e34",
+      "url": "/audio/lessons/65c57c0a46186fbc5b033ef7e03bc978069f91ef3966eaf71bb291557d444e34.mp3",
+      "bytes": 48527,
+      "sha256": "8e3308c0099b75bdbe677bd791dc2f5dce7f1004c6e0aeead387da32ba456413"
+    },
+    "reading:2-play:q1": {
+      "id": "reading:2-play:q1",
+      "text": "What do Mara and Eli learn about each other’s jobs?",
+      "fingerprint": "cbbb566683a990078703970fd738397e44139919d23184151aca5b3f011dbeb4",
+      "url": "/audio/lessons/cbbb566683a990078703970fd738397e44139919d23184151aca5b3f011dbeb4.mp3",
+      "bytes": 48527,
+      "sha256": "f7637fcc06dcf217e2cd7b88505d357c9ce05e9f93de6db7e05906c7388aea6f"
+    },
+    "reading:2-path:passage": {
+      "id": "reading:2-path:passage",
+      "text": "Owen hurried along the trail because he wanted to reach the pond. His sister Rosa kept stopping to look at leaves and tiny tracks. Owen sighed each time she stopped. Then Rosa pointed out a line of ants carrying bits of a leaf. Owen crouched beside her. They reached the pond later than planned, but Owen had a new idea for his nature drawing.",
+      "fingerprint": "2c5dd1ad8a9dc3fd9e12e82d7d2c1c959be22b625b8743d6d3a67a75a782df3d",
+      "url": "/audio/lessons/2c5dd1ad8a9dc3fd9e12e82d7d2c1c959be22b625b8743d6d3a67a75a782df3d.mp3",
+      "bytes": 391253,
+      "sha256": "d46ca76fb8b1cd0430f1b07d2dea1e13ef15206ee5c5a3c6bd4bfad28356bb3f"
+    },
+    "reading:2-path:q0": {
+      "id": "reading:2-path:q0",
+      "text": "What matters most to Owen at the start?",
+      "fingerprint": "7949a74a3801e39ca004db3eb1c458fbd16ddd63abca5280e32f4b937e40273f",
+      "url": "/audio/lessons/7949a74a3801e39ca004db3eb1c458fbd16ddd63abca5280e32f4b937e40273f.mp3",
+      "bytes": 35152,
+      "sha256": "5e830613fdb01b9066e344ee7f2bfb7ee557f63f7b019473ed97df9ff74efbb8"
+    },
+    "reading:2-path:q1": {
+      "id": "reading:2-path:q1",
+      "text": "How are Rosa and Owen different at first?",
+      "fingerprint": "112a2b57e4d6e764acf9b8253076838de64ba86d2cd6727140710912a40fd2a7",
+      "url": "/audio/lessons/112a2b57e4d6e764acf9b8253076838de64ba86d2cd6727140710912a40fd2a7.mp3",
+      "bytes": 38914,
+      "sha256": "98e002fcf3d729352861e93361f59a2d70e83b3af1c5be8ac4c3fbb659ed3390"
+    },
+    "reading:3-court:passage": {
+      "id": "reading:3-court:passage",
+      "text": "The school had one small courtyard. Ada proposed a quiet reading corner. Luis wanted space for a beanbag game. At first, each student thought the other idea would spoil the courtyard. Their teacher asked them to draw where their activities would happen. Ada placed her reading bench under the tree. Luis drew his game near the far wall. When they compared their plans, they noticed an empty path between the two spaces. Ada imagined reading while friends played nearby. Luis liked having somewhere to rest after a game. They submitted one plan together.",
+      "fingerprint": "4c3b3437828aa695cb4c6e5c9f0b02bc62c803dda1b9462d1786237464a33a2e",
+      "url": "/audio/lessons/4c3b3437828aa695cb4c6e5c9f0b02bc62c803dda1b9462d1786237464a33a2e.mp3",
+      "bytes": 626564,
+      "sha256": "edcb9056188908864b4e7ca2952f3914cf086e18d962c51f9ebea46aa1ba2027"
+    },
+    "reading:3-court:q0": {
+      "id": "reading:3-court:q0",
+      "text": "Why do Ada and Luis disagree at first?",
+      "fingerprint": "3f0760c992ac92489b7fb6fae1317dc297adae0196fe736e3ef5ef44c0da29b3",
+      "url": "/audio/lessons/3f0760c992ac92489b7fb6fae1317dc297adae0196fe736e3ef5ef44c0da29b3.mp3",
+      "bytes": 40586,
+      "sha256": "51a120903d543ef6a84876b06f443e9b4ed49a9b76cb65c64ac873af50244c9c"
+    },
+    "reading:3-court:q1": {
+      "id": "reading:3-court:q1",
+      "text": "Which detail shows that their perspectives change?",
+      "fingerprint": "07da9d625e00643f3eea665c32af52cddf9a83b3b99eed25cc821b8a43cbf841",
+      "url": "/audio/lessons/07da9d625e00643f3eea665c32af52cddf9a83b3b99eed25cc821b8a43cbf841.mp3",
+      "bytes": 47691,
+      "sha256": "c115de5603138da802c6238b5adb6ae9a0911ba2f0ff2a8b1384fe571c83df6b"
+    },
+    "reading:3-drum:passage": {
+      "id": "reading:3-drum:passage",
+      "text": "Tess practiced her drum pattern after school. From her room, the steady beat sounded stronger every day. Across the hall, her brother Max was trying to record a poem for class. On his recording, the drum covered the last lines. Max knocked on Tess’s door and explained the problem. Tess had thought he disliked her music. When she heard the recording, she understood. They made a schedule: Max would record first, and then he would listen while Tess practiced her whole song.",
+      "fingerprint": "d8847e1f7ce7a6891ca7969c77671a132d445202ef67f9abe7998c585119ab80",
+      "url": "/audio/lessons/d8847e1f7ce7a6891ca7969c77671a132d445202ef67f9abe7998c585119ab80.mp3",
+      "bytes": 496579,
+      "sha256": "3fc5410c63ea15a0fee44fc768465f4623301f4b61051a9b48c3fa7d4020fea5"
+    },
+    "reading:3-drum:q0": {
+      "id": "reading:3-drum:q0",
+      "text": "Why does Max ask Tess to stop drumming for a while?",
+      "fingerprint": "c1d36bd65d2b135bc270e14f9d82a23842f1b317315b1bf9ec46b18757da352c",
+      "url": "/audio/lessons/c1d36bd65d2b135bc270e14f9d82a23842f1b317315b1bf9ec46b18757da352c.mp3",
+      "bytes": 52288,
+      "sha256": "f12ef7bf110c1ab9adf5904bbc1ec3900c4b73016ed6043a12c4da6f2521516b"
+    },
+    "reading:3-drum:q1": {
+      "id": "reading:3-drum:q1",
+      "text": "What helps Tess understand Max’s perspective?",
+      "fingerprint": "0eba7d102e95e8bbb4bc13e6a3f839428a1e3f71bb4a86ad9df0a314788ba052",
+      "url": "/audio/lessons/0eba7d102e95e8bbb4bc13e6a3f839428a1e3f71bb4a86ad9df0a314788ba052.mp3",
+      "bytes": 47273,
+      "sha256": "e5f27970617cb8606740fc7390e85ee7fd231dcbb45608b13ed6caf5ffe5e5bf"
+    },
+    "reading:4-kite:passage": {
+      "id": "reading:4-kite:passage",
+      "text": "Jules arrived at the kite festival carrying a bright kite she had built alone. She had refused her cousin Mina’s offer to help because she wanted all the credit. At the field, the kite spun in circles and fell. Mina suggested making the tail longer, but Jules turned away. After the third crash, Jules studied the tangled string and finally asked Mina to show her idea. Together they added strips of cloth and tested the kite. It rose steadily. When a neighbor praised the design, Jules started to say that she had made it. Then she looked at Mina holding the spool and said they had improved it together.",
+      "fingerprint": "eebfad8e2a950217beee63de140b73a9a95556d366d22e341f839ea418acefda",
+      "url": "/audio/lessons/eebfad8e2a950217beee63de140b73a9a95556d366d22e341f839ea418acefda.mp3",
+      "bytes": 642865,
+      "sha256": "9caf00468eb100ac9c161fb5d5aa688a9b225f4b5958c29406408be2af726ac6"
+    },
+    "reading:4-kite:q0": {
+      "id": "reading:4-kite:q0",
+      "text": "Which theme develops through Jules’s actions?",
+      "fingerprint": "81791dc6392107ec804a1fb7d40b199a7f34128f87183bde48f15baa7e4ce4f1",
+      "url": "/audio/lessons/81791dc6392107ec804a1fb7d40b199a7f34128f87183bde48f15baa7e4ce4f1.mp3",
+      "bytes": 42675,
+      "sha256": "e06adc057dbd55367e151af70aff738d17346aa7e08b8e4cf6f7a46b53ed25f2"
+    },
+    "reading:4-kite:q1": {
+      "id": "reading:4-kite:q1",
+      "text": "Which detail best shows that Jules has learned this lesson?",
+      "fingerprint": "93bea049d15fbf98212fcde813c2e7b7f2bc9b6d1bb93acb585de9508b6a13b3",
+      "url": "/audio/lessons/93bea049d15fbf98212fcde813c2e7b7f2bc9b6d1bb93acb585de9508b6a13b3.mp3",
+      "bytes": 56050,
+      "sha256": "613a271e5fb707ebae3beaa6b3e22799a4ccb8408f1038cf5d077caa1c0ec9bb"
+    },
+    "reading:4-bench:passage": {
+      "id": "reading:4-bench:passage",
+      "text": "When the neighborhood announced a cleanup morning, Ravi promised to help repair the park bench. On Saturday, a friend invited him to try a new video game at the same time. Ravi nearly accepted. Then he remembered Mrs. Chen saying that she needed the bench to rest during her walks. He told his friend he would come later and went to the park. The repair took longer than he expected. Ravi sanded one rough board while an adult secured the loose parts. That afternoon, he saw Mrs. Chen sitting comfortably on the bench. He still wanted to play the game, but he was glad he had kept his promise.",
+      "fingerprint": "60c772a73d30c65e13565bb7c004992ce7b770ce5cc5b1873c18f08029810ebb",
+      "url": "/audio/lessons/60c772a73d30c65e13565bb7c004992ce7b770ce5cc5b1873c18f08029810ebb.mp3",
+      "bytes": 616115,
+      "sha256": "7388cc3f52870c22cfae2dd2852e095e0f0f07842458a3eb3e459407e4957688"
+    },
+    "reading:4-bench:q0": {
+      "id": "reading:4-bench:q0",
+      "text": "Which theme is supported by Ravi’s choice?",
+      "fingerprint": "d5cb9245743fd2bd9d47b0d31efe6f205b8ae85ffa427a44807d1dde3d6c1cfe",
+      "url": "/audio/lessons/d5cb9245743fd2bd9d47b0d31efe6f205b8ae85ffa427a44807d1dde3d6c1cfe.mp3",
+      "bytes": 39750,
+      "sha256": "88b7a03f6819223dfbfdcdcecdd4be72d5630ed45599e85499820045d44f5b98"
+    },
+    "reading:4-bench:q1": {
+      "id": "reading:4-bench:q1",
+      "text": "How does the ending develop the theme?",
+      "fingerprint": "5ac72a4edb187d95e2c0bd44660ca2c06abdf8e9903b963139d2b524fdc29087",
+      "url": "/audio/lessons/5ac72a4edb187d95e2c0bd44660ca2c06abdf8e9903b963139d2b524fdc29087.mp3",
+      "bytes": 35152,
+      "sha256": "580dca48718031faa2a069b921bcad93a9be2cb0f2926a9c5631dcb6773ccf15"
+    },
+    "reading:5-mural:passage": {
+      "id": "reading:5-mural:passage",
+      "text": "When the town planned a mural, Elena submitted a sketch of its newest buildings. She believed progress meant showing what was modern. At a planning meeting, an older resident described the small ferry that had once connected the town’s two shores. Elena had never noticed the faded ferry sign beside the bridge. She visited it the next day and found scratches where years of travelers had rested their bicycles. Back at her desk, she drew the ferry beneath a transparent outline of the current bridge. She kept the new buildings, too. When she presented the revision, she explained that a town’s future made more sense when people could also see how it had arrived there. The old sketch lay beside the new one, but she no longer wanted to use it.",
+      "fingerprint": "4b1170ba1bb3049fc9c6c7815aa5a27699992a491686e791e48dabaf023dbaba",
+      "url": "/audio/lessons/4b1170ba1bb3049fc9c6c7815aa5a27699992a491686e791e48dabaf023dbaba.mp3",
+      "bytes": 751534,
+      "sha256": "0bbc333cc37c47930ef48f35cc547b2a1f84ccb2b01fb86d30a658ee9d043942"
+    },
+    "reading:5-mural:q0": {
+      "id": "reading:5-mural:q0",
+      "text": "How does Elena’s perspective change?",
+      "fingerprint": "9dbfb3d595165cef7a41d5f1405936e8d4460a45e7a91b908dd9f8c0c72099ba",
+      "url": "/audio/lessons/9dbfb3d595165cef7a41d5f1405936e8d4460a45e7a91b908dd9f8c0c72099ba.mp3",
+      "bytes": 36824,
+      "sha256": "feb92f6207338856afbc3fb523ba830c47728e74d75c144803fffdaa22bbbdbf"
+    },
+    "reading:5-mural:q1": {
+      "id": "reading:5-mural:q1",
+      "text": "How does the author develop this change?",
+      "fingerprint": "1403f923f6493431365883305e0b4d574c10b5a97dcedc41b9575b3cad77e853",
+      "url": "/audio/lessons/1403f923f6493431365883305e0b4d574c10b5a97dcedc41b9575b3cad77e853.mp3",
+      "bytes": 38914,
+      "sha256": "50f8d7b1f3d49121d2043d92b3999b4cd42cade1ade6ba4f833f1185f4f4eb8e"
+    },
+    "reading:5-test:passage": {
+      "id": "reading:5-test:passage",
+      "text": "Marcus was certain his team’s paper tower would hold the most coins. He had spent an evening folding its wide base and wanted to skip the final test. A teammate, Noor, asked to test a smaller model first. Marcus thought the test would waste their remaining time. During the trial, one folded seam bent and the model leaned. Marcus reached to straighten it, then stopped and asked Noor to note where the bend had started. They used a spare sheet to strengthen the matching seam on the full tower. Before the class demonstration, Marcus requested one more test himself. He still hoped their tower would do well, but now he wanted evidence that the design could support that hope.",
+      "fingerprint": "c2b66116f0e5b1e2a0110007195a574acba5be4f5f8ae388392cd6e27dd9a2ee",
+      "url": "/audio/lessons/c2b66116f0e5b1e2a0110007195a574acba5be4f5f8ae388392cd6e27dd9a2ee.mp3",
+      "bytes": 706395,
+      "sha256": "3601c2eaceab85a69b8bf1001d616b84a83dc2b9f940bc59f232c47efcef4b6e"
+    },
+    "reading:5-test:q0": {
+      "id": "reading:5-test:q0",
+      "text": "What change in Marcus’s perspective does the final sentence reveal?",
+      "fingerprint": "1024c642bf73794ee44b17033432cb2a8bdc57da180b3d32d80aeacd8c45c859",
+      "url": "/audio/lessons/1024c642bf73794ee44b17033432cb2a8bdc57da180b3d32d80aeacd8c45c859.mp3",
+      "bytes": 67335,
+      "sha256": "4b7a269c0c7af7eaea044a266fad5ce79621ed26f1fb04c0e4cae4317cdb7b51"
+    },
+    "reading:5-test:q1": {
+      "id": "reading:5-test:q1",
+      "text": "Which action most clearly demonstrates his changed perspective?",
+      "fingerprint": "7969419a699a39a78b4a9832dfbc4ad44e1abb92c7adfe1f9548c5e6446c1b06",
+      "url": "/audio/lessons/7969419a699a39a78b4a9832dfbc4ad44e1abb92c7adfe1f9548c5e6446c1b06.mp3",
+      "bytes": 58976,
+      "sha256": "bc115ccf52a1ba0f8ec3bf4c052cfe5ee6f4e0ca2f1918ee3b47bde6dcb007db"
     }
   }
 }
