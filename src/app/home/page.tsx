@@ -127,6 +127,15 @@ export default async function StudentHome() {
         </span>
       </Link>
 
+      <Link href="/learn" className="btn-pop card-fun mt-4 flex items-center gap-4 border-2 border-sky-200 bg-sky-50 p-5">
+        <span aria-hidden="true" className="text-4xl">🧭</span>
+        <span className="flex-1">
+          <span className="block font-display text-xl font-bold text-sky-900">Learn something new</span>
+          <span className="mt-1 block text-sm font-semibold text-slate-600">See how it works. Try it. Explain it.</span>
+        </span>
+        <span aria-hidden="true" className="text-2xl text-sky-600">→</span>
+      </Link>
+
       {/* Daily treasure chest — practicing unlocks it */}
       <DailyChest initialState={chestState} reward={chestClaim?.reward} />
 

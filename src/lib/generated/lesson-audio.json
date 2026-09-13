@@ -1,0 +1,1584 @@
+{
+  "version": 1,
+  "provider": "ElevenLabs",
+  "modelId": "eleven_multilingual_v2",
+  "voiceId": "cgSgspJ2msm6clMCkdW9",
+  "voiceSettings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true,
+    "speed": 0.9
+  },
+  "outputFormat": "mp3_44100_128",
+  "clips": {
+    "PK-count:goal": {
+      "id": "PK-count:goal",
+      "text": "One touch, one number. Count a small group without missing or counting anything twice.",
+      "fingerprint": "1ea67dcc2cf92e13d23d537ba7635a77d24f193f54316cbc75f3cdc9e4f2c197",
+      "url": "/audio/lessons/1ea67dcc2cf92e13d23d537ba7635a77d24f193f54316cbc75f3cdc9e4f2c197.mp3",
+      "bytes": 94502,
+      "sha256": "2b1a2baa9d100dca9a95b9d565c3a77d627424fb7f1f1dcaa9cacc2cb908ba41"
+    },
+    "PK-count:step-0": {
+      "id": "PK-count:step-0",
+      "text": "Put things in a row. Start at one end.",
+      "fingerprint": "c43c9076f9e5047a861441e46281bacf6c2f60a13e01ce6605d832d6f4e5f8e9",
+      "url": "/audio/lessons/c43c9076f9e5047a861441e46281bacf6c2f60a13e01ce6605d832d6f4e5f8e9.mp3",
+      "bytes": 41839,
+      "sha256": "5459ebae3fb88e042eff0febe5394167d4099a7aac46d494188f83bb7301291e"
+    },
+    "PK-count:step-1": {
+      "id": "PK-count:step-1",
+      "text": "Touch each thing once. Say one number for each touch.",
+      "fingerprint": "6fc7121daea5007349b9e886cc2bd56c4e1abff5727e618a78bfff9114fea6d7",
+      "url": "/audio/lessons/6fc7121daea5007349b9e886cc2bd56c4e1abff5727e618a78bfff9114fea6d7.mp3",
+      "bytes": 60648,
+      "sha256": "6319d8798596ee8fe60fd2c91bdbe72ac7493a2fb5e707ef08d264c092960890"
+    },
+    "PK-count:step-2": {
+      "id": "PK-count:step-2",
+      "text": "The last number tells how many things are in the group.",
+      "fingerprint": "94570881ddfb06d83f8a2613062b2f821a151e3dde62f7cb4019879ef795b5f1",
+      "url": "/audio/lessons/94570881ddfb06d83f8a2613062b2f821a151e3dde62f7cb4019879ef795b5f1.mp3",
+      "bytes": 46437,
+      "sha256": "c9152312ff9b6a05e9477abc3eaf7a7cb880883029b7ad58fabdfaa869661e2d"
+    },
+    "PK-count:guided": {
+      "id": "PK-count:guided",
+      "text": "Count the dots on the screen. How many are there? Choice one: two. Choice two: three. Choice three: four.",
+      "fingerprint": "b4d39714c915eea287b54aca1a516e2cd3d6fc67583849019976f52502c28dfc",
+      "url": "/audio/lessons/b4d39714c915eea287b54aca1a516e2cd3d6fc67583849019976f52502c28dfc.mp3",
+      "bytes": 211531,
+      "sha256": "18cb130a866ff9512a8c6b3228d062d0ef05a37bdd862aac4299d96852664df8"
+    },
+    "PK-count:transfer": {
+      "id": "PK-count:transfer",
+      "text": "Count this new group of dots on the screen. How many are there? Choice one: four. Choice two: three. Choice three: five.",
+      "fingerprint": "5370d6e1db6ed72071380bfb16b0f2f654c00769377a2f1dbd4d1c89a789bc95",
+      "url": "/audio/lessons/5370d6e1db6ed72071380bfb16b0f2f654c00769377a2f1dbd4d1c89a789bc95.mp3",
+      "bytes": 211531,
+      "sha256": "6a4750f540e23bf70cdc1920892d357c1cd0309650d80e6a4c16837399b8b625"
+    },
+    "PK-count:guided-feedback": {
+      "id": "PK-count:guided-feedback",
+      "text": "Touch and count: one, two, three. There are 3 dots.",
+      "fingerprint": "a21be2d585f98657a830ce5940845d5b18cd77b97db892eb38a49fa1741973d2",
+      "url": "/audio/lessons/a21be2d585f98657a830ce5940845d5b18cd77b97db892eb38a49fa1741973d2.mp3",
+      "bytes": 91577,
+      "sha256": "60f99746fad6ac79a51f06b44274a89f18deea44717b733d0d0eb461a2a7e61e"
+    },
+    "PK-count:transfer-feedback": {
+      "id": "PK-count:transfer-feedback",
+      "text": "One, two, three, four. The last number is 4.",
+      "fingerprint": "2c19b8ee47b52507ff8c0c0f789678148b219fefa1a2ff8487b7b9be9ba4909f",
+      "url": "/audio/lessons/2c19b8ee47b52507ff8c0c0f789678148b219fefa1a2ff8487b7b9be9ba4909f.mp3",
+      "bytes": 52288,
+      "sha256": "4907c31144893cfc0a97bd14e0d40edb8bac6de792e29147d1ca1a39fba949ce"
+    },
+    "PK-count:reflect": {
+      "id": "PK-count:reflect",
+      "text": "Find three safe things nearby. Put them in a row and count them.",
+      "fingerprint": "9ba4a0ca56d81561c56dea86b0f1dd7b03a748c583ab962d6019291769b3e7ea",
+      "url": "/audio/lessons/9ba4a0ca56d81561c56dea86b0f1dd7b03a748c583ab962d6019291769b3e7ea.mp3",
+      "bytes": 69425,
+      "sha256": "7c20cc8ae42cf1ebb577421b5953b0e81d0be8912200fc8324db81c29ea369a9"
+    },
+    "K-add:goal": {
+      "id": "K-add:goal",
+      "text": "Put groups together. Show how adding joins two groups.",
+      "fingerprint": "20780b9dcbed847e8d7181eac1495c3c19efb80bce6581bad25e268d881fb3a0",
+      "url": "/audio/lessons/20780b9dcbed847e8d7181eac1495c3c19efb80bce6581bad25e268d881fb3a0.mp3",
+      "bytes": 64409,
+      "sha256": "81eee1a67bce391c4fe16cb42860e5518eb4e63585e9babc78732ddbaae006ca"
+    },
+    "K-add:step-0": {
+      "id": "K-add:step-0",
+      "text": "Addition means putting groups together.",
+      "fingerprint": "4fd4fe427dbce22ff0acd6ac08ae7ac5787bac34159a89913a4f3c6b190eb010",
+      "url": "/audio/lessons/4fd4fe427dbce22ff0acd6ac08ae7ac5787bac34159a89913a4f3c6b190eb010.mp3",
+      "bytes": 38078,
+      "sha256": "f27fb89713242ea2aa7d83570e1abe00b18781754b3aa350d97511d6c47a5b12"
+    },
+    "K-add:step-1": {
+      "id": "K-add:step-1",
+      "text": "Here are 2 dots. Join 1 more dot to them.",
+      "fingerprint": "d4318f1516241aadd876663f86ebbcff20352ebcb24760a50f293699a7c407e4",
+      "url": "/audio/lessons/d4318f1516241aadd876663f86ebbcff20352ebcb24760a50f293699a7c407e4.mp3",
+      "bytes": 52288,
+      "sha256": "81d42f020949d1c0b5627378ec9031a9ca18003f9a19e53a42aad032c86271ca"
+    },
+    "K-add:step-2": {
+      "id": "K-add:step-2",
+      "text": "Count the whole group: 1, 2, 3. We write 2 plus 1 equals 3.",
+      "fingerprint": "b65ad67932ecae711dddb7625b3069832dfd12bcae2e6339347754bfed9441e2",
+      "url": "/audio/lessons/b65ad67932ecae711dddb7625b3069832dfd12bcae2e6339347754bfed9441e2.mp3",
+      "bytes": 134208,
+      "sha256": "40521c8ee489d96c66239cd4e7c6dd47872359c7439ddf8fb4797ec60cb69da3"
+    },
+    "K-add:guided": {
+      "id": "K-add:guided",
+      "text": "You have 3 blocks and add 1 block. How many now?. Choice 1: 2. Choice 2: 3. Choice 3: 4.",
+      "fingerprint": "22705ece3e84be0ab689c9db97b2cb8a6e216bddf482093760697b5a5c5b0386",
+      "url": "/audio/lessons/22705ece3e84be0ab689c9db97b2cb8a6e216bddf482093760697b5a5c5b0386.mp3",
+      "bytes": 219472,
+      "sha256": "29e7aba4c93791995ff22b43b63324552533546f1a0ceb5708feaa604fb1a4cd"
+    },
+    "K-add:transfer": {
+      "id": "K-add:transfer",
+      "text": "Join 2 shells and 3 shells. How many shells?. Choice 1: 6. Choice 2: 5. Choice 3: 4.",
+      "fingerprint": "317ac0c4fcbc51006ea97c39a1d1e91ba0e06f3b446dc689fcfeba65d7d8830d",
+      "url": "/audio/lessons/317ac0c4fcbc51006ea97c39a1d1e91ba0e06f3b446dc689fcfeba65d7d8830d.mp3",
+      "bytes": 290943,
+      "sha256": "46ff6b12dd7ef59f4fbf91a3a8e9dd7212a3a4136456cab584dce70058902484"
+    },
+    "K-add:guided-feedback": {
+      "id": "K-add:guided-feedback",
+      "text": "Start with 3 and count one more: 4.",
+      "fingerprint": "1db9a74c95b5b11a6a21ccf3f078f9f8540579c8aa7ec67ed100ed960a042418",
+      "url": "/audio/lessons/1db9a74c95b5b11a6a21ccf3f078f9f8540579c8aa7ec67ed100ed960a042418.mp3",
+      "bytes": 45601,
+      "sha256": "f0d3a48cb0f5927407a46f0ab79753bf4c9ddd99a4b3baddb2d2fb8c95f4f879"
+    },
+    "K-add:transfer-feedback": {
+      "id": "K-add:transfer-feedback",
+      "text": "Count on from 2: 3, 4, 5. There are 5 shells.",
+      "fingerprint": "a9c8b800f883a5716ced691c81d2eb48ffa88b01f019d2c436fa92c2cb21198c",
+      "url": "/audio/lessons/a9c8b800f883a5716ced691c81d2eb48ffa88b01f019d2c436fa92c2cb21198c.mp3",
+      "bytes": 112475,
+      "sha256": "188dcb3c543c8dbaa6aa7111230bcb7056db35324478aa60c3c321e365bfcfce"
+    },
+    "K-add:reflect": {
+      "id": "K-add:reflect",
+      "text": "Show someone an addition story using your fingers.",
+      "fingerprint": "8c7f5b48508c59568acac04859143adc5f01f6d8dc25615c3f5a98277f9c58bc",
+      "url": "/audio/lessons/8c7f5b48508c59568acac04859143adc5f01f6d8dc25615c3f5a98277f9c58bc.mp3",
+      "bytes": 48527,
+      "sha256": "6dbcae63bf218fb311b1da535aea7f7b7a8304ff5ace09c07610141e36c6a235"
+    },
+    "1-ten:goal": {
+      "id": "1-ten:goal",
+      "text": "Make a friendly ten. Use a group of ten to add within 20.",
+      "fingerprint": "a77b03eb4dfd9c2c4aac6bdb8a89b18750ce6e0fb40970759b8b6ec62c99ddbe",
+      "url": "/audio/lessons/a77b03eb4dfd9c2c4aac6bdb8a89b18750ce6e0fb40970759b8b6ec62c99ddbe.mp3",
+      "bytes": 67753,
+      "sha256": "72df7039213e5dcc6a376f086567c514d1250b24edb84e7d80cd8d71d2ac2c94"
+    },
+    "1-ten:step-0": {
+      "id": "1-ten:step-0",
+      "text": "Ten is a helpful stopping place when we add.",
+      "fingerprint": "ec6f66bfd8a78d1262fa5e82574ea2bace5c3e686a53db97f53ff12ab2845c79",
+      "url": "/audio/lessons/ec6f66bfd8a78d1262fa5e82574ea2bace5c3e686a53db97f53ff12ab2845c79.mp3",
+      "bytes": 44347,
+      "sha256": "f169e526e8633b4c6dd1a49ae39940230bc783223499f1b84b3cde287da214e9"
+    },
+    "1-ten:step-1": {
+      "id": "1-ten:step-1",
+      "text": "For 8 plus 5, give 2 of the 5 to the 8. Now you have 10 and 3.",
+      "fingerprint": "586d85892e8a475309ba5be0042b8ec7b2885d79b695f5c1ce7e5744479ee76c",
+      "url": "/audio/lessons/586d85892e8a475309ba5be0042b8ec7b2885d79b695f5c1ce7e5744479ee76c.mp3",
+      "bytes": 91577,
+      "sha256": "19163866edc1219a7d57977896d9ff75837487b155fa0cde3f672c588f65bf1d"
+    },
+    "1-ten:step-2": {
+      "id": "1-ten:step-2",
+      "text": "10 plus 3 equals 13. Moving the counters did not change the total.",
+      "fingerprint": "f5a0e8a2c2e4274427ee49fea13ea802e12b7e72cea6f33ef4f860ab4d35b6de",
+      "url": "/audio/lessons/f5a0e8a2c2e4274427ee49fea13ea802e12b7e72cea6f33ef4f860ab4d35b6de.mp3",
+      "bytes": 89487,
+      "sha256": "85173d9100369371e37dfba9c5684760d8aa249f3f2a3785701eae3cd89b6f91"
+    },
+    "1-ten:guided": {
+      "id": "1-ten:guided",
+      "text": "For 9 plus 4, give 1 to the 9. What is left from the 4?. Choice 1: 3. Choice 2: 4. Choice 3: 1.",
+      "fingerprint": "f020a6d5571e76c0b45e7c3d028e1d1034e7b8a4da0e27a9d6b28ecdab7c7fd7",
+      "url": "/audio/lessons/f020a6d5571e76c0b45e7c3d028e1d1034e7b8a4da0e27a9d6b28ecdab7c7fd7.mp3",
+      "bytes": 292197,
+      "sha256": "b57540640218f5f9be13ca7df7db90c02de345a7f3cffd4faa0f3d99f9b7d18d"
+    },
+    "1-ten:transfer": {
+      "id": "1-ten:transfer",
+      "text": "Use a ten to solve 7 plus 5.. Choice 1: 11. Choice 2: 13. Choice 3: 12.",
+      "fingerprint": "fa2c66c66d50c5815ad8e55a6252ebdcbca2d054bf685ab9359f559346643a52",
+      "url": "/audio/lessons/fa2c66c66d50c5815ad8e55a6252ebdcbca2d054bf685ab9359f559346643a52.mp3",
+      "bytes": 189797,
+      "sha256": "912772c3707cb76c1ea935340f197a08cb770dd3347440c66ba32fa5fb185cd1"
+    },
+    "1-ten:guided-feedback": {
+      "id": "1-ten:guided-feedback",
+      "text": "4 splits into 1 and 3. Then 10 plus 3 equals 13.",
+      "fingerprint": "7d15c3b195bde3ee37cf58f70e087bedf79fbc234bcf45b07411cd7be24bf821",
+      "url": "/audio/lessons/7d15c3b195bde3ee37cf58f70e087bedf79fbc234bcf45b07411cd7be24bf821.mp3",
+      "bytes": 88651,
+      "sha256": "1cf893b5a4df662049279b20918df40d0bd3397bb84df7d4f837b02358f6c3be"
+    },
+    "1-ten:transfer-feedback": {
+      "id": "1-ten:transfer-feedback",
+      "text": "Split 5 into 3 and 2. 7 plus 3 equals 10; 10 plus 2 equals 12.",
+      "fingerprint": "81b14f817490866b6ab65ecae32dbaaf455ec227a56f7f76a6ae768e54d24606",
+      "url": "/audio/lessons/81b14f817490866b6ab65ecae32dbaaf455ec227a56f7f76a6ae768e54d24606.mp3",
+      "bytes": 120834,
+      "sha256": "b16906966bc088852d79293aa2614e5ddbbc76f6bd911ffc5c26aadfd9552c4f"
+    },
+    "1-ten:reflect": {
+      "id": "1-ten:reflect",
+      "text": "Explain why moving part of one group keeps the total the same.",
+      "fingerprint": "96ff33bde0be24f517b0081a7de9c253f7390a927619e357116d81312fe19a6e",
+      "url": "/audio/lessons/96ff33bde0be24f517b0081a7de9c253f7390a927619e357116d81312fe19a6e.mp3",
+      "bytes": 56050,
+      "sha256": "dc325335a8456198bca6f1b9236bb305510ab4dcce4aacbbaede6f1c91ba8afe"
+    },
+    "2-place:goal": {
+      "id": "2-place:goal",
+      "text": "Trade ten ones. Explain regrouping using tens and ones.",
+      "fingerprint": "a03129938193040bb7ce5f312cd185f86a2fabeda299d5184b15b4bed78f7a4b",
+      "url": "/audio/lessons/a03129938193040bb7ce5f312cd185f86a2fabeda299d5184b15b4bed78f7a4b.mp3",
+      "bytes": 74022,
+      "sha256": "0794bed82c8843361c7ae57fc7f780ae0ada498693ee1fd7d654d6f573daf19e"
+    },
+    "2-place:step-0": {
+      "id": "2-place:step-0",
+      "text": "A ten is a bundle of 10 ones.",
+      "fingerprint": "d15b0543d8d8b9e7f41c4358b2a98cd77c7203b8d0ce800a8eeed24f7990409c",
+      "url": "/audio/lessons/d15b0543d8d8b9e7f41c4358b2a98cd77c7203b8d0ce800a8eeed24f7990409c.mp3",
+      "bytes": 36824,
+      "sha256": "ce7205f3654e11de1473ef7980ca76449b576b66185304ddb686dc8ada5b9df5"
+    },
+    "2-place:step-1": {
+      "id": "2-place:step-1",
+      "text": "For 27 plus 15, combine 2 tens and 1 ten, then 7 ones and 5 ones.",
+      "fingerprint": "9a4819c13764a4567d8c132fd3b6ebd9e0adc6b64183f6aafe00a5d7022f311e",
+      "url": "/audio/lessons/9a4819c13764a4567d8c132fd3b6ebd9e0adc6b64183f6aafe00a5d7022f311e.mp3",
+      "bytes": 107459,
+      "sha256": "c5d58efb3b8c961c6be1f6dbd220db9b5b5083ab8bf90b71f8ea7813399e3fe1"
+    },
+    "2-place:step-2": {
+      "id": "2-place:step-2",
+      "text": "That is 3 tens and 12 ones. Trade 10 ones for a ten: 4 tens and 2 ones, or 42.",
+      "fingerprint": "dcd4bb48d5d517c87209715c53ef3515c68e38144aec2b2b3d8c7ee41aac9511",
+      "url": "/audio/lessons/dcd4bb48d5d517c87209715c53ef3515c68e38144aec2b2b3d8c7ee41aac9511.mp3",
+      "bytes": 136298,
+      "sha256": "1b0233fe4c2034470a4f54486b3601a73f208506d4d46f671a29bb45dcd1670c"
+    },
+    "2-place:guided": {
+      "id": "2-place:guided",
+      "text": "What is another name for 2 tens and 13 ones?. Choice 1: 23. Choice 2: 33. Choice 3: 213.",
+      "fingerprint": "5254b5313b6d77467b85e6225ae9ce149a86f1a99bdfac44f2362b128f3c5f2a",
+      "url": "/audio/lessons/5254b5313b6d77467b85e6225ae9ce149a86f1a99bdfac44f2362b128f3c5f2a.mp3",
+      "bytes": 221144,
+      "sha256": "f7cbe7f53f32be488d40ed5d7071eafdc85b9b164fdf6c5351444078b4852ba1"
+    },
+    "2-place:transfer": {
+      "id": "2-place:transfer",
+      "text": "What is 36 plus 18?. Choice 1: 44. Choice 2: 514. Choice 3: 54.",
+      "fingerprint": "7bfe53f55565ceac325fc4cda7bc20ca4012d1ec0f56e893ff3eac6cdfa57d49",
+      "url": "/audio/lessons/7bfe53f55565ceac325fc4cda7bc20ca4012d1ec0f56e893ff3eac6cdfa57d49.mp3",
+      "bytes": 201500,
+      "sha256": "82e363eafd3b7c9130e2ae18c57ee0bf5e471fe1bf9873e2caae7b15e7669a48"
+    },
+    "2-place:guided-feedback": {
+      "id": "2-place:guided-feedback",
+      "text": "Trade 10 of the 13 ones for a ten. You get 3 tens and 3 ones: 33.",
+      "fingerprint": "6104aea4043975eafed60f981e667ee248d6aa4a48bbbfbc1f0a5fa5983e0303",
+      "url": "/audio/lessons/6104aea4043975eafed60f981e667ee248d6aa4a48bbbfbc1f0a5fa5983e0303.mp3",
+      "bytes": 103697,
+      "sha256": "d2419eac77625d209127e5a299dd62fa31998cb78371d6e00ce2fe4ecbc84451"
+    },
+    "2-place:transfer-feedback": {
+      "id": "2-place:transfer-feedback",
+      "text": "4 tens and 14 ones becomes 5 tens and 4 ones: 54.",
+      "fingerprint": "0260269c134bba8e2838b554ec44cb7a2d827a4813cb9d0afa5222a387237e77",
+      "url": "/audio/lessons/0260269c134bba8e2838b554ec44cb7a2d827a4813cb9d0afa5222a387237e77.mp3",
+      "bytes": 75276,
+      "sha256": "f6985acf600504617f3dbce8ab60a3164dde7ff7ff0c22939bc76eebfb32eaec"
+    },
+    "2-place:reflect": {
+      "id": "2-place:reflect",
+      "text": "Explain what happens to 10 ones when you regroup.",
+      "fingerprint": "a1fe56cd022cdc65b29d3105ef9a77597ec4cfd3fe63242884d1d624dad0d7b7",
+      "url": "/audio/lessons/a1fe56cd022cdc65b29d3105ef9a77597ec4cfd3fe63242884d1d624dad0d7b7.mp3",
+      "bytes": 50199,
+      "sha256": "6182cb8c996d3c74ecd83712f3284005e9bc67ddcfa54280923b164c9e261adb"
+    },
+    "3-groups:goal": {
+      "id": "3-groups:goal",
+      "text": "See multiplication. Connect equal groups, repeated addition, and multiplication.",
+      "fingerprint": "e41799761da7275a2712cfec29c64476c9cffcad2e2d972f8f836d2a205774ea",
+      "url": "/audio/lessons/e41799761da7275a2712cfec29c64476c9cffcad2e2d972f8f836d2a205774ea.mp3",
+      "bytes": 93248,
+      "sha256": "32b932698536c18abb4d3378ed6783d387561f534cd34aa26cc6612fb422b808"
+    },
+    "3-groups:step-0": {
+      "id": "3-groups:step-0",
+      "text": "Multiplication counts equal groups.",
+      "fingerprint": "6e8e8d448093f2977441ee2299b5750f3bd474be494b5548de5e92fa8dc41d5e",
+      "url": "/audio/lessons/6e8e8d448093f2977441ee2299b5750f3bd474be494b5548de5e92fa8dc41d5e.mp3",
+      "bytes": 39750,
+      "sha256": "d58fd48adb670a1871447048d40f841f9adc9e97ff08b483b689ffe285b0e334"
+    },
+    "3-groups:step-1": {
+      "id": "3-groups:step-1",
+      "text": "Three groups of 4 means 4 plus 4 plus 4.",
+      "fingerprint": "714980d6f2164b931c9b88d74152b69965a51129c0c55c60d7a6a8df3ccb8bb0",
+      "url": "/audio/lessons/714980d6f2164b931c9b88d74152b69965a51129c0c55c60d7a6a8df3ccb8bb0.mp3",
+      "bytes": 57722,
+      "sha256": "86a13566252788488dcde9308ab64019925ffc4d6c2a5ac0c5f977a5bd8ffceb"
+    },
+    "3-groups:step-2": {
+      "id": "3-groups:step-2",
+      "text": "We write 3 times 4 equals 12. Three tells the number of groups; four tells the size of each group.",
+      "fingerprint": "d452281301a1f7c14d6ee056255e8c9453d0fb769b16965ec8081bcbf776387e",
+      "url": "/audio/lessons/d452281301a1f7c14d6ee056255e8c9453d0fb769b16965ec8081bcbf776387e.mp3",
+      "bytes": 124595,
+      "sha256": "8880eb46d0e7dd4d1830768e34305567888b7ce2f5d07476f252e1f12546c702"
+    },
+    "3-groups:guided": {
+      "id": "3-groups:guided",
+      "text": "Which expression shows 2 groups of 5?. Choice 1: 2 plus 5. Choice 2: 5 minus 2. Choice 3: 5 plus 5.",
+      "fingerprint": "6f1ec93e755100436736d75dc45b46c2aad1fc4d82fd804bb3fea8d4e1a6eb66",
+      "url": "/audio/lessons/6f1ec93e755100436736d75dc45b46c2aad1fc4d82fd804bb3fea8d4e1a6eb66.mp3",
+      "bytes": 246222,
+      "sha256": "98ef8cb48132270b7549cbde8225cd096b3a6a4b1f7af0ecfea0baba00d840cd"
+    },
+    "3-groups:transfer": {
+      "id": "3-groups:transfer",
+      "text": "There are 4 bags with 3 apples in each. How many apples?. Choice 1: 12. Choice 2: 7. Choice 3: 16.",
+      "fingerprint": "fa1ace9c9fe2f6ea4fd3cf7c7ffb5d89ae9699afd14fe3373e38085ba14bbf8d",
+      "url": "/audio/lessons/fa1ace9c9fe2f6ea4fd3cf7c7ffb5d89ae9699afd14fe3373e38085ba14bbf8d.mp3",
+      "bytes": 280494,
+      "sha256": "89084dde5c3858d4de9cfaab7b527778137cbae71d067c9f60d8161caad4834b"
+    },
+    "3-groups:guided-feedback": {
+      "id": "3-groups:guided-feedback",
+      "text": "Each group has 5, so two groups are 5 plus 5 equals 10.",
+      "fingerprint": "c030ae9fc317ab7eacab5a9a4aa29488141c8113a6774b17f3aa302804a40ebf",
+      "url": "/audio/lessons/c030ae9fc317ab7eacab5a9a4aa29488141c8113a6774b17f3aa302804a40ebf.mp3",
+      "bytes": 73186,
+      "sha256": "f2c3cc4a85952bc243dc4b6a2d9b0264c9e1bfecc75b04e9ce323b0d1cf3702b"
+    },
+    "3-groups:transfer-feedback": {
+      "id": "3-groups:transfer-feedback",
+      "text": "3 plus 3 plus 3 plus 3 equals 12, so 4 times 3 equals 12.",
+      "fingerprint": "be12bfe084f62ad859518eeed93266700fc97962f288102633ba8b7138a381e9",
+      "url": "/audio/lessons/be12bfe084f62ad859518eeed93266700fc97962f288102633ba8b7138a381e9.mp3",
+      "bytes": 91577,
+      "sha256": "d5539ae409848bd1175efa9010e3c759d05b039822db733284457d0f06f7a513"
+    },
+    "3-groups:reflect": {
+      "id": "3-groups:reflect",
+      "text": "Find equal groups nearby. Describe the number of groups and the size of each.",
+      "fingerprint": "c1b13d266099c3cf0d968794474391e6a7b9173e9b5dd75f42855a667e5fcecc",
+      "url": "/audio/lessons/c1b13d266099c3cf0d968794474391e6a7b9173e9b5dd75f42855a667e5fcecc.mp3",
+      "bytes": 75276,
+      "sha256": "04bdbeb9c0c51b0f186df836bdf9ec61648cef8a08079f2c2f06c5958673f184"
+    },
+    "4-equivalent:goal": {
+      "id": "4-equivalent:goal",
+      "text": "Same amount, new pieces. Explain why two fractions can name the same amount.",
+      "fingerprint": "eccef8cd89ce2a7a80ddcd0bfe8db10ae1201a59d26e08ca93036130eb37d77e",
+      "url": "/audio/lessons/eccef8cd89ce2a7a80ddcd0bfe8db10ae1201a59d26e08ca93036130eb37d77e.mp3",
+      "bytes": 92413,
+      "sha256": "0a0b63695ac28f5efbe5442bfb753edc1858fab68518ac4660c70d407fffe006"
+    },
+    "4-equivalent:step-0": {
+      "id": "4-equivalent:step-0",
+      "text": "Fractions compare equal parts of a whole. Use the same-sized whole when comparing.",
+      "fingerprint": "ead464efde731555c8a6eaaa4d365ced7037bcbeb1f3ed195512fa6655533544",
+      "url": "/audio/lessons/ead464efde731555c8a6eaaa4d365ced7037bcbeb1f3ed195512fa6655533544.mp3",
+      "bytes": 84889,
+      "sha256": "2984d841f1c5f69f4982d4c9408826c761fbe8674374d17c2cd31950715b7c28"
+    },
+    "4-equivalent:step-1": {
+      "id": "4-equivalent:step-1",
+      "text": "Shade 1 of 2 equal parts. Split every part in half.",
+      "fingerprint": "7967d3f3595cda5bb83f4ad95c205e7a94cf41879bd2f6ad77958d431a200ca5",
+      "url": "/audio/lessons/7967d3f3595cda5bb83f4ad95c205e7a94cf41879bd2f6ad77958d431a200ca5.mp3",
+      "bytes": 67753,
+      "sha256": "bc130310fa7b25120573288e51adce3dac1ebed0ecb35473092da6db8d4e2c3b"
+    },
+    "4-equivalent:step-2": {
+      "id": "4-equivalent:step-2",
+      "text": "Now 2 of 4 equal parts are shaded. The amount stayed the same: 1 over 2 equals 2 over 4.",
+      "fingerprint": "bf9c36c869b1680daa6676f94b0a83d92388767fafe40ca27d7489cfcec62aa4",
+      "url": "/audio/lessons/bf9c36c869b1680daa6676f94b0a83d92388767fafe40ca27d7489cfcec62aa4.mp3",
+      "bytes": 131283,
+      "sha256": "d6d2ea8974ae5e6ae7dbbdc3c8650827c6cff693734f54fbaa44b4a359afc131"
+    },
+    "4-equivalent:guided": {
+      "id": "4-equivalent:guided",
+      "text": "Split each third in two. What fraction equals 2 over 3?. Choice 1: 2 over 6. Choice 2: 4 over 6. Choice 3: 3 over 4.",
+      "fingerprint": "e832f35b7dc7e28ab9805fe162b4b2d6255f3732d1115f6ebfd709ed6c0c88a8",
+      "url": "/audio/lessons/e832f35b7dc7e28ab9805fe162b4b2d6255f3732d1115f6ebfd709ed6c0c88a8.mp3",
+      "bytes": 234937,
+      "sha256": "8177cded978ce2e1b02302a1470f1156836a201b17d11fcc6d085004258cc290"
+    },
+    "4-equivalent:transfer": {
+      "id": "4-equivalent:transfer",
+      "text": "Which fraction equals 3 over 4?. Choice 1: 3 over 8. Choice 2: 4 over 5. Choice 3: 6 over 8.",
+      "fingerprint": "d93aad8265f996a43a64981d595e827c46896997f76feb4a071bbcf18143cc9a",
+      "url": "/audio/lessons/d93aad8265f996a43a64981d595e827c46896997f76feb4a071bbcf18143cc9a.mp3",
+      "bytes": 295123,
+      "sha256": "2d76b82d90619f127aaa5b0dce2ff7d1ede71e7fea832160543b3aff8e57e957"
+    },
+    "4-equivalent:guided-feedback": {
+      "id": "4-equivalent:guided-feedback",
+      "text": "Both the shaded parts and all the parts double: 2 over 3 equals 4 over 6.",
+      "fingerprint": "08fe72096eca7ae0a1c7f142f60b6a259bb6d4aa804b88031bce2cb656d5c17e",
+      "url": "/audio/lessons/08fe72096eca7ae0a1c7f142f60b6a259bb6d4aa804b88031bce2cb656d5c17e.mp3",
+      "bytes": 94084,
+      "sha256": "f6f236e0f6418a459bf5878db6925539c91f8d328d0e97621cad9ffc2f257961"
+    },
+    "4-equivalent:transfer-feedback": {
+      "id": "4-equivalent:transfer-feedback",
+      "text": "Multiply both the numerator and denominator by 2: 3 over 4 equals 6 over 8.",
+      "fingerprint": "580e50a503f0254f931a75b9e581f604f6388c2ecd985c895287db355a0442ec",
+      "url": "/audio/lessons/580e50a503f0254f931a75b9e581f604f6388c2ecd985c895287db355a0442ec.mp3",
+      "bytes": 104533,
+      "sha256": "f5ab699262da4bf9b4a894a0683b4200c517f6d32713a9b475d0aa5e4b70284e"
+    },
+    "4-equivalent:reflect": {
+      "id": "4-equivalent:reflect",
+      "text": "Why must both numbers change when you split every part into smaller pieces?",
+      "fingerprint": "b0307f013a2dcc5c24e2f934b3af0ee7acd69db28da82910a7619d02df7c58d5",
+      "url": "/audio/lessons/b0307f013a2dcc5c24e2f934b3af0ee7acd69db28da82910a7619d02df7c58d5.mp3",
+      "bytes": 77784,
+      "sha256": "29edc25b221536c91fd616fee072f798a03b47a7cac61703ac4d759cca37d208"
+    },
+    "5-decimal:goal": {
+      "id": "5-decimal:goal",
+      "text": "Line up the values. Add decimals by matching place values.",
+      "fingerprint": "e1ad4625e6d1f5231c2f6b53b8448ee79cf0412f41b87ec24eaf203b36042ce9",
+      "url": "/audio/lessons/e1ad4625e6d1f5231c2f6b53b8448ee79cf0412f41b87ec24eaf203b36042ce9.mp3",
+      "bytes": 79874,
+      "sha256": "653e3eb2dffdae09d1e7e397de7311559f4f2f9a8715e833c6d184cdf537bb46"
+    },
+    "5-decimal:step-0": {
+      "id": "5-decimal:step-0",
+      "text": "Tenths must join tenths, and hundredths must join hundredths.",
+      "fingerprint": "f20c858e6c3ac517465bcd7555c7490c68bb4ea3cd37a633abfec34f9939fd01",
+      "url": "/audio/lessons/f20c858e6c3ac517465bcd7555c7490c68bb4ea3cd37a633abfec34f9939fd01.mp3",
+      "bytes": 55214,
+      "sha256": "1888b4e7909b1149dec96273c84a44cc997f9cc79b06bb11272e85d87be4a951"
+    },
+    "5-decimal:step-1": {
+      "id": "5-decimal:step-1",
+      "text": "For 1.25 plus 0.40, line up the decimal points. Add 5 hundredths and 0 hundredths, then 2 tenths and 4 tenths.",
+      "fingerprint": "d91c50c443fab4c9f357f5b1bdbb57aa9281e9c54f714ad1815e92898af99b3c",
+      "url": "/audio/lessons/d91c50c443fab4c9f357f5b1bdbb57aa9281e9c54f714ad1815e92898af99b3c.mp3",
+      "bytes": 191469,
+      "sha256": "c745ca2db2b5913a2f71d479f6e20f45ee61a57856889ba1cfe5d327a1c23a9e"
+    },
+    "5-decimal:step-2": {
+      "id": "5-decimal:step-2",
+      "text": "Add the ones. The sum is 1.65. Writing 0.4 as 0.40 keeps its value.",
+      "fingerprint": "f6b72e9ad82e6e112436fdd3185edd30e9ca48a44198f65f366594f90fddce1d",
+      "url": "/audio/lessons/f6b72e9ad82e6e112436fdd3185edd30e9ca48a44198f65f366594f90fddce1d.mp3",
+      "bytes": 137134,
+      "sha256": "32fa4aa3bfa8e7ee99d0266784de59928df22c77e4702c8955d881a69d9b3c61"
+    },
+    "5-decimal:guided": {
+      "id": "5-decimal:guided",
+      "text": "Why can we write 0.6 as 0.60?. Choice 1: 6 tenths equals 60 hundredths. Choice 2: Zeros always make numbers larger. Choice 3: 6 equals 60.",
+      "fingerprint": "c9ed63769740b6a67eafe358daf3f5f0a867eba418d41f3daefea65ab23891bc",
+      "url": "/audio/lessons/c9ed63769740b6a67eafe358daf3f5f0a867eba418d41f3daefea65ab23891bc.mp3",
+      "bytes": 345696,
+      "sha256": "01e85d636209590d538003193c333b6abfa7136bec41e7a639e0741faecb7bb1"
+    },
+    "5-decimal:transfer": {
+      "id": "5-decimal:transfer",
+      "text": "What is 2.35 plus 0.7?. Choice 1: 2.42. Choice 2: 3.05. Choice 3: 9.35.",
+      "fingerprint": "0f555954ade6790ee8b9fdf354ff35bd4acf34696deb903e0df4cea1389aba16",
+      "url": "/audio/lessons/0f555954ade6790ee8b9fdf354ff35bd4acf34696deb903e0df4cea1389aba16.mp3",
+      "bytes": 238280,
+      "sha256": "069e4887fe27f5e15481ed517a97296a8c7971c13520a899eaf7e2248741d3a3"
+    },
+    "5-decimal:guided-feedback": {
+      "id": "5-decimal:guided-feedback",
+      "text": "Each tenth contains 10 hundredths. 6 tenths is 60 hundredths.",
+      "fingerprint": "11a8d85d6c83068f16fb3e5e93230d6ed67f2a8a2bcd9e60d86ef4851414e211",
+      "url": "/audio/lessons/11a8d85d6c83068f16fb3e5e93230d6ed67f2a8a2bcd9e60d86ef4851414e211.mp3",
+      "bytes": 86561,
+      "sha256": "cbbb7c8aea34bce699983e9f504b91be9448a726f29a573e82de4876efd0f271"
+    },
+    "5-decimal:transfer-feedback": {
+      "id": "5-decimal:transfer-feedback",
+      "text": "Use 0.70. 35 hundredths plus 70 hundredths equals 105 hundredths, so the sum is 3.05.",
+      "fingerprint": "85576b87b71ae2d577793043e24a6eb1d47368040ef6f35c9ca8229f6267213d",
+      "url": "/audio/lessons/85576b87b71ae2d577793043e24a6eb1d47368040ef6f35c9ca8229f6267213d.mp3",
+      "bytes": 201500,
+      "sha256": "2bc5336ca879cedccb3da51c2a2abeb9d679d42b810351d9d82e14d933e50767"
+    },
+    "5-decimal:reflect": {
+      "id": "5-decimal:reflect",
+      "text": "Estimate your sum first. Explain why the exact answer makes sense.",
+      "fingerprint": "baf39cb1e6bcf1d9fb29b6f0d01671ce712de79a20bbeaa77be42eeb9d8c94c7",
+      "url": "/audio/lessons/baf39cb1e6bcf1d9fb29b6f0d01671ce712de79a20bbeaa77be42eeb9d8c94c7.mp3",
+      "bytes": 78202,
+      "sha256": "a851e9f95e138c5b59ba7f244fbbf0ea10a524b913428adda0b541383e680967"
+    },
+    "PK-rhyme:goal": {
+      "id": "PK-rhyme:goal",
+      "text": "Listen for rhymes. Hear words that have the same ending sounds.",
+      "fingerprint": "b1046840d7697536ab71f305eb9e345e4b3a30007753aea7495735995eeb4e64",
+      "url": "/audio/lessons/b1046840d7697536ab71f305eb9e345e4b3a30007753aea7495735995eeb4e64.mp3",
+      "bytes": 74440,
+      "sha256": "ff6a398762ead7df0f22a6d071e984ca9a055d4194c092fa47d17c97bd7b2e36"
+    },
+    "PK-rhyme:step-0": {
+      "id": "PK-rhyme:step-0",
+      "text": "Say cat. Now say hat. Listen to the ends of the words.",
+      "fingerprint": "49700054a12fd3d43ccbd92cd44db23cdc3027dbfe6bd8168723fe60a47539c0",
+      "url": "/audio/lessons/49700054a12fd3d43ccbd92cd44db23cdc3027dbfe6bd8168723fe60a47539c0.mp3",
+      "bytes": 79038,
+      "sha256": "cf50e7448129a3bdeb343547726508587994085b271a509723b2d2e73585ac7e"
+    },
+    "PK-rhyme:step-1": {
+      "id": "PK-rhyme:step-1",
+      "text": "Cat and hat rhyme. Their ending sounds match.",
+      "fingerprint": "11412296f78f1623cafc293160aa895e9b978a5bf5896eefce5837ad21eec6ea",
+      "url": "/audio/lessons/11412296f78f1623cafc293160aa895e9b978a5bf5896eefce5837ad21eec6ea.mp3",
+      "bytes": 53124,
+      "sha256": "b9b9736ad05f92c7de06435a8aed85f5fc6e9c77bc1d4c85b3be4d2dffef2d31"
+    },
+    "PK-rhyme:step-2": {
+      "id": "PK-rhyme:step-2",
+      "text": "Say cat and sun. Their ending sounds do not match.",
+      "fingerprint": "a767cf7475ffd38444537e167cf3ac5089752caa64ae76b0764345b258bce4cc",
+      "url": "/audio/lessons/a767cf7475ffd38444537e167cf3ac5089752caa64ae76b0764345b258bce4cc.mp3",
+      "bytes": 63573,
+      "sha256": "9416c7af3e9c829916da505f214e23c1ae9eab6f13328223cf523daae59c2c35"
+    },
+    "PK-rhyme:guided": {
+      "id": "PK-rhyme:guided",
+      "text": "Say these words or listen. Which word rhymes with sun?. Choice 1: cat. Choice 2: run. Choice 3: dog.",
+      "fingerprint": "6b509fbf36032bd31473fd808ef251e4ba588d4f90501640208803ab2beba53e",
+      "url": "/audio/lessons/6b509fbf36032bd31473fd808ef251e4ba588d4f90501640208803ab2beba53e.mp3",
+      "bytes": 195648,
+      "sha256": "380b5ed92abe4a3a15fa0aef3736442038d91133bd5d40aa00b670921029f747"
+    },
+    "PK-rhyme:transfer": {
+      "id": "PK-rhyme:transfer",
+      "text": "Which word rhymes with dog? Say the words or listen.. Choice 1: log. Choice 2: hat. Choice 3: sun.",
+      "fingerprint": "b9bbdb1f22d6fb258a805052873aa6658ef703c3eded8b875c48cc42d19c1b62",
+      "url": "/audio/lessons/b9bbdb1f22d6fb258a805052873aa6658ef703c3eded8b875c48cc42d19c1b62.mp3",
+      "bytes": 206933,
+      "sha256": "25d84803e9fb49ace082924518acfe932652348f5749ba72f01b9a31bca71350"
+    },
+    "PK-rhyme:guided-feedback": {
+      "id": "PK-rhyme:guided-feedback",
+      "text": "Sun and run have the same ending sounds.",
+      "fingerprint": "4d962c86e8f2555b264e6756ceb191843630f194b5cdbca167a616fc176ed487",
+      "url": "/audio/lessons/4d962c86e8f2555b264e6756ceb191843630f194b5cdbca167a616fc176ed487.mp3",
+      "bytes": 36824,
+      "sha256": "3fd52f4beab1fe6001eb7a9c4f03769a599b7c04239226f98e4d1449e1a76909"
+    },
+    "PK-rhyme:transfer-feedback": {
+      "id": "PK-rhyme:transfer-feedback",
+      "text": "Dog and log have matching ending sounds.",
+      "fingerprint": "377d00a806e5b06acc339793a7bb1b61c69540930e711b844892f3b9ab21757e",
+      "url": "/audio/lessons/377d00a806e5b06acc339793a7bb1b61c69540930e711b844892f3b9ab21757e.mp3",
+      "bytes": 38914,
+      "sha256": "3147fae6d5d1068d76ef4eb87fc2eb7bf4aab3547417947152bdd9165d265782"
+    },
+    "PK-rhyme:reflect": {
+      "id": "PK-rhyme:reflect",
+      "text": "With a grown-up, say a silly rhyme. Made-up rhyming words are welcome!",
+      "fingerprint": "21a06cce6e75f4b2e26b7bd4b73636fc9cdcb04ac15c235bb542d91c2eff793c",
+      "url": "/audio/lessons/21a06cce6e75f4b2e26b7bd4b73636fc9cdcb04ac15c235bb542d91c2eff793c.mp3",
+      "bytes": 77784,
+      "sha256": "89b70e4a0a66f1c5afe2465d0b284c1f71588e16881143f009fbf863e64198c9"
+    },
+    "K-blend:goal": {
+      "id": "K-blend:goal",
+      "text": "Slide sounds into a word. Blend the sounds in a simple word.",
+      "fingerprint": "90258b7588aadcce49a77bb907953bf23824d9c20b048ee037e89594ca825db2",
+      "url": "/audio/lessons/90258b7588aadcce49a77bb907953bf23824d9c20b048ee037e89594ca825db2.mp3",
+      "bytes": 69425,
+      "sha256": "51622d19de62dd1085d727c0fc57e50e1f2acb5db7e5a526c226c7e4697deef6"
+    },
+    "K-blend:step-0": {
+      "id": "K-blend:step-0",
+      "text": "Letters can stand for sounds. Look at mat. The first sound is the sound at the start of moon. The middle sound is the sound at the start of apple. The last sound is the sound at the start of top.",
+      "fingerprint": "e5dac278fa0dadd2b87ff79cbe2c6edeab2e822284725d141421ef21515d7df4",
+      "url": "/audio/lessons/e5dac278fa0dadd2b87ff79cbe2c6edeab2e822284725d141421ef21515d7df4.mp3",
+      "bytes": 211949,
+      "sha256": "28163351148679dd52000980f5a3fa56b1a46eae5924ad24de6f5f26dd86869e"
+    },
+    "K-blend:step-1": {
+      "id": "K-blend:step-1",
+      "text": "Point to each letter in mat. Say its sound, then slide the sounds together to read the word, mat. Keep the last sound short. Do not add an extra vowel sound.",
+      "fingerprint": "e4c4b415b3f7e65ce6517157450ee271bff031e7cc31755bb921e151763694a2",
+      "url": "/audio/lessons/e4c4b415b3f7e65ce6517157450ee271bff031e7cc31755bb921e151763694a2.mp3",
+      "bytes": 218218,
+      "sha256": "328b13d876d0d0c478e043abf45a7be16fc2b395287264bfd4718a275bd53455"
+    },
+    "K-blend:step-2": {
+      "id": "K-blend:step-2",
+      "text": "Read the words: A mat. Point to mat and blend it again.",
+      "fingerprint": "a9179d5c1bb7ffec6a6def6385926c0e0d3cf57f744df41fc51d227b29b31ba5",
+      "url": "/audio/lessons/a9179d5c1bb7ffec6a6def6385926c0e0d3cf57f744df41fc51d227b29b31ba5.mp3",
+      "bytes": 76112,
+      "sha256": "4092c4f0f6d5a9134212548e6eb8f6acdf5dfe02df15bc89dfe2ab7ec10494d7"
+    },
+    "K-blend:guided": {
+      "id": "K-blend:guided",
+      "text": "Read: mat. Which letter is at the start?. Choice 1: t. Choice 2: a. Choice 3: m.",
+      "fingerprint": "982f300fb6df839d9baeac500d502d250af189be9a9b278e2cfd4c1f50f1b860",
+      "url": "/audio/lessons/982f300fb6df839d9baeac500d502d250af189be9a9b278e2cfd4c1f50f1b860.mp3",
+      "bytes": 225324,
+      "sha256": "7a9eb8f79bf3e4052f2f1d997c16ed14e942f137b4f8bb4fc6c7c98fa72adb55"
+    },
+    "K-blend:transfer": {
+      "id": "K-blend:transfer",
+      "text": "Blend s, a, t. Which word did you read? Try before listening.. Choice 1: mat. Choice 2: sat. Choice 3: tap.",
+      "fingerprint": "446d4835a3877876489f775e48bce49a418c316e2c0baac1ae8aa114255206ef",
+      "url": "/audio/lessons/446d4835a3877876489f775e48bce49a418c316e2c0baac1ae8aa114255206ef.mp3",
+      "bytes": 258342,
+      "sha256": "0c33e0c086641c9e79210a710b1b3c5d650b63abf2798805b11646b4f91e03f1"
+    },
+    "K-blend:guided-feedback": {
+      "id": "K-blend:guided-feedback",
+      "text": "The letter M is first. Start with the first sound in moon. Then blend in the first sound in apple, and the first sound in top, to read mat.",
+      "fingerprint": "8a85a07f6fdc92e61a04eacf16c9c59440bc608b48160d5ad19b42fe843a7f30",
+      "url": "/audio/lessons/8a85a07f6fdc92e61a04eacf16c9c59440bc608b48160d5ad19b42fe843a7f30.mp3",
+      "bytes": 168063,
+      "sha256": "26aec0c14e529abbea94088b507e0d970b688ec025f3fe21dda51de5d6cb3113"
+    },
+    "K-blend:transfer-feedback": {
+      "id": "K-blend:transfer-feedback",
+      "text": "The first sounds in sun, apple, and top blend into the word sat.",
+      "fingerprint": "c3ed94c6d02b97185e07053ff648a6f525fe4caf3c1fc2ee2b9188964907737e",
+      "url": "/audio/lessons/c3ed94c6d02b97185e07053ff648a6f525fe4caf3c1fc2ee2b9188964907737e.mp3",
+      "bytes": 107459,
+      "sha256": "7bb92dda753608799b8f61f05b6f233051a230f6c42a95bc444729aac5ac3503"
+    },
+    "K-blend:reflect": {
+      "id": "K-blend:reflect",
+      "text": "Read aloud: Sam sat. A mat. Sam sat. Ask a grown-up to listen to your blending.",
+      "fingerprint": "2286fa0fab9dbda50d3c72a0bb7a48bb152ace5403512431a3dd0d66d5ba0743",
+      "url": "/audio/lessons/2286fa0fab9dbda50d3c72a0bb7a48bb152ace5403512431a3dd0d66d5ba0743.mp3",
+      "bytes": 139224,
+      "sha256": "adb841221a8d210eac08d7738a6e584980a815ffeec53d2889a856acb0acb922"
+    },
+    "1-silent-e:goal": {
+      "id": "1-silent-e:goal",
+      "text": "Meet the quiet e. Read words with a vowel, consonant, and final e.",
+      "fingerprint": "a6eb2a6966bb5b0deb7f6d99718dee36a20ff6f3136dcc949b96a8d66a80fd9f",
+      "url": "/audio/lessons/a6eb2a6966bb5b0deb7f6d99718dee36a20ff6f3136dcc949b96a8d66a80fd9f.mp3",
+      "bytes": 96174,
+      "sha256": "0466aeb33f2ced7a298da75cbfd51b5a2f198b9c0510d7d574800ccef8685d06"
+    },
+    "1-silent-e:step-0": {
+      "id": "1-silent-e:step-0",
+      "text": "Read cap. Its a has a short vowel sound.",
+      "fingerprint": "9349eda15a1334f443668c8f34d076322c1ba42938c90849a172c929e6306694",
+      "url": "/audio/lessons/9349eda15a1334f443668c8f34d076322c1ba42938c90849a172c929e6306694.mp3",
+      "bytes": 64827,
+      "sha256": "f03d9bd3780806a13424445bd2e63d30d0d45a59ccd5c11ee73537a0b090b24f"
+    },
+    "1-silent-e:step-1": {
+      "id": "1-silent-e:step-1",
+      "text": "Add e to make cape. In this pattern, a says its name and the final e is silent.",
+      "fingerprint": "f7de9fc84c0428bc78c2967fa5ebcdb93e04b53a3184f564de512609b9792f14",
+      "url": "/audio/lessons/f7de9fc84c0428bc78c2967fa5ebcdb93e04b53a3184f564de512609b9792f14.mp3",
+      "bytes": 107459,
+      "sha256": "d6b24c9817fcc8029d09427798a3e11d458ae28e94af6ab75cdc093b079af70e"
+    },
+    "1-silent-e:step-2": {
+      "id": "1-silent-e:step-2",
+      "text": "Compare tap and tape. Look through the whole word before you blend. Not every word ending in e follows this pattern.",
+      "fingerprint": "7cf4f2077066a9bcfc8c2ca91cd87df1fff52e4a9318ade198e89644a88f3fd0",
+      "url": "/audio/lessons/7cf4f2077066a9bcfc8c2ca91cd87df1fff52e4a9318ade198e89644a88f3fd0.mp3",
+      "bytes": 117072,
+      "sha256": "000e8188f4a3eefc1e43e1b2fe8cb0c4c7b0fae447a2256bcef1eee8557a861c"
+    },
+    "1-silent-e:guided": {
+      "id": "1-silent-e:guided",
+      "text": "Which word has the long a sound? Try reading first.. Choice 1: cape. Choice 2: cap. Choice 3: cat.",
+      "fingerprint": "1b79fa0879d750710ad54f8fd76dd9863203c9b05b7967eea5b7d2b290ad3f9d",
+      "url": "/audio/lessons/1b79fa0879d750710ad54f8fd76dd9863203c9b05b7967eea5b7d2b290ad3f9d.mp3",
+      "bytes": 188125,
+      "sha256": "09fa969498b8c03c49cf6188f2f2da9a5d7d1d7a177f7e662cc7502d27477d42"
+    },
+    "1-silent-e:transfer": {
+      "id": "1-silent-e:transfer",
+      "text": "Read these words. Which has a silent final e and long i?. Choice 1: pin. Choice 2: sit. Choice 3: pine.",
+      "fingerprint": "1326f41abe3b56280638c267ae60039d523e2b150deef4ced550577725ab51f8",
+      "url": "/audio/lessons/1326f41abe3b56280638c267ae60039d523e2b150deef4ced550577725ab51f8.mp3",
+      "bytes": 247057,
+      "sha256": "04ba3f8e641708abc28c5069b12c1f24fadd7bb90f40fec3ef8f8d3aa2f60e2a"
+    },
+    "1-silent-e:guided-feedback": {
+      "id": "1-silent-e:guided-feedback",
+      "text": "In cape, the a says its name. The final e is silent.",
+      "fingerprint": "f9145ddec66d604b91b66d1d328704d4c3939fe6c6334435cf02ebf4ebf505cc",
+      "url": "/audio/lessons/f9145ddec66d604b91b66d1d328704d4c3939fe6c6334435cf02ebf4ebf505cc.mp3",
+      "bytes": 74440,
+      "sha256": "69ead4b15b4c7d70dd3eb352c5c32c8d43f45a7c6a6bc02476db8b540648c059"
+    },
+    "1-silent-e:transfer-feedback": {
+      "id": "1-silent-e:transfer-feedback",
+      "text": "Pine follows the vowel-consonant-e pattern. Its i says its name.",
+      "fingerprint": "779e56a01d21cfaa7027e45a448f9026a7e0d1448b5200732b92ea8321d7e797",
+      "url": "/audio/lessons/779e56a01d21cfaa7027e45a448f9026a7e0d1448b5200732b92ea8321d7e797.mp3",
+      "bytes": 88651,
+      "sha256": "e1c7ab6ac84cf771962de2e8d460b95d29afc51724fd3694a415dac9024b61ec"
+    },
+    "1-silent-e:reflect": {
+      "id": "1-silent-e:reflect",
+      "text": "Read aloud: Sam has a cape. Sam can hop. Compare hop and hope with a grown-up.",
+      "fingerprint": "6ea4956f11b8153dd00c79fb83b13dae47d152e0932cfe343753fe5ac5dd38a8",
+      "url": "/audio/lessons/6ea4956f11b8153dd00c79fb83b13dae47d152e0932cfe343753fe5ac5dd38a8.mp3",
+      "bytes": 115400,
+      "sha256": "927bbb84e0a1d05a19bc1bc0282e4e0fe18bfba5e7de91d0283587613cf5201f"
+    },
+    "2-prefix:goal": {
+      "id": "2-prefix:goal",
+      "text": "A small part changes meaning. Use the prefix un- to understand a word.",
+      "fingerprint": "4b4ea895d8a49e0db0e3104e31f4bcb78ed43d0c57a3c7c6cb55c5de4e0ec209",
+      "url": "/audio/lessons/4b4ea895d8a49e0db0e3104e31f4bcb78ed43d0c57a3c7c6cb55c5de4e0ec209.mp3",
+      "bytes": 106623,
+      "sha256": "cfe32b520661c9faee3895101f417496acb4e05f158225cbb54108f5d384b711"
+    },
+    "2-prefix:step-0": {
+      "id": "2-prefix:step-0",
+      "text": "A prefix is a word part added at the beginning of a base word.",
+      "fingerprint": "29e55dfc5cf70ea6ce924c9c225e6ec1f4677975bd9a257ca3e1bb214e91f948",
+      "url": "/audio/lessons/29e55dfc5cf70ea6ce924c9c225e6ec1f4677975bd9a257ca3e1bb214e91f948.mp3",
+      "bytes": 67335,
+      "sha256": "9885ea576f8034ccffd783c7bc01c5b87fcbe103162b52c1bf82725f600da64e"
+    },
+    "2-prefix:step-2": {
+      "id": "2-prefix:step-2",
+      "text": "Read the whole sentence to check: The wet socks felt uncomfortable. They did not feel comfortable.",
+      "fingerprint": "d2cc3e6289413a8dbf130fe598d2e69cf9276791fd1ffc115a3023d43d68fd78",
+      "url": "/audio/lessons/d2cc3e6289413a8dbf130fe598d2e69cf9276791fd1ffc115a3023d43d68fd78.mp3",
+      "bytes": 105787,
+      "sha256": "d101cc1085e1e6b5ac389292a1e9aad1adad2b5c3e291e72e285a9ac3a427775"
+    },
+    "2-prefix:guided": {
+      "id": "2-prefix:guided",
+      "text": "What does unfair mean?. Choice 1: Very fair. Choice 2: Not fair. Choice 3: Fair again.",
+      "fingerprint": "eaf5a4ad2b5ae416c17a6a116310165a11d02de563bc857a7a0923798ee0a825",
+      "url": "/audio/lessons/eaf5a4ad2b5ae416c17a6a116310165a11d02de563bc857a7a0923798ee0a825.mp3",
+      "bytes": 182274,
+      "sha256": "74717de5a845647cc0d519a61674bd4c90f0005a93d85c29b1479baacc65e43c"
+    },
+    "2-prefix:transfer": {
+      "id": "2-prefix:transfer",
+      "text": "The answer was unclear. What does unclear mean here?. Choice 1: Not clear. Choice 2: Very clear. Choice 3: Clear again.",
+      "fingerprint": "2390daab2681927c4743b279e936c38131b724de1c61f4056bb98b4d2c22e65f",
+      "url": "/audio/lessons/2390daab2681927c4743b279e936c38131b724de1c61f4056bb98b4d2c22e65f.mp3",
+      "bytes": 237444,
+      "sha256": "b4b0e5d86b35bc401109be2c3309d791178ddc781cf340725a97e636b84788ff"
+    },
+    "2-prefix:reflect": {
+      "id": "2-prefix:reflect",
+      "text": "Say a sentence with unkind. Explain how the prefix changes kind.",
+      "fingerprint": "f38dd2e75471d2a06c93e35115bdf0bc7491c7d35509ed9303a7f401262d5b27",
+      "url": "/audio/lessons/f38dd2e75471d2a06c93e35115bdf0bc7491c7d35509ed9303a7f401262d5b27.mp3",
+      "bytes": 77784,
+      "sha256": "5072a8a18220257b35e0420c29e7603796ee1d4d8e161962d0ed3ac638d52ab5"
+    },
+    "3-evidence:goal": {
+      "id": "3-evidence:goal",
+      "text": "Read like a detective. Support an inference with a detail from the text.",
+      "fingerprint": "c771378e4d91dd8adaf7df745d393e3a29b38e3cf50ed109f8c1107646f4acf8",
+      "url": "/audio/lessons/c771378e4d91dd8adaf7df745d393e3a29b38e3cf50ed109f8c1107646f4acf8.mp3",
+      "bytes": 71515,
+      "sha256": "8e963d5921df01fca4a9d45b3d99145704d5f486ccc4f7f3d86e3a66b9496148"
+    },
+    "3-evidence:step-0": {
+      "id": "3-evidence:step-0",
+      "text": "An inference uses text clues and what you know to work out something the author does not say directly.",
+      "fingerprint": "5293c7e5dd1877d9b88a2904760fddfb613f45904eaf0c28ff83db6bf51c2816",
+      "url": "/audio/lessons/5293c7e5dd1877d9b88a2904760fddfb613f45904eaf0c28ff83db6bf51c2816.mp3",
+      "bytes": 91159,
+      "sha256": "0c41224be22f61ba56a66c19b4f88af8e97bfb73675b55f03b82479e9ef71f64"
+    },
+    "3-evidence:step-1": {
+      "id": "3-evidence:step-1",
+      "text": "Read: Maya zipped her coat and pulled on mittens before stepping outside.",
+      "fingerprint": "acc0e0c8f37501cc5a18547ff28d8088ae4396ebf6b79d525777b42aea2116cd",
+      "url": "/audio/lessons/acc0e0c8f37501cc5a18547ff28d8088ae4396ebf6b79d525777b42aea2116cd.mp3",
+      "bytes": 84889,
+      "sha256": "fd5a3b6de6bf2baed39951587e922920d25f9cae2c1bef9164eec1de10d0b50c"
+    },
+    "3-evidence:step-2": {
+      "id": "3-evidence:step-2",
+      "text": "We can infer it is cold. The coat and mittens are evidence. We cannot know the exact temperature.",
+      "fingerprint": "2790e3da0b4a158046bb308f2d48937e41113b8e0ed3ff45d2b88c0ed741489e",
+      "url": "/audio/lessons/2790e3da0b4a158046bb308f2d48937e41113b8e0ed3ff45d2b88c0ed741489e.mp3",
+      "bytes": 105787,
+      "sha256": "4e0444d7b0b3cc8ee395bf2c9013ea85e237a48522ea8ac507ecbe9eef1a82e5"
+    },
+    "3-evidence:guided": {
+      "id": "3-evidence:guided",
+      "text": "Which detail best supports the inference that Maya expects cold weather?. Choice 1: Her name is Maya. Choice 2: She steps outside. Choice 3: She puts on mittens.",
+      "fingerprint": "1b54f85220b71af50bb2c2ae62ac82b405bb64b011fd255062bf89e0aa9a5e68",
+      "url": "/audio/lessons/1b54f85220b71af50bb2c2ae62ac82b405bb64b011fd255062bf89e0aa9a5e68.mp3",
+      "bytes": 239534,
+      "sha256": "f2c91cd13c912d19e35ef15d374570058fabfd41a9c9644a4515424203ef15d4"
+    },
+    "3-evidence:transfer": {
+      "id": "3-evidence:transfer",
+      "text": "Leo heard thunder and hurried to bring his bike inside. What does he probably expect?. Choice 1: A birthday party. Choice 2: A storm. Choice 3: A broken bike.",
+      "fingerprint": "ff8f01a30aa8131453ca673252085b6d386b2ba8cc7a391f418f7ae34ad44244",
+      "url": "/audio/lessons/ff8f01a30aa8131453ca673252085b6d386b2ba8cc7a391f418f7ae34ad44244.mp3",
+      "bytes": 247893,
+      "sha256": "cb938612c3e56f8e26d3eb58bbf41c36be213c7a4acc352ee41117e1ed7f3be4"
+    },
+    "3-evidence:guided-feedback": {
+      "id": "3-evidence:guided-feedback",
+      "text": "Mittens keep hands warm, so that detail supports the inference.",
+      "fingerprint": "ea630ec39e8737884fa81a0eceaaec9c8937e72d4d4692f478c570e4c02e196d",
+      "url": "/audio/lessons/ea630ec39e8737884fa81a0eceaaec9c8937e72d4d4692f478c570e4c02e196d.mp3",
+      "bytes": 56050,
+      "sha256": "64e8c1e2c22e2b9fe305cf307a86059a84f04d276b340971bd0686a564ffe263"
+    },
+    "3-evidence:transfer-feedback": {
+      "id": "3-evidence:transfer-feedback",
+      "text": "Thunder is a storm clue. Bringing the bike in suggests he expects stormy weather.",
+      "fingerprint": "a89d977fb271d2bc1ec98acdf84e23c33868971b6bae1258ab5bae40ec72a644",
+      "url": "/audio/lessons/a89d977fb271d2bc1ec98acdf84e23c33868971b6bae1258ab5bae40ec72a644.mp3",
+      "bytes": 81964,
+      "sha256": "debdf19708048937846b340c052a9bc3afe1375302ee1a0d9164dc9157971924"
+    },
+    "3-evidence:reflect": {
+      "id": "3-evidence:reflect",
+      "text": "Explain the difference between a text clue and a guess without evidence.",
+      "fingerprint": "ab5501019c555bdcf955c59f1c018952db7949c2b4209168b81f91d44092cac7",
+      "url": "/audio/lessons/ab5501019c555bdcf955c59f1c018952db7949c2b4209168b81f91d44092cac7.mp3",
+      "bytes": 63573,
+      "sha256": "c24822a045e52c32cc09bdaf89ecbf7e0395ed4f8cbcfb06d5e45c7eab563256"
+    },
+    "4-summary:goal": {
+      "id": "4-summary:goal",
+      "text": "Keep the important ideas. Summarize an informational passage without adding opinions.",
+      "fingerprint": "505f4896b64adea49f62aeabf3174176c9d0a6d291deeb057673b1122858997e",
+      "url": "/audio/lessons/505f4896b64adea49f62aeabf3174176c9d0a6d291deeb057673b1122858997e.mp3",
+      "bytes": 91159,
+      "sha256": "4ba5951f1dc3561930ccfddfc5c0acf002f65e73a0d8b9e55021f8efe4488c8c"
+    },
+    "4-summary:step-0": {
+      "id": "4-summary:step-0",
+      "text": "A summary gives the central idea and important details in fewer words.",
+      "fingerprint": "765e32485e06a68d3612244408cd0630b67635257f4d95bdd0b0f328ebcd31ec",
+      "url": "/audio/lessons/765e32485e06a68d3612244408cd0630b67635257f4d95bdd0b0f328ebcd31ec.mp3",
+      "bytes": 75276,
+      "sha256": "4d11bf525042468dcc98dff075f82bd8b334d792dbac71e3e9651a643948482c"
+    },
+    "4-summary:step-1": {
+      "id": "4-summary:step-1",
+      "text": "Read: Mangrove roots help hold soil in place along shores. Their tangled roots also shelter young fish. These trees help protect coastal habitats.",
+      "fingerprint": "82f20cdaeddd87f4bb1a37aed3350876f8b0c3c2cf730eb2e301b2fad5daf84e",
+      "url": "/audio/lessons/82f20cdaeddd87f4bb1a37aed3350876f8b0c3c2cf730eb2e301b2fad5daf84e.mp3",
+      "bytes": 188961,
+      "sha256": "8345878b9395c67aa65ee3b6019dc3578504a888bb2ae058bf90cf3e4a1831ca"
+    },
+    "4-summary:step-2": {
+      "id": "4-summary:step-2",
+      "text": "A summary is: Mangroves support coastal habitats by holding soil and sheltering young fish. It keeps the important ideas without adding an opinion.",
+      "fingerprint": "5acf47e23198397facbe8f6a56982788fef97a10da11e10fbb0155073185609f",
+      "url": "/audio/lessons/5acf47e23198397facbe8f6a56982788fef97a10da11e10fbb0155073185609f.mp3",
+      "bytes": 166809,
+      "sha256": "a5a49e371cb0d0399258d994b2eafd81063179389020bd36fedbe2a34eacf778"
+    },
+    "4-summary:guided": {
+      "id": "4-summary:guided",
+      "text": "Which detail belongs in a summary of this passage?. Choice 1: Mangroves shelter young fish. Choice 2: All beaches have mangroves. Choice 3: Mangroves are the prettiest trees.",
+      "fingerprint": "80ca259c190b1c14da1f85924559596b37f0e8fc63b5252950cef6d8b15fd50e",
+      "url": "/audio/lessons/80ca259c190b1c14da1f85924559596b37f0e8fc63b5252950cef6d8b15fd50e.mp3",
+      "bytes": 249983,
+      "sha256": "d6e7bdac73f70cf48aef45bd0c60f1a8b4d64bde15c6e888e198dd8a1fd35234"
+    },
+    "4-summary:transfer": {
+      "id": "4-summary:transfer",
+      "text": "Bees move pollen between flowers. This helps many plants make seeds. Which is the best summary?. Choice 1: Bees are scary. Choice 2: Every plant needs bees. Choice 3: Bees help many plants make seeds by moving pollen.",
+      "fingerprint": "a648d9418e16e032e065d54ec2242037c7d58c84f11f4efb19fc92060c78215a",
+      "url": "/audio/lessons/a648d9418e16e032e065d54ec2242037c7d58c84f11f4efb19fc92060c78215a.mp3",
+      "bytes": 301810,
+      "sha256": "f2e38c484e3077abb48482b534ba98cc56e56fca0df97fa4767c6d1b4208f98f"
+    },
+    "4-summary:guided-feedback": {
+      "id": "4-summary:guided-feedback",
+      "text": "Sheltering fish is an important detail in the passage. The others are not supported.",
+      "fingerprint": "29ed8368700e86a2a324467b5cdb7ccb79be3edc8c9cc2be4cd0450b783b0ab4",
+      "url": "/audio/lessons/29ed8368700e86a2a324467b5cdb7ccb79be3edc8c9cc2be4cd0450b783b0ab4.mp3",
+      "bytes": 82799,
+      "sha256": "701e0a78a190f618672d70cf49fd6a14bba22efb1357a5777335cef9a5ccbb6b"
+    },
+    "4-summary:transfer-feedback": {
+      "id": "4-summary:transfer-feedback",
+      "text": "This includes both the main idea and how it happens, without exaggeration.",
+      "fingerprint": "3dea5a62ffce30ba9710cc9e98254807508b85167bb5f30dfa5f3ee165149f22",
+      "url": "/audio/lessons/3dea5a62ffce30ba9710cc9e98254807508b85167bb5f30dfa5f3ee165149f22.mp3",
+      "bytes": 73186,
+      "sha256": "de46a9c9a60f3904b1aa57c2ac64e4e4ba27dccec30648d1bbcc2a6b7ba5d46f"
+    },
+    "4-summary:reflect": {
+      "id": "4-summary:reflect",
+      "text": "Summarize something you read today in two sentences. Leave out your opinion.",
+      "fingerprint": "70563f543190faa6c8363ef22e1d6333db0531d116f4d84f84c77669b89894ed",
+      "url": "/audio/lessons/70563f543190faa6c8363ef22e1d6333db0531d116f4d84f84c77669b89894ed.mp3",
+      "bytes": 78202,
+      "sha256": "076c082a59cdec99c04d07f8a1ee7324dd0ae834d6ba1bb39102070ad5f1fd92"
+    },
+    "5-structure:goal": {
+      "id": "5-structure:goal",
+      "text": "Follow cause and effect. Explain how causes and effects organize a passage.",
+      "fingerprint": "64fd9800142937d8f2f97c654d5cc350d3eb3d13f09cfb22acf39eb9645f6a84",
+      "url": "/audio/lessons/64fd9800142937d8f2f97c654d5cc350d3eb3d13f09cfb22acf39eb9645f6a84.mp3",
+      "bytes": 78202,
+      "sha256": "b0ffc6c302df4295bb21a32e4f303fb81821c472b9307e8af6ebac230a744003"
+    },
+    "5-structure:step-0": {
+      "id": "5-structure:step-0",
+      "text": "A cause explains why something happens. An effect is what happens as a result.",
+      "fingerprint": "9482c95030f4e43c4e302fba0a22d6c9159b36b77c1c7c10ee5899cc612cf945",
+      "url": "/audio/lessons/9482c95030f4e43c4e302fba0a22d6c9159b36b77c1c7c10ee5899cc612cf945.mp3",
+      "bytes": 79874,
+      "sha256": "068a5f76debb519efc48224da25af208a5ce1a4f24447406d68eef4839c12c9e"
+    },
+    "5-structure:step-1": {
+      "id": "5-structure:step-1",
+      "text": "Read: Heavy rain soaked the ground. Because the soil could absorb no more water, water flowed across the road.",
+      "fingerprint": "61f31a1623c5775eab74582e2f0ef3181b84cd9660bd5e0b6bb1ef076efbd495",
+      "url": "/audio/lessons/61f31a1623c5775eab74582e2f0ef3181b84cd9660bd5e0b6bb1ef076efbd495.mp3",
+      "bytes": 135462,
+      "sha256": "c84be2234b8fb12f39f756251fb8578ef244dde7da73d2fe3f214ccb924b3856"
+    },
+    "5-structure:step-2": {
+      "id": "5-structure:step-2",
+      "text": "The saturated soil is a cause of water flowing across the road. Words like because and as a result can signal this relationship.",
+      "fingerprint": "85d6a9989392987a5b83c25c862b14e8550d793dbe114aad86a37b47755c28c4",
+      "url": "/audio/lessons/85d6a9989392987a5b83c25c862b14e8550d793dbe114aad86a37b47755c28c4.mp3",
+      "bytes": 137134,
+      "sha256": "9b4eb74948a279368c9b58ca4492dde9403905f7eb95e5378dd934ea159fd25b"
+    },
+    "5-structure:guided": {
+      "id": "5-structure:guided",
+      "text": "Why did water flow across the road in the passage?. Choice 1: The road was new. Choice 2: The soil could absorb no more. Choice 3: There were many cars.",
+      "fingerprint": "90fc976147be7d69ff55b1b6fe2b50b0ddad2768c0d481ba0488abdc54438936",
+      "url": "/audio/lessons/90fc976147be7d69ff55b1b6fe2b50b0ddad2768c0d481ba0488abdc54438936.mp3",
+      "bytes": 247057,
+      "sha256": "0a210849f1ceb9ec4aefdd803067f70eb685e088c4a2a199ecd5a1cabeb8fe1d"
+    },
+    "5-structure:transfer": {
+      "id": "5-structure:transfer",
+      "text": "A cold night froze water in a shallow puddle. By morning, ice covered it. What is the effect?. Choice 1: Ice covered the puddle. Choice 2: The night was cold. Choice 3: The puddle was shallow.",
+      "fingerprint": "ccc0b365fd4d87e8ca3d5698db54d0a6a96aa4612f8d7919a84ef7999c4772c3",
+      "url": "/audio/lessons/ccc0b365fd4d87e8ca3d5698db54d0a6a96aa4612f8d7919a84ef7999c4772c3.mp3",
+      "bytes": 300556,
+      "sha256": "8ecbe180ba6f558e5a16ab0f0d1831c405eeca399f34432f38e1c636fa4eb250"
+    },
+    "5-structure:guided-feedback": {
+      "id": "5-structure:guided-feedback",
+      "text": "The passage connects the soil's inability to absorb more water with the runoff.",
+      "fingerprint": "416e1fa93b10c0c3390ffdb125a528426eee39d6d73eab35fd09bcbe187e59ea",
+      "url": "/audio/lessons/416e1fa93b10c0c3390ffdb125a528426eee39d6d73eab35fd09bcbe187e59ea.mp3",
+      "bytes": 71515,
+      "sha256": "a1f8bf6d0db6a230491f54eda76575696cc0f054d6c7104c0d20b5d501e6dfa3"
+    },
+    "5-structure:transfer-feedback": {
+      "id": "5-structure:transfer-feedback",
+      "text": "Ice forming is what happened as a result of the cold.",
+      "fingerprint": "03367a8cc20ef3fc343c559b8ad3c090044d84a2e26393e361ad1ace105711b4",
+      "url": "/audio/lessons/03367a8cc20ef3fc343c559b8ad3c090044d84a2e26393e361ad1ace105711b4.mp3",
+      "bytes": 47691,
+      "sha256": "d9b7ec82f0aff751b81eee9ee5a9c2ac084c2d4917d74ef15055dba1087106ed"
+    },
+    "5-structure:reflect": {
+      "id": "5-structure:reflect",
+      "text": "Explain a cause-and-effect relationship from a book using evidence from the text.",
+      "fingerprint": "957fabfe0232727da6491582b1b764ac3c0fd99e3cbc33820dda90d78180435b",
+      "url": "/audio/lessons/957fabfe0232727da6491582b1b764ac3c0fd99e3cbc33820dda90d78180435b.mp3",
+      "bytes": 81128,
+      "sha256": "2aa2607167c28c0de1314403f4e976522f3370967d403460548448cbb24dea8d"
+    },
+    "PK-observe:goal": {
+      "id": "PK-observe:goal",
+      "text": "Look closely. Describe what you can observe.",
+      "fingerprint": "8d8c60fef8002e6c7471b507843ce2f8c3afcddf9376819a246ba63580a78c8b",
+      "url": "/audio/lessons/8d8c60fef8002e6c7471b507843ce2f8c3afcddf9376819a246ba63580a78c8b.mp3",
+      "bytes": 49363,
+      "sha256": "74cf7c624aeefd0a0b4f9dd85ad8b5e7901714b23d2ae88d19717ae3eac8704d"
+    },
+    "PK-observe:step-0": {
+      "id": "PK-observe:step-0",
+      "text": "Scientists look closely and describe what they notice.",
+      "fingerprint": "3e7831cc7229478d7e73ce2fb1c568e4a87faeb063a24ff74481873218c60f9f",
+      "url": "/audio/lessons/3e7831cc7229478d7e73ce2fb1c568e4a87faeb063a24ff74481873218c60f9f.mp3",
+      "bytes": 52288,
+      "sha256": "7780df16783d99d337a9690a9301c160ec1c975b0d6247a29b2dfba5c3a8269d"
+    },
+    "PK-observe:step-1": {
+      "id": "PK-observe:step-1",
+      "text": "Look at a leaf. You might notice its color and shape.",
+      "fingerprint": "d005613b6ef04d6bad69561b597211144c14fa7fcaf5fa4fb3ede257b4d14842",
+      "url": "/audio/lessons/d005613b6ef04d6bad69561b597211144c14fa7fcaf5fa4fb3ede257b4d14842.mp3",
+      "bytes": 61066,
+      "sha256": "65e4bae64c7196ade4db2c213cc7c627ed59d676d3651a42ae25424a0ad55a09"
+    },
+    "PK-observe:step-2": {
+      "id": "PK-observe:step-2",
+      "text": "Say what you actually notice. You can say 'I wonder' when you have a question.",
+      "fingerprint": "ab0895dd16982f93178acae2687768909f444d30ed733c59b3dc7f341503c81e",
+      "url": "/audio/lessons/ab0895dd16982f93178acae2687768909f444d30ed733c59b3dc7f341503c81e.mp3",
+      "bytes": 80710,
+      "sha256": "14d4aade383e5ad9ac9dd6daf48844d23d512c17588d2725da091f59be881381"
+    },
+    "PK-observe:guided": {
+      "id": "PK-observe:guided",
+      "text": "Which tells something you can see about a leaf?. Choice 1: It is green. Choice 2: It is happy. Choice 3: It wants a friend.",
+      "fingerprint": "ee3072bf0196239d3247ddcea18b32118435ecbf64ed2cf26684230304bc28c9",
+      "url": "/audio/lessons/ee3072bf0196239d3247ddcea18b32118435ecbf64ed2cf26684230304bc28c9.mp3",
+      "bytes": 196484,
+      "sha256": "5fbf98fdbe3b46567a4b487d1a7b45b9a59e7c555f9a4c3a84dc7f21bd66eb35"
+    },
+    "PK-observe:transfer": {
+      "id": "PK-observe:transfer",
+      "text": "You look at a ball. Which is an observation?. Choice 1: It is the best ball. Choice 2: It is round. Choice 3: It likes to bounce.",
+      "fingerprint": "260a457867e27e173e2f3745586ab9daadf71902d4639593bb1bdfbef49617ba",
+      "url": "/audio/lessons/260a457867e27e173e2f3745586ab9daadf71902d4639593bb1bdfbef49617ba.mp3",
+      "bytes": 231593,
+      "sha256": "2ff778807b59edead4d9433dbf9060c181cf3f51df9cd89a41ac1603a62d0e80"
+    },
+    "PK-observe:guided-feedback": {
+      "id": "PK-observe:guided-feedback",
+      "text": "Green describes a color you can observe.",
+      "fingerprint": "b4b94a78cce219ec88c60213f0280c3d10776b01e8bb41a60191885312db7583",
+      "url": "/audio/lessons/b4b94a78cce219ec88c60213f0280c3d10776b01e8bb41a60191885312db7583.mp3",
+      "bytes": 39750,
+      "sha256": "02859c0cbb9120b87a852db9722b80aec9687533701640eab14fd64a971be99f"
+    },
+    "PK-observe:transfer-feedback": {
+      "id": "PK-observe:transfer-feedback",
+      "text": "Round describes a shape you can see.",
+      "fingerprint": "cf4ee52bc6a484e3f8327f66278f341ea516516d1839adadc99ef5db3d55bc74",
+      "url": "/audio/lessons/cf4ee52bc6a484e3f8327f66278f341ea516516d1839adadc99ef5db3d55bc74.mp3",
+      "bytes": 38078,
+      "sha256": "b0bea13728b1d37e50ec5ceca4b14d4dccebcc8cbda5add34f0077e59ee87ca0"
+    },
+    "PK-observe:reflect": {
+      "id": "PK-observe:reflect",
+      "text": "Look at a safe object nearby. Describe two things you notice.",
+      "fingerprint": "ac024d41e5eb9f771e3a4b032788c41e2fcdcb8bd193d2e0779e5641173b5f19",
+      "url": "/audio/lessons/ac024d41e5eb9f771e3a4b032788c41e2fcdcb8bd193d2e0779e5641173b5f19.mp3",
+      "bytes": 67335,
+      "sha256": "34d46caf17175cbc5e0a38f3dac5e75164dee7ab941d3390ff56059d8f0c9a03"
+    },
+    "K-push:goal": {
+      "id": "K-push:goal",
+      "text": "Push, pull, predict. Describe how a push or pull can change motion.",
+      "fingerprint": "a74e8dbfd1f21c1387189813121cdb59931e61e69211f6aea6334b62cc19648f",
+      "url": "/audio/lessons/a74e8dbfd1f21c1387189813121cdb59931e61e69211f6aea6334b62cc19648f.mp3",
+      "bytes": 99936,
+      "sha256": "295b2e1fc2cad83091ba2c60f458ead40b977581c0faaddc64e767256c3de00f"
+    },
+    "K-push:step-0": {
+      "id": "K-push:step-0",
+      "text": "A push moves something away from your hand. A pull brings it toward your hand.",
+      "fingerprint": "ef80d1cfa10575c969ba3c55fa2311633ea39ba676fa73d72ad77b21f6264cec",
+      "url": "/audio/lessons/ef80d1cfa10575c969ba3c55fa2311633ea39ba676fa73d72ad77b21f6264cec.mp3",
+      "bytes": 86561,
+      "sha256": "bf546b116a659289880b10f9fba1a0e8fe4df1f750440ce753222fb8eff37747"
+    },
+    "K-push:step-1": {
+      "id": "K-push:step-1",
+      "text": "Gently push a toy car on a clear floor. Notice how it starts moving.",
+      "fingerprint": "452f0535edc353bbb6cec99a7c2600a046436a544e26c366d70f7104c2138da7",
+      "url": "/audio/lessons/452f0535edc353bbb6cec99a7c2600a046436a544e26c366d70f7104c2138da7.mp3",
+      "bytes": 79038,
+      "sha256": "261d6fbb3908cf440b2f48a3466f0f00ce8f3fa9d24eab343c458d602bc2c2c2"
+    },
+    "K-push:step-2": {
+      "id": "K-push:step-2",
+      "text": "A force can start, stop, or change motion. Predict what a gentle pull would do, then check with a safe toy.",
+      "fingerprint": "29d0a6cc61cc250bbbb55c7f0dad02a3974949060a657849d58eb5a0290b611a",
+      "url": "/audio/lessons/29d0a6cc61cc250bbbb55c7f0dad02a3974949060a657849d58eb5a0290b611a.mp3",
+      "bytes": 107459,
+      "sha256": "608ccbb782068d8f179a6ec7664556b660044fa154471e893bc591369c7ef96f"
+    },
+    "K-push:guided": {
+      "id": "K-push:guided",
+      "text": "You move a drawer toward yourself to open it. Is that a push or pull?. Choice 1: Push. Choice 2: Neither. Choice 3: Pull.",
+      "fingerprint": "15daa23335c4e89e596acd0b15f81bf5fcb2814b620a5fb41d7f299efc77ec8a",
+      "url": "/audio/lessons/15daa23335c4e89e596acd0b15f81bf5fcb2814b620a5fb41d7f299efc77ec8a.mp3",
+      "bytes": 191469,
+      "sha256": "b5d7faa0f077d20a22969727a32314eb29d292cdf0231e6fa8eb50cd319e55ce"
+    },
+    "K-push:transfer": {
+      "id": "K-push:transfer",
+      "text": "A ball is still. You gently push it. What can the push do?. Choice 1: Make it disappear. Choice 2: Start it moving. Choice 3: Turn it into a cube.",
+      "fingerprint": "91ef1f42739c04c0f0b7343e4d90024df5ab606f5971033cfabd8a778a35a9a1",
+      "url": "/audio/lessons/91ef1f42739c04c0f0b7343e4d90024df5ab606f5971033cfabd8a778a35a9a1.mp3",
+      "bytes": 249983,
+      "sha256": "01f5ffbb1a2725a957a16014f68d4e2f396604c9467bca61d03a983d4ed00d9c"
+    },
+    "K-push:guided-feedback": {
+      "id": "K-push:guided-feedback",
+      "text": "Bringing the drawer toward you is a pull.",
+      "fingerprint": "e9fd1a9d1b25ef9d89f928ce84d6fc351e3c97254ac1dcb3198f044e9db0c012",
+      "url": "/audio/lessons/e9fd1a9d1b25ef9d89f928ce84d6fc351e3c97254ac1dcb3198f044e9db0c012.mp3",
+      "bytes": 35988,
+      "sha256": "59c25c4dd61f432e7a77f67ad8a977605609ec58eb8ed720730928b7a2803f73"
+    },
+    "K-push:transfer-feedback": {
+      "id": "K-push:transfer-feedback",
+      "text": "A push is a force that can start an object moving.",
+      "fingerprint": "1267c1952cc8900f2445ac4826ce2b4dda274a55c35f74df19063b5948dad7e4",
+      "url": "/audio/lessons/1267c1952cc8900f2445ac4826ce2b4dda274a55c35f74df19063b5948dad7e4.mp3",
+      "bytes": 47691,
+      "sha256": "b587a0f25a746428716ce0e304bf974d717f008a87225230c5999f03e22daf65"
+    },
+    "K-push:reflect": {
+      "id": "K-push:reflect",
+      "text": "Find one safe push and one safe pull you do every day.",
+      "fingerprint": "7e0f6824e30396740cc0d1366e4fb430c6535fb88a413a5059de9e2fda9111d7",
+      "url": "/audio/lessons/7e0f6824e30396740cc0d1366e4fb430c6535fb88a413a5059de9e2fda9111d7.mp3",
+      "bytes": 55214,
+      "sha256": "16ddc996cb91f69817d2ce692df527137a6e960d4430b2267859f754cef3ff2c"
+    },
+    "1-plants:goal": {
+      "id": "1-plants:goal",
+      "text": "A plant has working parts. Connect plant parts with their jobs.",
+      "fingerprint": "edcc8f0e92d48bc1b29a7717a3c6e6568f87ddd2b7e75c4ada38f2a180d1f7d1",
+      "url": "/audio/lessons/edcc8f0e92d48bc1b29a7717a3c6e6568f87ddd2b7e75c4ada38f2a180d1f7d1.mp3",
+      "bytes": 68589,
+      "sha256": "cd6f586d4bd942901119450ec38f2a5704e7bd59f7a959f6a3b0dc64f93db9f4"
+    },
+    "1-plants:step-0": {
+      "id": "1-plants:step-0",
+      "text": "Roots take in water and help anchor a plant.",
+      "fingerprint": "9a03deb804a33142a2ebd3eb597a22e8bbd8ea721580d9afe109e2504e71a6bf",
+      "url": "/audio/lessons/9a03deb804a33142a2ebd3eb597a22e8bbd8ea721580d9afe109e2504e71a6bf.mp3",
+      "bytes": 47273,
+      "sha256": "c9a142545545b6754fcb51a11d30a1e35b5028d0558a8a8568769cd753945664"
+    },
+    "1-plants:step-1": {
+      "id": "1-plants:step-1",
+      "text": "The stem supports the plant and carries water to other parts.",
+      "fingerprint": "b0bca03a8878de3a25cbb00ccd0f2663ad07877e3a7c90ca461fc53046d80d5a",
+      "url": "/audio/lessons/b0bca03a8878de3a25cbb00ccd0f2663ad07877e3a7c90ca461fc53046d80d5a.mp3",
+      "bytes": 56050,
+      "sha256": "97a43d41639d2666f42c428f069790bf239c868ab1407d9f1214aea5a27aec8d"
+    },
+    "1-plants:step-2": {
+      "id": "1-plants:step-2",
+      "text": "Leaves use light to help make food for the plant. Each part helps the plant live.",
+      "fingerprint": "259e05499d45a725d15102f8bbf9486ec6097079ce278235cc7882e567c6bd98",
+      "url": "/audio/lessons/259e05499d45a725d15102f8bbf9486ec6097079ce278235cc7882e567c6bd98.mp3",
+      "bytes": 85725,
+      "sha256": "39b8c7c72c70a178b3298f4dc1e770de2f294c9648b418d627e3d6c03b61682a"
+    },
+    "1-plants:guided": {
+      "id": "1-plants:guided",
+      "text": "Which part usually takes water from the soil?. Choice 1: Roots. Choice 2: Flowers. Choice 3: Leaves.",
+      "fingerprint": "699e11aed447e4414b214cadfccee254df82e27b74331513cec1171109deef9d",
+      "url": "/audio/lessons/699e11aed447e4414b214cadfccee254df82e27b74331513cec1171109deef9d.mp3",
+      "bytes": 240370,
+      "sha256": "ba570cbd65297e04b3817d25e6914ecda1fddbae6e49da6e0166582d6549fba8"
+    },
+    "1-plants:transfer": {
+      "id": "1-plants:transfer",
+      "text": "Which part supports the leaves and carries water upward?. Choice 1: A petal. Choice 2: A seed. Choice 3: The stem.",
+      "fingerprint": "89fb0348277f372cd83f49c0eef60fa1a03f70d3ea834f7c9cce527d8f18c20d",
+      "url": "/audio/lessons/89fb0348277f372cd83f49c0eef60fa1a03f70d3ea834f7c9cce527d8f18c20d.mp3",
+      "bytes": 181438,
+      "sha256": "35bfc93a77b95128afa200ff793aa3973195268d3d478215ce11a0e83b28195b"
+    },
+    "1-plants:guided-feedback": {
+      "id": "1-plants:guided-feedback",
+      "text": "Roots take in water from the soil.",
+      "fingerprint": "26353242ea3adf58028c06e651ab995a95ae393593315171a82a497abcdf75ac",
+      "url": "/audio/lessons/26353242ea3adf58028c06e651ab995a95ae393593315171a82a497abcdf75ac.mp3",
+      "bytes": 35988,
+      "sha256": "57103641f2610ff08626d0d0de98f68b69512e3bd9c02e242bff7b9b858a68a5"
+    },
+    "1-plants:transfer-feedback": {
+      "id": "1-plants:transfer-feedback",
+      "text": "The stem supports the plant and transports water.",
+      "fingerprint": "5a3c7592b8901a466c42173342c0ae785f2746865b92162eb4eda956b1a5694f",
+      "url": "/audio/lessons/5a3c7592b8901a466c42173342c0ae785f2746865b92162eb4eda956b1a5694f.mp3",
+      "bytes": 45601,
+      "sha256": "b4f052d46a4fe535a6b226195a261eb57ca38477306a7466140b0b818a301401"
+    },
+    "1-plants:reflect": {
+      "id": "1-plants:reflect",
+      "text": "Observe a plant without pulling it up. Point out the parts you can see.",
+      "fingerprint": "ff34e4921d2a280a8839198ca934ef0ecb31271a0d2f98c64adbe919ae6083bc",
+      "url": "/audio/lessons/ff34e4921d2a280a8839198ca934ef0ecb31271a0d2f98c64adbe919ae6083bc.mp3",
+      "bytes": 67335,
+      "sha256": "3bd9936771aa18c31a66c9483ee62b37af0fb6796f897f59d431a49f42add821"
+    },
+    "2-matter:goal": {
+      "id": "2-matter:goal",
+      "text": "Same water, different state. Describe melting and freezing as changes of state.",
+      "fingerprint": "88112d130f10af4a0efaf707e6526cccbf03b5aae02a20474dbcfbd9eb461a79",
+      "url": "/audio/lessons/88112d130f10af4a0efaf707e6526cccbf03b5aae02a20474dbcfbd9eb461a79.mp3",
+      "bytes": 98264,
+      "sha256": "81262c8fe8f52b08c47e0dda489ebad139e91ecae11badd63df47fb1372fc46a"
+    },
+    "2-matter:step-0": {
+      "id": "2-matter:step-0",
+      "text": "Ice is solid water. Liquid water flows and takes the shape of its container.",
+      "fingerprint": "70fb97d0687238ed4a1d4dff577f0d148fab415696042978cd1c835e21ea1e67",
+      "url": "/audio/lessons/70fb97d0687238ed4a1d4dff577f0d148fab415696042978cd1c835e21ea1e67.mp3",
+      "bytes": 86561,
+      "sha256": "27aa4cbb634612bde8c109cf14cce09429208965e4a582c3f2e7d3c1318b061e"
+    },
+    "2-matter:step-1": {
+      "id": "2-matter:step-1",
+      "text": "When ice warms enough, it melts into liquid water.",
+      "fingerprint": "d404003ca2bad7199e4484aae578dc52ea4ed2c619ca9f157093ef02bda395e2",
+      "url": "/audio/lessons/d404003ca2bad7199e4484aae578dc52ea4ed2c619ca9f157093ef02bda395e2.mp3",
+      "bytes": 51453,
+      "sha256": "5d555a83f07d0684ae5e98e99ca34f40e320fe860555d220f183d1844da05d6e"
+    },
+    "2-matter:step-2": {
+      "id": "2-matter:step-2",
+      "text": "When liquid water cools enough, it freezes. It is still water in both states.",
+      "fingerprint": "39f55334110630e975265e1c192478949a2c76b20ad3ef37b7ed893b4c8d5370",
+      "url": "/audio/lessons/39f55334110630e975265e1c192478949a2c76b20ad3ef37b7ed893b4c8d5370.mp3",
+      "bytes": 83635,
+      "sha256": "b35d1e50d2eb1f9c351db9f40e340dfe7aab9d9e6b19cf8eb245eb3d02c37f60"
+    },
+    "2-matter:guided": {
+      "id": "2-matter:guided",
+      "text": "An ice cube becomes a puddle. What happened?. Choice 1: Freezing. Choice 2: Melting. Choice 3: Growing.",
+      "fingerprint": "a28b00017d3eb6a986a1934e8e4be6df1c87246c7a069a9e3d615a0bedeb3197",
+      "url": "/audio/lessons/a28b00017d3eb6a986a1934e8e4be6df1c87246c7a069a9e3d615a0bedeb3197.mp3",
+      "bytes": 256671,
+      "sha256": "0cbddab01fdec714ece00d5a419528eaa346093a2cfb494fdae0797ae1be19dd"
+    },
+    "2-matter:transfer": {
+      "id": "2-matter:transfer",
+      "text": "Water is placed in a freezer and becomes ice. What changed?. Choice 1: Liquid changed to solid. Choice 2: Water became a new substance. Choice 3: Solid changed to gas.",
+      "fingerprint": "a79de01ffd37af1eab44d6fd7609aa1e51ab32bee4be6b057298679f435c3d53",
+      "url": "/audio/lessons/a79de01ffd37af1eab44d6fd7609aa1e51ab32bee4be6b057298679f435c3d53.mp3",
+      "bytes": 305154,
+      "sha256": "dd544d4a6ef8b34636d6278db190ece265e1317fa1ff5ec00fe6b489b29e14a3"
+    },
+    "2-matter:guided-feedback": {
+      "id": "2-matter:guided-feedback",
+      "text": "Solid water changed to liquid water. That is melting.",
+      "fingerprint": "7b944bdd54f7deb359322524d2bf13254b4081b1a71bc9c55761b62c1c1b6e70",
+      "url": "/audio/lessons/7b944bdd54f7deb359322524d2bf13254b4081b1a71bc9c55761b62c1c1b6e70.mp3",
+      "bytes": 62737,
+      "sha256": "35d6cf103a78001871b8e4f8476861259efe0531530ca2ae6d4b4bb4ba11d6a5"
+    },
+    "2-matter:transfer-feedback": {
+      "id": "2-matter:transfer-feedback",
+      "text": "Cooling caused freezing: liquid water became solid water.",
+      "fingerprint": "44bc1c33552361fff2d9ed378313febaf6befa10dd429c8af873563d1b027640",
+      "url": "/audio/lessons/44bc1c33552361fff2d9ed378313febaf6befa10dd429c8af873563d1b027640.mp3",
+      "bytes": 75276,
+      "sha256": "6f230829b29afff1dcc7c5e2d8f92159a3f2e0122cb31ce9487bc898449a1eb7"
+    },
+    "2-matter:reflect": {
+      "id": "2-matter:reflect",
+      "text": "With a grown-up, watch ice melt in a bowl. Describe what changes and what stays the same.",
+      "fingerprint": "f214cacec0b90f592d97c73e7ed6b2b637fed0a16a930756f5564019c0f5041a",
+      "url": "/audio/lessons/f214cacec0b90f592d97c73e7ed6b2b637fed0a16a930756f5564019c0f5041a.mp3",
+      "bytes": 98264,
+      "sha256": "6f8022d688077d22d3189bf9e26598739caa8513f525e3ac8d64d90fbd9236a7"
+    },
+    "3-energy:goal": {
+      "id": "3-energy:goal",
+      "text": "Notice energy. Identify light, heat, and sound in everyday observations.",
+      "fingerprint": "545bf20e8c1f242e51b9e062336d53ba79ee3fa79592386fea92068dbb3d612a",
+      "url": "/audio/lessons/545bf20e8c1f242e51b9e062336d53ba79ee3fa79592386fea92068dbb3d612a.mp3",
+      "bytes": 101190,
+      "sha256": "caa8ecb3cdc346a2c20f36ca02d447542f12c9a7d254fa3a9c8f0ff031da0de4"
+    },
+    "3-energy:step-0": {
+      "id": "3-energy:step-0",
+      "text": "We can observe effects of energy around us.",
+      "fingerprint": "e55bea628f7326f1d4c30fc9834ae47b30d7aaa866b3d95028fb9f7c451ac4cc",
+      "url": "/audio/lessons/e55bea628f7326f1d4c30fc9834ae47b30d7aaa866b3d95028fb9f7c451ac4cc.mp3",
+      "bytes": 42675,
+      "sha256": "92dd9836d90b6e3ba3ed7b04eea75b8f5a6e3a3424bd63c188fce616bc1df18b"
+    },
+    "3-energy:step-1": {
+      "id": "3-energy:step-1",
+      "text": "A lamp gives off light. Sunlight can warm a surface. A vibrating drum makes sound.",
+      "fingerprint": "bfdc7c348033d96bc5f1effcc4c2a655d3f629e106340270aa2bd6bbec14b527",
+      "url": "/audio/lessons/bfdc7c348033d96bc5f1effcc4c2a655d3f629e106340270aa2bd6bbec14b527.mp3",
+      "bytes": 104533,
+      "sha256": "abba52673100a029721d4051de41212cddc52be3e2cd7fcd954a9c7cd46a67e4"
+    },
+    "3-energy:step-2": {
+      "id": "3-energy:step-2",
+      "text": "One source can have more than one effect: the Sun gives us light and warmth.",
+      "fingerprint": "acde0aed75f6e4406bf70a2c96167f8f32389ffc3ea92b6d3c6c72b49f1e3568",
+      "url": "/audio/lessons/acde0aed75f6e4406bf70a2c96167f8f32389ffc3ea92b6d3c6c72b49f1e3568.mp3",
+      "bytes": 77784,
+      "sha256": "8d2cc9417652a8e539f670d7d5a4cd63c33aa470a2ba94ee450c3e4cc0e420fd"
+    },
+    "3-energy:guided": {
+      "id": "3-energy:guided",
+      "text": "What makes the sound when a drum is struck?. Choice 1: Its color. Choice 2: Its shadow. Choice 3: Its vibrating surface.",
+      "fingerprint": "02a568375970bf09b2f0edcbd5b3ff28964718e9500ab913cf93743d5d2de821",
+      "url": "/audio/lessons/02a568375970bf09b2f0edcbd5b3ff28964718e9500ab913cf93743d5d2de821.mp3",
+      "bytes": 216546,
+      "sha256": "b4590d732752f85241d89122dbafe8aa6289ef5a905b11d99e3a3355f8dd40e9"
+    },
+    "3-energy:transfer": {
+      "id": "3-energy:transfer",
+      "text": "A sunlit sidewalk feels warmer than a shaded one. Which effect is observed?. Choice 1: Freezing. Choice 2: Heating. Choice 3: Magnetism.",
+      "fingerprint": "983420cbb59818ffe8a343334ddc132b4fdca6b596681cb27dc4dba5ea2c42f7",
+      "url": "/audio/lessons/983420cbb59818ffe8a343334ddc132b4fdca6b596681cb27dc4dba5ea2c42f7.mp3",
+      "bytes": 248311,
+      "sha256": "f10472019cf2024f7f257c756c83e3e82f3a27ded8d070a5e2c95301741f1aef"
+    },
+    "3-energy:guided-feedback": {
+      "id": "3-energy:guided-feedback",
+      "text": "A drum's surface vibrates and produces sound.",
+      "fingerprint": "0fbb65694480cc6998702f670e5984ccc1306368e5e06ba838ccda9ca2a528e7",
+      "url": "/audio/lessons/0fbb65694480cc6998702f670e5984ccc1306368e5e06ba838ccda9ca2a528e7.mp3",
+      "bytes": 51035,
+      "sha256": "8eac505e95fcd6c48be6b486ab1c1c70158f73dedef8f3826d6cac48ff9b04ce"
+    },
+    "3-energy:transfer-feedback": {
+      "id": "3-energy:transfer-feedback",
+      "text": "Energy from sunlight warms the sidewalk.",
+      "fingerprint": "bf1c66d7e2c75e3dab25e561b85e31cba5a26f5b8cbe72415c2df539feb114b8",
+      "url": "/audio/lessons/bf1c66d7e2c75e3dab25e561b85e31cba5a26f5b8cbe72415c2df539feb114b8.mp3",
+      "bytes": 44347,
+      "sha256": "ed1c234695aa2f24bf10e69b99a185024dd407cff4f997d18a9b1ab7145ce132"
+    },
+    "3-energy:reflect": {
+      "id": "3-energy:reflect",
+      "text": "Name one light source and one sound source. Describe the evidence you observe.",
+      "fingerprint": "0cc9218489d55c1ee8053cd8f520c62c7ac7244a4c8430fbffe94495b154a71c",
+      "url": "/audio/lessons/0cc9218489d55c1ee8053cd8f520c62c7ac7244a4c8430fbffe94495b154a71c.mp3",
+      "bytes": 81128,
+      "sha256": "01202e622a188a6e77ded56178bedb2039cc4ad0ad042af3baab3f97afa73546"
+    },
+    "4-transfer:goal": {
+      "id": "4-transfer:goal",
+      "text": "Which way does heat move?. Predict heat transfer between warmer and cooler objects.",
+      "fingerprint": "5a8aa0c5c54d1bf592a63224eab7c830f89e0d5d001dae200376fa203692b7f8",
+      "url": "/audio/lessons/5a8aa0c5c54d1bf592a63224eab7c830f89e0d5d001dae200376fa203692b7f8.mp3",
+      "bytes": 94084,
+      "sha256": "7cce01a912f86e5754e954c0ee8e2489e6ea11e47519ded01d8f1ed2520d89e4"
+    },
+    "4-transfer:step-0": {
+      "id": "4-transfer:step-0",
+      "text": "When objects at different temperatures touch, heat transfers from warmer to cooler.",
+      "fingerprint": "69b958060cf92c8145b3d518f894085e95357a67096050a632886826f65654a1",
+      "url": "/audio/lessons/69b958060cf92c8145b3d518f894085e95357a67096050a632886826f65654a1.mp3",
+      "bytes": 76948,
+      "sha256": "269709f08ef13a4e2ef43295e758ea64e6fe67816f951983074c1edf8d14b3ea"
+    },
+    "4-transfer:step-1": {
+      "id": "4-transfer:step-1",
+      "text": "An ice cube in warmer water gains heat and can melt. The water loses heat and cools.",
+      "fingerprint": "91ca419a996f7397590931dfe7f305b7c21d74ceac3b2d035a321d447da56f19",
+      "url": "/audio/lessons/91ca419a996f7397590931dfe7f305b7c21d74ceac3b2d035a321d447da56f19.mp3",
+      "bytes": 92413,
+      "sha256": "3773aa840f459b320e4455ce4d9477ac7a87180e3cc3060b07a3cb374a829cc9"
+    },
+    "4-transfer:step-2": {
+      "id": "4-transfer:step-2",
+      "text": "We compare temperatures to predict the direction of heat transfer. Cold is not a substance that flows.",
+      "fingerprint": "8825c6f0904b289982d07fb21752f7abd9ebda544c2fb8f0c9aaaa432332200f",
+      "url": "/audio/lessons/8825c6f0904b289982d07fb21752f7abd9ebda544c2fb8f0c9aaaa432332200f.mp3",
+      "bytes": 101190,
+      "sha256": "adec9dc38e268ec4dbdb9ae64dff478bbecfc7f033e555088ef0ec50f36123d7"
+    },
+    "4-transfer:guided": {
+      "id": "4-transfer:guided",
+      "text": "A cool spoon touches warm soup. Which way does heat transfer?. Choice 1: Soup to spoon. Choice 2: Spoon to soup. Choice 3: Neither direction.",
+      "fingerprint": "8319886f7e54d7d381ac73f7de6574fb46aec19d37db28d3d36c693eed6cacbe",
+      "url": "/audio/lessons/8319886f7e54d7d381ac73f7de6574fb46aec19d37db28d3d36c693eed6cacbe.mp3",
+      "bytes": 291779,
+      "sha256": "49f7c68050a1ab426cdd2e0689913aa6e91691cfc3d5f3c703912802b9e4df24"
+    },
+    "4-transfer:transfer": {
+      "id": "4-transfer:transfer",
+      "text": "A warm hand holds a cool cup. Which prediction fits heat transfer?. Choice 1: The cup sends cold into the hand. Choice 2: Heat moves from cup to hand. Choice 3: Heat moves from hand to cup.",
+      "fingerprint": "028e0fcef46d4f4a32734e136bab377b351a38f7336c30a109f78775e5978702",
+      "url": "/audio/lessons/028e0fcef46d4f4a32734e136bab377b351a38f7336c30a109f78775e5978702.mp3",
+      "bytes": 329395,
+      "sha256": "a9562739603833bba844c3ef859b074be4e4a873c6336dbdcc7bfb1f87ca8f03"
+    },
+    "4-transfer:guided-feedback": {
+      "id": "4-transfer:guided-feedback",
+      "text": "Heat transfers from the warmer soup to the cooler spoon.",
+      "fingerprint": "35dfb5d413fc1fae535a6bd9df4627c34af10fd626eec6e494e2cacea04ccad5",
+      "url": "/audio/lessons/35dfb5d413fc1fae535a6bd9df4627c34af10fd626eec6e494e2cacea04ccad5.mp3",
+      "bytes": 53124,
+      "sha256": "a0f697e46906efce7c3fe9015aaa9b83522d93f4812cc0ff0ca836b19020fc62"
+    },
+    "4-transfer:transfer-feedback": {
+      "id": "4-transfer:transfer-feedback",
+      "text": "The warmer hand transfers heat to the cooler cup.",
+      "fingerprint": "57a1b02bed7d9b18c6d1905c1e945e67ae888d53001c8ccd4bdf2896b6053ee0",
+      "url": "/audio/lessons/57a1b02bed7d9b18c6d1905c1e945e67ae888d53001c8ccd4bdf2896b6053ee0.mp3",
+      "bytes": 47691,
+      "sha256": "aa9505211766cb4b70be77fe7c70fe7e0b4f3f2dd91a4c7449cdd61b26efb14d"
+    },
+    "4-transfer:reflect": {
+      "id": "4-transfer:reflect",
+      "text": "Draw an arrow showing heat moving between two objects with different temperatures.",
+      "fingerprint": "7295eed840c3293b691541ca7078e15dd790b19bc92cb10c1252aef95eedc1aa",
+      "url": "/audio/lessons/7295eed840c3293b691541ca7078e15dd790b19bc92cb10c1252aef95eedc1aa.mp3",
+      "bytes": 70261,
+      "sha256": "444d9b37852729a911cc01d3ad9f9ea5fb68c499431278dfca3afa45399d2787"
+    },
+    "5-fair-test:goal": {
+      "id": "5-fair-test:goal",
+      "text": "Make a test fair. Identify what to change, measure, and keep the same in an investigation.",
+      "fingerprint": "edfa417da5dbf100d88987dfc36139f6d6591c678708c47d9157fc64a76cf7e7",
+      "url": "/audio/lessons/edfa417da5dbf100d88987dfc36139f6d6591c678708c47d9157fc64a76cf7e7.mp3",
+      "bytes": 98264,
+      "sha256": "e8b4a812a3df1666bcf46e357290f84984452ade0908702289079e43b5552672"
+    },
+    "5-fair-test:step-0": {
+      "id": "5-fair-test:step-0",
+      "text": "Suppose you ask whether a toy car travels farther from a higher ramp.",
+      "fingerprint": "83d6a179ded60bdaefcd012aeed092605924b9878f90af22d0afebc181d05d57",
+      "url": "/audio/lessons/83d6a179ded60bdaefcd012aeed092605924b9878f90af22d0afebc181d05d57.mp3",
+      "bytes": 69425,
+      "sha256": "c4467e867f69e3f7ae1093d23b99a2e3bef803f8154002565e012518ce444d28"
+    },
+    "5-fair-test:step-1": {
+      "id": "5-fair-test:step-1",
+      "text": "Change the ramp height. Measure the distance the car travels. Keep the car, floor, and starting method the same.",
+      "fingerprint": "ca66c4a32070a109ce271555620d45eb56a41afc578bbcd6427dee7eea0a06b1",
+      "url": "/audio/lessons/ca66c4a32070a109ce271555620d45eb56a41afc578bbcd6427dee7eea0a06b1.mp3",
+      "bytes": 121252,
+      "sha256": "addd76085cac4f0f62e97e1aca16e0f770e676edfeb232cc6139d204aff3b5ad"
+    },
+    "5-fair-test:step-2": {
+      "id": "5-fair-test:step-2",
+      "text": "Repeat trials at each height and compare results. Evidence supports a conclusion; one trial is not enough to establish a reliable pattern.",
+      "fingerprint": "10115aa158eb8c88f6288f59105c7b060c6c59f7a0865415e89622796a495e02",
+      "url": "/audio/lessons/10115aa158eb8c88f6288f59105c7b060c6c59f7a0865415e89622796a495e02.mp3",
+      "bytes": 151345,
+      "sha256": "631c734a4b29234010e9a4f348e2ce2c63e69b044645cd0487b809023526f435"
+    },
+    "5-fair-test:guided": {
+      "id": "5-fair-test:guided",
+      "text": "Why use the same car for each ramp height?. Choice 1: To guarantee your prediction. Choice 2: So a different car does not explain the result. Choice 3: To avoid measuring.",
+      "fingerprint": "a27a99d42efa7e89423e90832c8412091dd4654fc87c84944fe8f48eef8ae79b",
+      "url": "/audio/lessons/a27a99d42efa7e89423e90832c8412091dd4654fc87c84944fe8f48eef8ae79b.mp3",
+      "bytes": 233683,
+      "sha256": "d7f550226830145cc366d532271d9a7b94dc03385f20782de61f8976f3bf2257"
+    },
+    "5-fair-test:transfer": {
+      "id": "5-fair-test:transfer",
+      "text": "You test whether light affects plant growth. What should you change?. Choice 1: The amount of light only. Choice 2: Light, soil, and water together. Choice 3: The ruler each day.",
+      "fingerprint": "b725e6c9d987b16177dd290cac9d30d2b908c6510939747f542fb286a65dc47c",
+      "url": "/audio/lessons/b725e6c9d987b16177dd290cac9d30d2b908c6510939747f542fb286a65dc47c.mp3",
+      "bytes": 290107,
+      "sha256": "999b18dba56e1212b8712cf1d2c0ac03265facb23da4e3ce66d1a79ed3c98a83"
+    },
+    "5-fair-test:guided-feedback": {
+      "id": "5-fair-test:guided-feedback",
+      "text": "Keeping the car the same helps isolate the effect of ramp height.",
+      "fingerprint": "11ba68f610e1b3a6e3cf3efc3261df4b030231df519a5306ad1bd81d069310fe",
+      "url": "/audio/lessons/11ba68f610e1b3a6e3cf3efc3261df4b030231df519a5306ad1bd81d069310fe.mp3",
+      "bytes": 58976,
+      "sha256": "0f6ddaf4ff117bc7c2dc8672ed119c1f78da3f4438d6110bdc5389bac664022f"
+    },
+    "5-fair-test:transfer-feedback": {
+      "id": "5-fair-test:transfer-feedback",
+      "text": "Change light while keeping other relevant conditions alike, then measure growth.",
+      "fingerprint": "cc1e6ecbec6e220288593f8cfc5a121e30a468d0ee1db434bbabc09ea89401f1",
+      "url": "/audio/lessons/cc1e6ecbec6e220288593f8cfc5a121e30a468d0ee1db434bbabc09ea89401f1.mp3",
+      "bytes": 76948,
+      "sha256": "f774ee21787de3276c4bfdfdcc9d4f1421a231caeb5d3af59b0862aabdc79c3d"
+    },
+    "5-fair-test:reflect": {
+      "id": "5-fair-test:reflect",
+      "text": "Plan a safe investigation. Name what you change, measure, and keep the same.",
+      "fingerprint": "6d5fe3ffc18966239a58d912da6f12b583badde5e36d7648fc7ac54c99e3c989",
+      "url": "/audio/lessons/6d5fe3ffc18966239a58d912da6f12b583badde5e36d7648fc7ac54c99e3c989.mp3",
+      "bytes": 81128,
+      "sha256": "998b8b8d11fc5e230fb8001e33fb734245f23e23dbdb20691493c7128c21306e"
+    },
+    "PK-count:explore": {
+      "id": "PK-count:explore",
+      "text": "Tap each shell once. Say the number as you touch it. A check mark means you already counted that shell.",
+      "fingerprint": "e4087c0f7a3cf5ffe6ef78ce96bcc09f8d49422c8915b46385aab2e0b0bef375",
+      "url": "/audio/lessons/e4087c0f7a3cf5ffe6ef78ce96bcc09f8d49422c8915b46385aab2e0b0bef375.mp3",
+      "bytes": 111221,
+      "sha256": "9e8e0544c888b69c4f1c5edcb4bf093cd59b4beb0434db2ad4bfec0363faf9c8"
+    },
+    "K-add:explore": {
+      "id": "K-add:explore",
+      "text": "Start with two blue counters. Move the three orange counters into the group, one at a time. Count how many there are altogether.",
+      "fingerprint": "1b39e4f344d91b69b5554104ae4b2ec5c178be6d773056cbf3852e9acf5876eb",
+      "url": "/audio/lessons/1b39e4f344d91b69b5554104ae4b2ec5c178be6d773056cbf3852e9acf5876eb.mp3",
+      "bytes": 142986,
+      "sha256": "4eea4737889dd802a89a50409744e42ff5aedcdf1b116d0e8b8b186a2be5bf64"
+    },
+    "1-ten:explore": {
+      "id": "1-ten:explore",
+      "text": "Start with eight in the ten-frame and five outside. Move just enough counters to fill the ten-frame. What is left outside?",
+      "fingerprint": "b752e9a5a8d6b611fea8bd4d5dd915aef17c5699a9bc365fed87a19eacfaba12",
+      "url": "/audio/lessons/b752e9a5a8d6b611fea8bd4d5dd915aef17c5699a9bc365fed87a19eacfaba12.mp3",
+      "bytes": 134208,
+      "sha256": "5313ba6353fd74b3a059976c5f44d079b714f2cf08e45649562f0dcd0384d6ff"
+    },
+    "2-place:explore": {
+      "id": "2-place:explore",
+      "text": "Combine twenty-seven and fifteen. Each long rod is ten ones. When you have ten loose ones, trade them for one ten-rod. The total stays the same.",
+      "fingerprint": "86356b46ad3dc377fb9a641b76f130ffd58643b45499b2da45384e6339f5a712",
+      "url": "/audio/lessons/86356b46ad3dc377fb9a641b76f130ffd58643b45499b2da45384e6339f5a712.mp3",
+      "bytes": 168899,
+      "sha256": "dd6292f35f7479dcf9e51078c79a046bc89aabde82aa9544f4e7cac3f4d5c3bc"
+    },
+    "3-groups:explore": {
+      "id": "3-groups:explore",
+      "text": "Build three equal rows with four dots in each row. Count by fours as you add each row.",
+      "fingerprint": "06763f5358c81641a4991cb0bdf90bfd0606e363177d54fa6c173328103c37f6",
+      "url": "/audio/lessons/06763f5358c81641a4991cb0bdf90bfd0606e363177d54fa6c173328103c37f6.mp3",
+      "bytes": 97846,
+      "sha256": "de9644ac68fd1f01e790d103e42432387c74aefb32f4ce15d9ea428ce84ce87b"
+    },
+    "4-equivalent:explore": {
+      "id": "4-equivalent:explore",
+      "text": "Both bars show the same-sized whole. Half is shaded. Split each part of the lower bar in half. Does the shaded amount change?",
+      "fingerprint": "0d048de0bbeac49fcae721e2df4a5d57b191804aca875a441dfcea6861ae9537",
+      "url": "/audio/lessons/0d048de0bbeac49fcae721e2df4a5d57b191804aca875a441dfcea6861ae9537.mp3",
+      "bytes": 148837,
+      "sha256": "110fe03483cf15a8c6024f8f68a185e6c0732f5ab717432fdcb089408aa786b9"
+    },
+    "5-decimal:explore": {
+      "id": "5-decimal:explore",
+      "text": "Start with one whole and twenty-five hundredths. Add four tenths, one tenth at a time. Each tenth fills ten small squares.",
+      "fingerprint": "55ea3810a6769caa5682b3b9984d704ec8b9af1e4a28acb147268ba20862e163",
+      "url": "/audio/lessons/55ea3810a6769caa5682b3b9984d704ec8b9af1e4a28acb147268ba20862e163.mp3",
+      "bytes": 152599,
+      "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
+    },
+    "2-prefix:step-1": {
+      "id": "2-prefix:step-1",
+      "text": "Start with “happy.” Add the prefix “un” to make “unhappy.” The prefix means “not,” so “unhappy” means “not happy.”",
+      "fingerprint": "0c9f816a4bbcbe30b7501c66919fb91bed37651a16322f3950bdb1abbf7289e6",
+      "url": "/audio/lessons/0c9f816a4bbcbe30b7501c66919fb91bed37651a16322f3950bdb1abbf7289e6.mp3",
+      "bytes": 183946,
+      "sha256": "b24ccd75122e79ea5e97865b401f3529ae6bbfe432144e3f51b9adc9534591fd"
+    },
+    "2-prefix:guided-feedback": {
+      "id": "2-prefix:guided-feedback",
+      "text": "The word “unfair” has two parts: “un” and “fair.” The prefix “un” means “not.” So “unfair” means “not fair.”",
+      "fingerprint": "47a7647bc0366b11a70962c4e224add2a576b6826adbf0deecb6eef2cfd01e74",
+      "url": "/audio/lessons/47a7647bc0366b11a70962c4e224add2a576b6826adbf0deecb6eef2cfd01e74.mp3",
+      "bytes": 198574,
+      "sha256": "a08d1d9191e9b4a83fee40ee018aa6fa06b899d51c5670b1ba1eb4fcb22619ee"
+    },
+    "2-prefix:transfer-feedback": {
+      "id": "2-prefix:transfer-feedback",
+      "text": "“Unclear” means “not clear.” An unclear answer is hard to understand.",
+      "fingerprint": "bf3bac55e69a210b8c72a817351df80cf5389481c59ab1249a0bc34396e4b3be",
+      "url": "/audio/lessons/bf3bac55e69a210b8c72a817351df80cf5389481c59ab1249a0bc34396e4b3be.mp3",
+      "bytes": 101190,
+      "sha256": "563cf56d04aeaa6bba29e03e623131be0b810d56117b429a8ba0f0dce7e667bc"
+    }
+  }
+}

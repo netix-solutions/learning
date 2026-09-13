@@ -7,6 +7,7 @@ import { SignOutButton } from "@/components/SignOutButton";
 import { XpBar } from "@/components/XpBar";
 import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
+import { LessonProgress } from "@/components/LessonProgress";
 import { GoalForm } from "@/components/GoalForm";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { DEFAULT_DAYS_PER_WEEK, DEFAULT_MINUTES_PER_DAY } from "@/lib/goals";
@@ -134,6 +135,8 @@ export default async function ChildDetail({
           initialMinutes={goalRow?.minutes_per_day ?? DEFAULT_MINUTES_PER_DAY}
         />
       </div>
+
+      <LessonProgress studentId={id} />
 
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">By subject</h2>

@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
 import { createClient } from "@/lib/supabase/server";
+import { VOICE_MODEL, VOICE_SETTINGS, DEFAULT_VOICE, VOICE_OUTPUT_FORMAT, MAX_SPEECH_CHARS } from "@/lib/voice-config";
+import { forSpeech } from "@/lib/speech-text";
 
 // Node runtime: we hold a secret key and call ElevenLabs server-side so the
 // key never reaches the browser.
@@ -7,11 +9,6 @@ export const runtime = "nodejs";
 export const maxDuration = 30;
 
 const ELEVEN_API = "https://api.elevenlabs.io/v1/text-to-speech";
-// Low-latency, low-cost model — ideal for short, frequently-repeated kid prompts.
-const MODEL_ID = "eleven_flash_v2_5";
-const DEFAULT_VOICE = "cgSgspJ2msm6clMCkdW9"; // "Jessica" — happy, energetic, motivating
-const MAX_CHARS = 600;
-
 // Coarse per-student burst guard (in-memory, per serverless instance), matching
 // the /api/teach pattern — enough to stop a kid hammering a billed endpoint.
 const hits = new Map<string, number[]>();
@@ -55,7 +52,7 @@ export async function POST(req: Request) {
 
   const apiKey = process.env.ELEVENLABS_API_KEY;
   if (!apiKey) {
-    // Not configured — tell the client to fall back to the on-device voice.
+    // The client offers retry/read-on, never the operating system voice.
     return new Response("Voice not configured.", { status: 503 });
   }
 
@@ -64,12 +61,14 @@ export async function POST(req: Request) {
 
   // 2. Validate input.
   const body = (await req.json().catch(() => ({}))) as { text?: string };
-  const text = String(body.text ?? "").trim().slice(0, MAX_CHARS);
+  if (typeof body.text !== "string" || !body.text.trim()) return new Response("Missing text.", { status: 400 });
+  if (body.text.length > MAX_SPEECH_CHARS) return new Response("Text is too long to read in one clip.", { status: 413 });
+  const text = forSpeech(body.text);
   if (!text) return new Response("Missing text.", { status: 400 });
 
   const voiceId = process.env.ELEVENLABS_VOICE_ID || DEFAULT_VOICE;
   const cacheKey = createHash("sha1")
-    .update(`${MODEL_ID}:${voiceId}:${text}`)
+    .update(JSON.stringify({ model: VOICE_MODEL, voiceId, settings: VOICE_SETTINGS, text }))
     .digest("hex");
 
   // 3. Serve from cache when we can.
@@ -87,8 +86,9 @@ export async function POST(req: Request) {
   // 4. Synthesize with ElevenLabs.
   let upstream: globalThis.Response;
   try {
-    upstream = await fetch(`${ELEVEN_API}/${voiceId}?output_format=mp3_44100_128`, {
+    upstream = await fetch(`${ELEVEN_API}/${encodeURIComponent(voiceId)}?output_format=${VOICE_OUTPUT_FORMAT}`, {
       method: "POST",
+      signal: AbortSignal.timeout(22_000),
       headers: {
         "xi-api-key": apiKey,
         "Content-Type": "application/json",
@@ -96,16 +96,8 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         text,
-        model_id: MODEL_ID,
-        // Tuned to sound happy and motivating for kids: lower stability +
-        // some style for lively expression, with a bright, upbeat pace.
-        voice_settings: {
-          stability: 0.4,
-          similarity_boost: 0.75,
-          style: 0.35,
-          use_speaker_boost: true,
-          speed: 0.96,
-        },
+        model_id: VOICE_MODEL,
+        voice_settings: VOICE_SETTINGS,
       }),
     });
   } catch {
@@ -113,13 +105,16 @@ export async function POST(req: Request) {
   }
 
   if (!upstream.ok) {
-    // Surface the status so the client can fall back gracefully.
-    const detail = await upstream.text().catch(() => "");
-    console.error("[tts] ElevenLabs error", upstream.status, detail.slice(0, 300));
+    // Do not log provider response bodies or credentials.
+    console.error("[tts] ElevenLabs error", upstream.status);
     return new Response("Voice service error.", { status: 502 });
   }
 
+  if (!upstream.headers.get("content-type")?.startsWith("audio/")) {
+    return new Response("Invalid voice response.", { status: 502 });
+  }
   const audio = Buffer.from(await upstream.arrayBuffer());
+  if (!audio.length) return new Response("Empty voice response.", { status: 502 });
   cacheSet(cacheKey, audio);
 
   return new Response(new Uint8Array(audio), {

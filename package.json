@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "generate:questions": "node scripts/generate-questions.mjs",
-    "validate:questions": "node scripts/validate-questions.mjs"
+    "validate:questions": "node scripts/validate-questions.mjs",
+    "generate:lesson-audio": "node scripts/generate-lesson-audio.mjs",
+    "validate:lessons": "node scripts/validate-lessons.mjs && node scripts/validate-math-labs.mjs && node scripts/validate-lesson-audio.mjs && node scripts/validate-speech.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",

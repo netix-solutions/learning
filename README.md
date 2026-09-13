@@ -189,3 +189,19 @@ a rolled-back transaction: **all rows accepted** (jsonb, `grade` check-constrain
 `subjects`), the DB's own constraint scan found 0 bad rows. Reading items are
 **AI-authored / bank-built and structurally linted — not answer-recomputed**; a teacher
 should spot-check reading grade-fit before launch (see the hardening checklist).
+
+## Instruction-first learning work
+
+Children can open **Learn something new** from their home screen. The current foundation has 21 introductory lessons across Pre-K–5 and seven hands-on math activities. Full curriculum coverage and the nightly adaptive sequence are still in development; see `docs/LEARNING-UPGRADE.md`.
+
+Lesson narration is pregenerated with **ElevenLabs** using the configured `ELEVENLABS_VOICE_ID`. The app does not fall back to the operating system voice. Dynamic practice narration uses the same server-side voice profile, with visible retry controls if playback fails.
+
+With Node 22.18+ and the server-only ElevenLabs credentials configured:
+
+```bash
+npm run generate:lesson-audio -- --dry-run  # inspect missing/stale clips, no API calls
+npm run generate:lesson-audio              # generate only missing/stale clips
+npm run validate:lessons                   # content, audio integrity, math, playback checks
+```
+
+Commit the generated manifest and MP3 assets with lesson changes. On development builds, `/learn-preview?grade=2` supports lesson review without recording practice activity. Production preview access returns not-found.

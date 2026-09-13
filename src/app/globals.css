@@ -471,3 +471,23 @@ a, button, [role="button"], label, summary, input[type="submit"] {
   .card-foil { animation: none; }
   .card-flip-inner { transition: none; }
 }
+
+/* Lesson examples reveal on the learner's tap; motion is never needed to read them. */
+@keyframes lesson-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.lesson-reveal { animation: lesson-reveal 350ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .lesson-reveal { animation: none; }
+}
+
+/* Manipulatives change only on learner actions, with visible final states. */
+.lesson-lab .lab-counter { transition: background-color 300ms ease, border-color 300ms ease, transform 300ms ease; }
+.lesson-lab .lab-counter:active { transform: scale(.96); }
+.lesson-lab .lab-dot, .lesson-lab .lab-divider { animation: lesson-reveal 300ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .lesson-lab .lab-counter { transition: none; }
+  .lesson-lab .lab-counter:active { transform: none; }
+  .lesson-lab .lab-dot, .lesson-lab .lab-divider { animation: none; }
+}

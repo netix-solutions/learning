@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { SpeechNotice } from "@/components/SpeechNotice";
 import { AppFooter } from "@/components/AppFooter";
 import { MeadowScene } from "@/components/MeadowScene";
 import { ClickSound } from "@/components/ClickSound";
@@ -81,6 +82,7 @@ export default function RootLayout({
         <MeadowScene />
         {children}
         <AppFooter />
+        <SpeechNotice />
         <ClickSound />
         <BackgroundMusic />
         <ServiceWorkerRegister />
