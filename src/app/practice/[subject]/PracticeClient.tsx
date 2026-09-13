@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { experienceFor, mixedRoundCounts } from "@/lib/grade-experience";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { LearningGarden } from "@/components/LearningGarden";
@@ -40,11 +41,15 @@ const CHEERS = ["Nice! 🎉", "Boom! 💥", "You got it! 🌟", "Sharp! 🧠", "
 export function PracticeClient({
   subject,
   grade,
+  studentId = "preview",
 }: {
   subject: Subject;
   grade: Grade;
+  studentId?: string;
 }) {
   const theme = subjectTheme(subject.color);
+  const experience = experienceFor(grade);
+  const voiceKey = `sunsharp:autoread:${studentId}:${grade}`;
   const [phase, setPhase] = useState<"loading" | "playing" | "done" | "empty">(
     "loading",
   );
@@ -99,11 +104,11 @@ export function PracticeClient({
     if (subject.id === "daily") {
       const subjectIds = ["math", "reading", "science"];
       const results = await Promise.all(
-        subjectIds.map((s) =>
+        subjectIds.map((s, subjectIndex) =>
           supabase.rpc("get_adaptive_questions", {
             p_subject: s,
             p_grade: grade,
-            p_count: 2,
+            p_count: mixedRoundCounts(experience.roundSize)[subjectIndex],
           }),
         ),
       );
@@ -117,7 +122,7 @@ export function PracticeClient({
       const { data } = await supabase.rpc("get_adaptive_questions", {
         p_subject: subject.id,
         p_grade: grade,
-        p_count: grade === "PK" ? 4 : 6, // shorter rounds for little ones
+        p_count: experience.roundSize,
       });
       qs = (data as PracticeQuestion[]) ?? [];
     }
@@ -125,7 +130,7 @@ export function PracticeClient({
     setQuestions(qs);
     setPhase(qs.length ? "playing" : "empty");
     if (qs.length) playQuizStart();
-  }, [subject.id, grade]);
+  }, [subject.id, grade, experience.roundSize]);
 
   useEffect(() => {
     loadQuestions();
@@ -139,23 +144,23 @@ export function PracticeClient({
 
   // Auto-read is on by default (great for emerging readers) but a kid or grown-up
   // can mute it from the header; the choice is remembered on this device.
-  const [autoRead, setAutoRead] = useState(true);
+  const [autoRead, setAutoRead] = useState(experience.autoRead);
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("ss-autoread");
-      if (saved != null) setAutoRead(saved === "1");
+      const saved = window.localStorage.getItem(voiceKey);
+      setAutoRead(saved == null ? experience.autoRead : saved === "1");
     } catch {}
-  }, []);
+  }, [voiceKey, experience.autoRead]);
   const toggleAutoRead = useCallback(() => {
     setAutoRead((on) => {
       const next = !on;
       try {
-        window.localStorage.setItem("ss-autoread", next ? "1" : "0");
+        window.localStorage.setItem(voiceKey, next ? "1" : "0");
       } catch {}
       if (!next) stop(); // muting: silence anything mid-sentence
       return next;
     });
-  }, []);
+  }, [voiceKey]);
 
   // What to read for a given question: the prompt always, plus the lettered
   // choices for young readers on multiple-choice questions.
@@ -280,14 +285,14 @@ export function PracticeClient({
   }
 
   if (phase === "done") {
-    return <><Confetti fire={confettiKey} /><main className="mx-auto max-w-2xl px-4 py-6">
+    return <><Confetti fire={confettiKey} /><main data-grade={grade} className="grade-quiz mx-auto max-w-3xl px-4 py-6">
       <div className="rounded-3xl bg-white p-6 text-center">
         <p aria-hidden="true" className="text-5xl">🌱</p>
         <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">You kept learning!</h1>
         <p className="mt-2 text-lg text-slate-600">You tried {questions.length} questions and got {correctCount} right.</p>
         <p className="mt-2 text-base text-slate-600">Every question you tried helps your garden grow.</p>
       </div>
-      <LearningGarden initial={null} />
+      <LearningGarden grade={grade} initial={null} />
       <div className="mt-7 flex flex-wrap gap-3">
         <Link href="/home" className="inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-6 py-3 font-bold text-white">Done for now ✓</Link>
         <button onClick={loadQuestions} className="min-h-12 rounded-2xl bg-white px-6 py-3 font-bold text-slate-700">Practice again</button>
@@ -301,10 +306,10 @@ export function PracticeClient({
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
       <ActivityTracker />
-      <main className="mx-auto max-w-2xl px-4 py-6">
+      <main data-grade={grade} className="grade-quiz mx-auto max-w-3xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
-          <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">
-            ← Quit
+          <Link href="/home" className="inline-flex min-h-12 items-center rounded-xl px-3 font-bold text-slate-600 hover:text-slate-800">
+            ← Home
           </Link>
           <div className="flex items-center gap-2">
             <button
@@ -313,7 +318,7 @@ export function PracticeClient({
               aria-pressed={autoRead}
               aria-label={autoRead ? "Turn off read-aloud" : "Turn on read-aloud"}
               title={autoRead ? "Read-aloud is on" : "Read-aloud is off"}
-              className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-base transition ${
+              className={`grid h-12 w-12 shrink-0 place-items-center rounded-full text-base transition ${
                 autoRead
                   ? "bg-sky-100 text-sky-700 hover:bg-sky-200"
                   : "bg-slate-100 text-slate-400 hover:bg-slate-200"
@@ -325,6 +330,7 @@ export function PracticeClient({
           </div>
         </header>
 
+        <p className="mb-3 text-sm font-bold" style={{color: experience.accent}}>{gradeLabel(grade)} · {experience.name}</p>
         {/* progress */}
         <div className="mb-6 h-3 w-full overflow-hidden rounded-full bg-white/70 ring-2 ring-white">
           <div
@@ -402,7 +408,7 @@ export function PracticeClient({
                 );
               }
               return (
-                <h1 className="flex-1 font-display text-2xl font-bold leading-snug text-slate-800 sm:text-3xl">
+                <h1 className={`quiz-prompt min-w-0 flex-1 font-bold leading-relaxed text-slate-800 ${experience.earlyReader ? "text-3xl" : "text-2xl"}`}>
                   {current.prompt}
                 </h1>
               );
@@ -484,7 +490,7 @@ export function PracticeClient({
                     onClick={() => submit(i)}
                     className={`relative grid min-h-28 place-items-center rounded-3xl border-4 px-3 py-6 text-center text-6xl font-bold transition ${cls}`}
                   >
-                    <span>{choice}</span>
+                    <span className="min-w-0 break-words">{choice}</span>
                     {result && i === result.correct_index && (
                       <span className="absolute right-3 top-3 text-3xl">✅</span>
                     )}
@@ -501,10 +507,10 @@ export function PracticeClient({
                   onClick={() => submit(i)}
                   className={`flex items-center gap-3 rounded-2xl border-2 px-4 py-4 text-left text-lg font-bold transition ${cls}`}
                 >
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-sm text-slate-500">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-slate-100 text-sm text-slate-500">
                     {String.fromCharCode(65 + i)}
                   </span>
-                  <span>{choice}</span>
+                  <span className="min-w-0 break-words">{choice}</span>
                   {result && i === result.correct_index && <span className="ml-auto">✅</span>}
                   {result && i === selected && !result.is_correct && (
                     <span className="ml-auto">❌</span>

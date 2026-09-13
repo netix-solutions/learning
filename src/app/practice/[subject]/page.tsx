@@ -32,5 +32,5 @@ export default async function PracticePage({
     meta = data as Subject;
   }
 
-  return <PracticeClient subject={meta} grade={profile.grade} />;
+  return <PracticeClient key={`${user.id}:${profile.grade}`} studentId={user.id} subject={meta} grade={profile.grade} />;
 }

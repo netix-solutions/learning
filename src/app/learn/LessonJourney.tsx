@@ -136,7 +136,7 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
   return (
     <>
       {trackActivity && !loading && !currentDone && <ActivityTracker />}
-      <main className="mx-auto max-w-3xl px-4 py-6 text-slate-800">
+      <main data-grade={lesson.grade} className="grade-home mx-auto max-w-3xl px-4 py-6 text-slate-800">
         <header className="mb-6 flex items-center justify-between gap-3">
           <Link href="/home" onClick={stop} className="rounded-xl bg-white px-4 py-3 font-bold ring-1 ring-slate-200">← Home</Link>
           <span className="text-sm font-bold text-slate-600">Learn · Try · Explain</span>
@@ -244,7 +244,7 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
                 {currentDone && !allComplete && suggestedNext !== lessonIndex && <button onClick={() => selectLesson(suggestedNext)} className="btn-pop rounded-xl bg-sky-600 px-6 py-4 font-bold text-white">Next discovery →</button>}
                 <Link href={`/practice/${lesson.subject}`} onClick={stop} className="rounded-xl bg-white px-5 py-4 font-bold text-sky-700 ring-2 ring-sky-200">Practice more {subject.label.toLowerCase()} →</Link>
               </div>
-              {currentDone && trackActivity && <LearningGarden initial={null} />}
+              {currentDone && trackActivity && <LearningGarden grade={lesson.grade} initial={null} />}
               {allComplete && <p className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">You explored all available introductory lessons! You can revisit any lesson or keep practicing.</p>}
             </>}
           </fieldset>

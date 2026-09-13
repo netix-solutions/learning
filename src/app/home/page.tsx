@@ -5,6 +5,7 @@ import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
 import { LearningGarden } from "@/components/LearningGarden";
 import { getMyGarden } from "@/app/actions/garden";
+import { GradeWelcome } from "@/components/GradeWelcome";
 import { HomeLearningChoices } from "@/components/HomeLearningChoices";
 import { type Subject } from "@/lib/types";
 
@@ -19,7 +20,7 @@ export default async function StudentHome() {
   ]);
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-5">
+    <main data-grade={profile.grade} className="grade-home mx-auto max-w-3xl px-4 py-5">
       <header className="mb-4 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
         {/* "Grown-up" (switch to parent) lives in the kid footer, so the top
@@ -41,9 +42,10 @@ export default async function StudentHome() {
         </div>
       </section>
 
+      <GradeWelcome grade={profile.grade} />
       <HomeLearningChoices grade={profile.grade} subjects={(subjects ?? []) as Subject[]} />
 
-      <LearningGarden initial={garden} />
+      <LearningGarden grade={profile.grade} initial={garden} />
     </main>
   );
 }

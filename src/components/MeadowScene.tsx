@@ -112,7 +112,7 @@ export function MeadowScene() {
       {/* The scene itself */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 overflow-hidden"
+        className="meadow-backdrop pointer-events-none fixed inset-0 overflow-hidden"
         style={{ zIndex: -2 }}
       >
         {/* Sky */}

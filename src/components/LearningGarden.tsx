@@ -2,35 +2,44 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getMyGarden } from "@/app/actions/garden";
+import { experienceFor } from "@/lib/grade-experience";
+import type { Grade } from "@/lib/types";
 import type { GardenProgress } from "@/lib/garden";
 import { RecordedNarration } from "@/components/LessonNarration";
 import { HOME_NARRATION } from "@/lib/home-narration";
 
-function Flower({ x, y, color, small = false }: { x: number; y: number; color: string; small?: boolean }) {
+function Flower({ x, y, color, small = false, friendly = true }: { x: number; y: number; color: string; small?: boolean; friendly?: boolean }) {
   return <g transform={`translate(${x} ${y}) scale(${small ? .78 : 1})`}>
     <path d="M0 0 Q-6 26 0 52" fill="none" stroke="#237454" strokeWidth="5" strokeLinecap="round" />
     <path d="M0 34 Q-28 10 -24 33 Q-10 45 0 40 M0 25 Q28 5 23 26 Q9 37 0 32" fill="#4f9e66" />
     {[0, 60, 120, 180, 240, 300].map(a => <ellipse key={a} cx="0" cy="-13" rx="9" ry="15" fill={color} transform={`rotate(${a})`} />)}
-    <circle r="9" fill="#ffda72" /><circle cx="-3" cy="-1" r="1.3" fill="#795033" /><circle cx="3" cy="-1" r="1.3" fill="#795033" />
-    <path d="M-3 3 Q0 6 3 3" fill="none" stroke="#795033" strokeWidth="1.4" strokeLinecap="round" />
+    <circle r="9" fill="#ffda72" />{friendly && <g><circle cx="-3" cy="-1" r="1.3" fill="#795033" /><circle cx="3" cy="-1" r="1.3" fill="#795033" />
+    <path d="M-3 3 Q0 6 3 3" fill="none" stroke="#795033" strokeWidth="1.4" strokeLinecap="round" /></g>}
   </g>;
 }
-export function GardenScene({ flowers }: { flowers: number }) {
+export function GardenScene({ flowers, grade }: { flowers: number; grade?: Grade | null }) {
+  const experience = experienceFor(grade);
   const visible = flowers === 0 ? 0 : ((flowers - 1) % 10) + 1;
   const colors = ["#ef91ad", "#b0a0e5", "#f5b65c", "#83c6e0", "#ef91ad"];
   return <svg viewBox="0 0 560 240" role="img" aria-label={flowers ? `A garden patch with ${visible} growing flowers` : "A sunny garden ready for your first flower"} className="w-full">
-    <rect width="560" height="240" rx="24" fill="#e5f3ed" />
+    <rect width="560" height="240" rx="24" fill={experience.sky} />
     <circle cx="470" cy="53" r="26" fill="#f6cf77" />
+    {experience.setting === 'night' && <g fill="#fff5ca">{[35,90,154,214,280,334,391,522].map((x,i) => <circle key={x} cx={x} cy={22+(i%3)*23} r={i%2 ? 2 : 1.2} />)}</g>}
+    {experience.setting === 'woodland' && <g fill="#779767"><path d="M25 144V40L-8 85H8L-13 112H10L-12 144Z M535 146V49L503 96H517L497 123H518L500 146Z" /></g>}
+    {experience.setting === 'rainforest' && <g fill="#458068" opacity=".55"><path d="M0 0H135Q90 20 60 76Q42 30 0 35Z M560 0H410Q478 28 490 85Q520 34 560 53Z" /></g>}
+    {experience.setting === 'desert' && <path d="M0 155V104L50 80L90 100L126 75L172 155 M390 155L439 95L490 110L531 63L560 87V155" fill="#c39174" opacity=".7" />}
+    {experience.setting === 'coast' && <path d="M0 126 Q70 114 140 126 T280 126 T420 126 T560 126 V174 H0Z" fill="#82c1cd" />}
     <g fill="#fff" opacity=".85"><ellipse cx="105" cy="48" rx="44" ry="12" /><ellipse cx="88" cy="41" rx="22" ry="15" /><ellipse cx="354" cy="79" rx="34" ry="9" /></g>
-    <path d="M0 158 Q140 85 295 154 T560 142 V240 H0Z" fill="#c5dfb8" />
-    <path d="M0 195 Q165 131 320 187 T560 167 V240 H0Z" fill="#a7cfa2" />
+    <path d="M0 158 Q140 85 295 154 T560 142 V240 H0Z" fill={experience.ground} opacity=".65" />
+    <path d="M0 195 Q165 131 320 187 T560 167 V240 H0Z" fill={experience.ground} />
     <ellipse cx="280" cy="220" rx="228" ry="15" fill="#729f74" opacity=".25" />
-    {Array.from({ length: visible }, (_, i) => <Flower key={i} x={70 + (i % 5) * 102} y={i < 5 ? 121 : 165} color={colors[i % 5]} small={i < 5} />)}
+    {Array.from({ length: visible }, (_, i) => <Flower key={i} x={70 + (i % 5) * 102} y={i < 5 ? 121 : 165} color={colors[i % 5]} friendly={experience.earlyReader} small={i < 5} />)}
     {visible === 0 && <g><path d="M280 206 V181 M280 193 Q250 168 255 190 Q268 203 280 198 M280 185 Q303 160 305 181 Q295 195 280 193" fill="#4c9463" stroke="#37754d" strokeWidth="3" /><ellipse cx="280" cy="211" rx="28" ry="6" fill="#8b7654" /></g>}
     <g fill="#fff4c5"><circle cx="32" cy="189" r="3" /><circle cx="527" cy="206" r="3" /><circle cx="505" cy="140" r="2" /></g>
   </svg>;
 }
-export function LearningGarden({ initial, full = false }: { initial: GardenProgress | null; full?: boolean }) {
+export function LearningGarden({ initial, full = false, grade }: { initial: GardenProgress | null; full?: boolean; grade?: Grade | null }) {
+  const experience = experienceFor(grade);
   const [progress, setProgress] = useState(initial);
   const [failed, setFailed] = useState(false);
   const [selectedPatch, setSelectedPatch] = useState<number | null>(null);
@@ -47,10 +56,10 @@ export function LearningGarden({ initial, full = false }: { initial: GardenProgr
   const shownFlowers = full && patch < patchCount ? 10 : flowers;
   return <section aria-label="My learning garden" className="mt-5 overflow-hidden rounded-[2rem] border border-emerald-100 bg-[#fffdf5] shadow-[0_8px_0_0_#dce8da]">
     <div className="flex items-start justify-between gap-3 px-5 pb-4 pt-5 sm:px-7">
-      <div><p className="text-xs font-bold uppercase tracking-widest text-emerald-800">Look what you’re growing</p><h2 className="mt-1 font-display text-2xl font-bold text-[#264f3f]">My learning garden</h2></div>
+      <div><p className="text-xs font-bold uppercase tracking-widest text-emerald-800">Look what you’re growing</p><h2 className="mt-1 font-display text-2xl font-bold text-[#264f3f]">{experience.gardenName}</h2></div>
       <RecordedNarration id="home:garden" text={HOME_NARRATION['home:garden']} label="Hear how my garden grows" />
     </div>
-    <div className="px-3"><GardenScene flowers={shownFlowers} /></div>
+    <div className="px-3"><GardenScene grade={grade} flowers={shownFlowers} /></div>
     {full && patchCount > 1 && <div className="mt-3 flex items-center justify-between gap-2 px-5"><button disabled={patch === 1} onClick={() => setSelectedPatch(patch - 1)} className="min-h-12 rounded-xl bg-emerald-50 px-4 font-bold text-emerald-900 disabled:opacity-40">← Previous</button><p className="text-sm font-bold text-emerald-900" aria-live="polite">Patch {patch} of {patchCount}</p><button disabled={patch === patchCount} onClick={() => setSelectedPatch(patch + 1)} className="min-h-12 rounded-xl bg-emerald-50 px-4 font-bold text-emerald-900 disabled:opacity-40">Next →</button></div>}
     <div className="p-5 sm:px-7">
       <div className="flex flex-wrap items-center justify-between gap-2"><p className="text-xl font-bold text-[#264f3f]">{flowers === 0 ? "Your first flower is on its way" : `${flowers} ${flowers === 1 ? "flower" : "flowers"} grown`}</p>{!full && flowers > 10 && <span className="text-sm font-bold text-emerald-800">Patch {Math.ceil(flowers / 10)}</span>}</div>

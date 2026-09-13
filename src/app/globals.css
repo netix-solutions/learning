@@ -491,3 +491,24 @@ a, button, [role="button"], label, summary, input[type="submit"] {
   .lesson-lab .lab-counter:active { transform: none; }
   .lesson-lab .lab-dot, .lesson-lab .lab-divider { animation: none; }
 }
+
+/* Quiz content keeps a readable book face; younger readers get more room to tap. */
+.grade-quiz button { min-height: 48px; }
+.grade-quiz[data-grade="PK"] button,
+.grade-quiz[data-grade="K"] button,
+.grade-quiz[data-grade="1"] button { min-height: 56px; }
+.grade-quiz[data-grade="4"] .font-display,
+.grade-quiz[data-grade="5"] .font-display { font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif; }
+.grade-quiz .quiz-prompt { overflow-wrap: anywhere; }
+@media (min-width: 768px) {
+  .grade-quiz { padding-top: 2rem; }
+  .grade-quiz .quiz-prompt { font-size: 1.875rem; }
+}
+.grade-home[data-grade="4"] .font-display,
+.grade-home[data-grade="5"] .font-display { font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif; }
+body:has([data-grade="3"]) .meadow-backdrop,
+body:has([data-grade="4"]) .meadow-backdrop,
+body:has([data-grade="5"]) .meadow-backdrop { display: none; }
+body:has([data-grade="3"])::before { background: linear-gradient(#e5f0ea, #f8faf5); }
+body:has([data-grade="4"])::before { background: linear-gradient(#f8eade, #fffaf4); }
+body:has([data-grade="5"])::before { background: linear-gradient(#e6e7f2, #f8f9fc); }
