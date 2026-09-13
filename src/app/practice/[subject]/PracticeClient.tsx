@@ -56,6 +56,7 @@ export function PracticeClient({
   const [selected, setSelected] = useState<number | null>(null);
   const [result, setResult] = useState<AttemptResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [unsavedAnswer, setUnsavedAnswer] = useState<SubmittedAnswer | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [confettiKey, setConfettiKey] = useState(0);
   const [correctKey, setCorrectKey] = useState(0);
@@ -92,6 +93,7 @@ export function PracticeClient({
     setQuestions([]);
     setIndex(0);
     setSelected(null);
+    setUnsavedAnswer(null);
     setResult(null);
     setCorrectCount(0);
     setCombo(0);
@@ -191,17 +193,19 @@ export function PracticeClient({
     if (result || submitting || !current) return;
     if (typeof answer === "number") setSelected(answer);
     setSubmitting(true);
+    setUnsavedAnswer(null);
 
     const supabase = createClient();
     const { data, error } = await supabase.rpc("record_attempt", {
       p_question_id: current.id,
       p_answer: answer,
-    });
+    }).then(response => response, () => ({ data: null, error: true }));
     setSubmitting(false);
 
     if (error || !data) {
-      // Surface a gentle retry: clear selection so they can tap again.
+      // Keep this question open until the server confirms the answer was saved.
       setSelected(null);
+      setUnsavedAnswer(answer);
       return;
     }
 
@@ -231,6 +235,7 @@ export function PracticeClient({
     }
     setIndex((i) => i + 1);
     setSelected(null);
+    setUnsavedAnswer(null);
     setResult(null);
   }
 
@@ -260,6 +265,7 @@ export function PracticeClient({
       return copy;
     });
     setSelected(null);
+    setUnsavedAnswer(null);
     setResult(null);
     setIndex((i) => i + 1);
   }
@@ -510,6 +516,14 @@ export function PracticeClient({
             })}
           </div>
           )}
+
+          {unsavedAnswer !== null && !result && <div role="alert" className="mt-5 rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-slate-800">
+            <p className="text-lg font-bold">Your answer did not save. Please try again.</p>
+            <div className="mt-3 flex items-center gap-3">
+              <button onClick={() => submit(unsavedAnswer)} disabled={submitting} className="min-h-12 rounded-xl bg-sky-700 px-4 py-3 font-bold text-white">Try saving again</button>
+              <SpeakButton id="answer-save-error" label="Read the save message" text="Your answer did not save. Please try again." />
+            </div>
+          </div>}
 
           {/* feedback — a quick cheer when right, a real re-teach when wrong */}
           {result && (
