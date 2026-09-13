@@ -12,3 +12,5 @@ export async function getMyTrain(){return call('get_my_train');}
 export async function chooseRewardTheme(theme: RewardTheme){return call('set_reward_theme',{p_theme:theme});}
 export async function buyTrainCar(car: string, request: string){return call('buy_train_car',{p_car:car,p_request:request});}
 export async function moveTrainCar(purchase: string,direction: number){return call('move_train_car',{p_purchase:purchase,p_direction:direction});}
+
+export async function buyDinosaur(dinosaur: string, request: string){return call('buy_dinosaur',{p_car:dinosaur,p_request:request});}

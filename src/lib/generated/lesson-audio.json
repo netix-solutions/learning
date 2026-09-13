@@ -2220,13 +2220,21 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
+    "home:dinosaurs": {
+      "id": "home:dinosaurs",
+      "text": "Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. Train cars and dinosaurs use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break.",
+      "fingerprint": "32cacb5d6409d69f7807974b72f330ce5707ba1e79eff87590e1a1ba66d581a6",
+      "url": "/audio/lessons/32cacb5d6409d69f7807974b72f330ce5707ba1e79eff87590e1a1ba66d581a6.mp3",
+      "bytes": 450604,
+      "sha256": "f53a5769929e050be65198e28928fb03b636d5ac7cdcdf19c96f8f6c240de4d9"
+    },
     "home:train": {
       "id": "home:train",
-      "text": "All aboard! Your engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Use your tokens to buy a train car. It joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
-      "fingerprint": "6c248efad59b4434427f18e1f733dbf55451f7e37cec8c17c7acaed714387aae",
-      "url": "/audio/lessons/6c248efad59b4434427f18e1f733dbf55451f7e37cec8c17c7acaed714387aae.mp3",
-      "bytes": 391253,
-      "sha256": "8e6b335959547d980fdf8a0a4f06a843ef73c56fe4c936aec5399563940ee623"
+      "text": "All aboard! Your engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Train cars and dinosaurs use the same tokens. Use your tokens to buy a train car. It joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
+      "fingerprint": "f4e46d04b0ae6281579ef1fc6b75e064c73fc6342753d98a4a2cd5d43fe16e9f",
+      "url": "/audio/lessons/f4e46d04b0ae6281579ef1fc6b75e064c73fc6342753d98a4a2cd5d43fe16e9f.mp3",
+      "bytes": 423018,
+      "sha256": "154585aae8b4e7f2d586cfc99e82e4ae62d1cce47b167ab58c534fdf7af3320a"
     }
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getMyGarden } from "@/app/actions/garden";
 import { experienceFor } from "@/lib/grade-experience";
 import type { Grade } from "@/lib/types";
@@ -8,35 +9,22 @@ import type { GardenProgress } from "@/lib/garden";
 import { RecordedNarration } from "@/components/LessonNarration";
 import { HOME_NARRATION } from "@/lib/home-narration";
 
-function Flower({ x, y, color, small = false, friendly = true }: { x: number; y: number; color: string; small?: boolean; friendly?: boolean }) {
-  return <g transform={`translate(${x} ${y}) scale(${small ? .78 : 1})`}>
-    <path d="M0 0 Q-6 26 0 52" fill="none" stroke="#237454" strokeWidth="5" strokeLinecap="round" />
-    <path d="M0 34 Q-28 10 -24 33 Q-10 45 0 40 M0 25 Q28 5 23 26 Q9 37 0 32" fill="#4f9e66" />
-    {[0, 60, 120, 180, 240, 300].map(a => <ellipse key={a} cx="0" cy="-13" rx="9" ry="15" fill={color} transform={`rotate(${a})`} />)}
-    <circle r="9" fill="#ffda72" />{friendly && <g><circle cx="-3" cy="-1" r="1.3" fill="#795033" /><circle cx="3" cy="-1" r="1.3" fill="#795033" />
-    <path d="M-3 3 Q0 6 3 3" fill="none" stroke="#795033" strokeWidth="1.4" strokeLinecap="round" /></g>}
-  </g>;
-}
+const FLOWERS = ['daisy', 'tulip', 'sunflower', 'poppy', 'iris'];
 export function GardenScene({ flowers, grade }: { flowers: number; grade?: Grade | null }) {
   const experience = experienceFor(grade);
   const visible = flowers === 0 ? 0 : ((flowers - 1) % 10) + 1;
-  const colors = ["#ef91ad", "#b0a0e5", "#f5b65c", "#83c6e0", "#ef91ad"];
-  return <svg viewBox="0 0 560 240" role="img" aria-label={flowers ? `A garden patch with ${visible} growing flowers` : "A sunny garden ready for your first flower"} className="w-full">
-    <rect width="560" height="240" rx="24" fill={experience.sky} />
-    <circle cx="470" cy="53" r="26" fill="#f6cf77" />
-    {experience.setting === 'night' && <g fill="#fff5ca">{[35,90,154,214,280,334,391,522].map((x,i) => <circle key={x} cx={x} cy={22+(i%3)*23} r={i%2 ? 2 : 1.2} />)}</g>}
-    {experience.setting === 'woodland' && <g fill="#779767"><path d="M25 144V40L-8 85H8L-13 112H10L-12 144Z M535 146V49L503 96H517L497 123H518L500 146Z" /></g>}
-    {experience.setting === 'rainforest' && <g fill="#458068" opacity=".55"><path d="M0 0H135Q90 20 60 76Q42 30 0 35Z M560 0H410Q478 28 490 85Q520 34 560 53Z" /></g>}
-    {experience.setting === 'desert' && <path d="M0 155V104L50 80L90 100L126 75L172 155 M390 155L439 95L490 110L531 63L560 87V155" fill="#c39174" opacity=".7" />}
-    {experience.setting === 'coast' && <path d="M0 126 Q70 114 140 126 T280 126 T420 126 T560 126 V174 H0Z" fill="#82c1cd" />}
-    <g fill="#fff" opacity=".85"><ellipse cx="105" cy="48" rx="44" ry="12" /><ellipse cx="88" cy="41" rx="22" ry="15" /><ellipse cx="354" cy="79" rx="34" ry="9" /></g>
-    <path d="M0 158 Q140 85 295 154 T560 142 V240 H0Z" fill={experience.ground} opacity=".65" />
-    <path d="M0 195 Q165 131 320 187 T560 167 V240 H0Z" fill={experience.ground} />
-    <ellipse cx="280" cy="220" rx="228" ry="15" fill="#729f74" opacity=".25" />
-    {Array.from({ length: visible }, (_, i) => <Flower key={i} x={70 + (i % 5) * 102} y={i < 5 ? 121 : 165} color={colors[i % 5]} friendly={experience.earlyReader} small={i < 5} />)}
-    {visible === 0 && <g><path d="M280 206 V181 M280 193 Q250 168 255 190 Q268 203 280 198 M280 185 Q303 160 305 181 Q295 195 280 193" fill="#4c9463" stroke="#37754d" strokeWidth="3" /><ellipse cx="280" cy="211" rx="28" ry="6" fill="#8b7654" /></g>}
-    <g fill="#fff4c5"><circle cx="32" cy="189" r="3" /><circle cx="527" cy="206" r="3" /><circle cx="505" cy="140" r="2" /></g>
-  </svg>;
+  const night = experience.setting === 'night';
+  return <div role="img" aria-label={flowers ? `A garden patch with ${visible} growing flowers` : "A sunny garden ready for your first flower"} className="relative isolate aspect-[2/1] w-full overflow-hidden rounded-3xl" style={{ background: experience.ground }}>
+    <Image src="/images/garden/garden-bed.webp" alt="" fill unoptimized loading="eager" sizes="(max-width: 768px) 100vw, 740px" className="object-cover" style={{ filter: night ? 'brightness(.62) saturate(.65)' : undefined }} />
+    {night && <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-indigo-950/20" />}
+    {Array.from({ length: visible }, (_, i) => {
+      const back = i < 5;
+      return <div key={i} data-garden-flower className="absolute" style={{ left: `${6 + (i % 5) * 17 + (back ? 0 : 4)}%`, bottom: back ? '25%' : '9%', width: '16%', height: back ? '49%' : '58%', zIndex: back ? 1 : 2 }}>
+        <Image src={`/images/garden/${FLOWERS[i % FLOWERS.length]}.webp`} alt="" fill sizes="(max-width: 768px) 16vw, 120px" className="pointer-events-none object-contain object-bottom" style={{ filter: night ? 'brightness(.86)' : undefined }} />
+      </div>;
+    })}
+    {visible === 0 && <div className="absolute bottom-[12%] left-[41%] h-[34%] w-[18%]"><Image src="/images/garden/sprout.webp" alt="" fill sizes="120px" className="object-contain object-bottom" /></div>}
+  </div>;
 }
 export function LearningGarden({ initial, full = false, grade }: { initial: GardenProgress | null; full?: boolean; grade?: Grade | null }) {
   const experience = experienceFor(grade);
