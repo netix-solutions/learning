@@ -25,7 +25,7 @@ function verdictFor(s: SubjectStanding): Verdict {
   const pct = Math.round((s.correct / s.attempts) * 100);
   if (pct >= 80)
     return {
-      label: "On track 🎉",
+      label: "Strong practice accuracy",
       chip: "bg-emerald-50 text-emerald-700 ring-emerald-100",
       bar: "bg-emerald-400",
     };
@@ -67,8 +67,9 @@ export function GradeStandards({
       </h2>
       <p className="mb-3 text-sm text-slate-500">
         Here&apos;s what kids are expected to learn in {gradeLabel(grade)}, with a
-        simple read on where {childName} stands in each. These goals follow
-        Florida&apos;s B.E.S.T. standards.
+        summary of {childName}&apos;s practice so far. The percentage reflects answered
+        questions, not completion of every grade-level goal. Florida uses B.E.S.T.
+        for math and English language arts, and separate science standards.
       </p>
 
       <div className="space-y-4">
@@ -97,7 +98,7 @@ export function GradeStandards({
                 )}
               </div>
 
-              {/* Progress toward the grade's expectations, by accuracy so far. */}
+              {/* Accuracy on attempted questions; not a standards coverage measure. */}
               <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
                 <div
                   className={`h-full rounded-full ${verdict.bar} transition-[width] duration-500`}

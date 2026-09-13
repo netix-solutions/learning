@@ -1,0 +1,1421 @@
+{
+  "scope": "Repository question seeds and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
+  "sources": [
+    {
+      "file": "supabase/seed.sql",
+      "rows": 72
+    },
+    {
+      "file": "supabase/seeds/questions.sql",
+      "rows": 12978
+    }
+  ],
+  "inventory": [
+    {
+      "grade": "PK",
+      "subject": "math",
+      "seedRows": 41,
+      "distinctPrompts": 40,
+      "skills": [
+        {
+          "skill": "PK.count",
+          "rows": 9
+        },
+        {
+          "skill": "PK.numbers",
+          "rows": 8
+        },
+        {
+          "skill": "PK.patterns",
+          "rows": 8
+        },
+        {
+          "skill": "PK.shapes",
+          "rows": 8
+        },
+        {
+          "skill": "PK.size",
+          "rows": 8
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 41,
+      "standardTags": [],
+      "lessonIds": [
+        "PK-count"
+      ]
+    },
+    {
+      "grade": "PK",
+      "subject": "reading",
+      "seedRows": 24,
+      "distinctPrompts": 24,
+      "skills": [
+        {
+          "skill": "PK.colors",
+          "rows": 8
+        },
+        {
+          "skill": "PK.letters",
+          "rows": 8
+        },
+        {
+          "skill": "PK.listen",
+          "rows": 8
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 24,
+      "standardTags": [],
+      "lessonIds": [
+        "PK-rhyme"
+      ]
+    },
+    {
+      "grade": "PK",
+      "subject": "science",
+      "seedRows": 24,
+      "distinctPrompts": 24,
+      "skills": [
+        {
+          "skill": "PK.animals",
+          "rows": 8
+        },
+        {
+          "skill": "PK.body",
+          "rows": 8
+        },
+        {
+          "skill": "PK.weather",
+          "rows": 8
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 24,
+      "standardTags": [],
+      "lessonIds": [
+        "PK-observe"
+      ]
+    },
+    {
+      "grade": "PK",
+      "subject": "geography",
+      "seedRows": 0,
+      "distinctPrompts": 0,
+      "skills": [],
+      "missingSkill": 0,
+      "missingStandard": 0,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "PK",
+      "subject": "history",
+      "seedRows": 0,
+      "distinctPrompts": 0,
+      "skills": [],
+      "missingSkill": 0,
+      "missingStandard": 0,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "PK",
+      "subject": "civics",
+      "seedRows": 0,
+      "distinctPrompts": 0,
+      "skills": [],
+      "missingSkill": 0,
+      "missingStandard": 0,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "PK",
+      "subject": "economics",
+      "seedRows": 0,
+      "distinctPrompts": 0,
+      "skills": [],
+      "missingSkill": 0,
+      "missingStandard": 0,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "K",
+      "subject": "math",
+      "seedRows": 579,
+      "distinctPrompts": 345,
+      "skills": [
+        {
+          "skill": "K.addsub",
+          "rows": 80
+        },
+        {
+          "skill": "K.compare",
+          "rows": 219
+        },
+        {
+          "skill": "K.count",
+          "rows": 248
+        },
+        {
+          "skill": "K.shape",
+          "rows": 26
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.K.AR.1",
+        "MA.K.GR.1",
+        "MA.K.NSO.1",
+        "MA.K.NSO.2"
+      ],
+      "lessonIds": [
+        "K-add"
+      ]
+    },
+    {
+      "grade": "K",
+      "subject": "reading",
+      "seedRows": 295,
+      "distinctPrompts": 104,
+      "skills": [
+        {
+          "skill": "K.print",
+          "rows": 49
+        },
+        {
+          "skill": "K.sound",
+          "rows": 240
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.K.F.1",
+        "ELA.K.F.2",
+        "ELA.K.F.3"
+      ],
+      "lessonIds": [
+        "K-blend"
+      ]
+    },
+    {
+      "grade": "K",
+      "subject": "science",
+      "seedRows": 120,
+      "distinctPrompts": 116,
+      "skills": [
+        {
+          "skill": "K.animalneeds",
+          "rows": 19
+        },
+        {
+          "skill": "K.daynight",
+          "rows": 19
+        },
+        {
+          "skill": "K.livingnonliving",
+          "rows": 20
+        },
+        {
+          "skill": "K.pushpull",
+          "rows": 19
+        },
+        {
+          "skill": "K.senses",
+          "rows": 22
+        },
+        {
+          "skill": "K.weather",
+          "rows": 21
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 120,
+      "standardTags": [],
+      "lessonIds": [
+        "K-push"
+      ]
+    },
+    {
+      "grade": "K",
+      "subject": "geography",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "geo.K.community",
+          "rows": 19
+        },
+        {
+          "skill": "geo.K.directions",
+          "rows": 21
+        },
+        {
+          "skill": "geo.K.landwater",
+          "rows": 19
+        },
+        {
+          "skill": "geo.K.maps",
+          "rows": 21
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "K",
+      "subject": "history",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "hist.K.pastpresent",
+          "rows": 37
+        },
+        {
+          "skill": "hist.K.time",
+          "rows": 43
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "K",
+      "subject": "civics",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "civ.K.flag",
+          "rows": 29
+        },
+        {
+          "skill": "civ.K.helpers",
+          "rows": 28
+        },
+        {
+          "skill": "civ.K.rules",
+          "rows": 23
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "K",
+      "subject": "economics",
+      "seedRows": 76,
+      "distinctPrompts": 76,
+      "skills": [
+        {
+          "skill": "econ.K.jobs",
+          "rows": 27
+        },
+        {
+          "skill": "econ.K.money",
+          "rows": 27
+        },
+        {
+          "skill": "econ.K.needswants",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 76,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "1",
+      "subject": "math",
+      "seedRows": 1272,
+      "distinctPrompts": 1259,
+      "skills": [
+        {
+          "skill": "1.addsub",
+          "rows": 653
+        },
+        {
+          "skill": "1.compare",
+          "rows": 267
+        },
+        {
+          "skill": "1.place",
+          "rows": 340
+        },
+        {
+          "skill": "1.shape",
+          "rows": 6
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.1.GR.1",
+        "MA.1.NSO.1",
+        "MA.1.NSO.2"
+      ],
+      "lessonIds": [
+        "1-ten"
+      ]
+    },
+    {
+      "grade": "1",
+      "subject": "reading",
+      "seedRows": 302,
+      "distinctPrompts": 68,
+      "skills": [
+        {
+          "skill": "1.cloze",
+          "rows": 8
+        },
+        {
+          "skill": "1.phon",
+          "rows": 125
+        },
+        {
+          "skill": "1.read",
+          "rows": 3
+        },
+        {
+          "skill": "1.vocab",
+          "rows": 160
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.1.F.2",
+        "ELA.1.F.3",
+        "ELA.1.R.1",
+        "ELA.1.V.1"
+      ],
+      "lessonIds": [
+        "1-silent-e"
+      ]
+    },
+    {
+      "grade": "1",
+      "subject": "science",
+      "seedRows": 119,
+      "distinctPrompts": 116,
+      "skills": [
+        {
+          "skill": "1.animalbabies",
+          "rows": 24
+        },
+        {
+          "skill": "1.materials",
+          "rows": 20
+        },
+        {
+          "skill": "1.plants",
+          "rows": 22
+        },
+        {
+          "skill": "1.seasons",
+          "rows": 19
+        },
+        {
+          "skill": "1.shadow",
+          "rows": 16
+        },
+        {
+          "skill": "1.sky",
+          "rows": 18
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 119,
+      "standardTags": [],
+      "lessonIds": [
+        "1-plants"
+      ]
+    },
+    {
+      "grade": "1",
+      "subject": "geography",
+      "seedRows": 73,
+      "distinctPrompts": 73,
+      "skills": [
+        {
+          "skill": "geo.1.community",
+          "rows": 20
+        },
+        {
+          "skill": "geo.1.directions",
+          "rows": 18
+        },
+        {
+          "skill": "geo.1.landforms",
+          "rows": 16
+        },
+        {
+          "skill": "geo.1.mapkey",
+          "rows": 19
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 73,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "1",
+      "subject": "history",
+      "seedRows": 76,
+      "distinctPrompts": 76,
+      "skills": [
+        {
+          "skill": "hist.1.holidays",
+          "rows": 30
+        },
+        {
+          "skill": "hist.1.longago",
+          "rows": 25
+        },
+        {
+          "skill": "hist.1.symbols",
+          "rows": 21
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 76,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "1",
+      "subject": "civics",
+      "seedRows": 68,
+      "distinctPrompts": 68,
+      "skills": [
+        {
+          "skill": "civ.1.citizen",
+          "rows": 15
+        },
+        {
+          "skill": "civ.1.laws",
+          "rows": 20
+        },
+        {
+          "skill": "civ.1.leaders",
+          "rows": 17
+        },
+        {
+          "skill": "civ.1.symbols",
+          "rows": 16
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 68,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "1",
+      "subject": "economics",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "econ.1.goodsservices",
+          "rows": 23
+        },
+        {
+          "skill": "econ.1.jobs",
+          "rows": 17
+        },
+        {
+          "skill": "econ.1.money",
+          "rows": 17
+        },
+        {
+          "skill": "econ.1.needswants",
+          "rows": 23
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "2",
+      "subject": "math",
+      "seedRows": 1634,
+      "distinctPrompts": 1536,
+      "skills": [
+        {
+          "skill": "2.addsub",
+          "rows": 900
+        },
+        {
+          "skill": "2.place",
+          "rows": 700
+        },
+        {
+          "skill": "2.skip",
+          "rows": 28
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.2.AR.3",
+        "MA.2.M.2",
+        "MA.2.NSO.1",
+        "MA.2.NSO.2"
+      ],
+      "lessonIds": [
+        "2-place"
+      ]
+    },
+    {
+      "grade": "2",
+      "subject": "reading",
+      "seedRows": 619,
+      "distinctPrompts": 124,
+      "skills": [
+        {
+          "skill": "2.foundation",
+          "rows": 130
+        },
+        {
+          "skill": "2.main",
+          "rows": 3
+        },
+        {
+          "skill": "2.vocab",
+          "rows": 480
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.2.F.1",
+        "ELA.2.R.2",
+        "ELA.2.V.1"
+      ],
+      "lessonIds": [
+        "2-prefix"
+      ]
+    },
+    {
+      "grade": "2",
+      "subject": "science",
+      "seedRows": 120,
+      "distinctPrompts": 119,
+      "skills": [
+        {
+          "skill": "2.habitats",
+          "rows": 28
+        },
+        {
+          "skill": "2.lifecycle",
+          "rows": 21
+        },
+        {
+          "skill": "2.magnets",
+          "rows": 26
+        },
+        {
+          "skill": "2.matter",
+          "rows": 23
+        },
+        {
+          "skill": "2.weather",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 120,
+      "standardTags": [],
+      "lessonIds": [
+        "2-matter"
+      ]
+    },
+    {
+      "grade": "2",
+      "subject": "geography",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "geo.2.continents",
+          "rows": 20
+        },
+        {
+          "skill": "geo.2.globe",
+          "rows": 18
+        },
+        {
+          "skill": "geo.2.landforms",
+          "rows": 19
+        },
+        {
+          "skill": "geo.2.oceans",
+          "rows": 23
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "2",
+      "subject": "history",
+      "seedRows": 68,
+      "distinctPrompts": 68,
+      "skills": [
+        {
+          "skill": "hist.2.figures",
+          "rows": 22
+        },
+        {
+          "skill": "hist.2.holidays",
+          "rows": 24
+        },
+        {
+          "skill": "hist.2.symbols",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 68,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "2",
+      "subject": "civics",
+      "seedRows": 74,
+      "distinctPrompts": 74,
+      "skills": [
+        {
+          "skill": "civ.2.government",
+          "rows": 29
+        },
+        {
+          "skill": "civ.2.responsibility",
+          "rows": 23
+        },
+        {
+          "skill": "civ.2.voting",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 74,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "2",
+      "subject": "economics",
+      "seedRows": 76,
+      "distinctPrompts": 76,
+      "skills": [
+        {
+          "skill": "econ.2.goodsservices",
+          "rows": 22
+        },
+        {
+          "skill": "econ.2.money",
+          "rows": 16
+        },
+        {
+          "skill": "econ.2.saving",
+          "rows": 22
+        },
+        {
+          "skill": "econ.2.trade",
+          "rows": 16
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 76,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "3",
+      "subject": "math",
+      "seedRows": 1356,
+      "distinctPrompts": 889,
+      "skills": [
+        {
+          "skill": "3.area",
+          "rows": 343
+        },
+        {
+          "skill": "3.frac",
+          "rows": 15
+        },
+        {
+          "skill": "3.muldiv",
+          "rows": 306
+        },
+        {
+          "skill": "3.perim",
+          "rows": 343
+        },
+        {
+          "skill": "3.round",
+          "rows": 343
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.3.AR.1",
+        "MA.3.FR.1",
+        "MA.3.GR.2",
+        "MA.3.NSO.1",
+        "MA.3.NSO.2"
+      ],
+      "lessonIds": [
+        "3-groups"
+      ]
+    },
+    {
+      "grade": "3",
+      "subject": "reading",
+      "seedRows": 313,
+      "distinctPrompts": 78,
+      "skills": [
+        {
+          "skill": "3.detail",
+          "rows": 2
+        },
+        {
+          "skill": "3.fig",
+          "rows": 48
+        },
+        {
+          "skill": "3.grammar",
+          "rows": 136
+        },
+        {
+          "skill": "3.vocab",
+          "rows": 121
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.3.C.3",
+        "ELA.3.R.2",
+        "ELA.3.R.3",
+        "ELA.3.V.1"
+      ],
+      "lessonIds": [
+        "3-evidence"
+      ]
+    },
+    {
+      "grade": "3",
+      "subject": "science",
+      "seedRows": 120,
+      "distinctPrompts": 120,
+      "skills": [
+        {
+          "skill": "3.energy",
+          "rows": 27
+        },
+        {
+          "skill": "3.forces",
+          "rows": 27
+        },
+        {
+          "skill": "3.matterchange",
+          "rows": 23
+        },
+        {
+          "skill": "3.soilrocks",
+          "rows": 22
+        },
+        {
+          "skill": "3.watercycle",
+          "rows": 21
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 120,
+      "standardTags": [],
+      "lessonIds": [
+        "3-energy"
+      ]
+    },
+    {
+      "grade": "3",
+      "subject": "geography",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "geo.3.florida",
+          "rows": 21
+        },
+        {
+          "skill": "geo.3.landforms",
+          "rows": 23
+        },
+        {
+          "skill": "geo.3.maptools",
+          "rows": 19
+        },
+        {
+          "skill": "geo.3.usregions",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "3",
+      "subject": "history",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "hist.3.explorers",
+          "rows": 22
+        },
+        {
+          "skill": "hist.3.firstpeoples",
+          "rows": 22
+        },
+        {
+          "skill": "hist.3.florida",
+          "rows": 18
+        },
+        {
+          "skill": "hist.3.timeline",
+          "rows": 18
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "3",
+      "subject": "civics",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "civ.3.lawmaking",
+          "rows": 23
+        },
+        {
+          "skill": "civ.3.localgov",
+          "rows": 23
+        },
+        {
+          "skill": "civ.3.rights",
+          "rows": 19
+        },
+        {
+          "skill": "civ.3.symbols",
+          "rows": 15
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "3",
+      "subject": "economics",
+      "seedRows": 75,
+      "distinctPrompts": 75,
+      "skills": [
+        {
+          "skill": "econ.3.choices",
+          "rows": 15
+        },
+        {
+          "skill": "econ.3.income",
+          "rows": 19
+        },
+        {
+          "skill": "econ.3.producerconsumer",
+          "rows": 20
+        },
+        {
+          "skill": "econ.3.scarcity",
+          "rows": 21
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 75,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "4",
+      "subject": "math",
+      "seedRows": 1370,
+      "distinctPrompts": 812,
+      "skills": [
+        {
+          "skill": "4.dec",
+          "rows": 90
+        },
+        {
+          "skill": "4.div",
+          "rows": 100
+        },
+        {
+          "skill": "4.factor",
+          "rows": 423
+        },
+        {
+          "skill": "4.frac",
+          "rows": 65
+        },
+        {
+          "skill": "4.mul",
+          "rows": 343
+        },
+        {
+          "skill": "4.place",
+          "rows": 343
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.4.AR.3",
+        "MA.4.FR.1",
+        "MA.4.GR.1",
+        "MA.4.NSO.1",
+        "MA.4.NSO.2"
+      ],
+      "lessonIds": [
+        "4-equivalent"
+      ]
+    },
+    {
+      "grade": "4",
+      "subject": "reading",
+      "seedRows": 277,
+      "distinctPrompts": 34,
+      "skills": [
+        {
+          "skill": "4.grammar",
+          "rows": 126
+        },
+        {
+          "skill": "4.purpose",
+          "rows": 1
+        },
+        {
+          "skill": "4.theme",
+          "rows": 1
+        },
+        {
+          "skill": "4.vocab",
+          "rows": 143
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.4.C.3",
+        "ELA.4.R.1",
+        "ELA.4.R.2",
+        "ELA.4.V.1"
+      ],
+      "lessonIds": [
+        "4-summary"
+      ]
+    },
+    {
+      "grade": "4",
+      "subject": "science",
+      "seedRows": 120,
+      "distinctPrompts": 120,
+      "skills": [
+        {
+          "skill": "4.adaptations",
+          "rows": 27
+        },
+        {
+          "skill": "4.circuits",
+          "rows": 27
+        },
+        {
+          "skill": "4.energytransfer",
+          "rows": 22
+        },
+        {
+          "skill": "4.moon",
+          "rows": 22
+        },
+        {
+          "skill": "4.weatherclimate",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 120,
+      "standardTags": [],
+      "lessonIds": [
+        "4-transfer"
+      ]
+    },
+    {
+      "grade": "4",
+      "subject": "geography",
+      "seedRows": 79,
+      "distinctPrompts": 79,
+      "skills": [
+        {
+          "skill": "geo.4.hemispheres",
+          "rows": 21
+        },
+        {
+          "skill": "geo.4.regions",
+          "rows": 23
+        },
+        {
+          "skill": "geo.4.resources",
+          "rows": 18
+        },
+        {
+          "skill": "geo.4.usa",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 79,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "4",
+      "subject": "history",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "hist.4.colonies",
+          "rows": 23
+        },
+        {
+          "skill": "hist.4.figures",
+          "rows": 19
+        },
+        {
+          "skill": "hist.4.florida",
+          "rows": 21
+        },
+        {
+          "skill": "hist.4.independence",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "4",
+      "subject": "civics",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "civ.4.branches",
+          "rows": 26
+        },
+        {
+          "skill": "civ.4.citizenship",
+          "rows": 20
+        },
+        {
+          "skill": "civ.4.constitution",
+          "rows": 19
+        },
+        {
+          "skill": "civ.4.stategov",
+          "rows": 15
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "4",
+      "subject": "economics",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "econ.4.budget",
+          "rows": 23
+        },
+        {
+          "skill": "econ.4.business",
+          "rows": 20
+        },
+        {
+          "skill": "econ.4.opportunitycost",
+          "rows": 21
+        },
+        {
+          "skill": "econ.4.supplydemand",
+          "rows": 16
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "5",
+      "subject": "math",
+      "seedRows": 1951,
+      "distinctPrompts": 1890,
+      "skills": [
+        {
+          "skill": "5.dec",
+          "rows": 1029
+        },
+        {
+          "skill": "5.frac",
+          "rows": 30
+        },
+        {
+          "skill": "5.order",
+          "rows": 543
+        },
+        {
+          "skill": "5.volume",
+          "rows": 343
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "MA.5.AR.2",
+        "MA.5.FR.2",
+        "MA.5.GR.3",
+        "MA.5.NSO.1",
+        "MA.5.NSO.2"
+      ],
+      "lessonIds": [
+        "5-decimal"
+      ]
+    },
+    {
+      "grade": "5",
+      "subject": "reading",
+      "seedRows": 423,
+      "distinctPrompts": 122,
+      "skills": [
+        {
+          "skill": "5.fig",
+          "rows": 48
+        },
+        {
+          "skill": "5.grammar",
+          "rows": 126
+        },
+        {
+          "skill": "5.infer",
+          "rows": 3
+        },
+        {
+          "skill": "5.vocab",
+          "rows": 240
+        }
+      ],
+      "missingSkill": 6,
+      "missingStandard": 0,
+      "standardTags": [
+        "ELA.5.C.3",
+        "ELA.5.R.2",
+        "ELA.5.R.3",
+        "ELA.5.V.1"
+      ],
+      "lessonIds": [
+        "5-structure"
+      ]
+    },
+    {
+      "grade": "5",
+      "subject": "science",
+      "seedRows": 119,
+      "distinctPrompts": 118,
+      "skills": [
+        {
+          "skill": "5.body",
+          "rows": 19
+        },
+        {
+          "skill": "5.foodweb",
+          "rows": 20
+        },
+        {
+          "skill": "5.forcemotion",
+          "rows": 18
+        },
+        {
+          "skill": "5.matter",
+          "rows": 22
+        },
+        {
+          "skill": "5.solar",
+          "rows": 23
+        },
+        {
+          "skill": "5.watercycle",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 119,
+      "standardTags": [],
+      "lessonIds": [
+        "5-fair-test"
+      ]
+    },
+    {
+      "grade": "5",
+      "subject": "geography",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "geo.5.latlong",
+          "rows": 23
+        },
+        {
+          "skill": "geo.5.physical",
+          "rows": 22
+        },
+        {
+          "skill": "geo.5.usa",
+          "rows": 18
+        },
+        {
+          "skill": "geo.5.world",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "5",
+      "subject": "history",
+      "seedRows": 80,
+      "distinctPrompts": 80,
+      "skills": [
+        {
+          "skill": "hist.5.civilwar",
+          "rows": 17
+        },
+        {
+          "skill": "hist.5.expansion",
+          "rows": 18
+        },
+        {
+          "skill": "hist.5.founding",
+          "rows": 23
+        },
+        {
+          "skill": "hist.5.revolution",
+          "rows": 22
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 80,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "5",
+      "subject": "civics",
+      "seedRows": 70,
+      "distinctPrompts": 70,
+      "skills": [
+        {
+          "skill": "civ.5.checksbalances",
+          "rows": 19
+        },
+        {
+          "skill": "civ.5.constitution",
+          "rows": 17
+        },
+        {
+          "skill": "civ.5.levels",
+          "rows": 19
+        },
+        {
+          "skill": "civ.5.rights",
+          "rows": 15
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 70,
+      "standardTags": [],
+      "lessonIds": []
+    },
+    {
+      "grade": "5",
+      "subject": "economics",
+      "seedRows": 77,
+      "distinctPrompts": 77,
+      "skills": [
+        {
+          "skill": "econ.5.banking",
+          "rows": 21
+        },
+        {
+          "skill": "econ.5.market",
+          "rows": 22
+        },
+        {
+          "skill": "econ.5.specialization",
+          "rows": 17
+        },
+        {
+          "skill": "econ.5.taxes",
+          "rows": 17
+        }
+      ],
+      "missingSkill": 0,
+      "missingStandard": 77,
+      "standardTags": [],
+      "lessonIds": []
+    }
+  ]
+}

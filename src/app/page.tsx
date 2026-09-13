@@ -87,7 +87,7 @@ const SHOP_AVATARS = [
 const STATS = [
   { value: "13,000+", label: "practice questions" },
   { value: "7", label: "subjects, K–5" },
-  { value: "100%", label: "Florida B.E.S.T. aligned" },
+  { value: "21", label: "introductory lessons" },
   { value: "0", label: "ads. Ever." },
 ];
 
@@ -105,7 +105,7 @@ const STEPS = [
   {
     emoji: "📈",
     title: "You watch them grow",
-    desc: "Your dashboard shows progress by subject, skill, and grade-level standard.",
+    desc: "Your dashboard shows progress by subject and skill, alongside grade-level goals.",
   },
 ];
 
@@ -114,7 +114,7 @@ const FEATURES = [
   { emoji: "⭐", title: "Points, streaks & badges", desc: "Kids earn points and spend them on avatars in the reward shop. They'll ask to practice." },
   { emoji: "🧑‍🏫", title: "A tutor when they're stuck", desc: "Miss a question and a friendly AI tutor explains it step by step, in kid words." },
   { emoji: "🔊", title: "Reads aloud", desc: "A friendly voice reads questions for early readers — even Pre-K can play." },
-  { emoji: "👪", title: "Parent dashboard", desc: "See progress by subject, skill, and Florida grade-level standard." },
+  { emoji: "👪", title: "Parent dashboard", desc: "See progress by subject and skill, alongside grade-level goals." },
   { emoji: "⏱️", title: "Healthy time goals", desc: "Set days/week and minutes/day; we email you when goals are met or slipping." },
 ];
 

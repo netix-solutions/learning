@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 const STEPS = [
   { emoji: "👪", title: "Grown-ups set it up", desc: "A parent creates the account and adds each child with a fun username and 4-digit PIN — no email or personal info from kids." },
   { emoji: "🎒", title: "Kids practice & play", desc: "Short, game-like rounds in math, reading, and science. Points, streaks, and badges keep them motivated." },
-  { emoji: "📈", title: "You watch them grow", desc: "Your dashboard shows progress by subject, skill, and grade-level standard — so you always know how they're doing." },
+  { emoji: "📈", title: "You watch them grow", desc: "Your dashboard shows progress by subject and skill, alongside grade-level goals — so you always know how they're doing." },
 ];
 
 const VALUES = [
   { emoji: "🛡️", title: "Safe & private", desc: "Kids never share an email or personal details. No ads, no tracking, ever. COPPA-aware by design." },
   { emoji: "🎯", title: "Actually adaptive", desc: "Questions adjust to each child and re-teach the moment they miss something — not just a wall of worksheets." },
-  { emoji: "🌴", title: "Made for Florida", desc: "Every question is tagged to Florida's B.E.S.T. standards for K–5, so summer practice lines up with the school year." },
+  { emoji: "🌴", title: "Made for Florida", desc: "Built for Florida families, with grade-level practice in math, reading, science, and social studies. Curriculum and benchmark coverage are expanding." },
   { emoji: "😄", title: "Genuinely fun", desc: "Bright visuals, a friendly read-aloud voice, and rewards that make kids want to come back tomorrow." },
 ];
 

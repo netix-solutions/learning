@@ -58,3 +58,6 @@ Still open: the full curriculum/benchmark audit, explicit reading progression an
 
 ## Saved progress release
 Authenticated lessons now save each checkpoint and first answer through server actions. Database ownership checks, row locks, immutable answers, revision checks, and parent read policies protect learning evidence. Save failures offer retry without advancing. Parents see recent lessons and whether help/read-aloud was requested. Local transactional database tests cover progression, resume, duplicate requests, completion, ownership and parent isolation, and mutation privileges.
+
+## Curriculum inventory follow-up
+See `CURRICULUM-AUDIT.md` and generated `curriculum-inventory.json` for the current repository inventory and seven verified math-strand corrections. The current bank has 12,978 generated rows, not the older 7,340 figure. Full item-level alignment remains open. Migration 20 is prepared for the next release; migration 19 is deployed.
