@@ -87,7 +87,7 @@ export const LESSONS: Lesson[] = [
   {
     id: "K-blend", grade: "K", subject: "reading", title: "Slide sounds into a word",
     goal: "Blend the sounds in a simple word.",
-    steps: ["Letters can stand for sounds. In mat, m says /m/, a says the short /a/, and t says /t/.", "Point to each letter. Say its sound, then slide the sounds together: mmm-aa-t, mat. Keep the /t/ short; do not add 'uh'.", "Read this sentence: A mat. Point to mat and blend it again."], model: ["m   a   t", "m → a → t", "mat"],
+    steps: ["Letters can stand for sounds. In mat, m says /m/, a says the short /a/, and t says /t/.", "Point to each letter. Say its sound, then slide the sounds together: mmm-aa-t, mat. Keep the /t/ short; do not add 'uh'.", "Read these words: A mat. Point to mat and blend it again."], model: ["m   a   t", "m → a → t", "mat"],
     check: { prompt: "Read: mat. Which letter is at the start?", choices: ["t", "a", "m"], answer: 2, explanation: "m is first. Start with /m/, then blend /a/ and /t/." },
     transfer: { prompt: "Blend s, a, t. Which word did you read? Try before listening.", choices: ["mat", "sat", "tap"], answer: 1, explanation: "The sounds /s/ /a/ /t/ blend into sat." },
     reflect: "Read aloud: Sam sat. A mat. Sam sat. Ask a grown-up to listen to your blending."
@@ -121,7 +121,7 @@ export const LESSONS: Lesson[] = [
     preparation: "Read short-vowel words such as cap, tap, and pin before adding a final e.",
     benchmark: { code: "ELA.1.F.1.3", source: "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf", scope: "Introduction to final-e decoding only; not the full phonics benchmark." },
     goal: "Read words with a vowel, consonant, and final e.",
-    steps: ["Read cap. Its a has a short vowel sound.", "Add e to make cape. In this pattern, a says its name and the final e is silent.", "Compare tap and tape. Look through the whole word before you blend. Not every word ending in e follows this pattern."], model: ["cap → cape", "tap → tape", "A cape. A tape."],
+    steps: ["Read cap. Its a has a short vowel sound.", "Add e to make cape. In this pattern, a says its name and the final e is silent.", "Compare tap and tape. Look through the whole word before you blend. Not every word ending in e follows this pattern."], model: ["cap", "cap → cape", "tap → tape"],
     check: { prompt: "Which word has the long a sound? Try reading first.", choices: ["cape", "cap", "cat"], answer: 0, explanation: "In cape, the a says its name. The final e is silent." },
     transfer: { prompt: "Read these words. Which has a silent final e and long i?", choices: ["pin", "sit", "pine"], answer: 2, explanation: "Pine follows the vowel-consonant-e pattern. Its i says its name." },
     reflect: "Read aloud: Sam has a cape. Sam can hop. Compare hop and hope with a grown-up."
@@ -141,7 +141,7 @@ export const LESSONS: Lesson[] = [
   {
     id: "2-prefix", grade: "2", subject: "reading", title: "A small part changes meaning",
     goal: "Use the prefix un- to understand a word.",
-    steps: ["A prefix is a word part added at the beginning of a base word.", "Start with “happy.” Add the prefix “un” to make “unhappy.” The prefix means “not,” so “unhappy” means “not happy.”", "Read the whole sentence to check: The wet socks felt uncomfortable. They did not feel comfortable."], model: ["un + happy", "unhappy", "not happy"],
+    steps: ["A prefix is a word part added at the beginning of a base word.", "Start with “happy.” Add the prefix “un” to make “unhappy.” The prefix means “not,” so “unhappy” means “not happy.”", "Read the whole sentence to check: The wet socks felt uncomfortable. They did not feel comfortable."], model: ["un + happy", "unhappy", "uncomfortable = not comfortable"],
     check: { prompt: "What does unfair mean?", choices: ["Very fair", "Not fair", "Fair again"], answer: 1, explanation: "The word “unfair” has two parts: “un” and “fair.” The prefix “un” means “not.” So “unfair” means “not fair.”" },
     transfer: { prompt: "The answer was unclear. What does unclear mean here?", choices: ["Not clear", "Very clear", "Clear again"], answer: 0, explanation: "“Unclear” means “not clear.” An unclear answer is hard to understand." },
     reflect: "Say a sentence with unkind. Explain how the prefix changes kind."
@@ -189,7 +189,7 @@ export const LESSONS: Lesson[] = [
   {
     id: "1-plants", grade: "1", subject: "science", title: "A plant has working parts",
     goal: "Connect plant parts with their jobs.",
-    steps: ["Roots take in water and help anchor a plant.", "The stem supports the plant and carries water to other parts.", "Leaves use light to help make food for the plant. Each part helps the plant live."], model: ["Leaves: use light", "Stem: support and transport", "Roots: take in water"],
+    steps: ["Roots take in water and help anchor a plant.", "The stem supports the plant and carries water to other parts.", "Leaves use light to help make food for the plant. Each part helps the plant live."], model: ["Roots: take in water", "Stem: support and transport", "Leaves: use light"],
     check: { prompt: "Which part usually takes water from the soil?", choices: ["Roots", "Flowers", "Leaves"], answer: 0, explanation: "Roots take in water from the soil." },
     transfer: { prompt: "Which part supports the leaves and carries water upward?", choices: ["A petal", "A seed", "The stem"], answer: 2, explanation: "The stem supports the plant and transports water." },
     reflect: "Observe a plant without pulling it up. Point out the parts you can see."
@@ -197,7 +197,7 @@ export const LESSONS: Lesson[] = [
   {
     id: "2-matter", grade: "2", subject: "science", title: "Same water, different state",
     goal: "Describe melting and freezing as changes of state.",
-    steps: ["Ice is solid water. Liquid water flows and takes the shape of its container.", "When ice warms enough, it melts into liquid water.", "When liquid water cools enough, it freezes. It is still water in both states."], model: ["Solid ice", "Warming → melting", "Liquid water"],
+    steps: ["Ice is solid water. Liquid water flows and takes the shape of its container.", "When ice warms enough, it melts into liquid water.", "When liquid water cools enough, it freezes. It is still water in both states."], model: ["Solid ice", "Warming → melting", "Cooling → freezing → solid ice"],
     check: { prompt: "An ice cube becomes a puddle. What happened?", choices: ["Freezing", "Melting", "Growing"], answer: 1, explanation: "Solid water changed to liquid water. That is melting." },
     transfer: { prompt: "Water is placed in a freezer and becomes ice. What changed?", choices: ["Liquid changed to solid", "Water became a new substance", "Solid changed to gas"], answer: 0, explanation: "Cooling caused freezing: liquid water became solid water." },
     reflect: "With a grown-up, watch ice melt in a bowl. Describe what changes and what stays the same."
@@ -205,7 +205,7 @@ export const LESSONS: Lesson[] = [
   {
     id: "3-energy", grade: "3", subject: "science", title: "Notice energy",
     goal: "Identify light, heat, and sound in everyday observations.",
-    steps: ["We can observe effects of energy around us.", "A lamp gives off light. Sunlight can warm a surface. A vibrating drum makes sound.", "One source can have more than one effect: the Sun gives us light and warmth."], model: ["Lamp → light", "Sun → light and warmth", "Vibrating drum → sound"],
+    steps: ["We can observe effects of energy around us.", "A lamp gives off light. Sunlight can warm a surface. A vibrating drum makes sound.", "One source can have more than one effect: the Sun gives us light and warmth."], model: ["Light · heat · sound", "Lamp · Sun · vibrating drum", "Sun → light and warmth"],
     check: { prompt: "What makes the sound when a drum is struck?", choices: ["Its color", "Its shadow", "Its vibrating surface"], answer: 2, explanation: "A drum's surface vibrates and produces sound." },
     transfer: { prompt: "A sunlit sidewalk feels warmer than a shaded one. Which effect is observed?", choices: ["Freezing", "Heating", "Magnetism"], answer: 1, explanation: "Energy from sunlight warms the sidewalk." },
     reflect: "Name one light source and one sound source. Describe the evidence you observe."

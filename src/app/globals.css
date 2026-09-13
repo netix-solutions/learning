@@ -386,6 +386,10 @@ a, button, [role="button"], label, summary, input[type="submit"] {
   z-index: 50;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .confetti-piece { display: none; animation: none; }
+}
+
 /* ---- Marketing landing extras ------------------------------------------ */
 
 /* Seamless avatar marquee: track holds two copies of the strip. */
