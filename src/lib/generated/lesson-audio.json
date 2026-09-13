@@ -12,6 +12,54 @@
   },
   "outputFormat": "mp3_44100_128",
   "clips": {
+    "observation:k-balls": {
+      "id": "observation:k-balls",
+      "text": "Look at the balls. Look closely. Which things are the same? Which thing is different? A: Color, Red. B: Color, Red. C: Color, Blue.",
+      "fingerprint": "24fbedf174f6f364aec704128c9d3f552500b87e6d52e5c69b3c1920e47d14e3",
+      "url": "/audio/lessons/24fbedf174f6f364aec704128c9d3f552500b87e6d52e5c69b3c1920e47d14e3.mp3",
+      "bytes": 278404,
+      "sha256": "b861ce1b1c42c67e8e0bb0e0a3b90e62e84eb7fb393651fd0f9e3481dcbc6b17"
+    },
+    "observation:1-weather": {
+      "id": "observation:1-weather",
+      "text": "Our weather week. A class looked outside at noon each day and made this picture record. Monday: Weather, Sunny. Tuesday: Weather, Rainy. Wednesday: Weather, Rainy. Thursday: Weather, Sunny. Friday: Weather, Rainy.",
+      "fingerprint": "b40bf6f9b9c4260ea7cab916e7c051ad3dda430b3518ae7a1fce2d1f3d90087d",
+      "url": "/audio/lessons/b40bf6f9b9c4260ea7cab916e7c051ad3dda430b3518ae7a1fce2d1f3d90087d.mp3",
+      "bytes": 325216,
+      "sha256": "72150c027d7d0e86bd4b57165939a13f19c6f9ee0eaa52d13ca2b407453f841b"
+    },
+    "observation:2-light": {
+      "id": "observation:2-light",
+      "text": "What happened to the light?. In this sample investigation, a class used the same flashlight at the same distance. They changed the material in front of it. Clear plastic: Light seen on screen, Bright light. Wax paper: Light seen on screen, Dim light. Cardboard: Light seen on screen, No light.",
+      "fingerprint": "db0c51e7d093598415ae16e83af67d92e89efd7fb6086f01d9ce849b11487567",
+      "url": "/audio/lessons/db0c51e7d093598415ae16e83af67d92e89efd7fb6086f01d9ce849b11487567.mp3",
+      "bytes": 373281,
+      "sha256": "0154aa22d083599a23c02616826e6d0af37c553f421137eb869d5da1952a2478"
+    },
+    "observation:3-ramps": {
+      "id": "observation:3-ramps",
+      "text": "A toy car investigation. These sample results use the same car and floor. The car was released without a push from ramps of three heights. Low ramp: Distance traveled, 40 cm. Middle ramp: Distance traveled, 65 cm. High ramp: Distance traveled, 90 cm.",
+      "fingerprint": "00956b12674076eb66a00af1846feb34d535833ece16909c07f2fb3f94628876",
+      "url": "/audio/lessons/00956b12674076eb66a00af1846feb34d535833ece16909c07f2fb3f94628876.mp3",
+      "bytes": 350293,
+      "sha256": "1a08b663cb4fc71623a4f9405b89a630845c657213d1eee8980299223d158090"
+    },
+    "observation:4-cups": {
+      "id": "observation:4-cups",
+      "text": "Comparing cup covers. An adult prepared equal amounts of warm water in identical cups. Each started at 50°C. The cups stayed in the same room for 10 minutes. Only the wrapping material changed. These are sample results. Paper wrap: Start, 50°C; After 10 min, 40°C. Cloth wrap: Start, 50°C; After 10 min, 44°C. Foam wrap: Start, 50°C; After 10 min, 47°C.",
+      "fingerprint": "ea53dbb9a42d918e020160a57bfc28e21f2a40b9d0edb5198788ee44d1835336",
+      "url": "/audio/lessons/ea53dbb9a42d918e020160a57bfc28e21f2a40b9d0edb5198788ee44d1835336.mp3",
+      "bytes": 596053,
+      "sha256": "7fa28eaf341b9d19363a892579440f50c04c814a86d36bd67b74428cf93e870e"
+    },
+    "observation:5-surfaces": {
+      "id": "observation:5-surfaces",
+      "text": "Does the surface matter?. A team released the same toy car from the same ramp height without pushing it. They measured the distance after the car reached each surface. Each surface was tested three times. These are sample results. Carpet: Trial 1, 31 cm; Trial 2, 33 cm; Trial 3, 32 cm. Cardboard: Trial 1, 54 cm; Trial 2, 57 cm; Trial 3, 55 cm. Tile: Trial 1, 92 cm; Trial 2, 96 cm; Trial 3, 94 cm.",
+      "fingerprint": "04a34b4333cbeffd0aea4278393856ffd6142c51bb7042065c6576eb16c15c49",
+      "url": "/audio/lessons/04a34b4333cbeffd0aea4278393856ffd6142c51bb7042065c6576eb16c15c49.mp3",
+      "bytes": 602323,
+      "sha256": "6c679065e5fa3db193af799723d13d25f6eb0c3994dcf783faaae6f899ac9a31"
+    },
     "reading:k-hat:passage": {
       "id": "reading:k-hat:passage",
       "text": "Sam has a red hat. The hat is on a log. Sam gets the hat and puts it on.",
@@ -2172,53 +2220,13 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "observation:k-balls": {
-      "id": "observation:k-balls",
-      "text": "Look at the balls. Look closely. Which things are the same? Which thing is different? A: Color, Red. B: Color, Red. C: Color, Blue.",
-      "fingerprint": "24fbedf174f6f364aec704128c9d3f552500b87e6d52e5c69b3c1920e47d14e3",
-      "url": "/audio/lessons/24fbedf174f6f364aec704128c9d3f552500b87e6d52e5c69b3c1920e47d14e3.mp3",
-      "bytes": 278404,
-      "sha256": "b861ce1b1c42c67e8e0bb0e0a3b90e62e84eb7fb393651fd0f9e3481dcbc6b17"
-    },
-    "observation:1-weather": {
-      "id": "observation:1-weather",
-      "text": "Our weather week. A class looked outside at noon each day and made this picture record. Monday: Weather, Sunny. Tuesday: Weather, Rainy. Wednesday: Weather, Rainy. Thursday: Weather, Sunny. Friday: Weather, Rainy.",
-      "fingerprint": "b40bf6f9b9c4260ea7cab916e7c051ad3dda430b3518ae7a1fce2d1f3d90087d",
-      "url": "/audio/lessons/b40bf6f9b9c4260ea7cab916e7c051ad3dda430b3518ae7a1fce2d1f3d90087d.mp3",
-      "bytes": 325216,
-      "sha256": "72150c027d7d0e86bd4b57165939a13f19c6f9ee0eaa52d13ca2b407453f841b"
-    },
-    "observation:2-light": {
-      "id": "observation:2-light",
-      "text": "What happened to the light?. In this sample investigation, a class used the same flashlight at the same distance. They changed the material in front of it. Clear plastic: Light seen on screen, Bright light. Wax paper: Light seen on screen, Dim light. Cardboard: Light seen on screen, No light.",
-      "fingerprint": "db0c51e7d093598415ae16e83af67d92e89efd7fb6086f01d9ce849b11487567",
-      "url": "/audio/lessons/db0c51e7d093598415ae16e83af67d92e89efd7fb6086f01d9ce849b11487567.mp3",
-      "bytes": 373281,
-      "sha256": "0154aa22d083599a23c02616826e6d0af37c553f421137eb869d5da1952a2478"
-    },
-    "observation:3-ramps": {
-      "id": "observation:3-ramps",
-      "text": "A toy car investigation. These sample results use the same car and floor. The car was released without a push from ramps of three heights. Low ramp: Distance traveled, 40 cm. Middle ramp: Distance traveled, 65 cm. High ramp: Distance traveled, 90 cm.",
-      "fingerprint": "00956b12674076eb66a00af1846feb34d535833ece16909c07f2fb3f94628876",
-      "url": "/audio/lessons/00956b12674076eb66a00af1846feb34d535833ece16909c07f2fb3f94628876.mp3",
-      "bytes": 350293,
-      "sha256": "1a08b663cb4fc71623a4f9405b89a630845c657213d1eee8980299223d158090"
-    },
-    "observation:4-cups": {
-      "id": "observation:4-cups",
-      "text": "Comparing cup covers. An adult prepared equal amounts of warm water in identical cups. Each started at 50°C. The cups stayed in the same room for 10 minutes. Only the wrapping material changed. These are sample results. Paper wrap: Start, 50°C; After 10 min, 40°C. Cloth wrap: Start, 50°C; After 10 min, 44°C. Foam wrap: Start, 50°C; After 10 min, 47°C.",
-      "fingerprint": "ea53dbb9a42d918e020160a57bfc28e21f2a40b9d0edb5198788ee44d1835336",
-      "url": "/audio/lessons/ea53dbb9a42d918e020160a57bfc28e21f2a40b9d0edb5198788ee44d1835336.mp3",
-      "bytes": 596053,
-      "sha256": "7fa28eaf341b9d19363a892579440f50c04c814a86d36bd67b74428cf93e870e"
-    },
-    "observation:5-surfaces": {
-      "id": "observation:5-surfaces",
-      "text": "Does the surface matter?. A team released the same toy car from the same ramp height without pushing it. They measured the distance after the car reached each surface. Each surface was tested three times. These are sample results. Carpet: Trial 1, 31 cm; Trial 2, 33 cm; Trial 3, 32 cm. Cardboard: Trial 1, 54 cm; Trial 2, 57 cm; Trial 3, 55 cm. Tile: Trial 1, 92 cm; Trial 2, 96 cm; Trial 3, 94 cm.",
-      "fingerprint": "04a34b4333cbeffd0aea4278393856ffd6142c51bb7042065c6576eb16c15c49",
-      "url": "/audio/lessons/04a34b4333cbeffd0aea4278393856ffd6142c51bb7042065c6576eb16c15c49.mp3",
-      "bytes": 602323,
-      "sha256": "6c679065e5fa3db193af799723d13d25f6eb0c3994dcf783faaae6f899ac9a31"
+    "home:train": {
+      "id": "home:train",
+      "text": "All aboard! Your engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Use your tokens to buy a train car. It joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
+      "fingerprint": "6c248efad59b4434427f18e1f733dbf55451f7e37cec8c17c7acaed714387aae",
+      "url": "/audio/lessons/6c248efad59b4434427f18e1f733dbf55451f7e37cec8c17c7acaed714387aae.mp3",
+      "bytes": 391253,
+      "sha256": "8e6b335959547d980fdf8a0a4f06a843ef73c56fe4c936aec5399563940ee623"
     }
   }
 }

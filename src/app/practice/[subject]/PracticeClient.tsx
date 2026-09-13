@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { experienceFor, mixedRoundCounts } from "@/lib/grade-experience";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
-import { LearningGarden } from "@/components/LearningGarden";
+import { LearningRewards } from "@/components/LearningRewards";
 import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
 import { ActivityTracker } from "@/components/ActivityTracker";
@@ -305,9 +305,9 @@ export function PracticeClient({
         <p aria-hidden="true" className="text-5xl">🌱</p>
         <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">You kept learning!</h1>
         <p className="mt-2 text-lg text-slate-600">You tried {questions.length} questions and got {correctCount} right.</p>
-        <p className="mt-2 text-base text-slate-600">Every question you tried helps your garden grow.</p>
+        <p className="mt-2 text-base text-slate-600">Every question you tried adds to your rewards.</p>
       </div>
-      <LearningGarden grade={grade} initial={null} />
+      <LearningRewards grade={grade} />
       <div className="mt-7 flex flex-wrap gap-3">
         <Link href="/home" className="inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-6 py-3 font-bold text-white">Done for now ✓</Link>
         <button onClick={loadQuestions} className="min-h-12 rounded-2xl bg-white px-6 py-3 font-bold text-slate-700">Practice again</button>

@@ -3,7 +3,8 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
-import { LearningGarden } from "@/components/LearningGarden";
+import { LearningRewards } from "@/components/LearningRewards";
+import { getMyTrain } from "@/app/actions/train";
 import { getMyGarden } from "@/app/actions/garden";
 import { GradeWelcome } from "@/components/GradeWelcome";
 import { HomeLearningChoices } from "@/components/HomeLearningChoices";
@@ -14,9 +15,10 @@ export default async function StudentHome() {
   if (!user) redirect("/kids");
   if (profile?.role !== "student") redirect("/parent");
 
-  const [{ data: subjects }, garden] = await Promise.all([
+  const [{ data: subjects }, garden, train] = await Promise.all([
     supabase.rpc("get_grade_subjects", { p_grade: profile.grade }),
     getMyGarden(),
+    getMyTrain().catch(() => undefined),
   ]);
 
   return (
@@ -45,7 +47,7 @@ export default async function StudentHome() {
       <GradeWelcome grade={profile.grade} />
       <HomeLearningChoices grade={profile.grade} subjects={(subjects ?? []) as Subject[]} />
 
-      <LearningGarden grade={profile.grade} initial={garden} />
+      <LearningRewards grade={profile.grade} initialGarden={garden} initialTrain={train} />
     </main>
   );
 }
