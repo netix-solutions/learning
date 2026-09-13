@@ -17,13 +17,7 @@ import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceObservation } from "@/components/ScienceObservation";
 import { isScienceObservation } from "@/lib/science-observation";
 import { ScienceDiagram, hasScienceDiagram } from "@/components/ScienceDiagram";
-import {
-  TrueFalseQuestion,
-  TapWordQuestion,
-  OrderQuestion,
-  CategorizeQuestion,
-  MatchQuestion,
-} from "@/components/QuestionTypes";
+import { QuestionInteraction } from "@/components/QuestionTypes";
 import { speak, stop } from "@/lib/speech";
 import { parseArithmetic, type ParsedArithmetic } from "@/lib/math-parse";
 import { StackedProblem } from "@/components/StackedProblem";
@@ -459,21 +453,7 @@ export function PracticeClient({
             })()}
 
           {/* Non-multiple-choice kinds bring their own interaction + feedback. */}
-          {current.kind === "truefalse" && (
-            <TrueFalseQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
-          )}
-          {current.kind === "tapword" && (
-            <TapWordQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
-          )}
-          {current.kind === "order" && (
-            <OrderQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
-          )}
-          {current.kind === "categorize" && (
-            <CategorizeQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
-          )}
-          {current.kind === "match" && (
-            <MatchQuestion question={current} result={result} submitting={submitting} onSubmit={submit} />
-          )}
+          <QuestionInteraction question={current} result={result} submitting={submitting} onSubmit={submit} />
 
           {(!current.kind || current.kind === "mcq") && (
           <div className={`mt-6 grid gap-3 ${isPreK ? "grid-cols-2" : "sm:grid-cols-2"}`}>

@@ -114,7 +114,7 @@ export function TapWordQuestion({ question, result, submitting, onSubmit }: Prop
               setPicked(i);
               onSubmit(i);
             }}
-            className={`rounded-xl border-2 px-3 py-1.5 font-bold transition ${cls}`}
+            className={`min-h-12 min-w-12 max-w-full break-words rounded-xl border-2 px-3 py-1.5 font-bold transition ${cls}`}
           >
             {tok}
             {result && i === correct && <span className="ml-1">✅</span>}
@@ -145,6 +145,7 @@ export function OrderQuestion({ question, result, submitting, onSubmit }: Props)
         </p>
       )}
 
+      {!result && <p className="mb-3 text-base text-slate-600">Tap items in order. Tap a placed item to put it back.</p>}
       {/* The sequence the kid is building. */}
       <div className="flex min-h-20 flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-3">
         {placed.length === 0 && (
@@ -163,6 +164,7 @@ export function OrderQuestion({ question, result, submitting, onSubmit }: Props)
               key={itemIdx}
               disabled={!!result || submitting}
               onClick={() => setPlaced((p) => p.filter((x) => x !== itemIdx))}
+              aria-label={`${pos + 1}. ${items[itemIdx]}${result ? "" : ". Tap to remove"}`}
               className={`flex items-center gap-1 rounded-xl border-2 px-3 py-2 text-lg font-bold transition ${cls}`}
             >
               <span className="text-xs text-slate-400">{pos + 1}.</span>
@@ -228,7 +230,7 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
             }`}
           >
             <div className="mb-2 flex items-center gap-2 text-lg font-bold text-slate-700">
-              <span>{item}</span>
+              <span className="min-w-0 break-words">{item}</span>
               {isRight === true && <span className="ml-auto">✅</span>}
               {isRight === false && (
                 <span className="ml-auto text-sm font-bold text-red-600">
@@ -249,6 +251,8 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
                 return (
                   <button
                     key={bi}
+                    aria-pressed={selected}
+                    aria-label={`${item}: ${b}`}
                     disabled={!!result || submitting}
                     onClick={() =>
                       setAssign((a) => a.map((v, idx) => (idx === i ? bi : v)))
@@ -335,9 +339,10 @@ export function MatchQuestion({ question, result, submitting, onSubmit }: Props)
 
   return (
     <div className="mt-6">
-      <p className="mb-3 text-center text-sm font-bold text-slate-400">
-        {activeLeft !== null ? "Now tap its partner →" : "Tap one, then its partner."}
+      <p role="status" className="mb-3 text-center text-base font-bold text-slate-600">
+        {result ? "Your matches" : activeLeft !== null ? `Now choose a partner for ${left[activeLeft]}.` : ready ? "All paired. Check your answer below." : "Tap a left item, then its partner on the right."}
       </p>
+      {!result && <p className="mb-3 text-sm text-slate-600">To change a pair, tap its left item again.</p>}
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
           {left.map((item, i) => (
@@ -345,14 +350,16 @@ export function MatchQuestion({ question, result, submitting, onSubmit }: Props)
               key={i}
               disabled={!!result || submitting}
               onClick={() => tapLeft(i)}
-              className={`flex w-full items-center gap-2 rounded-2xl border-2 px-3 py-3 text-left text-lg font-bold transition ${leftClasses(i)}`}
+              aria-pressed={activeLeft === i}
+              aria-label={pairing[i] === null ? item : `${item}, paired with ${right[pairing[i]!]}. ${result ? "" : "Tap to undo"}`}
+              className={`flex min-h-12 min-w-0 w-full items-center gap-2 rounded-2xl border-2 px-3 py-3 text-left text-lg font-bold transition ${leftClasses(i)}`}
             >
               {pairing[i] !== null && !result && (
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/70 text-xs">
-                  {pairing.filter((p, idx) => idx <= i && p !== null).length}
+                  {i + 1}
                 </span>
               )}
-              <span>{item}</span>
+              <span className="min-w-0 break-words">{item}</span>
             </button>
           ))}
         </div>
@@ -362,16 +369,17 @@ export function MatchQuestion({ question, result, submitting, onSubmit }: Props)
             return (
               <button
                 key={j}
-                disabled={!!result || submitting}
+                disabled={!!result || submitting || activeLeft === null || owner !== -1}
+                aria-label={owner === -1 ? item : `${item}, paired with ${left[owner]}`}
                 onClick={() => tapRight(j)}
-                className={`flex w-full items-center gap-2 rounded-2xl border-2 px-3 py-3 text-left text-lg font-bold transition ${rightClasses(j)}`}
+                className={`flex min-h-12 min-w-0 w-full items-center gap-2 rounded-2xl border-2 px-3 py-3 text-left text-lg font-bold transition ${rightClasses(j)}`}
               >
                 {owner !== -1 && !result && (
                   <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/70 text-xs">
-                    {pairing.filter((p, idx) => idx <= owner && p !== null).length}
+                    {owner + 1}
                   </span>
                 )}
-                <span>{item}</span>
+                <span className="min-w-0 break-words">{item}</span>
               </button>
             );
           })}
@@ -400,4 +408,13 @@ export function MatchQuestion({ question, result, submitting, onSubmit }: Props)
       )}
     </div>
   );
+}
+
+/** Reset local answer state whenever the quiz advances to a different question. */
+export function QuestionInteraction(props: Props) {
+  const Component = {
+    truefalse: TrueFalseQuestion, tapword: TapWordQuestion, order: OrderQuestion,
+    categorize: CategorizeQuestion, match: MatchQuestion,
+  }[props.question.kind as "truefalse" | "tapword" | "order" | "categorize" | "match"];
+  return Component ? <Component key={props.question.id} {...props} /> : null;
 }
