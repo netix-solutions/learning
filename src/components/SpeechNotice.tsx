@@ -6,7 +6,7 @@ import { speechState, serverSpeechState, subscribe, retrySpeech, stop } from "@/
 export function SpeechNotice() {
   const state = useSyncExternalStore(subscribe, speechState, serverSpeechState);
   if (state.status !== "error") return null;
-  return <aside role="status" className="fixed inset-x-3 bottom-4 z-[100] mx-auto max-w-lg rounded-2xl border-2 border-sky-200 bg-white p-4 text-slate-800 shadow-xl">
+  return <aside role="status" className="relative z-20 mx-auto my-3 w-[calc(100%-1.5rem)] max-w-lg shrink-0 rounded-2xl border-2 border-sky-200 bg-white p-4 text-slate-800 shadow-sm">
     <p className="text-sm font-semibold">{state.message}</p>
     <div className="mt-3 flex gap-3">
       <button onClick={retrySpeech} className="rounded-xl bg-sky-700 px-4 py-3 font-bold text-white">Retry voice</button>

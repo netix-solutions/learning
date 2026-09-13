@@ -81,9 +81,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col">
         <MeadowScene />
+        <SpeechNotice />
         {children}
         <AppFooter />
-        <SpeechNotice />
         <ClickSound />
         <BackgroundMusic />
         <ServiceWorkerRegister />

@@ -1,7 +1,9 @@
 // Requires playwright-core (or PLAYWRIGHT_MODULE pointing to it) and a running development app.
 // Uses isolated, local fixtures; never signs in or saves learner activity.
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright-core');const assert=require('node:assert/strict');
-(async()=>{const b=await chromium.launch({executablePath:process.env.CHROME_EXECUTABLE || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});const p=await b.newPage();
+const browsers=require(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
+const engine=process.env.BROWSER || 'chromium';
+const launchOptions={headless:true,...(engine==='chromium'?{executablePath:process.env.CHROME_EXECUTABLE || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})};const assert=require('node:assert/strict');
+(async()=>{const b=await browsers[engine].launch(launchOptions);const p=await b.newPage({hasTouch:true});
 for(const grade of ['K','1','2','3','4','5'])for(const width of [320,390,768,1024]){
 await p.setViewportSize({width,height:844});await p.goto((process.env.APP_URL || 'http://localhost:3001') + '/interaction-preview');await p.getByLabel('Grade',{exact:true}).selectOption(grade);
 const button=name=>p.getByRole('button',{name,exact:true});const output=p.getByLabel('Submitted answer');

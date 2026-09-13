@@ -1,11 +1,13 @@
 // Isolated browser test of the real PracticeClient. All browser database requests
 // are intercepted; this never authenticates or records a real learner attempt.
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
+const browsers=require(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
+const engine=process.env.BROWSER || 'chromium';
+const launchOptions={headless:true,...(engine==='chromium'?{executablePath:process.env.CHROME_EXECUTABLE || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})};
 const assert=require('node:assert/strict');
 (async()=>{
- const b=await chromium.launch({executablePath:process.env.CHROME_EXECUTABLE || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+ const b=await browsers[engine].launch(launchOptions);
  for(const [grade,size] of [['K',5],['1',6],['2',7],['3',8],['4',10],['5',12]]) for(const width of [320,768]) {
-  const context=await b.newContext({viewport:{width,height:1024}});const p=await context.newPage();let failed=false,saved=0;const requested=[];
+  const context=await b.newContext({serviceWorkers:"block",hasTouch:true,viewport:{width,height:1024}});const p=await context.newPage();p.on('pageerror',e=>console.error('Browser error:',e.message));let failed=false,saved=0;const requested=[];
   await context.route('**/api/tts',r=>r.fulfill({status:503,body:'Audio unavailable in isolated test'}));
   await context.route('**/rest/v1/**',async r=>{
    const url=r.request().url();const body=r.request().postDataJSON();
@@ -18,7 +20,12 @@ const assert=require('node:assert/strict');
   await p.getByText(`Question 1 of ${size}`,{exact:true}).waitFor().catch(async e=>{console.log('Debug:',requested, (await p.locator('body').innerText()).slice(0,500));throw e});
   assert.equal(requested.reduce((n,x)=>n+x.p_count,0),size);assert.deepEqual(requested.map(x=>x.p_subject).sort(),['math','reading','science']);
   await p.getByRole('button',{name:/A.*red/}).click();await p.getByRole('alert').filter({hasText:'Your answer did not save'}).waitFor();assert.equal(saved,0);
-  await p.getByRole('button',{name:'Try saving again',exact:true}).click();await p.getByRole('button',{name:'Next question →',exact:true}).waitFor();assert.equal(saved,1);
+  if(['K','1','2'].includes(grade)) {
+   const notice=p.getByRole('status').filter({hasText:'The voice is unavailable right now'});await notice.waitFor();
+   const noticeBox=await notice.boundingBox();const mainBox=await p.locator('main').boundingBox();
+   assert(noticeBox.y+noticeBox.height<=mainBox.y,'Voice notice overlaps quiz controls');
+  }
+  await p.getByRole('button',{name:'Try saving again',exact:true}).click();await p.getByRole('button',{name:'Next question →',exact:true}).waitFor({timeout:8000}).catch(async e=>{await p.screenshot({path:'/tmp/sunsharp-quiz-failure.png'});console.log('After retry:',saved,(await p.locator('body').innerText()).slice(0,1800));throw e});assert.equal(saved,1);
   for(let i=1;i<size;i++){await p.getByRole('button',{name:'Next question →',exact:true}).click();await p.getByText(`Question ${i+1} of ${size}`,{exact:true}).waitFor();await p.getByRole('button',{name:/A.*red/}).click();}
   await p.getByRole('button',{name:'See my results 🎉',exact:true}).click();await p.getByText(`You tried ${size} questions and got ${size} right.`,{exact:true}).waitFor();assert.equal(saved,size);
   assert(await p.getByRole('link',{name:'Done for now ✓',exact:true}).isVisible());
