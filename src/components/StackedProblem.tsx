@@ -9,12 +9,16 @@ import { paddedDigits, type ParsedArithmetic } from "@/lib/math-parse";
 export function StackedProblem({ parsed }: { parsed: ParsedArithmetic }) {
   if (parsed.op === "÷") {
     return (
-      <div className="my-2 flex items-baseline justify-center gap-3 font-display text-5xl font-extrabold tabular-nums text-slate-800">
-        {parsed.operands[0]}
-        <span className="text-[var(--brand-blue)]">÷</span>
-        {parsed.operands[1]}
-        <span className="text-slate-300">=</span>
-        <span className="text-slate-300">?</span>
+      <div className="my-2 w-full text-center font-display font-extrabold tabular-nums text-slate-800" style={{ containerType: "inline-size" }}>
+        <div className="flex items-baseline justify-center gap-2" style={{ fontSize: "clamp(1.25rem, 10cqw, 3rem)" }}>
+          <span>{parsed.operands[0]}</span>
+          <span className="text-[var(--brand-blue)]">÷</span>
+          <span>{parsed.operands[1]}</span>
+        </div>
+        <div className="mt-1 flex justify-center gap-3 text-3xl sm:text-4xl">
+          <span className="text-slate-500">=</span>
+          <span className="text-slate-500">?</span>
+        </div>
       </div>
     );
   }
