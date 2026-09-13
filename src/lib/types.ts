@@ -64,6 +64,7 @@ export type QuestionKind =
  */
 export type QuestionPayload = {
   observation?: ScienceObservation;
+  observationQuestion?: string;
   tokens?: string[]; // tapword
   items?: string[]; // order
   label?: string; // order

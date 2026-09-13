@@ -140,7 +140,12 @@ export function PracticeClient({
     loadQuestions();
   }, [loadQuestions]);
 
-  const current = questions[index];
+  const rawCurrent = questions[index];
+  // The stored prompt includes plain-text evidence for older/offline clients.
+  // New clients display the same evidence in its own accessible visual panel.
+  const current = rawCurrent && isScienceObservation(rawCurrent.payload?.observation) && typeof rawCurrent.payload?.observationQuestion === "string"
+    ? { ...rawCurrent, prompt: rawCurrent.payload.observationQuestion }
+    : rawCurrent;
   const observation = isScienceObservation(current?.payload?.observation) ? current.payload!.observation! : null;
   const readingParts = current?.subject_id === "reading" ? splitReadingPrompt(current.prompt) : null;
   const isPreK = grade === "PK";
