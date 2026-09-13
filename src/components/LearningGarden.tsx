@@ -59,7 +59,7 @@ export function LearningGarden({ initial, full = false }: { initial: GardenProgr
         {Array.from({ length: 5 }, (_, i) => <span key={i} aria-hidden="true" className={`grid h-10 w-10 place-items-center rounded-full border-2 text-lg font-bold ${i < questionsTowardFlower ? "border-emerald-600 bg-emerald-600 text-white" : "border-emerald-200 bg-white text-emerald-800"}`}>{i < questionsTowardFlower ? "✓" : i + 1}</span>)}
       </div>
       <p className="mt-2 text-sm text-slate-600">{5 - questionsTowardFlower} more {5 - questionsTowardFlower === 1 ? "question" : "questions"} for your next flower. Mistakes count, too.</p>
-      {full ? <><p className="mt-5 rounded-2xl bg-emerald-50 p-4 text-base text-emerald-900">Your flowers stay here when you take a break. Every flower remembers time you spent learning.</p><Link href="/learn" className="mt-5 inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-5 py-3 font-bold text-white">Learn and grow →</Link></> : <Link href="/garden" className="mt-4 inline-flex min-h-12 items-center font-bold text-emerald-800 underline decoration-emerald-300 underline-offset-4">Visit my garden →</Link>}
+      {full ? <><p className="mt-5 rounded-2xl bg-emerald-50 p-4 text-base text-emerald-900">Your flowers stay here when you take a break. Every flower remembers time you spent learning.</p><Link href="/practice/daily" className="mt-5 inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-5 py-3 font-bold text-white">Practice and grow →</Link></> : <Link href="/garden" className="mt-4 inline-flex min-h-12 items-center font-bold text-emerald-800 underline decoration-emerald-300 underline-offset-4">Visit my garden →</Link>}
     </div>
   </section>;
 }

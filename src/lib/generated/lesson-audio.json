@@ -12,13 +12,13 @@
   },
   "outputFormat": "mp3_44100_128",
   "clips": {
-    "home:guide": {
-      "id": "home:guide",
-      "text": "Welcome! Tap the compass to learn something new. Tap the rocket to practice. You can also choose math, reading, or science. Tap a speaker to hear what a button does.",
-      "fingerprint": "4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633",
-      "url": "/audio/lessons/4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633.mp3",
-      "bytes": 227831,
-      "sha256": "7bb585b94881685b3b033896065e5daa331a2bf797dd1f56383ce046ffcfc218"
+    "home:garden": {
+      "id": "home:garden",
+      "text": "This is your learning garden. Finish a lesson or try five questions to grow a flower. Mistakes count too. Your flowers stay when you take a break. Keep learning, and watch your garden grow!",
+      "fingerprint": "569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f",
+      "url": "/audio/lessons/569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f.mp3",
+      "bytes": 207769,
+      "sha256": "82999e094409fe71052e1898d29c4dcc6425dd90bf50a530923a83ab33765b0e"
     },
     "home:learn": {
       "id": "home:learn",
@@ -27,14 +27,6 @@
       "url": "/audio/lessons/8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080.mp3",
       "bytes": 108713,
       "sha256": "d8cd67b178014153de7638bc7a115efad08bb203a8c337abdab73a97bfd14d60"
-    },
-    "home:practice": {
-      "id": "home:practice",
-      "text": "Practice what you know with a mix of questions. You can ask for help as you go.",
-      "fingerprint": "55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970",
-      "url": "/audio/lessons/55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970.mp3",
-      "bytes": 72351,
-      "sha256": "254038255325dee11ba541f93856da8c9bf5582456f5450d0d0a7344688d9694"
     },
     "home:math": {
       "id": "home:math",
@@ -1876,13 +1868,21 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "home:garden": {
-      "id": "home:garden",
-      "text": "This is your learning garden. Finish a lesson or try five questions to grow a flower. Mistakes count too. Your flowers stay when you take a break. Keep learning, and watch your garden grow!",
-      "fingerprint": "569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f",
-      "url": "/audio/lessons/569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f.mp3",
-      "bytes": 207769,
-      "sha256": "82999e094409fe71052e1898d29c4dcc6425dd90bf50a530923a83ab33765b0e"
+    "home:guide": {
+      "id": "home:guide",
+      "text": "Welcome! Tap the rocket to start a practice quiz. Or choose math, reading, or science to practice a subject. Learning lessons are below if you want to explore a new idea. Tap a speaker to hear what a button does.",
+      "fingerprint": "7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3",
+      "url": "/audio/lessons/7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3.mp3",
+      "bytes": 244132,
+      "sha256": "642c9bbeda02a06bc08c2b885eb002feafd70b4445d8c74770c0ac923d96dbc8"
+    },
+    "home:practice": {
+      "id": "home:practice",
+      "text": "Practice quizzes. Try a mix of questions, just for you. You can ask for help as you go.",
+      "fingerprint": "8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f",
+      "url": "/audio/lessons/8b1383782036b70010467e5d39e858e9debe193eb2e74ae61622b2d42b1e792f.mp3",
+      "bytes": 95338,
+      "sha256": "a5f9a1983fc1b7ab3f3000f12f9b6fd4cdedab979e478b2e65d0662409334eeb"
     }
   }
 }

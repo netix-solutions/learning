@@ -32,24 +32,24 @@ export function HomeLearningChoices({ grade, subjects }: { grade: Grade | null; 
       <p className="text-base font-bold text-slate-700">Tap a speaker to listen</p>
     </div>
     <div className="flex items-center gap-2 rounded-3xl bg-sky-700 p-3 text-white shadow-sm">
-      <Link href="/learn" className="btn-pop flex min-h-28 min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-        <span aria-hidden="true" className="text-5xl">🧭</span>
-        <span><span className="block font-display text-2xl font-bold sm:text-3xl">{earlyReader ? "Learn & play" : "Start learning"}</span><span className="mt-1 block text-base">{earlyReader ? "Watch. Listen. Try." : "Learn a new idea. Then try it."}</span></span>
-      </Link>
-      <Voice name="learn" />
-    </div>
-    <div className="card-fun mt-3 flex items-center gap-2 p-3">
-      <Link href="/practice/daily" className="flex min-h-20 min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
-        <span aria-hidden="true" className="text-4xl">🚀</span>
-        <span><span className="block text-xl font-bold text-slate-800">Practice mix</span><span className="mt-1 block text-base text-slate-600">Try questions. Get help when you need it.</span></span>
+      <Link href="/practice/daily" className="btn-pop flex min-h-28 min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+        <span aria-hidden="true" className="text-5xl">🚀</span>
+        <span><span className="block font-display text-2xl font-bold sm:text-3xl">Practice quizzes</span><span className="mt-1 block text-base">{earlyReader ? "Tap. Try. Have fun!" : "A mix of questions, just for you."}</span></span>
       </Link>
       <Voice name="practice" />
     </div>
-    <h2 className="mb-3 mt-6 text-lg font-bold text-slate-700">Pick a subject</h2>
+    <h2 className="mb-3 mt-6 text-lg font-bold text-slate-700">Or practice a subject</h2>
     {subjectCards(core)}
     {more.length > 0 && <details className="mt-3 rounded-2xl border border-slate-200 bg-white p-3">
       <summary className="min-h-12 cursor-pointer rounded-xl p-3 text-base font-bold text-sky-800 focus-visible:outline-2 focus-visible:outline-sky-700">More subjects</summary>
       <div className="mt-2">{subjectCards(more)}</div>
     </details>}
+    <div className="mt-6 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-3">
+      <Link href="/learn" className="flex min-h-20 min-w-0 flex-1 items-center gap-3 rounded-xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
+        <span aria-hidden="true" className="text-3xl">🧭</span>
+        <span><span className="block text-lg font-bold text-slate-800">Learning lessons</span><span className="mt-1 block text-sm text-slate-600">{earlyReader ? "Watch. Listen. Try." : "Explore a new idea step by step."}</span></span>
+      </Link>
+      <Voice name="learn" />
+    </div>
   </section>;
 }
