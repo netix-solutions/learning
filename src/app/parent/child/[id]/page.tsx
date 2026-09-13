@@ -4,7 +4,6 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
-import { XpBar } from "@/components/XpBar";
 import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
 import { LessonProgress } from "@/components/LessonProgress";
@@ -112,12 +111,12 @@ export default async function ChildDetail({
               {s.profile.display_name}
             </h1>
             <p className="font-semibold text-slate-500">
-              {gradeLabel(s.profile.grade)} · 🔥 {s.profile.streak_count} day streak
+              {gradeLabel(s.profile.grade)}
             </p>
           </div>
         </div>
         <div className="mt-5">
-          <XpBar xp={s.profile.xp} />
+          <p className="text-sm text-slate-600">Learning grows flowers in your child’s garden. Rewards recognize participation, not skill mastery.</p>
         </div>
         <div className="mt-5 grid grid-cols-3 gap-3 text-center">
           <Stat label="Questions" value={s.totals.attempts} />
@@ -175,23 +174,6 @@ export default async function ChildDetail({
       {/* Skill breakdown — which subtopics they're strong/weak in + how to help */}
       <SkillBreakdown childName={s.profile.display_name} subjects={skillsBySubject} />
 
-      {/* Badges */}
-      <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">
-        Badges earned ({s.badges.length})
-      </h2>
-      {s.badges.length === 0 ? (
-        <p className="card-fun p-5 text-slate-500">No badges yet — keep practicing! 🌱</p>
-      ) : (
-        <div className="card-fun grid grid-cols-3 gap-3 p-5 sm:grid-cols-4">
-          {s.badges.map((b) => (
-            <div key={b.id} className="flex flex-col items-center gap-1 text-center" title={b.description}>
-              <span className="text-4xl">{b.emoji}</span>
-              <span className="text-xs font-bold text-slate-600">{b.name}</span>
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Recent */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">Recent activity</h2>
       {s.recent.length === 0 ? (
@@ -205,7 +187,7 @@ export default async function ChildDetail({
                 {r.is_correct ? "Correct" : "Tried"}
               </span>
               <span className="ml-auto text-sm font-bold text-slate-400">
-                {r.is_correct ? `+${r.xp_earned} pts` : "—"} {r.is_correct ? "✅" : "❌"}
+                {r.is_correct ? "Answered correctly" : "Practiced"}
               </span>
             </div>
           ))}

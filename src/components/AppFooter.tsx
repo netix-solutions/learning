@@ -6,7 +6,7 @@ import { KidFooter } from "@/components/KidFooter";
 
 // Children's surfaces get a stripped-down, playful footer; everywhere else gets
 // the full marketing/support/legal footer.
-const KID_PREFIXES = ["/home", "/practice", "/kids", "/shop", "/collection", "/learn", "/learn-preview"];
+const KID_PREFIXES = ["/garden", "/home", "/practice", "/kids", "/shop", "/collection", "/learn", "/learn-preview"];
 
 export function AppFooter() {
   const pathname = usePathname();

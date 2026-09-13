@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Kid login — SunSharp",
   description:
-    "Kids: log in with your username and PIN to keep your streak going!",
+    "Kids: log in with your username and PIN to keep learning and growing!",
   alternates: { canonical: "/kids" },
 };
 
@@ -24,7 +24,7 @@ export default async function KidsLoginPage() {
           Hi there! 🎒
         </h1>
         <p className="mb-5 text-center text-slate-500">
-          Log in to keep your streak going!
+          Log in to keep learning and growing!
         </p>
         <KidLoginForm />
       </div>

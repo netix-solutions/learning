@@ -12,6 +12,86 @@
   },
   "outputFormat": "mp3_44100_128",
   "clips": {
+    "home:guide": {
+      "id": "home:guide",
+      "text": "Welcome! Tap the compass to learn something new. Tap the rocket to practice. You can also choose math, reading, or science. Tap a speaker to hear what a button does.",
+      "fingerprint": "4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633",
+      "url": "/audio/lessons/4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633.mp3",
+      "bytes": 227831,
+      "sha256": "7bb585b94881685b3b033896065e5daa331a2bf797dd1f56383ce046ffcfc218"
+    },
+    "home:learn": {
+      "id": "home:learn",
+      "text": "Learn something new. We will show you how. Listen, try it, and explain your idea.",
+      "fingerprint": "8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080",
+      "url": "/audio/lessons/8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080.mp3",
+      "bytes": 108713,
+      "sha256": "d8cd67b178014153de7638bc7a115efad08bb203a8c337abdab73a97bfd14d60"
+    },
+    "home:practice": {
+      "id": "home:practice",
+      "text": "Practice what you know with a mix of questions. You can ask for help as you go.",
+      "fingerprint": "55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970",
+      "url": "/audio/lessons/55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970.mp3",
+      "bytes": 72351,
+      "sha256": "254038255325dee11ba541f93856da8c9bf5582456f5450d0d0a7344688d9694"
+    },
+    "home:math": {
+      "id": "home:math",
+      "text": "Math. Explore numbers, shapes, and solving problems.",
+      "fingerprint": "4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e",
+      "url": "/audio/lessons/4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e.mp3",
+      "bytes": 71097,
+      "sha256": "b4d3f7abad41aa821948ba93b986424fce0535f54fd3e67ad43a03c3ce978e60"
+    },
+    "home:reading": {
+      "id": "home:reading",
+      "text": "Reading. Practice letters, words, and understanding stories.",
+      "fingerprint": "5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c",
+      "url": "/audio/lessons/5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c.mp3",
+      "bytes": 74440,
+      "sha256": "b32e5775dc9b6cf5f229a6280ff6262353a907cb16516563b3a0f169118599b2"
+    },
+    "home:science": {
+      "id": "home:science",
+      "text": "Science. Explore how the world works.",
+      "fingerprint": "8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482",
+      "url": "/audio/lessons/8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482.mp3",
+      "bytes": 52288,
+      "sha256": "94bc29807f9b5ecf2e73b65ee388333066d1238700228fdbe42f9e0ab3fc1a2b"
+    },
+    "home:geography": {
+      "id": "home:geography",
+      "text": "Geography. Learn about maps and places.",
+      "fingerprint": "4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a",
+      "url": "/audio/lessons/4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a.mp3",
+      "bytes": 53960,
+      "sha256": "377bd9a443c779bd91f61362823061fff38dee5d59454ad3627748145c7743c2"
+    },
+    "home:history": {
+      "id": "home:history",
+      "text": "History. Learn about people and events from the past.",
+      "fingerprint": "c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082",
+      "url": "/audio/lessons/c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082.mp3",
+      "bytes": 55214,
+      "sha256": "5b47fd918f55dc8c266beeb27a33306366fd7a817e0e96a6480e0a9f9535f7a3"
+    },
+    "home:civics": {
+      "id": "home:civics",
+      "text": "Civics. Learn about people, rules, and helping your community.",
+      "fingerprint": "89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31",
+      "url": "/audio/lessons/89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31.mp3",
+      "bytes": 85725,
+      "sha256": "c187b817161b129131772ac4af8563bae8a0061ca96f2bed073bf2b112d06225"
+    },
+    "home:economics": {
+      "id": "home:economics",
+      "text": "Economics. Learn about money and making choices.",
+      "fingerprint": "def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd",
+      "url": "/audio/lessons/def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd.mp3",
+      "bytes": 58976,
+      "sha256": "492a8010455553f41ba71d4ba0f6fe063ae17b7dc0ad1c925d723c5aa321df2e"
+    },
     "PK-count:goal": {
       "id": "PK-count:goal",
       "text": "One touch, one number. Count a small group without missing or counting anything twice.",
@@ -1796,85 +1876,13 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "home:guide": {
-      "id": "home:guide",
-      "text": "Welcome! Tap the compass to learn something new. Tap the rocket to practice. You can also choose math, reading, or science. Tap a speaker to hear what a button does.",
-      "fingerprint": "4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633",
-      "url": "/audio/lessons/4b54de3d24e81f9b4132dda72d7135f745c706923fbdfc906dc7ee3e5da69633.mp3",
-      "bytes": 227831,
-      "sha256": "7bb585b94881685b3b033896065e5daa331a2bf797dd1f56383ce046ffcfc218"
-    },
-    "home:learn": {
-      "id": "home:learn",
-      "text": "Learn something new. We will show you how. Listen, try it, and explain your idea.",
-      "fingerprint": "8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080",
-      "url": "/audio/lessons/8682f789bce943f55482043c6c7a4332ee5818ea8cf8191f3ea29914fe88e080.mp3",
-      "bytes": 108713,
-      "sha256": "d8cd67b178014153de7638bc7a115efad08bb203a8c337abdab73a97bfd14d60"
-    },
-    "home:practice": {
-      "id": "home:practice",
-      "text": "Practice what you know with a mix of questions. You can ask for help as you go.",
-      "fingerprint": "55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970",
-      "url": "/audio/lessons/55c4a3b71eb07d74a52a0adcffeb915ea0099f76d9fd13c3677b648f83265970.mp3",
-      "bytes": 72351,
-      "sha256": "254038255325dee11ba541f93856da8c9bf5582456f5450d0d0a7344688d9694"
-    },
-    "home:math": {
-      "id": "home:math",
-      "text": "Math. Explore numbers, shapes, and solving problems.",
-      "fingerprint": "4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e",
-      "url": "/audio/lessons/4b6314cfa2967fde53ae9597f6860e31a9b8eeed384aa74afbc9ce975ca18d7e.mp3",
-      "bytes": 71097,
-      "sha256": "b4d3f7abad41aa821948ba93b986424fce0535f54fd3e67ad43a03c3ce978e60"
-    },
-    "home:reading": {
-      "id": "home:reading",
-      "text": "Reading. Practice letters, words, and understanding stories.",
-      "fingerprint": "5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c",
-      "url": "/audio/lessons/5888bb19932859cc1c2a71ec670d3cea7cef62a66f2aeb9ce4859a0f4ce5d66c.mp3",
-      "bytes": 74440,
-      "sha256": "b32e5775dc9b6cf5f229a6280ff6262353a907cb16516563b3a0f169118599b2"
-    },
-    "home:science": {
-      "id": "home:science",
-      "text": "Science. Explore how the world works.",
-      "fingerprint": "8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482",
-      "url": "/audio/lessons/8e5e0dc6b9cea3e6a4e50b0761b298d228918302fb8a2db62e61d42b268e2482.mp3",
-      "bytes": 52288,
-      "sha256": "94bc29807f9b5ecf2e73b65ee388333066d1238700228fdbe42f9e0ab3fc1a2b"
-    },
-    "home:geography": {
-      "id": "home:geography",
-      "text": "Geography. Learn about maps and places.",
-      "fingerprint": "4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a",
-      "url": "/audio/lessons/4d0a731ec2a39b2425adfafb8da2d78eeec42ff90cd4d0001b61aa8439f70f8a.mp3",
-      "bytes": 53960,
-      "sha256": "377bd9a443c779bd91f61362823061fff38dee5d59454ad3627748145c7743c2"
-    },
-    "home:history": {
-      "id": "home:history",
-      "text": "History. Learn about people and events from the past.",
-      "fingerprint": "c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082",
-      "url": "/audio/lessons/c90f1afadbcf6668ab6de758ce6788263d5fb9d7392a79b121a1fb81bd209082.mp3",
-      "bytes": 55214,
-      "sha256": "5b47fd918f55dc8c266beeb27a33306366fd7a817e0e96a6480e0a9f9535f7a3"
-    },
-    "home:civics": {
-      "id": "home:civics",
-      "text": "Civics. Learn about people, rules, and helping your community.",
-      "fingerprint": "89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31",
-      "url": "/audio/lessons/89590e664f4c848457dd8d49968fdd2a166181e0839acb6c4eca2f8cb8717e31.mp3",
-      "bytes": 85725,
-      "sha256": "c187b817161b129131772ac4af8563bae8a0061ca96f2bed073bf2b112d06225"
-    },
-    "home:economics": {
-      "id": "home:economics",
-      "text": "Economics. Learn about money and making choices.",
-      "fingerprint": "def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd",
-      "url": "/audio/lessons/def67e2a95fc9bd8340666e3e7f8681841df42fbf20948e39a014f7649790bbd.mp3",
-      "bytes": 58976,
-      "sha256": "492a8010455553f41ba71d4ba0f6fe063ae17b7dc0ad1c925d723c5aa321df2e"
+    "home:garden": {
+      "id": "home:garden",
+      "text": "This is your learning garden. Finish a lesson or try five questions to grow a flower. Mistakes count too. Your flowers stay when you take a break. Keep learning, and watch your garden grow!",
+      "fingerprint": "569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f",
+      "url": "/audio/lessons/569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f.mp3",
+      "bytes": 207769,
+      "sha256": "82999e094409fe71052e1898d29c4dcc6425dd90bf50a530923a83ab33765b0e"
     }
   }
 }

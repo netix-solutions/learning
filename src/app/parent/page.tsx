@@ -9,7 +9,6 @@ import { OpenChildButton } from "@/components/OpenChildButton";
 import { KidPhoneHandoff } from "@/components/KidPhoneHandoff";
 import { AddChildForm } from "@/components/forms/AddChildForm";
 import { TrialOnboarding } from "@/components/billing/TrialOnboarding";
-import { xpLevel } from "@/components/XpBar";
 import { getParentEntitlement } from "@/lib/entitlement";
 import { priceForKids, formatCents } from "@/lib/billing";
 import { gradeLabel, type ChildOverview } from "@/lib/types";
@@ -123,16 +122,11 @@ export default async function ParentDashboard() {
                       </span>
                     </p>
                   </div>
-                  <div className="ml-auto text-center">
-                    <div className={`text-3xl ${c.streak_count > 0 ? "" : "opacity-40"}`}>🔥</div>
-                    <div className="font-display text-lg font-bold text-slate-700">
-                      {c.streak_count}
-                    </div>
-                  </div>
+
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                  <Stat label="Level" value={xpLevel(c.xp).level} />
+                  <Stat label="Tried" value={c.total_attempts} />
                   <Stat label="Correct" value={c.total_correct} />
                   <Stat label="Accuracy" value={`${accuracy}%`} />
                 </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const STEPS = [
   { emoji: "👪", title: "Grown-ups set it up", desc: "A parent creates the account and adds each child with a fun username and 4-digit PIN — no email or personal info from kids." },
-  { emoji: "🎒", title: "Kids practice & play", desc: "Short, game-like rounds in math, reading, and science. Points, streaks, and badges keep them motivated." },
+  { emoji: "🎒", title: "Kids practice & play", desc: "Short, game-like rounds in math, reading, and science. Lessons and practice grow a personal learning garden." },
   { emoji: "📈", title: "You watch them grow", desc: "Your dashboard shows progress by subject and skill, alongside grade-level goals — so you always know how they're doing." },
 ];
 

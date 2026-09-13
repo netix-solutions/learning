@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "SunSharp — Stay sharp all summer!",
   description:
-    "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
+    "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
   applicationName: "SunSharp",
   appleWebApp: {
     capable: true,
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "SunSharp — Stay sharp all summer!",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
   },
   twitter: {
     card: "summary_large_image",
     title: "SunSharp — Stay sharp all summer!",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, earn points, keep your streak, and unlock badges!",
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
   },
 };
 

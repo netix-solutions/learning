@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 import { getSessionProfile } from "@/lib/auth";
 import { isBillingOn } from "@/lib/settings";
 import { MarketingNav } from "@/components/marketing/MarketingNav";
-import { KidHomeView, type KidHomeData } from "@/components/KidHomeView";
+import { LearningGarden, GardenScene } from "@/components/LearningGarden";
+import { gardenProgress } from "@/lib/garden";
 import {
   formatCents,
   priceForKids,
@@ -29,7 +30,7 @@ const JSON_LD = {
   applicationCategory: "EducationalApplication",
   operatingSystem: "Web",
   description:
-    "A fun summer learning app for Florida K–5 students. Adaptive math, reading, and science practice with points, streaks, and badges — plus a parent dashboard.",
+    "A fun summer learning app for Florida K–5 students. Adaptive math, reading, and science practice with a growing learning garden — plus a parent dashboard.",
   audience: {
     "@type": "EducationalAudience",
     educationalRole: "student",
@@ -45,46 +46,6 @@ const JSON_LD = {
     url: "https://netixsolutions.com",
   },
 };
-
-// The real kid home screen, rendered live in the hero with demo data — the
-// most honest "screenshot" possible, and it never goes stale.
-const DEMO_KID: KidHomeData = {
-  name: "Sunny",
-  avatar: "/shop/astro-cat.png",
-  grade: "3",
-  xp: 340,
-  streak: 5,
-  totals: { attempts: 120, correct: 98, accuracy: 82 },
-  subjects: [
-    { id: "math", name: "Math", emoji: "➕", color: "blue", attempts: 48, correct: 39 },
-    { id: "reading", name: "Reading", emoji: "📚", color: "purple", attempts: 40, correct: 33 },
-    { id: "science", name: "Science", emoji: "🔬", color: "green", attempts: 32, correct: 26 },
-  ],
-  badges: [
-    { id: "b1", name: "First Steps", emoji: "🌱", description: "", earned: true },
-    { id: "b2", name: "Streak x5", emoji: "🔥", description: "", earned: true },
-    { id: "b3", name: "Math Whiz", emoji: "➕", description: "", earned: true },
-    { id: "b4", name: "Bookworm", emoji: "📚", description: "", earned: false },
-    { id: "b5", name: "Scientist", emoji: "🔬", description: "", earned: false },
-  ],
-};
-
-// Real reward art from the avatar shop (public/shop/) — shown as the "why
-// kids come back" strip. Duplicated in the marquee for a seamless loop.
-const SHOP_AVATARS = [
-  ["astro-cat", "Astro Cat"],
-  ["dino-rex", "Dino Rex"],
-  ["unicorn-sparkle", "Sparkle"],
-  ["ninja-frog", "Ninja Frog"],
-  ["surf-shark", "Surf Shark"],
-  ["mermaid-star", "Mermaid Star"],
-  ["robo-buddy", "Robo Buddy"],
-  ["wizard-owl", "Wizard Owl"],
-  ["pirate-parrot", "Pirate Parrot"],
-  ["dragon-ember", "Ember"],
-  ["space-pup", "Space Pup"],
-  ["queen-bee", "Queen Bee"],
-] as const;
 
 const STATS = [
   { value: "13,000+", label: "practice questions" },
@@ -113,7 +74,7 @@ const STEPS = [
 
 const FEATURES = [
   { emoji: "🎯", title: "Adapts to your kid", desc: "Practice adjusts to each child and re-teaches what they miss — not a wall of worksheets." },
-  { emoji: "⭐", title: "Points, streaks & badges", desc: "Kids earn points and spend them on avatars in the reward shop. They'll ask to practice." },
+  { emoji: "⭐", title: "A learning garden", desc: "Lessons and practice grow flowers in a personal garden. Simple, automatic rewards recognize effort." },
   { emoji: "🧑‍🏫", title: "A tutor when they're stuck", desc: "Miss a question and a friendly AI tutor explains it step by step, in kid words." },
   { emoji: "🔊", title: "Reads aloud", desc: "A friendly voice reads questions for early readers — even Pre-K can play." },
   { emoji: "👪", title: "Parent dashboard", desc: "See progress by subject and skill, alongside grade-level goals." },
@@ -169,7 +130,7 @@ export default async function Home() {
             </div>
 
             <div className="animate-rise delay-4 mt-7 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
-              {["🌴 Florida B.E.S.T. K–5", "🔥 Daily streaks", "🛍️ Avatar reward shop", "📱 Works offline"].map((p) => (
+              {["🌴 Florida B.E.S.T. K–5", "🌱 Learning garden", "🔊 Spoken guidance", "📱 Works offline"].map((p) => (
                 <span
                   key={p}
                   className="rounded-full border border-white bg-white/70 px-3.5 py-1.5 text-sm font-semibold text-slate-600 backdrop-blur-sm"
@@ -189,7 +150,7 @@ export default async function Home() {
                     aria-hidden
                     className="pointer-events-none w-[600px] origin-top-left scale-[0.52] select-none p-5 sm:scale-[0.565]"
                   >
-                    <KidHomeView data={DEMO_KID} />
+                    <LearningGarden initial={gardenProgress(18, 2)} />
                   </div>
                 </div>
               </div>
@@ -198,13 +159,13 @@ export default async function Home() {
             </div>
 
             <span className="animate-float absolute -left-4 top-10 rounded-full bg-white px-3 py-1.5 text-sm font-extrabold text-amber-600 shadow-lg ring-2 ring-amber-100">
-              +10 ⭐
+              🌱 Keep growing
             </span>
             <span className="animate-float absolute -right-3 top-32 rounded-full bg-white px-3 py-1.5 text-sm font-extrabold text-orange-600 shadow-lg ring-2 ring-orange-100 [animation-delay:1.2s]">
-              🔥 5-day streak!
+              🌼 A new flower!
             </span>
             <span className="animate-float absolute -left-6 bottom-24 rounded-full bg-white px-3 py-1.5 text-sm font-extrabold text-violet-600 shadow-lg ring-2 ring-violet-100 [animation-delay:2.1s]">
-              🏅 New badge!
+              Try. Learn. Grow.
             </span>
           </div>
         </section>
@@ -225,38 +186,10 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* ---- Reward marquee: why kids come back tomorrow ------------------ */}
         <section className="py-14">
-          <h2 className="text-center font-display text-3xl font-bold text-slate-800">
-            Practice earns points.{" "}
-            <span className="shimmer-orange">Points unlock these guys.</span>
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-center text-slate-600">
-            Every correct answer earns stars to spend in the avatar shop — plus a
-            daily deal and a mystery box. Kids ask to practice.
-          </p>
-          <div className="marquee-mask mt-8 overflow-hidden">
-            <div className="marquee-track gap-4 pr-4">
-              {[...SHOP_AVATARS, ...SHOP_AVATARS].map(([slug, name], i) => (
-                <div
-                  key={`${slug}-${i}`}
-                  className="flex w-28 shrink-0 flex-col items-center gap-2"
-                  aria-hidden={i >= SHOP_AVATARS.length}
-                >
-                  <div className="h-24 w-24 overflow-hidden rounded-3xl shadow-md ring-4 ring-white">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/shop/${slug}.png`}
-                      alt={name}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <span className="text-xs font-bold text-slate-500">{name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <h2 className="text-center font-display text-3xl font-bold text-slate-800">A garden that grows with their learning.</h2>
+          <p className="mx-auto mt-3 max-w-lg text-center text-lg text-slate-600">Finish a lesson or try five questions to grow a flower. Mistakes count as practice, and flowers stay when children take a break.</p>
+          <div className="mx-auto mt-7 max-w-2xl"><GardenScene flowers={8} /></div>
         </section>
 
         {/* ---- How it works ------------------------------------------------ */}

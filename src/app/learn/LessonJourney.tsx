@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Lesson } from "@/lib/lessons";
 import { suggestedLessonIndex } from "@/lib/lesson-sequence";
 import { LessonNarration } from "@/components/LessonNarration";
+import { LearningGarden } from "@/components/LearningGarden";
 import { ActivityTracker } from "@/components/ActivityTracker";
 import { MathLab } from "@/components/lessons/MathLab";
 import { mathLabFor } from "@/lib/math-labs";
@@ -243,7 +244,8 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
                 {currentDone && !allComplete && suggestedNext !== lessonIndex && <button onClick={() => selectLesson(suggestedNext)} className="btn-pop rounded-xl bg-sky-600 px-6 py-4 font-bold text-white">Next discovery →</button>}
                 <Link href={`/practice/${lesson.subject}`} onClick={stop} className="rounded-xl bg-white px-5 py-4 font-bold text-sky-700 ring-2 ring-sky-200">Practice more {subject.label.toLowerCase()} →</Link>
               </div>
-              {allComplete && <p className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">You explored all three introductory lessons! You can revisit any lesson or keep practicing.</p>}
+              {currentDone && trackActivity && <LearningGarden initial={null} />}
+              {allComplete && <p className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">You explored all available introductory lessons! You can revisit any lesson or keep practicing.</p>}
             </>}
           </fieldset>
           {busy && <p role="status" className="px-5 pb-4 text-sm font-bold text-sky-700">Saving your step…</p>}

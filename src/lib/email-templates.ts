@@ -104,7 +104,7 @@ export function welcomeEmail(opts: { name?: string }): EmailContent {
     <p style="margin:0 0 14px;">Your SunSharp account is ready. Here's how to get your kids learning over the break:</p>
     <ul style="margin:0 0 4px;padding-left:20px;">
       <li style="margin-bottom:8px;">Add each child a fun <strong>username and PIN</strong> — no email needed for them.</li>
-      <li style="margin-bottom:8px;">They practice <strong>Math, Reading, Science</strong> and more, earning XP and badges.</li>
+      <li style="margin-bottom:8px;">They practice <strong>Math, Reading, Science</strong> and more, growing their learning garden.</li>
       <li style="margin-bottom:8px;">You watch their progress and see exactly which skills to help with.</li>
     </ul>`;
   return {
@@ -119,7 +119,7 @@ export function welcomeEmail(opts: { name?: string }): EmailContent {
       `Hi ${name}, welcome to SunSharp!\n\n` +
       `Your account is ready. To get started:\n` +
       `- Add each child a username and PIN (no email needed for them)\n` +
-      `- They practice Math, Reading, Science and more, earning XP and badges\n` +
+      `- They practice Math, Reading, Science and more, growing their learning garden\n` +
       `- You watch their progress and see which skills to help with\n\n` +
       `Add your first child: ${SITE}/parent\n\n` +
       `© 2026 Netix Solutions, LLC`,
@@ -144,7 +144,7 @@ export function welcomeGuideEmail(opts: { name?: string }): EmailContent {
     <h2 style="${h2}">☀️ How it works</h2>
     <ul style="margin:0;padding-left:20px;">
       <li style="${li}">Give each child a fun <strong>username &amp; PIN</strong> — no email needed for them.</li>
-      <li style="${li}">They practice <strong>Math, Reading &amp; Science</strong>, earning XP, badges and daily streaks.</li>
+      <li style="${li}">They practice <strong>Math, Reading &amp; Science</strong>, growing their learning garden.</li>
       <li style="${li}">You set a <strong>daily time goal</strong> and watch progress from your parent dashboard.</li>
     </ul>
 
@@ -184,7 +184,7 @@ export function welcomeGuideEmail(opts: { name?: string }): EmailContent {
       `Hi ${name}, welcome to SunSharp — your free trial is on!\n\n` +
       `HOW IT WORKS\n` +
       `- Give each child a username & PIN (no email needed for them)\n` +
-      `- They practice Math, Reading & Science, earning XP, badges and streaks\n` +
+      `- They practice Math, Reading & Science, growing their learning garden\n` +
       `- You set a daily time goal and watch progress from your dashboard\n\n` +
       `PUT IT ON YOUR KID'S DEVICE\n` +
       `Open ${SITE} in your child's iPad/tablet/phone browser (or scan the QR code in this email).\n\n` +

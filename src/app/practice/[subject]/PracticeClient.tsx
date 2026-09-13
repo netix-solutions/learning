@@ -3,14 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { LearningGarden } from "@/components/LearningGarden";
 import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
-import { PointsPopup } from "@/components/PointsPopup";
-import { CountUp } from "@/components/CountUp";
 import { ActivityTracker } from "@/components/ActivityTracker";
-import { xpLevel } from "@/components/XpBar";
 import { teachFor } from "@/lib/teaching";
-import { playCorrect, playWrong, playQuizStart, playTally } from "@/lib/sound";
+import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { SpeakButton } from "@/components/SpeakButton";
 import { ScienceDiagram, hasScienceDiagram } from "@/components/ScienceDiagram";
@@ -38,7 +36,6 @@ import {
 
 const CHEERS = ["Nice! 🎉", "Boom! 💥", "You got it! 🌟", "Sharp! 🧠", "Yes! 🙌"];
 
-type NewBadge = AttemptResult["new_badges"][number];
 
 export function PracticeClient({
   subject,
@@ -57,12 +54,8 @@ export function PracticeClient({
   const [result, setResult] = useState<AttemptResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
-  const [xpEarned, setXpEarned] = useState(0);
-  const [badges, setBadges] = useState<NewBadge[]>([]);
   const [confettiKey, setConfettiKey] = useState(0);
   const [correctKey, setCorrectKey] = useState(0);
-  const [pointsKey, setPointsKey] = useState(0);
-  const [lastPoints, setLastPoints] = useState(0);
   const [combo, setCombo] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
   const [tryingMore, setTryingMore] = useState(false);
@@ -98,10 +91,7 @@ export function PracticeClient({
     setSelected(null);
     setResult(null);
     setCorrectCount(0);
-    setXpEarned(0);
-    setBadges([]);
     setCombo(0);
-    setLastPoints(0);
 
     const supabase = createClient();
     let qs: PracticeQuestion[] = [];
@@ -187,25 +177,6 @@ export function PracticeClient({
     }
   }, [autoRead, phase, current?.id, speechFor]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // On the results screen, play the "recharge" whir while the points tally up.
-  useEffect(() => {
-    if (phase === "done" && xpEarned > 0) playTally();
-  }, [phase, xpEarned]);
-
-  // Results screen: if today's treasure chest hasn't been opened yet, the kid
-  // just unlocked it by playing this round — point them at it.
-  const [chestReady, setChestReady] = useState(false);
-  useEffect(() => {
-    if (phase !== "done") return;
-    const todayUtc = new Date().toISOString().slice(0, 10);
-    createClient()
-      .from("chest_claims")
-      .select("day")
-      .eq("day", todayUtc)
-      .maybeSingle()
-      .then(({ data }) => setChestReady(!data));
-  }, [phase]);
-
   async function submit(answer: SubmittedAnswer) {
     if (result || submitting || !current) return;
     if (typeof answer === "number") setSelected(answer);
@@ -229,31 +200,16 @@ export function PracticeClient({
     if (res.is_correct) {
       playCorrect(combo);
       setCorrectCount((c) => c + 1);
-      setXpEarned((x) => x + res.xp_earned);
-      setLastPoints(res.xp_earned);
-      setPointsKey((k) => k + 1);
       setConfettiKey((k) => k + 1);
       setCorrectKey((k) => k + 1);
       const newCombo = combo + 1;
       setCombo(newCombo);
 
-      // Did this answer push them up a level? If so, make it a big moment.
-      const leveledUp =
-        xpLevel(res.new_xp).level > xpLevel(res.new_xp - res.xp_earned).level;
-      if (leveledUp) {
-        setCheer(`LEVEL ${xpLevel(res.new_xp).level}! 🚀`);
-      } else if (newCombo >= 2 && (res.combo_bonus ?? 0) > 0) {
-        setCheer(`${newCombo} in a row! 🔥 +${res.combo_bonus} bonus`);
-      } else if (newCombo >= 3) {
-        setCheer(`${newCombo} in a row! 🔥`);
-      } else {
-        setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
-      }
+      setCheer(CHEERS[Math.floor(Math.random() * CHEERS.length)]);
     } else {
       playWrong();
       setCombo(0);
     }
-    if (res.new_badges.length) setBadges((b) => [...b, ...res.new_badges]);
   }
 
   function next() {
@@ -324,95 +280,19 @@ export function PracticeClient({
   }
 
   if (phase === "done") {
-    const total = questions.length;
-    const perfect = correctCount === total;
-    // 1–3 stars: finishing always earns one, ≥60% two, ≥90% three.
-    const pct = total > 0 ? correctCount / total : 0;
-    const stars = pct >= 0.9 ? 3 : pct >= 0.6 ? 2 : 1;
-    return (
-      <>
-        <Confetti fire={confettiKey} />
-        <Centered>
-          <div className="card-fun w-full max-w-md p-8 text-center animate-pop">
-            <div className="text-7xl">{perfect ? "🏆" : "🌟"}</div>
-            <div className="mt-2 flex items-center justify-center gap-1 text-4xl">
-              {[0, 1, 2].map((i) => (
-                <span
-                  key={i}
-                  className={i < stars ? "animate-pop" : "opacity-25 grayscale"}
-                  // Stars pop in one after another (animate-pop fills backwards,
-                  // so each stays hidden until its turn).
-                  style={i < stars ? { animationDelay: `${0.3 + i * 0.35}s` } : undefined}
-                >
-                  ⭐
-                </span>
-              ))}
-            </div>
-            <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">
-              {perfect ? "Perfect round!" : "Great job!"}
-            </h1>
-            <p className="mt-1 text-lg text-slate-600">
-              You got <b>{correctCount}</b> out of <b>{total}</b> right.
-            </p>
-            <div
-              className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-xl font-bold text-white animate-pop"
-              style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
-            >
-              ⭐ +<CountUp value={xpEarned} durationMs={1500} /> points
-            </div>
-
-            {badges.length > 0 && (
-              <div className="mt-6">
-                <p className="font-display text-lg font-bold text-slate-700">
-                  New badges unlocked!
-                </p>
-                <div className="mt-2 flex flex-wrap justify-center gap-3">
-                  {badges.map((b) => (
-                    <div key={b.id} className="flex flex-col items-center animate-cheer">
-                      <span className="text-4xl">{b.emoji}</span>
-                      <span className="text-xs font-bold text-slate-600">{b.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="mt-7 flex flex-col gap-3">
-              {chestReady && (
-                <Link
-                  href="/home"
-                  className="btn-pop flex items-center justify-center gap-2 px-6 py-3 text-lg font-extrabold text-white animate-pop"
-                  style={{ background: "linear-gradient(90deg, #f59e0b, #f97316)" }}
-                >
-                  <span className="animate-wiggle">🎁</span> Your daily chest is ready!
-                </Link>
-              )}
-              <button
-                onClick={loadQuestions}
-                className="btn-pop px-6 py-3 text-lg text-white"
-                style={{ background: "var(--brand-blue)" }}
-              >
-                Play again 🔁
-              </button>
-              <Link
-                href="/home"
-                className="btn-pop bg-white px-6 py-3 text-lg text-slate-600 ring-2 ring-slate-200"
-              >
-                Back home 🏠
-              </Link>
-              {xpEarned > 0 && (
-                <Link
-                  href="/shop"
-                  className="mt-1 text-sm font-bold text-slate-400 hover:text-slate-600"
-                >
-                  Open a card pack with your points! 🃏✨
-                </Link>
-              )}
-            </div>
-          </div>
-        </Centered>
-      </>
-    );
+    return <><Confetti fire={confettiKey} /><main className="mx-auto max-w-2xl px-4 py-6">
+      <div className="rounded-3xl bg-white p-6 text-center">
+        <p aria-hidden="true" className="text-5xl">🌱</p>
+        <h1 className="mt-3 font-display text-3xl font-bold text-slate-800">You kept learning!</h1>
+        <p className="mt-2 text-lg text-slate-600">You tried {questions.length} questions and got {correctCount} right.</p>
+        <p className="mt-2 text-base text-slate-600">Every question you tried helps your garden grow.</p>
+      </div>
+      <LearningGarden initial={null} />
+      <div className="mt-7 flex flex-wrap gap-3">
+        <Link href="/home" className="inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-6 py-3 font-bold text-white">Done for now ✓</Link>
+        <button onClick={loadQuestions} className="min-h-12 rounded-2xl bg-white px-6 py-3 font-bold text-slate-700">Practice again</button>
+      </div>
+    </main></>;
   }
 
   // phase === "playing"
@@ -420,22 +300,12 @@ export function PracticeClient({
     <>
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
-      <PointsPopup fire={pointsKey} amount={lastPoints} />
       <ActivityTracker />
       <main className="mx-auto max-w-2xl px-4 py-6">
         <header className="mb-4 flex items-center justify-between">
           <Link href="/home" className="font-bold text-slate-500 hover:text-slate-700">
             ← Quit
           </Link>
-          {combo >= 2 ? (
-            <span className="animate-pop rounded-full bg-orange-100 px-3 py-1 text-sm font-bold text-orange-700">
-              🔥 {combo} in a row!
-            </span>
-          ) : (
-            <span className={`rounded-full px-3 py-1 text-sm font-bold ${theme.soft} ${theme.text}`}>
-              {subject.emoji} {subject.name}
-            </span>
-          )}
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -451,10 +321,7 @@ export function PracticeClient({
             >
               {autoRead ? "🔊" : "🔇"}
             </button>
-            <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-bold text-amber-700">
-              {/* keyed so the count visibly pops each time points are scored */}
-              ⭐ <span key={xpEarned} className="inline-block animate-pop">{xpEarned}</span> pts
-            </span>
+
           </div>
         </header>
 
@@ -658,11 +525,6 @@ export function PracticeClient({
               <p className="font-display text-xl font-bold">
                 {result.is_correct ? cheer : "Let's learn it 💡"}
               </p>
-              {result.shield_used && (
-                <p className="mt-1 inline-flex items-center gap-1 rounded-full bg-sky-100 px-3 py-1 text-sm font-extrabold text-sky-700 animate-pop">
-                  🛡️ Your Streak Shield saved your {result.new_streak}-day streak!
-                </p>
-              )}
               {result.explanation && (
                 <div className="mt-1 flex items-start gap-2">
                   <p className="flex-1 text-slate-700">{result.explanation}</p>
@@ -686,11 +548,7 @@ export function PracticeClient({
                     </div>
                   ) : null;
                 })()}
-              {result.new_badges.map((b) => (
-                <p key={b.id} className="mt-2 font-bold text-amber-700">
-                  🏅 New badge: {b.emoji} {b.name}!
-                </p>
-              ))}
+
             </div>
           )}
         </div>

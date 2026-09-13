@@ -154,7 +154,7 @@ export default async function Image() {
                 color: "#64748b",
               }}
             >
-              Playful K–5 practice — earn points, keep your streak, unlock badges.
+              Playful K–5 practice — learn, practice, and grow your garden.
             </div>
 
             <div style={{ display: "flex", gap: 16, marginTop: 34 }}>
