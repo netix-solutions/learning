@@ -8,6 +8,7 @@ Verified 2026-09-13. The grade-specific interface, content, and rewards remain t
 - The voice failure notice now participates in page layout; it cannot cover quiz buttons. Early-grade round tests verify its position above the quiz.
 - `test-grade-quiz-progress.sql` verifies real local database selection for all six grades and three subjects, response fields without answer keys, saved incorrect attempts, the five-attempt flower boundary, and isolation between students. All fixtures roll back; no test accounts remain.
 - `test-learning-progress.sql` verifies lesson resumption, checkpoint gates, first-answer preservation, completion, student ownership, parent visibility, and restricted write functions. Its fixtures also roll back.
+- `validate-recorded-reading.cjs` starts and stops both recorded passages for each of K–5 with touch gestures in WebKit. Actual MP3 responses and playing state are checked; no synthetic/browser-default narration is used. All 12 passed.
 - `validate-garden.mjs` checks practice and lesson reward boundaries, partial progress, and absence of spending.
 
 The local database had coupon and lesson tables created outside migration history. Their columns were inspected; missing migrations were applied in one transaction, preserving existing tables and data, refreshing their functions/policies, and recording history. The local migration command now reports up to date through migration 23.
