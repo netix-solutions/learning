@@ -7,15 +7,15 @@ import type { EmailContent } from "@/lib/email-templates";
  *
  * Configured by env:
  *   RESEND_API_KEY — secret API key (never expose to the browser)
- *   EMAIL_FROM     — verified sender, e.g. "SunSharp <noreply@summersharp.app>"
+ *   EMAIL_FROM     — verified sender, e.g. "SunSharp <noreply@sunsharp.app>"
  *
  * Sending NEVER throws: if the key is missing or Resend errors, we log and return
  * { ok:false } so callers (e.g. signup) are never broken by email problems. The
- * `summersharp.app` domain must be verified in Resend before delivery works.
+ * `sunsharp.app` domain must be verified in Resend before delivery works.
  */
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_FROM = "SunSharp <noreply@summersharp.app>";
+const DEFAULT_FROM = "SunSharp <noreply@sunsharp.app>";
 
 export type SendResult = { ok: boolean; skipped?: boolean; error?: string };
 

@@ -16,7 +16,7 @@ export default function TermsOfUse() {
         you and <strong>Netix Solutions, LLC</strong> (&ldquo;Netix,&rdquo;
         &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) governing your access
         to and use of the <strong>SunSharp</strong> application and the website at
-        summersharp.app (collectively, the &ldquo;Service&rdquo;). By creating an
+        sunsharp.app (collectively, the &ldquo;Service&rdquo;). By creating an
         account or using the Service, you agree to these Terms and to our{" "}
         <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the
         Service.

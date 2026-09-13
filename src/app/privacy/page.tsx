@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
         This Privacy Policy explains how <strong>Netix Solutions, LLC</strong> (
         &ldquo;Netix,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
         the operator of the <strong>SunSharp</strong> learning application and the
-        website at summersharp.app (collectively, the &ldquo;Service&rdquo;),
+        website at sunsharp.app (collectively, the &ldquo;Service&rdquo;),
         collects, uses, discloses, and safeguards information. We designed
         SunSharp for families of elementary-school children, and protecting
         children&rsquo;s privacy is central to how the Service is built.
