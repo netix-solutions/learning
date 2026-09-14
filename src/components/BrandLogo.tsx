@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Tries the brand PNG first, then older PNG / built-in SVG emblem, then a wordmark.
-const SOURCES = ["/images/ui/logo.webp", "/logo.png", "/logo.svg"];
+const SOURCES = ["/images/ui/logo-sunbook.webp", "/logo.png", "/logo.svg"];
 
 /** SunSharp wordmark — orange "Sun" + blue "Sharp". Never wraps. */
 function Wordmark({ className = "" }: { className?: string }) {
@@ -25,7 +25,7 @@ function LogoMark({ className }: { className: string }) {
     <img
       src={src}
       alt="SunSharp"
-      className={`${className} object-contain rounded-[22%]`}
+      className={`${className} object-contain`}
       onError={() => setIdx((i) => i + 1)}
     />
   );

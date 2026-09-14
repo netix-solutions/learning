@@ -520,7 +520,7 @@ body:has([data-grade="5"])::before { background: linear-gradient(#e6e7f2, #f8f9f
 /* SunSharp design system: quiet surfaces, clear actions, colorful discoveries. */
 :root { --background:#fff9ef; --foreground:#243e3b; --brand-blue:#176d66; --brand-wave:#328c80; --brand-orange:#cc653e; --brand-sun:#ecc366; --brand-palm:#4f8867; --surface:#fff; --line:#e3e9e4; }
 body { background:var(--background); color:var(--foreground); }
-body::before, body:has([data-grade])::before { background:linear-gradient(#fff9ef33,#fff9efee 850px),url("/images/ui/sunny-background.webp") center top / max(100%, 1400px) auto no-repeat, var(--background); }
+body::before, body:has([data-grade])::before { background:linear-gradient(#fff9ef22,#fff9ef55),url("/images/ui/sunny-background.webp") center center / cover no-repeat, var(--background); }
 .brand-wordmark { font-family:var(--font-wordmark),ui-sans-serif,system-ui,sans-serif; font-weight:800; }
 .site-content { flex:1; width:100%; min-width:0; }
 .font-display { font-family:var(--font-body),ui-sans-serif,system-ui,sans-serif; letter-spacing:-.035em; }
@@ -577,7 +577,11 @@ input:focus,select:focus,textarea:focus { border-color:var(--brand-blue); box-sh
 .more-subjects summary span { float:right; }
 .more-subjects[open] { padding-bottom:16px; }
 .more-subjects .subject-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-.more-subjects .subject-art { height:52px; }
+.more-subjects .subject-art { height:110px; }
+.subject-geography .subject-art { background:#edf5fb; }
+.subject-history .subject-art { background:#fff1e5; }
+.subject-civics .subject-art { background:#f3effa; }
+.subject-economics .subject-art { background:#fff0ed; }
 .lesson-invitation { display:flex; align-items:center; gap:10px; padding:16px; border:1px solid var(--line); background:#fff; border-radius:20px; margin-top:22px; }
 .lesson-invitation>a { display:flex; align-items:center; flex:1; gap:14px; min-width:0; min-height:56px; }
 .lesson-invitation strong { display:block; font-size:17px; font-weight:800; }
@@ -673,3 +677,13 @@ section[aria-label="My learning garden"],section[aria-label="My learning train"]
 }
 @media(prefers-reduced-motion:reduce) { .btn-pop { transition:none; } }
 @media(max-width:640px) { .student-navigation nav { gap:2px; min-width:0; } .student-navigation nav a { padding:12px 7px; font-size:12px; } }
+
+.student-navigation nav a { display:inline-flex; align-items:center; justify-content:center; gap:7px; }
+.student-navigation nav a svg { flex-shrink:0; }
+@media(max-width:640px) { .student-navigation nav a { gap:4px; padding:12px 5px; } .student-navigation nav a svg { width:15px; height:15px; } }
+@media(max-width:360px) { .student-navigation-inner { padding-left:10px; padding-right:10px; } .student-navigation nav a { font-size:11px; gap:3px; padding-left:3px; padding-right:3px; } }
+@media(min-width:641px) and (max-width:950px) {
+ .student-navigation-inner { flex-wrap:wrap; gap:12px; }
+ .student-navigation nav { width:100%; order:3; justify-content:center; }
+ .student-signout { margin-left:auto; }
+}
