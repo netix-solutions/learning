@@ -2238,11 +2238,11 @@
     },
     "home:train": {
       "id": "home:train",
-      "text": "All aboard! Your classic steam engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. All reward shops use the same tokens. Use your tokens to unlock a passenger, bullet train, or cargo diesel engine. Unlock an engine once and switch to it anytime. Your cars stay with you. You can also buy more train cars. Each new car joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
-      "fingerprint": "4e22ca93ca75af211a8eeae647e572e9d768f459d9fcfb3ce8324dd9abc5d9da",
-      "url": "/audio/lessons/4e22ca93ca75af211a8eeae647e572e9d768f459d9fcfb3ce8324dd9abc5d9da.mp3",
-      "bytes": 642865,
-      "sha256": "901b7a70a5f603b68a33973b754fa51da9c5103505328b1b481e85f64d3f296c"
+      "text": "All aboard! Your classic steam engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. All reward shops use the same tokens. Use your tokens to unlock new engines, including a passenger engine, bullet train, cargo diesel, and green steam engine. Unlock an engine once and switch to it anytime. Your cars stay with you. You can also buy more train cars. Each new car joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
+      "fingerprint": "ec6e4f0bf7227de039cacf8877fcfe35399d669fe426f59000761c2cad1b536f",
+      "url": "/audio/lessons/ec6e4f0bf7227de039cacf8877fcfe35399d669fe426f59000761c2cad1b536f.mp3",
+      "bytes": 672958,
+      "sha256": "6d8127f7e89c4b803fd150a1a2bef78fe13e1fa7ef73d6cc524015edba152a11"
     }
   }
 }
