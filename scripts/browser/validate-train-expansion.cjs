@@ -1,0 +1,13 @@
+process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY='1';
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright-core');const assert=require('node:assert/strict');
+(async()=>{const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage({serviceWorkers:'block',hasTouch:true});
+for(const width of [320,390,768,1280]){await p.setViewportSize({width,height:900});await p.goto('http://localhost:3001/train-preview?tokens=100');await p.locator('[data-rewards-ready="true"]').waitFor();
+for(const [name,price,id] of [['Passenger engine',15,'passenger-engine'],['Bullet train engine',25,'bullet-engine'],['Cargo diesel engine',20,'diesel-engine']]){await p.getByRole('button',{name:`Buy ${name} for ${price} tokens`,exact:true}).click();await p.locator(`[data-active-engine="${id}"]`).waitFor();}
+await p.locator('[aria-label="40 tokens"]').waitFor();await p.getByRole('button',{name:'Use Classic steam engine',exact:true}).click();await p.locator('[data-active-engine="engine"]').waitFor();await p.getByRole('button',{name:'Use Bullet train engine',exact:true}).click();await p.locator('[aria-label="40 tokens"]').waitFor();
+await p.getByRole('button',{name:'Buy Dining car for 10 tokens',exact:true}).click();await p.getByRole('button',{name:'Buy Bullet train coach for 12 tokens',exact:true}).click();await p.getByRole('button',{name:'← Toward engine',exact:true}).click();assert((await p.getByRole('button',{name:'Select Bullet train coach, car 1',exact:true}).count())===1);
+await p.getByRole('button',{name:'🧁 Bakery',exact:true}).click();await p.getByRole('button',{name:'Buy Sprinkle donut for 5 tokens',exact:true}).click();await p.getByRole('button',{name:'🚂 Train',exact:true}).click();await p.locator('[aria-label="13 tokens"]').waitFor();await p.locator('[data-active-engine="bullet-engine"]').waitFor();
+assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow '+width);
+await p.evaluate(()=>Promise.race([Promise.all([...document.images].map(i=>{i.loading='eager';return i.decode().catch(()=>{});})),new Promise(r=>setTimeout(r,5000))]));
+for(const id of ['passenger-engine','bullet-engine','diesel-engine','dining','sleeper','bullet-coach','tanker','log-flatcar'])assert(await p.locator(`img[src*="${id}.webp"]`).first().evaluate(i=>i.naturalWidth>0),'missing art '+id);
+await p.locator('main').screenshot({path:`/tmp/train-expansion-${width}.png`});console.log(width+': engine switching, purchases, reorder, shared wallet, art and layout passed');}
+await b.close();})().catch(e=>{console.error(e);process.exit(1)});

@@ -16,3 +16,6 @@ export async function moveTrainCar(purchase: string,direction: number){return ca
 export async function buyDinosaur(dinosaur: string, request: string){return call('buy_dinosaur',{p_car:dinosaur,p_request:request});}
 
 export async function buyBakeryTreat(treat: string, request: string){return call('buy_bakery_treat',{p_treat:treat,p_request:request});}
+
+export async function buyTrainEngine(engine: string, request: string){return call('buy_train_engine',{p_engine:engine,p_request:request});}
+export async function chooseTrainEngine(engine: string){return call('choose_train_engine',{p_engine:engine});}
