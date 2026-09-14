@@ -1,58 +1,18 @@
-import { experienceFor } from "@/lib/grade-experience";
-import Link from "next/link";
-import { RecordedNarration } from "@/components/LessonNarration";
-import { HOME_NARRATION } from "@/lib/home-narration";
-import type { Grade, Subject } from "@/lib/types";
-
-const hints: Record<string, string> = {
-  math: "Numbers & shapes", reading: "Words & stories", science: "How things work",
-  geography: "Maps & places", history: "People & the past", civics: "People & rules", economics: "Money & choices",
-};
-function Voice({ name }: { name: string }) {
-  const id = `home:${name}`;
-  return HOME_NARRATION[id] ? <RecordedNarration id={id} text={HOME_NARRATION[id]} label={`Hear about ${name === "learn" ? "learning" : name}`} /> : null;
-}
-
-export function HomeLearningChoices({ grade, subjects }: { grade: Grade | null; subjects: Subject[] }) {
-  const experience = experienceFor(grade);
-  const earlyReader = experience.earlyReader;
-  const core = subjects.filter(s => ["math", "reading", "science"].includes(s.id));
-  const more = subjects.filter(s => !["math", "reading", "science"].includes(s.id));
-  function subjectCards(items: Subject[]) {
-    return <div className="grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:grid-cols-3">{items.map(s => <div key={s.id} className="card-fun flex items-center gap-1 p-2">
-      <Link href={`/practice/${s.id}`} className="min-w-0 flex-1 rounded-2xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
-        <span aria-hidden="true" className="block text-4xl">{s.emoji}</span>
-        <span className="mt-2 block text-lg font-bold text-slate-800">{s.name}</span>
-        <span className="mt-1 block text-sm text-slate-600">{hints[s.id] ?? "Explore & practice"}</span>
-      </Link>
-      <Voice name={s.id} />
-    </div>)}</div>;
-  }
-  return <section aria-label="Choose your learning" className="mt-5">
-    <div className="mb-3 flex items-center gap-3">
-      <RecordedNarration id="home:guide" text={HOME_NARRATION['home:guide']} label="Hear how to use this page" />
-      <p className="text-base font-bold text-slate-700">Tap a speaker to listen</p>
-    </div>
-    <div className="flex items-center gap-2 rounded-3xl p-3 text-white shadow-sm" style={{ background: experience.accent }}>
-      <Link href="/practice/daily" className="flex min-h-28 min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-        <span aria-hidden="true" className="text-5xl">🚀</span>
-        <span><span className="block font-display text-2xl font-bold sm:text-3xl">Practice quizzes</span><span className="mt-1 block text-base">{experience.quizHint}</span></span>
-      </Link>
-      <Voice name="practice" />
-    </div>
-    <p className="mt-2 text-sm text-slate-600">{experience.roundSize} questions · Take your time · Help is always available</p>
-    <h2 className="mb-3 mt-6 text-lg font-bold text-slate-700">Or practice a subject</h2>
-    {subjectCards(core)}
-    {more.length > 0 && <details className="mt-3 rounded-2xl border border-slate-200 bg-white p-3">
-      <summary className="min-h-12 cursor-pointer rounded-xl p-3 text-base font-bold text-sky-800 focus-visible:outline-2 focus-visible:outline-sky-700">More subjects</summary>
-      <div className="mt-2">{subjectCards(more)}</div>
-    </details>}
-    <div className="mt-6 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-3">
-      <Link href="/learn" className="flex min-h-20 min-w-0 flex-1 items-center gap-3 rounded-xl p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
-        <span aria-hidden="true" className="text-3xl">🧭</span>
-        <span><span className="block text-lg font-bold text-slate-800">Learning lessons</span><span className="mt-1 block text-sm text-slate-600">{earlyReader ? "Watch. Listen. Try." : "Explore a new idea step by step."}</span></span>
-      </Link>
-      <Voice name="learn" />
-    </div>
-  </section>;
+import { experienceFor } from '@/lib/grade-experience';
+import Link from 'next/link';
+import Image from 'next/image';
+import { RecordedNarration } from '@/components/LessonNarration';
+import { HOME_NARRATION } from '@/lib/home-narration';
+import type { Grade, Subject } from '@/lib/types';
+const hints: Record<string,string> = {math:'Numbers & shapes',reading:'Words & stories',science:'How things work',geography:'Maps & places',history:'People & the past',civics:'People & rules',economics:'Money & choices'};
+function Voice({name}:{name:string}) {const id=`home:${name}`;return HOME_NARRATION[id]?<RecordedNarration id={id} text={HOME_NARRATION[id]} label={`Hear about ${name==='learn'?'learning':name}`}/>:null;}
+export function HomeLearningChoices({grade,subjects}:{grade:Grade|null;subjects:Subject[]}) {
+ const experience=experienceFor(grade);const core=subjects.filter(s=>['math','reading','science'].includes(s.id));const more=subjects.filter(s=>!['math','reading','science'].includes(s.id));
+ function cards(items:Subject[]){return <div className="subject-grid">{items.map(s=><article key={s.id} className={`subject-card subject-${s.id}`}><Link href={`/practice/${s.id}`}><div className="subject-art">{['math','reading','science'].includes(s.id)?<Image src={`/images/ui/${s.id}.webp`} alt="" fill unoptimized sizes="180px" className="object-contain"/>:<span aria-hidden="true">{s.emoji}</span>}</div><h3>{s.name}</h3><p>{hints[s.id]??'Explore & practice'}</p></Link><div className="subject-listen"><Voice name={s.id}/></div></article>)}</div>;}
+ return <section aria-label="Choose your learning" className="learning-choices"><div className="practice-hero"><Link href="/practice/daily" className="practice-hero-link"><span className="eyebrow">A little practice. A big discovery.</span><h2>Practice quizzes</h2><p>{experience.quizHint}</p><span className="practice-hero-cta">Let’s practice <span aria-hidden="true">↗</span></span></Link><div className="practice-hero-art"><Image src="/images/ui/discovery.webp" alt="" fill unoptimized sizes="300px" className="object-contain"/></div><div className="practice-hero-voice"><Voice name="practice"/></div></div>
+ <div className="practice-details"><span>{experience.roundSize} questions · Go at your own pace</span><RecordedNarration id="home:guide" text={HOME_NARRATION['home:guide']} label="Hear how to use this page"/></div>
+ <div className="section-heading"><h2>Pick a subject</h2><span>A different way to explore</span></div>{cards(core)}
+ {more.length>0&&<details className="more-subjects"><summary>Explore more subjects <span aria-hidden="true">＋</span></summary>{cards(more)}</details>}
+ <div className="lesson-invitation"><Link href="/learn"><span className="lesson-invitation-icon" aria-hidden="true">↗</span><span><strong>Learn something new</strong><span>Step-by-step lessons, whenever you’re curious.</span></span></Link><Voice name="learn"/></div>
+ </section>;
 }

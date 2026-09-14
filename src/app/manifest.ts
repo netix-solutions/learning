@@ -7,14 +7,14 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "SunSharp — Summer Learning",
     short_name: "SunSharp",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden.",
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, build your own world of rewards.",
     id: "/",
     start_url: "/",
     scope: "/",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#fef6ff",
-    theme_color: "#fef6ff",
+    background_color: "#f7f8f5",
+    theme_color: "#f7f8f5",
     categories: ["education", "kids"],
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },

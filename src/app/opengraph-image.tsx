@@ -10,11 +10,11 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 // Brand palette (mirrors globals.css design tokens).
-const ORANGE = "#f57c1f";
-const BLUE = "#1d70c2";
-const SUN = "#ffc223";
-const WAVE = "#2aa7e6";
-const PALM = "#3fb24b";
+const ORANGE = "#cc653e";
+const BLUE = "#176d66";
+const SUN = "#ecc366";
+const WAVE = "#328c80";
+const PALM = "#4f8867";
 
 function Chip({ color, label }: { color: string; label: string }) {
   return (
@@ -68,7 +68,7 @@ export default async function Image() {
           display: "flex",
           position: "relative",
           background:
-            "linear-gradient(135deg, #eaf6ff 0%, #fff7e8 55%, #fff0f6 100%)",
+            "#f7f8f5",
           overflow: "hidden",
         }}
       >
@@ -120,7 +120,7 @@ export default async function Image() {
             <div
               style={{
                 display: "flex",
-                fontFamily: "Fredoka",
+                fontFamily: "Nunito",
                 fontWeight: 700,
                 fontSize: 96,
                 lineHeight: 1,
@@ -135,7 +135,7 @@ export default async function Image() {
               style={{
                 display: "flex",
                 marginTop: 22,
-                fontFamily: "Fredoka",
+                fontFamily: "Nunito",
                 fontWeight: 600,
                 fontSize: 46,
                 color: "#334155",

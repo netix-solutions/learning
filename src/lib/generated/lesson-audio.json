@@ -348,6 +348,30 @@
       "bytes": 58976,
       "sha256": "bc115ccf52a1ba0f8ec3bf4c052cfe5ee6f4e0ca2f1918ee3b47bde6dcb007db"
     },
+    "home:bakery": {
+      "id": "home:bakery",
+      "text": "Welcome to your little bakery! Collect sprinkle donuts, swirl cupcakes, chocolate cake pops, cookies, croissants, and macarons. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first donut costs five tokens. Choose a treat and tap Buy treat. It goes right onto your bakery shelf. All reward shops use the same tokens, so you can choose what to collect next. Your treats stay saved when you take a break.",
+      "fingerprint": "688e56dfc2d4bc2d59c692acf3c88dd0d91282a28cb28e096d745114157fd073",
+      "url": "/audio/lessons/688e56dfc2d4bc2d59c692acf3c88dd0d91282a28cb28e096d745114157fd073.mp3",
+      "bytes": 553004,
+      "sha256": "a4d842c58f5501f43a557b6fddfed98eb23f326ca80325944c42bdb3fdcb159d"
+    },
+    "home:dinosaurs": {
+      "id": "home:dinosaurs",
+      "text": "Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. All reward shops use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break.",
+      "fingerprint": "c9c0fdb352c1e140747a4820bd1c7e0d66f56010bbec4fadc92a184aa9ef6bcf",
+      "url": "/audio/lessons/c9c0fdb352c1e140747a4820bd1c7e0d66f56010bbec4fadc92a184aa9ef6bcf.mp3",
+      "bytes": 449768,
+      "sha256": "8e4bd4bc0868e675376639420c80ac6cbbdc7ae2a14e1fbda6743eb215642f9e"
+    },
+    "home:train": {
+      "id": "home:train",
+      "text": "All aboard! Your engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. All reward shops use the same tokens. Use your tokens to buy a train car. It joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
+      "fingerprint": "f222a63302f37dbfadc5f2a00cab830326c693f5035eb5b4fb7614a472fb3c86",
+      "url": "/audio/lessons/f222a63302f37dbfadc5f2a00cab830326c693f5035eb5b4fb7614a472fb3c86.mp3",
+      "bytes": 405882,
+      "sha256": "621950e94285b4bf7444eefc20c518391be530bf36647a4b2ebca5f7c2de818f"
+    },
     "home:garden": {
       "id": "home:garden",
       "text": "This is your learning garden. Finish a lesson or try five questions to grow a flower. Mistakes count too. Your flowers stay when you take a break. Keep learning, and watch your garden grow!",
@@ -355,14 +379,6 @@
       "url": "/audio/lessons/569c3fbca8502a07e5984e938b39fb0b5dee0a9b60f0730f4bad90fdcf15b88f.mp3",
       "bytes": 207769,
       "sha256": "82999e094409fe71052e1898d29c4dcc6425dd90bf50a530923a83ab33765b0e"
-    },
-    "home:guide": {
-      "id": "home:guide",
-      "text": "Welcome! Tap the rocket to start a practice quiz. Or choose math, reading, or science to practice a subject. Learning lessons are below if you want to explore a new idea. Tap a speaker to hear what a button does.",
-      "fingerprint": "7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3",
-      "url": "/audio/lessons/7bb2de614fff2c3405a7aec98d7bade487116542de3013f314f54733c458b8d3.mp3",
-      "bytes": 244132,
-      "sha256": "642c9bbeda02a06bc08c2b885eb002feafd70b4445d8c74770c0ac923d96dbc8"
     },
     "home:learn": {
       "id": "home:learn",
@@ -2220,21 +2236,13 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "home:dinosaurs": {
-      "id": "home:dinosaurs",
-      "text": "Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. Train cars and dinosaurs use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break.",
-      "fingerprint": "32cacb5d6409d69f7807974b72f330ce5707ba1e79eff87590e1a1ba66d581a6",
-      "url": "/audio/lessons/32cacb5d6409d69f7807974b72f330ce5707ba1e79eff87590e1a1ba66d581a6.mp3",
-      "bytes": 450604,
-      "sha256": "f53a5769929e050be65198e28928fb03b636d5ac7cdcdf19c96f8f6c240de4d9"
-    },
-    "home:train": {
-      "id": "home:train",
-      "text": "All aboard! Your engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Train cars and dinosaurs use the same tokens. Use your tokens to buy a train car. It joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
-      "fingerprint": "f4e46d04b0ae6281579ef1fc6b75e064c73fc6342753d98a4a2cd5d43fe16e9f",
-      "url": "/audio/lessons/f4e46d04b0ae6281579ef1fc6b75e064c73fc6342753d98a4a2cd5d43fe16e9f.mp3",
-      "bytes": 423018,
-      "sha256": "154585aae8b4e7f2d586cfc99e82e4ae62d1cce47b167ab58c534fdf7af3320a"
+    "home:guide": {
+      "id": "home:guide",
+      "text": "Welcome! Tap Practice quizzes to start. Or choose math, reading, or science to practice a subject. Choose Learn something new to explore a new idea. Tap a speaker to hear what a button does.",
+      "fingerprint": "2c7219731bda9f24e257f487cdacfed575862d275e58565535eeef95e4650378",
+      "url": "/audio/lessons/2c7219731bda9f24e257f487cdacfed575862d275e58565535eeef95e4650378.mp3",
+      "bytes": 245386,
+      "sha256": "a5b6675dd28f6b9e743e0fb42576367a0a5152ad1d4bb92641ab6c48f92d867d"
     }
   }
 }

@@ -136,12 +136,12 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
   return (
     <>
       {trackActivity && !loading && !currentDone && <ActivityTracker />}
-      <main data-grade={lesson.grade} className="grade-home mx-auto max-w-3xl px-4 py-6 text-slate-800">
+      <main data-grade={lesson.grade} className="grade-home lesson-page mx-auto w-full max-w-4xl px-4 py-6 text-slate-800">
         <header className="mb-6 flex items-center justify-between gap-3">
           <Link href="/home" onClick={stop} className="rounded-xl bg-white px-4 py-3 font-bold ring-1 ring-slate-200">← Home</Link>
           <span className="text-sm font-bold text-slate-600">Learn · Try · Explain</span>
         </header>
-        <div className="mb-6">
+        <div className="page-heading mb-6">
           <p className="text-sm font-extrabold uppercase tracking-wider text-sky-700">Your learning lab</p>
           <h1 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Small steps. Big discoveries.</h1>
           <p className="mt-2 text-slate-600">Start with a lesson, then put your new idea to work. Take your time.</p>

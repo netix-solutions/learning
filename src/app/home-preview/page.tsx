@@ -3,7 +3,6 @@ import { GradeWelcome } from "@/components/GradeWelcome";
 import { HomeLearningChoices } from "@/components/HomeLearningChoices";
 import { LearningGarden } from "@/components/LearningGarden";
 import { gardenProgress } from "@/lib/garden";
-import { BrandLogo } from "@/components/BrandLogo";
 import type { Grade, Subject } from "@/lib/types";
 
 export const metadata = { title: "Home preview — SunSharp", robots: { index: false, follow: false } };
@@ -20,12 +19,11 @@ export default async function HomePreview({ searchParams }: { searchParams: Prom
   if (process.env.NODE_ENV === "production") notFound();
   const params = await searchParams;
   const grade = (["PK", "K", "1", "2", "3", "4", "5"].includes(params.grade ?? "") ? params.grade : "3") as Grade;
-  return <main data-grade={grade} className="grade-home mx-auto max-w-3xl px-4 py-5">
-    <BrandLogo href={null} />
+  return <main data-grade={grade} className="grade-home home-dashboard mx-auto w-full max-w-6xl px-4 py-8">
     <h1 className="mt-4 text-2xl font-bold text-slate-800">Hi, Sunny!</h1>
     <GradeWelcome grade={grade} />
-    <HomeLearningChoices grade={grade} subjects={grade === "PK" ? subjects.slice(0, 3) : subjects} />
-    <LearningGarden grade={grade} full={params.garden === "full"} initial={params.flowers && /^\d{1,4}$/.test(params.flowers) ? gardenProgress(0, Number(params.flowers)) : gardenProgress(18, 2)} />
-    <p className="mt-6 text-sm text-slate-600">Grade {grade} preview · sample data</p>
+    <div className="home-columns"><HomeLearningChoices grade={grade} subjects={grade === "PK" ? subjects.slice(0, 3) : subjects} />
+    <aside className="home-rewards"><LearningGarden grade={grade} full={params.garden === "full"} initial={params.flowers && /^\d{1,4}$/.test(params.flowers) ? gardenProgress(0, Number(params.flowers)) : gardenProgress(18, 2)} />
+    </aside></div><p className="mt-6 text-sm text-slate-600">Grade {grade} preview · sample data</p>
   </main>;
 }

@@ -69,8 +69,8 @@ function ColHeading({ children }: { children: React.ReactNode }) {
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto w-full px-4 pb-6 pt-10">
-      <div className="mx-auto max-w-5xl rounded-[1.75rem] border border-white/80 bg-white/85 px-7 py-9 shadow-[0_12px_44px_rgba(15,23,42,0.12)] backdrop-blur-xl sm:px-10">
+    <footer className="mt-12 w-full border-t border-[#e3e9e4] bg-white px-4 pb-6 pt-8">
+      <div className="mx-auto max-w-6xl px-3 py-6 sm:px-6">
         <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           {/* Brand */}
           <div className="max-w-xs">

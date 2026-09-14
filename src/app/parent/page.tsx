@@ -27,7 +27,7 @@ export default async function ParentDashboard() {
   // kids, go to Stripe, THEN create the kids' logins. Show only this gate.
   if (ent.billingEnabled && ent.reason === "needs_subscription") {
     return (
-      <main className="mx-auto max-w-3xl px-4 py-6">
+      <main className="parent-dashboard mx-auto w-full max-w-5xl px-4 py-8">
         <header className="mb-6 flex items-center justify-between gap-2">
           <BrandLogo href={null} />
           <SignOutButton />
@@ -57,7 +57,7 @@ export default async function ParentDashboard() {
             : "Subscribe to unlock 🔒";
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-6">
+    <main className="parent-dashboard mx-auto w-full max-w-5xl px-4 py-8">
       <header className="mb-6 flex items-center justify-between gap-2">
         <BrandLogo href={null} />
         <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export default async function ParentDashboard() {
           </p>
         </div>
       ) : (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
           {children.map((c) => {
             const accuracy =
               c.total_attempts > 0

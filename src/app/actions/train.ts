@@ -14,3 +14,5 @@ export async function buyTrainCar(car: string, request: string){return call('buy
 export async function moveTrainCar(purchase: string,direction: number){return call('move_train_car',{p_purchase:purchase,p_direction:direction});}
 
 export async function buyDinosaur(dinosaur: string, request: string){return call('buy_dinosaur',{p_car:dinosaur,p_request:request});}
+
+export async function buyBakeryTreat(treat: string, request: string){return call('buy_bakery_treat',{p_treat:treat,p_request:request});}

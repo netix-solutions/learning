@@ -4,8 +4,8 @@ import { BrandLogo } from "@/components/BrandLogo";
 /** Sticky, translucent top nav for the public marketing pages. */
 export function MarketingNav() {
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-white/60 bg-white/70 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+    <nav className="sticky top-0 z-40 w-full border-b border-[#e3e9e4] bg-white/95 backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-3 px-4">
         <BrandLogo href="/" />
 
         <div className="flex items-center gap-1 sm:gap-2">
@@ -30,9 +30,9 @@ export function MarketingNav() {
           <Link
             href="/signup"
             className="btn-pop px-4 py-2 text-sm font-extrabold text-white"
-            style={{ background: "linear-gradient(90deg, var(--brand-sun), var(--brand-orange))" }}
+            style={{ background: "var(--brand-blue)" }}
           >
-            Start free
+            Get started
           </Link>
         </div>
       </div>

@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Tries the brand PNG first, then older PNG / built-in SVG emblem, then a wordmark.
-const SOURCES = ["/sunsharplogo.png", "/logo.png", "/logo.svg"];
+const SOURCES = ["/images/ui/logo.webp", "/logo.png", "/logo.svg"];
 
 /** SunSharp wordmark — orange "Sun" + blue "Sharp". Never wraps. */
 function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`whitespace-nowrap font-display font-bold tracking-tight ${className}`}>
+    <span className={`brand-wordmark whitespace-nowrap tracking-tight ${className}`}>
       <span style={{ color: "var(--brand-orange)" }}>Sun</span>
       <span style={{ color: "var(--brand-blue)" }}>Sharp</span>
     </span>
@@ -25,7 +25,7 @@ function LogoMark({ className }: { className: string }) {
     <img
       src={src}
       alt="SunSharp"
-      className={`${className} object-contain`}
+      className={`${className} object-contain rounded-[22%]`}
       onError={() => setIdx((i) => i + 1)}
     />
   );
@@ -45,7 +45,7 @@ export function BrandLogo({
   if (variant === "full") {
     return (
       <div className="flex flex-col items-center gap-3">
-        <LogoMark className="h-44 w-44 animate-float drop-shadow-xl sm:h-52 sm:w-52" />
+        <LogoMark className="h-24 w-24 sm:h-28 sm:w-28" />
         <Wordmark className="text-4xl sm:text-5xl" />
       </div>
     );

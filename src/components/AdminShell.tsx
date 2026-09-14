@@ -12,7 +12,7 @@ export function AdminShell({
   return (
     <div className="min-h-dvh bg-slate-50">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-3">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-3">
           <Link href="/admin" className="flex items-center gap-2 text-slate-800">
             <span className="text-2xl">🛠️</span>
             <span className="font-display text-lg font-bold">
@@ -20,7 +20,7 @@ export function AdminShell({
             </span>
           </Link>
 
-          <nav className="ml-4 flex items-center gap-1 text-sm font-semibold">
+          <nav className="order-3 flex w-full flex-wrap items-center gap-1 sm:order-none sm:ml-4 sm:w-auto text-sm font-semibold">
             <NavLink href="/admin" label="Dashboard" on={active === "dashboard"} />
             <NavLink href="/admin/users" label="Users" on={active === "users"} />
             <NavLink href="/admin/billing" label="Billing" on={active === "billing"} />

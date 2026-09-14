@@ -1,21 +1,15 @@
 import { SITE_URL } from "@/lib/site-url";
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
-import { Fredoka, Nunito } from "next/font/google";
+import { Nunito, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { SpeechNotice } from "@/components/SpeechNotice";
 import { AppFooter } from "@/components/AppFooter";
-import { MeadowScene } from "@/components/MeadowScene";
+import { StudentNavigation } from "@/components/StudentNavigation";
 import { ClickSound } from "@/components/ClickSound";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-
-const fredoka = Fredoka({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const nunito = Nunito({
   variable: "--font-body",
@@ -23,11 +17,13 @@ const nunito = Nunito({
   weight: ["400", "600", "700", "800"],
 });
 
+const openSans = Open_Sans({ variable: "--font-wordmark", subsets: ["latin"], weight: "800", display: "swap" });
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "SunSharp — Stay sharp all summer!",
   description:
-    "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
+    "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, build a world of rewards!",
   applicationName: "SunSharp",
   appleWebApp: {
     capable: true,
@@ -51,13 +47,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "SunSharp — Stay sharp all summer!",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, build a world of rewards!",
   },
   twitter: {
     card: "summary_large_image",
     title: "SunSharp — Stay sharp all summer!",
     description:
-      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, grow your learning garden!",
+      "A fun summer learning app for Florida K–5 students. Practice math, reading, and science, build a world of rewards!",
   },
 };
 
@@ -66,7 +62,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   // Let content flow under the notch/home indicator; we add safe-area padding in CSS.
   viewportFit: "cover",
-  themeColor: "#fef6ff",
+  themeColor: "#fff9ef",
 };
 
 export default function RootLayout({
@@ -77,12 +73,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
+      className={`${nunito.variable} ${openSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen flex-col">
-        <MeadowScene />
+        <a href="#main-content" className="skip-link">Skip to content</a>
+        <StudentNavigation />
         <SpeechNotice />
-        {children}
+        <div id="main-content" tabIndex={-1} className="site-content">{children}</div>
         <AppFooter />
         <ClickSound />
         <BackgroundMusic />

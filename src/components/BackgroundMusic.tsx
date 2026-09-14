@@ -47,7 +47,7 @@ export function BackgroundMusic() {
   useEffect(() => {
     const a = new Audio(SRC);
     a.loop = true;
-    a.volume = 0.3;
+    a.volume = 0.15;
     a.preload = "auto";
     audioRef.current = a;
     return () => {

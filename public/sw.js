@@ -3,7 +3,7 @@
  * cross-origin and pass straight through), so auth and answer-grading always
  * hit the network. It caches the static app shell so the app launches offline
  * and shows a friendly offline page when a navigation can't reach the network. */
-const CACHE = "sunsharp-v3";
+const CACHE = "sunsharp-v4";
 const APP_SHELL = [
   "/offline.html",
   "/manifest.webmanifest",
