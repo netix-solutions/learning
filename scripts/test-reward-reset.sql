@@ -1,0 +1,12 @@
+begin;
+insert into auth.users(id,email,raw_user_meta_data) values ('00000000-0000-4000-8000-000000002901','reset-test@example.invalid','{"role":"student","grade":"K","display_name":"Reset Test"}');
+insert into attempts(student_id,question_id,subject_id,selected_index,is_correct,xp_earned) select '00000000-0000-4000-8000-000000002901',q.id,q.subject_id,0,false,0 from (select * from questions where grade='K' limit 1) q cross join generate_series(1,20);
+insert into reward_reset_baselines(student_id,attempts,lessons) values('00000000-0000-4000-8000-000000002901',20,0);
+set local role authenticated;
+select set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000002901',true);
+do $$declare s jsonb;begin s:=get_my_train();if (s->>'balance')::int<>0 or (s->>'earned')::int<>0 then raise exception 'Reset did not zero tokens';end if;if (select count(*) from attempts where student_id=auth.uid())<>20 then raise exception 'History lost';end if;end $$;
+reset role;
+insert into attempts(student_id,question_id,subject_id,selected_index,is_correct,xp_earned) select '00000000-0000-4000-8000-000000002901',q.id,q.subject_id,0,false,0 from (select * from questions where grade='K' limit 1) q;
+set local role authenticated;
+do $$declare s jsonb;begin s:=get_my_train();if (s->>'balance')::int<>1 then raise exception 'New practice did not earn';end if;end $$;
+rollback;
