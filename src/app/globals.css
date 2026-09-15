@@ -718,13 +718,22 @@ section[aria-label="My learning garden"],section[aria-label="My learning train"]
 .reward-unowned::after { content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(135deg,transparent 0 18px,#ffffff3b 18px 33px); }
 .reward-reveal-label { position:absolute; bottom:3px; left:3px; right:3px; z-index:1; border-radius:7px; background:#fffffff0; padding:3px 2px; color:#526171; text-align:center; font-size:10px; font-weight:800; pointer-events:none; }
 /* Controls are attached to the collected object, never in a separate inventory menu. */
-.reward-item-controls { position:relative; z-index:10; display:flex; align-items:center; justify-content:center; gap:4px; margin:6px auto 0; width:max-content; max-width:100%; border-radius:14px; background:#ffffffed; padding:3px; box-shadow:0 2px 8px #173d3420; }
-.reward-item-controls>button,.reward-item-confirm button { display:flex; align-items:center; justify-content:center; gap:2px; min-width:44px; min-height:44px; border-radius:10px; color:#176d66; font-size:20px; font-weight:800; background:#edf6f3; }
-.reward-item-controls button:disabled { opacity:.35; }
-.reward-item-controls .reward-item-sell { font-size:12px; color:#80501a; background:#fff2d7; padding:0 4px; }
-.reward-item-confirm { width:144px; padding:4px; text-align:center; font-size:12px; color:#614015; }
+/* Item tools float over a selected collectible without changing scene layout. */
+.reward-item-controls { position:absolute; inset:0; z-index:10; pointer-events:none; }
+.reward-item-select { position:absolute; inset:0; width:100%; height:100%; min-height:44px; border-radius:14px; pointer-events:auto; cursor:pointer; background:transparent; }
+.reward-item-select:hover { background:#ffffff12; }
+.reward-item-select:focus-visible { outline:3px solid #f5be42; outline-offset:-3px; }
+.reward-item-controls.is-open .reward-item-select { box-shadow:inset 0 0 0 2px #f5be42; background:#fff8dc12; }
+:has(>.reward-item-controls.is-open) { z-index:20!important; }
+.reward-item-toolbar { position:absolute; bottom:0; left:50%; transform:translateX(-50%); display:flex; gap:2px; padding:3px; width:max-content; border:1px solid #e3e8e7; border-radius:14px; background:#fffffff5; box-shadow:0 4px 16px #173d3430; pointer-events:auto; }
+.reward-item-toolbar>button,.reward-item-confirm button { display:flex; align-items:center; justify-content:center; gap:2px; min-width:44px; min-height:44px; border-radius:10px; color:#176d66; font-size:20px; font-weight:800; background:transparent; }
+.reward-item-toolbar button:hover { background:#edf6f3; }
+.reward-item-toolbar button:disabled { opacity:.3; }
+.reward-item-toolbar .reward-item-sell { font-size:12px; color:#80501a; background:#fff2d7; padding:0 4px; }
+.reward-item-confirm { width:138px; padding:4px; text-align:center; font-size:12px; color:#614015; }
 .reward-item-confirm>div { display:flex; justify-content:center; gap:8px; margin-top:4px; }
 .reward-item-confirm .reward-confirm-yes { background:#176d66; color:white; }
-.reward-scene-scroll { overflow-x:auto; }
-.reward-interactive-scene { min-width:600px; height:480px; aspect-ratio:auto; }
-.reward-interactive-scene [data-collected-treat]>.reward-item-controls,.reward-interactive-scene [data-collected-dinosaur]>.reward-item-controls { position:absolute; top:100%; left:50%; transform:translateX(-50%); }
+.reward-scene-scroll { overflow:visible; }
+.reward-interactive-scene { min-width:0; height:auto; aspect-ratio:3/2; }
+.reward-interactive-scene>div:nth-of-type(3n+1) .reward-item-toolbar { left:0; transform:none; }
+.reward-interactive-scene>div:nth-of-type(3n) .reward-item-toolbar { left:auto; right:0; transform:none; }
