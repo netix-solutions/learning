@@ -1,5 +1,5 @@
 export type RewardTheme = 'garden' | 'train' | 'dinosaurs' | 'bakery';
-export type TrainCarId = 'passenger' | 'cargo' | 'aquarium' | 'garden' | 'observatory' | 'caboose' | 'dining' | 'sleeper' | 'bullet-coach' | 'tanker' | 'log-flatcar';
+export type TrainCarId = 'passenger' | 'cargo' | 'aquarium' | 'garden' | 'observatory' | 'caboose' | 'dining' | 'sleeper' | 'bullet-coach' | 'tanker' | 'log-flatcar' | 'coal';
 export type TrainEngineId = 'engine' | 'passenger-engine' | 'bullet-engine' | 'diesel-engine' | 'j-steam-engine';
 export type DinosaurId = "triceratops" | "stegosaurus" | "brachiosaurus" | "parasaurolophus" | "ankylosaurus" | "tyrannosaurus";
 export type BakeryTreatId = "donut" | "cupcake" | "cakepop" | "cookie" | "croissant" | "macarons";
