@@ -19,3 +19,6 @@ export async function buyBakeryTreat(treat: string, request: string){return call
 
 export async function buyTrainEngine(engine: string, request: string){return call('buy_train_engine',{p_engine:engine,p_request:request});}
 export async function chooseTrainEngine(engine: string){return call('choose_train_engine',{p_engine:engine});}
+
+export async function sellReward(kind: string, purchase: string){return call("sell_reward",{p_kind:kind,p_purchase:purchase});}
+export async function moveReward(kind: string, purchase: string, direction: number){return call("move_reward",{p_kind:kind,p_purchase:purchase,p_direction:direction});}

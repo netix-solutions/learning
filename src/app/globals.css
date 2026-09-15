@@ -712,3 +712,8 @@ section[aria-label="My learning garden"],section[aria-label="My learning train"]
 .marketing-subject .subject-art>img { padding:20px; }
 .marketing-subject h3,.marketing-subject p { margin-left:10px; margin-right:10px; }
 @media(max-width:640px) { .marketing-hero-visual { border-radius:28px; } .marketing-subject .subject-art { height:170px; } }
+.reward-reveal { position:relative; border-radius:12px; overflow:hidden; }
+.reward-unowned { background:#edf1f5; }
+.reward-unowned .reward-reveal-art { opacity:.58; filter:saturate(.45); }
+.reward-unowned::after { content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(135deg,transparent 0 18px,#ffffff3b 18px 33px); }
+.reward-reveal-label { position:absolute; bottom:3px; left:3px; right:3px; z-index:1; border-radius:7px; background:#fffffff0; padding:3px 2px; color:#526171; text-align:center; font-size:10px; font-weight:800; pointer-events:none; }

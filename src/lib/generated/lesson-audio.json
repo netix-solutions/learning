@@ -348,22 +348,6 @@
       "bytes": 58976,
       "sha256": "bc115ccf52a1ba0f8ec3bf4c052cfe5ee6f4e0ca2f1918ee3b47bde6dcb007db"
     },
-    "home:bakery": {
-      "id": "home:bakery",
-      "text": "Welcome to your little bakery! Collect sprinkle donuts, swirl cupcakes, chocolate cake pops, cookies, croissants, and macarons. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first donut costs five tokens. Choose a treat and tap Buy treat. It goes right onto your bakery shelf. All reward shops use the same tokens, so you can choose what to collect next. Your treats stay saved when you take a break.",
-      "fingerprint": "688e56dfc2d4bc2d59c692acf3c88dd0d91282a28cb28e096d745114157fd073",
-      "url": "/audio/lessons/688e56dfc2d4bc2d59c692acf3c88dd0d91282a28cb28e096d745114157fd073.mp3",
-      "bytes": 553004,
-      "sha256": "a4d842c58f5501f43a557b6fddfed98eb23f326ca80325944c42bdb3fdcb159d"
-    },
-    "home:dinosaurs": {
-      "id": "home:dinosaurs",
-      "text": "Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. All reward shops use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break.",
-      "fingerprint": "c9c0fdb352c1e140747a4820bd1c7e0d66f56010bbec4fadc92a184aa9ef6bcf",
-      "url": "/audio/lessons/c9c0fdb352c1e140747a4820bd1c7e0d66f56010bbec4fadc92a184aa9ef6bcf.mp3",
-      "bytes": 449768,
-      "sha256": "8e4bd4bc0868e675376639420c80ac6cbbdc7ae2a14e1fbda6743eb215642f9e"
-    },
     "home:garden": {
       "id": "home:garden",
       "text": "This is your learning garden. Finish a lesson or try five questions to grow a flower. Mistakes count too. Your flowers stay when you take a break. Keep learning, and watch your garden grow!",
@@ -2236,13 +2220,29 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
+    "home:bakery": {
+      "id": "home:bakery",
+      "text": "Welcome to your little bakery! Collect sprinkle donuts, swirl cupcakes, chocolate cake pops, cookies, croissants, and macarons. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first donut costs five tokens. Choose a treat and tap Buy treat. It goes right onto your bakery shelf. All reward shops use the same tokens, so you can choose what to collect next. Your treats stay saved when you take a break. Open Arrange and sell back to move your items earlier or later, or return one for all the tokens you paid. Items you have not collected yet are lightly covered in the shop.",
+      "fingerprint": "50407da8638d134220faf12b8cfa8f4a723a7ee47416f651dd7486267e092e29",
+      "url": "/audio/lessons/50407da8638d134220faf12b8cfa8f4a723a7ee47416f651dd7486267e092e29.mp3",
+      "bytes": 742757,
+      "sha256": "d0b1703163785badf4c95eaf9511a7128339983adf3e53d945b932d9f47b943c"
+    },
+    "home:dinosaurs": {
+      "id": "home:dinosaurs",
+      "text": "Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. All reward shops use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break. Open Arrange and sell back to move your items earlier or later, or return one for all the tokens you paid. Items you have not collected yet are lightly covered in the shop.",
+      "fingerprint": "52f689b80bfff62e1d0509c8db7b78546fb4c47d931a048fd63c5b4f3acf6daf",
+      "url": "/audio/lessons/52f689b80bfff62e1d0509c8db7b78546fb4c47d931a048fd63c5b4f3acf6daf.mp3",
+      "bytes": 652896,
+      "sha256": "b2feeb6ba3a2a2ae4cede83ed01fff970313eeb2d6951d6e6f2b101704ea940c"
+    },
     "home:train": {
       "id": "home:train",
-      "text": "All aboard! Your classic steam engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. All reward shops use the same tokens. Use your tokens to unlock new engines, including a passenger engine, bullet train, cargo diesel, and green steam engine. Unlock an engine once and switch to it anytime. Your cars stay with you. You can also buy more train cars. Each new car joins your train right away. Tap a car to move it toward the engine or toward the back. Your train and tokens stay saved when you take a break.",
-      "fingerprint": "ec6e4f0bf7227de039cacf8877fcfe35399d669fe426f59000761c2cad1b536f",
-      "url": "/audio/lessons/ec6e4f0bf7227de039cacf8877fcfe35399d669fe426f59000761c2cad1b536f.mp3",
-      "bytes": 672958,
-      "sha256": "6d8127f7e89c4b803fd150a1a2bef78fe13e1fa7ef73d6cc524015edba152a11"
+      "text": "All aboard! Your classic steam engine is free. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. All reward shops use the same tokens. Use your tokens to unlock new engines, including a passenger engine, bullet train, cargo diesel, and green steam engine. Unlock an engine once and switch to it anytime. Your cars stay with you. You can also buy more train cars. Each new car joins your train right away. Tap a car to move it toward the engine or toward the back. Open Arrange and sell back to change the order or return an item for all the tokens you paid. Items you have not collected yet are lightly covered in the shop. Your train and tokens stay saved when you take a break.",
+      "fingerprint": "c0bcaae6edf9070f6377fb6d85b86eed9abae6929673eb17a16d1ca57fcf7e7e",
+      "url": "/audio/lessons/c0bcaae6edf9070f6377fb6d85b86eed9abae6929673eb17a16d1ca57fcf7e7e.mp3",
+      "bytes": 873578,
+      "sha256": "c45a4dfedd87b38f09052027635ecc09685d3dcc18152a75b16fab0b0e28beae"
     }
   }
 }
