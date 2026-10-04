@@ -514,6 +514,10 @@ export function PracticeClient({
           {(!current.kind || current.kind === "mcq") && (
           <div className={`quiz-choices mt-6 grid gap-3 ${isPreK||current.choices.every(c=>c.length<=24) ? "grid-cols-2" : "sm:grid-cols-2"}`}>
             {current.choices.map((choice, i) => {
+              // Once graded, keep the learner's choice and the correct answer.
+              // Distractors have served their purpose; repeating them crowds
+              // out the explanation and the next-question control on phones.
+              if (result && i !== selected && i !== result.correct_index) return null;
               let cls =
                 "border-slate-200 bg-white hover:border-[var(--brand-blue)] hover:bg-blue-50";
               if (result) {
