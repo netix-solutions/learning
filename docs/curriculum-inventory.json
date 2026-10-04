@@ -1,6 +1,10 @@
 {
-  "scope": "Repository question seeds, additive reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
+  "scope": "Repository question seeds, additive math stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
   "sources": [
+    {
+      "file": "supabase/seeds/math-progression.sql",
+      "rows": 576
+    },
     {
       "file": "src/lib/content/science-observations.ts",
       "rows": 12
@@ -24,6 +28,7 @@
       "subject": "math",
       "seedRows": 41,
       "distinctPrompts": 40,
+      "distinctTasks": 40,
       "skills": [
         {
           "skill": "PK.count",
@@ -58,6 +63,7 @@
       "subject": "reading",
       "seedRows": 24,
       "distinctPrompts": 24,
+      "distinctTasks": 24,
       "skills": [
         {
           "skill": "PK.colors",
@@ -84,6 +90,7 @@
       "subject": "science",
       "seedRows": 24,
       "distinctPrompts": 24,
+      "distinctTasks": 24,
       "skills": [
         {
           "skill": "PK.animals",
@@ -110,6 +117,7 @@
       "subject": "geography",
       "seedRows": 0,
       "distinctPrompts": 0,
+      "distinctTasks": 0,
       "skills": [],
       "missingSkill": 0,
       "missingStandard": 0,
@@ -121,6 +129,7 @@
       "subject": "history",
       "seedRows": 0,
       "distinctPrompts": 0,
+      "distinctTasks": 0,
       "skills": [],
       "missingSkill": 0,
       "missingStandard": 0,
@@ -132,6 +141,7 @@
       "subject": "civics",
       "seedRows": 0,
       "distinctPrompts": 0,
+      "distinctTasks": 0,
       "skills": [],
       "missingSkill": 0,
       "missingStandard": 0,
@@ -143,6 +153,7 @@
       "subject": "economics",
       "seedRows": 0,
       "distinctPrompts": 0,
+      "distinctTasks": 0,
       "skills": [],
       "missingSkill": 0,
       "missingStandard": 0,
@@ -152,20 +163,21 @@
     {
       "grade": "K",
       "subject": "math",
-      "seedRows": 579,
-      "distinctPrompts": 345,
+      "seedRows": 651,
+      "distinctPrompts": 403,
+      "distinctTasks": 417,
       "skills": [
         {
           "skill": "K.addsub",
-          "rows": 80
+          "rows": 104
         },
         {
           "skill": "K.compare",
-          "rows": 219
+          "rows": 243
         },
         {
           "skill": "K.count",
-          "rows": 248
+          "rows": 272
         },
         {
           "skill": "K.shape",
@@ -189,6 +201,7 @@
       "subject": "reading",
       "seedRows": 299,
       "distinctPrompts": 108,
+      "distinctTasks": 108,
       "skills": [
         {
           "skill": "K.print",
@@ -220,6 +233,7 @@
       "subject": "science",
       "seedRows": 122,
       "distinctPrompts": 118,
+      "distinctTasks": 118,
       "skills": [
         {
           "skill": "K.animalneeds",
@@ -262,6 +276,7 @@
       "subject": "geography",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "geo.K.community",
@@ -290,6 +305,7 @@
       "subject": "history",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "hist.K.pastpresent",
@@ -310,6 +326,7 @@
       "subject": "civics",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "civ.K.flag",
@@ -334,6 +351,7 @@
       "subject": "economics",
       "seedRows": 76,
       "distinctPrompts": 76,
+      "distinctTasks": 76,
       "skills": [
         {
           "skill": "econ.K.jobs",
@@ -356,20 +374,21 @@
     {
       "grade": "1",
       "subject": "math",
-      "seedRows": 1272,
-      "distinctPrompts": 1259,
+      "seedRows": 1344,
+      "distinctPrompts": 1317,
+      "distinctTasks": 1331,
       "skills": [
         {
           "skill": "1.addsub",
-          "rows": 653
+          "rows": 677
         },
         {
           "skill": "1.compare",
-          "rows": 267
+          "rows": 291
         },
         {
           "skill": "1.place",
-          "rows": 340
+          "rows": 364
         },
         {
           "skill": "1.shape",
@@ -392,6 +411,7 @@
       "subject": "reading",
       "seedRows": 306,
       "distinctPrompts": 72,
+      "distinctTasks": 72,
       "skills": [
         {
           "skill": "1.cloze",
@@ -431,6 +451,7 @@
       "subject": "science",
       "seedRows": 121,
       "distinctPrompts": 118,
+      "distinctTasks": 118,
       "skills": [
         {
           "skill": "1.animalbabies",
@@ -473,6 +494,7 @@
       "subject": "geography",
       "seedRows": 73,
       "distinctPrompts": 73,
+      "distinctTasks": 73,
       "skills": [
         {
           "skill": "geo.1.community",
@@ -501,6 +523,7 @@
       "subject": "history",
       "seedRows": 76,
       "distinctPrompts": 76,
+      "distinctTasks": 76,
       "skills": [
         {
           "skill": "hist.1.holidays",
@@ -525,6 +548,7 @@
       "subject": "civics",
       "seedRows": 68,
       "distinctPrompts": 68,
+      "distinctTasks": 68,
       "skills": [
         {
           "skill": "civ.1.citizen",
@@ -553,6 +577,7 @@
       "subject": "economics",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "econ.1.goodsservices",
@@ -579,20 +604,21 @@
     {
       "grade": "2",
       "subject": "math",
-      "seedRows": 1634,
-      "distinctPrompts": 1536,
+      "seedRows": 1706,
+      "distinctPrompts": 1601,
+      "distinctTasks": 1608,
       "skills": [
         {
           "skill": "2.addsub",
-          "rows": 900
+          "rows": 924
         },
         {
           "skill": "2.place",
-          "rows": 700
+          "rows": 724
         },
         {
           "skill": "2.skip",
-          "rows": 28
+          "rows": 52
         }
       ],
       "missingSkill": 6,
@@ -612,6 +638,7 @@
       "subject": "reading",
       "seedRows": 623,
       "distinctPrompts": 128,
+      "distinctTasks": 128,
       "skills": [
         {
           "skill": "2.foundation",
@@ -647,6 +674,7 @@
       "subject": "science",
       "seedRows": 122,
       "distinctPrompts": 121,
+      "distinctTasks": 121,
       "skills": [
         {
           "skill": "2.habitats",
@@ -685,6 +713,7 @@
       "subject": "geography",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "geo.2.continents",
@@ -713,6 +742,7 @@
       "subject": "history",
       "seedRows": 68,
       "distinctPrompts": 68,
+      "distinctTasks": 68,
       "skills": [
         {
           "skill": "hist.2.figures",
@@ -737,6 +767,7 @@
       "subject": "civics",
       "seedRows": 74,
       "distinctPrompts": 74,
+      "distinctTasks": 74,
       "skills": [
         {
           "skill": "civ.2.government",
@@ -761,6 +792,7 @@
       "subject": "economics",
       "seedRows": 76,
       "distinctPrompts": 76,
+      "distinctTasks": 76,
       "skills": [
         {
           "skill": "econ.2.goodsservices",
@@ -787,28 +819,29 @@
     {
       "grade": "3",
       "subject": "math",
-      "seedRows": 1356,
-      "distinctPrompts": 889,
+      "seedRows": 1476,
+      "distinctPrompts": 1009,
+      "distinctTasks": 1009,
       "skills": [
         {
           "skill": "3.area",
-          "rows": 343
+          "rows": 367
         },
         {
           "skill": "3.frac",
-          "rows": 15
+          "rows": 39
         },
         {
           "skill": "3.muldiv",
-          "rows": 306
+          "rows": 330
         },
         {
           "skill": "3.perim",
-          "rows": 343
+          "rows": 367
         },
         {
           "skill": "3.round",
-          "rows": 343
+          "rows": 367
         }
       ],
       "missingSkill": 6,
@@ -816,6 +849,7 @@
       "standardTags": [
         "MA.3.AR.1",
         "MA.3.FR.1",
+        "MA.3.FR.2",
         "MA.3.GR.2",
         "MA.3.NSO.1",
         "MA.3.NSO.2"
@@ -829,6 +863,7 @@
       "subject": "reading",
       "seedRows": 317,
       "distinctPrompts": 82,
+      "distinctTasks": 82,
       "skills": [
         {
           "skill": "3.detail",
@@ -869,6 +904,7 @@
       "subject": "science",
       "seedRows": 122,
       "distinctPrompts": 122,
+      "distinctTasks": 122,
       "skills": [
         {
           "skill": "3.energy",
@@ -907,6 +943,7 @@
       "subject": "geography",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "geo.3.florida",
@@ -935,6 +972,7 @@
       "subject": "history",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "hist.3.explorers",
@@ -963,6 +1001,7 @@
       "subject": "civics",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "civ.3.lawmaking",
@@ -991,6 +1030,7 @@
       "subject": "economics",
       "seedRows": 75,
       "distinctPrompts": 75,
+      "distinctTasks": 75,
       "skills": [
         {
           "skill": "econ.3.choices",
@@ -1017,32 +1057,33 @@
     {
       "grade": "4",
       "subject": "math",
-      "seedRows": 1370,
-      "distinctPrompts": 812,
+      "seedRows": 1514,
+      "distinctPrompts": 942,
+      "distinctTasks": 956,
       "skills": [
         {
           "skill": "4.dec",
-          "rows": 90
+          "rows": 114
         },
         {
           "skill": "4.div",
-          "rows": 100
+          "rows": 124
         },
         {
           "skill": "4.factor",
-          "rows": 423
+          "rows": 447
         },
         {
           "skill": "4.frac",
-          "rows": 65
+          "rows": 89
         },
         {
           "skill": "4.mul",
-          "rows": 343
+          "rows": 367
         },
         {
           "skill": "4.place",
-          "rows": 343
+          "rows": 367
         }
       ],
       "missingSkill": 6,
@@ -1063,6 +1104,7 @@
       "subject": "reading",
       "seedRows": 281,
       "distinctPrompts": 38,
+      "distinctTasks": 38,
       "skills": [
         {
           "skill": "4.grammar",
@@ -1099,6 +1141,7 @@
       "subject": "science",
       "seedRows": 122,
       "distinctPrompts": 122,
+      "distinctTasks": 122,
       "skills": [
         {
           "skill": "4.adaptations",
@@ -1137,6 +1180,7 @@
       "subject": "geography",
       "seedRows": 79,
       "distinctPrompts": 79,
+      "distinctTasks": 79,
       "skills": [
         {
           "skill": "geo.4.hemispheres",
@@ -1165,6 +1209,7 @@
       "subject": "history",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "hist.4.colonies",
@@ -1193,6 +1238,7 @@
       "subject": "civics",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "civ.4.branches",
@@ -1221,6 +1267,7 @@
       "subject": "economics",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "econ.4.budget",
@@ -1247,24 +1294,25 @@
     {
       "grade": "5",
       "subject": "math",
-      "seedRows": 1951,
-      "distinctPrompts": 1890,
+      "seedRows": 2047,
+      "distinctPrompts": 1979,
+      "distinctTasks": 1986,
       "skills": [
         {
           "skill": "5.dec",
-          "rows": 1029
+          "rows": 1053
         },
         {
           "skill": "5.frac",
-          "rows": 30
+          "rows": 54
         },
         {
           "skill": "5.order",
-          "rows": 543
+          "rows": 567
         },
         {
           "skill": "5.volume",
-          "rows": 343
+          "rows": 367
         }
       ],
       "missingSkill": 6,
@@ -1285,6 +1333,7 @@
       "subject": "reading",
       "seedRows": 427,
       "distinctPrompts": 126,
+      "distinctTasks": 126,
       "skills": [
         {
           "skill": "5.fig",
@@ -1325,6 +1374,7 @@
       "subject": "science",
       "seedRows": 121,
       "distinctPrompts": 120,
+      "distinctTasks": 120,
       "skills": [
         {
           "skill": "5.body",
@@ -1367,6 +1417,7 @@
       "subject": "geography",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "geo.5.latlong",
@@ -1395,6 +1446,7 @@
       "subject": "history",
       "seedRows": 80,
       "distinctPrompts": 80,
+      "distinctTasks": 80,
       "skills": [
         {
           "skill": "hist.5.civilwar",
@@ -1423,6 +1475,7 @@
       "subject": "civics",
       "seedRows": 70,
       "distinctPrompts": 70,
+      "distinctTasks": 70,
       "skills": [
         {
           "skill": "civ.5.checksbalances",
@@ -1451,6 +1504,7 @@
       "subject": "economics",
       "seedRows": 77,
       "distinctPrompts": 77,
+      "distinctTasks": 77,
       "skills": [
         {
           "skill": "econ.5.banking",

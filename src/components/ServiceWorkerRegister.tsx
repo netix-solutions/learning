@@ -6,6 +6,15 @@ import { useEffect } from "react";
 export function ServiceWorkerRegister() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
+    // Dev chunk URLs are reused after edits. An old PWA worker can otherwise
+    // mix yesterday's stylesheet with today's components during local testing.
+    if(process.env.NODE_ENV==='development'){
+      navigator.serviceWorker.getRegistrations().then(registrations=>Promise.all(registrations.filter(registration=>{
+        const worker=registration.active??registration.waiting??registration.installing;
+        return worker?.scriptURL===`${location.origin}/sw.js`;
+      }).map(registration=>registration.unregister()))).catch(()=>{});
+      return;
+    }
     const register = () => {
       navigator.serviceWorker.register("/sw.js", { scope: "/" }).catch(() => {
         /* SW is a progressive enhancement; ignore failures */

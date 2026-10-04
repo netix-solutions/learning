@@ -8,7 +8,6 @@ import { LearningRewards } from "@/components/LearningRewards";
 import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
 import { ActivityTracker } from "@/components/ActivityTracker";
-import { teachFor } from "@/lib/teaching";
 import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { ReadingPrompt } from "@/components/ReadingPrompt";
@@ -38,17 +37,21 @@ const subscribeVoicePreference = (notify: () => void) => {
   return () => window.removeEventListener("storage", notify);
 };
 const CHEERS = ["Nice! 🎉", "Boom! 💥", "You got it! 🌟", "Sharp! 🧠", "Yes! 🙌"];
+export type PracticePreview = {question: PracticeQuestion; result: AttemptResult}[];
 
 
 export function PracticeClient({
   subject,
   grade,
   studentId = "preview",
+  preview,
 }: {
   subject: Subject;
   grade: Grade;
   studentId?: string;
+  preview?: PracticePreview;
 }) {
+  const samples=process.env.NODE_ENV==='development'?preview:undefined;
   const theme = subjectTheme(subject.color);
   const experience = experienceFor(grade);
   const voiceKey = `sunsharp:autoread:${studentId}:${grade}`;
@@ -80,8 +83,10 @@ export function PracticeClient({
   // Skills can have several variants; each question hashes to one so a given
   // question always shows the same art but a round feels varied.
   const [artMap, setArtMap] = useState<Record<string, string[]>>({});
+  const playingMain=useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if(samples)return;
     const supabase = createClient();
     supabase
       .from("skill_art")
@@ -96,7 +101,7 @@ export function PracticeClient({
         }
         setArtMap(map);
       });
-  }, []);
+  }, [samples]);
 
   const loadQuestions = useCallback(async () => {
     requestId.current=null; supportUsed.current=false; setTransitionError('');
@@ -110,6 +115,7 @@ export function PracticeClient({
     setCombo(0);
 
     try {
+      if(samples){setQuestions(samples.map(sample=>sample.question));setPhase(samples.length?'playing':'empty');return;}
       if (!navigator.onLine) throw new Error("Offline");
       const supabase = createClient();
       let qs: PracticeQuestion[] = [];
@@ -146,7 +152,7 @@ export function PracticeClient({
       setPhase(qs.length ? "playing" : "empty");
       if (qs.length) playQuizStart();
     } catch { setPhase("error"); }
-  }, [subject.id, grade, experience.roundSize]);
+  }, [subject.id, grade, experience.roundSize, samples]);
 
   useEffect(() => {
     // This effect starts the external question request; explicit retries also reset the round.
@@ -160,6 +166,11 @@ export function PracticeClient({
   const current = rawCurrent && isScienceObservation(rawCurrent.payload?.observation) && typeof rawCurrent.payload?.observationQuestion === "string"
     ? { ...rawCurrent, prompt: rawCurrent.payload.observationQuestion }
     : rawCurrent;
+  useEffect(()=>{
+    if(phase!=='playing'||!current)return;
+    playingMain.current?.focus({preventScroll:true});
+    window.scrollTo({top:0,behavior:'instant'});
+  },[current?.id,phase]); // eslint-disable-line react-hooks/exhaustive-deps
   const observation = isScienceObservation(current?.payload?.observation) ? current.payload!.observation! : null;
   const readingParts = current?.subject_id === "reading" ? splitReadingPrompt(current.prompt) : null;
   const isPreK = grade === "PK";
@@ -199,7 +210,7 @@ export function PracticeClient({
   // Read each new question aloud when auto-read is on (best-effort; browsers may
   // need a prior tap, which the kid provides by tapping into the round).
   useEffect(() => {
-    if (autoRead && phase === "playing" && current) {
+    if (!samples && autoRead && phase === "playing" && current) {
       speak(`q-${current.id}`, speechFor(current));
     }
   }, [autoRead, phase, current?.id, speechFor]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -212,9 +223,9 @@ export function PracticeClient({
     setSubmitting(true);
     setUnsavedAnswer(null);
 
-    const supabase = createClient();
     requestId.current ??= crypto.randomUUID();
-    const { data, error } = await supabase.rpc("record_practice_attempt", {
+    const sample=samples?.find(s=>s.question.id===current.id);
+    const { data, error } = sample?{data:{...sample.result,is_correct:JSON.stringify(answer)===JSON.stringify(sample.result.correct)},error:null}:await createClient().rpc("record_practice_attempt", {
       p_question_id: current.id,
       p_answer: answer,
       p_support_used: supportUsed.current,
@@ -261,7 +272,7 @@ export function PracticeClient({
     setAdapting(true);
     try {
       const upcoming=questions[index+1];
-      const {data,error}=await createClient().rpc("get_progressive_questions",{
+      const {data,error}=samples?{data:[],error:null}:await createClient().rpc("get_progressive_questions",{
         p_subject:upcoming.subject_id,p_grade:grade,p_count:1,p_exclude:questions.map(q=>q.id),
       }).abortSignal(AbortSignal.timeout(15000));
       if(error)throw error;
@@ -283,7 +294,7 @@ export function PracticeClient({
     setTryingMore(true);
     setTransitionError('');
     try {
-      const {data,error}=await createClient().rpc("get_progressive_questions",{
+      const {data,error}=samples?{data:[],error:null}:await createClient().rpc("get_progressive_questions",{
         p_subject:current.subject_id,p_grade:grade,p_count:1,p_exclude:questions.map(q=>q.id),p_skill:current.skill,
       }).abortSignal(AbortSignal.timeout(15000));
       if(error)throw error;
@@ -344,7 +355,7 @@ export function PracticeClient({
         <p className="mt-2 text-lg text-slate-600">You tried {questions.length} questions and got {correctCount} right.</p>
         <p className="mt-2 text-base text-slate-600">Every question you tried adds to your rewards.</p>
       </div>
-      <LearningRewards grade={grade} />
+      {samples?<p className="mt-4 text-center">Preview complete · no answers or rewards saved.</p>:<LearningRewards grade={grade} />}
       <div className="mt-7 flex flex-wrap gap-3">
         <Link href="/home" className="inline-flex min-h-12 items-center rounded-2xl bg-emerald-700 px-6 py-3 font-bold text-white">Done for now ✓</Link>
         <button onClick={loadQuestions} className="min-h-12 rounded-2xl bg-white px-6 py-3 font-bold text-slate-700">Practice again</button>
@@ -357,12 +368,10 @@ export function PracticeClient({
     <>
       <Confetti fire={confettiKey} count={60} />
       <CorrectCelebration fire={correctKey} cheer={cheer} />
-      <ActivityTracker />
-      <main data-grade={grade} className="grade-quiz mx-auto w-full min-w-0 max-w-3xl px-4 py-6">
+      {!samples&&<ActivityTracker />}
+      <main ref={playingMain} tabIndex={-1} data-grade={grade} className={`grade-quiz practice-screen mx-auto w-full min-w-0 max-w-3xl px-4 py-6 ${result?'has-feedback':''}`}>
         <header className="mb-4 flex items-center justify-between">
-          <Link href="/home" className="inline-flex min-h-12 items-center rounded-xl px-3 font-bold text-slate-600 hover:text-slate-800">
-            ← Home
-          </Link>
+          <p className="text-sm font-bold" style={{color:experience.accent}}>{gradeLabel(grade)} · {experience.name}</p>
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -382,7 +391,6 @@ export function PracticeClient({
           </div>
         </header>
 
-        <p className="mb-3 text-sm font-bold" style={{color: experience.accent}}>{gradeLabel(grade)} · {experience.name}</p>
         {/* progress */}
         <div className="mb-6 h-3 w-full overflow-hidden rounded-full bg-white/70 ring-2 ring-white">
           <div
@@ -391,7 +399,8 @@ export function PracticeClient({
           />
         </div>
 
-        <div className="card-fun p-6 sm:p-8">
+        <div className={`card-fun quiz-card p-6 sm:p-8 ${readingParts||observation?'quiz-with-evidence':''}`}>
+          <div className="quiz-question" key={current.id}>
           <div className="mb-1 flex items-center gap-2">
             <p className="text-sm font-bold uppercase tracking-wide text-slate-400">
               Question {index + 1} of {questions.length}
@@ -426,7 +435,7 @@ export function PracticeClient({
             }
             if (art) {
               return (
-                <div className="mb-4 overflow-hidden rounded-2xl">
+                <div className="quiz-decoration mb-4 overflow-hidden rounded-2xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={art}
@@ -474,6 +483,8 @@ export function PracticeClient({
               className="mt-1"
             />
           </div>}
+          </div>
+          <div className="quiz-answer-area">
 
           {/* Pre-answer help for arithmetic: a kid who's stuck can watch the
               numbers work out and hear it explained, instead of guessing. */}
@@ -501,7 +512,7 @@ export function PracticeClient({
           <QuestionInteraction key={current.id} question={current} result={result} submitting={submitting||unsavedAnswer!==null} onSubmit={submit} />
 
           {(!current.kind || current.kind === "mcq") && (
-          <div className={`mt-6 grid gap-3 ${isPreK ? "grid-cols-2" : "sm:grid-cols-2"}`}>
+          <div className={`quiz-choices mt-6 grid gap-3 ${isPreK||current.choices.every(c=>c.length<=24) ? "grid-cols-2" : "sm:grid-cols-2"}`}>
             {current.choices.map((choice, i) => {
               let cls =
                 "border-slate-200 bg-white hover:border-[var(--brand-blue)] hover:bg-blue-50";
@@ -568,7 +579,7 @@ export function PracticeClient({
           {/* feedback — a quick cheer when right, a real re-teach when wrong */}
           {result && (
             <div
-              className={`mt-6 rounded-2xl p-4 animate-pop ${
+              className={`quiz-feedback mt-6 rounded-2xl p-4 animate-pop ${
                 result.is_correct ? "bg-emerald-50" : "bg-orange-50"
               }`}
             >
@@ -586,24 +597,12 @@ export function PracticeClient({
                 </div>
               )}
               {current.subject_id === "science" && !observation && hasScienceDiagram(current.skill) && <details className="mt-4 rounded-xl bg-white p-3"><summary className="min-h-12 cursor-pointer p-2 font-bold text-sky-800">Explore this science topic</summary><ScienceDiagram skill={current.skill} /></details>}
-              {/* On a miss, re-teach the general method for this skill. */}
-              {!result.is_correct &&
-                (() => {
-                  const teach = teachFor(current.skill);
-                  return teach ? (
-                    <div className="mt-3 rounded-xl bg-white/70 p-3">
-                      <p className="text-sm font-bold text-slate-700">
-                        💡 How {teach.title.toLowerCase()} works
-                      </p>
-                      <p className="mt-0.5 text-sm text-slate-600">{teach.tip}</p>
-                    </div>
-                  ) : null;
-                })()}
-
             </div>
           )}
+          </div>
         </div>
 
+        <div className="quiz-actions">
         {transitionError&&<p role="alert" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-slate-800">{transitionError}</p>}
         {result &&
           (result.is_correct ? (
@@ -616,13 +615,13 @@ export function PracticeClient({
               {adapting?"Finding your next challenge…":index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
             </button>
           ) : (
-            <div className="mt-5 flex flex-col gap-3">
+            <div className="quiz-recovery-actions mt-5 flex flex-col gap-3">
               <button
                 onClick={() => setShowTeach(true)}
                 className="btn-pop w-full px-6 py-4 text-xl text-white"
                 style={{ background: "linear-gradient(90deg, #8b5cf6, #d946ef)" }}
               >
-                🧑‍🏫 Teach me how ✨
+                Teach me
               </button>
               {current.skill && (
                 <button
@@ -631,7 +630,7 @@ export function PracticeClient({
                   className="btn-pop w-full px-6 py-3 text-lg text-white"
                   style={{ background: "var(--brand-blue)" }}
                 >
-                  {tryingMore ? "Getting one…" : "Try one like it 🔁"}
+                  {tryingMore ? "Getting one…" : "Try similar"}
                 </button>
               )}
               <button
@@ -643,6 +642,7 @@ export function PracticeClient({
               </button>
             </div>
           ))}
+        </div>
       </main>
 
       {showTeach && current && (
@@ -668,7 +668,7 @@ export function PracticeClient({
 
 function Centered({ children }: { children: React.ReactNode }) {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-2xl flex-col items-center justify-center px-4 py-10 text-center">
+    <main className="practice-state mx-auto flex max-w-2xl flex-col items-center justify-center px-4 py-6 text-center">
       {children}
     </main>
   );

@@ -7,7 +7,7 @@ const recordings = new Map(Object.entries(manifest.clips).filter(([id]) => id.st
 export function ReadingPrompt({ parts, grade, questionId }: { parts: ReadingPromptParts; grade: Grade; questionId: string }) {
   const early = grade === 'PK' || grade === 'K' || grade === '1';
   return <div className="min-w-0">
-    <section aria-label="Reading passage" className="mb-6 rounded-2xl border border-amber-200 bg-[#fffdf4] p-4 sm:p-6">
+    <section aria-label="Reading passage" tabIndex={0} className="mb-6 rounded-2xl border border-amber-200 bg-[#fffdf4] p-4 sm:p-6">
       <div className="mb-3 flex items-center justify-between gap-3"><h2 className="text-base font-bold text-amber-900">{early ? 'Read or listen' : 'Read the passage'}</h2><SpeakButton id={`passage-${questionId}`} text={parts.passage} audioSrc={recordings.get(forSpeech(parts.passage))} label="Listen to the passage" /></div>
       {parts.passage.split(/\n\s*\n/).map((paragraph, i) => <p key={i} className={`mt-3 whitespace-pre-line break-words font-normal leading-[1.8] text-slate-800 ${early ? 'text-2xl' : grade === '2' ? 'text-xl' : 'text-lg sm:text-xl'}`}>{paragraph}</p>)}
     </section>

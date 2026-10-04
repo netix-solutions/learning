@@ -45,7 +45,7 @@ function CheckButton({
     <button
       onClick={onClick}
       disabled={!ready || submitting}
-      className="btn-pop mt-6 w-full px-6 py-4 text-xl font-bold text-white disabled:cursor-not-allowed disabled:opacity-40"
+      className="quiz-check btn-pop mt-6 w-full px-6 py-4 text-xl font-bold text-white disabled:cursor-not-allowed disabled:opacity-40"
       style={{ background: "var(--brand-blue)" }}
     >
       {submitting ? "Checking…" : ready ? "Check it! ✅" : "Finish your answer…"}
@@ -214,7 +214,7 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
   const ready = assign.every((a) => a !== null) && items.length > 0;
 
   return (
-    <div className="mt-6 space-y-3">
+    <div className="quiz-categorize mt-6 space-y-3">
       {items.map((item, i) => {
         const chosen = assign[i];
         const isRight = result && correct ? chosen === correct[i] : null;
@@ -231,6 +231,7 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
           >
             <div className="mb-2 flex items-center gap-2 text-lg font-bold text-slate-700">
               <span className="min-w-0 break-words">{item}</span>
+              {result&&chosen!==null&&<span className="text-sm font-medium text-slate-600">{buckets[chosen]}</span>}
               {isRight === true && <span className="ml-auto">✅</span>}
               {isRight === false && (
                 <span className="ml-auto text-sm font-bold text-red-600">
@@ -238,7 +239,7 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
                 </span>
               )}
             </div>
-            <div className="flex flex-wrap gap-2">
+            {!result&&<div className="flex flex-wrap gap-2">
               {buckets.map((b, bi) => {
                 const selected = chosen === bi;
                 let cls = "border-slate-200 bg-slate-50 text-slate-600 hover:border-blue-300";
@@ -263,7 +264,7 @@ export function CategorizeQuestion({ question, result, submitting, onSubmit }: P
                   </button>
                 );
               })}
-            </div>
+            </div>}
           </div>
         );
       })}

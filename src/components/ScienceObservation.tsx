@@ -15,7 +15,7 @@ export function ScienceObservation({ observation, id }: { observation: Observati
   const [selected, setSelected] = useState<string | null>(null);
   const narration = observationNarration(observation);
   const pictures = observation.format==='objects' || observation.format==='weather';
-  return <section aria-label="Observation notes" className="my-5 min-w-0 max-w-full rounded-2xl border border-sky-200 bg-sky-50/70 p-4 sm:p-5">
+  return <section aria-label="Observation notes" tabIndex={0} className="my-5 min-w-0 max-w-full rounded-2xl border border-sky-200 bg-sky-50/70 p-4 sm:p-5">
     <div className="flex items-start justify-between gap-3"><h2 className="text-xl font-bold text-slate-800">{observation.title}</h2><SpeakButton id={`observation-${id}`} text={narration} audioSrc={recordings.get(forSpeech(narration))} label="Hear the observation notes" /></div>
     <p className="mt-2 text-base leading-relaxed text-slate-700">{observation.context}</p>
     <p className="mb-3 mt-3 text-sm text-slate-600">Tap {pictures ? 'a picture' : 'a row'} to mark what you are looking at.</p>

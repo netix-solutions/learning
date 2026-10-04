@@ -50,7 +50,11 @@ function readQuestions(path) {
   return rows;
 }
 const files = ['supabase/seed.sql', 'supabase/seeds/questions.sql'];
+const progressionSQL=readFileSync('supabase/seeds/math-progression.sql','utf8');
+const progressionJSON=progressionSQL.split('$math_progression$')[1];
+if(!progressionJSON)throw new Error('Missing math progression content');
 const banks = [
+  {path:'supabase/seeds/math-progression.sql',rows:JSON.parse(progressionJSON)},
   {path: 'src/lib/content/science-observations.ts', rows: SCIENCE_OBSERVATIONS.flatMap(a=>a.questions.map(q=>({grade:a.grade,subject_id:'science',skill:`${a.grade}.observation`,standard:null,prompt:q.prompt})))},
   ...files.map(path => ({ path, rows: readQuestions(path) })),
   {path: 'src/lib/content/reading-stories.ts', rows: READING_STORIES.flatMap(story => story.questions.map(q=>({grade:story.grade,subject_id:'reading',skill:story.skill,standard:story.standard,prompt:`Read: "${story.passage}" ${q.prompt}`})))},
@@ -64,6 +68,7 @@ for (const grade of grades) for (const subject of subjects) {
   const skills = [...new Set(selected.map(q => q.skill).filter(Boolean))].sort();
   inventory.push({ grade, subject, seedRows: selected.length,
     distinctPrompts: new Set(selected.map(q => q.prompt)).size,
+    distinctTasks: new Set(selected.map(q => JSON.stringify([q.prompt,q.payload??null]))).size,
     skills: skills.map(skill => ({ skill, rows: selected.filter(q => q.skill === skill).length })),
     missingSkill: selected.filter(q => !q.skill).length,
     missingStandard: selected.filter(q => !q.standard).length,
@@ -72,7 +77,7 @@ for (const grade of grades) for (const subject of subjects) {
   });
 }
 const report = {
-  scope: 'Repository question seeds, additive reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
+  scope: 'Repository question seeds, additive math stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
   sources: banks.map(b => ({ file: b.path, rows: b.rows.length })), inventory,
 };
 writeFileSync('docs/curriculum-inventory.json', JSON.stringify(report, null, 2) + '\n');
