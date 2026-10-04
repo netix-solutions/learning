@@ -218,6 +218,24 @@ export function skillStanding(m: {
 export function skillTitle(skill: string): string {
   const authored = SKILL_TEACH[skill]?.title;
   if (authored) return authored;
+  const interactiveTitles: Record<string, string> = {
+    'tf-even': 'Even and odd numbers',
+    'even-odd-sort': 'Even and odd numbers',
+    'tf-vowel': 'Vowels and consonants',
+    'find-vowel': 'Finding vowels',
+    'find-verb': 'Finding action words',
+    'find-noun': 'Finding nouns',
+    'tf-compare': 'Comparing numbers',
+    'tf-living': 'Living and nonliving things',
+    'living-sort': 'Living and nonliving things',
+    'order-numbers': 'Putting numbers in order',
+    'rhyme-match': 'Matching rhyming words',
+    'match-doubles': 'Adding doubles',
+    'life-cycle': 'Life cycles',
+    'what-is-it': 'Using clues',
+  };
+  const shortCode = skill.replace(/^[A-Za-z0-9]+\./, '');
+  if (interactiveTitles[shortCode]) return interactiveTitles[shortCode];
   // e.g. "3.muldiv" -> "muldiv"; keep it readable rather than showing the code raw.
   return skill.replace(/^[A-Za-z0-9]+\./, "").replace(/[_-]+/g, " ");
 }

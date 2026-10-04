@@ -4,17 +4,16 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
-import { SkillBreakdown, type SubjectSkills } from "@/components/SkillBreakdown";
+import { PracticeEvidence, type EvidenceSubject } from "@/components/PracticeEvidence";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
 import { LessonProgress } from "@/components/LessonProgress";
 import { GoalForm } from "@/components/GoalForm";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { DEFAULT_DAYS_PER_WEEK, DEFAULT_MINUTES_PER_DAY } from "@/lib/goals";
-import { skillStanding } from "@/lib/teaching";
 import {
   subjectTheme,
   gradeLabel,
-  type SkillMastery,
+  type SkillProgress,
   type StudentSummary,
 } from "@/lib/types";
 
@@ -36,13 +35,13 @@ export default async function ChildDetail({
   const s = data as StudentSummary;
   const emojiFor = new Map(s.subjects.map((x) => [x.subject_id, x.emoji]));
 
-  // Per-skill mastery, one (already-authorized) RPC per subject, in parallel.
+  // Recent skill evidence, one authorized RPC per subject, in parallel.
   // Skills the child hasn't touched are dropped so the breakdown stays focused.
   const grade = s.profile.grade;
-  const skillsBySubject: SubjectSkills[] = grade
+  const skillsBySubject: EvidenceSubject[] = grade
     ? await Promise.all(
         s.subjects.map(async (sub) => {
-          const { data: rows } = await supabase.rpc("get_skill_mastery", {
+          const { data: rows, error: progressError } = await supabase.rpc("get_skill_progress", {
             p_student_id: id,
             p_subject: sub.subject_id,
             p_grade: grade,
@@ -52,7 +51,8 @@ export default async function ChildDetail({
             name: sub.name,
             emoji: sub.emoji,
             color: sub.color,
-            skills: ((rows as SkillMastery[]) ?? []).filter((k) => k.attempts > 0),
+            progress: ((rows as SkillProgress[]) ?? []).filter((k) => k.attempts > 0),
+            unavailable: !!progressError,
           };
         }),
       )
@@ -61,11 +61,11 @@ export default async function ChildDetail({
   // Pair each subject's progress with skill standings for the grade-goals view.
   const subjectStandings: SubjectStanding[] = s.subjects.map((sub) => {
     const sk = skillsBySubject.find((x) => x.id === sub.subject_id);
-    const counts = (sk?.skills ?? []).reduce(
+    const counts = (sk?.progress ?? []).reduce(
       (acc, m) => {
-        const st = skillStanding(m);
-        if (st === "strong") acc.strong += 1;
-        else if (st === "focus") acc.focus += 1;
+        const st = m.state;
+        if (st === "secure") acc.strong += 1;
+        else if (st === "support") acc.focus += 1;
         return acc;
       },
       { strong: 0, focus: 0 },
@@ -116,7 +116,7 @@ export default async function ChildDetail({
           </div>
         </div>
         <div className="mt-5">
-          <p className="text-sm text-slate-600">Learning grows flowers in your child’s garden. Rewards recognize participation, not skill mastery.</p>
+          <p className="text-sm text-slate-600">Practice earns tokens for your child’s reward worlds. Rewards recognize participation; independent practice evidence shows how skills are developing.</p>
         </div>
         <div className="mt-5 grid grid-cols-3 gap-3 text-center">
           <Stat label="Questions" value={s.totals.attempts} />
@@ -124,6 +124,8 @@ export default async function ChildDetail({
           <Stat label="Accuracy" value={`${s.totals.accuracy}%`} />
         </div>
       </section>
+
+      <PracticeEvidence subjects={skillsBySubject} />
 
       {/* Time goal */}
       <div className="mt-6">
@@ -170,9 +172,6 @@ export default async function ChildDetail({
         childName={s.profile.display_name}
         subjects={subjectStandings}
       />
-
-      {/* Skill breakdown — which subtopics they're strong/weak in + how to help */}
-      <SkillBreakdown childName={s.profile.display_name} subjects={skillsBySubject} />
 
       {/* Recent */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">Recent activity</h2>

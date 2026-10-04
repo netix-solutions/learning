@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { experienceFor, mixedRoundCounts } from "@/lib/grade-experience";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
@@ -66,6 +66,11 @@ export function PracticeClient({
   const [correctKey, setCorrectKey] = useState(0);
   const [combo, setCombo] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
+  const submissionInFlight = useRef(false);
+  const requestId = useRef<string | null>(null);
+  const supportUsed = useRef(false);
+  const [adapting, setAdapting] = useState(false);
+  const [transitionError, setTransitionError] = useState('');
   const [tryingMore, setTryingMore] = useState(false);
   const [showTeach, setShowTeach] = useState(false);
   // Pre-answer "Teach me how" for arithmetic (animated numbers + voiceover).
@@ -93,6 +98,7 @@ export function PracticeClient({
   }, []);
 
   const loadQuestions = useCallback(async () => {
+    requestId.current=null; supportUsed.current=false; setTransitionError('');
     setPhase("loading");
     setQuestions([]);
     setIndex(0);
@@ -111,7 +117,7 @@ export function PracticeClient({
         const subjectIds = ["math", "reading", "science"];
         const results = await Promise.all(
           subjectIds.map((s, subjectIndex) =>
-            supabase.rpc("get_adaptive_questions", {
+            supabase.rpc("get_progressive_questions", {
               p_subject: s,
               p_grade: grade,
               p_count: mixedRoundCounts(experience.roundSize)[subjectIndex],
@@ -126,7 +132,7 @@ export function PracticeClient({
           [qs[i], qs[j]] = [qs[j], qs[i]];
         }
       } else {
-        const { data, error } = await supabase.rpc("get_adaptive_questions", {
+        const { data, error } = await supabase.rpc("get_progressive_questions", {
           p_subject: subject.id,
           p_grade: grade,
           p_count: experience.roundSize,
@@ -198,16 +204,22 @@ export function PracticeClient({
   }, [autoRead, phase, current?.id, speechFor]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function submit(answer: SubmittedAnswer) {
-    if (result || submitting || !current) return;
+    if (result || submissionInFlight.current || !current) return;
+    if(unsavedAnswer!==null && JSON.stringify(answer)!==JSON.stringify(unsavedAnswer))return;
+    submissionInFlight.current=true;
     if (typeof answer === "number") setSelected(answer);
     setSubmitting(true);
     setUnsavedAnswer(null);
 
     const supabase = createClient();
-    const { data, error } = await supabase.rpc("record_attempt", {
+    requestId.current ??= crypto.randomUUID();
+    const { data, error } = await supabase.rpc("record_practice_attempt", {
       p_question_id: current.id,
       p_answer: answer,
-    }).then(response => response, () => ({ data: null, error: true }));
+      p_support_used: supportUsed.current,
+      p_request_id: requestId.current,
+    }).abortSignal(AbortSignal.timeout(15000)).then(response => response, () => ({ data: null, error: true }));
+    submissionInFlight.current=false;
     setSubmitting(false);
 
     if (error || !data) {
@@ -234,48 +246,52 @@ export function PracticeClient({
     }
   }
 
-  function next() {
+  async function next() {
+    if(adapting || tryingMore)return;
+    setTransitionError('');
     setShowTeach(false);
     if (index + 1 >= questions.length) {
       setPhase("done");
       setConfettiKey((k) => k + 1);
       return;
     }
-    setIndex((i) => i + 1);
-    setSelected(null);
-    setUnsavedAnswer(null);
-    setResult(null);
+    setAdapting(true);
+    try {
+      const upcoming=questions[index+1];
+      const {data,error}=await createClient().rpc("get_progressive_questions",{
+        p_subject:upcoming.subject_id,p_grade:grade,p_count:1,p_exclude:questions.map(q=>q.id),
+      }).abortSignal(AbortSignal.timeout(15000));
+      if(error)throw error;
+      const fresh=(data as PracticeQuestion[] | null)?.[0];
+      if(fresh)setQuestions(qs=>qs.map((q,i)=>i===index+1?fresh:q));
+      requestId.current=null;supportUsed.current=false;
+      setIndex((i) => i + 1);
+      setSelected(null);setUnsavedAnswer(null);setResult(null);
+    } catch {setTransitionError('The next question couldn’t load. Your saved answer is safe. Try again.');}
+    finally {setAdapting(false);}
   }
 
   // After a miss, pull a fresh question of the SAME skill and slot it in next,
   // so the kid re-practices what they just got wrong (the answer key stays
-  // server-side). If none is available, just move on.
+  // server-side). Reuse an unseen queued question if the bank has no extra one.
   async function tryOneMore() {
     if (!current?.skill || tryingMore) return;
     setTryingMore(true);
-    const supabase = createClient();
-    const { data } = await supabase.rpc("get_skill_questions", {
-      p_subject: current.subject_id,
-      p_grade: grade,
-      p_skill: current.skill,
-      p_count: 1,
-    });
-    setTryingMore(false);
-    const extra = (data as PracticeQuestion[]) ?? [];
-    if (!extra.length) {
-      next();
-      return;
-    }
-    setShowTeach(false);
-    setQuestions((qs) => {
-      const copy = qs.slice();
-      copy.splice(index + 1, 0, extra[0]);
-      return copy;
-    });
-    setSelected(null);
-    setUnsavedAnswer(null);
-    setResult(null);
-    setIndex((i) => i + 1);
+    setTransitionError('');
+    try {
+      const {data,error}=await createClient().rpc("get_progressive_questions",{
+        p_subject:current.subject_id,p_grade:grade,p_count:1,p_exclude:questions.map(q=>q.id),p_skill:current.skill,
+      }).abortSignal(AbortSignal.timeout(15000));
+      if(error)throw error;
+      const extra=((data as PracticeQuestion[])??[]).find(q=>q.skill===current.skill);
+      const queued=questions.findIndex((q,i)=>i>index&&q.skill===current.skill);
+      if(!extra&&queued<0){setTransitionError('No new question for this skill right now. You can continue your round.');return;}
+      setShowTeach(false);
+      setQuestions(qs=>{const copy=qs.slice();const followUp=extra??copy.splice(queued,1)[0];copy.splice(index+1,0,followUp);return copy;});
+      requestId.current=null;supportUsed.current=true;
+      setSelected(null);setUnsavedAnswer(null);setResult(null);setIndex(i=>i+1);
+    } catch {setTransitionError('That practice question couldn’t load. Try again, or continue your round.');}
+    finally {setTryingMore(false);}
   }
 
   // ---- Render states ------------------------------------------------------
@@ -376,6 +392,7 @@ export function PracticeClient({
             <p className="text-sm font-bold uppercase tracking-wide text-slate-400">
               Question {index + 1} of {questions.length}
             </p>
+            {current.focus === "stretch" && <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900">A little stretch</span>}
             {current.focus === "new" && (
               <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-700">
                 ✨ New skill
@@ -466,6 +483,7 @@ export function PracticeClient({
                   onClick={() => {
                     // Start the voiceover inside the tap so iOS allows audio.
                     speak("math-teach", buildNarration(p));
+                    supportUsed.current=true;
                     setMathHelp(p);
                   }}
                   className="btn-pop mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3 text-base font-extrabold text-violet-700"
@@ -476,7 +494,7 @@ export function PracticeClient({
             })()}
 
           {/* Non-multiple-choice kinds bring their own interaction + feedback. */}
-          <QuestionInteraction question={current} result={result} submitting={submitting} onSubmit={submit} />
+          <QuestionInteraction key={current.id} question={current} result={result} submitting={submitting||unsavedAnswer!==null} onSubmit={submit} />
 
           {(!current.kind || current.kind === "mcq") && (
           <div className={`mt-6 grid gap-3 ${isPreK ? "grid-cols-2" : "sm:grid-cols-2"}`}>
@@ -499,7 +517,7 @@ export function PracticeClient({
                 return (
                   <button
                     key={i}
-                    disabled={!!result || submitting}
+                    disabled={!!result || submitting || unsavedAnswer!==null}
                     onClick={() => submit(i)}
                     className={`relative grid min-h-28 place-items-center rounded-3xl border-4 px-3 py-6 text-center text-6xl font-bold transition ${cls}`}
                   >
@@ -516,7 +534,7 @@ export function PracticeClient({
               return (
                 <button
                   key={i}
-                  disabled={!!result || submitting}
+                  disabled={!!result || submitting || unsavedAnswer!==null}
                   onClick={() => submit(i)}
                   className={`flex items-center gap-3 rounded-2xl border-2 px-4 py-4 text-left text-lg font-bold transition ${cls}`}
                 >
@@ -534,11 +552,12 @@ export function PracticeClient({
           </div>
           )}
 
+          {submitting&&<p role="status" className="mt-4 font-bold text-slate-600">Saving your answer…</p>}
           {unsavedAnswer !== null && !result && <div role="alert" className="mt-5 rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-slate-800">
-            <p className="text-lg font-bold">Your answer did not save. Please try again.</p>
+            <p className="text-lg font-bold">Let’s make sure your answer saved. Please try again.</p>
             <div className="mt-3 flex items-center gap-3">
               <button onClick={() => submit(unsavedAnswer)} disabled={submitting} className="min-h-12 rounded-xl bg-sky-700 px-4 py-3 font-bold text-white">Try saving again</button>
-              <SpeakButton id="answer-save-error" label="Read the save message" text="Your answer did not save. Please try again." />
+              <SpeakButton id="answer-save-error" label="Read the save message" text="Let’s make sure your answer saved. Please try again." />
             </div>
           </div>}
 
@@ -581,14 +600,16 @@ export function PracticeClient({
           )}
         </div>
 
+        {transitionError&&<p role="alert" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-slate-800">{transitionError}</p>}
         {result &&
           (result.is_correct ? (
             <button
               onClick={next}
+              disabled={adapting||tryingMore}
               className="btn-pop mt-5 w-full px-6 py-4 text-xl text-white"
               style={{ background: "var(--brand-orange)" }}
             >
-              {index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
+              {adapting?"Finding your next challenge…":index + 1 >= questions.length ? "See my results 🎉" : "Next question →"}
             </button>
           ) : (
             <div className="mt-5 flex flex-col gap-3">
@@ -602,7 +623,7 @@ export function PracticeClient({
               {current.skill && (
                 <button
                   onClick={tryOneMore}
-                  disabled={tryingMore}
+                  disabled={tryingMore||adapting}
                   className="btn-pop w-full px-6 py-3 text-lg text-white"
                   style={{ background: "var(--brand-blue)" }}
                 >
@@ -611,9 +632,10 @@ export function PracticeClient({
               )}
               <button
                 onClick={next}
+              disabled={adapting||tryingMore}
                 className="btn-pop w-full bg-white px-6 py-3 text-base text-slate-500 ring-2 ring-slate-200"
               >
-                {index + 1 >= questions.length ? "Finish 🎉" : "Skip for now →"}
+                {adapting?"Getting your next question…":index + 1 >= questions.length ? "Finish 🎉" : "Continue →"}
               </button>
             </div>
           ))}

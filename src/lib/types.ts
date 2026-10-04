@@ -45,7 +45,9 @@ export type PracticeQuestion = {
   payload?: QuestionPayload | null;
   // Adaptive engine extras (present when served by get_adaptive_questions).
   skill?: string | null;
-  focus?: "new" | "review" | "practice" | null;
+  focus?: "new" | "review" | "practice" | "stretch" | null;
+  difficulty?: number;
+  target_difficulty?: number;
 };
 
 /** How a question is answered. "mcq" is the classic pick-one-button. */
@@ -83,6 +85,8 @@ export type QuestionPayload = {
 export type SubmittedAnswer = number | number[];
 
 export type AttemptResult = {
+  attempt_id?: string;
+  support_used?: boolean;
   is_correct: boolean;
   correct_index: number;
   /** Generic correct answer for the new kinds (number for index-kinds, array otherwise). */
@@ -224,3 +228,10 @@ export const SUBJECT_THEME: Record<
 export function subjectTheme(color: string) {
   return SUBJECT_THEME[color] ?? SUBJECT_THEME.blue;
 }
+
+export type SkillProgress = {
+  skill:string; attempts:number; independent_attempts:number; independent_correct:number;
+  supported_attempts:number; unknown_support_attempts:number; recent_accuracy:number|string|null;
+  last_practiced:string|null; target_difficulty:number; max_difficulty:number;
+  state:'not_started'|'building'|'support'|'secure';
+};

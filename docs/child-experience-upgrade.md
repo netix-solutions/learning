@@ -13,7 +13,7 @@ Goal: a polished, playful K–5 learning app for iPad, phone PWA, and laptop; re
 
 ## Current audit (2026-10-03)
 
-The app has grade-specific presentation, interactive question types, recorded lesson guidance, four reward themes, persisted lesson runs, and parent subject/skill views. Current adaptive selection emphasizes freshness and weak skills but ignores question difficulty. It loads a whole round upfront. No evidence yet proves age-aware progressive challenge or independent-mastery reporting.
+The app has grade-specific presentation, interactive question types, recorded lesson guidance, four reward themes, persisted lesson runs, and parent subject/skill views. The previous adaptive selector ignored difficulty and loaded the whole round upfront. The new progression slice below now responds to independent evidence, but limited bank coverage prevents full progressive challenge across every skill.
 
 The initial PWA was portrait-only and launched the marketing page. Mobile navigation behaved like a website header; previews accidentally used the marketing footer. Offline navigation only showed a retry page. These are being addressed first.
 
@@ -41,3 +41,22 @@ Active. Full completion is unproven. Track verified improvements and outstanding
 ## Learning evidence audit
 
 Local bank contains difficulty levels 1–2 for K–3 and levels 1–3 for grades 4–5 (PK only level 1). `get_adaptive_questions` ignores this difficulty field; freshness/diversity takes precedence over weak-skill priority. `get_skill_mastery` can call a skill mastered after four attempts with the last three correct, without distinguishing help or repeated questions. The whole practice round loads before play. These findings guide the next implementation; they do not prove adaptive challenge achieved. Local migration history is behind the checked-in reward migrations, so inspect actual function definitions and production history before any schema deployment.
+
+
+## Verified progress: independent practice and parent evidence
+
+- Migration `20261004025344_progressive_practice.sql` is applied to production. New RPCs require authentication, enforce the learner’s parent-selected grade, and withhold answer keys until grading. Parent reads require `can_view_student`. Legacy RPCs remain available for older clients.
+- Answer retries reuse a request ID; the database serializes grading for the learner and returns the original result rather than awarding twice. Changed answers cannot reuse that ID. Known help is stored separately; old answers remain NULL/unknown.
+- Progress uses the latest answer to each distinct question. Four independent questions with at least 80% correct and the last three independent/correct establish a difficulty level. Two misses or helped answers among the last three trigger supported recovery. One correct recovery answer does not jump back immediately.
+- Practice refreshes the next question after each saved answer, preserves the round’s subject mix, excludes questions already in the round, and uses a new same-skill question after a miss. Supported follow-up answers remain marked as helped. Interaction state resets when a new question is loaded.
+- Parent evidence is near the top of the child report: independent success, helped questions, current bank challenge, strengths, and support priorities. Expandable home teaching tips remain available. Failed report reads are identified explicitly rather than presented as no practice.
+- K–5 database integration passed locally and on production in a rolled-back transaction: every authored subject selected; all 16 available grade/format combinations graded correctly and incorrectly; request deduplication, repeated-question exclusion, supported/legacy evidence, recovery, grade limits, unrelated learner access, and linked parent access verified. Confirmed no production test users remain.
+- Authenticated local browser check: independent miss → fresh same-skill follow-up → correct helped answer → updated review question. Stored rows match the distinction. Parent report matches the test learner’s evidence, tips expand, and phone/iPad portrait/landscape widths have no page overflow. Reviewed quiz console had no errors.
+- Local selector measured approximately 8ms for a seven-question grade-2 math request. TypeScript and scoped ESLint checks passed.
+- The new functions intentionally allow signed-in callers as SECURITY DEFINER because questions have no direct read policy and grading writes protected rewards. Each has explicit authorization and a fixed search path. Anonymous execution is revoked. The [Supabase advisor](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable) flags those intentional endpoints; review the older endpoint/security baseline separately before a full completion claim.
+
+## Remaining content and experience gaps
+
+Production audit: 194 tagged skills across K–5; 184 have only one difficulty level. Skills with fewer than four questions at a level: K 1, grade 1 8, grade 2 10, grade 3 3, grade 4 2, grade 5 2. Single-level skills: K 26/26, grade 1 35/36, grade 2 34/36, grade 3 29/32, grade 4 29/32, grade 5 31/32. Therefore the engine alone cannot satisfy progressive challenge across all skills. Expand and curate the bank, especially scaffolded questions, comprehension and interactive formats; verify curriculum accuracy and distinct skill tagging. Do not relabel existing questions just to make the difficulty count look better.
+
+The full four-world reward redesign, richer parent trends and lesson recommendations, complete rounds for every grade, and actual installed iPad/Safari PWA lifecycle remain unverified/incomplete. The goal remains active. The previous train scrollbar turn made progress: committed/deployed `ed5ef2f`, inspected a longer train, and verified production CSS.

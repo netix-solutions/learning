@@ -11,10 +11,11 @@ export function KidLoginForm() {
   return (
     <form action={action} className="space-y-5">
       <div>
-        <label className="mb-1 block text-center font-bold text-slate-600">
+        <label htmlFor="kid-username" className="mb-1 block text-center font-bold text-slate-600">
           Your username
         </label>
         <input
+          id="kid-username"
           name="username"
           type="text"
           autoCapitalize="none"
@@ -25,10 +26,11 @@ export function KidLoginForm() {
         />
       </div>
       <div>
-        <label className="mb-1 block text-center font-bold text-slate-600">
+        <label htmlFor="kid-pin" className="mb-1 block text-center font-bold text-slate-600">
           Secret PIN 🔒
         </label>
         <input
+          id="kid-pin"
           name="pin"
           type="password"
           inputMode="numeric"
@@ -41,7 +43,7 @@ export function KidLoginForm() {
       </div>
 
       {state.error && (
-        <p className="rounded-xl bg-red-50 px-4 py-2 text-center font-semibold text-red-600">
+        <p role="alert" className="rounded-xl bg-red-50 px-4 py-2 text-center font-semibold text-red-600">
           {state.error}
         </p>
       )}
