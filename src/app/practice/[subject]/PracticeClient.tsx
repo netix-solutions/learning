@@ -67,6 +67,7 @@ export function PracticeClient({
   const [combo, setCombo] = useState(0);
   const [cheer, setCheer] = useState(CHEERS[0]);
   const submissionInFlight = useRef(false);
+  const transitionInFlight = useRef(false);
   const requestId = useRef<string | null>(null);
   const supportUsed = useRef(false);
   const [adapting, setAdapting] = useState(false);
@@ -247,12 +248,14 @@ export function PracticeClient({
   }
 
   async function next() {
-    if(adapting || tryingMore)return;
+    if(transitionInFlight.current || adapting || tryingMore)return;
+    transitionInFlight.current=true;
     setTransitionError('');
     setShowTeach(false);
     if (index + 1 >= questions.length) {
       setPhase("done");
       setConfettiKey((k) => k + 1);
+      transitionInFlight.current=false;
       return;
     }
     setAdapting(true);
@@ -268,14 +271,15 @@ export function PracticeClient({
       setIndex((i) => i + 1);
       setSelected(null);setUnsavedAnswer(null);setResult(null);
     } catch {setTransitionError('The next question couldn’t load. Your saved answer is safe. Try again.');}
-    finally {setAdapting(false);}
+    finally {transitionInFlight.current=false;setAdapting(false);}
   }
 
   // After a miss, pull a fresh question of the SAME skill and slot it in next,
   // so the kid re-practices what they just got wrong (the answer key stays
   // server-side). Reuse an unseen queued question if the bank has no extra one.
   async function tryOneMore() {
-    if (!current?.skill || tryingMore) return;
+    if (!current?.skill || transitionInFlight.current || tryingMore || adapting) return;
+    transitionInFlight.current=true;
     setTryingMore(true);
     setTransitionError('');
     try {
@@ -291,7 +295,7 @@ export function PracticeClient({
       requestId.current=null;supportUsed.current=true;
       setSelected(null);setUnsavedAnswer(null);setResult(null);setIndex(i=>i+1);
     } catch {setTransitionError('That practice question couldn’t load. Try again, or continue your round.');}
-    finally {setTryingMore(false);}
+    finally {transitionInFlight.current=false;setTryingMore(false);}
   }
 
   // ---- Render states ------------------------------------------------------
