@@ -3,9 +3,10 @@
  * cross-origin and pass straight through), so auth and answer-grading always
  * hit the network. It caches the static app shell so the app launches offline
  * and shows a friendly offline page when a navigation can't reach the network. */
-const CACHE = "sunsharp-v5";
+const CACHE = "sunsharp-v6";
 const APP_SHELL = [
   "/offline.html",
+  "/audio/lessons/271f9dbdb2a54cfb50f90210229f0007f288779e0b6a2a5a19cd7efec27d514c.mp3",
   "/manifest.webmanifest",
   "/icon-192.png",
   "/icon-512.png",
@@ -22,7 +23,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("sunsharp-") && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
@@ -47,17 +48,21 @@ self.addEventListener("fetch", (event) => {
   // Static assets (build output, images, fonts): stale-while-revalidate.
   if (
     url.pathname.startsWith("/_next/static") ||
-    /\.(?:png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/.test(url.pathname)
+    (url.pathname.startsWith("/images/") && /\.(?:png|jpg|jpeg|gif|svg|webp)$/.test(url.pathname)) ||
+    /^\/(?:icon-[^/]+\.png|apple-touch-icon\.png|favicon\.ico)$/.test(url.pathname)
   ) {
     event.respondWith(
-      caches.match(request).then((cached) => {
+      caches.open(CACHE).then((cache) => cache.match(request)).then((cached) => {
         const network = fetch(request)
-          .then((res) => {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
+          .then(async (res) => {
+            if (res.ok) {
+              const copy = res.clone();
+              await caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
+            }
             return res;
           })
           .catch(() => cached);
+        event.waitUntil(network.then(() => undefined));
         return cached || network;
       }),
     );

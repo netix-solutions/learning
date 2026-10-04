@@ -6,6 +6,7 @@ import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { SpeechNotice } from "@/components/SpeechNotice";
 import { AppFooter } from "@/components/AppFooter";
+import { ConnectionNotice } from "@/components/ConnectionNotice";
 import { StudentNavigation } from "@/components/StudentNavigation";
 import { ClickSound } from "@/components/ClickSound";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
@@ -79,6 +80,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">Skip to content</a>
         <StudentNavigation />
         <SpeechNotice />
+        <ConnectionNotice />
         <div id="main-content" tabIndex={-1} className="site-content">{children}</div>
         <AppFooter />
         <ClickSound />

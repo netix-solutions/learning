@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { experienceFor, mixedRoundCounts } from "@/lib/grade-experience";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
@@ -33,6 +33,10 @@ import {
   type Subject,
 } from "@/lib/types";
 
+const subscribeVoicePreference = (notify: () => void) => {
+  window.addEventListener("storage", notify);
+  return () => window.removeEventListener("storage", notify);
+};
 const CHEERS = ["Nice! 🎉", "Boom! 💥", "You got it! 🌟", "Sharp! 🧠", "Yes! 🙌"];
 
 
@@ -48,7 +52,7 @@ export function PracticeClient({
   const theme = subjectTheme(subject.color);
   const experience = experienceFor(grade);
   const voiceKey = `sunsharp:autoread:${studentId}:${grade}`;
-  const [phase, setPhase] = useState<"loading" | "playing" | "done" | "empty">(
+  const [phase, setPhase] = useState<"loading" | "playing" | "done" | "empty" | "error">(
     "loading",
   );
   const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
@@ -98,41 +102,48 @@ export function PracticeClient({
     setCorrectCount(0);
     setCombo(0);
 
-    const supabase = createClient();
-    let qs: PracticeQuestion[] = [];
+    try {
+      if (!navigator.onLine) throw new Error("Offline");
+      const supabase = createClient();
+      let qs: PracticeQuestion[] = [];
 
-    if (subject.id === "daily") {
-      const subjectIds = ["math", "reading", "science"];
-      const results = await Promise.all(
-        subjectIds.map((s, subjectIndex) =>
-          supabase.rpc("get_adaptive_questions", {
-            p_subject: s,
-            p_grade: grade,
-            p_count: mixedRoundCounts(experience.roundSize)[subjectIndex],
-          }),
-        ),
-      );
-      qs = results.flatMap((r) => (r.data as PracticeQuestion[]) ?? []);
-      // shuffle the mix
-      for (let i = qs.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [qs[i], qs[j]] = [qs[j], qs[i]];
+      if (subject.id === "daily") {
+        const subjectIds = ["math", "reading", "science"];
+        const results = await Promise.all(
+          subjectIds.map((s, subjectIndex) =>
+            supabase.rpc("get_adaptive_questions", {
+              p_subject: s,
+              p_grade: grade,
+              p_count: mixedRoundCounts(experience.roundSize)[subjectIndex],
+            }).abortSignal(AbortSignal.timeout(15000)),
+          ),
+        );
+        if (results.some(r => r.error)) throw new Error("Questions unavailable");
+        qs = results.flatMap((r) => (r.data as PracticeQuestion[]) ?? []);
+        // shuffle the mix
+        for (let i = qs.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [qs[i], qs[j]] = [qs[j], qs[i]];
+        }
+      } else {
+        const { data, error } = await supabase.rpc("get_adaptive_questions", {
+          p_subject: subject.id,
+          p_grade: grade,
+          p_count: experience.roundSize,
+        }).abortSignal(AbortSignal.timeout(15000));
+        if (error) throw new Error("Questions unavailable");
+        qs = (data as PracticeQuestion[]) ?? [];
       }
-    } else {
-      const { data } = await supabase.rpc("get_adaptive_questions", {
-        p_subject: subject.id,
-        p_grade: grade,
-        p_count: experience.roundSize,
-      });
-      qs = (data as PracticeQuestion[]) ?? [];
-    }
 
-    setQuestions(qs);
-    setPhase(qs.length ? "playing" : "empty");
-    if (qs.length) playQuizStart();
+      setQuestions(qs);
+      setPhase(qs.length ? "playing" : "empty");
+      if (qs.length) playQuizStart();
+    } catch { setPhase("error"); }
   }, [subject.id, grade, experience.roundSize]);
 
   useEffect(() => {
+    // This effect starts the external question request; explicit retries also reset the round.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadQuestions();
   }, [loadQuestions]);
 
@@ -151,23 +162,20 @@ export function PracticeClient({
 
   // Auto-read is on by default (great for emerging readers) but a kid or grown-up
   // can mute it from the header; the choice is remembered on this device.
-  const [autoRead, setAutoRead] = useState(experience.autoRead);
-  useEffect(() => {
+  const storedAutoRead = useSyncExternalStore(subscribeVoicePreference, () => {
     try {
       const saved = window.localStorage.getItem(voiceKey);
-      setAutoRead(saved == null ? experience.autoRead : saved === "1");
-    } catch {}
-  }, [voiceKey, experience.autoRead]);
+      return saved == null ? experience.autoRead : saved === "1";
+    } catch { return experience.autoRead; }
+  }, () => experience.autoRead);
+  const [readOverride, setReadOverride] = useState<boolean | null>(null);
+  const autoRead = readOverride ?? storedAutoRead;
   const toggleAutoRead = useCallback(() => {
-    setAutoRead((on) => {
-      const next = !on;
-      try {
-        window.localStorage.setItem(voiceKey, next ? "1" : "0");
-      } catch {}
-      if (!next) stop(); // muting: silence anything mid-sentence
-      return next;
-    });
-  }, [voiceKey]);
+    const next = !autoRead;
+    setReadOverride(next);
+    try { window.localStorage.setItem(voiceKey, next ? "1" : "0"); } catch {}
+    if (!next) stop();
+  }, [autoRead, voiceKey]);
 
   // What to read for a given question: the prompt always, plus the lettered
   // choices for young readers on multiple-choice questions.
@@ -279,6 +287,15 @@ export function PracticeClient({
         <p className="mt-4 font-display text-xl text-slate-500">Getting questions ready…</p>
       </Centered>
     );
+  }
+
+  if (phase === "error") {
+    return <Centered>
+      <h1 className="font-display text-2xl font-bold text-slate-800">Let’s get your questions ready</h1>
+      <p className="mt-3 max-w-sm text-lg text-slate-600">We couldn’t connect. Check your internet, then try again.</p>
+      <button onClick={loadQuestions} className="btn-pop mt-6 min-h-12 rounded-2xl bg-sky-700 px-6 py-3 font-bold text-white">Try again</button>
+      <Link href="/home" className="mt-3 inline-flex min-h-12 items-center px-4 font-bold text-slate-600">Back home</Link>
+    </Centered>;
   }
 
   if (phase === "empty") {
