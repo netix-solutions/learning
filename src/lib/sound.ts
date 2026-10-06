@@ -1,139 +1,82 @@
-// Tiny sound-effect player built on the Web Audio API.
-//
-// Web Audio (rather than a pool of <audio> elements) gives us low latency and
-// lets rapid taps overlap cleanly. The AudioContext is created lazily and
-// resumed inside a user gesture, so we never fight the browser's autoplay
-// policy. Everything is on-device and works offline in the PWA.
-
+// Small, locally hosted CC0 cues. The context is also shared with background
+// music so one user gesture unlocks the mix on iPad and other mobile browsers.
+import { audioSettings, initializeAudioSettings, setAudioEnabled, subscribeAudioSettings } from '@/lib/audio-settings';
+import { speechState } from '@/lib/speech';
 const SOURCES = {
-  click: "/sounds/click.wav",
-  correct: "/sounds/correct.wav",
-  wrong: "/sounds/wrong.wav",
-  quizStart: "/sounds/quiz-start.wav",
-  tally: "/sounds/tally.wav",
+  click: '/sounds/ui-click.wav', correct: '/sounds/answer-correct.wav',
+  wrong: '/sounds/answer-retry.wav', quizStart: '/sounds/round-start.wav',
+  tally: '/sounds/reward-purchase.wav', purchase: '/sounds/reward-purchase.wav',
+  win: '/sounds/round-win.wav', move: '/sounds/reward-move.wav', sell: '/sounds/reward-sell.wav',
 } as const;
-
 export type SoundName = keyof typeof SOURCES;
-
-// Per-sound mixing so the celebratory cue isn't as loud as a tap, and the
-// "wrong" tone stays gentle rather than harsh.
-const VOLUMES: Record<SoundName, number> = {
-  click: 0.35,
-  correct: 0.55,
-  wrong: 0.4,
-  quizStart: 0.5,
-  tally: 0.5,
-};
-
+const VOLUMES: Record<SoundName, number> = { click: .12, correct: .32, wrong: .14, quizStart: .2, tally: .25, purchase: .3, win: .28, move: .16, sell: .2 };
 let ctx: AudioContext | null = null;
 const buffers: Partial<Record<SoundName, AudioBuffer>> = {};
-const loading: Partial<Record<SoundName, Promise<void>>> = {};
-let muted = false;
+const loading: Partial<Record<SoundName, Promise<AudioBuffer | undefined>>> = {};
+const lastPlayed: Partial<Record<SoundName, number>> = {};
+const active = new Set<AudioBufferSourceNode>();
+let wired = false;
 
-function supported() {
-  return (
-    typeof window !== "undefined" &&
-    ("AudioContext" in window || "webkitAudioContext" in window)
-  );
-}
-
-function getCtx(): AudioContext | null {
-  if (!supported()) return null;
-  if (!ctx) {
-    const AC =
-      window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext })
-        .webkitAudioContext;
-    ctx = new AC();
-  }
+export function getAudioContext(): AudioContext | null {
+  if (typeof window === 'undefined') return null;
+  const AC = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!AC) return null;
+  if (!ctx || ctx.state === 'closed') ctx = new AC();
   return ctx;
 }
-
-/** Fetch + decode a sound once. Safe to call repeatedly. */
-function ensureLoaded(name: SoundName): Promise<void> {
-  if (buffers[name]) return Promise.resolve();
-  const existing = loading[name];
-  if (existing) return existing;
-  const audioCtx = getCtx();
-  if (!audioCtx) return Promise.resolve();
-  const p = fetch(SOURCES[name])
-    .then((r) => r.arrayBuffer())
-    .then((data) => audioCtx.decodeAudioData(data))
-    .then((decoded) => {
-      buffers[name] = decoded;
-    })
-    .catch(() => {
-      // Network/codec failure: stay silent rather than throwing on every tap.
-    });
-  loading[name] = p;
-  return p;
+export function unlockAudio() { const context = getAudioContext(); if (context?.state === 'suspended') void context.resume().catch(() => {}); }
+function stopEffects() { active.forEach(source => { try { source.stop(); } catch { /* Already ended. */ } }); active.clear(); }
+function wirePreferences() {
+  initializeAudioSettings();
+  if (wired || typeof window === 'undefined') return;
+  wired = true;
+  subscribeAudioSettings(() => { if (!audioSettings().effects) stopEffects(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopEffects(); });
 }
-
-/** Warm up decoding ahead of first use (optional). */
+async function ensureLoaded(name: SoundName): Promise<AudioBuffer | undefined> {
+  if (buffers[name]) return buffers[name];
+  if (loading[name]) return loading[name];
+  const context = getAudioContext();
+  if (!context) return;
+  const promise = fetch(SOURCES[name]).then(response => {
+    if (!response.ok) throw new Error('Sound unavailable');
+    return response.arrayBuffer();
+  }).then(data => context.decodeAudioData(data)).then(buffer => { buffers[name] = buffer; return buffer; }).catch(() => undefined).finally(() => { delete loading[name]; });
+  loading[name] = promise;
+  return promise;
+}
 export function preloadSounds(...names: SoundName[]) {
-  for (const n of names.length ? names : (Object.keys(SOURCES) as SoundName[])) {
-    void ensureLoaded(n);
-  }
+  wirePreferences();
+  for (const name of names.length ? names : Object.keys(SOURCES) as SoundName[]) void ensureLoaded(name);
 }
-
-export function setMuted(value: boolean) {
-  muted = value;
-}
-
-export function isMuted() {
-  return muted;
-}
-
-/** Play a sound. Call from inside a user gesture (e.g. a click handler). */
+export function setMuted(value: boolean) { setAudioEnabled('effects', !value); }
+export function isMuted() { return !audioSettings().effects; }
 export function playSound(name: SoundName, rate = 1) {
-  if (muted) return;
-  const audioCtx = getCtx();
-  if (!audioCtx) return;
-  // A gesture lets us resume a context the browser suspended on load.
-  if (audioCtx.state === "suspended") void audioCtx.resume();
-
-  const buffer = buffers[name];
-  if (!buffer) {
-    // Not decoded yet — kick off loading so the next plays have sound.
-    void ensureLoaded(name);
-    return;
-  }
-
-  const source = audioCtx.createBufferSource();
-  source.buffer = buffer;
-  source.playbackRate.value = rate;
-  const gain = audioCtx.createGain();
-  gain.gain.value = VOLUMES[name];
-  source.connect(gain).connect(audioCtx.destination);
-  source.start(0);
+  wirePreferences();
+  if (isMuted() || document.hidden) return;
+  const context = getAudioContext();
+  if (!context) return;
+  const resumed = context.state === 'suspended' ? context.resume().catch(() => {}) : Promise.resolve();
+  const requested = performance.now();
+  if (requested - (lastPlayed[name] ?? -Infinity) < (name === 'click' ? 70 : 250)) return;
+  lastPlayed[name] = requested;
+  const play = (buffer: AudioBuffer | undefined) => {
+    // Never play a late network response over another screen or after muting.
+    if (!buffer || isMuted() || document.hidden || performance.now() - requested > 1500 || context.state !== 'running') return;
+    const source = context.createBufferSource();
+    source.buffer = buffer; source.playbackRate.value = Math.max(.8, Math.min(rate, 1.3));
+    const gain = context.createGain();
+    gain.gain.value = VOLUMES[name] * (speechState().status === 'playing' ? .35 : 1);
+    source.connect(gain).connect(context.destination);
+    active.add(source);
+    source.onended = () => { active.delete(source); source.disconnect(); gain.disconnect(); };
+    source.start();
+  };
+  if (buffers[name] && context.state === 'running') play(buffers[name]);
+  else void Promise.all([ensureLoaded(name), resumed]).then(([buffer]) => play(buffer));
 }
-
-/** Convenience: the UI tap sound. */
-export function playClick() {
-  playSound("click");
-}
-
-/**
- * Convenience: the celebratory "correct answer" sound. Pass the current combo
- * (answers right in a row) and the pitch steps up with each one — a classic
- * game cue that makes a streak *feel* like a streak. Capped so it never gets
- * chipmunk-silly.
- */
-export function playCorrect(combo = 0) {
-  playSound("correct", Math.min(1 + combo * 0.06, 1.3));
-}
-
-/** Convenience: the gentle "wrong answer" sound. */
-export function playWrong() {
-  playSound("wrong");
-}
-
-/** Convenience: the musical reveal that opens a new quiz. */
-export function playQuizStart() {
-  playSound("quizStart");
-}
-
-/** Convenience: the "recharge" whir while the results-screen points tally up. */
-export function playTally() {
-  playSound("tally");
-}
+export function playClick() { playSound('click'); }
+export function playCorrect(combo = 0) { playSound('correct', Math.min(1 + combo * .04, 1.2)); }
+export function playWrong() { playSound('wrong'); }
+export function playQuizStart() { playSound('quizStart'); }
+export function playTally() { playSound('tally'); }

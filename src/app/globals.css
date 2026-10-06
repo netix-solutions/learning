@@ -876,3 +876,12 @@ body:has(.practice-screen) footer,body:has(.practice-state) footer { display:non
  .practice-screen .quiz-answer-area>div:first-child { margin-top:0; }
  .practice-screen .quiz-categorize { grid-template-columns:1fr; }
 }
+
+/* Sound controls live in the header, clear of answers and the bottom tabs. */
+@media(max-width:380px) {
+ .student-navigation-inner { gap:8px; padding-left:10px; padding-right:10px; }
+ .student-navigation .brand-wordmark { font-size:18px; }
+ .student-signout { gap:4px; }
+ .student-signout .btn-pop { padding-left:8px; padding-right:8px; }
+}
+.audio-controls:has(:focus-visible)>summary { outline:2px solid var(--brand-blue); outline-offset:3px; }

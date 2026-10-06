@@ -3,9 +3,10 @@
  * cross-origin and pass straight through), so auth and answer-grading always
  * hit the network. It caches the static app shell so the app launches offline
  * and shows a friendly offline page when a navigation can't reach the network. */
-const CACHE = "sunsharp-v6";
+const CACHE = "sunsharp-v7";
 const APP_SHELL = [
   "/offline.html",
+  ...["ui-click","answer-correct","answer-retry","round-start","reward-purchase","round-win","reward-move","reward-sell"].map(name => `/sounds/${name}.wav`),
   "/audio/lessons/271f9dbdb2a54cfb50f90210229f0007f288779e0b6a2a5a19cd7efec27d514c.mp3",
   "/manifest.webmanifest",
   "/icon-192.png",
@@ -47,6 +48,7 @@ self.addEventListener("fetch", (event) => {
 
   // Static assets (build output, images, fonts): stale-while-revalidate.
   if (
+    /^\/sounds\/[a-z-]+\.wav$/.test(url.pathname) ||
     url.pathname.startsWith("/_next/static") ||
     (url.pathname.startsWith("/images/") && /\.(?:png|jpg|jpeg|gif|svg|webp)$/.test(url.pathname)) ||
     /^\/(?:icon-[^/]+\.png|apple-touch-icon\.png|favicon\.ico)$/.test(url.pathname)

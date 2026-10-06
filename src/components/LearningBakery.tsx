@@ -1,4 +1,5 @@
 'use client';
+import { playSound } from '@/lib/sound';
 import { RewardItemControls } from '@/components/RewardItemControls';
 import { RewardReveal } from '@/components/RewardReveal';
 import { useRef, useState } from 'react';
@@ -26,7 +27,7 @@ export function LearningBakery({ initial, full = false, preview = false, onChang
     try {
       const item = state.bakeryCatalog!.find(d => d.id === id)!;
       const next = preview ? { ...state, balance: state.balance - item.price, spent: state.spent + item.price, treats: [...collection, { id: request, treatId: item.id, pricePaid:item.price }] } : await buyBakeryTreat(id, request);
-      setState(next); onChange(next); delete requests.current[id];
+      setState(next); onChange(next); playSound('purchase'); delete requests.current[id];
       setPage(Math.floor(((next.treats?.length ?? 1) - 1) / 6));
       setMessage(`${item.name} added to your bakery shelf!`);
     } catch { setMessage('Your purchase could not be confirmed. Tap the same buy button to retry safely.'); }

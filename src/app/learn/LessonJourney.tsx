@@ -1,5 +1,6 @@
 "use client";
 
+import { playSound } from '@/lib/sound';
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Lesson } from "@/lib/lessons";
@@ -113,6 +114,7 @@ export function LessonJourney({ lessons, studentId, trackActivity = true, initia
   }
   async function finish() {
     if (!(await persist("complete", "reflect"))) return;
+    playSound('win');
     const next = [...new Set([...completed, lesson.id])];
     setSessionCompleted(next);
     if (!trackActivity) {

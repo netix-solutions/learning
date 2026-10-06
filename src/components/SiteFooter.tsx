@@ -124,6 +124,7 @@ export function SiteFooter() {
               <FooterLink href="/pricing">Pricing</FooterLink>
               <FooterLink href="/privacy">Privacy Policy</FooterLink>
               <FooterLink href="/terms">Terms of Use</FooterLink>
+              <FooterLink href="/music-credits">Music & sound credits</FooterLink>
             </div>
           </div>
         </div>

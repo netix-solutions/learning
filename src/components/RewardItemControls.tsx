@@ -1,4 +1,5 @@
 'use client';
+import { playSound } from '@/lib/sound';
 import { useEffect, useRef, useState } from 'react';
 import { moveReward, sellReward } from '@/app/actions/train';
 import type { RewardCollection, TrainState } from '@/lib/train';
@@ -35,7 +36,7 @@ export function RewardItemControls({state,kind,purchase,preview=false,busy,onBus
     next={...next,[key]:list};
     if(kind==='engines'&&!direction){next.engines=state.engines?.filter(id=>id!==item.itemId);if(next.activeEngine===item.itemId)next.activeEngine='engine';}
    }
-   onChange(next);setConfirm(null);setMessage(direction?'New order saved.':`${item.name} sold back. ${item.refund} tokens returned.`);
+   onChange(next);playSound(direction?'move':'sell');setConfirm(null);setMessage(direction?'New order saved.':`${item.name} sold back. ${item.refund} tokens returned.`);
   }catch{setMessage('That change could not be confirmed. Please try again.');}finally{onBusy(false);}
  }
  for(const item of items)item.refund=Math.floor(item.refund/2);

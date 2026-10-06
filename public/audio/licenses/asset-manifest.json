@@ -1,0 +1,94 @@
+[
+  {
+    "file": "/music/life-of-riley.m4a",
+    "source_sha256": "1916f05cd1860949f9241e17966d334c39852b531329e4a05802720bb154c564",
+    "sha256": "72446d5f5c46af022af8fc82e588866d19a569a4dd96e4f7ca139b9000972fb7",
+    "bytes": 2882673
+  },
+  {
+    "file": "/music/bassa-island.m4a",
+    "source_sha256": "b33590971b03689711c0b47c230b72c613211d5df07ae10c4e7c165019d6db39",
+    "sha256": "92e8911a968c24a8ee1f5182020da75ed163bcc7186d42415127e79846bc1c3d",
+    "bytes": 390586
+  },
+  {
+    "file": "/music/friendly-day.m4a",
+    "source_sha256": "3edfdfbd5ed38f2c723d9ea77736ac090dd19682d402c807694aaff831a63feb",
+    "sha256": "4ef8d332b4e8776836f7e5c93113a1594b34b39fcc487df3e51ac9ee8ed0834b",
+    "bytes": 836141
+  },
+  {
+    "file": "/music/fluffing-a-duck.m4a",
+    "source_sha256": "cb23b1833c35e391de10d998d6a40cfc760565ce31d23014c86025523ca8239b",
+    "sha256": "1be6cc889fb6c39611ab42305f3e1b1d779caa5b8d0c17db8aed445967842532",
+    "bytes": 820820
+  },
+  {
+    "file": "/music/monkeys.m4a",
+    "source_sha256": "a5bb345c23849ad0786aa0bc5157a9f2d4039660fe00282e55754d475f36dc14",
+    "sha256": "5df22bee5a2e0b531e9fa9a20b7e667071681a795bb4c1bcae65d9c9f46a73bc",
+    "bytes": 1549939
+  },
+  {
+    "file": "/music/carefree.m4a",
+    "source_sha256": "8433b770a630d9b1594fd484442c677907ece899a4d149954cd2e74fd733e311",
+    "sha256": "6331cf9b33bb8abfd4c3c2cdaa7b5de908f0234dec1ddf429717780c340fe3cd",
+    "bytes": 2499259
+  },
+  {
+    "file": "/sounds/ui-click.wav",
+    "source": "interface/Audio/click_001.ogg",
+    "sha256": "dc888fb3a955d24911ae5ab1bfb0ec72d722bd0762e8dddb3d00603cd7201e1e",
+    "duration": 0.097,
+    "bytes": 12662
+  },
+  {
+    "file": "/sounds/answer-correct.wav",
+    "source": "interface/Audio/confirmation_001.ogg",
+    "sha256": "7db2ca961fc810474268640c3a3baac43b345b7a7f62c0ab26186c21a812e1e7",
+    "duration": 0.29,
+    "bytes": 29660
+  },
+  {
+    "file": "/sounds/answer-retry.wav",
+    "source": "interface/Audio/question_001.ogg",
+    "sha256": "03c70811f1a0084db3a020ddb4d84c970ea5a152a5b262fd583d323578e912c0",
+    "duration": 0.491,
+    "bytes": 47374
+  },
+  {
+    "file": "/sounds/round-start.wav",
+    "source": "interface/Audio/open_001.ogg",
+    "sha256": "0638e9c1726c3052f8994c0335048eacc8c6a6849ed9c01c7c56677e3e143f83",
+    "duration": 0.145,
+    "bytes": 16896
+  },
+  {
+    "file": "/sounds/reward-purchase.wav",
+    "source": "interface/Audio/confirmation_002.ogg",
+    "sha256": "c1c7b1578d5ee2318975ba4e9529b7d496a599e11578a46ff9410fe2129054af",
+    "duration": 0.539,
+    "bytes": 51636
+  },
+  {
+    "file": "/sounds/round-win.wav",
+    "source": "jingles/Audio/Pizzicato jingles/jingles_PIZZI00.ogg",
+    "sha256": "e2efdd7223330f18976d845647777292afdf510efadaa85e92eec43e759d8591",
+    "duration": 0.494,
+    "bytes": 47682
+  },
+  {
+    "file": "/sounds/reward-move.wav",
+    "source": "interface/Audio/select_001.ogg",
+    "sha256": "516bf76606a2e6e165c50fb00c19ce4f81ed6d0deb1af9713182758058d91008",
+    "duration": 0.04,
+    "bytes": 7658
+  },
+  {
+    "file": "/sounds/reward-sell.wav",
+    "source": "interface/Audio/back_001.ogg",
+    "sha256": "53062663fbabcffb0217026f67b4e5a82fd738c02a78745a879b0ffd923cef8b",
+    "duration": 0.061,
+    "bytes": 9474
+  }
+]

@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { AudioControls } from '@/components/AudioControls';
 import { usePathname } from 'next/navigation';
 import { BrandLogo } from '@/components/BrandLogo';
 import { SignOutButton } from '@/components/SignOutButton';
@@ -17,5 +18,5 @@ export function StudentNavigation() {
   const path = usePathname();
   if (!path || !isStudentRoute(path)) return null;
   const current = studentTab(path);
-  return <header className="student-navigation"><div className="student-navigation-inner"><BrandLogo href="/home"/><nav aria-label="Student navigation">{[['home','Home','/home'],['practice','Practice','/practice/daily'],['learn','Lessons','/learn'],['rewards','My rewards','/rewards']].map(([id,label,href])=><Link key={id} href={href} aria-current={current===id?'page':undefined}><NavigationIcon id={id}/><span>{label}</span></Link>)}</nav><div className="student-signout"><SignOutButton/></div></div></header>;
+  return <header className="student-navigation"><div className="student-navigation-inner"><BrandLogo href="/home"/><nav aria-label="Student navigation">{[['home','Home','/home'],['practice','Practice','/practice/daily'],['learn','Lessons','/learn'],['rewards','My rewards','/rewards']].map(([id,label,href])=><Link key={id} href={href} aria-current={current===id?'page':undefined}><NavigationIcon id={id}/><span>{label}</span></Link>)}</nav><div className="student-signout flex items-center gap-2"><AudioControls/><SignOutButton/></div></div></header>;
 }

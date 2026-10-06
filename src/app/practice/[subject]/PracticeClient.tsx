@@ -8,7 +8,7 @@ import { LearningRewards } from "@/components/LearningRewards";
 import { Confetti } from "@/components/Confetti";
 import { CorrectCelebration } from "@/components/CorrectCelebration";
 import { ActivityTracker } from "@/components/ActivityTracker";
-import { playCorrect, playWrong, playQuizStart } from "@/lib/sound";
+import { playCorrect, playWrong, playQuizStart, playSound } from "@/lib/sound";
 import { TeachMe } from "@/components/TeachMe";
 import { ReadingPrompt } from "@/components/ReadingPrompt";
 import { splitReadingPrompt } from "@/lib/reading-prompt";
@@ -264,6 +264,7 @@ export function PracticeClient({
     setTransitionError('');
     setShowTeach(false);
     if (index + 1 >= questions.length) {
+      playSound("win");
       setPhase("done");
       setConfettiKey((k) => k + 1);
       transitionInFlight.current=false;

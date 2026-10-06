@@ -1,134 +1,79 @@
-"use client";
+'use client';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { usePathname } from 'next/navigation';
+import { audioSettings, initializeAudioSettings, serverAudioSettings, subscribeAudioSettings } from '@/lib/audio-settings';
+import { musicFor } from '@/lib/music';
+import { getAudioContext } from '@/lib/sound';
+import { speechState, subscribe as subscribeSpeech } from '@/lib/speech';
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { usePathname } from "next/navigation";
-
-/**
- * Looping background music for the kid game area (the student home + practice
- * pages). Mounted ONCE in the root layout, so the <audio> element survives
- * client navigation between /home and /practice and the track plays continuously.
- *
- * - Plays only on game paths; pauses everywhere else (parent/marketing).
- * - Preference (on/off) persists in localStorage and defaults to ON.
- * - Respects browser autoplay rules: if play() is blocked before a gesture, we
- *   start on the first tap/keypress.
- * - The floating button (SVG speaker, no emoji) lets kids mute/unmute; it only
- *   shows on game paths, after hydration.
- */
-
-const SRC = "/music/curious-kiddo.mp3";
-const STORE_KEY = "ss-music-enabled";
-
-function isGamePath(p: string | null): boolean {
-  return p === "/home" || (!!p && p.startsWith("/practice"));
-}
-
-// "Am I running on the client (post-hydration)?" without setState-in-effect.
-const noopSubscribe = () => () => {};
-function useIsClient() {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => true,
-    () => false,
-  );
-}
-
+/** One player survives navigation. A Web Audio gain controls iOS volume too. */
 export function BackgroundMusic() {
-  const pathname = usePathname();
-  const isClient = useIsClient();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  // Saved preference (default ON). SSR-safe lazy init; only read once the button
-  // actually renders (after hydration), so there is no server/client mismatch.
-  const [enabled, setEnabled] = useState<boolean>(() =>
-    typeof window === "undefined" ? true : localStorage.getItem(STORE_KEY) !== "0",
-  );
-
-  // Build the audio element once.
+  const path = usePathname();
+  const settings = useSyncExternalStore(subscribeAudioSettings, audioSettings, serverAudioSettings);
+  const player = useRef<HTMLAudioElement | null>(null);
+  const playlist = musicFor(path, settings.theme).join(',');
+  const quiet = path?.startsWith('/practice') || path?.startsWith('/learn') || path?.includes('preview');
+  useEffect(initializeAudioSettings, []);
   useEffect(() => {
-    const a = new Audio(SRC);
-    a.loop = true;
-    a.volume = 0.15;
-    a.preload = "auto";
-    audioRef.current = a;
-    return () => {
-      a.pause();
-      audioRef.current = null;
-    };
+    const audio = player.current;
+    if (!audio) return;
+    return () => { audio.pause(); audio.removeAttribute('src'); audio.load(); };
   }, []);
-
-  const onGame = isGamePath(pathname);
-
-  // Drive play/pause from preference + current route.
   useEffect(() => {
-    const a = audioRef.current;
-    if (!a) return;
-
-    if (!enabled || !onGame) {
-      a.pause();
-      return;
+    const audio = player.current;
+    if (!audio) return;
+    const tracks = playlist ? playlist.split(',') : [];
+    if (!settings.music || !tracks.length) { audio.pause(); return; }
+    let disposed = false;
+    let index = 0;
+    let gain: GainNode | null = null;
+    // Reuse a media source across effects: a media element may only be connected once.
+    const context = getAudioContext();
+    if (!context) return;
+    let connection = connections.get(audio);
+    if (!connection) {
+      const source = context.createMediaElementSource(audio);
+      const node = context.createGain();
+      node.gain.value = 0;
+      source.connect(node).connect(context.destination);
+      connection = { source, gain: node };
+      connections.set(audio, connection);
     }
-
-    let cleanup = () => {};
-    a.play().catch(() => {
-      // Autoplay blocked until a user gesture — start on the first interaction.
-      const start = () => {
-        a.play().catch(() => {});
-        cleanup();
-      };
-      cleanup = () => {
-        window.removeEventListener("pointerdown", start);
-        window.removeEventListener("keydown", start);
-      };
-      window.addEventListener("pointerdown", start);
-      window.addEventListener("keydown", start);
-    });
-    return () => cleanup();
-  }, [enabled, onGame]);
-
-  if (!onGame || !isClient) return null;
-
-  const toggle = () => {
-    setEnabled((e) => {
-      const next = !e;
-      try {
-        localStorage.setItem(STORE_KEY, next ? "1" : "0");
-      } catch {
-        /* ignore storage failures (private mode) */
-      }
-      return next;
-    });
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label={enabled ? "Turn music off" : "Turn music on"}
-      aria-pressed={enabled}
-      title={enabled ? "Music on — tap to mute" : "Music off — tap to play"}
-      className="fixed bottom-4 right-4 z-50 grid h-12 w-12 place-items-center rounded-full bg-white text-slate-700 shadow-lg ring-2 ring-slate-200 transition hover:scale-105 hover:text-slate-900"
-      style={{ marginBottom: "env(safe-area-inset-bottom)" }}
-    >
-      {enabled ? <SpeakerOn /> : <SpeakerOff />}
-    </button>
-  );
+    gain = connection.gain;
+    const mix = () => {
+      const speaking = ['loading', 'playing'].includes(speechState().status);
+      gain!.gain.setTargetAtTime(speaking ? 0.012 : quiet ? 0.055 : 0.12, context.currentTime, 0.12);
+    };
+    const start = () => {
+      if (disposed || document.hidden) return;
+      // Only resume a context here after a user gesture; initial play may be blocked.
+      if (context.state !== 'running') return;
+      mix();
+      void audio.play().catch(() => { /* A later gesture can retry. */ });
+    };
+    const gesture = () => { void context.resume().then(start).catch(() => {}); };
+    const visibility = () => { if (document.hidden) audio.pause(); else start(); };
+    const load = () => {
+      const src = `/music/${tracks[index]}.m4a`;
+      if (audio.getAttribute('src') !== src) audio.src = src;
+      audio.loop = tracks.length === 1;
+      start();
+    };
+    const ended = () => { index = (index + 1) % tracks.length; load(); };
+    const unsubscribe = subscribeSpeech(mix);
+    mix(); load();
+    window.addEventListener('pointerdown', gesture);
+    window.addEventListener('keydown', gesture);
+    document.addEventListener('visibilitychange', visibility);
+    audio.addEventListener('ended', ended);
+    return () => {
+      disposed = true; audio.pause(); unsubscribe();
+      window.removeEventListener('pointerdown', gesture);
+      window.removeEventListener('keydown', gesture);
+      document.removeEventListener('visibilitychange', visibility);
+      audio.removeEventListener('ended', ended);
+    };
+  }, [playlist, settings.music, quiet]);
+  return <audio ref={player} preload="none" aria-hidden="true" data-background-music />;
 }
-
-function SpeakerOn() {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none" />
-      <path d="M16.5 8.5a5 5 0 0 1 0 7" />
-      <path d="M19 6a8.5 8.5 0 0 1 0 12" />
-    </svg>
-  );
-}
-
-function SpeakerOff() {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none" />
-      <path d="M17 9l4 6M21 9l-4 6" />
-    </svg>
-  );
-}
+const connections = new WeakMap<HTMLAudioElement, { source: MediaElementAudioSourceNode; gain: GainNode }>();

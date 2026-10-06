@@ -25,7 +25,7 @@ async function request(path, mode='cors', method='GET') {
   const installWaits=[];handlers.install({waitUntil:p=>installWaits.push(p)});await Promise.all(installWaits);
   assert(installed.includes('/offline.html'));assert(installed.some(path=>path.endsWith('.mp3')));
   for(const asset of installed)if(asset!='/manifest.webmanifest')assert(fs.existsSync('public'+asset),'missing offline shell asset '+asset);
-  const waits=[];handlers.activate({waitUntil:p=>waits.push(p)});await Promise.all(waits);assert.deepEqual(deleted,['sunsharp-v5']);
+  const waits=[];handlers.activate({waitUntil:p=>waits.push(p)});await Promise.all(waits);assert.deepEqual(deleted,['sunsharp-v5','sunsharp-v6']);
   assert.equal(await (await request('/home','navigate')).text(),'network');assert.equal(puts.length,0);
   offline=true;assert.equal(await (await request('/home','navigate')).text(),'offline counting game');assert.equal(puts.length,0);
   assert.equal(await request('https://example.supabase.co/rest/v1/attempts'),undefined);
