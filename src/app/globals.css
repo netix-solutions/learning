@@ -909,3 +909,10 @@ body:has(.practice-screen) footer,body:has(.practice-state) footer { display:non
 .train-ride-scene[data-phase="ready"] .train-ride-landscape { animation: none; transform: scale(1.12) translateX(-3%); }
 @keyframes train-ride-landscape { from { transform: scale(1.12) translateX(-3%); } to { transform: scale(1.12) translateX(3%); } }
 @media (prefers-reduced-motion: reduce) { .train-ride-landscape { animation: none; transform: none; } }
+
+.bakery-play-dialog { max-height: calc(100dvh - 1rem); }
+.bakery-play-dialog::backdrop { background: rgb(53 30 40 / .6); }
+.bakery-play-awning { background: repeating-linear-gradient(90deg, #9f1239 0 24px, #ffe4e6 24px 48px); }
+.bakery-tray-treat { animation: bakery-place .18s ease-out; }
+@keyframes bakery-place { from { transform: scale(.85); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .bakery-tray-treat { animation: none; } }

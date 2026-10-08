@@ -1,4 +1,5 @@
 'use client';
+import { BakeryPlay } from '@/components/BakeryPlay';
 import { RewardItemControls } from '@/components/RewardItemControls';
 import { RewardReveal } from '@/components/RewardReveal';
 import { useRef, useState } from 'react';
@@ -39,6 +40,7 @@ export function LearningBakery({ initial, full = false, preview = false, onChang
       {collection.slice(shownPage * 6, shownPage * 6 + 6).map((d, i) => <div key={d.id} data-collected-treat className="absolute" style={{ left: `${6 + (i % 3) * 31}%`, bottom: i < 3 ? '53%' : '19%', width: '26%', height: full?'26%':'36%', zIndex: full?undefined:i < 3 ? 1 : 2 }}><Image src={`/images/bakery/${d.treatId}.webp`} alt="" fill sizes="(max-width: 768px) 32vw, 240px" className="pointer-events-none object-contain object-bottom" style={{transform:d.treatId==='croissant'?'translateY(9%)':undefined}} />{full&&<RewardItemControls state={state} kind="bakery" purchase={d.id} preview={preview} busy={busy} onBusy={setBusy} onChange={next=>{setMessage('');setState(next);onChange(next);}} onMessage={setMessage}/>}</div>)}
       {!collection.length && <p className="absolute bottom-5 left-1/2 w-max max-w-[85%] -translate-x-1/2 rounded-xl bg-white/90 px-4 py-2 text-center text-sm font-bold text-rose-950">Your first donut costs 5 tokens</p>}
     </div></div>
+    {full && <BakeryPlay state={state} />}
     <div className="p-5 sm:p-7">
       {full&&collection.length>0&&<p className="mb-4 text-sm text-slate-600">Tap an item to show its move and sell buttons. Sell back for half the tokens you paid.</p>}
       {pages > 1 && <div className="mb-4 flex items-center justify-between gap-2"><button disabled={shownPage === 0} onClick={() => setPage(shownPage - 1)} className="min-h-12 rounded-xl bg-rose-100 px-3 font-bold disabled:opacity-40">← Previous</button><span className="text-sm">Display {shownPage + 1} of {pages}</span><button disabled={shownPage === pages - 1} onClick={() => setPage(shownPage + 1)} className="min-h-12 rounded-xl bg-rose-100 px-3 font-bold disabled:opacity-40">Next →</button></div>}

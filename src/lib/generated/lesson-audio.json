@@ -348,6 +348,14 @@
       "bytes": 58976,
       "sha256": "bc115ccf52a1ba0f8ec3bf4c052cfe5ee6f4e0ca2f1918ee3b47bde6dcb007db"
     },
+    "train:ride": {
+      "id": "train:ride",
+      "text": "Let’s take your train for a ride! Choose Meadow, Hilltop, or Starlight station. Tap Go to start. You can pause or close the ride any time. If your pictures stay still, tap Arrive at station to finish. Riding is just for fun and costs no tokens.",
+      "fingerprint": "2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d",
+      "url": "/audio/lessons/2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d.mp3",
+      "bytes": 338591,
+      "sha256": "0b95682f868f8724bb2b49c706636e23e328959c956b81fb65aeeb2444df4de1"
+    },
     "garden-hunt:daisy": {
       "id": "garden-hunt:daisy",
       "text": "Find the daisy. Look at the picture, then choose the matching flower below.",
@@ -2292,13 +2300,13 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "train:ride": {
-      "id": "train:ride",
-      "text": "Let’s take your train for a ride! Choose Meadow, Hilltop, or Starlight station. Tap Go to start. You can pause or close the ride any time. If your pictures stay still, tap Arrive at station to finish. Riding is just for fun and costs no tokens.",
-      "fingerprint": "2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d",
-      "url": "/audio/lessons/2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d.mp3",
-      "bytes": 338591,
-      "sha256": "0b95682f868f8724bb2b49c706636e23e328959c956b81fb65aeeb2444df4de1"
+    "bakery:play": {
+      "id": "bakery:play",
+      "text": "Welcome to your little bakery! Look at the picture order. Tap treats on your shelf to put them on your tray. Tap a treat on your tray to put it back. When your tray matches the pictures, tap Serve order. Take your time! This is pretend play. Your treats and tokens stay yours.",
+      "fingerprint": "69fd488bc6939b3fce81de7c51b1f5ffb369ecf9e7bbf8f82f0481c1841562a1",
+      "url": "/audio/lessons/69fd488bc6939b3fce81de7c51b1f5ffb369ecf9e7bbf8f82f0481c1841562a1.mp3",
+      "bytes": 326470,
+      "sha256": "5bdd0188b98e20425c647ac1ce83470b138c0b41e3aecaa4e32ba7b501c38e52"
     }
   }
 }
