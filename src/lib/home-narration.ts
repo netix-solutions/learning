@@ -1,5 +1,11 @@
 // Short, recorded navigation prompts also work for children who do not read yet.
 export const HOME_NARRATION: Record<string, string> = {
+  'garden-hunt:daisy': 'Find the daisy. Look at the picture, then choose the matching flower below.',
+  'garden-hunt:tulip': 'Find the tulip. Look at the picture, then choose the matching flower below.',
+  'garden-hunt:sunflower': 'Find the sunflower. Look at the picture, then choose the matching flower below.',
+  'garden-hunt:poppy': 'Find the poppy. Look at the picture, then choose the matching flower below.',
+  'garden-hunt:iris': 'Find the iris. Look at the picture, then choose the matching flower below.',
+
   'offline:count': 'Let’s count the stars! Touch each star as you count, then choose the number of stars you see. You can try again if you need to. This little game is just for fun while the internet takes a break.',
   'home:bakery': 'Welcome to your little bakery! Collect sprinkle donuts, swirl cupcakes, chocolate cake pops, cookies, croissants, and macarons. Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first donut costs five tokens. Choose a treat and tap Buy treat. It goes right onto your bakery shelf. All reward shops use the same tokens, so you can choose what to collect next. Your treats stay saved when you take a break. Tap an item to show its buttons. Use the left and right arrows to change its place. Tap its return arrow to get half the tokens you paid back, rounded down. Items you have not collected yet are lightly covered in the shop.',
   'home:dinosaurs': 'Welcome to your dinosaur habitat! Every question you try earns one token. Finishing a lesson earns five tokens. Mistakes count too. Your first dinosaur costs five tokens. Choose a dinosaur and tap Buy dinosaur. It joins your habitat right away. All reward shops use the same tokens, so you can choose what to collect next. Your dinosaurs stay saved when you take a break. Tap an item to show its buttons. Use the left and right arrows to change its place. Tap its return arrow to get half the tokens you paid back, rounded down. Items you have not collected yet are lightly covered in the shop.',

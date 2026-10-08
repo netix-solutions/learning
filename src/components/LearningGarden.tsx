@@ -9,10 +9,11 @@ import type { GardenProgress } from "@/lib/garden";
 import { RecordedNarration } from "@/components/LessonNarration";
 import { HOME_NARRATION } from "@/lib/home-narration";
 
-const FLOWERS = ['daisy', 'tulip', 'sunflower', 'poppy', 'iris'];
+import { GardenFlowerHunt } from '@/components/GardenFlowerHunt';
+import { GARDEN_FLOWERS, flowersInPatch } from '@/lib/garden-flowers';
 export function GardenScene({ flowers, grade }: { flowers: number; grade?: Grade | null }) {
   const experience = experienceFor(grade);
-  const visible = flowers === 0 ? 0 : ((flowers - 1) % 10) + 1;
+  const visible = flowersInPatch(flowers);
   const night = experience.setting === 'night';
   return <div role="img" aria-label={flowers ? `A garden patch with ${visible} growing flowers` : "A sunny garden ready for your first flower"} className="relative isolate aspect-[2/1] w-full overflow-hidden rounded-3xl" style={{ background: experience.ground }}>
     <Image src="/images/garden/garden-bed.webp" alt="" fill unoptimized loading="eager" sizes="(max-width: 768px) 100vw, 740px" className="object-cover" style={{ filter: night ? 'brightness(.62) saturate(.65)' : undefined }} />
@@ -20,7 +21,7 @@ export function GardenScene({ flowers, grade }: { flowers: number; grade?: Grade
     {Array.from({ length: visible }, (_, i) => {
       const back = i < 5;
       return <div key={i} data-garden-flower className="absolute" style={{ left: `${6 + (i % 5) * 17 + (back ? 0 : 4)}%`, bottom: back ? '25%' : '9%', width: '16%', height: back ? '49%' : '58%', zIndex: back ? 1 : 2 }}>
-        <Image src={`/images/garden/${FLOWERS[i % FLOWERS.length]}.webp`} alt="" fill sizes="(max-width: 768px) 16vw, 120px" className="pointer-events-none object-contain object-bottom" style={{ filter: night ? 'brightness(.86)' : undefined }} />
+        <Image src={`/images/garden/${GARDEN_FLOWERS[i % GARDEN_FLOWERS.length].id}.webp`} alt="" fill sizes="(max-width: 768px) 16vw, 120px" className="pointer-events-none object-contain object-bottom" style={{ filter: night ? 'brightness(.86)' : undefined }} />
       </div>;
     })}
     {visible === 0 && <div className="absolute bottom-[12%] left-[41%] h-[34%] w-[18%]"><Image src="/images/garden/sprout.webp" alt="" fill sizes="120px" className="object-contain object-bottom" /></div>}
@@ -49,6 +50,7 @@ export function LearningGarden({ initial, full = false, grade }: { initial: Gard
     </div>
     <div className="px-3"><GardenScene grade={grade} flowers={shownFlowers} /></div>
     {full && patchCount > 1 && <div className="mt-3 flex items-center justify-between gap-2 px-5"><button disabled={patch === 1} onClick={() => setSelectedPatch(patch - 1)} className="min-h-12 rounded-xl bg-emerald-50 px-4 font-bold text-emerald-900 disabled:opacity-40">← Previous</button><p className="text-sm font-bold text-emerald-900" aria-live="polite">Patch {patch} of {patchCount}</p><button disabled={patch === patchCount} onClick={() => setSelectedPatch(patch + 1)} className="min-h-12 rounded-xl bg-emerald-50 px-4 font-bold text-emerald-900 disabled:opacity-40">Next →</button></div>}
+    {full && flowers > 0 && <GardenFlowerHunt key={patch} flowers={shownFlowers} />}
     <div className="p-5 sm:px-7">
       <div className="flex flex-wrap items-center justify-between gap-2"><p className="text-xl font-bold text-[#264f3f]">{flowers === 0 ? "Your first flower is on its way" : `${flowers} ${flowers === 1 ? "flower" : "flowers"} grown`}</p>{!full && flowers > 10 && <span className="text-sm font-bold text-emerald-800">Patch {Math.ceil(flowers / 10)}</span>}</div>
       <p className="mt-2 text-base leading-relaxed text-slate-600">Finish a lesson or try 5 questions to grow a flower.</p>
