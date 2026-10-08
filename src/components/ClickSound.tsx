@@ -30,7 +30,7 @@ export function ClickSound() {
         | HTMLAnchorElement
         | HTMLInputElement
         | null;
-      if (!el) return;
+      if (!el || el.closest("[data-silent-click]")) return;
       if ("disabled" in el && el.disabled) return;
       if (el.getAttribute("aria-disabled") === "true") return;
       playClick();

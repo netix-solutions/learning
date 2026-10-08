@@ -5,11 +5,10 @@ import { speechState } from '@/lib/speech';
 const SOURCES = {
   click: '/sounds/ui-click.wav', correct: '/sounds/answer-correct.wav',
   wrong: '/sounds/answer-retry.wav', quizStart: '/sounds/round-start.wav',
-  tally: '/sounds/reward-purchase.wav', purchase: '/sounds/reward-purchase.wav',
   win: '/sounds/round-win.wav', move: '/sounds/reward-move.wav', sell: '/sounds/reward-sell.wav',
 } as const;
 export type SoundName = keyof typeof SOURCES;
-const VOLUMES: Record<SoundName, number> = { click: .12, correct: .32, wrong: .14, quizStart: .2, tally: .25, purchase: .3, win: .28, move: .16, sell: .2 };
+const VOLUMES: Record<SoundName, number> = { click: .12, correct: .32, wrong: .14, quizStart: .2, win: .28, move: .16, sell: .2 };
 let ctx: AudioContext | null = null;
 const buffers: Partial<Record<SoundName, AudioBuffer>> = {};
 const loading: Partial<Record<SoundName, Promise<AudioBuffer | undefined>>> = {};
@@ -79,4 +78,4 @@ export function playClick() { playSound('click'); }
 export function playCorrect(combo = 0) { playSound('correct', Math.min(1 + combo * .04, 1.2)); }
 export function playWrong() { playSound('wrong'); }
 export function playQuizStart() { playSound('quizStart'); }
-export function playTally() { playSound('tally'); }
+export function playTally() { /* Token changes use visual feedback only. */ }

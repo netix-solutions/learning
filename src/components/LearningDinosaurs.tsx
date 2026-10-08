@@ -1,5 +1,4 @@
 'use client';
-import { playSound } from '@/lib/sound';
 import { RewardItemControls } from '@/components/RewardItemControls';
 import { RewardReveal } from '@/components/RewardReveal';
 import { useRef, useState } from 'react';
@@ -27,7 +26,7 @@ export function LearningDinosaurs({ initial, full = false, preview = false, onCh
     try {
       const item = state.dinosaurCatalog!.find(d => d.id === id)!;
       const next = preview ? { ...state, balance: state.balance - item.price, spent: state.spent + item.price, dinosaurs: [...collection, { id: request, dinosaurId: item.id, pricePaid:item.price }] } : await buyDinosaur(id, request);
-      setState(next); onChange(next); playSound('purchase'); delete requests.current[id];
+      setState(next); onChange(next);  delete requests.current[id];
       setPage(Math.floor(((next.dinosaurs?.length ?? 1) - 1) / 6));
       setMessage(`${item.name} joined your habitat!`);
     } catch { setMessage('Your purchase could not be confirmed. Tap the same buy button to retry safely.'); }

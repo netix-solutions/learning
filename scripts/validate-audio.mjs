@@ -33,9 +33,9 @@ const sound=module('src/lib/sound.ts',name=>name==='@/lib/audio-settings'?settin
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 sound.playSound('correct');await settle();assert.equal(starts,1,'First cold cue plays after decoding');
 sound.playSound('correct');await settle();assert.equal(starts,1,'Repeated taps are debounced');
-time+=300;sound.setMuted(true);assert(stops>0,'Mute stops active effects');sound.playSound('purchase');await settle();assert.equal(starts,1);
-sound.setMuted(false);fail=true;sound.playSound('purchase');await settle();const failedFetches=fetches;
-fail=false;time+=300;sound.playSound('purchase');await settle();assert.equal(fetches,failedFetches+1,'Failed loads can retry');assert.equal(starts,2);
+time+=300;sound.setMuted(true);assert(stops>0,'Mute stops active effects');sound.playSound('win');await settle();assert.equal(starts,1);
+sound.setMuted(false);fail=true;sound.playSound('win');await settle();const failedFetches=fetches;
+fail=false;time+=300;sound.playSound('win');await settle();assert.equal(fetches,failedFetches+1,'Failed loads can retry');assert.equal(starts,2);
 doc.hidden=true;time+=300;sound.playSound('win');await settle();assert.equal(starts,2);doc.hidden=false;
 // Exercise the actual background component effects with audio and lifecycle doubles.
 class Audio extends Events { src='';paused=true;loop=false;play(){this.paused=false;return Promise.resolve();}pause(){this.paused=true;}getAttribute(n){return n==='src'?this.src:null;}removeAttribute(){this.src='';}load(){} }

@@ -885,3 +885,14 @@ body:has(.practice-screen) footer,body:has(.practice-state) footer { display:non
  .student-signout .btn-pop { padding-left:8px; padding-right:8px; }
 }
 .audio-controls:has(:focus-visible)>summary { outline:2px solid var(--brand-blue); outline-offset:3px; }
+
+/* A single, user-triggered reveal; no looping or flashing celebration. */
+.reward-discovery-dialog { max-height: calc(100dvh - 2rem); }
+.reward-discovery-dialog::backdrop { background: rgb(15 23 42 / .64); }
+@media (prefers-reduced-motion: no-preference) {
+  .reward-discovery-art { animation: reward-discovery-arrive 450ms ease-out both; }
+}
+@keyframes reward-discovery-arrive {
+  from { opacity: 0; transform: translateY(18px) scale(.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

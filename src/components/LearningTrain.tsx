@@ -17,7 +17,7 @@ export function LearningTrain({initial,grade,full=false,preview=false,onChange}:
  function update(next:TrainState){setMessage('');setState(next);onChange?.(next);}
  const requests=useRef<Record<string,string>>({});const experience=experienceFor(grade);const strip=useRef<HTMLDivElement>(null);
  async function buy(car:string){if(busy)return;setBusy(true);setMessage('');const request=requests.current[car]??crypto.randomUUID();requests.current[car]=request;
-  try{const item=state.catalog.find(c=>c.id===car)!;const next=preview?{...state,balance:state.balance-item.price,spent:state.spent+item.price,cars:[...state.cars,{id:request,carId:item.id,position:state.cars.length+1,pricePaid:item.price}]}:await buyTrainCar(car,request);update(next);playSound('purchase');delete requests.current[car];setMessage(`${item.name} added to your train!`);requestAnimationFrame(()=>strip.current?.scrollTo({left:strip.current.scrollWidth,behavior:'auto'}));}
+  try{const item=state.catalog.find(c=>c.id===car)!;const next=preview?{...state,balance:state.balance-item.price,spent:state.spent+item.price,cars:[...state.cars,{id:request,carId:item.id,position:state.cars.length+1,pricePaid:item.price}]}:await buyTrainCar(car,request);update(next);delete requests.current[car];setMessage(`${item.name} added to your train!`);requestAnimationFrame(()=>strip.current?.scrollTo({left:strip.current.scrollWidth,behavior:'auto'}));}
   catch{setMessage('Your purchase could not be confirmed. Tap the same buy button to retry safely.');}finally{setBusy(false);}}
  async function engineAction(engine:TrainEngineId){
   if(busy)return;setBusy(true);setMessage('');
@@ -28,7 +28,7 @@ export function LearningTrain({initial,grade,full=false,preview=false,onChange}:
    let next:TrainState;
    if(preview){if(!owned&&(!item||state.balance<item.price))throw new Error('Not enough tokens');next=owned?{...state,activeEngine:engine}:{...state,activeEngine:engine,engines:[...(state.engines??[]),engine],enginePurchases:[...(state.enginePurchases??[]),{id:request,engineId:engine,pricePaid:item!.price}],balance:state.balance-item!.price,spent:state.spent+item!.price};}
    else next=owned?await chooseTrainEngine(engine):await buyTrainEngine(engine,request);
-   update(next);playSound(owned?'move':'purchase');delete requests.current[engine];setMessage(`${item?.name??'Classic steam engine'} is leading your train!`);
+   update(next);if(owned)playSound('move');delete requests.current[engine];setMessage(`${item?.name??'Classic steam engine'} is leading your train!`);
    strip.current?.scrollTo({left:0,behavior:'auto'});
   }catch{setMessage('Your engine change could not be confirmed. Tap the same button to retry safely.');}finally{setBusy(false);}
  }
