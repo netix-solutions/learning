@@ -4,6 +4,8 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
+import { ParentPracticeTrends } from "@/components/ParentPracticeTrends";
+import type { PracticeTrends } from "@/lib/practice-trends";
 import { ParentPracticePlan } from "@/components/ParentPracticePlan";
 import { PracticeEvidence, type EvidenceSubject } from "@/components/PracticeEvidence";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
@@ -36,6 +38,8 @@ export default async function ChildDetail({
   const s = data as StudentSummary;
   const emojiFor = new Map(s.subjects.map((x) => [x.subject_id, x.emoji]));
 
+  const trendsPromise = supabase.rpc("get_practice_trends", { p_student_id: id }).then(result => result);
+
   // Recent skill evidence, one authorized RPC per subject, in parallel.
   // Skills the child hasn't touched are dropped so the breakdown stays focused.
   const grade = s.profile.grade;
@@ -58,6 +62,8 @@ export default async function ChildDetail({
         }),
       )
     : [];
+
+  const { data: trends, error: trendsError } = await trendsPromise;
 
   // Pair each subject's progress with skill standings for the grade-goals view.
   const subjectStandings: SubjectStanding[] = s.subjects.map((sub) => {
@@ -127,6 +133,7 @@ export default async function ChildDetail({
       </section>
 
       <ParentPracticePlan subjects={skillsBySubject} grade={grade} />
+      <ParentPracticeTrends data={trendsError ? null : trends as PracticeTrends | null} subjects={s.subjects} />
       <PracticeEvidence subjects={skillsBySubject} />
 
       {/* Time goal */}

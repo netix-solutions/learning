@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {comparableSkills,trendDateRange} from '../src/lib/practice-trends.ts';
+const skill={subject_id:'math',skill:'3.mult',difficulty:1,previous_count:4,previous_correct:2,recent_count:4,recent_correct:3};
+const data={as_of:'2026-10-08T02:00:00Z',grade:'3',periods:[],skills:[skill,{...skill,difficulty:2,previous_count:3},{...skill,skill:'3.div',recent_count:0}]};
+const before=JSON.stringify(data);
+assert.deepEqual(comparableSkills(data),[{...skill,previousPercent:50,recentPercent:75}]);
+assert.equal(JSON.stringify(data),before);
+assert.deepEqual(comparableSkills({...data,skills:[]}),[]);
+assert.equal(trendDateRange(data.as_of,'recent'),'Sep 24–Oct 8');
+assert.equal(trendDateRange(data.as_of,'previous'),'Sep 10–Sep 24');
+assert.equal(trendDateRange('2026-01-05T01:00:00Z','recent'),'Dec 22–Jan 5');
+console.log('Trend display: matched-level sample floor, empty data, immutability, UTC windows and year boundary passed.');
