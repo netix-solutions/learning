@@ -896,3 +896,16 @@ body:has(.practice-screen) footer,body:has(.practice-state) footer { display:non
   from { opacity: 0; transform: translateY(18px) scale(.9); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* The train ride is opt-in, quiet play. The picture strip stays scrollable. */
+.train-ride-dialog { max-height: calc(100dvh - 1rem); }
+.train-ride-dialog::backdrop { background: rgb(15 23 42 / .65); }
+.train-ride-scene { aspect-ratio: 3 / 1; min-height: 170px; }
+.train-ride-vehicles { bottom: calc(36.5% - 34px); scrollbar-width: none; -ms-overflow-style: none; }
+.train-ride-vehicles::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .train-ride-vehicles { bottom: calc(36.5% - 41px); } }
+
+.train-ride-landscape { animation: train-ride-landscape 12s linear both; animation-play-state: paused; }
+.train-ride-scene[data-phase="ready"] .train-ride-landscape { animation: none; transform: scale(1.12) translateX(-3%); }
+@keyframes train-ride-landscape { from { transform: scale(1.12) translateX(-3%); } to { transform: scale(1.12) translateX(3%); } }
+@media (prefers-reduced-motion: reduce) { .train-ride-landscape { animation: none; transform: none; } }

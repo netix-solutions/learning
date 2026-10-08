@@ -1,4 +1,5 @@
 'use client';
+import { TrainRide } from '@/components/TrainRide';
 import { playSound } from '@/lib/sound';
 import { RewardItemControls } from '@/components/RewardItemControls';
 import { RewardReveal } from '@/components/RewardReveal';
@@ -40,6 +41,7 @@ export function LearningTrain({initial,grade,full=false,preview=false,onChange}:
    {state.cars.map((car,i)=><div key={car.id} data-train-car={car.id} className="relative w-44 shrink-0 rounded-xl p-1 sm:w-52"><TrainArt kind={car.carId}/><span className="block rounded-full bg-white/95 px-2 py-1 text-center text-xs font-bold text-slate-700">Car {i+1}</span>{full&&<RewardItemControls state={state} kind="train" purchase={car.id} preview={preview} busy={busy} onBusy={setBusy} onChange={update} onMessage={setMessage}/>}</div>)}
    {!state.cars.length&&<div className="my-6 grid w-40 shrink-0 place-items-center rounded-2xl border-2 border-dashed border-slate-400 bg-white/60 p-4 text-center font-bold text-slate-600">Your first car goes here</div>}
   </div></div>
+  {full&&<TrainRide state={state}/>}
   <div className="p-5 sm:px-7"><div className="flex items-center gap-3"><p className="flex-1 text-base leading-relaxed text-slate-700">Try a question: <strong>1 token.</strong><br/>Finish a lesson: <strong>5 tokens.</strong><br/><span className="text-sm">Mistakes count, too. All reward shops share these tokens.</span></p><RecordedNarration id="home:train" text={HOME_NARRATION['home:train']} label="Hear how my train works"/></div>
    {full&&<p className="mt-4 text-sm text-slate-600">Tap a car to show its move and sell buttons. Sell back for half the tokens you paid.</p>}
    {message&&<p role="status" className="mt-4 rounded-xl bg-sky-50 p-3 font-bold text-sky-900">{message}</p>}

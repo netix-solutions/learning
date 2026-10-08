@@ -348,6 +348,46 @@
       "bytes": 58976,
       "sha256": "bc115ccf52a1ba0f8ec3bf4c052cfe5ee6f4e0ca2f1918ee3b47bde6dcb007db"
     },
+    "garden-hunt:daisy": {
+      "id": "garden-hunt:daisy",
+      "text": "Find the daisy. Look at the picture, then choose the matching flower below.",
+      "fingerprint": "a6b479d13543113b57edb573ec834f3d0d4bf2e96fdb568e513d7fceb800e0a0",
+      "url": "/audio/lessons/a6b479d13543113b57edb573ec834f3d0d4bf2e96fdb568e513d7fceb800e0a0.mp3",
+      "bytes": 72351,
+      "sha256": "5854f7f2e74a6507d3cf9b6bfa140c993ae9ca0332863feab166d065006bdfe4"
+    },
+    "garden-hunt:tulip": {
+      "id": "garden-hunt:tulip",
+      "text": "Find the tulip. Look at the picture, then choose the matching flower below.",
+      "fingerprint": "325c8199fec5d629a087659562f30fa81900198b88773231ad92b19ad8f2a3be",
+      "url": "/audio/lessons/325c8199fec5d629a087659562f30fa81900198b88773231ad92b19ad8f2a3be.mp3",
+      "bytes": 85725,
+      "sha256": "dd96797bb17676525f74641412592cd7ec733071fdc1d306c381b2bae4c38740"
+    },
+    "garden-hunt:sunflower": {
+      "id": "garden-hunt:sunflower",
+      "text": "Find the sunflower. Look at the picture, then choose the matching flower below.",
+      "fingerprint": "d6d23ceaa9f158fda05fc257982a9529e092d132ed75239533347bec7a9f10eb",
+      "url": "/audio/lessons/d6d23ceaa9f158fda05fc257982a9529e092d132ed75239533347bec7a9f10eb.mp3",
+      "bytes": 80710,
+      "sha256": "5da02edc048af0d339f71a7fc837e618d111cd73f7793080dbb461c1c2897965"
+    },
+    "garden-hunt:poppy": {
+      "id": "garden-hunt:poppy",
+      "text": "Find the poppy. Look at the picture, then choose the matching flower below.",
+      "fingerprint": "6e3ab84adbb5f84fcd0eacd715a4ac5ef676000c81f97b63ad63f3c408d8e08a",
+      "url": "/audio/lessons/6e3ab84adbb5f84fcd0eacd715a4ac5ef676000c81f97b63ad63f3c408d8e08a.mp3",
+      "bytes": 76948,
+      "sha256": "c6a412acdb7f4fca475e7a921f55b36165e3e60a0cae720f39a0dcbd091036f5"
+    },
+    "garden-hunt:iris": {
+      "id": "garden-hunt:iris",
+      "text": "Find the iris. Look at the picture, then choose the matching flower below.",
+      "fingerprint": "459b933fd721bfdba24aa5c821b8f418fef5ad959cb652cec471712de4e727de",
+      "url": "/audio/lessons/459b933fd721bfdba24aa5c821b8f418fef5ad959cb652cec471712de4e727de.mp3",
+      "bytes": 78202,
+      "sha256": "e0541fbfecec052d1dbe990ac987077fe59b68634bd73e024542b1b5f883c42e"
+    },
     "offline:count": {
       "id": "offline:count",
       "text": "Let’s count the stars! Touch each star as you count, then choose the number of stars you see. You can try again if you need to. This little game is just for fun while the internet takes a break.",
@@ -2252,45 +2292,13 @@
       "bytes": 152599,
       "sha256": "8a32ddf0bc586a353dd3f72ab5de51b99765084d8ad422488396a1fb4d40475f"
     },
-    "garden-hunt:daisy": {
-      "id": "garden-hunt:daisy",
-      "text": "Find the daisy. Look at the picture, then choose the matching flower below.",
-      "fingerprint": "a6b479d13543113b57edb573ec834f3d0d4bf2e96fdb568e513d7fceb800e0a0",
-      "url": "/audio/lessons/a6b479d13543113b57edb573ec834f3d0d4bf2e96fdb568e513d7fceb800e0a0.mp3",
-      "bytes": 72351,
-      "sha256": "5854f7f2e74a6507d3cf9b6bfa140c993ae9ca0332863feab166d065006bdfe4"
-    },
-    "garden-hunt:tulip": {
-      "id": "garden-hunt:tulip",
-      "text": "Find the tulip. Look at the picture, then choose the matching flower below.",
-      "fingerprint": "325c8199fec5d629a087659562f30fa81900198b88773231ad92b19ad8f2a3be",
-      "url": "/audio/lessons/325c8199fec5d629a087659562f30fa81900198b88773231ad92b19ad8f2a3be.mp3",
-      "bytes": 85725,
-      "sha256": "dd96797bb17676525f74641412592cd7ec733071fdc1d306c381b2bae4c38740"
-    },
-    "garden-hunt:sunflower": {
-      "id": "garden-hunt:sunflower",
-      "text": "Find the sunflower. Look at the picture, then choose the matching flower below.",
-      "fingerprint": "d6d23ceaa9f158fda05fc257982a9529e092d132ed75239533347bec7a9f10eb",
-      "url": "/audio/lessons/d6d23ceaa9f158fda05fc257982a9529e092d132ed75239533347bec7a9f10eb.mp3",
-      "bytes": 80710,
-      "sha256": "5da02edc048af0d339f71a7fc837e618d111cd73f7793080dbb461c1c2897965"
-    },
-    "garden-hunt:poppy": {
-      "id": "garden-hunt:poppy",
-      "text": "Find the poppy. Look at the picture, then choose the matching flower below.",
-      "fingerprint": "6e3ab84adbb5f84fcd0eacd715a4ac5ef676000c81f97b63ad63f3c408d8e08a",
-      "url": "/audio/lessons/6e3ab84adbb5f84fcd0eacd715a4ac5ef676000c81f97b63ad63f3c408d8e08a.mp3",
-      "bytes": 76948,
-      "sha256": "c6a412acdb7f4fca475e7a921f55b36165e3e60a0cae720f39a0dcbd091036f5"
-    },
-    "garden-hunt:iris": {
-      "id": "garden-hunt:iris",
-      "text": "Find the iris. Look at the picture, then choose the matching flower below.",
-      "fingerprint": "459b933fd721bfdba24aa5c821b8f418fef5ad959cb652cec471712de4e727de",
-      "url": "/audio/lessons/459b933fd721bfdba24aa5c821b8f418fef5ad959cb652cec471712de4e727de.mp3",
-      "bytes": 78202,
-      "sha256": "e0541fbfecec052d1dbe990ac987077fe59b68634bd73e024542b1b5f883c42e"
+    "train:ride": {
+      "id": "train:ride",
+      "text": "Let’s take your train for a ride! Choose Meadow, Hilltop, or Starlight station. Tap Go to start. You can pause or close the ride any time. If your pictures stay still, tap Arrive at station to finish. Riding is just for fun and costs no tokens.",
+      "fingerprint": "2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d",
+      "url": "/audio/lessons/2cb5baf64e739845739e64884989f8a702a5fb76174646bb53c88dfe80fc099d.mp3",
+      "bytes": 338591,
+      "sha256": "0b95682f868f8724bb2b49c706636e23e328959c956b81fb65aeeb2444df4de1"
     }
   }
 }

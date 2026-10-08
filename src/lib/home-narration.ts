@@ -1,5 +1,6 @@
 // Short, recorded navigation prompts also work for children who do not read yet.
 export const HOME_NARRATION: Record<string, string> = {
+  'train:ride': 'Let’s take your train for a ride! Choose Meadow, Hilltop, or Starlight station. Tap Go to start. You can pause or close the ride any time. If your pictures stay still, tap Arrive at station to finish. Riding is just for fun and costs no tokens.',
   'garden-hunt:daisy': 'Find the daisy. Look at the picture, then choose the matching flower below.',
   'garden-hunt:tulip': 'Find the tulip. Look at the picture, then choose the matching flower below.',
   'garden-hunt:sunflower': 'Find the sunflower. Look at the picture, then choose the matching flower below.',

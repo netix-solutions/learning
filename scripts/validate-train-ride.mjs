@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {existsSync} from 'node:fs';
+import {advanceRide,RIDE_DURATION,RIDE_STATIONS,rideVehicles} from '../src/lib/train-ride.ts';
+const state={activeEngine:'j-steam-engine',engineCatalog:[{id:'j-steam-engine',name:'Green J steam engine'}],cars:[{id:'a',carId:'coal',position:1},{id:'b',carId:'passenger',position:2},{id:'c',carId:'coal',position:3}],catalog:[{id:'coal',name:'Coal car'},{id:'passenger',name:'Passenger car'}]};
+const before=JSON.stringify(state),vehicles=rideVehicles(state);
+assert.deepEqual(vehicles.map(v=>v.kind),['j-steam-engine','coal','passenger','coal']);
+assert.equal(new Set(vehicles.map(v=>v.id)).size,4);
+assert.equal(vehicles[3].name,'Car 3: Coal car');
+for(const v of vehicles)assert.ok(existsSync(`public/images/train/${v.kind}.webp`));
+assert.equal(JSON.stringify(state),before);
+assert.equal(rideVehicles({...state,activeEngine:undefined,cars:[]})[0].kind,'engine');
+assert.equal(advanceRide(0,-10),0);assert.equal(advanceRide(400,NaN),400);assert.equal(advanceRide(RIDE_DURATION-100,300),RIDE_DURATION);
+assert.equal(new Set(RIDE_STATIONS.map(s=>s.id)).size,3);
+console.log('Ride collection: active engine, owned order, duplicates, empty train, immutable inventory, asset paths and bounded clock passed.');
