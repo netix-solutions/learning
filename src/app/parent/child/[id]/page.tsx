@@ -4,6 +4,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Avatar } from "@/components/Avatar";
 import { SignOutButton } from "@/components/SignOutButton";
+import { ParentPracticePlan } from "@/components/ParentPracticePlan";
 import { PracticeEvidence, type EvidenceSubject } from "@/components/PracticeEvidence";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
 import { LessonProgress } from "@/components/LessonProgress";
@@ -119,12 +120,13 @@ export default async function ChildDetail({
           <p className="text-sm text-slate-600">Practice earns tokens for your child’s reward worlds. Rewards recognize participation; independent practice evidence shows how skills are developing.</p>
         </div>
         <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-          <Stat label="Questions" value={s.totals.attempts} />
+          <Stat label="All questions" value={s.totals.attempts} />
           <Stat label="Correct" value={s.totals.correct} />
-          <Stat label="Accuracy" value={`${s.totals.accuracy}%`} />
+          <Stat label="All-time accuracy" value={`${s.totals.accuracy}%`} />
         </div>
       </section>
 
+      <ParentPracticePlan subjects={skillsBySubject} grade={grade} />
       <PracticeEvidence subjects={skillsBySubject} />
 
       {/* Time goal */}
