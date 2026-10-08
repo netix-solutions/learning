@@ -54,6 +54,7 @@ const progressionSQL=readFileSync('supabase/seeds/math-progression.sql','utf8');
 const progressionJSON=progressionSQL.split('$math_progression$')[1];
 if(!progressionJSON)throw new Error('Missing math progression content');
 const banks = [
+  {path:'supabase/seeds/reading-detail.sql',rows:JSON.parse(readFileSync('supabase/seeds/reading-detail.sql','utf8').split('$reading_detail$')[1])},
   {path:'supabase/seeds/math-progression.sql',rows:JSON.parse(progressionJSON)},
   {path: 'src/lib/content/science-observations.ts', rows: SCIENCE_OBSERVATIONS.flatMap(a=>a.questions.map(q=>({grade:a.grade,subject_id:'science',skill:`${a.grade}.observation`,standard:null,prompt:q.prompt})))},
   ...files.map(path => ({ path, rows: readQuestions(path) })),
@@ -77,7 +78,7 @@ for (const grade of grades) for (const subject of subjects) {
   });
 }
 const report = {
-  scope: 'Repository question seeds, additive math stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
+  scope: 'Repository question seeds, additive math and reading-detail stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.',
   sources: banks.map(b => ({ file: b.path, rows: b.rows.length })), inventory,
 };
 writeFileSync('docs/curriculum-inventory.json', JSON.stringify(report, null, 2) + '\n');

@@ -1,6 +1,10 @@
 {
-  "scope": "Repository question seeds, additive math stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
+  "scope": "Repository question seeds, additive math and reading-detail stages, reading stories and science observations, and authored lessons; not a live database audit. Distinct prompts are not distinct skills. Strand tags are not benchmark coverage. Legacy skill tags may be populated by other migrations.",
   "sources": [
+    {
+      "file": "supabase/seeds/reading-detail.sql",
+      "rows": 24
+    },
     {
       "file": "supabase/seeds/math-progression.sql",
       "rows": 576
@@ -861,13 +865,13 @@
     {
       "grade": "3",
       "subject": "reading",
-      "seedRows": 317,
-      "distinctPrompts": 82,
-      "distinctTasks": 82,
+      "seedRows": 341,
+      "distinctPrompts": 106,
+      "distinctTasks": 106,
       "skills": [
         {
           "skill": "3.detail",
-          "rows": 2
+          "rows": 26
         },
         {
           "skill": "3.fig",
@@ -892,6 +896,7 @@
         "ELA.3.C.3",
         "ELA.3.R.1.3",
         "ELA.3.R.2",
+        "ELA.3.R.2.2",
         "ELA.3.R.3",
         "ELA.3.V.1"
       ],
