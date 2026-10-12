@@ -14,5 +14,5 @@ export default async function LoginPage() {
   const { profile } = await getSessionProfile();
   if (profile) redirect(profile.role === "parent" ? "/parent" : "/home");
 
-  return <AuthLayout title="Welcome back, grown-up." intro="A clear view of their progress. A little more room for their curiosity." formTitle="Parent login" formHint="Pick up where your family left off." switchHref="/kids" switchLabel="Looking for kid login? →"><ParentLoginForm/></AuthLayout>;
+  return <AuthLayout title="Welcome back, grown-up." intro="A clear view of their progress. A little more room for their curiosity." formTitle="Parents log in" formHint="Use your email and password to open your family dashboard." switchHref="/kids" switchLabel="Kids log in with username & PIN →"><ParentLoginForm/></AuthLayout>;
 }

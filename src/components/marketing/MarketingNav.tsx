@@ -1,41 +1,16 @@
-import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
+import Link from 'next/link';
+import { BrandLogo } from '@/components/BrandLogo';
 
-/** Sticky, translucent top nav for the public marketing pages. */
 export function MarketingNav() {
-  return (
-    <nav className="sticky top-0 z-40 w-full border-b border-[#e3e9e4] bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-3 px-4">
-        <BrandLogo href="/" />
-
-        <div className="flex items-center gap-1 sm:gap-2">
-          <Link
-            href="/about"
-            className="hidden rounded-full px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-slate-900 sm:block"
-          >
-            About
-          </Link>
-          <Link
-            href="/pricing"
-            className="hidden rounded-full px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-slate-900 sm:block"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/login"
-            className="rounded-full px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-slate-900"
-          >
-            Log in
-          </Link>
-          <Link
-            href="/signup"
-            className="btn-pop px-4 py-2 text-sm font-extrabold text-white"
-            style={{ background: "var(--brand-blue)" }}
-          >
-            Get started
-          </Link>
-        </div>
+  return <nav aria-label="Main navigation" className="marketing-nav" data-silent-click>
+    <div className="marketing-nav-inner">
+      <BrandLogo href="/" />
+      <div className="marketing-nav-info"><Link href="/about">About</Link><Link href="/pricing">Pricing</Link></div>
+      <div className="marketing-login-links" aria-label="Choose your login">
+        <Link href="/kids" className="marketing-kid-login"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="12" cy="12" r="8"/><path d="M8 14c1 3 7 3 8 0M9 9h.01M15 9h.01M10 4l2-2 2 2"/></svg>Kids log in</Link>
+        <Link href="/login" className="marketing-parent-login"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg>Parents log in</Link>
       </div>
-    </nav>
-  );
+      <Link href="/signup" className="marketing-nav-signup">Join SunSharp</Link>
+    </div>
+  </nav>;
 }

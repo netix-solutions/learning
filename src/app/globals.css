@@ -926,3 +926,24 @@ body:has(.practice-screen) footer,body:has(.practice-state) footer { display:non
  .marketing-hero .marketing-cta { gap:16px; padding:14px 18px; font-size:14px; }
  .marketing-hero a[href="/kids"] { padding-left:0; padding-right:0; font-size:14px; }
 }
+
+/* Distinct, persistent entry points for children and parents on public pages. */
+.marketing-nav { position:sticky; top:0; z-index:40; width:100%; background:#fffffff5; border-bottom:1px solid #dfe8df; backdrop-filter:blur(12px); }
+.marketing-nav-inner { display:grid; grid-template-columns:auto 1fr auto auto; align-items:center; gap:20px; max-width:1192px; margin:auto; min-height:80px; padding:10px 20px; }
+.marketing-nav-info { display:flex; justify-content:flex-end; gap:20px; font-size:14px; font-weight:700; color:#596d64; }
+.marketing-nav-info a { display:flex; align-items:center; min-height:44px; }
+.marketing-login-links { display:flex; gap:8px; }
+.marketing-login-links a { display:flex; align-items:center; justify-content:center; gap:7px; min-height:46px; padding:10px 13px; border:1px solid #c3d9e6; border-radius:13px; font-size:14px; font-weight:800; white-space:nowrap; }
+.marketing-kid-login { background:#e9f4fc; color:#235d82; }
+.marketing-parent-login { background:#fff; color:#245e50; }
+.marketing-nav-signup { display:flex; align-items:center; justify-content:center; min-height:46px; padding:10px 16px; border-radius:13px; background:#176d66; color:white; font-size:14px; font-weight:800; }
+.marketing-nav a:focus-visible { outline:3px solid #276dbe; outline-offset:3px; }
+.marketing-login-links a:hover { border-color:currentColor; }
+.marketing-nav-signup:hover { background:#12564f; }
+@media(max-width:950px) { .marketing-nav-info { display:none; } .marketing-nav-inner { grid-template-columns:auto 1fr auto; gap:12px; } .marketing-login-links { justify-content:flex-end; } }
+@media(max-width:640px) {
+ .marketing-nav-inner { grid-template-columns:1fr auto; gap:8px; min-height:0; padding:10px 16px; }
+ .marketing-login-links { grid-row:2; grid-column:1/-1; }
+ .marketing-login-links a { flex:1; min-height:44px; padding:9px; font-size:13px; }
+ .marketing-nav-signup { grid-row:1; grid-column:2; min-height:44px; padding:10px 14px; font-size:13px; }
+}

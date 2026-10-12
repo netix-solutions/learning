@@ -76,7 +76,7 @@ export function SiteFooter() {
           <div className="max-w-xs">
             <BrandLogo href="/" />
             <p className="mt-4 text-sm leading-relaxed text-slate-500">
-              Stay sharp all summer — playful K–5 practice in math, reading
+              Little practice. Big discoveries. Playful K–5 learning in math, reading
               &amp; science.
             </p>
           </div>
@@ -119,7 +119,9 @@ export function SiteFooter() {
             </div>
 
             <div className="flex flex-col items-start gap-2.5">
-              <ColHeading>Company</ColHeading>
+              <ColHeading>Explore</ColHeading>
+              <FooterLink href="/kids">Kids log in</FooterLink>
+              <FooterLink href="/login">Parents log in</FooterLink>
               <FooterLink href="/about">About</FooterLink>
               <FooterLink href="/pricing">Pricing</FooterLink>
               <FooterLink href="/privacy">Privacy Policy</FooterLink>
