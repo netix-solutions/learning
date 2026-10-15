@@ -4,8 +4,8 @@ An original interactive math question for grades 1 and 2. Students choose an
 operation and a two-digit distance, then watch their spaceship move in jumps of
 ten and a final jump for the remaining ones. For example: 41 → 51 → 61.
 
-- Child home links to `/practice/math?game=numberline` for grades 1 and 2.
-- The same questions can appear in normal math and mixed practice.
+- Questions appear within normal math and mixed practice for grades 1 and 2;
+  there is no separate Home shortcut.
 - Grade 1 starts within 20, then moves to jumps of ten within 100.
 - Grade 2 starts with tens, then combines tens and ones, including crossing tens.
 - Each grade has three stages of 12 questions (six addition, six subtraction).
