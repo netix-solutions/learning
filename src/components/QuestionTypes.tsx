@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { NumberLineQuestion } from '@/components/NumberLineQuestion';
 import type {
   AttemptResult,
   PracticeQuestion,
@@ -21,6 +22,7 @@ type Props = {
   result: AttemptResult | null;
   submitting: boolean;
   onSubmit: (answer: SubmittedAnswer) => void;
+  onSupport?: () => void;
 };
 
 // Distinct, kid-friendly colors for matched pairs / placed slots.
@@ -416,6 +418,7 @@ export function QuestionInteraction(props: Props) {
   const Component = {
     truefalse: TrueFalseQuestion, tapword: TapWordQuestion, order: OrderQuestion,
     categorize: CategorizeQuestion, match: MatchQuestion,
-  }[props.question.kind as "truefalse" | "tapword" | "order" | "categorize" | "match"];
+    numberline: NumberLineQuestion,
+  }[props.question.kind as "truefalse" | "tapword" | "order" | "categorize" | "match" | "numberline"];
   return Component ? <Component key={props.question.id} {...props} /> : null;
 }

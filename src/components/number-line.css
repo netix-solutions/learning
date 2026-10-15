@@ -1,0 +1,33 @@
+.number-line-game { --number-line-ease:cubic-bezier(.77,0,.175,1); margin-top:14px; color:#214c57; }
+.number-line-scene { border:1px solid #bdd8df; border-radius:20px; overflow:hidden; background:#e9f6f8; }
+.number-line-mission { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px 12px; padding:12px 16px 0; font-size:14px; }
+.number-line-mission span { font-size:12px; }
+.number-line-map { width:100%; max-height:230px; display:block; }
+.number-line-position { margin:0; min-height:32px; padding:7px 12px; text-align:center; background:#d7eae8; font-size:13px; font-weight:800; }
+.number-line-ship { transition:transform 500ms var(--number-line-ease); }
+.number-line-ship.is-resetting { transition:none; }
+@keyframes number-line-hop { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+.number-line-hop { animation:number-line-hop 500ms var(--number-line-ease); }
+.number-line-equation { display:flex; justify-content:center; align-items:center; gap:10px; padding:12px 0; font-size:28px; font-weight:800; }
+.number-line-fixed { font-variant-numeric:tabular-nums; }
+.number-line-direction { display:grid; gap:7px; }
+.number-line-direction button { min-height:44px; width:48px; border:2px solid #b8d0d7; border-radius:10px; background:#f0f7f8; }
+.number-line-direction button[aria-pressed="true"] { border-color:#176d66; color:white; background:#176d66; }
+.number-line-digit { display:grid; justify-items:center; }
+.number-line-digit>span { font-size:12px; font-weight:700; }
+.number-line-digit button { display:grid; place-items:center; width:48px; height:44px; color:#326c76; border-radius:8px; }
+.number-line-digit input { width:48px; height:44px; padding:0; border:2px solid #b8d0d7; border-radius:10px; text-align:center; background:#fff; font-size:28px; font-weight:800; }
+.number-line-game button:disabled { opacity:.45; cursor:default; }
+.number-line-actions { display:flex; align-items:center; gap:12px; }
+.number-line-go { flex:1; min-height:48px; border-radius:12px; background:#176d66; color:white; font-size:19px; font-weight:800; }
+.number-line-hint { min-height:48px; padding:8px; font-size:14px; font-weight:800; text-decoration:underline; text-underline-offset:4px; }
+.number-line-message,.number-line-help { margin-top:12px; padding:12px; border-radius:12px; background:#fff4dc; font-size:14px; line-height:1.6; }
+.number-line-help { display:flex; gap:8px; align-items:start; background:#edf4fa; }
+.number-line-help p { flex:1; }
+.number-line-review { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:center; padding-top:10px; }
+.number-line-review strong { font-size:22px; }
+.number-line-review button { min-height:44px; padding:8px 12px; border:1px solid #a8c8cc; border-radius:10px; font-size:14px; font-weight:800; }
+.number-line-game :is(button,input):focus-visible { outline:3px solid #276dbe; outline-offset:3px; }
+@media(hover:hover) and (pointer:fine) { .number-line-digit button:not(:disabled):hover,.number-line-review button:not(:disabled):hover { background:#e9f3f5; } .number-line-go:not(:disabled):hover { background:#12564f; } }
+@media(max-width:480px) { .number-line-equation { gap:6px; font-size:24px; padding:8px 0; } .number-line-direction button,.number-line-digit input,.number-line-digit button { width:44px; } .number-line-mission { padding:9px 10px 0; } .number-line-minor-label { display:none; } .number-line-map { min-height:130px; } }
+@media(prefers-reduced-motion:reduce) { .number-line-ship { transition:none; } .number-line-hop { animation:none; } }

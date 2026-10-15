@@ -7,8 +7,10 @@ import { PracticeClient } from "./PracticeClient";
 
 export default async function PracticePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ subject: string }>;
+  searchParams: Promise<{ game?: string }>;
 }) {
   const { subject } = await params;
   const { user, profile, supabase } = await getSessionProfile();
@@ -32,5 +34,7 @@ export default async function PracticePage({
     meta = data as Subject;
   }
 
-  return <PracticeClient key={`${user.id}:${profile.grade}`} studentId={user.id} subject={meta} grade={profile.grade} />;
+  const { game } = await searchParams;
+  const skill = subject === 'math' && game === 'numberline' && ['1', '2'].includes(profile.grade) ? `${profile.grade}.numberline` : undefined;
+  return <PracticeClient key={`${user.id}:${profile.grade}:${skill ?? 'mixed'}`} studentId={user.id} subject={meta} grade={profile.grade} skill={skill} />;
 }

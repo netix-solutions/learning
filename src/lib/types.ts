@@ -57,6 +57,7 @@ export type QuestionKind =
   | "match"
   | "order"
   | "categorize"
+  | "numberline"
   | "tapword";
 
 /**
@@ -65,6 +66,7 @@ export type QuestionKind =
  * `choices`. The correct answer is withheld server-side — see record_attempt.
  */
 export type QuestionPayload = {
+  numberLine?: import('./number-line').NumberLineProblem;
   observation?: ScienceObservation;
   observationQuestion?: string;
   tokens?: string[]; // tapword
@@ -81,6 +83,7 @@ export type QuestionPayload = {
  *   order      — item indices in the arranged order
  *   categorize — a bucket index for each item (item order fixed)
  *   match      — the right-index paired to each left item
+ *   numberline — [direction (1 or -1), positive number of spaces]
  */
 export type SubmittedAnswer = number | number[];
 

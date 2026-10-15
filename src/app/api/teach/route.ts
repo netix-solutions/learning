@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { teachFor } from "@/lib/teaching";
 import { parseArithmetic } from "@/lib/math-parse";
+import { isNumberLineProblem, type NumberLineProblem } from "@/lib/number-line";
 
 // Node runtime (not edge): the service-role admin client and gateway OIDC are happiest here.
 export const runtime = "nodejs";
@@ -64,6 +65,7 @@ export async function POST(req: Request) {
   // so the tutor prompt is grounded the same way it is for plain multiple-choice.
   const kind = (q.kind as string) ?? "mcq";
   const payload = (q.payload ?? {}) as {
+    numberLine?: NumberLineProblem;
     tokens?: string[];
     items?: string[];
     buckets?: string[];
@@ -73,7 +75,11 @@ export async function POST(req: Request) {
   const ans = q.answer as number[] | { index?: number } | null;
   let correct = choices[q.answer_index] ?? "";
   let optionsLine = `Answer choices: ${choices.join("  |  ")}`;
-  if (kind === "tapword") {
+  if (kind === "numberline" && isNumberLineProblem(payload.numberLine) && Array.isArray(ans)) {
+    const { start, target } = payload.numberLine;
+    correct = `${start} ${ans[0] === 1 ? '+' : '−'} ${ans[1]} = ${target}`;
+    optionsLine = 'The child chooses plus or minus, then sets the tens and ones for the distance. Explain the move in jumps of ten, then the remaining ones, using the provided path.';
+  } else if (kind === "tapword") {
     const toks = payload.tokens ?? [];
     const idx = (ans as { index?: number })?.index ?? -1;
     correct = toks[idx] ?? "";

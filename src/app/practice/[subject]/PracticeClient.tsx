@@ -45,11 +45,13 @@ export function PracticeClient({
   grade,
   studentId = "preview",
   preview,
+  skill,
 }: {
   subject: Subject;
   grade: Grade;
   studentId?: string;
   preview?: PracticePreview;
+  skill?: string;
 }) {
   const samples=process.env.NODE_ENV==='development'?preview:undefined;
   const theme = subjectTheme(subject.color);
@@ -143,6 +145,7 @@ export function PracticeClient({
           p_subject: subject.id,
           p_grade: grade,
           p_count: experience.roundSize,
+          ...(skill ? { p_skill: skill } : {}),
         }).abortSignal(AbortSignal.timeout(15000));
         if (error) throw new Error("Questions unavailable");
         qs = (data as PracticeQuestion[]) ?? [];
@@ -152,7 +155,7 @@ export function PracticeClient({
       setPhase(qs.length ? "playing" : "empty");
       if (qs.length) playQuizStart();
     } catch { setPhase("error"); }
-  }, [subject.id, grade, experience.roundSize, samples]);
+  }, [subject.id, grade, experience.roundSize, samples, skill]);
 
   useEffect(() => {
     // This effect starts the external question request; explicit retries also reset the round.
@@ -275,6 +278,7 @@ export function PracticeClient({
       const upcoming=questions[index+1];
       const {data,error}=samples?{data:[],error:null}:await createClient().rpc("get_progressive_questions",{
         p_subject:upcoming.subject_id,p_grade:grade,p_count:1,p_exclude:questions.map(q=>q.id),
+        ...(skill ? { p_skill: skill } : {}),
       }).abortSignal(AbortSignal.timeout(15000));
       if(error)throw error;
       const fresh=(data as PracticeQuestion[] | null)?.[0];
@@ -510,7 +514,7 @@ export function PracticeClient({
             })()}
 
           {/* Non-multiple-choice kinds bring their own interaction + feedback. */}
-          <QuestionInteraction key={current.id} question={current} result={result} submitting={submitting||unsavedAnswer!==null} onSubmit={submit} />
+          <QuestionInteraction key={current.id} question={current} result={result} submitting={submitting||unsavedAnswer!==null} onSubmit={submit} onSupport={() => { supportUsed.current = true; }} />
 
           {(!current.kind || current.kind === "mcq") && (
           <div className={`quiz-choices mt-6 grid gap-3 ${isPreK||current.choices.every(c=>c.length<=24) ? "grid-cols-2" : "sm:grid-cols-2"}`}>
@@ -573,7 +577,7 @@ export function PracticeClient({
           )}
 
           {submitting&&<p role="status" className="mt-4 font-bold text-slate-600">Saving your answer…</p>}
-          {unsavedAnswer !== null && !result && <div role="alert" className="mt-5 rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-slate-800">
+          {unsavedAnswer !== null && !result && <div role="alert" className="mt-5 rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-amber-950">
             <p className="text-lg font-bold">Let’s make sure your answer saved. Please try again.</p>
             <div className="mt-3 flex items-center gap-3">
               <button onClick={() => submit(unsavedAnswer)} disabled={submitting} className="min-h-12 rounded-xl bg-sky-700 px-4 py-3 font-bold text-white">Try saving again</button>
@@ -593,7 +597,7 @@ export function PracticeClient({
               </p>
               {result.explanation && (
                 <div className="mt-1 flex items-start gap-2">
-                  <p className="flex-1 text-slate-700">{result.explanation}</p>
+                  <p className={`flex-1 ${result.is_correct ? 'text-emerald-900' : 'text-orange-900'}`}>{result.explanation}</p>
                   <SpeakButton
                     id={`e-${current.id}`}
                     label="Read the explanation"
@@ -608,7 +612,7 @@ export function PracticeClient({
         </div>
 
         <div className="quiz-actions">
-        {transitionError&&<p role="alert" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-slate-800">{transitionError}</p>}
+        {transitionError&&<p role="alert" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950">{transitionError}</p>}
         {result &&
           (result.is_correct ? (
             <button

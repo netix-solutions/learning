@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { PracticeClient, type PracticePreview } from '@/app/practice/[subject]/PracticeClient';
 import type { Grade, PracticeQuestion, SubmittedAnswer } from '@/lib/types';
 import {mathProgressionQuestions} from '../../../scripts/math-progression-content.mjs';
+import {numberLineQuestions} from '../../../scripts/number-line-content.mjs';
 import {READING_STORIES} from '@/lib/content/reading-stories';
 import {SCIENCE_OBSERVATIONS} from '@/lib/content/science-observations';
 export default async function Page({searchParams}: {searchParams: Promise<{grade?: string; scenario?:string}>}) {
@@ -10,7 +11,11 @@ export default async function Page({searchParams}: {searchParams: Promise<{grade
   if(!['K','1','2','3','4','5'].includes(grade)) notFound();
   const previews:PracticePreview=[];
   function add(question:PracticeQuestion,correct:SubmittedAnswer,explanation:string){previews.push({question,result:{is_correct:true,correct,correct_index:typeof correct==='number'?correct:0,explanation,xp_earned:0,new_xp:0,new_streak:0,new_badges:[]}});}
-  if(scenario==='categorize'){
+  if(scenario==='numberline'){
+    if(!['1','2'].includes(grade))notFound();
+    const bank=numberLineQuestions().filter(q=>q.grade===grade);
+    for(const [i,q] of [bank[0],bank[1],bank[12],bank[24]].entries())add({...q,id:`numberline-${i}`,choices:[]} as PracticeQuestion,q.answer,q.explanation);
+  } else if(scenario==='categorize'){
     add({id:'sort-shapes',grade:grade as Grade,subject_id:'math',prompt:'Sort the shapes into flat shapes and solid shapes.',choices:[],kind:'categorize',payload:{items:['Triangle','Cube','Circle','Sphere'],buckets:['Flat shape','Solid shape']},standard:null,skill:`${grade}.shapes`,xp:0},[0,1,0,1],'Triangles and circles are flat. Cubes and spheres are solid shapes.');
   } else if(scenario==='arithmetic'){
     const prompt=grade==='K'?'5 - 2 = ?':grade==='1'?'15 - 7 = ?':'98 - 37 = ?';

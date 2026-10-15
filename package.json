@@ -13,7 +13,9 @@
     "validate:lessons": "node scripts/validate-lessons.mjs && node scripts/validate-lesson-sequence.mjs && node scripts/validate-math-labs.mjs && node scripts/validate-lesson-audio.mjs && node scripts/validate-speech.mjs",
     "audit:curriculum": "node scripts/audit-curriculum.mjs",
     "generate:math-progression": "node scripts/generate-math-progression.mjs",
-    "validate:math-progression": "node scripts/validate-math-progression.mjs"
+    "validate:math-progression": "node scripts/validate-math-progression.mjs",
+    "generate:number-line": "node scripts/generate-number-line.mjs",
+    "validate:number-line": "node scripts/validate-number-line.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
