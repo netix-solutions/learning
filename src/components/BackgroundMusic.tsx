@@ -12,6 +12,7 @@ export function BackgroundMusic() {
   const settings = useSyncExternalStore(subscribeAudioSettings, audioSettings, serverAudioSettings);
   const player = useRef<HTMLAudioElement | null>(null);
   const playlist = musicFor(path, settings.theme).join(',');
+  const reading = path?.startsWith('/reading/') || path === '/book-preview';
   const quiet = path?.startsWith('/practice') || path?.startsWith('/learn') || path?.includes('preview');
   useEffect(initializeAudioSettings, []);
   useEffect(() => {
@@ -23,7 +24,7 @@ export function BackgroundMusic() {
     const audio = player.current;
     if (!audio) return;
     const tracks = playlist ? playlist.split(',') : [];
-    if (!settings.music || !tracks.length) { audio.pause(); return; }
+    if (reading || !settings.music || !tracks.length) { audio.pause(); return; }
     let disposed = false;
     let index = 0;
     let gain: GainNode | null = null;
@@ -73,7 +74,7 @@ export function BackgroundMusic() {
       document.removeEventListener('visibilitychange', visibility);
       audio.removeEventListener('ended', ended);
     };
-  }, [playlist, settings.music, quiet]);
+  }, [playlist, settings.music, quiet, reading]);
   return <audio ref={player} preload="none" aria-hidden="true" data-background-music />;
 }
 const connections = new WeakMap<HTMLAudioElement, { source: MediaElementAudioSourceNode; gain: GainNode }>();

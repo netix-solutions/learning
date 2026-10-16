@@ -15,7 +15,8 @@
     "generate:math-progression": "node scripts/generate-math-progression.mjs",
     "validate:math-progression": "node scripts/validate-math-progression.mjs",
     "generate:number-line": "node scripts/generate-number-line.mjs",
-    "validate:number-line": "node scripts/validate-number-line.mjs"
+    "validate:number-line": "node scripts/validate-number-line.mjs",
+    "validate:books": "node scripts/validate-books.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",

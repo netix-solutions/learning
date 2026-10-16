@@ -1,0 +1,1 @@
+export default function ReadingLoading(){return <div className="mx-auto max-w-xl p-12 text-center" role="status"><p className="text-2xl font-extrabold">Opening your bookshelf…</p><p className="mt-3">A new adventure is waiting.</p></div>;}

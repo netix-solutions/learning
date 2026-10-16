@@ -9,6 +9,7 @@ import type { PracticeTrends } from "@/lib/practice-trends";
 import { ParentPracticePlan } from "@/components/ParentPracticePlan";
 import { PracticeEvidence, type EvidenceSubject } from "@/components/PracticeEvidence";
 import { GradeStandards, type SubjectStanding } from "@/components/GradeStandards";
+import { ReadingSummary } from "@/components/reading/ReadingSummary";
 import { LessonProgress } from "@/components/LessonProgress";
 import { GoalForm } from "@/components/GoalForm";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -147,6 +148,7 @@ export default async function ChildDetail({
       </div>
 
       <LessonProgress studentId={id} />
+      <ReadingSummary studentId={id} />
 
       {/* Subjects */}
       <h2 className="mb-3 mt-8 font-display text-xl font-bold text-slate-700">By subject</h2>
