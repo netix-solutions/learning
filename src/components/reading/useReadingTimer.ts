@@ -8,7 +8,7 @@ type Clock={sessionId:string;sequence:number;activeMs:number;listeningMs:number;
 export function useReadingTimer(studentId:string,bookId:string,initialPage:number,preview:boolean){
  const clock=useRef<Clock>({sessionId:'',sequence:0,activeMs:0,listeningMs:0,page:initialPage,complete:false,opened:false,running:false,last:0,interaction:0});
  const [elapsed,setElapsed]=useState(0),[running,setRunning]=useState(false),[starting,setStarting]=useState(false);
- const [status,setStatus]=useState('Start the timer when you’re ready.'),[pauseReason,setPauseReason]=useState('');
+ const [status,setStatus]=useState('Opening book…'),[pauseReason,setPauseReason]=useState('');
  const mounted=useRef(true),chain=useRef<Promise<boolean>>(Promise.resolve(true));
  const key=`sunsharp:reading-outbox:${studentId}`;
  const outbox=useCallback(()=>{try{const value=JSON.parse(localStorage.getItem(key)||'{}');return value&&typeof value==='object'&&!Array.isArray(value)?Object.fromEntries(Object.entries(value).filter(([,item])=>item&&typeof item==='object'&&'sessionId' in item&&'bookId' in item&&'sequence' in item)) as Record<string,ReadingSnapshot>:{};}catch{return {}; }},[key]);
@@ -32,13 +32,20 @@ export function useReadingTimer(studentId:string,bookId:string,initialPage:numbe
   chain.current=chain.current.catch(()=>false).then(()=>send(next));return chain.current;
  },[preview,remember,send,snapshot,tick]);
  const pause=useCallback((reason='Timer paused')=>{tick();clock.current.running=false;stop();if(mounted.current){setRunning(false);setPauseReason(reason);}return flush();},[flush,tick]);
- const start=useCallback(async()=>{
+ const startingRequest=useRef<Promise<boolean>|null>(null);
+ const start=useCallback(()=>{
+  if(startingRequest.current)return startingRequest.current;
+  const request=(async()=>{
   if(clock.current.running)return true;
   setStarting(true);const c=clock.current;
   if(!c.sessionId)c.sessionId=crypto.randomUUID();
   if(!c.opened){const opened=await send(snapshot());if(!opened){setStarting(false);return false;}c.opened=true;}
   if(!mounted.current||document.hidden){setStarting(false);return false;}
   c.running=true;c.last=performance.now();c.interaction=c.last;setRunning(true);setPauseReason('');setStarting(false);return true;
+  })();
+  startingRequest.current=request;
+  void request.finally(()=>{startingRequest.current=null;});
+  return request;
  },[send,snapshot]);
  const retry=useCallback(async()=>{let ok=true;for(const pending of Object.values(outbox())){if(!(await send(pending)))ok=false;}return ok;},[outbox,send]);
  useEffect(()=>{

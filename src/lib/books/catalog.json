@@ -1856,6 +1856,266 @@
     "words": 147
   },
   {
+    "id": "2-jay-s-green-engine",
+    "revision": "2026-10-v1",
+    "grade": "2",
+    "world": "train",
+    "title": "Jay’s Green Engine",
+    "genre": "Adventure",
+    "description": "Jay and Grandpa arrived early for their steam train ride.",
+    "pages": [
+      "Jay and Grandpa arrived early for their steam train ride. A green engine waited beside the platform. A brass J shone on its side. “My letter!” Jay said. He counted the big wheels while the driver checked the engine.",
+      "A red flag fluttered beside the station. Jay pointed at it. “Does that mean we cannot go?” Grandpa shook his head. “That is the station flag. The driver watches the railway signals.” Farther down the track, a signal showed red.",
+      "They climbed into a passenger car and found their seats. The train stayed still. Then another train rolled past on the next track. After it had cleared the junction, the signal for their train changed to green.",
+      "The whistle blew, and the green engine began to move. Jay watched the wheels turn faster. The station flag still fluttered behind them. “Our signal is green,” he told Grandpa. “But my engine was green all along!”"
+    ],
+    "vocabulary": [
+      {
+        "word": "platform",
+        "meaning": "the raised place where passengers get on a train"
+      },
+      {
+        "word": "junction",
+        "meaning": "a place where railway tracks meet"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Which signal was the driver watching?",
+        "choices": [
+          "The brass J on the engine",
+          "The railway signal beside the track",
+          "The red station flag"
+        ],
+        "answer": 1,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "Grandpa explains that the driver watches railway signals, not the station flag."
+      },
+      {
+        "prompt": "What happened before their signal turned green?",
+        "choices": [
+          "Another train cleared the junction",
+          "Jay got off the train",
+          "The station flag changed color"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Sequence",
+        "explanation": "Another train passes and clears the junction before their signal changes."
+      },
+      {
+        "prompt": "Why did Jay think the engine was special?",
+        "choices": [
+          "He had driven it before",
+          "Grandpa had painted it",
+          "It had the first letter of his name"
+        ],
+        "answer": 2,
+        "evidencePage": 0,
+        "skill": "Inference",
+        "explanation": "Jay calls J his letter when he sees it on the engine."
+      }
+    ],
+    "retell": "Tell how Jay learned the difference between the flag and the railway signal.",
+    "words": 153
+  },
+  {
+    "id": "2-the-night-train-window",
+    "revision": "2026-10-v1",
+    "grade": "2",
+    "world": "train",
+    "title": "The Night Train Window",
+    "genre": "Adventure",
+    "description": "Mina pressed her nose near the train window.",
+    "pages": [
+      "Mina pressed her nose near the train window. Outside, the fields were almost black. Inside, a little lamp lit her table. She set her toy fox beside her cup. Suddenly, another fox appeared outside the window!",
+      "“Mom! A fox is keeping up with our train!” Mina said. Mom leaned closer. “Try moving your toy.” Mina lifted it. The outside fox rose too. She tipped it sideways. The other fox tipped at exactly the same time.",
+      "“It is a reflection,” Mom said. “The glass is sending some light back toward us.” Mina cupped her hands around her eyes to block the lamp’s light. Now she could see a farmhouse and three lights on a hill.",
+      "Mina sat back and held her fox toward the glass. “Meet your twin,” she whispered. When Mom lowered the lamp, the reflection grew faint. Mina tucked the fox into her bag. One fox was plenty for a night train trip."
+    ],
+    "vocabulary": [
+      {
+        "word": "reflection",
+        "meaning": "an image you see when light bounces back"
+      },
+      {
+        "word": "faint",
+        "meaning": "hard to see or hear clearly"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What happened when Mina lifted her toy?",
+        "choices": [
+          "The fox in the window rose too",
+          "The train stopped",
+          "The outside fox ran away"
+        ],
+        "answer": 0,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "The fox in the window copies the movement of Mina’s toy."
+      },
+      {
+        "prompt": "What was the second fox?",
+        "choices": [
+          "A wild fox running outside",
+          "A picture on a farmhouse",
+          "A reflection of the toy"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Explanation",
+        "explanation": "Mom explains that light bouncing back from the glass makes the reflection."
+      },
+      {
+        "prompt": "Which clue helped solve the mystery?",
+        "choices": [
+          "There were three lights on a hill",
+          "Both foxes moved exactly together",
+          "The toy was inside a bag"
+        ],
+        "answer": 1,
+        "evidencePage": 1,
+        "skill": "Evidence",
+        "explanation": "Matching movements show that the image comes from Mina’s toy."
+      }
+    ],
+    "retell": "Explain what Mina first thought she saw and how she tested her idea.",
+    "words": 154
+  },
+  {
+    "id": "2-the-mixed-up-cargo",
+    "revision": "2026-10-v1",
+    "grade": "2",
+    "world": "train",
+    "title": "The Mixed-Up Cargo",
+    "genre": "Adventure",
+    "description": "Leo and Aunt May watched a blue diesel engine at the freight depot.",
+    "pages": [
+      "Leo and Aunt May watched a blue diesel engine at the freight depot. Two wagons waited for their cargo. One would carry apples to a market. The other would carry sunflowers to a garden shop. Workers pushed crates across the platform.",
+      "A worker stopped beside the apple wagon. He held a delivery list, then looked at the crates. Yellow petals poked through one crate. “These are not apples!” he called. Leo smiled. Even from behind the fence, he could see the flowers.",
+      "The workers checked both stacks. The crates had been put beside the wrong wagons. They moved the flowers to the garden-shop wagon and the apples to the market wagon. Then they checked the labels against the delivery list again.",
+      "At last, the wagon doors closed. The diesel engine pulled its load out of the depot. “The flowers nearly went shopping for apples,” Leo said. Aunt May laughed. “Good thing someone checked before they left.” Leo waved as the last wagon passed."
+    ],
+    "vocabulary": [
+      {
+        "word": "depot",
+        "meaning": "a place where goods or vehicles are kept and prepared"
+      },
+      {
+        "word": "cargo",
+        "meaning": "goods carried by a train, ship, or plane"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What showed that a crate held flowers?",
+        "choices": [
+          "It was beside a blue engine",
+          "Yellow petals poked through it",
+          "It had an apple painted on it"
+        ],
+        "answer": 1,
+        "evidencePage": 1,
+        "skill": "Evidence",
+        "explanation": "The worker sees yellow petals in a crate beside the apple wagon."
+      },
+      {
+        "prompt": "How did the workers fix the mix-up?",
+        "choices": [
+          "They moved each load to the correct wagon",
+          "They sent both loads to the market",
+          "They left all the crates behind"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Problem and solution",
+        "explanation": "They put flowers in the garden-shop wagon and apples in the market wagon."
+      },
+      {
+        "prompt": "What does the story show about checking cargo?",
+        "choices": [
+          "It always makes a train late",
+          "It is only needed for flowers",
+          "It can catch mistakes before a delivery leaves"
+        ],
+        "answer": 2,
+        "evidencePage": 3,
+        "skill": "Main idea",
+        "explanation": "The workers catch the mix-up before the train leaves with its cargo."
+      }
+    ],
+    "retell": "Retell the cargo mix-up and explain how the workers solved it.",
+    "words": 163
+  },
+  {
+    "id": "2-the-snake-in-the-leaves",
+    "revision": "2026-10-v1",
+    "grade": "2",
+    "world": "forest",
+    "title": "The Snake in the Leaves",
+    "genre": "Adventure",
+    "description": "Nora saw something pale beside a log in the school garden.",
+    "pages": [
+      "Nora saw something pale beside a log in the school garden. It looked like a thin, empty sock. “Did someone lose this?” she asked. Her teacher, Ms. Bell, asked the class to stay on the path while she looked.",
+      "“It is a snake’s old skin,” Ms. Bell said. “Snakes shed their outer skin as they grow.” Ben peered at the leaves from the path. “Where is the snake?” Brown leaves covered the ground. At first, Nora saw nothing else.",
+      "Then a curved shape moved beside the log. A small brown snake slipped through the leaves. Its colors were so close to the leaves that Nora had missed it. Everyone watched quietly from the path and gave it room to move.",
+      "The snake disappeared under the log. Back in class, Nora drew brown leaves and hid a brown snake among them. Ben searched her picture. “Found it!” he said. Nora added the pale skin beside the log. This time, she knew what it was."
+    ],
+    "vocabulary": [
+      {
+        "word": "shed",
+        "meaning": "to lose an old outer layer"
+      },
+      {
+        "word": "curved",
+        "meaning": "bent rather than straight"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What was the pale object beside the log?",
+        "choices": [
+          "A lost sock",
+          "A piece of paper",
+          "A snake’s old skin"
+        ],
+        "answer": 2,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "Ms. Bell identifies the pale object as skin a snake has shed."
+      },
+      {
+        "prompt": "Why was the snake hard to spot?",
+        "choices": [
+          "It was high in a tree",
+          "Its colors matched the leaves",
+          "It was inside Nora’s bag"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "The brown snake blends in with the brown leaves."
+      },
+      {
+        "prompt": "What did Nora include in her drawing?",
+        "choices": [
+          "A hidden snake and its old skin",
+          "A snake wearing a sock",
+          "A snake on the classroom table"
+        ],
+        "answer": 0,
+        "evidencePage": 3,
+        "skill": "Detail",
+        "explanation": "Nora draws the snake among leaves and adds its pale old skin."
+      }
+    ],
+    "retell": "Tell what the children found, how they spotted the snake, and what Nora drew.",
+    "words": 163
+  },
+  {
     "id": "3-the-bell-beyond-the-bridge",
     "revision": "2026-10-v1",
     "grade": "3",
