@@ -20,7 +20,7 @@ export function useReadingTimer(studentId:string,bookId:string,initialPage:numbe
    if(!response.ok){const data=await response.json().catch(()=>({}));throw new Error(data.error||'Your time could not sync.');}
    const pending=outbox();if(pending[snapshot.sessionId]?.sequence<=snapshot.sequence){delete pending[snapshot.sessionId];try{localStorage.setItem(key,JSON.stringify(pending));}catch{}}
    if(mounted.current)setStatus(Object.keys(pending).length?'Some reading time is waiting to sync.':'Reading time saved');return true;
-  }catch(error){if(mounted.current)setStatus(`${error instanceof Error?error.message:'Could not connect.'} Saved on this device when storage is available; retry to sync.`);return false;}
+  }catch(error){const stored=(outbox()[snapshot.sessionId]?.sequence??-1)>=snapshot.sequence;const help=snapshot.sequence===0?'The timer has not started. Please retry.':stored?'Your time is saved on this device. Retry to sync.':'Keep this book open and retry to save your time.';if(mounted.current)setStatus(`${error instanceof Error?error.message:'Could not connect.'} ${help}`);return false;}
  },[bookId,key,outbox,preview,studentId]);
  const snapshot=useCallback(()=>{const c=clock.current;return {action:'sync',sessionId:c.sessionId,bookId,sequence:c.sequence,activeMs:Math.floor(c.activeMs),listeningMs:Math.floor(c.listeningMs),page:c.page,complete:c.complete} as ReadingSnapshot;},[bookId]);
  const tick=useCallback(()=>{const c=clock.current,now=performance.now();const delta=readingTick(now-c.last,!document.hidden,now-c.interaction,c.running);c.last=now;c.activeMs+=delta;if(speechState().status==='playing'&&speechState().id?.startsWith(`book:${bookId}:`))c.listeningMs+=delta;if(mounted.current)setElapsed(c.activeMs);},[bookId]);

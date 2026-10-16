@@ -36,7 +36,7 @@ export function BookReader({book,studentId,progress,checks=[],previewAnswers}:{b
   if(due.length)openQuestion(due[0]);else if(page===book.pages.length-1)await finish();else {setPage(page+1);void timer.flush(page+1);focusPage();}
   setBusy(false);
  }
- function previous(){if(page===0||review)return;stop();setWord(null);setPage(page-1);void timer.flush(page-1);focusPage();}
+ function previous(){if(busy||page===0||review)return;stop();setWord(null);setPage(page-1);void timer.flush(page-1);focusPage();}
  function lookBack(){setSupportUsed(true);setReview({question:questionIndex,page});setPage(question.evidencePage);setMode('read');setWord(null);focusPage();}
  async function answer(index:number){
   if(busy||result)return;setBusy(true);setChoice(index);setError('');stop();
