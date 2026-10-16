@@ -1,5 +1,2785 @@
 [
   {
+    "id": "pk-the-sock-hunt",
+    "revision": "2026-10-long-v1",
+    "grade": "PK",
+    "world": "garden",
+    "title": "The Sock Hunt",
+    "genre": "Everyday discoveries",
+    "description": "One sock on.",
+    "pages": [
+      "One sock on.",
+      "One sock gone!",
+      "Is it here? No.",
+      "Is it there? No.",
+      "Pup has the sock!",
+      "Two socks on. Thank you, Pup!"
+    ],
+    "vocabulary": [
+      {
+        "word": "sock",
+        "meaning": "a soft cover for your foot"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Who has the missing sock?",
+        "choices": [
+          "Duck",
+          "Cat",
+          "Pup"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Detail",
+        "explanation": "Pup has the sock that the child is looking for.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How many socks are on at the end?",
+        "choices": [
+          "None",
+          "Two",
+          "One"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Detail",
+        "explanation": "At the end, the child has two socks on.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Point to your feet. Tell who found the sock.",
+    "words": 24
+  },
+  {
+    "id": "pk-duck-finds-a-puddle",
+    "revision": "2026-10-long-v1",
+    "grade": "PK",
+    "world": "garden",
+    "title": "Duck Finds a Puddle",
+    "genre": "Everyday discoveries",
+    "description": "Rain, rain, rain.",
+    "pages": [
+      "Rain, rain, rain.",
+      "Duck looks out.",
+      "Rain stops. Out goes Duck!",
+      "A puddle! In goes Duck!",
+      "Splash! A wet Duck!",
+      "Duck flaps. Splash, splash, splash!"
+    ],
+    "vocabulary": [
+      {
+        "word": "puddle",
+        "meaning": "a small pool of water on the ground"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What does Duck find?",
+        "choices": [
+          "A box",
+          "A bed",
+          "A puddle"
+        ],
+        "answer": 2,
+        "evidencePage": 3,
+        "skill": "Detail",
+        "explanation": "Duck goes outside and finds a puddle.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What does Duck do in the water?",
+        "choices": [
+          "Bakes",
+          "Splashes",
+          "Reads"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Action",
+        "explanation": "Duck flaps in the water and makes splashes.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Pretend to flap like Duck. What sound does the water make?",
+    "words": 25
+  },
+  {
+    "id": "pk-a-box-for-bunny",
+    "revision": "2026-10-long-v1",
+    "grade": "PK",
+    "world": "forest",
+    "title": "A Box for Bunny",
+    "genre": "Adventure",
+    "description": "Bunny has a box.",
+    "pages": [
+      "Bunny has a box.",
+      "In goes Bunny.",
+      "In goes Mouse.",
+      "It is a boat!",
+      "Row, Bunny! Row, Mouse!",
+      "Home for a snack. Park the boat!"
+    ],
+    "vocabulary": [
+      {
+        "word": "row",
+        "meaning": "move a boat with paddles"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Who gets in with Bunny?",
+        "choices": [
+          "Mouse",
+          "Duck",
+          "Cat"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "Mouse gets into the box with Bunny.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What do they pretend the box is?",
+        "choices": [
+          "A cake",
+          "A hat",
+          "A boat"
+        ],
+        "answer": 2,
+        "evidencePage": 3,
+        "skill": "Imagination",
+        "explanation": "Bunny and Mouse pretend their box is a boat.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Show how Bunny and Mouse row their pretend boat.",
+    "words": 25
+  },
+  {
+    "id": "pk-cat-and-the-big-hat",
+    "revision": "2026-10-long-v1",
+    "grade": "PK",
+    "world": "garden",
+    "title": "Cat and the Big Hat",
+    "genre": "Everyday discoveries",
+    "description": "Cat sees a hat.",
+    "pages": [
+      "Cat sees a hat.",
+      "Cat taps the hat.",
+      "Down comes the hat!",
+      "Where is Cat?",
+      "Two ears pop up.",
+      "There is Cat! What a big hat!"
+    ],
+    "vocabulary": [
+      {
+        "word": "ears",
+        "meaning": "the parts of your body that hear sounds"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What falls over Cat?",
+        "choices": [
+          "A cup",
+          "A leaf",
+          "A hat"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The big hat comes down over Cat.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What helps us find Cat?",
+        "choices": [
+          "A tail on the hat",
+          "Two ears",
+          "Two wings"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Evidence",
+        "explanation": "Cat’s two ears pop up and show where Cat is.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Cover your head with your hands, then make two cat ears.",
+    "words": 26
+  },
+  {
+    "id": "pk-the-sleepy-little-train",
+    "revision": "2026-10-long-v1",
+    "grade": "PK",
+    "world": "train",
+    "title": "The Sleepy Little Train",
+    "genre": "Adventure",
+    "description": "Bear gets on.",
+    "pages": [
+      "Bear gets on.",
+      "Bunny gets on.",
+      "The little train goes.",
+      "Under a pillow. All dark!",
+      "Out of the tunnel. All light!",
+      "Stop by the bed. Good night!"
+    ],
+    "vocabulary": [
+      {
+        "word": "tunnel",
+        "meaning": "a passage that goes under or through something"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Who rides with Bear?",
+        "choices": [
+          "Cat",
+          "Bunny",
+          "Duck"
+        ],
+        "answer": 1,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "Bunny gets on the train after Bear.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Where does the train stop?",
+        "choices": [
+          "By the bed",
+          "In a pond",
+          "On the moon"
+        ],
+        "answer": 0,
+        "evidencePage": 5,
+        "skill": "Setting",
+        "explanation": "The little train stops by the bed at the end.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Use your hand as a train. Show it going through a tunnel.",
+    "words": 27
+  },
+  {
+    "id": "k-the-pancake-flip",
+    "revision": "2026-10-long-v1",
+    "grade": "K",
+    "world": "bakery",
+    "title": "The Pancake Flip",
+    "genre": "Funny stories",
+    "description": "Max helps Grandpa make a pancake.",
+    "pages": [
+      "Max helps Grandpa make a pancake. Max stirs the mix. Grandpa holds the pan.",
+      "“Watch this flip!” says Grandpa. Up goes the pancake. Max looks up too.",
+      "Down comes the pancake. It misses the pan. It lands in Grandpa’s big apron pocket!",
+      "Max laughs. Grandpa looks in his pocket. “A pancake to go!” he says.",
+      "That pancake is not for eating. Grandpa sets it aside. They make a fresh one.",
+      "This time, Grandpa uses a spatula. Max puts a berry on top. “Good catch!” says Max."
+    ],
+    "vocabulary": [
+      {
+        "word": "spatula",
+        "meaning": "a flat tool for lifting and turning food"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Where does the first pancake land?",
+        "choices": [
+          "In a pocket",
+          "On a plate",
+          "In a bowl"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The pancake misses the pan and lands in Grandpa’s apron pocket.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "How does Grandpa turn the next pancake?",
+        "choices": [
+          "With his pocket",
+          "With a berry",
+          "With a spatula"
+        ],
+        "answer": 2,
+        "evidencePage": 5,
+        "skill": "Sequence",
+        "explanation": "Grandpa uses a spatula for the fresh pancake.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Tell what went wrong with the first flip.",
+    "words": 86
+  },
+  {
+    "id": "k-the-umbrella-boat",
+    "revision": "2026-10-long-v1",
+    "grade": "K",
+    "world": "garden",
+    "title": "The Umbrella Boat",
+    "genre": "Everyday discoveries",
+    "description": "Rain taps on Ada’s red umbrella.",
+    "pages": [
+      "Rain taps on Ada’s red umbrella. Mom holds it over her and Sam. They wait by a puddle.",
+      "Sam finds a big leaf. “A boat!” he says. He sets it on the water.",
+      "Ada puts a pebble on the leaf. The leaf tips. The pebble goes plop!",
+      "“Too heavy,” says Ada. She takes a small petal instead. The leaf stays up.",
+      "Sam blows gently. Their boat floats across the puddle. Mom moves the umbrella with them.",
+      "The boat stops by Ada’s boot. “Home!” she says. They leave the leaf and hurry home too."
+    ],
+    "vocabulary": [
+      {
+        "word": "petal",
+        "meaning": "one of the colorful parts of a flower"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What makes the leaf tip?",
+        "choices": [
+          "A petal",
+          "The umbrella",
+          "A pebble"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "The pebble is too heavy for the leaf boat.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What rides on the boat without sinking it?",
+        "choices": [
+          "Ada’s boot",
+          "A small petal",
+          "A big rock"
+        ],
+        "answer": 1,
+        "evidencePage": 3,
+        "skill": "Solution",
+        "explanation": "Ada replaces the heavy pebble with a small petal.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Show how you would blow a leaf boat across a puddle.",
+    "words": 93
+  },
+  {
+    "id": "k-snail-delivers-a-letter",
+    "revision": "2026-10-long-v1",
+    "grade": "K",
+    "world": "forest",
+    "title": "Snail Delivers a Letter",
+    "genre": "Adventure",
+    "description": "Snail has a letter for Rabbit.",
+    "pages": [
+      "Snail has a letter for Rabbit. He puts it in his little bag. Off he goes.",
+      "Beetle runs past. “I can take it!” she says. “Thank you, but I want to visit,” says Snail.",
+      "Snail reaches a big stick. He climbs over it. His bag stays shut. The letter is safe.",
+      "The sun is high when Snail reaches the gate. Rabbit opens it. “You came!” she says.",
+      "The letter says, Can we have lunch? Rabbit laughs. “Yes! You are just in time.”",
+      "They eat lettuce in the shade. Snail puts a leaf in his bag. Lunch for the trip home!"
+    ],
+    "vocabulary": [
+      {
+        "word": "gate",
+        "meaning": "a door in a fence"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why does Snail carry the letter himself?",
+        "choices": [
+          "He dislikes Beetle",
+          "He cannot find his bag",
+          "He wants to visit Rabbit"
+        ],
+        "answer": 2,
+        "evidencePage": 1,
+        "skill": "Character",
+        "explanation": "Snail thanks Beetle but says he wants to visit.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What do the friends do together?",
+        "choices": [
+          "Build a gate",
+          "Eat lunch",
+          "Fix a train"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Sequence",
+        "explanation": "Rabbit agrees to lunch, and they eat lettuce together.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Tell what Snail carries there and what he carries home.",
+    "words": 100
+  },
+  {
+    "id": "k-dino-needs-new-shoes",
+    "revision": "2026-10-long-v1",
+    "grade": "K",
+    "world": "dinosaur",
+    "title": "Dino Needs New Shoes",
+    "genre": "Fantasy",
+    "description": "Dino’s shoes pinch his toes.",
+    "pages": [
+      "Dino’s shoes pinch his toes. “Too small!” he says. Dad takes him to the shoe shop.",
+      "Dino tries red shoes. He stands up. Pinch! “Still too small,” he says.",
+      "He tries blue shoes. Step, flop. Step, flop. They slip off his feet!",
+      "The shopkeeper brings purple shoes. Dino wiggles his toes. He walks to Dad and back.",
+      "“Not tight. Not loose,” Dino says. “These fit!” Dad checks them too.",
+      "Dino walks home in purple shoes. His toes have room. Now his hat feels small!"
+    ],
+    "vocabulary": [
+      {
+        "word": "loose",
+        "meaning": "not fitting tightly"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What happens with the blue shoes?",
+        "choices": [
+          "They pinch his toes",
+          "They turn purple",
+          "They slip off"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The blue shoes are too loose and slip off Dino’s feet.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "How does Dino check the purple shoes?",
+        "choices": [
+          "He looks only at the color",
+          "He wiggles his toes and walks",
+          "He puts them on his head"
+        ],
+        "answer": 1,
+        "evidencePage": 3,
+        "skill": "Evidence",
+        "explanation": "Dino wiggles his toes and walks before saying the shoes fit.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Pretend to walk in shoes that are much too big.",
+    "words": 84
+  },
+  {
+    "id": "k-a-picnic-for-the-moon",
+    "revision": "2026-10-long-v1",
+    "grade": "K",
+    "world": "space",
+    "title": "A Picnic for the Moon",
+    "genre": "Fantasy",
+    "description": "Zoe sets two cups on a blanket.",
+    "pages": [
+      "Zoe sets two cups on a blanket. “One for me. One for the moon,” she tells Grandma.",
+      "“The moon cannot come down,” says Grandma. Zoe looks at the empty sky. “We can wait.”",
+      "They sit on the porch. Zoe eats an apple slice. Grandma pours water into one cup.",
+      "A bright moon rises above the trees. Zoe lifts the empty cup. “Here you are!”",
+      "Grandma sits beside Zoe. “May I use that cup?” Zoe nods. “The moon can watch us.”",
+      "They share the last apple slices. Zoe waves at the sky. “Same time tomorrow, Moon!”"
+    ],
+    "vocabulary": [
+      {
+        "word": "porch",
+        "meaning": "a covered place outside a door"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Who sits with Zoe?",
+        "choices": [
+          "Her teacher",
+          "Grandma",
+          "A dragon"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "Grandma sits on the porch with Zoe.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Who uses the second cup?",
+        "choices": [
+          "Grandma",
+          "The moon",
+          "A bird"
+        ],
+        "answer": 0,
+        "evidencePage": 4,
+        "skill": "Sequence",
+        "explanation": "Zoe lets Grandma use the cup while the moon shines above them.",
+        "checkpointPage": 5
+      }
+    ],
+    "retell": "Tell who really joins Zoe’s picnic.",
+    "words": 95
+  },
+  {
+    "id": "1-the-robot-with-hiccups",
+    "revision": "2026-10-long-v1",
+    "grade": "1",
+    "world": "space",
+    "title": "The Robot with Hiccups",
+    "genre": "Fantasy",
+    "description": "Nia built a tower of blocks.",
+    "pages": [
+      "Nia built a tower of blocks. Her robot, Beep, brought the last block. “Thank you,” Nia said. “HIC!” said Beep.",
+      "The block jumped out of his hand. It landed on the rug. Beep looked at Nia. “That was new,” he said.",
+      "Nia asked Beep to stand still. HIC! A little door on his back popped open. Something round fell out.",
+      "It was a marble. Nia had lost it while they were playing. “You are not a marble box,” she told Beep.",
+      "Nia called Dad. He switched Beep off before checking the open door. A second marble was stuck inside. Dad took it out.",
+      "Dad closed the door and switched Beep on. Beep picked up the block. This time, his hand stayed still. The tower was safe.",
+      "Nia put both marbles in a jar. She drew a marble on its lid. “These go here,” she said. Beep nodded.",
+      "Beep set the last block on top. “Ta-da!” he said. Nia jumped. “Not another hiccup!” “No,” said Beep. “That was on purpose.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "marble",
+        "meaning": "a small glass ball used in games"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What falls out of Beep first?",
+        "choices": [
+          "A marble",
+          "A sandwich",
+          "A shoe"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "A round marble falls out when the little door opens.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Who takes out the stuck marble?",
+        "choices": [
+          "Nia’s cat",
+          "Beep’s friend",
+          "Dad"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Sequence",
+        "explanation": "Dad switches Beep off and takes out the second marble.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why does Nia put the marbles in a jar?",
+        "choices": [
+          "To make the tower fall",
+          "To give them their own safe place",
+          "To feed Beep later"
+        ],
+        "answer": 1,
+        "evidencePage": 6,
+        "skill": "Inference",
+        "explanation": "Nia chooses a jar so the marbles will not get inside Beep again.",
+        "checkpointPage": 7
+      }
+    ],
+    "retell": "Tell how the missing marbles caused trouble.",
+    "words": 169
+  },
+  {
+    "id": "1-the-runaway-sandwich",
+    "revision": "2026-10-long-v1",
+    "grade": "1",
+    "world": "garden",
+    "title": "The Runaway Sandwich",
+    "genre": "Everyday discoveries",
+    "description": "Ben took a wrapped sandwich to the park.",
+    "pages": [
+      "Ben took a wrapped sandwich to the park. He set it on the picnic blanket. His dog, Pip, lay beside him.",
+      "A gust of wind lifted one corner of the blanket. The sandwich rolled down the grassy hill. “My lunch!” Ben cried.",
+      "Pip ran after it. Ben ran after Pip. The sandwich bumped over a root and stopped beside a bench.",
+      "Pip reached it first. He sniffed the paper. Ben held his breath. “Leave it, Pip,” he said. Pip sat down.",
+      "Ben picked up the sandwich. The wrapper was muddy and torn. He took it back to Mom. “It had quite a trip.”",
+      "Mom put the ruined sandwich in the trash. She had extra bread and cheese in their picnic bag. Ben helped make a fresh lunch.",
+      "They moved to a flat spot. Ben put his plate on the table. Pip lay under it and got his own dog treat.",
+      "Ben took a bite. Nothing rolled away. “Good sandwich,” he said. Pip thumped his tail. Ben added, “Good dog, too.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "gust",
+        "meaning": "a sudden rush of wind"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What starts the sandwich rolling?",
+        "choices": [
+          "Pip eating it",
+          "Mom throwing it",
+          "A gust of wind"
+        ],
+        "answer": 2,
+        "evidencePage": 1,
+        "skill": "Cause and effect",
+        "explanation": "Wind lifts the blanket, and the sandwich rolls away.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does Mom make a fresh sandwich?",
+        "choices": [
+          "Pip hides all the bread",
+          "The first one has a torn, muddy wrapper",
+          "Ben wants three lunches"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Cause and effect",
+        "explanation": "The first sandwich is ruined after rolling down the hill.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What does Pip do when Ben says leave it?",
+        "choices": [
+          "Sits down",
+          "Eats the sandwich",
+          "Runs home"
+        ],
+        "answer": 0,
+        "evidencePage": 3,
+        "skill": "Character",
+        "explanation": "Pip sits down when Ben tells him to leave the sandwich.",
+        "checkpointPage": 7
+      }
+    ],
+    "retell": "Retell the sandwich’s trip down the hill.",
+    "words": 170
+  },
+  {
+    "id": "1-a-dragon-at-the-library",
+    "revision": "2026-10-long-v1",
+    "grade": "1",
+    "world": "forest",
+    "title": "A Dragon at the Library",
+    "genre": "Adventure",
+    "description": "Luz found a tiny dragon on the library steps.",
+    "pages": [
+      "Luz found a tiny dragon on the library steps. It had purple wings and a very sad face. “I lost my story,” it said.",
+      "“Was it in a book?” Luz asked. The dragon nodded. “A big tree. A small door. A pie.” That was all it remembered.",
+      "Luz took the dragon to the librarian. “We need a tree and a pie,” she said. The librarian smiled. “Let us look.”",
+      "The first book had a tree, but no pie. The second had a pie, but no door. The dragon shook its head.",
+      "The third book had a mouse who lived in a tree. On the cover, the mouse carried a pie through a small door.",
+      "“That is it!” cried the dragon. A puff of smoke curled from its nose. “Indoor voice,” Luz whispered. “Sorry,” said the dragon.",
+      "Luz read beside the dragon. At the funny part, they both giggled softly. The dragon tucked its wings close to make room.",
+      "When the library closed, the dragon borrowed the book. “Now I have my story,” it said. Luz waved. “And a library card!”"
+    ],
+    "vocabulary": [
+      {
+        "word": "borrowed",
+        "meaning": "took something to use and return later"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Who helps Luz find the book?",
+        "choices": [
+          "A baker",
+          "A train driver",
+          "The librarian"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "Luz asks the librarian to help find the remembered story.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Which book matches all three clues?",
+        "choices": [
+          "The book with only a pie",
+          "The mouse book",
+          "The first tree book"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Evidence",
+        "explanation": "The mouse book has a tree, a small door, and a pie.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why do Luz and the dragon giggle softly?",
+        "choices": [
+          "They are in a library",
+          "They dislike the story",
+          "They have lost their voices"
+        ],
+        "answer": 0,
+        "evidencePage": 6,
+        "skill": "Inference",
+        "explanation": "Luz has reminded the dragon to use an indoor voice in the library.",
+        "checkpointPage": 7
+      }
+    ],
+    "retell": "Describe the three clues that helped find the book.",
+    "words": 180
+  },
+  {
+    "id": "1-turtle-taxi",
+    "revision": "2026-10-long-v1",
+    "grade": "1",
+    "world": "ocean",
+    "title": "Turtle Taxi",
+    "genre": "Animal stories",
+    "description": "Turtle sat beside a wide puddle.",
+    "pages": [
+      "Turtle sat beside a wide puddle. Mouse stood on the other side. “My feet will get wet,” Mouse called. “Hop on,” said Turtle.",
+      "Mouse stepped onto Turtle’s shell. Turtle walked slowly through the shallow water. Mouse kept his tail curled up. “A taxi!” Mouse said.",
+      "At the far edge, Mouse hopped off. “Thank you.” Turtle liked helping. He put a leaf beside the puddle to mark his taxi stop.",
+      "Beetle came next. She was easy to carry. Then Rabbit arrived. Turtle looked at Rabbit. Rabbit looked at Turtle. “Too big,” they both said.",
+      "Rabbit found a narrow part of the puddle. One hop took him across. He waved back. Turtle waved one short leg.",
+      "A breeze pushed Mouse’s empty basket into the water. It floated toward Turtle. Mouse called, “Can your taxi carry a basket?”",
+      "Turtle nudged it gently to the bank. Mouse caught the handle. There was no mouse on this trip, but the taxi still helped.",
+      "By evening, the puddle was smaller. Mouse could step over it. Turtle took down his leaf. “Taxi closed,” he said. “Time for lettuce.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "bank",
+        "meaning": "the land beside water"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "How does Mouse cross the puddle?",
+        "choices": [
+          "In an airplane",
+          "Under a bridge",
+          "On Turtle’s shell"
+        ],
+        "answer": 2,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "Turtle carries Mouse on his shell through the shallow puddle.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does Rabbit find another way?",
+        "choices": [
+          "Rabbit has a boat",
+          "Rabbit is too big for Turtle to carry",
+          "Turtle has gone home"
+        ],
+        "answer": 1,
+        "evidencePage": 3,
+        "skill": "Problem and solution",
+        "explanation": "Rabbit and Turtle agree that Rabbit is too big for the taxi.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why can Mouse step across at the end?",
+        "choices": [
+          "The puddle is smaller",
+          "Mouse has grown wings",
+          "Turtle has moved the bank"
+        ],
+        "answer": 0,
+        "evidencePage": 7,
+        "skill": "Cause and effect",
+        "explanation": "By evening, the smaller puddle is easy for Mouse to cross.",
+        "checkpointPage": 7
+      }
+    ],
+    "retell": "Tell about two different ways Turtle helps Mouse.",
+    "words": 181
+  },
+  {
+    "id": "1-the-missing-train-whistle",
+    "revision": "2026-10-long-v1",
+    "grade": "1",
+    "world": "train",
+    "title": "The Missing Train Whistle",
+    "genre": "Adventure",
+    "description": "Ellis took his wooden whistle to the park railway.",
+    "pages": [
+      "Ellis took his wooden whistle to the park railway. He blew one soft toot. The driver waved from the little green engine.",
+      "Ellis put the whistle in his coat pocket. Then he and Dad sat in an open car. The train rolled past ducks and tall reeds.",
+      "At the next stop, Ellis reached for his whistle. His pocket was empty. He checked the seat. No whistle. “It is gone!”",
+      "Dad helped him look in the car. They stayed away from the track. The driver said, “We can ask at the station when we return.”",
+      "Ellis tried to remember. He had put the whistle away before sitting down. Then he had taken off his coat because the sun felt warm.",
+      "“My coat!” he said. It was folded beside Dad. Ellis had checked the pocket in his pants. He had forgotten about the coat.",
+      "He reached into the coat pocket. There was the whistle. “Found it!” Dad grinned. “It rode the whole way with us.”",
+      "Back at the station, Ellis gave one soft toot. The engine answered with its own whistle. “Yours is louder,” Ellis told the driver. “Mine fits in a pocket.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "reeds",
+        "meaning": "tall plants that often grow beside water"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Where did Ellis put the whistle?",
+        "choices": [
+          "In his coat pocket",
+          "Under the engine",
+          "Beside the ducks"
+        ],
+        "answer": 0,
+        "evidencePage": 1,
+        "skill": "Detail",
+        "explanation": "Ellis puts the whistle in his coat pocket before the ride.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What helps Ellis remember where to look?",
+        "choices": [
+          "Hearing a duck",
+          "Seeing a new whistle",
+          "Remembering that he took off his coat"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Sequence",
+        "explanation": "Thinking about taking off his coat points Ellis toward the right pocket.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why did Ellis first think it was lost?",
+        "choices": [
+          "It fell onto the track",
+          "He checked the wrong pocket",
+          "The driver took it"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Cause and effect",
+        "explanation": "Ellis checked his pants pocket instead of the pocket in his folded coat.",
+        "checkpointPage": 7
+      }
+    ],
+    "retell": "Retell how Ellis found his whistle without leaving the train car.",
+    "words": 191
+  },
+  {
+    "id": "2-the-caboose-club",
+    "revision": "2026-10-long-v1",
+    "grade": "2",
+    "world": "train",
+    "title": "The Caboose Club",
+    "genre": "Adventure",
+    "description": "Ruby had a club with two members: herself and her brother, Kit.",
+    "pages": [
+      "Ruby had a club with two members: herself and her brother, Kit. Their meetings took place under the kitchen table. They needed a better clubhouse. Kit kept bumping his head whenever he voted.",
+      "At the railway museum, Ruby spotted a red caboose. Long ago, a caboose rode at the back of a freight train. This one stood on a short piece of track with flowers around its wheels.",
+      "Mr. Park, the guide, let them climb inside. There were benches, cupboards, and a little desk. “A perfect clubhouse,” Ruby whispered. On the desk sat a locked tin box. Something rattled when Mr. Park lifted it.",
+      "“We found this during the repairs,” he said. “The key is missing.” Kit imagined gold coins. Ruby guessed train tickets. Mr. Park said they could help look through the museum’s old photographs for clues.",
+      "One photograph showed a railway worker sitting at the desk. A small key hung from a hook above his shoulder. Ruby pointed. “Was there a hook in the caboose?” Mr. Park took them back to check.",
+      "The hook was empty. Under it, Kit noticed a narrow gap behind the desk. Mr. Park shone a flashlight into the gap. A rusty key lay at the bottom. He used a long tool to reach it.",
+      "The key turned with a click. Inside the box were buttons, a pencil stub, and a folded paper. Kit sighed at the missing gold. Ruby unfolded the paper. It was a drawing of the caboose, made by a child.",
+      "On the back, someone had written, For Dad, so you can have a picture of home at work. The drawing showed a tiny house in every window. Ruby smiled. “They put home inside the train.”",
+      "Mr. Park made a copy for visitors to see and kept the old paper safe. He invited the children to help at the next family day. They could show other children how to draw their own caboose.",
+      "Ruby added a third member to the club: Mr. Park. They met at a museum table, where nobody bumped their head. Kit drew a caboose filled with gold coins. “This one,” he said, “is just pretend.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "caboose",
+        "meaning": "a car once used by workers at the back of a freight train"
+      },
+      {
+        "word": "gap",
+        "meaning": "a small space between things"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What did they find on the desk?",
+        "choices": [
+          "A locked tin box",
+          "A new train engine",
+          "A bowl of flowers"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The tin box sits on the little desk inside the caboose.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "How did the photograph help?",
+        "choices": [
+          "It showed gold inside the box",
+          "It named the club members",
+          "It showed where a key once hung"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Evidence",
+        "explanation": "The photograph shows a key on a hook above the desk.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why did the child draw houses in the windows?",
+        "choices": [
+          "To hide the missing key",
+          "To give Dad a picture of home at work",
+          "To plan a bigger railway"
+        ],
+        "answer": 1,
+        "evidencePage": 7,
+        "skill": "Inference",
+        "explanation": "The note says the drawing is for Dad to have a picture of home at work.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "What will the club do at family day?",
+        "choices": [
+          "Help children draw cabooses",
+          "Drive the museum train",
+          "Sell the old drawing"
+        ],
+        "answer": 0,
+        "evidencePage": 8,
+        "skill": "Sequence",
+        "explanation": "Mr. Park invites Ruby and Kit to help children draw their own cabooses.",
+        "checkpointPage": 9
+      }
+    ],
+    "retell": "Tell how a photograph helped the club solve the locked-box mystery.",
+    "words": 358
+  },
+  {
+    "id": "2-the-snake-who-missed-the-parade",
+    "revision": "2026-10-long-v1",
+    "grade": "2",
+    "world": "forest",
+    "title": "The Snake Who Missed the Parade",
+    "genre": "Adventure",
+    "description": "Sedge the snake had practiced waving for the forest parade.",
+    "pages": [
+      "Sedge the snake had practiced waving for the forest parade. Waving was difficult without arms. He tried his tail, but every time he raised it, he rolled sideways into a fern. His paper crown fell off twice.",
+      "On parade morning, Rabbit brought him a ribbon. “Tie this to your tail,” she said. “Then everyone can see you wave.” Sedge tried it. The ribbon fluttered beautifully. He was ready—except for one small problem.",
+      "The parade started at the big oak. Sedge went to the big elm. He waited beside a beetle, who was not in the parade. “Quiet crowd,” Sedge said. Far away, he heard a drum.",
+      "He followed the sound to the oak. Only an empty lemonade jug remained. The parade had already left. Sedge’s crown drooped. He could see the last bright ribbons disappearing around a bend in the path.",
+      "Then the drum stopped. Sedge hurried around the bend. A branch had fallen across the narrow path. The animals were arguing. Rabbit could hop over, but the little hedgehogs could not pull their flower cart across.",
+      "Sedge slipped under the branch to see the other side. Just beyond it, a wide garden gate stood open. Through the gate was a smooth path that joined the parade road farther ahead.",
+      "“Come this way!” he called. Nobody heard him over the argument. Sedge raised his ribbon and shook it. This time, Rabbit spotted the bright flash. “Sedge has found something!” she said.",
+      "He led them back a few steps and through the gate. The cart rolled easily along the garden path. The smallest hedgehog offered Sedge a place on top, beside a pot of daisies.",
+      "Sedge rode through the village with his ribbon waving high. He did not have to lift his tail, balance his crown, and move all at once. The beetle from the elm flew over to watch.",
+      "“You found your parade,” said the beetle. Sedge nodded. “Eventually.” Then his crown tipped over one eye. Rabbit straightened it, the drum began again, and the flower cart rattled toward the picnic."
+    ],
+    "vocabulary": [
+      {
+        "word": "elm",
+        "meaning": "a kind of tree"
+      },
+      {
+        "word": "drooped",
+        "meaning": "bent or hung downward"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why did Sedge miss the start?",
+        "choices": [
+          "He went to the wrong tree",
+          "He lost the drum",
+          "He stayed home to sleep"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "Sedge waits at the elm, but the parade starts at the oak.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What stops the parade?",
+        "choices": [
+          "An empty lemonade jug",
+          "Sedge’s paper crown",
+          "A branch across the path"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Problem",
+        "explanation": "The flower cart cannot get over the fallen branch.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How does Sedge get Rabbit’s attention?",
+        "choices": [
+          "He climbs the oak",
+          "He waves his ribbon",
+          "He bangs the drum"
+        ],
+        "answer": 1,
+        "evidencePage": 6,
+        "skill": "Solution",
+        "explanation": "Rabbit notices the bright ribbon while the others are arguing.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why is riding on the cart easier for Sedge?",
+        "choices": [
+          "He can wave without moving along the path",
+          "He can hide from everyone",
+          "He can carry the branch"
+        ],
+        "answer": 0,
+        "evidencePage": 8,
+        "skill": "Inference",
+        "explanation": "On the cart, Sedge does not have to move, balance his crown, and wave at once.",
+        "checkpointPage": 9
+      }
+    ],
+    "retell": "Retell the two problems Sedge faced and how he joined the parade.",
+    "words": 341
+  },
+  {
+    "id": "2-the-pancake-planet",
+    "revision": "2026-10-long-v1",
+    "grade": "2",
+    "world": "space",
+    "title": "The Pancake Planet",
+    "genre": "Fantasy",
+    "description": "On a tiny moon, Tavi ran the only pancake café for a hundred space miles.",
+    "pages": [
+      "On a tiny moon, Tavi ran the only pancake café for a hundred space miles. Her helper was a round robot named Dot. Dot could flip six pancakes at once, but he always called them flat circles.",
+      "One morning, a delivery ship landed with a new cooker. The old one had broken. Tavi followed the setup pictures while Dot arranged plates. Outside, hungry travelers began lining up in their shiny space boots.",
+      "Tavi poured the first pancake. She pressed a green button. The pancake rose from the cooker and floated toward the ceiling. “That,” said Dot, “is not where the plate is.” A second pancake floated after it.",
+      "Tavi shut off the cooker. The pancakes drifted gently down. Dot caught one on a plate and the other on his head. Tavi read the button label: FLOAT MODE. The cooker was made for space kitchens.",
+      "There was another button marked PAN MODE. Tavi pressed it. This pancake stayed where it belonged. Dot flipped it neatly. The travelers cheered through the café window. Breakfast was saved—or so Tavi thought.",
+      "Then the syrup bottle would not open. Dot twisted. Tavi twisted. Nothing happened. The first traveler tapped on the window. He pointed at a picture on his own bottle and made a pushing motion.",
+      "Tavi looked closely at the cap. A tiny arrow pointed down. She pushed and turned. The cap opened. “Two things to do together,” she told Dot. “Not one thing to do harder.” Dot wiped syrup from his fingers.",
+      "Soon every plate had a warm pancake. One traveler asked about the pancake on Dot’s head. Dot had forgotten it. “My new hat,” he said. Tavi removed it before it could slide into his open tool box.",
+      "After breakfast, they made a small sign for each button. Tavi drew a pan beside PAN MODE. Dot drew a pancake near the ceiling beside FLOAT MODE. He added a very surprised robot underneath it.",
+      "That afternoon, a new ship arrived. “Do you serve flying pancakes?” the pilot asked. Tavi looked at Dot. Dot looked at the cooker. “Only by accident,” Tavi said, and brought out two ordinary plates."
+    ],
+    "vocabulary": [
+      {
+        "word": "drifted",
+        "meaning": "moved slowly through air or water"
+      },
+      {
+        "word": "motion",
+        "meaning": "a movement"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What happens when Tavi presses the first button?",
+        "choices": [
+          "The plates fall apart",
+          "The pancakes float upward",
+          "The cooker turns into a robot"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "The green button starts float mode, and the pancakes rise.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Which setting keeps pancakes on the cooker?",
+        "choices": [
+          "Pan mode",
+          "Float mode",
+          "Hat mode"
+        ],
+        "answer": 0,
+        "evidencePage": 4,
+        "skill": "Detail",
+        "explanation": "Tavi switches to pan mode, and the pancake stays in place.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How does Tavi open the syrup?",
+        "choices": [
+          "She pulls the bottom off",
+          "She heats the bottle",
+          "She pushes down and turns"
+        ],
+        "answer": 2,
+        "evidencePage": 6,
+        "skill": "Sequence",
+        "explanation": "The arrow and traveler’s motion help Tavi push and turn the cap.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why do they draw pictures beside the buttons?",
+        "choices": [
+          "To make more syrup",
+          "To help them choose the right setting",
+          "To hide the cooker’s labels"
+        ],
+        "answer": 1,
+        "evidencePage": 8,
+        "skill": "Inference",
+        "explanation": "The pan and floating-pancake pictures show what each button does.",
+        "checkpointPage": 9
+      }
+    ],
+    "retell": "Explain the two kitchen problems and how Tavi solved each one.",
+    "words": 355
+  },
+  {
+    "id": "2-the-library-under-the-stairs",
+    "revision": "2026-10-long-v1",
+    "grade": "2",
+    "world": "museum",
+    "title": "The Library Under the Stairs",
+    "genre": "Mystery",
+    "description": "At the community center, Hana waited while her dad helped paint a wall.",
+    "pages": [
+      "At the community center, Hana waited while her dad helped paint a wall. She had finished her book twice. Her friend Mo had finished his snack. Neither wanted to watch paint dry for another minute.",
+      "Mo noticed a narrow door under the stairs. A sign said STORAGE. They asked the center manager, Mrs. Reed, what was inside. “Mostly boxes,” she said. “You may look with me, but it is dusty.”",
+      "Behind the door stood three shelves full of books. Some had worn covers. Others looked nearly new. A little chair was buried under a pile of coats. Hana brushed dust from a book about sea monsters.",
+      "“These came from the old reading room,” Mrs. Reed said. “We never found a place for them.” Hana looked around. The space was small, but the chair fit. “What if the place is right here?”",
+      "Mrs. Reed measured the doorway and checked the light. Adults moved the heavy boxes. Hana and Mo wiped the shelves. Under the coats they found a second chair—and a cat, who had been asleep on the first.",
+      "The cat belonged to the caretaker. He took her to a quieter room. The children sorted books into picture books, stories, and books about real things. Mo wanted a shelf just for sea monsters. Hana said one book was not enough.",
+      "They made a sign for the new reading nook. Hana wrote in tiny, neat letters. From the hallway, nobody could read it. Mo tried letters as big as his hand. Now the sign could be seen from the door.",
+      "On opening day, a little girl stopped outside. “Can I come in?” she asked. Hana moved her chair to make room. The girl picked the sea-monster book. Mo grinned. His special shelf had its first reader.",
+      "Soon the nook was full, so Mrs. Reed put a basket of books and two more chairs in the hall. Children could choose a book inside and read where there was space. Nobody had to wait for a seat.",
+      "Dad finished painting. “Ready to go?” he asked. Hana held up one finger. She was nearly at the end of a chapter. Mo was reading about whales. Even without a sea-monster shelf, the little library was doing very well."
+    ],
+    "vocabulary": [
+      {
+        "word": "nook",
+        "meaning": "a small sheltered corner"
+      },
+      {
+        "word": "caretaker",
+        "meaning": "a person who looks after a building"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What do the children find under the stairs?",
+        "choices": [
+          "Shelves of books",
+          "A working train",
+          "A kitchen full of snacks"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The storage space contains books from the old reading room.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Who moves the heavy boxes?",
+        "choices": [
+          "The cat",
+          "Hana alone",
+          "Adults"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Detail",
+        "explanation": "Adults move the heavy boxes while the children wipe shelves.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why do they change the sign?",
+        "choices": [
+          "It lists the wrong opening day",
+          "Its first letters are too small to read from the hall",
+          "The cat eats it"
+        ],
+        "answer": 1,
+        "evidencePage": 6,
+        "skill": "Cause and effect",
+        "explanation": "Hana’s small letters cannot be read from the hallway.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "How do they make room for more readers?",
+        "choices": [
+          "Put extra chairs and books in the hall",
+          "Throw away all the picture books",
+          "Make children stand outside"
+        ],
+        "answer": 0,
+        "evidencePage": 8,
+        "skill": "Problem and solution",
+        "explanation": "Mrs. Reed adds chairs and a basket of books outside the small nook.",
+        "checkpointPage": 9
+      }
+    ],
+    "retell": "Describe how the storage space became a place to read.",
+    "words": 372
+  },
+  {
+    "id": "2-the-dinosaur-on-the-wrong-bus",
+    "revision": "2026-10-long-v1",
+    "grade": "2",
+    "world": "dinosaur",
+    "title": "The Dinosaur on the Wrong Bus",
+    "genre": "Fantasy",
+    "description": "Tobin the dinosaur was going to his cousin’s birthday party.",
+    "pages": [
+      "Tobin the dinosaur was going to his cousin’s birthday party. He wore his best blue backpack. Inside was a gift wrapped in orange paper. On his wrist, Dad had written the bus number: 6.",
+      "At the busy station, Tobin saw a bus with a round number on the front. He hurried aboard. He found a seat beside a turtle carrying flowers. “Lovely day for the park,” the turtle said.",
+      "“I am going to a party,” Tobin replied. Then he looked out. The bus turned away from his cousin’s street. A sign inside said ROUTE 9. Tobin looked at his wrist. His stomach gave a small flip.",
+      "He stayed in his seat until the next stop. Then he told the driver, “I think I am on the wrong bus.” The driver parked safely before answering. “We will help you get to the right place.”",
+      "The driver called the station helper. At the next station, a helper in a bright vest met Tobin and phoned Dad. Tobin felt much better when he heard Dad’s voice. “Stay with the helper,” Dad said. “I am coming.”",
+      "While they waited, Tobin looked at the number on his wrist. With his arm held one way, the 6 looked like a 9. The helper showed him the printed route number and the list of stops on the wall.",
+      "Dad arrived with a new plan. They would ride together on bus 6. Tobin checked the number on the front, then checked the stops. His cousin’s street was on the list. This time, he was sure.",
+      "They reached the party after the first game, but before the cake. Tobin gave his cousin the orange package. Inside was a toy bus. His cousin rolled it across the table. “Where does this one go?”",
+      "“Anywhere you want,” Tobin said. “But check the number first.” He told the story while everyone ate cake. The turtle from the bus appeared at the garden gate. She was delivering flowers to Tobin’s aunt.",
+      "“You found your party!” she said. Tobin nodded and offered her a slice of cake. The toy bus carried one tiny paper flag across the table. Its number was 6, with a line underneath."
+    ],
+    "vocabulary": [
+      {
+        "word": "route",
+        "meaning": "the path a bus or other vehicle follows"
+      },
+      {
+        "word": "replied",
+        "meaning": "answered"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What tells Tobin he may be on the wrong bus?",
+        "choices": [
+          "The turtle has flowers",
+          "His backpack is blue",
+          "The route sign says 9"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Evidence",
+        "explanation": "Tobin sees route 9 inside, but Dad wrote number 6 for him.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What does Tobin do when he is worried?",
+        "choices": [
+          "Hides under his seat",
+          "Asks the driver for help",
+          "Gets off and wanders alone"
+        ],
+        "answer": 1,
+        "evidencePage": 3,
+        "skill": "Problem and solution",
+        "explanation": "Tobin tells the driver, who arranges help at a station.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How does Tobin check the next bus?",
+        "choices": [
+          "He checks its number and its stops",
+          "He follows the turtle",
+          "He chooses the nearest bus"
+        ],
+        "answer": 0,
+        "evidencePage": 6,
+        "skill": "Sequence",
+        "explanation": "With Dad, Tobin checks both the number and the stop list.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why does the toy bus number have a line under it?",
+        "choices": [
+          "To make it look like a flower",
+          "To hide the number",
+          "To show which way up the 6 goes"
+        ],
+        "answer": 2,
+        "evidencePage": 9,
+        "skill": "Inference",
+        "explanation": "Tobin confused an upside-down 6 with a 9, so a line helps show its direction.",
+        "checkpointPage": 9
+      }
+    ],
+    "retell": "Tell how Tobin got help and found the right bus.",
+    "words": 362
+  },
+  {
+    "id": "3-the-train-that-carried-a-garden",
+    "revision": "2026-10-long-v1",
+    "grade": "3",
+    "world": "train",
+    "title": "The Train That Carried a Garden",
+    "genre": "Adventure",
+    "description": "The village flower show was tomorrow, and Mr.",
+    "pages": [
+      "The village flower show was tomorrow, and Mr. Vale had a problem. His delivery van had broken down beside the greenhouse. Forty pots of flowers stood ready to travel. “Perhaps they can walk,” said his niece, Imogen. Mr. Vale did not laugh.",
+      "The show was in a town served by the old valley railway. Imogen remembered a wagon at the station that carried bicycles. She asked whether it could carry flowers instead. Her uncle called the railway manager, who agreed to inspect the load.",
+      "The manager measured the pots and checked the wagon’s limits. Heavy pots would sit low, with straps around their stands. Smaller pots would travel in crates. Nobody would ride with the plants. “Flowers need tickets too?” Imogen asked. “Freight paperwork,” the manager replied.",
+      "Loading took much longer than Imogen expected. A tall sunflower brushed the doorway of the goods shed. Her friend Arun suggested laying it flat, but Mr. Vale shook his head. The stem might bend. They needed a lower stand, not a shorter flower.",
+      "Arun found a shallow crate. The sunflower’s pot fitted snugly inside. Once the crate was secured, the flower stood below the shed doorway. Imogen tied a small blue tag to each pot so the unloading crew would know which plants belonged together.",
+      "The train departed in the morning. Imogen and Arun rode in a passenger carriage with Mr. Vale. At every bend, Imogen tried to see the flower wagon. She could glimpse yellow blossoms behind the engine. It looked as if the railway had grown petals.",
+      "Halfway to town, the train stopped at a signal. They waited. Then the guard walked through the carriage: a fallen tree was blocking the line ahead. A railway crew was clearing it, but nobody knew exactly how long that would take.",
+      "Mr. Vale checked his watch. Entries closed at noon. If they missed the deadline, the flowers could still be displayed, but they could not win a prize. Imogen had spent weeks helping grow them. She stared at the unmoving hills and said nothing.",
+      "Arun opened his sketchbook. He drew the flower wagon waiting beside a field of sheep. One sheep in the drawing wore a sunflower hat. Imogen laughed despite herself. She added an engine with leaves instead of smoke. Soon they were designing an entire garden railway.",
+      "The train finally moved, but they reached town after noon. Mr. Vale spoke to the show organizer. The deadline applied to everyone. He nodded, disappointed, and accepted a display space near the entrance. Together they arranged their late garden around Arun’s drawing.",
+      "Visitors stopped to ask about the picture. Imogen told them about the broken van, the low crate, and the fallen tree. Children searched the drawing for the sheep in the hat. By afternoon, the entrance had become the busiest corner of the show.",
+      "Their flowers won no ribbon. On the journey home, however, Imogen carried a stack of requests for next year’s garden railway display. Mr. Vale finally laughed at her walking-flower joke. “They have traveled by train,” he said. “They will expect first class next time.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "secured",
+        "meaning": "fastened so something will not move"
+      },
+      {
+        "word": "deadline",
+        "meaning": "the latest time something can be done"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "How will the heavy pots travel safely?",
+        "choices": [
+          "Low in the wagon with secured stands",
+          "On passengers’ laps",
+          "On top of the engine"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The manager plans low positions and straps for the heavy pots.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why do they use a shallow crate for the sunflower?",
+        "choices": [
+          "To hide its yellow petals",
+          "To turn it into a smaller plant",
+          "To lower the pot without bending the stem"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Problem and solution",
+        "explanation": "The shallow crate lowers the pot enough to fit under the doorway.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why might the flowers miss the judging?",
+        "choices": [
+          "The railway refuses all flowers",
+          "A blocked line delays them past the entry deadline",
+          "The tags are the wrong color"
+        ],
+        "answer": 1,
+        "evidencePage": 7,
+        "skill": "Cause and effect",
+        "explanation": "A fallen tree stops the train, putting the noon deadline at risk.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "How does the ending differ from Imogen’s original hope?",
+        "choices": [
+          "They gain interest in a future display instead of a prize",
+          "They win the largest flower ribbon",
+          "They decide never to grow flowers again"
+        ],
+        "answer": 0,
+        "evidencePage": 11,
+        "skill": "Compare",
+        "explanation": "They miss the judging but receive requests for a garden railway display next year.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Describe how the group adapts to two setbacks without getting the prize they hoped for.",
+    "words": 514
+  },
+  {
+    "id": "3-operation-invisible-hamster",
+    "revision": "2026-10-long-v1",
+    "grade": "3",
+    "world": "garden",
+    "title": "Operation Invisible Hamster",
+    "genre": "Everyday discoveries",
+    "description": "The class hamster was called Professor Crumb, although he had never written a paper or taught a lesson.",
+    "pages": [
+      "The class hamster was called Professor Crumb, although he had never written a paper or taught a lesson. On Friday, his empty cage caused more excitement than any teacher. The small door stood open. A sunflower seed rested on the desk beneath it.",
+      "Ms. Ortiz closed the classroom door and asked everyone to stand still. “We need a quiet search,” she said. “No grabbing, and no moving heavy furniture yourselves.” Maya wrote PROFESSOR CRUMB: MISSING on the board. Owen drew a hamster with a detective hat.",
+      "They checked the door’s clip. It had not clicked fully shut after the hamster’s water was changed. Ms. Ortiz secured the empty cage, then assigned search areas. Maya and Owen could inspect the reading corner without moving the large bookcase.",
+      "Owen found a crumb beside a floor cushion. “Evidence!” he whispered. Maya looked at it. It was pink. Professor Crumb’s food was brown. “That might be from yesterday’s party,” she said. Owen crossed out CRUMB OF GREAT IMPORTANCE in his notebook.",
+      "A rustle came from the art cupboard. Everyone froze. Ms. Ortiz opened it slowly. A roll of paper slid forward, followed by three paintbrushes. No hamster. “He is invisible,” Owen announced. “Or we have not found him,” Maya replied.",
+      "Maya studied the room from floor level. Behind the reading cushions, a cardboard tube led into the class’s model town. The town had streets, shops, and a railway station made from a cereal box. A sunflower seed lay just inside the tube.",
+      "The station roof was removable. Ms. Ortiz lifted it carefully. Professor Crumb sat in the ticket office, washing his face. He had packed the room with shredded paper. The class gave a silent cheer, waving their hands instead of shouting.",
+      "Ms. Ortiz used his familiar carrier to move him safely back to the cage. Owen wanted to know how long he had lived at the station. Maya pointed out that finding one seed could not tell them when he had arrived.",
+      "They repaired the cage clip and added a picture checklist beside it: door, clip, water. Two people would check the door after each supervised care session. Professor Crumb immediately began rearranging his bedding, apparently dissatisfied with his official home.",
+      "The cardboard station was not so easy to repair. One corner had been chewed into a round arch. Owen said it looked better that way. Maya added a tiny sign: HAMSTER ENTRANCE. Ms. Ortiz kept the model safely away from the cage.",
+      "For their class news, Maya wrote what they had observed. Owen wanted to include the invisible-hamster theory. She let him add it under a heading called Our First Guesses. Under What We Found, they described the tube and the seed.",
+      "On Monday, visitors admired the model town. Owen showed them the hamster entrance and the detective notebook. Professor Crumb slept through the whole presentation. “Secret agents need rest,” Owen whispered. Maya did not argue. It was a much better story when labeled pretend."
+    ],
+    "vocabulary": [
+      {
+        "word": "inspect",
+        "meaning": "look closely at something"
+      },
+      {
+        "word": "observed",
+        "meaning": "noticed by watching carefully"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why is the reading corner a safe search area for the children?",
+        "choices": [
+          "It is outside the classroom",
+          "They can look there without moving heavy furniture",
+          "It has no places a hamster could hide"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "Ms. Ortiz lets them inspect the corner while leaving the heavy bookcase in place.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does Maya doubt the pink crumb is a useful clue?",
+        "choices": [
+          "It may be leftover party food",
+          "Hamsters cannot see pink",
+          "Owen has already eaten it"
+        ],
+        "answer": 0,
+        "evidencePage": 3,
+        "skill": "Evidence",
+        "explanation": "Maya notices the crumb differs from the hamster food and recalls the party.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Where do they find Professor Crumb?",
+        "choices": [
+          "In the paint cupboard",
+          "Under the classroom door",
+          "In the model railway station"
+        ],
+        "answer": 2,
+        "evidencePage": 6,
+        "skill": "Detail",
+        "explanation": "The hamster has made a nest in the model station’s ticket office.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "How does the class report separate fact from guesses?",
+        "choices": [
+          "It leaves out every clue",
+          "It uses different headings for guesses and findings",
+          "It says the hamster truly became invisible"
+        ],
+        "answer": 1,
+        "evidencePage": 10,
+        "skill": "Source evaluation",
+        "explanation": "The report labels early guesses separately from what the children actually found.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Tell which clues helped the search and which clue was misleading.",
+    "words": 493
+  },
+  {
+    "id": "3-the-storm-in-the-museum",
+    "revision": "2026-10-long-v1",
+    "grade": "3",
+    "world": "museum",
+    "title": "The Storm in the Museum",
+    "genre": "Mystery",
+    "description": "Leo’s favorite museum exhibit was a model ship inside a glass case.",
+    "pages": [
+      "Leo’s favorite museum exhibit was a model ship inside a glass case. Each Saturday, a projector made waves ripple behind it, and speakers played a storm. This Saturday, Leo’s cousin Amara came to see it. Leo promised her the biggest indoor thunder in town.",
+      "They pressed the blue button. Lights flashed. Wind howled. Then a tiny squeak sounded from the speaker. The waves stopped. A recorded voice announced, “Please enjoy the magnificent squeak.” Amara laughed so hard she had to sit down.",
+      "The guide, Mr. Finn, arrived with a puzzled face. The announcement should have said magnificent storm. He turned off the exhibit and called the technician. She could come that afternoon. Meanwhile, three families were waiting to see the ship.",
+      "Amara asked whether they could tell the ship’s story themselves. Mr. Finn liked the idea, but reminded them that visitors needed a clear path and the glass case must not be touched. He brought paper, cardboard, and a book about the ship.",
+      "Leo wanted crashing waves and a giant sea monster. The book described a cargo ship that carried wool and tea. It had survived a storm, but there was no sea monster. “We can save that for a made-up story,” Amara said.",
+      "They divided the real story into three parts: the ship leaving port, the storm, and its return. Mr. Finn checked their notes. Leo made wave sounds by rubbing two sheets of paper together. Amara tested a cardboard thunder sheet.",
+      "Her first thunderclap was enormous. A toddler covered his ears. Amara stopped at once. They tried a softer version and warned visitors before each sound. A small sign explained that the paper storm was a live replacement for the broken exhibit.",
+      "At their first performance, Leo forgot the name of the port. Amara pointed to the notes. He found his place and continued. A child in the front row offered a very convincing seagull call. Mr. Finn invited one gentle call at the beginning.",
+      "By the third show, the storm had waves, rain, a gull, and two narrators who no longer rushed. When the ship reached home, the audience tapped their knees for the sound of the harbor bell. Nobody mentioned the missing projector.",
+      "The technician arrived and found two problems: a loose cable and a test recording accidentally selected during an update. The squeak had been a sound check. She repaired the cable, chose the correct recording, and ran the exhibit twice.",
+      "Leo expected their paper storm to be packed away. Instead, Mr. Finn asked whether they would perform once more before the last projected show. “Visitors have enjoyed hearing you tell it,” he said. Amara carefully flattened their rumpled notes.",
+      "At closing time, Amara chose a postcard of the ship. On the back she wrote, I saw a storm made from paper. Leo added a tiny sea monster in the corner. “That part is fiction,” he told her. “Obviously,” she replied. “It is wearing boots.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "narrators",
+        "meaning": "people who tell a story"
+      },
+      {
+        "word": "projector",
+        "meaning": "a machine that shines pictures onto a surface"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why does Mr. Finn turn off the exhibit?",
+        "choices": [
+          "The model ship is sinking",
+          "The visitors dislike ships",
+          "It is playing the wrong sounds and has stopped working properly"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "The exhibit squeaks, stops its waves, and plays an incorrect announcement.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why do they leave the sea monster out of the main performance?",
+        "choices": [
+          "Mr. Finn dislikes funny stories",
+          "The ship’s factual history does not include one",
+          "They cannot draw monsters"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Fact and fiction",
+        "explanation": "Their source describes a real cargo ship, with no evidence of a sea monster.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How do they change the performance after the toddler reacts?",
+        "choices": [
+          "Make the thunder softer and warn listeners",
+          "Make the thunder even louder",
+          "Stop telling the ship’s story forever"
+        ],
+        "answer": 0,
+        "evidencePage": 6,
+        "skill": "Character response",
+        "explanation": "Amara notices the toddler’s discomfort and adjusts the sound.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "What does the final postcard combine?",
+        "choices": [
+          "Two proven facts about sea monsters",
+          "Instructions for fixing a projector",
+          "A real event and a clearly imaginary drawing"
+        ],
+        "answer": 2,
+        "evidencePage": 11,
+        "skill": "Interpretation",
+        "explanation": "Amara describes their paper performance, while Leo adds an explicitly fictional monster.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Describe how Leo and Amara turn a broken exhibit into a live performance.",
+    "words": 490
+  },
+  {
+    "id": "3-captain-ink-and-the-missing-island",
+    "revision": "2026-10-long-v1",
+    "grade": "3",
+    "world": "ocean",
+    "title": "Captain Ink and the Missing Island",
+    "genre": "Animal stories",
+    "description": "Captain Ink was an octopus with excellent maps and terrible handwriting.",
+    "pages": [
+      "Captain Ink was an octopus with excellent maps and terrible handwriting. His crew could read his charts only after turning them upside down, sideways, and occasionally backward. Today, the captain had promised a picnic on Button Island. He had drawn a very clear sandwich beside it.",
+      "The crew sailed to the marked spot. There was water, more water, and a gull sitting on a buoy. There was no island. First Mate Pearl, a young seal, checked the chart. “Perhaps,” she said carefully, “this is another handwriting problem.”",
+      "Captain Ink compared the buoy’s number with the chart. It matched. A distant lighthouse stood in the right direction too. They were in the correct place. The captain stared over the rail. “Then someone has stolen our picnic island.”",
+      "Pearl did not think an island would fit in a thief’s pocket. She suggested asking the lighthouse keeper by radio. The keeper laughed kindly. “Button Island is a sandbar. Check the tide table.” Captain Ink found the table under a biscuit tin.",
+      "At high tide, the sandbar was covered. At low tide, it appeared again. Their last visit had been at low tide. The captain had drawn the island but forgotten to note when it could be seen. He crossed out STOLEN in his log.",
+      "Low tide was several hours away. The crew could not simply wait in the shallow channel, where the falling water might leave their boat stuck. The lighthouse keeper directed them to a safe harbor. They followed the marked route and tied up there.",
+      "At the harbor, Pearl opened the picnic basket. The bread was dry, but the captain had packed eight spoons and no knife. “Eight arms,” he explained. Pearl used the café’s picnic table, and the café owner lent them what they needed.",
+      "They made sandwiches while Captain Ink corrected the chart. He added the words VISIBLE AT LOW TIDE in large letters. Then he drew a clock. Pearl asked him to include the date of the tide table, since the times changed.",
+      "Later, they watched from the harbor as a pale strip slowly appeared on the water. Gulls landed first. Soon Button Island looked exactly like the captain’s drawing, except for the enormous sandwich symbol. The crew cheered its return.",
+      "They decided to keep their picnic at the harbor. The little sandbar had no shade, and the tide would eventually cover it again. A safe viewpoint was enough. Captain Ink sketched the changing shape while Pearl counted gulls.",
+      "On the way home, the captain announced a new rule: every chart would be checked by another crew member. Pearl agreed, provided they also checked the picnic basket. She held up the eight spoons. The captain looked mildly offended.",
+      "That evening, he labeled the spoons with numbers so none would be lost. His handwriting was still terrible, but Pearl could read one through eight. Beneath the chart of Button Island, she added a small drawing of the harbor picnic table. It was much easier to find."
+    ],
+    "vocabulary": [
+      {
+        "word": "sandbar",
+        "meaning": "a ridge of sand in shallow water"
+      },
+      {
+        "word": "tide",
+        "meaning": "the regular rise and fall of sea level"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "How do they know they reached the mapped location?",
+        "choices": [
+          "The buoy number and lighthouse direction match",
+          "The captain smells sandwiches",
+          "The gull tells them"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Evidence",
+        "explanation": "They compare two landmarks with the chart before deciding their position is correct.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why has the island disappeared?",
+        "choices": [
+          "Someone carried it away",
+          "The lighthouse moved",
+          "High tide covers the sandbar"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Cause and effect",
+        "explanation": "Button Island is a sandbar that is covered at high tide.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why does Pearl ask for the tide table’s date?",
+        "choices": [
+          "The date tells them what to eat",
+          "Tide times change",
+          "The captain cannot draw clocks"
+        ],
+        "answer": 1,
+        "evidencePage": 7,
+        "skill": "Reasoning",
+        "explanation": "A tide table needs its date because the times are not the same every day.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why do they picnic at the harbor instead?",
+        "choices": [
+          "It is a safe place with a useful viewpoint",
+          "They still think the island was stolen",
+          "Their boat has no crew"
+        ],
+        "answer": 0,
+        "evidencePage": 9,
+        "skill": "Decision",
+        "explanation": "The sandbar lacks shade and will be covered again, so the harbor is a better picnic spot.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Explain the missing-island mystery using the crew’s clues.",
+    "words": 497
+  },
+  {
+    "id": "3-the-bake-off-disaster",
+    "revision": "2026-10-long-v1",
+    "grade": "3",
+    "world": "bakery",
+    "title": "The Bake-Off Disaster",
+    "genre": "Funny stories",
+    "description": "Aisha and her cousin Tom entered the junior bake-off with a plan for a three-layer berry cake.",
+    "pages": [
+      "Aisha and her cousin Tom entered the junior bake-off with a plan for a three-layer berry cake. Their aunt would handle the oven. They would measure, mix, decorate, and make all important artistic decisions. Tom’s first decision was that the cake needed a tower.",
+      "Aisha preferred a neat cake with berries around the edge. They sketched both designs. The tower looked exciting, so they agreed to try it. Their aunt asked them to check the rules. Every part had to be edible, and they had one large tray.",
+      "The cake layers cooled on racks. Tom spread cream between them. Aisha added berries. The tower stood upright for three wonderful seconds. Then the top layer slid to the left. Tom caught it with a clean plate before it hit the table.",
+      "They rebuilt it with more cream. This made the layers slide even faster. Aisha pressed her lips together. “More of the same thing is not helping.” Their aunt checked the cake: the middle was still a little warm, which was softening the filling.",
+      "They put the layers aside to cool completely. There was an hour left. Tom stared at their drawing. “We could use a stick through the middle.” Aisha pointed to the rules. They had no suitable edible support, and rushing a new structure seemed risky.",
+      "While waiting, they tasted a small broken piece with cream and berries. It was delicious. Aisha looked at the clear dessert cups in the cupboard. “Does the entry have to be one tall cake?” They read the rules again. It did not.",
+      "They called the organizer to check that small portions on one tray were allowed. Yes, as long as they listed the ingredients and served the required number of portions. Tom drew a new plan: a tiny landscape made of berry cups.",
+      "They cut the cooled cake into small pieces and layered them in the cups with cream and fruit. Aisha made a hill of berries in each one. Tom arranged mint leaves like trees. Their aunt helped keep the cold ingredients chilled until judging.",
+      "The tray looked like a row of little gardens. Tom wanted to call it The Tower That Fell Over. Aisha worried that sounded like a failure. “It is what happened,” Tom said. They shortened the name to Fallen Tower Berry Cups.",
+      "At the bake-off, another team had built a perfect chocolate castle. Aisha felt a small pinch of envy. Then a judge tasted a berry cup and asked about the name. Tom told the story, including their unsuccessful extra-cream repair.",
+      "They won a ribbon for best use of fruit, not for the tallest cake. On the ride home, Aisha held the ribbon while Tom balanced the empty tray. “The castle was amazing,” she said. Tom agreed. He had drawn its towers in his notebook.",
+      "The next weekend, they tried a smaller cake tower with fully cooled layers and a sturdier plan. It stayed up. They ate it at the kitchen table. Aisha still requested a berry cup on the side. Some accidents, she had decided, were worth making again on purpose."
+    ],
+    "vocabulary": [
+      {
+        "word": "edible",
+        "meaning": "safe and suitable to eat"
+      },
+      {
+        "word": "portions",
+        "meaning": "amounts of food served to individual people"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What happens to the first cake tower?",
+        "choices": [
+          "It burns in the oven",
+          "The top layer slides sideways",
+          "It turns into chocolate"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Problem",
+        "explanation": "The top layer slips after the children stack the cake.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does adding more cream fail?",
+        "choices": [
+          "The warm cake keeps softening the filling",
+          "The berries are made of paper",
+          "The tray is too cold"
+        ],
+        "answer": 0,
+        "evidencePage": 3,
+        "skill": "Cause and effect",
+        "explanation": "Their aunt finds that the cake is still warm, so extra cream does not solve the problem.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What do they check before changing the entry?",
+        "choices": [
+          "Whether mint is a kind of tree",
+          "Whether the chocolate team has left",
+          "Whether cups on one tray are allowed"
+        ],
+        "answer": 2,
+        "evidencePage": 6,
+        "skill": "Decision",
+        "explanation": "They call the organizer to confirm the rules for small portions.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "How does their next attempt use what they learned?",
+        "choices": [
+          "They stop baking with fruit",
+          "They cool the layers fully and use a sturdier plan",
+          "They add cream to a warm cake again"
+        ],
+        "answer": 1,
+        "evidencePage": 11,
+        "skill": "Learning from experience",
+        "explanation": "The next tower uses cooled layers and a stronger structure.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Compare their original plan, their bake-off entry, and their later attempt.",
+    "words": 514
+  },
+  {
+    "id": "4-the-last-stop-on-platform-three",
+    "revision": "2026-10-long-v1",
+    "grade": "4",
+    "world": "train",
+    "title": "The Last Stop on Platform Three",
+    "genre": "Adventure",
+    "description": "Mara’s grandfather collected railway tickets.",
+    "pages": [
+      "Mara’s grandfather collected railway tickets. He kept them in biscuit tins, which meant visiting children were often disappointed. One rainy afternoon, Mara found a ticket marked Platform Three—Last Service. The station in their town had only two platforms. “Then where,” she asked, “did this train go?”",
+      "Grandfather remembered a branch line that closed before Mara was born. It ran to a hilltop village called Bellweather. He had traveled on its final train as a boy. His strongest memory was not the engine or the crowd. It was someone carrying an enormous blue door.",
+      "Mara told her friend Dev, who immediately imagined a secret room. Grandfather warned that memory was not a photograph. The door might have been green. The next Saturday, he took them to meet the railway historian, Mrs. Shaw, at the station office.",
+      "Mrs. Shaw unfolded an old plan. Platform Three had stood behind the present bicycle shelter. The branch line’s last carriage had carried passengers, parcels, and items from the closing station. A newspaper photograph showed a door leaning against a luggage cart. It looked dark, but the photograph was black and white.",
+      "A label on the cart read READING ROOM. Dev announced that the door must have led to a secret railway library. Mrs. Shaw found a list of station furniture: benches, a clock, bookshelves, and one door. The items had been given to the Bellweather village hall.",
+      "They arranged a visit with the hall’s caretaker. The old railway track was now a walking path, but they traveled by bus because rain was forecast. At the hall, Mara saw modern glass doors. None looked remotely like the one in the photograph.",
+      "The caretaker remembered renovations several years earlier. An old door had been removed from a cupboard and stored in the attic. He brought it downstairs while the children waited. Under scratches and a coat of gray paint, a strip of blue showed near the hinge.",
+      "On the door’s inside surface were pencil marks: short lines with dates and names. Mara thought they were measurements. Dev suggested a coded timetable. The caretaker smiled. “Children’s heights,” he said. “The hall used to hold an after-school reading group.”",
+      "One name near the bottom was Grandfather’s. He stared, then laughed. He had forgotten joining the reading group after his family moved to Bellweather. The door had traveled on the last train, just as he remembered, but its story had continued long after the railway closed.",
+      "Mara wanted the door displayed at the station immediately. The caretaker hesitated. Several local families had names on it. It was part of the hall’s history too. Grandfather suggested making a photograph of the marks and inviting those families to share what they remembered.",
+      "At the spring exhibition, the door stood on a secure display frame in the village hall. Beside it were the train ticket, the newspaper photograph, and a map of the branch line. Visitors added memories on separate cards so the original marks stayed untouched.",
+      "Dev admitted that the secret-library theory had been more exciting at first. Then an elderly visitor found her childhood height beside Grandfather’s and challenged him to measure again. Mara borrowed a tape measure. For the next ten minutes, the railway exhibition became an extremely competitive height contest."
+    ],
+    "vocabulary": [
+      {
+        "word": "branch line",
+        "meaning": "a smaller railway route connected to a main route"
+      },
+      {
+        "word": "renovations",
+        "meaning": "work done to repair or improve a building"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why do they seek records rather than rely only on Grandfather’s memory?",
+        "choices": [
+          "He admits details such as the door’s color may be uncertain",
+          "He has never ridden a train",
+          "Mara refuses to believe any memories"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Source evaluation",
+        "explanation": "Grandfather says memory is not a photograph and may have changed some details.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What does the furniture list reveal?",
+        "choices": [
+          "Platform Three was never built",
+          "The door was thrown away",
+          "The station items went to the village hall"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Evidence",
+        "explanation": "The list records a door among the station furniture given to Bellweather’s hall.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How do the pencil marks change their understanding of the door?",
+        "choices": [
+          "They show the last train’s speed",
+          "They connect it to children in the reading group",
+          "They prove it opened a secret tunnel"
+        ],
+        "answer": 1,
+        "evidencePage": 7,
+        "skill": "Inference",
+        "explanation": "The names, dates, and heights reveal the door’s later use at the hall.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why does the caretaker hesitate to send the door away?",
+        "choices": [
+          "It also holds the village families’ history",
+          "He wants to erase the names",
+          "He thinks the door is worthless"
+        ],
+        "answer": 0,
+        "evidencePage": 9,
+        "skill": "Perspective",
+        "explanation": "The caretaker points out that local families have a connection to the marks.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "Which statement best describes the investigation?",
+        "choices": [
+          "They prove every early guess correct",
+          "They solve the mystery without using records",
+          "They discover the door had more than one chapter in its history"
+        ],
+        "answer": 2,
+        "evidencePage": 11,
+        "skill": "Main idea",
+        "explanation": "The evidence connects the door’s railway journey with its later life in the reading group.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Explain how the same object matters to both the railway and the village hall.",
+    "words": 541
+  },
+  {
+    "id": "4-the-clockwork-whale",
+    "revision": "2026-10-long-v1",
+    "grade": "4",
+    "world": "ocean",
+    "title": "The Clockwork Whale",
+    "genre": "Animal stories",
+    "description": "Every hour, the clockwork whale in the aquarium lobby opened its mouth and released a cloud of wooden fish.",
+    "pages": [
+      "Every hour, the clockwork whale in the aquarium lobby opened its mouth and released a cloud of wooden fish. The fish swung from fine wires, circling before folding back inside. Jun had watched it since he was small. This year, his grandfather was repairing it, and he was finally allowed to help.",
+      "The whale had stopped halfway through its noon performance. Its mouth hung open, and one fish dangled upside down. Grandfather disconnected the mechanism before opening the side panel. Inside lay wheels, levers, and a tangle of motion Jun could not begin to follow.",
+      "Jun wanted to turn the largest wheel. Grandfather asked him to sketch the parts first. Each line on his drawing represented a connection. When he traced the wire from the upside-down fish, he found a bent guide ring. It was catching the wire whenever the whale opened its jaw.",
+      "The ring was easy to replace. The next problem was not. A small toothed wheel had lost a tooth, and the maker no longer sold that part. Grandfather could have a replacement made, but it would take a week. The aquarium’s anniversary celebration was in three days.",
+      "Jun suggested removing the fish that depended on the broken wheel. Grandfather explained that several movements shared the same mechanism. Removing one part without understanding the others might damage more. Jun crossed out his quick fix. His sketch was beginning to look like a spiderweb after a storm.",
+      "At home, he built a cardboard model with paper fasteners. It did not move like the real whale, but pulling one strip opened its mouth. His younger sister made paper fish and held them behind it. When the mouth opened, she fanned them outward and shouted, “Lunch!”",
+      "Jun laughed, then stopped. The real whale could wait for its proper repair. Perhaps visitors could still see how the idea worked. He brought the model to Grandfather, who suggested asking the aquarium educators whether they wanted a hands-on display for the anniversary.",
+      "The educators liked it, but Jun’s first model tore after six children used it. He had built it for one careful person, himself. They reinforced the moving strips, rounded sharp corners, and added a handle that was easy to grip. His sister tested it with great enthusiasm.",
+      "For the celebration, the silent clockwork whale remained behind a barrier with a short explanation of the repair. Beside it, Jun’s cardboard whale opened and closed all afternoon. Visitors took turns moving the handle while Grandfather showed them a large diagram of the original mechanism.",
+      "One boy asked why the real whale could not simply be replaced with the cardboard one. Jun considered this. His model showed the main movement, but not the many timed motions, the careful balance, or the fish folding away. A useful model, he explained, did not do everything the original did.",
+      "A week later, the new wheel arrived. Grandfather fitted it and tested the whale before reopening the display. Jun watched the fish turn smoothly through the air. For the first time, he could picture the hidden sequence that made the performance happen.",
+      "The aquarium kept his cardboard whale at the activity table. His sister demanded a small sign crediting her fish. Jun made one. Then she requested a cardboard shark, three times larger, with working teeth. Grandfather handed them a fresh sheet of paper. “Start,” she said, “with a drawing.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "mechanism",
+        "meaning": "a set of connected parts that work together"
+      },
+      {
+        "word": "reinforced",
+        "meaning": "made stronger"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "How does sketching help Jun?",
+        "choices": [
+          "It lets him trace a connection to the bent ring",
+          "It repairs the whale by itself",
+          "It hides the broken fish"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Cause and effect",
+        "explanation": "Tracing the wire on his drawing leads Jun to the catching guide ring.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why is removing one fish not a simple repair?",
+        "choices": [
+          "The fish is too colorful",
+          "The aquarium has no drawings",
+          "Several movements share connected parts"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Reasoning",
+        "explanation": "Grandfather explains that a change could affect other parts of the mechanism.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What does the first cardboard model’s failure reveal?",
+        "choices": [
+          "Only Jun’s sister can operate it",
+          "It needs to withstand many different users",
+          "Cardboard can never be useful"
+        ],
+        "answer": 1,
+        "evidencePage": 7,
+        "skill": "Design thinking",
+        "explanation": "The first model works for Jun but tears after repeated use by visitors.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "What limitation does Jun identify in his model?",
+        "choices": [
+          "It shows one main movement without all the original’s timed motions",
+          "It is exactly as complex as the real whale",
+          "It cannot help anyone learn"
+        ],
+        "answer": 0,
+        "evidencePage": 9,
+        "skill": "Compare",
+        "explanation": "Jun distinguishes the simplified model from the original’s coordinated mechanism.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "Why does Grandfather ask for a drawing at the end?",
+        "choices": [
+          "She wants to stop all new ideas",
+          "A drawing can replace every working part",
+          "Planning helped them understand the earlier project"
+        ],
+        "answer": 2,
+        "evidencePage": 11,
+        "skill": "Inference",
+        "explanation": "Sketching helped Jun understand the whale, and Grandfather applies that approach to the new idea.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Compare what Jun learns from the real mechanism and from testing his model.",
+    "words": 562
+  },
+  {
+    "id": "4-the-secret-of-the-silent-theater",
+    "revision": "2026-10-long-v1",
+    "grade": "4",
+    "world": "museum",
+    "title": "The Secret of the Silent Theater",
+    "genre": "Mystery",
+    "description": "The old Lantern Theater had been silent for years.",
+    "pages": [
+      "The old Lantern Theater had been silent for years. When the town announced a weekend tour, Priya persuaded her friends Ben and Tess to come. Ben expected ghosts. Tess expected dust. Priya hoped to find the painted moon her mother remembered from childhood plays.",
+      "Mr. Lyle, the caretaker, led them past rows of folded seats. The stage smelled of wood and old curtains. At the back stood painted scenery: a forest, a castle wall, and a moon taller than Priya. Its smiling face had one crooked eyebrow.",
+      "As Mr. Lyle spoke, a faint tapping came from behind the moon. Ben grabbed Tess’s sleeve. Three taps, a pause, then two. The caretaker stopped talking. The sound stopped too. “Probably the building settling,” he said, but he did not sound completely certain.",
+      "They stayed with him while he checked behind the scenery. Nothing moved. No animal appeared. A narrow metal pipe ran up the wall, and an old speaking tube ended near the floor. Long ago, stage workers had used it to send messages between rooms.",
+      "Tess asked whether another end might be open. Mr. Lyle checked a maintenance plan. The tube connected to the former ticket office, where volunteers were sorting posters. One volunteer had been tapping a pencil against a box resting on the tube’s metal rim.",
+      "Mystery solved, Ben declared, sounding disappointed. But Priya had noticed something else: small painted stars on the back of the moon, invisible to the audience. Beside them was a sentence: For Elsie, who always wanted the best view. No surname, no date.",
+      "Mr. Lyle found programs in the theater archive. Several listed an Elsie Hart as a scenery painter. Priya wondered whether the message was for her. A later program listed another Elsie, a child performer. The name alone was not enough to choose between them.",
+      "They asked permission to photograph the message for the town history group. A week later, a reply arrived from Elsie Hart’s daughter. Her mother had painted the stars for her own little sister, also named Elsie, who used to watch rehearsals from backstage.",
+      "The younger Elsie had been too shy to join the performances. From behind the moon, she could hear the music without facing the audience. Her sister painted a private sky where she waited. Priya imagined the small girl sitting under stars nobody else could see.",
+      "For the theater’s reopening fundraiser, the organizers planned to repaint the scenery. Priya showed them the reply and the photographs. A conservator recommended preserving the original moon and making a new copy for performances. The hidden stars would be displayed with their story.",
+      "At the fundraiser, Ben helped operate a harmless tapping effect for a mystery sketch. Tess kept a checklist so no one mistook it for a real problem. Priya guided visitors to both sides of the old moon. The back drew just as much attention as the smiling face.",
+      "Her mother recognized the crooked eyebrow at once. She had never known about the stars. “I thought I knew that moon,” she said. Priya turned it gently on its display stand, with the caretaker’s help. “You knew the part that faced you.” Behind them, Ben’s carefully scheduled ghost began tapping."
+    ],
+    "vocabulary": [
+      {
+        "word": "archive",
+        "meaning": "a collection of records kept for future use"
+      },
+      {
+        "word": "conservator",
+        "meaning": "a specialist who cares for old or valuable objects"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What makes the tapping initially seem mysterious?",
+        "choices": [
+          "Everyone sees a person making it",
+          "It is announced as part of the tour",
+          "It seems to come from hidden scenery and stops when they listen"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Mood",
+        "explanation": "The unseen source and sudden stopping make the quiet theater feel mysterious.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What actually carries the tapping into the theater?",
+        "choices": [
+          "A bird inside the moon",
+          "An old speaking tube",
+          "The painted stars"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Cause and effect",
+        "explanation": "A pencil taps a box on the tube’s rim, and the sound travels through it.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why can they not identify Elsie from the programs alone?",
+        "choices": [
+          "More than one person has that name",
+          "The programs contain no names",
+          "Every program is a fake"
+        ],
+        "answer": 0,
+        "evidencePage": 6,
+        "skill": "Evidence",
+        "explanation": "Two different Elsies appear in the records, so the name is not enough.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why preserve the original moon and make a copy?",
+        "choices": [
+          "To erase the private stars",
+          "To make visitors believe it is haunted",
+          "To protect the historic painting while still using the design onstage"
+        ],
+        "answer": 2,
+        "evidencePage": 9,
+        "skill": "Decision",
+        "explanation": "A copy can be used in performances while the original and its story are protected.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "What does Priya mean by the part that faced you?",
+        "choices": [
+          "The moon changed shape every night",
+          "Her mother knew the public image but not its hidden personal history",
+          "Her mother had never visited the theater"
+        ],
+        "answer": 1,
+        "evidencePage": 11,
+        "skill": "Interpretation",
+        "explanation": "The mother recognizes the front, while the back reveals a story she never saw.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Describe how the children solve one sound mystery and uncover a separate human story.",
+    "words": 532
+  },
+  {
+    "id": "4-the-great-playground-election",
+    "revision": "2026-10-long-v1",
+    "grade": "4",
+    "world": "garden",
+    "title": "The Great Playground Election",
+    "genre": "Everyday discoveries",
+    "description": "When the school received money to improve one corner of the playground, Eli immediately imagined a climbing wall.",
+    "pages": [
+      "When the school received money to improve one corner of the playground, Eli immediately imagined a climbing wall. His friend Noor wanted a quiet garden. Finn wanted a slide shaped like a dragon. The principal said the student council could recommend a plan after consulting the school.",
+      "Eli volunteered to run a survey. He drew three enormous pictures and placed a voting jar beneath each one. At lunchtime, students dropped a counter into their favorite jar. The dragon slide won by a landslide. Finn began practicing a victory speech that included roaring.",
+      "Then the principal asked two questions: had every class participated, and did each person vote only once? Eli checked his notes. Younger classes had eaten lunch earlier. Several students had returned for extra counters because they liked the dragon picture. His results were not as clear as they looked.",
+      "Noor suggested a second survey during class time, with one response per student. Finn accused her of wanting another vote because her garden had lost. She admitted she was disappointed. “But the missing classes would still be missing if the garden had won,” she said.",
+      "They asked the office to help distribute the survey. This time, the pictures were the same size, and each choice had a short description. The descriptions mentioned who could use it, how much space it needed, and what upkeep it would require.",
+      "Before collecting answers, they learned that a full dragon slide cost more than the entire budget. Finn went quiet. The council could not fairly promise something the school could not afford. He redrew his idea as a low dragon-shaped climbing feature, with a route around it.",
+      "The results were close: climbing equipment first, garden second, dragon feature third. Noor asked students why they had chosen each option. Some wanted active play. Others wanted shade or a place to talk away from noise. Several liked the dragon mainly because it looked funny.",
+      "The council walked through the proposed area with a teacher and the groundskeeper. A large tree already provided shade near the fence. The groundskeeper suggested benches there, while a smaller climbing feature could fit nearby. They needed real quotes before knowing whether both were possible.",
+      "Eli feared that combining ideas would make everyone’s first choice smaller. Noor said that might be true, but the shared plan could serve more needs. Finn proposed painting the benches like a long dragon, so the tail curled toward the climbing area.",
+      "They compared costs and presented two affordable plans, explaining what each included and left out. Classes discussed them before the final vote. The combined plan won. Eli still wished for a taller wall, but he could explain why others preferred the shared space.",
+      "On opening day, the dragon bench had a green head, yellow scales, and an extremely lopsided smile. Noor read beneath the tree while Eli tried the climbing feature. Finn sat on the dragon’s nose and announced that his creature had finally entered public service.",
+      "For the council report, Eli included both surveys and explained the first one’s weaknesses. He kept one of the original voting jars on his desk. It now held pencils. When Finn suggested putting a victory label on it, Eli chose a different label: CHECK WHO IS MISSING."
+    ],
+    "vocabulary": [
+      {
+        "word": "survey",
+        "meaning": "a set of questions used to learn people’s views"
+      },
+      {
+        "word": "budget",
+        "meaning": "the amount of money available to spend"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why is the first vote unreliable?",
+        "choices": [
+          "The jars are made of glass",
+          "The dragon picture has too many colors",
+          "Some classes are missing and some students vote more than once"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Evaluate evidence",
+        "explanation": "The first survey does not represent every class equally or limit repeated votes.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does Finn revise the dragon idea?",
+        "choices": [
+          "The principal bans drawings",
+          "The full slide costs more than the budget",
+          "Nobody likes dragons"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Constraint",
+        "explanation": "They cannot fairly offer an option the available money cannot pay for.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What do the follow-up questions reveal?",
+        "choices": [
+          "Students have different needs behind their choices",
+          "Everyone wants exactly the same thing",
+          "All students voted only for colors"
+        ],
+        "answer": 0,
+        "evidencePage": 6,
+        "skill": "Inference",
+        "explanation": "The reasons include active play, quiet space, shade, and humor.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "What makes the final choice better informed?",
+        "choices": [
+          "Only council members are allowed to vote",
+          "The largest picture wins automatically",
+          "Students compare affordable plans and their tradeoffs"
+        ],
+        "answer": 2,
+        "evidencePage": 9,
+        "skill": "Reasoning",
+        "explanation": "The final plans include actual costs and explain what each offers or leaves out.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "What does Eli’s pencil-jar label remind him to do?",
+        "choices": [
+          "Always choose the cheapest plan",
+          "Check whether a decision includes everyone affected",
+          "Count only the winning votes"
+        ],
+        "answer": 1,
+        "evidencePage": 11,
+        "skill": "Theme",
+        "explanation": "The first survey overlooked younger classes, so the label reminds him to consider missing voices.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Explain why the first vote and the final vote lead to different conclusions.",
+    "words": 540
+  },
+  {
+    "id": "4-a-dragon-in-the-weather-station",
+    "revision": "2026-10-long-v1",
+    "grade": "4",
+    "world": "space",
+    "title": "A Dragon in the Weather Station",
+    "genre": "Fantasy",
+    "description": "The hilltop weather station hired no dragons.",
+    "pages": [
+      "The hilltop weather station hired no dragons. This was written nowhere, but Dr. Rao felt it should have been obvious. Nevertheless, a copper-colored dragon arrived on Tuesday carrying an application made from a cereal box. Its name was Ember. Its special skill, it said, was making warm air.",
+      "Dr. Rao’s children, Leena and Ash, were helping organize old weather charts during the school holiday. They wanted Ember to stay. Their mother agreed to a supervised trial, provided the dragon kept away from measuring equipment and produced no flames. Ember saluted with one wing.",
+      "For the first hour, everything went well. Ember carried empty folders and dusted a shelf with its tail. Then Ash noticed a strange reading: the outdoor temperature had jumped sharply, while the station down the hill reported no such change. Outside, the air did not feel unusually warm.",
+      "Leena checked the time of the jump. It matched Ember’s tea break. The dragon had rested beside the instrument shelter and breathed happily through its nose. No flames, just warm breath. Ember looked horrified. “I was following the rule exactly.”",
+      "Dr. Rao explained that a rule could miss a problem. The shelter needed air that had not been warmed by a nearby visitor, even a polite one. She marked the affected readings as unreliable rather than pretending they represented the weather. Ember moved its tea break to the far end of the yard.",
+      "Later, a delivery brought a windsock for the station’s public display. The old one had torn. Ember offered to hang it, but the staff used their normal equipment instead. The dragon watched while Leena checked that visitors would be able to see it from the path.",
+      "When the new windsock barely moved, Ember gave a helpful puff. It streamed straight out. Ash clapped, then stopped. The display now suggested a strong wind that did not exist. Ember lowered its head. “I keep making the weather more interesting.”",
+      "Leena had an idea. Their science-day exhibit needed a way to demonstrate moving air indoors. An artificial breeze would be useful there, as long as everyone knew its source. Dr. Rao approved a separate demonstration area with no measuring instruments nearby.",
+      "Ember practiced gentle puffs that moved paper streamers without scattering the notes. Too hard, and the streamers snapped sideways. Too softly, and nothing happened. Ash held a sign naming each trial while Leena recorded which distance worked best.",
+      "At science day, visitors compared the real outdoor windsock with streamers moved by Ember indoors. The signs explained the difference. One child asked whether all the station’s wind came from dragons. Ember firmly denied this, then sneezed into a large handkerchief.",
+      "The demonstration was a success, but Dr. Rao did not offer Ember a measuring job. Instead, the station invited it back as an education helper. Ember considered the title, then added it to the cereal-box application in copper ink. It was longer than weather dragon, but sounded official.",
+      "Before leaving, Ember checked the yard for instruments and chose a safe, distant spot for its tea. Leena brought biscuits. The windsock turned in a real breeze while the dragon held its breath around the cup. “You may breathe normally here,” Dr. Rao called. Ember looked enormously relieved."
+    ],
+    "vocabulary": [
+      {
+        "word": "unreliable",
+        "meaning": "not dependable enough to trust"
+      },
+      {
+        "word": "artificial",
+        "meaning": "made or caused by people rather than occurring naturally"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What suggests the temperature jump needs checking?",
+        "choices": [
+          "Nearby readings and the actual air do not match it",
+          "The chart is written in blue",
+          "Ember carries folders"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Evidence",
+        "explanation": "The other station reports no jump, and the air does not feel unusually warm.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why mark some readings as unreliable?",
+        "choices": [
+          "All warm days are impossible",
+          "The station wants a nicer chart",
+          "They were affected by Ember’s breath"
+        ],
+        "answer": 2,
+        "evidencePage": 4,
+        "skill": "Data interpretation",
+        "explanation": "The warmed air near the shelter does not represent the surrounding weather.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why does Ember’s puff mislead visitors at the windsock?",
+        "choices": [
+          "It makes the windsock disappear",
+          "It imitates a wind that is not really blowing",
+          "It changes the color of the fabric"
+        ],
+        "answer": 1,
+        "evidencePage": 6,
+        "skill": "Cause and effect",
+        "explanation": "The puff makes the display look as if the actual wind is strong.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why is the indoor demonstration different?",
+        "choices": [
+          "Its artificial source is clearly identified and kept separate",
+          "Indoor air can never move",
+          "Ember is allowed to change official readings"
+        ],
+        "answer": 0,
+        "evidencePage": 9,
+        "skill": "Compare",
+        "explanation": "Visitors are told that Ember produces the demonstration breeze, separate from weather measurements.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "How does Ember’s final role fit its ability?",
+        "choices": [
+          "It secretly replaces all the instruments",
+          "It predicts every storm correctly",
+          "It uses controlled warm breath to help explain ideas"
+        ],
+        "answer": 2,
+        "evidencePage": 10,
+        "skill": "Character and role",
+        "explanation": "Ember’s ability works well in a labeled educational demonstration rather than in measuring real weather.",
+        "checkpointPage": 11
+      }
+    ],
+    "retell": "Explain how Ember’s helpful intention causes problems before the station finds a suitable role.",
+    "words": 537
+  },
+  {
+    "id": "5-the-island-that-moved",
+    "revision": "2026-10-long-v1",
+    "grade": "5",
+    "world": "ocean",
+    "title": "The Island That Moved",
+    "genre": "Animal stories",
+    "description": "When Bea was seven, she buried a tin of treasures on a tiny island in Lake Wren.",
+    "pages": [
+      "When Bea was seven, she buried a tin of treasures on a tiny island in Lake Wren. The treasures were ordinary: a marble, a badge, a drawing of a dragon with six legs. At eleven, she wanted them back. Her brother Sam mainly wanted proof that the six-legged dragon had existed.",
+      "Their aunt, a lake scientist, agreed to take them out during a routine survey. Bea described the island beside a crooked pine. Aunt Ruth frowned. The island in that part of the lake had shifted after recent storms. “Shifted?” Sam said. “Islands do not usually get up and leave.”",
+      "This one was a floating mat of reeds, roots, and collected plant material. It looked solid from a distance, but Aunt Ruth would not let them step onto it. They would observe from the boat. Bea’s memory of standing there years earlier worried her aunt, who had not been on that childhood picnic.",
+      "At the old location, there was open water. Farther along the shore, a thick patch of reeds curved around a fallen branch. Bea recognized its shape—or thought she did. Sam pointed out that several reed patches looked like untidy green slippers. They needed something more definite than a familiar-looking curve.",
+      "Bea had brought a photograph from the picnic. In it, her younger self held the tin beside a wooden marker with a painted blue triangle. The marker had belonged to an earlier survey. Aunt Ruth found its number in a field notebook. That gave them a specific feature to search for.",
+      "They circled the nearest reed patch at a safe distance. No blue triangle. The second patch had a stake, but its paint was white. Then Sam spotted a sliver of blue near the third patch’s far edge, almost hidden by bent reeds. Aunt Ruth used binoculars to read the faded number.",
+      "It matched. Bea cheered, then remembered the tin. It might have sunk, rusted, or traveled elsewhere inside the moving mat. Aunt Ruth would not disturb a nesting area to retrieve it. She marked the position and explained that a later maintenance visit might allow staff to check safely.",
+      "Bea tried to hide her disappointment. Sam did not help by listing all the unpleasant things that might now live inside a rusty tin. On the way back, however, he quietly handed her the photograph. “At least the dragon is partly visible,” he said. One ridiculous leg stuck out above the lid.",
+      "Two weeks later, Aunt Ruth called. The mat had drifted near a maintained access point, away from the nesting birds. During scheduled work, the crew had found a small tin lodged among old roots beside the marker. Its lid was stuck. They had left it closed for Bea.",
+      "At the laboratory, the tin looked less like buried treasure than a very old sandwich box. Aunt Ruth opened it carefully. The marble survived. The badge was rusty. The drawing had become a pale blur, with a purple streak where the dragon’s wings had been. Bea felt unexpectedly close to tears.",
+      "Sam, who had prepared three jokes, said none of them. He placed the marble on a clean cloth and asked whether the picnic photograph could be enlarged. A technician showed them how a higher-resolution scan might reveal more of the drawing, though it could not recover details the photograph had never captured.",
+      "The enlarged picture showed four legs clearly and a suspicious green line that might have been a fifth. Bea could remember the sixth, but could not prove it. Sam finally grinned. “We have discovered the five-and-a-possible-six-legged dragon.” Bea laughed hard enough to fog the computer screen.",
+      "They made a new treasure display at home: the marble, the rusty badge, the blurred paper, and two drawings. Bea drew the dragon as she remembered it. Sam drew it as the photograph supported. They labeled both, and neither drawing went back into the lake.",
+      "For Aunt Ruth’s survey report, Bea wrote about recognizing the painted marker rather than trusting the island’s outline. For herself, she kept the old tin on her shelf. It was no longer a container for hidden treasure. It was a very good place to keep pencils, including the green one Sam refused to return."
+    ],
+    "vocabulary": [
+      {
+        "word": "binoculars",
+        "meaning": "a tool with two lenses for seeing distant objects"
+      },
+      {
+        "word": "resolution",
+        "meaning": "the amount of detail an image can show"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why can the island change position?",
+        "choices": [
+          "Someone has attached an engine to it",
+          "It is a floating mat of plants and roots",
+          "It is made of solid mountain rock"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Explanation",
+        "explanation": "Aunt Ruth explains that the island is a floating mat rather than fixed land.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why is the painted marker a stronger clue than the outline?",
+        "choices": [
+          "Its recorded number can identify a particular mat",
+          "Every reed patch has the same marker",
+          "The paint proves the tin is undamaged"
+        ],
+        "answer": 0,
+        "evidencePage": 4,
+        "skill": "Evaluate evidence",
+        "explanation": "A number in a field notebook gives them a specific feature, unlike a common-looking shape.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why do they leave without the tin on the first trip?",
+        "choices": [
+          "Bea no longer wants it",
+          "Sam throws away the photograph",
+          "Retrieving it could disturb nesting birds and require unsafe access"
+        ],
+        "answer": 2,
+        "evidencePage": 6,
+        "skill": "Decision",
+        "explanation": "Aunt Ruth will not disturb the nesting area or let the children step onto the unstable mat.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "How does Sam respond when Bea sees the damaged drawing?",
+        "choices": [
+          "He claims the paper is perfectly clear",
+          "He sets aside his jokes and helps look for another record",
+          "He insists the loss is funny"
+        ],
+        "answer": 1,
+        "evidencePage": 10,
+        "skill": "Character",
+        "explanation": "Sam notices Bea’s disappointment and suggests enlarging the photograph instead of joking.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "Why are the two new dragon drawings labeled differently?",
+        "choices": [
+          "One records memory while the other follows visible evidence",
+          "One is definitely the original drawing",
+          "They were made on different islands"
+        ],
+        "answer": 0,
+        "evidencePage": 12,
+        "skill": "Interpretation",
+        "explanation": "Bea draws what she remembers; Sam limits his drawing to what the photograph shows.",
+        "checkpointPage": 13
+      }
+    ],
+    "retell": "Explain how the treasure hunt changes from finding an object to reconstructing a memory.",
+    "words": 701
+  },
+  {
+    "id": "5-the-midnight-radio-club",
+    "revision": "2026-10-long-v1",
+    "grade": "5",
+    "world": "space",
+    "title": "The Midnight Radio Club",
+    "genre": "Fantasy",
+    "description": "The Midnight Radio Club met at seven in the evening.",
+    "pages": [
+      "The Midnight Radio Club met at seven in the evening. This disappointed its founder, Cass, but the community center closed at nine, and her father insisted that names did not override bedtime. The club had three members, a donated receiver, and a notebook full of stations they had managed to hear.",
+      "Omar preferred music. Jules preferred weather reports because they sounded reassuringly precise. Cass wanted a mystery. On Thursday, she got one: beneath a wash of static, a voice repeated, “The lantern is missing. Meet at the old bridge.” Then came four musical notes and silence.",
+      "Cass wrote the sentence down before anyone could argue about it. Jules thought the voice had said landing, not lantern. Omar was sure the final place was ridge, not bridge. They listened again, but the signal had faded. Cass’s father reminded them that a poor signal could make ordinary words sound strange.",
+      "They did not go searching for a bridge. Instead, they noted the time and receiver settings, then asked the center’s radio volunteer, Ms. Chen, to help. She explained that the receiver could pick up local broadcasts and that a nearby event might use a temporary low-power station.",
+      "The town’s night market was preparing to open on Saturday. Its organizers had permission to broadcast announcements and performances over a small area. Ms. Chen found the published frequency. It matched the club’s notes. Cass looked disappointed. A market announcement sounded much less mysterious than a missing lantern.",
+      "At the next meeting, they heard the sentence again, clearly this time: “The lantern is missing. Meet at the old bridge.” Cass sat upright. Omar recognized the four notes that followed. They belonged to a tune the school orchestra had rehearsed for the market’s storytelling show.",
+      "They contacted the organizer using the number on the public event page. She explained that the broadcast was a rehearsal of a radio play. The missing lantern was part of a fictional treasure hunt. The old bridge existed only in the script. Jules drew a large box around the word FICTION in their notebook.",
+      "Cass should have felt foolish, but the organizer had another problem. The recording of the play’s ending was damaged, and two performers were unavailable. Could the club help record replacement lines at the center’s supervised studio? Cass agreed before remembering to ask her father. Fortunately, he was already smiling.",
+      "The script followed a lighthouse keeper whose lantern vanished just before a festival. Cass played an apprentice, Omar a boat builder, and Jules a messenger who had one important line and wanted to deliver it flawlessly. Ms. Chen taught them to leave a pause before speaking and keep the paper away from the microphone.",
+      "Their first take included a chair squeak, a dropped pencil, and Cass saying “old fridge” instead of “old bridge.” Omar laughed through his next line. On the second take, Jules spoke so softly that the messenger seemed to be reporting from another county. They listened back and tried again.",
+      "By the fourth take, the scene worked. The lantern had not been stolen; the keeper had lent it to guide a late-arriving boat and forgotten to tell the apprentice. Cass thought the explanation needed a little more drama. The script already had fog, a bell, and a nearly missed festival, Ms. Chen pointed out.",
+      "On Saturday, families listened at the market while the school orchestra played the four-note theme. The club stood beside Cass’s father, waiting for their scene. When Jules’s line arrived, every word was clear. Omar squeezed his fist in triumph without making a sound.",
+      "A younger child asked whether the lantern was really missing. Cass explained that it was a play. She showed him the program, which named the performers and described the story. Then she told him how the club had mistaken the rehearsal for a real mystery. He found that almost as entertaining.",
+      "At eight forty-five, the Midnight Radio Club packed its equipment. Cass added a new page to the notebook: things to check before declaring a mystery. Omar added things that make excellent sound effects. Jules wrote the closing announcement, and this time nobody disagreed about a single word."
+    ],
+    "vocabulary": [
+      {
+        "word": "static",
+        "meaning": "crackling noise that can interfere with a radio signal"
+      },
+      {
+        "word": "frequency",
+        "meaning": "a setting used to tune to a particular radio signal"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why do the members record different versions of the message?",
+        "choices": [
+          "They hear three separate speakers giving different instructions",
+          "They cannot write quickly enough to record any words",
+          "Static makes the words unclear"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Reliability",
+        "explanation": "The poor signal makes lantern, landing, bridge, and ridge difficult to distinguish.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What connects the signal to the night market?",
+        "choices": [
+          "The center closes at midnight",
+          "Its published frequency matches their notes",
+          "Cass finds a real missing lantern"
+        ],
+        "answer": 1,
+        "evidencePage": 4,
+        "skill": "Evidence",
+        "explanation": "Ms. Chen compares the temporary station’s frequency with the club’s receiver setting.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How does the organizer change Cass’s role?",
+        "choices": [
+          "She turns a mistaken listener into a performer helping finish the play",
+          "She asks Cass to search a bridge alone",
+          "She tells the club to stop listening forever"
+        ],
+        "answer": 0,
+        "evidencePage": 7,
+        "skill": "Plot development",
+        "explanation": "The organizer needs replacement lines, giving the club a role in producing the story.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why do they listen to their recorded takes?",
+        "choices": [
+          "To prove the fictional lantern is real",
+          "To avoid rehearsing their lines",
+          "To identify specific problems and improve the performance"
+        ],
+        "answer": 2,
+        "evidencePage": 10,
+        "skill": "Process",
+        "explanation": "Playback reveals noises and unclear speech that they can fix in later takes.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "What does Cass do differently with the younger child?",
+        "choices": [
+          "She hides the program’s performer names",
+          "She clearly explains that the story is fiction",
+          "She encourages him to search for the bridge"
+        ],
+        "answer": 1,
+        "evidencePage": 12,
+        "skill": "Character change",
+        "explanation": "Cass supplies the context she lacked when she first heard the rehearsal.",
+        "checkpointPage": 13
+      }
+    ],
+    "retell": "Trace how one unclear broadcast leads to both a mistaken conclusion and a new opportunity.",
+    "words": 690
+  },
+  {
+    "id": "5-the-museum-of-almost-true-things",
+    "revision": "2026-10-long-v1",
+    "grade": "5",
+    "world": "museum",
+    "title": "The Museum of Almost True Things",
+    "genre": "Mystery",
+    "description": "Theo’s class was making a museum in the school hall.",
+    "pages": [
+      "Theo’s class was making a museum in the school hall. Each team had to display an object and explain its history. Most students chose something sensible: a family recipe card, an old camera, a football medal. Theo brought a giant feather and announced that it belonged to a dragon.",
+      "His partner, Iris, stared at him. The feather had come from a costume box. “Dragons are not the assignment,” she said. Theo argued that a dragon would attract more visitors than a recipe card. Their teacher, Mr. Ellis, agreed that presentation mattered, but evidence mattered too.",
+      "Theo proposed a compromise: an exhibit called Almost True Things. It would show how a dramatic label could change what visitors believed about an ordinary object. Mr. Ellis approved only if the explanation was clear and nobody left thinking the invented histories were real. Iris insisted on a reveal panel beside each object.",
+      "They selected three items: the feather, a tiny decorated shoe, and a dented metal cup. Theo wrote extravagant first labels. The feather came from a mountain dragon; the shoe belonged to a royal mouse; the cup had survived a journey to the center of the earth. Iris collected the actual histories.",
+      "The shoe was a souvenir from a doll festival. The cup had been used by the school’s old camping club. The feather was a painted costume prop made from synthetic material. Iris found the club’s photograph album, the shoe’s packaging, and a costume inventory. Theo admitted that the evidence display looked unexpectedly interesting.",
+      "During a practice visit, Theo placed the dramatic labels at eye level and the reveal panels underneath. His friend Milo read the dragon label, gasped, and ran to tell someone else before opening the panel. Iris folded her arms. Their exhibit had just done exactly what Mr. Ellis had warned against.",
+      "Theo argued that Milo should have read everything. Iris asked why they had made the exciting claim easiest to see and the correction harder to find. She was not accusing him of being cruel. That somehow made the question more uncomfortable. The design itself was encouraging the wrong conclusion.",
+      "They changed the heading to Three Invented Stories, Three Real Objects. Each object had two equally visible cards: Imagined History and What the Evidence Shows. Visitors could enjoy Theo’s inventions without needing to discover that they were inventions. Mr. Ellis approved the new arrangement.",
+      "Then Iris found a genuine puzzle. The camping photograph showed the same dent in the cup, but the caption named a year before the club was officially founded. Had the cup belonged to an earlier group? Had someone written the date incorrectly? This time, Theo resisted inventing an instant answer.",
+      "They asked the retired teacher who had donated the album. She remembered a small hiking group that later became the official camping club. However, she was unsure of the photograph’s exact year. The students recorded her explanation as a recollection and kept the uncertain date marked as uncertain.",
+      "On exhibition day, the dragon feather attracted plenty of attention. Visitors laughed at the royal mouse’s shoe, then lingered over the cup’s two possible dates. One parent remembered joining the early hiking group and offered to look for an old permission slip at home.",
+      "Theo began asking visitors what would help settle the date instead of telling them a dramatic answer. Someone suggested checking a newspaper report; another suggested comparing the students’ ages in the photograph. Iris added these possibilities to a research list, clearly separated from findings.",
+      "The museum closed before they solved the date completely. Their final card explained what they knew, what they suspected, and what they still wanted to check. Theo kept the imaginary underground journey on its own labeled card. It remained an excellent story, even beside the less tidy truth.",
+      "At the end of term, Mr. Ellis asked which object they would keep. Iris chose the cup. Theo chose the feather, then changed his mind. “The cup has an unfinished mystery,” he said. Iris handed him both. The dragon, apparently, could wait until the evidence came in."
+    ],
+    "vocabulary": [
+      {
+        "word": "synthetic",
+        "meaning": "made from manufactured materials rather than natural ones"
+      },
+      {
+        "word": "recollection",
+        "meaning": "a memory of something that happened"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What condition does Mr. Ellis place on the exhibit?",
+        "choices": [
+          "Every object must come from a museum",
+          "Theo must remove all humor",
+          "Visitors must understand which histories are invented"
+        ],
+        "answer": 2,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "The teacher allows the idea only if visitors are not misled into believing the fictional histories.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "What does Milo’s reaction reveal about the first design?",
+        "choices": [
+          "Every visitor reads every panel carefully",
+          "Visitors may leave before seeing the hidden correction",
+          "The feather truly comes from a dragon"
+        ],
+        "answer": 1,
+        "evidencePage": 5,
+        "skill": "Cause and effect",
+        "explanation": "Milo reads the exciting claim and leaves without opening the reveal panel.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "How does the revised design change the visitor’s experience?",
+        "choices": [
+          "It identifies fiction and evidence equally clearly",
+          "It hides the evidence more carefully",
+          "It removes all of Theo’s imaginative writing"
+        ],
+        "answer": 0,
+        "evidencePage": 7,
+        "skill": "Compare",
+        "explanation": "The new heading and equally visible cards label the inventions before visitors mistake them for facts.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why do they keep the photograph’s date uncertain?",
+        "choices": [
+          "They dislike the retired teacher",
+          "The cup has no dent",
+          "The donor is unsure and the available evidence does not settle it"
+        ],
+        "answer": 2,
+        "evidencePage": 9,
+        "skill": "Evaluate evidence",
+        "explanation": "The recollection offers a possibility but does not confirm the exact year.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "How has Theo changed by the end?",
+        "choices": [
+          "He stops being interested in stories",
+          "He enjoys an unresolved real question without inventing a false answer",
+          "He believes every dramatic label"
+        ],
+        "answer": 1,
+        "evidencePage": 13,
+        "skill": "Character development",
+        "explanation": "Theo still enjoys imagination but now values the cup’s real, unfinished investigation.",
+        "checkpointPage": 13
+      }
+    ],
+    "retell": "Explain how the exhibit’s design affects what people believe, and how Theo changes it.",
+    "words": 677
+  },
+  {
+    "id": "5-the-race-nobody-finished",
+    "revision": "2026-10-long-v1",
+    "grade": "5",
+    "world": "garden",
+    "title": "The Race Nobody Finished",
+    "genre": "Everyday discoveries",
+    "description": "The Pine Street Cart Race had one rule everyone remembered: no motors.",
+    "pages": [
+      "The Pine Street Cart Race had one rule everyone remembered: no motors. It had twelve other rules that most teams remembered only after being reminded. Jo and her cousin Malik had spent three weekends building a wooden cart with a bright orange nose. They called it Comet, although it moved more like a determined shopping trolley.",
+      "The course ran along a closed park path under adult supervision. One rider sat in each cart while teammates pushed on the flat stretches. Before the event, volunteers checked wheels, brakes, helmets, and the route. Jo wanted speed. Malik wanted every bolt checked twice. For once, their disagreements were useful.",
+      "Their main rivals were the Willow Team, whose cart was sleek, blue, and annoyingly quiet. Comet squeaked at every turn. Jo suspected the squeak cost them speed. Malik suspected it mainly cost them dignity. They tested both theories and found that the loose seat bracket, not the wheels, was making the noise.",
+      "By race morning, the squeak was fixed. Clouds gathered beyond the trees, but the forecast allowed time for the event before heavier rain. Organizers reminded everyone that conditions could change and the race would stop if necessary. Jo heard the warning, then immediately thought about the trophy.",
+      "Comet started well. Jo pushed while Malik steered, then they changed at the marked exchange zone. The Willow Team stayed just ahead. Near the small wooden bridge, Jo saw a blue wheel wobble. A moment later, the rival cart stopped crookedly at the edge of the path.",
+      "The marshal halted nearby carts and kept everyone clear. No one was hurt, but the Willow Team’s axle fastening had come loose. Their spare tool kit was back at the start. Malik held up Comet’s kit. Jo hesitated. Helping would not make their own cart any faster.",
+      "“The race is stopped anyway,” Malik said quietly. Jo handed the kit to the adult volunteer. Together, the teams waited while the fastening was checked. Then rain began, harder than predicted. Water streamed across the path toward the bridge, carrying leaves into a slippery pile.",
+      "The organizer canceled the remaining laps. Several teams groaned. One demanded that the current leader be declared the winner. Another argued that positions before the stoppage were unfair because some carts had already passed a narrow section and others had not. The rules did not cover this exact situation.",
+      "Jo wanted a result. They had worked too hard for nothing. Malik pointed to Comet, still whole and working, and to the repaired blue cart. “Not nothing,” he said. Jo knew he was right and found that deeply irritating. She was not ready to stop being disappointed.",
+      "Under the pavilion, the organizer explained that there would be no race winner that day. Times from an incomplete course could not fairly decide one. Instead, teams could demonstrate their designs once the rain eased, and the race would be rescheduled if a safe date could be found.",
+      "The Willow Team asked about Comet’s steering. Malik showed them the linkage while Jo described the seat-bracket squeak. Soon three teams were comparing repairs. The quiet blue cart had a clever wheel cover, but Comet’s steering was easier to adjust. Neither design was best at everything.",
+      "Jo still glanced at the unused trophy. She did not suddenly become pleased about the cancellation. But she began sketching a removable wheel cover on the back of their race number. One Willow teammate offered to send measurements. They exchanged notes before the families packed up.",
+      "A month later, the park could host the rescheduled event. Comet returned with smoother steering, a wheel cover, and a name painted more carefully on its nose. The Willow Team arrived with spare tools of their own. Jo shook their rider’s hand before climbing into the seat.",
+      "This time, Comet finished third. Jo would have preferred first. She accepted the small ribbon, then helped Malik wheel their cart toward the car. At the gate, the old seat bracket gave one unmistakable squeak. Malik bowed to the imaginary crowd. “Our signature sound,” he announced. Jo laughed before she could stop herself."
+    ],
+    "vocabulary": [
+      {
+        "word": "marshal",
+        "meaning": "a person who helps manage and keep order at an event"
+      },
+      {
+        "word": "linkage",
+        "meaning": "connected parts that transfer movement"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What actually causes Comet’s squeak?",
+        "choices": [
+          "Its orange paint",
+          "A loose seat bracket",
+          "A motor hidden in the wheels"
+        ],
+        "answer": 1,
+        "evidencePage": 2,
+        "skill": "Evidence",
+        "explanation": "Testing shows that the seat bracket, rather than the wheels, makes the sound.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does the marshal stop nearby carts?",
+        "choices": [
+          "A rival cart has stopped with a loose wheel fastening",
+          "Jo has already won",
+          "The teams need lunch"
+        ],
+        "answer": 0,
+        "evidencePage": 5,
+        "skill": "Cause and effect",
+        "explanation": "The stopped cart creates a problem that adults must check while others stay clear.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "Why is choosing a winner from the unfinished race disputed?",
+        "choices": [
+          "Nobody remembers the cart colors",
+          "The trophy belongs to the Willow Team",
+          "Teams have not completed comparable conditions and distances"
+        ],
+        "answer": 2,
+        "evidencePage": 7,
+        "skill": "Reasoning",
+        "explanation": "The interruption leaves teams at different stages, making the partial standings unfair to compare.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "What do the teams learn while comparing designs?",
+        "choices": [
+          "Comet needs a motor",
+          "Different carts have different strengths",
+          "The quietest cart is perfect in every way"
+        ],
+        "answer": 1,
+        "evidencePage": 10,
+        "skill": "Compare",
+        "explanation": "The blue cart has a useful wheel cover, while Comet’s steering is easier to adjust.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "Which description best fits Jo’s change?",
+        "choices": [
+          "She stays competitive while learning to value cooperation and improvement",
+          "She stops caring about racing entirely",
+          "She becomes happy about every setback immediately"
+        ],
+        "answer": 0,
+        "evidencePage": 13,
+        "skill": "Character development",
+        "explanation": "Jo still prefers winning, but shares ideas, helps others, and can laugh at a familiar problem.",
+        "checkpointPage": 13
+      }
+    ],
+    "retell": "Explain how Jo can remain disappointed and still gain something useful from the canceled race.",
+    "words": 680
+  },
+  {
+    "id": "5-the-last-delivery-to-mars",
+    "revision": "2026-10-long-v1",
+    "grade": "5",
+    "world": "space",
+    "title": "The Last Delivery to Mars",
+    "genre": "Fantasy",
+    "description": "At fourteen, Ren was the youngest apprentice on the Mars greenhouse delivery team.",
+    "pages": [
+      "At fourteen, Ren was the youngest apprentice on the Mars greenhouse delivery team. This mostly meant checking labels while other people did the exciting work. Her partner was a cargo robot named Patch, whose name described both its appearance and the repair history nobody wanted to discuss.",
+      "Their final delivery before a dust-storm shutdown was a small metal case for Greenhouse Seven. The manifest called it environmental equipment. Ren imagined a new sensor, perhaps a device important enough to earn her a place in the control room. Patch scanned the case and said, “Weight: disappointingly ordinary.”",
+      "The covered service route would close in forty minutes. Ren checked the approved path, their cart’s charge, and the case’s temperature indicator. The indicator was green. The greenhouse manager confirmed that the case should arrive before shutdown if possible, but crew safety came first. They set out through the connected service tunnels.",
+      "At Junction C, a maintenance barrier blocked their usual route. A damaged seal was being replaced. Patch calculated an alternative through the supply depot. It was longer, but still inside the protected network. Ren contacted control and received clearance before changing course. Her first important decision felt mostly like paperwork.",
+      "The depot was crowded with storm supplies. A supervisor directed them to wait behind a moving loader. Ren watched the minutes disappear. Patch noticed the case’s green indicator flicker yellow. Its label showed a permitted temperature range, and the depot was warmer than the tunnel they had left.",
+      "Ren wanted to hurry through the gap beside the loader. Patch blocked the cart with one metal foot. The supervisor had told them to wait. Ren swallowed her complaint and asked whether the case could be moved to the cooler staging shelf while they waited. The supervisor cleared a safe path to it.",
+      "The indicator returned to green. Ren called Greenhouse Seven to report the delay and temperature warning. This time, the manager explained the contents: carefully stored seeds for a small crop trial. They were not urgently needed that evening, but repeated temperature changes could affect the trial. Ren stared at the very ordinary-looking case.",
+      "Control offered two options. They could continue to the greenhouse, with little time left before route closure, or leave the case in the depot’s approved cool storage and complete delivery after the storm. Ren disliked the second option. She had wanted to finish every item on her first independent manifest.",
+      "Patch displayed the remaining time, but did not choose for her. Ren checked with the greenhouse manager and the depot supervisor. Both confirmed that the storage conditions were suitable and the delivery could wait. She arranged a documented handover, including the brief yellow warning, rather than treating it as if nothing had happened.",
+      "They returned to base before the service route closed. Ren’s manifest had one item marked STORED—DELIVERY PENDING. She expected criticism. Her supervisor asked three questions: was the case secure, did the receiving staff know, and was the condition recorded? Ren answered yes each time. “Then the job is under control,” the supervisor said.",
+      "The storm lasted two days. During the delay, Ren read about the crop trial. Greenhouse Seven was testing a compact bean plant that might use space efficiently. The seeds were not magic, and the trial might fail. That made keeping the conditions consistent more important, not less: researchers needed to understand what caused the results.",
+      "After the routes reopened, Ren and Patch collected the case. The depot log showed stable storage temperatures. They delivered it to the greenhouse, where the manager let Ren help check the labels against the planting plan. Patch remained by the door, carefully avoiding a watering hose it distrusted.",
+      "Weeks later, the first leaves unfolded. Some seedlings grew faster than others. Ren visited on her break and found the manager recording those differences without declaring success too early. A small label beside the tray named the delivery team, including Patch. The robot requested a copy for its maintenance panel.",
+      "Ren kept the completed manifest, with its delay and handover still visible. She had not delivered a dramatic machine or beaten the storm by seconds. She had helped a box of ordinary seeds arrive with a usable record. Patch studied the seedlings, then the empty case. “Weight,” it said, “was not the interesting part.”"
+    ],
+    "vocabulary": [
+      {
+        "word": "manifest",
+        "meaning": "a list of goods being transported"
+      },
+      {
+        "word": "handover",
+        "meaning": "the transfer of responsibility from one person or team to another"
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What does Ren check before departure?",
+        "choices": [
+          "The approved route, cart charge, and case indicator",
+          "Only whether the case looks exciting",
+          "The number of leaves in the greenhouse"
+        ],
+        "answer": 0,
+        "evidencePage": 2,
+        "skill": "Detail",
+        "explanation": "Ren checks the route, power, and temperature indicator before setting out.",
+        "checkpointPage": 2
+      },
+      {
+        "prompt": "Why does she move the case to a staging shelf?",
+        "choices": [
+          "The case is too heavy for Patch",
+          "She wants to hide it from the supervisor",
+          "The warmer depot has triggered a temperature warning"
+        ],
+        "answer": 2,
+        "evidencePage": 5,
+        "skill": "Cause and effect",
+        "explanation": "The indicator turns yellow in the warm depot, and a cooler approved shelf helps protect the contents.",
+        "checkpointPage": 5
+      },
+      {
+        "prompt": "What makes the storage option reasonable?",
+        "choices": [
+          "The seeds no longer matter",
+          "Both responsible teams confirm suitable conditions and no urgent need that evening",
+          "Ren assumes any cupboard will work"
+        ],
+        "answer": 1,
+        "evidencePage": 8,
+        "skill": "Evaluate a decision",
+        "explanation": "Ren checks the storage conditions and timing with the manager and supervisor before arranging the handover.",
+        "checkpointPage": 8
+      },
+      {
+        "prompt": "Why record the temperature warning instead of leaving it out?",
+        "choices": [
+          "Researchers need an accurate history to interpret the trial",
+          "A cleaner record is always more useful than a complete one",
+          "Patch wants more paperwork for fun"
+        ],
+        "answer": 0,
+        "evidencePage": 10,
+        "skill": "Reasoning",
+        "explanation": "Accurate conditions and handling records help researchers understand possible causes of the results.",
+        "checkpointPage": 11
+      },
+      {
+        "prompt": "How does Ren’s view of an important delivery change?",
+        "choices": [
+          "She decides only heavy equipment matters",
+          "She believes every delayed delivery is a failure",
+          "She values careful handling and documentation more than a dramatic arrival"
+        ],
+        "answer": 2,
+        "evidencePage": 13,
+        "skill": "Theme",
+        "explanation": "Ren ends by recognizing the value of safely delivered seeds and an honest, usable record.",
+        "checkpointPage": 13
+      }
+    ],
+    "retell": "Describe the tradeoff Ren faces and the evidence she uses to choose the delayed delivery.",
+    "words": 715
+  },
+  {
     "id": "pk-pip-and-the-map",
     "revision": "2026-10-v1",
     "grade": "PK",

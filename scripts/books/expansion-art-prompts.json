@@ -1,0 +1,212 @@
+[
+  {
+    "id": "pk-the-sock-hunt",
+    "grade": "PK",
+    "title": "The Sock Hunt",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A small child in red pajamas and a happy puppy holding a blue sock in a sunny bedroom. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "pk-duck-finds-a-puddle",
+    "grade": "PK",
+    "title": "Duck Finds a Puddle",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A little yellow duck happily splashing in a small rain puddle beside a garden path. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "pk-a-box-for-bunny",
+    "grade": "PK",
+    "title": "A Box for Bunny",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A rabbit and mouse peeking from a big cardboard box pretend boat in a grassy garden. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "pk-cat-and-the-big-hat",
+    "grade": "PK",
+    "title": "Cat and the Big Hat",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A small orange cat under an oversized yellow sun hat with ears poking up. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "pk-the-sleepy-little-train",
+    "grade": "PK",
+    "title": "The Sleepy Little Train",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A small blue toy train carrying a teddy bear and plush rabbit toward a pillow tunnel. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "k-the-pancake-flip",
+    "grade": "K",
+    "title": "The Pancake Flip",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A child and grandfather laughing in a kitchen with a pancake resting on the grandfather’s clean apron pocket. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "k-the-umbrella-boat",
+    "grade": "K",
+    "title": "The Umbrella Boat",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children floating a toy leaf boat in a puddle under a big red umbrella held by a parent. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "k-snail-delivers-a-letter",
+    "grade": "K",
+    "title": "Snail Delivers a Letter",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A friendly small snail carrying a tiny envelope to a rabbit’s garden gate. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "k-dino-needs-new-shoes",
+    "grade": "K",
+    "title": "Dino Needs New Shoes",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A friendly small green dinosaur admiring big purple shoes beside a smiling shoe shop owner. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "k-a-picnic-for-the-moon",
+    "grade": "K",
+    "title": "A Picnic for the Moon",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A child and grandmother on a porch with a picnic blanket watching the moon rise. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "1-the-robot-with-hiccups",
+    "grade": "1",
+    "title": "The Robot with Hiccups",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A little friendly box-shaped robot and a child building a block tower in a colorful workshop. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "1-the-runaway-sandwich",
+    "grade": "1",
+    "title": "The Runaway Sandwich",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A child and a dog watching a sandwich wrapped in paper rolling down a grassy picnic slope. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "1-a-dragon-at-the-library",
+    "grade": "1",
+    "title": "A Dragon at the Library",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A tiny friendly purple dragon curled up reading a picture book beside a child in a library. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "1-turtle-taxi",
+    "grade": "1",
+    "title": "Turtle Taxi",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A friendly turtle carrying a little mouse across a shallow forest puddle beside a leaf taxi sign without text. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "1-the-missing-train-whistle",
+    "grade": "1",
+    "title": "The Missing Train Whistle",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A child holding a little wooden toy whistle beside a green miniature park train, adult driver smiling. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "2-the-caboose-club",
+    "grade": "2",
+    "title": "The Caboose Club",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Three children with notebooks exploring the cozy interior of a stationary restored red caboose museum with an adult guide. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "2-the-snake-who-missed-the-parade",
+    "grade": "2",
+    "title": "The Snake Who Missed the Parade",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A friendly storybook small green snake wearing a tiny paper crown beside woodland animals with festive ribbons on a forest path. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "2-the-pancake-planet",
+    "grade": "2",
+    "title": "The Pancake Planet",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two friendly small space explorers outside a domed kitchen on a purple moon watching one pancake float inside a glass doorway. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "2-the-library-under-the-stairs",
+    "grade": "2",
+    "title": "The Library Under the Stairs",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children discovering a cozy book nook beneath wooden stairs filled with colorful books and a small cat. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "2-the-dinosaur-on-the-wrong-bus",
+    "grade": "2",
+    "title": "The Dinosaur on the Wrong Bus",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A friendly small orange dinosaur in blue backpack on a whimsical city bus beside a conductor, bright park outside. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "3-the-train-that-carried-a-garden",
+    "grade": "3",
+    "title": "The Train That Carried a Garden",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A historic steam train with a safely secured open wagon of potted flowers at a rural platform, children watching beside a gardener. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "3-operation-invisible-hamster",
+    "grade": "3",
+    "title": "Operation Invisible Hamster",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children inspecting a cardboard maze with a small golden hamster peeking from a paper tube, classroom science corner. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "3-the-storm-in-the-museum",
+    "grade": "3",
+    "title": "The Storm in the Museum",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Children and a museum guide viewing a model sailing ship in a glass display, projected blue storm light on the wall. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "3-captain-ink-and-the-missing-island",
+    "grade": "3",
+    "title": "Captain Ink and the Missing Island",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A whimsical octopus sea captain at a chart table on a toy-like wooden sailboat looking toward a distant sandbar. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "3-the-bake-off-disaster",
+    "grade": "3",
+    "title": "The Bake-Off Disaster",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children and adult baker laughing over a tilted berry cake and neatly arranged dessert cups in a bright kitchen. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "4-the-last-stop-on-platform-three",
+    "grade": "4",
+    "title": "The Last Stop on Platform Three",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children about ten years old with a railway historian at a quiet old railway platform studying a faded route map, warm adventurous afternoon. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "4-the-clockwork-whale",
+    "grade": "4",
+    "title": "The Clockwork Whale",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A child and grandfather in a bright workshop examining a large beautiful mechanical whale sculpture with brass gears and blue metal fins. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "4-the-secret-of-the-silent-theater",
+    "grade": "4",
+    "title": "The Secret of the Silent Theater",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Three children about ten years old on a small theater stage, one holding a flashlight toward a painted moon scenery panel, adult caretaker nearby. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "4-the-great-playground-election",
+    "grade": "4",
+    "title": "The Great Playground Election",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A diverse group of children around a school playground table with colorful drawings of swings gardens and a climbing wall, ballot box with no lettering. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "4-a-dragon-in-the-weather-station",
+    "grade": "4",
+    "title": "A Dragon in the Weather Station",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A small friendly copper dragon wearing goggles beside two children in a hilltop weather station with a windsock and rain gauge. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "5-the-island-that-moved",
+    "grade": "5",
+    "title": "The Island That Moved",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Two children about eleven years old and a scientist in a small research boat observing a floating island of reeds on a sunlit lake. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "5-the-midnight-radio-club",
+    "grade": "5",
+    "title": "The Midnight Radio Club",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Three preteen children and an adult in a cozy community radio room with headphones microphone and maps, nighttime window, adventurous mystery mood. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "5-the-museum-of-almost-true-things",
+    "grade": "5",
+    "title": "The Museum of Almost True Things",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Preteen children examining a whimsical display of a large feather and a tiny ornate shoe in a community museum, thoughtful curator beside them. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "5-the-race-nobody-finished",
+    "grade": "5",
+    "title": "The Race Nobody Finished",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: Preteen children in an outdoor homemade cart race stopped beside a damaged wooden bridge on a park course, adults helping, no injury, teammates carrying a loose wheel. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  },
+  {
+    "id": "5-the-last-delivery-to-mars",
+    "grade": "5",
+    "title": "The Last Delivery to Mars",
+    "prompt": "Use case: illustration-story. Create a square children's book illustration. Scene: A young teenage apprentice and a friendly robot unloading a plain metal package in a futuristic Mars greenhouse with red landscape beyond glass. Beautiful textured gouache with clear expressive characters, rich natural colors, inviting light, professional hand-painted picture book feel. A single scene, no text, no captions, no watermark. Keep main subjects inside central 70% for responsive cropping."
+  }
+]

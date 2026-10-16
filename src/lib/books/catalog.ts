@@ -6,7 +6,7 @@ export type AuthoredBook = Omit<Book,'questions'> & {questions:(ReadingQuestion 
 export const books = data as AuthoredBook[];
 export function findBook(id:string){return books.find(book=>book.id===id);}
 export function publicBook(book:AuthoredBook):Book {
-  return {...book,questions:book.questions.map(({prompt,choices,skill,evidencePage})=>({prompt,choices,skill,evidencePage}))};
+  return {...book,questions:book.questions.map(({prompt,choices,skill,evidencePage,checkpointPage})=>({prompt,choices,skill,evidencePage,...(checkpointPage===undefined?{}:{checkpointPage})}))};
 }
 export function bookCards():BookCard[]{
   return books.map(({id,revision,title,grade,world,genre,description,words,pages})=>({id,revision,title,grade,world,genre,description,words,pageCount:pages.length}));

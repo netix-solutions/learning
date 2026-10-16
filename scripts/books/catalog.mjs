@@ -1,3 +1,9 @@
+import {longEarlyBooks} from './long-early.mjs';
+import {longOneBooks} from './long-one.mjs';
+import {longTwoBooks} from './long-two.mjs';
+import {longThreeBooks} from './long-three.mjs';
+import {longFourBooks} from './long-four.mjs';
+import {longFiveBooks} from './long-five.mjs';
 import {gradeTwoExtraBooks} from './grade-two-extra.mjs';
 import {earlyBooks} from './early.mjs';
 import {gradeOneBooks} from './grade-one.mjs';
@@ -5,4 +11,4 @@ import {gradeTwoBooks} from './grade-two.mjs';
 import {gradeThreeBooks} from './grade-three.mjs';
 import {gradeFourBooks} from './grade-four.mjs';
 import {gradeFiveBooks} from './grade-five.mjs';
-export const books=[...earlyBooks,...gradeOneBooks,...gradeTwoBooks,...gradeTwoExtraBooks,...gradeThreeBooks,...gradeFourBooks,...gradeFiveBooks];
+export const books=[...longEarlyBooks,...longOneBooks,...longTwoBooks,...longThreeBooks,...longFourBooks,...longFiveBooks,...earlyBooks,...gradeOneBooks,...gradeTwoBooks,...gradeTwoExtraBooks,...gradeThreeBooks,...gradeFourBooks,...gradeFiveBooks];
